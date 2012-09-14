@@ -22,3 +22,20 @@ The [BRAT](http://brat.nlplab.org/) (Brat Rapid Annotation Tool), as used in the
     #1	AnnotatorNotes T2	same_as, and especially, not_same_as continue to present problems of complexity and useability in situations like this where 'terram' refers to multiple different sites. Also, can I say that 'iacet super' is synonymous with is_located_in?
 
 And like that. Strings for Entities are identified by id and text offsets, Relations by id, predicate, subject and object.
+
+ann2rdf_dot.py parses the brat annotation file and generates an RDF graph, and an graphviz/svg graph as output.
+
+Simple smushing is done for Entities marked as same\_as.
+
+Currently, all the js is in the index.html.
+
+## Requires:
+
+* Python 2.7, and:
+    * rdflib
+    * pygraphviz
+    * textwrap
+* JavaScript
+    * jquery-1.7.1
+    * jqueryFileTree.js (jQuery plugin for access to filesystem)
+    

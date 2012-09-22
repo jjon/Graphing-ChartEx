@@ -122,7 +122,12 @@ def makedot(rdfgraph):
             
         
         ## add the output nodes
-        dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse')
+        
+        dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id="node" + str(s).replace('#',''))
+    
+#     for n in dg.nodes():
+#         n.attr['URL'] = "javascript:showSpans();"
+        #print n.attr
         
     gdoc_node = g.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
     
@@ -131,7 +136,6 @@ def makedot(rdfgraph):
     dgdoc_node.attr['fontcolor'] = "white"
     dgdoc_node.attr['fontsize'] = "18.0"
     dgdoc_node.attr['id'] = "doc_node"
-    dgdoc_node.attr['URL'] = "javascript:showDocText(doc_text);"
     
     ## generate the edges from the edges dict, rather than from the rdflib graph
     for sub in edges:

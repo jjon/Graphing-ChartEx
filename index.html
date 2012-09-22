@@ -22,10 +22,10 @@ body {font-size: 9pt}
     display: none;
     background-color: #fec;
     position: absolute;
+    text-align: center;
     width: 400px;
-    max-height: 400px;
     border: double #999;
-    overflow: auto;
+    max-height: 400px;
 }
 
 #doc_text {
@@ -33,9 +33,17 @@ body {font-size: 9pt}
     text-align: justify;
 }
 
+.node {
+    cursor: pointer;
+}
+
+.doc-highlight {
+    background-color: #f00;
+}
+
+
 #dotimg {
     float:left;
-    width: 600px;
 }
 
 #graph { width: 800px }
@@ -49,69 +57,209 @@ body {font-size: 9pt}
 }
 
 .jqueryFileTree {
-padding: 16 0 0 24;
+    padding: 16 0 0 24;
 }
 
 </style>
 <script src="./jquery-1.7.1.min.js"></script>
 <script src="./jqueryFileTree/jqueryFileTree.js"></script>
+<script src="./jquery-ui-1.8.23.custom/js/jquery-ui-1.8.23.custom.min.js"></script>
+<link src="./jquery-ui-1.8.23.custom/css/ui-lightness/jquery-ui-1.8.23.custom.css"></link>
+<script type="text/javascript" src="./jquery.svg.package-1.4.5/jquery.svg.js"></script>
+<script type="text/javascript" src="./jquery.svg.package-1.4.5/jquery.svganim.js"></script>
+
 <script type="text/javascript">
 
-var doc_text = ""
-
-function showDocText(doc_text){
-    var X = $("#doc_node").offset().left - 100
-    var Y = $("#doc_node").offset().top
+    var doc_text = ""
     
-    $('#doc_text').append(doc_text);
-    $('#doc_text_display').css({left:X, top:Y}).slideToggle('slow');
-}
-
-function hideme(){
-    $('#doc_text_display').slideToggle('fast');
-    $('#doc_text').empty();
-}
-
-$(document).ready( function() {
-    $('#ftcontainer').fileTree({
-        root: '/',
-        script: 'jqueryFileTree.py',
-        expandSpeed: 1000,
-        collapseSpeed: 1000,
-        multiFolder: false
-    }, function(file) {
-        console.log(file);
-        $.ajax({
-            url: "ann2rdf_dot.py",
-            dataType: 'text',
-            data: {'fp': file},
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log(jqXHR.response, textStatus, errorThrown);
-            },
-            success: function(imagedata) {
-                var dataIn = imagedata.split('<filedelimiter>');
-//                 var img = new Image();
-//                 img.src = "data:image/png;base64," + dataIn[0];
-//                 img.id = "graph";
-                var svg = $(dataIn[0]).find('svg')
-                var rdf = dataIn[1].replace(/\n/gi,'<br />');
-                $("#dotimg").empty();
-                $("#dotimg").append(dataIn[0]);
-                $("#dotimg").find('svg')[0].width.baseVal.value = 800;
-                $("#dotimg").find('svg')[0].height.baseVal.value = 800;
-                
-                //$("#rdfout").html("<div>" + rdf + "</div>"); <> namespace declarations interpreted as html and brackets evaporate.
-                document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + dataIn[1];//innerText is a MS invention, not standards compliant.
-                
-                doc_text = dataIn[2];
-                $('#doc_text').empty();
-                $('#doc_text_display').hide();
-            }
-        
+    function hideme(){
+        $('#doc_text_display').toggle('fast');
+        $('#doc_text').empty();
+    }
+    
+    /*******************************
+    I find the regex solution elegant, but it turns out to be the slowest of 
+    several possibilities. This, more obvious, solution is faster. In
+    this context though, speed really doesn't matter:
+    
+    str = $('#par').text()
+    offsets = [[1702, 1710], [972, 980], [2072, 2080], [1498, 1506], [337, 345], [1118, 1126], [1817, 1825]];
+    function replaceOffset(str, offsetArray) {
+        var arr = str.split('');
+        for (i = 0; i < offsets.length; i++) {
+            var start = offsets[i][0];
+            var end = offsets[i][1];
+            arr[start] = "<span class='doc-highlight'>" + arr[start];
+            arr[end] = "</span>" + arr[end];
+        }
+        return arr.join('');
+    }
+    $('#par').html(replaceOffset(str, offsets));
+    
+    OR, using splice I have to sort and reverse:
+    
+    str = $('#par').text()
+    offsets = [[1702, 1710], [972, 980], [2072, 2080], [1498, 1506], [337, 345], [1118, 1126], [1817, 1825]];
+    offsets.sort(function(x,y){ return x[0] - y[0];});
+    offsets.reverse();
+    
+    function highlightOffsets(str, offsetArray) {
+        var arr = str.split('');
+        for (i = 0; i < offsets.length; i++) {
+            var start = offsets[i][0];
+            var end = offsets[i][1] + 1;
+            arr.splice(start,0,"<span class='doc-highlight'>");
+            arr.splice(end,0,"</span>");
+        }
+        return arr.join('');
+    }
+    
+    $('#par').html(highlightOffsets(str, offsets));​
+    *******************************/
+    
+    function replaceOffset(str, offsetArray, tag) {
+      tag = tag || 'span class="doc-highlight"';
+      
+      offsetArray.reverse().forEach(function(pair) {
+        start = pair[0], end = pair[1];
+        regex = new RegExp('(.{'+start+'})(.{'+(end-start)+'})')
+        str = str.replace(regex, '$1<'+tag+'>$2</'+tag+'>');
+      });
+      
+      return str;
+    }
+    
+    
+    $(document).ready( function() {
+        $('#ftcontainer').fileTree({
+            root: '/',
+            script: 'jqueryFileTree.py',
+            expandSpeed: 1000,
+            collapseSpeed: 1000,
+            multiFolder: false
+        }, function(file) {
+            $.ajax({
+                url: "ann2rdf_dot.py",
+                dataType: 'text',
+                data: {'fp': file},
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR.response, textStatus, errorThrown);
+                },
+                success: function(pydata) {
+                    var dataIn = pydata.split('<filedelimiter>');
+                    var svg = $(dataIn[0]).find('svg');
+                    var rdf = dataIn[1].replace(/\n/gi,'<br />');
+                    $("#dotimg").empty();
+                    $("#dotimg").append(dataIn[0]);
+                    $("#dotimg").find('svg')[0].width.baseVal.value = 800;
+                    $("#dotimg").find('svg')[0].height.baseVal.value = 800;
+                    
+                    //$("#rdfout").html("<div>" + rdf + "</div>"); <> namespace declarations interpreted as html and brackets evaporate.
+                    document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + dataIn[1];//innerText is a MS invention, not standards compliant.
+                    
+                   // click function for graph nodes: show doc_text w/offsets highlighted.
+                    $('.node').click(function(e){
+                        var $that = $(this);
+                        var offsets = [];
+                        
+                        // gather the offsets from the Literals containing them
+                        $that.find('text').contents().each(function(i){
+                            var regexp = /\((\d+),\s(\d+)\)/g;
+                            var match = regexp.exec(this.data);
+                            if (match !== null){
+                                offsets.push([match[1],match[2]]);
+                            }
+                        });
+                        
+                        // sort the offsets and get the fill color of the ellipse clicked on.
+                        offsets.sort(function(x,y){ return x[0] - y[0];});
+                        var fillColor = $(this).find('ellipse').css('fill');
+                        
+                        // getting rid of the pesky newlines. Should'a used json for transport!
+                        doc_text = dataIn[2].split('\n');
+                        for (var str in doc_text){
+                            if (!doc_text[str].length){doc_text.splice(str,1);}
+                        }
+                        doc_text = doc_text.join(' ');
+                        
+                        // call replaceOffset to highlight occurences of Literal text in the document text.
+                        $("#doc_text").html(replaceOffset(doc_text, offsets, 'span style="background-color:'+ fillColor + '" '));
+                        var X = e.pageX - 200;
+                        var Y = e.pageY + 16;
+                        $('#doc_text_display').hide();
+                        $('#doc_text_display').css('overflow-y','auto');
+                        $('#doc_text_display').css({left:X, top:Y}).toggle('slow');
+                        
+                        
+                    });
+                    
+                    $('#doc_text').empty();
+                    $('#doc_text_display').hide();
+                }
+            
+            });
         });
     });
-});
 </script>
+
+
+<!-- 
+<script type="text/javascript">
+This has nothing to do with the svg plugin svg = $("svg").svg().svg('get')
+
+Maybe this will help? <http://willshown.com/t/so/prototype.html>
+
+
+* reload, open anndoc w/new graph
+* pick a node and give it class draggable
+* in the console, declare variables thus:
+        var bb = document.getElementById('nodeT20').getBBox();
+        var w = $("#dotimg").width();
+        var rx = $("html").width()-w;
+        var ry = ($("html").height()-w)/2; //(the use of width here is intentional)
+        var k = 1000/w;
+
+* Then jQuery as follows:
+        $("svg .draggable")
+            .draggable()
+            .bind('drag', function(event, ui){
+                //(here's the SVG-jQueryUI shim:)
+                event.target.setAttribute('transform',
+                    'translate('+(((ui.position.left-rx)*k)-bb.x)+','+(((ui.position.top-ry)*k)-bb.y)+')');
+                //NOTE: BUG: TODO: unfortunately, jQueryUI's ui.position is
+                // not evaluated consistently across browsers.
+                // Specifically, Chrome jumps and doesn't drag proportionally, and
+                // FF jumps a lot on the first drag, but behaves well afterwards.
+                // Safari is just fine.
+            });
+
+RESULT: on click, nothing, on mouseMove, the element jumps 300px or so west-northwest. the distance and direction offset from cursor changes proportional to y axis drag, but fixed w/respect to distance from cursor on x axis. The element then drags as expected at that distance remove from the cursor.
+
+FF: same behavior, only the offset is west-southwest.
+
+var bb = document.getElementById('nodeT20').getBBox();
+var w = $("#dotimg").width();
+var rx = $("html").width()-w;
+var ry = ($("html").height()-w)/2; //(the use of width here is intentional)
+var k = 1000/w;
+
+$("svg .draggable")
+    .draggable()
+    .bind('drag', function(event, ui){
+        //(here's the SVG-jQueryUI shim:)
+        event.target.setAttribute('transform',
+            'translate('+(((ui.position.left-rx)*k)-bb.x)+','+(((ui.position.top-ry)*k)-bb.y)+')');
+        //NOTE: BUG: TODO: unfortunately, jQueryUI's ui.position is
+        // not evaluated consistently across browsers.
+        // Specifically, Chrome jumps and doesn't drag proportionally, and
+        // FF jumps a lot on the first drag, but behaves well afterwards.
+        // Safari is just fine.
+    });
+
+for more progress on this drag experiment, see dragExperiment.html
+</script>
+ -->
+
 
 </head>
 
@@ -121,9 +269,25 @@ $(document).ready( function() {
 <p class='legend'>Choose a corpus from the list at the left, then click on an annotation file.
 <p class='legend'>Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows),
 <p class='legend'>and below that, as an RDF/n3 graph.</p>
-<div id="doc_text_display"><img style="float:right" src="close-button.png" onclick="hideme()"/><div id="doc_text"></div></div>
+<div id="doc_text_display"><img style="float: right" src="close-button.png" onclick="hideme()"/><div id="doc_text"></div></div>
 <div id="ftcontainer"></div>
-<div id="dotimg"><img id='graph' /></div>
+<!-- 
+deeds-00880644 best example of smushing at work.
+
+Using jquery.svg.js, get the SVGWrapper of the svg element like this: svg = $("svg").svg().svg('get')
+act on individual nodes using the usual jQuery selectors thus:
+e = $("#nodeT11")
+svg.remove(e)
+And using jquery.svganim.js animate thus:
+e.animate({svgStrokeWidth: '+=16'}, 3000);
+TODO: how to change position for node and all its children?
+e = $("#nodeT12 ellipse") only animate pos. of ellipse w/in node:
+$(e).animate({svgCy: -500}, 2000);
+
+see docs: http://keith-wood.name/svgRef.html
+
+-->
+<div id="dotimg"></div>
 <div id="rdfout"></div>
 
 </body>

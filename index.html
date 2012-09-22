@@ -77,46 +77,6 @@ body {font-size: 9pt}
         $('#doc_text').empty();
     }
     
-    /*******************************
-    I find the regex solution elegant, but it turns out to be the slowest of 
-    several possibilities. This, more obvious, solution is faster. In
-    this context though, speed really doesn't matter:
-    
-    str = $('#par').text()
-    offsets = [[1702, 1710], [972, 980], [2072, 2080], [1498, 1506], [337, 345], [1118, 1126], [1817, 1825]];
-    function replaceOffset(str, offsetArray) {
-        var arr = str.split('');
-        for (i = 0; i < offsets.length; i++) {
-            var start = offsets[i][0];
-            var end = offsets[i][1];
-            arr[start] = "<span class='doc-highlight'>" + arr[start];
-            arr[end] = "</span>" + arr[end];
-        }
-        return arr.join('');
-    }
-    $('#par').html(replaceOffset(str, offsets));
-    
-    OR, using splice I have to sort and reverse:
-    
-    str = $('#par').text()
-    offsets = [[1702, 1710], [972, 980], [2072, 2080], [1498, 1506], [337, 345], [1118, 1126], [1817, 1825]];
-    offsets.sort(function(x,y){ return x[0] - y[0];});
-    offsets.reverse();
-    
-    function highlightOffsets(str, offsetArray) {
-        var arr = str.split('');
-        for (i = 0; i < offsets.length; i++) {
-            var start = offsets[i][0];
-            var end = offsets[i][1] + 1;
-            arr.splice(start,0,"<span class='doc-highlight'>");
-            arr.splice(end,0,"</span>");
-        }
-        return arr.join('');
-    }
-    
-    $('#par').html(highlightOffsets(str, offsets));​
-    *******************************/
-    
     function replaceOffset(str, offsetArray, tag) {
       tag = tag || 'span class="doc-highlight"';
       
@@ -202,65 +162,6 @@ body {font-size: 9pt}
     });
 </script>
 
-
-<!-- 
-<script type="text/javascript">
-This has nothing to do with the svg plugin svg = $("svg").svg().svg('get')
-
-Maybe this will help? <http://willshown.com/t/so/prototype.html>
-
-
-* reload, open anndoc w/new graph
-* pick a node and give it class draggable
-* in the console, declare variables thus:
-        var bb = document.getElementById('nodeT20').getBBox();
-        var w = $("#dotimg").width();
-        var rx = $("html").width()-w;
-        var ry = ($("html").height()-w)/2; //(the use of width here is intentional)
-        var k = 1000/w;
-
-* Then jQuery as follows:
-        $("svg .draggable")
-            .draggable()
-            .bind('drag', function(event, ui){
-                //(here's the SVG-jQueryUI shim:)
-                event.target.setAttribute('transform',
-                    'translate('+(((ui.position.left-rx)*k)-bb.x)+','+(((ui.position.top-ry)*k)-bb.y)+')');
-                //NOTE: BUG: TODO: unfortunately, jQueryUI's ui.position is
-                // not evaluated consistently across browsers.
-                // Specifically, Chrome jumps and doesn't drag proportionally, and
-                // FF jumps a lot on the first drag, but behaves well afterwards.
-                // Safari is just fine.
-            });
-
-RESULT: on click, nothing, on mouseMove, the element jumps 300px or so west-northwest. the distance and direction offset from cursor changes proportional to y axis drag, but fixed w/respect to distance from cursor on x axis. The element then drags as expected at that distance remove from the cursor.
-
-FF: same behavior, only the offset is west-southwest.
-
-var bb = document.getElementById('nodeT20').getBBox();
-var w = $("#dotimg").width();
-var rx = $("html").width()-w;
-var ry = ($("html").height()-w)/2; //(the use of width here is intentional)
-var k = 1000/w;
-
-$("svg .draggable")
-    .draggable()
-    .bind('drag', function(event, ui){
-        //(here's the SVG-jQueryUI shim:)
-        event.target.setAttribute('transform',
-            'translate('+(((ui.position.left-rx)*k)-bb.x)+','+(((ui.position.top-ry)*k)-bb.y)+')');
-        //NOTE: BUG: TODO: unfortunately, jQueryUI's ui.position is
-        // not evaluated consistently across browsers.
-        // Specifically, Chrome jumps and doesn't drag proportionally, and
-        // FF jumps a lot on the first drag, but behaves well afterwards.
-        // Safari is just fine.
-    });
-
-for more progress on this drag experiment, see dragExperiment.html
-</script>
- -->
-
-
 </head>
 
 <body>
@@ -273,18 +174,6 @@ for more progress on this drag experiment, see dragExperiment.html
 <div id="ftcontainer"></div>
 <!-- 
 deeds-00880644 best example of smushing at work.
-
-Using jquery.svg.js, get the SVGWrapper of the svg element like this: svg = $("svg").svg().svg('get')
-act on individual nodes using the usual jQuery selectors thus:
-e = $("#nodeT11")
-svg.remove(e)
-And using jquery.svganim.js animate thus:
-e.animate({svgStrokeWidth: '+=16'}, 3000);
-TODO: how to change position for node and all its children?
-e = $("#nodeT12 ellipse") only animate pos. of ellipse w/in node:
-$(e).animate({svgCy: -500}, 2000);
-
-see docs: http://keith-wood.name/svgRef.html
 
 -->
 <div id="dotimg"></div>

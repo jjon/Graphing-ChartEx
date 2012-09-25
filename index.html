@@ -92,12 +92,12 @@ body {font-size: 9pt}
     
     $(document).ready( function() {
         $('#ftcontainer').fileTree({
-            root: '/',
+            root: '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12',
             script: 'jqueryFileTree.py',
             expandSpeed: 1000,
             collapseSpeed: 1000,
             multiFolder: false
-        }, function(file) {
+        }, function(file) { //NB the 'file' argument is the relative path
             $.ajax({
                 url: "ann2rdf_dot.py",
                 dataType: 'text',
@@ -108,14 +108,14 @@ body {font-size: 9pt}
                 success: function(pydata) {
                     var dataIn = pydata.split('<filedelimiter>');
                     var svg = $(dataIn[0]).find('svg');
-                    var rdf = dataIn[1].replace(/\n/gi,'<br />');
+                    var rdf = dataIn[1]//.replace(/\n/gi,'<br />');
                     $("#dotimg").empty();
                     $("#dotimg").append(dataIn[0]);
-                    $("#dotimg").find('svg')[0].width.baseVal.value = 800;
-                    $("#dotimg").find('svg')[0].height.baseVal.value = 800;
+                    $("svg")[0].width.baseVal.value = 800;
+                    $("svg")[0].height.baseVal.value = 800;
                     
-                    //$("#rdfout").html("<div>" + rdf + "</div>"); <> namespace declarations interpreted as html and brackets evaporate.
-                    document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + dataIn[1];//innerText is a MS invention, not standards compliant.
+                    //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
+                    document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + rdf;//innerText is a MS invention, not standards compliant.
                     
                    // click function for graph nodes: show doc_text w/offsets highlighted.
                     $('.node').click(function(e){
@@ -137,7 +137,8 @@ body {font-size: 9pt}
                         
                         // getting rid of the pesky newlines. Should'a used json for transport!
                         doc_text = dataIn[2].split('\n');
-                        for (var str in doc_text){
+                        var str = '';
+                        for (str = 0; str<doc_text.length; str++){
                             if (!doc_text[str].length){doc_text.splice(str,1);}
                         }
                         doc_text = doc_text.join(' ');
@@ -156,7 +157,6 @@ body {font-size: 9pt}
                     $('#doc_text').empty();
                     $('#doc_text_display').hide();
                 }
-            
             });
         });
     });

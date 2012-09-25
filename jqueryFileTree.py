@@ -8,20 +8,20 @@ import cgitb
 cgitb.enable()
 
 form = cgi.FieldStorage()
-d = form["dir"].value
-
-root = "bratData12-09-12/"
+rel_folder = form["dir"].value
+root = '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12'
+d = os.path.join(root,rel_folder)
 
 
 def getfiles():
     r=['<ul class="jqueryFileTree" style="display: none;">']    
-    for f in os.listdir(root + d):
-        fp = os.path.join(root,f)
+    for f in os.listdir(d):
+        fp = os.path.join(d,f)
         if os.path.isdir(fp):
-            r.append('<li class="directory collapsed"><a href="#" rel="%s/">%s</a></li>' % (f,f))
+            r.append('<li class="directory collapsed"><a href="#" rel="%s/">%s</a></li>' % (fp,f))
         else:
             st = os.path.splitext(f)
-            fp = root + d + f
+            fp = os.path.realpath(d) + '/' + f
             if st[1] == '.ann':
                 e = st[1][1:] # get .ext and remove dot
                 r.append('<li class="file ext_%s"><a href="#" rel="%s">%s</a></li>' % (e,fp,f))
@@ -31,4 +31,3 @@ def getfiles():
 print "content-type: text/html\n"
 
 print ''.join(getfiles())
-

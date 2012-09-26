@@ -72,112 +72,118 @@ body {font-size: 9pt}
 
 <script type="text/javascript">
 
-    var doc_text = ""
-    
-    function hideme(){
-        $('#doc_text_display').toggle('fast');
-        $('#doc_text').empty();
-    }
+var doc_text = "";
 
-/************************/
-    
-    function replaceOffset(str, offsetArray, tag) {
-        tag = tag || '<span class="doc-highlight">';
-        var arr = str.split('');
-        for (i = 0; i < offsetArray.length; i++) {
-            var start = offsetArray[i][0];
-            var end = offsetArray[i][1];
-            arr[start] = tag + arr[start];
-            arr[end] = "</span>" + arr[end];
-        }
-        return arr.join('');
-    }
+function hideme() {
+    $('#doc_text_display').toggle('fast');
+    $('#doc_text').empty();
+}
 
 /************************/
 
-    function deployData(pydata) {
-        var dataIn = pydata.split('<filedelimiter>'); // use json instead of this
-        var svg = $(dataIn[0]).find('svg');
-        var rdf = dataIn[1]//.replace(/\n/gi,'<br />');
-        
-        // getting rid of the pesky newlines. Should'a used json for transport!
-        doc_text = dataIn[2].split('\n');
-        var str = '';
-        for (str = 0; str<doc_text.length; str++){
-            if (!doc_text[str].length){doc_text.splice(str,1);}
+function replaceOffset(str, offsetArray, tag) {
+    tag = tag || '<span class="doc-highlight">';
+    var arr = str.split('');
+    for (i = 0; i < offsetArray.length; i++) {
+        var start = offsetArray[i][0];
+        var end = offsetArray[i][1];
+        arr[start] = tag + arr[start];
+        arr[end] = "</span>" + arr[end];
+    }
+    return arr.join('');
+}
+
+/************************/
+
+function deployData(pydata) {
+    var dataIn = pydata.split('<filedelimiter>'); // use json instead of this
+    var svg = $(dataIn[0]).find('svg');
+    var rdf = dataIn[1]; //.replace(/\n/gi,'<br />');
+    // getting rid of the pesky newlines. Should'a used json for transport!
+    doc_text = dataIn[2].split('\n');
+    var str = '';
+    for (str = 0; str < doc_text.length; str++) {
+        if (!doc_text[str].length) {
+            doc_text.splice(str, 1);
         }
-        doc_text = doc_text.join(' ');
-        
-        $('#doc_text').empty();
-        $('#doc_text_display').hide();
-        $("#dotimg").empty();
-        $("#dotimg").append(dataIn[0]);
-        $("svg")[0].width.baseVal.value = 800;
-        $("svg")[0].height.baseVal.value = 800;
-        
-        //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
-        document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + rdf;//innerText is a MS invention, not standards compliant.
-        
-       // click function for graph nodes: show doc_text w/offsets highlighted.
-        $('.node').click(function(e){
-            var $that = $(this);
-            var offsets = [];
-            
-            // gather the offsets from the Literals containing them
-            $that.find('text').contents().each(function(i){
-                var regexp = /\((\d+),\s(\d+)\)/g;
-                var match = regexp.exec(this.data);
-                if (match !== null){
-                    offsets.push([match[1],match[2]]);
-                }
-            });
-            
-            // call replaceOffset to highlight occurences of Literal text in the document text.
-            var fillColor = $(this).find('ellipse').css('fill');
-            $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:'+ fillColor + '">'));
-            var X = e.pageX - 200;
-            var Y = e.pageY + 16;
-            $('#doc_text_display').hide();
-            $('#doc_text_display').css('overflow-y','auto');
-            $('#doc_text_display').css({left:X, top:Y}).toggle('slow');            
-        });        
     }
+    doc_text = doc_text.join(' ');
+
+    $('#doc_text').empty();
+    $('#doc_text_display').hide();
+    $("#dotimg").empty();
+    $("#dotimg").append(dataIn[0]);
+    $("svg")[0].width.baseVal.value = 800;
+    $("svg")[0].height.baseVal.value = 800;
+
+    //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
+    document.getElementById("rdfout").innerText = "\nThe same graph rendered as RDF/n3:\n\n" + rdf; //innerText is a MS invention, not standards compliant.
+    // click function for graph nodes: show doc_text w/offsets highlighted.
+    $('.node').click(function(e) {
+        var $that = $(this);
+        var offsets = [];
+
+        // gather the offsets from the Literals containing them
+        $that.find('text').contents().each(function(i) {
+            var regexp = /\((\d+),\s(\d+)\)/g;
+            var match = regexp.exec(this.data);
+            if (match !== null) {
+                offsets.push([match[1], match[2]]);
+            }
+        });
+
+        // call replaceOffset to highlight occurences of Literal text in the document text.
+        var fillColor = $(this).find('ellipse').css('fill');
+        $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:' + fillColor + '">'));
+        var X = e.pageX - 200;
+        var Y = e.pageY + 16;
+        $('#doc_text_display').hide();
+        $('#doc_text_display').css('overflow-y', 'auto');
+        $('#doc_text_display').css({
+            left: X,
+            top: Y
+        }).toggle('slow');
+    });
+}
 
 /***********************/
-    
-    function alertError(pydata){
-        $('#doc_text_display').hide();
-        $("#dotimg").empty();
-        $("#rdfout").empty();
-        $("#doc_text").empty();
-        doc_text = ""
-        alert("that file has no annotations");
-    }
+
+function alertError(pydata) {
+    $('#doc_text_display').hide();
+    $("#dotimg").empty();
+    $("#rdfout").empty();
+    $("#doc_text").empty();
+    doc_text = "";
+    alert("that file has no annotations");
+}
 
 /***********************/
-    
-    $(document).ready( function() {
-        $('#ftcontainer').fileTree({
-            root: '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12',
-            script: 'jqueryFileTree.py',
-            expandSpeed: 300,
-            collapseSpeed: 300,
-            multiFolder: false
-        }, function(file) { //NB the 'file' argument is the relative path of the file
-            $.ajax({
-                url: "ann2rdf_dot.py",
-                dataType: 'text',
-                data: {'fp': file},
-                error: function(jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR.response, textStatus, errorThrown);
-                },
-                success: function(pydata) {
-                    if (pydata.search("<filedelimiter>") >= 0) deployData(pydata);
-                    else alertError(pydata);
-                }
-            });
+
+$(document).ready(function() {
+    $('#ftcontainer').fileTree({
+        root: '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12',
+        script: 'jqueryFileTree.py',
+        expandSpeed: 300,
+        collapseSpeed: 300,
+        multiFolder: false
+    }, function(file) { //NB the 'file' argument is the relative path of the file
+        $.ajax({
+            url: "ann2rdf_dot.py",
+            dataType: 'text',
+            data: {
+                'fp': file
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.response, textStatus, errorThrown);
+            },
+            success: function(pydata) {
+                if (pydata.search("<filedelimiter>") >= 0) {deployData(pydata);}
+                else {alertError(pydata);}
+            }
         });
     });
+});
+
 </script>
 
 </head>

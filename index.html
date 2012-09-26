@@ -3,6 +3,11 @@
 
 <head>
 <title>Quick and Dirty: visualize graph as bubbles and arrows, and as rdf/n3</title>
+<!-- 
+deeds-00880644 most smushing.
+deeds-00110292.ann Robin's graph, intercoding exercise, compare w/others
+-->
+
 <style>
 body {font-size: 9pt}
 
@@ -57,16 +62,13 @@ body {font-size: 9pt}
 }
 
 .jqueryFileTree {
-    padding: 16 0 0 24;
+    padding: 0 0 0 24;
 }
+
 
 </style>
 <script src="./jquery-1.7.1.min.js"></script>
 <script src="./jqueryFileTree/jqueryFileTree.js"></script>
-<script src="./jquery-ui-1.8.23.custom/js/jquery-ui-1.8.23.custom.min.js"></script>
-<link src="./jquery-ui-1.8.23.custom/css/ui-lightness/jquery-ui-1.8.23.custom.css"></link>
-<script type="text/javascript" src="./jquery.svg.package-1.4.5/jquery.svg.js"></script>
-<script type="text/javascript" src="./jquery.svg.package-1.4.5/jquery.svganim.js"></script>
 
 <script type="text/javascript">
 
@@ -76,28 +78,92 @@ body {font-size: 9pt}
         $('#doc_text_display').toggle('fast');
         $('#doc_text').empty();
     }
+
+/************************/
     
     function replaceOffset(str, offsetArray, tag) {
-      tag = tag || 'span class="doc-highlight"';
-      
-      offsetArray.reverse().forEach(function(pair) {
-        start = pair[0], end = pair[1];
-        regex = new RegExp('(.{'+start+'})(.{'+(end-start)+'})')
-        str = str.replace(regex, '$1<'+tag+'>$2</'+tag+'>');
-      });
-      
-      return str;
+        tag = tag || '<span class="doc-highlight">';
+        var arr = str.split('');
+        for (i = 0; i < offsetArray.length; i++) {
+            var start = offsetArray[i][0];
+            var end = offsetArray[i][1];
+            arr[start] = tag + arr[start];
+            arr[end] = "</span>" + arr[end];
+        }
+        return arr.join('');
     }
+
+/************************/
+
+    function deployData(pydata) {
+        var dataIn = pydata.split('<filedelimiter>'); // use json instead of this
+        var svg = $(dataIn[0]).find('svg');
+        var rdf = dataIn[1]//.replace(/\n/gi,'<br />');
+        
+        // getting rid of the pesky newlines. Should'a used json for transport!
+        doc_text = dataIn[2].split('\n');
+        var str = '';
+        for (str = 0; str<doc_text.length; str++){
+            if (!doc_text[str].length){doc_text.splice(str,1);}
+        }
+        doc_text = doc_text.join(' ');
+        
+        $('#doc_text').empty();
+        $('#doc_text_display').hide();
+        $("#dotimg").empty();
+        $("#dotimg").append(dataIn[0]);
+        $("svg")[0].width.baseVal.value = 800;
+        $("svg")[0].height.baseVal.value = 800;
+        
+        //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
+        document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + rdf;//innerText is a MS invention, not standards compliant.
+        
+       // click function for graph nodes: show doc_text w/offsets highlighted.
+        $('.node').click(function(e){
+            var $that = $(this);
+            var offsets = [];
+            
+            // gather the offsets from the Literals containing them
+            $that.find('text').contents().each(function(i){
+                var regexp = /\((\d+),\s(\d+)\)/g;
+                var match = regexp.exec(this.data);
+                if (match !== null){
+                    offsets.push([match[1],match[2]]);
+                }
+            });
+            
+            // call replaceOffset to highlight occurences of Literal text in the document text.
+            var fillColor = $(this).find('ellipse').css('fill');
+            $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:'+ fillColor + '">'));
+            var X = e.pageX - 200;
+            var Y = e.pageY + 16;
+            $('#doc_text_display').hide();
+            $('#doc_text_display').css('overflow-y','auto');
+            $('#doc_text_display').css({left:X, top:Y}).toggle('slow');            
+        });        
+    }
+
+/***********************/
     
+    function alertError(pydata){
+        $('#doc_text_display').hide();
+        $("#dotimg").empty();
+        $("#rdfout").empty();
+        $("#doc_text").empty();
+        doc_text = ""
+        alert("that file has no annotations");
+    }
+
+/***********************/
     
     $(document).ready( function() {
         $('#ftcontainer').fileTree({
             root: '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12',
             script: 'jqueryFileTree.py',
-            expandSpeed: 1000,
-            collapseSpeed: 1000,
+            expandSpeed: 300,
+            collapseSpeed: 300,
             multiFolder: false
-        }, function(file) { //NB the 'file' argument is the relative path
+        }, function(file) { //NB the 'file' argument is the relative path of the file
             $.ajax({
                 url: "ann2rdf_dot.py",
                 dataType: 'text',
@@ -106,56 +172,8 @@ body {font-size: 9pt}
                     console.log(jqXHR.response, textStatus, errorThrown);
                 },
                 success: function(pydata) {
-                    var dataIn = pydata.split('<filedelimiter>');
-                    var svg = $(dataIn[0]).find('svg');
-                    var rdf = dataIn[1]//.replace(/\n/gi,'<br />');
-                    $("#dotimg").empty();
-                    $("#dotimg").append(dataIn[0]);
-                    $("svg")[0].width.baseVal.value = 800;
-                    $("svg")[0].height.baseVal.value = 800;
-                    
-                    //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
-                    document.getElementById("rdfout").innerText= "\nThe same graph rendered as RDF/n3:\n\n" + rdf;//innerText is a MS invention, not standards compliant.
-                    
-                   // click function for graph nodes: show doc_text w/offsets highlighted.
-                    $('.node').click(function(e){
-                        var $that = $(this);
-                        var offsets = [];
-                        
-                        // gather the offsets from the Literals containing them
-                        $that.find('text').contents().each(function(i){
-                            var regexp = /\((\d+),\s(\d+)\)/g;
-                            var match = regexp.exec(this.data);
-                            if (match !== null){
-                                offsets.push([match[1],match[2]]);
-                            }
-                        });
-                        
-                        // sort the offsets and get the fill color of the ellipse clicked on.
-                        offsets.sort(function(x,y){ return x[0] - y[0];});
-                        var fillColor = $(this).find('ellipse').css('fill');
-                        
-                        // getting rid of the pesky newlines. Should'a used json for transport!
-                        doc_text = dataIn[2].split('\n');
-                        var str = '';
-                        for (str = 0; str<doc_text.length; str++){
-                            if (!doc_text[str].length){doc_text.splice(str,1);}
-                        }
-                        doc_text = doc_text.join(' ');
-                        
-                        // call replaceOffset to highlight occurences of Literal text in the document text.
-                        $("#doc_text").html(replaceOffset(doc_text, offsets, 'span style="background-color:'+ fillColor + '" '));
-                        var X = e.pageX - 200;
-                        var Y = e.pageY + 16;
-                        $('#doc_text_display').hide();
-                        $('#doc_text_display').css('overflow-y','auto');
-                        $('#doc_text_display').css({left:X, top:Y}).toggle('slow');
-                        
-                        
-                    });
-                    
-                    $('#doc_text').empty();
-                    $('#doc_text_display').hide();
+                    if (pydata.search("<filedelimiter>") >= 0) deployData(pydata);
+                    else alertError(pydata);
                 }
             });
         });
@@ -170,12 +188,8 @@ body {font-size: 9pt}
 <p class='legend'>Choose a corpus from the list at the left, then click on an annotation file.
 <p class='legend'>Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows),
 <p class='legend'>and below that, as an RDF/n3 graph.</p>
-<div id="doc_text_display"><img style="float: right" src="close-button.png" onclick="hideme()"/><div id="doc_text"></div></div>
+<div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
 <div id="ftcontainer"></div>
-<!-- 
-deeds-00880644 best example of smushing at work.
-
--->
 <div id="dotimg"></div>
 <div id="rdfout"></div>
 

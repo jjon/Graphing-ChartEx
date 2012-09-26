@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import os
-import urllib
 import cgi
-import json
 import cgitb
 cgitb.enable()
 
@@ -11,7 +9,6 @@ form = cgi.FieldStorage()
 rel_folder = form["dir"].value
 root = '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12'
 d = os.path.join(root,rel_folder)
-
 
 def getfiles():
     r=['<ul class="jqueryFileTree" style="display: none;">']    
@@ -21,7 +18,6 @@ def getfiles():
             r.append('<li class="directory collapsed"><a href="#" rel="%s/">%s</a></li>' % (fp,f))
         else:
             st = os.path.splitext(f)
-            fp = os.path.realpath(d) + '/' + f
             if st[1] == '.ann':
                 e = st[1][1:] # get .ext and remove dot
                 r.append('<li class="file ext_%s"><a href="#" rel="%s">%s</a></li>' % (e,fp,f))

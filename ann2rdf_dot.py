@@ -1,15 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*- #
 
-import os
-import re
+from rdflib import Graph, Namespace, Literal, RDF, RDFS, OWL, XSD
 import pygraphviz as pgv
 import textwrap
-from pprint import pprint
-from rdflib import Graph, Namespace, Literal, RDF, RDFS, OWL, XSD
 import cgi
 import cgitb
-
+import os
+import re
 
 cgitb.enable()
 form = cgi.FieldStorage()
@@ -50,7 +48,6 @@ node_colors = {
     'Document':'#007700',
     'Apparatus':'#00aa00'
     }
-
 
 def ann2rdf(annfile, docstr):
     """still to deal with annotator's notes.
@@ -119,16 +116,10 @@ def makedot(rdfgraph):
             ## remaining object, predicate tuples appended to edges[x]
             elif o not in edges[s]:
                 edges[s].append((o, p.split('#')[1]))
-            
         
         ## add the output nodes
-        
         dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id="node" + str(s).replace('#',''))
     
-#     for n in dg.nodes():
-#         n.attr['URL'] = "javascript:showSpans();"
-        #print n.attr
-        
     gdoc_node = g.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
     
     dgdoc_node = dg.get_node(gdoc_node)
@@ -149,39 +140,37 @@ def makedot(rdfgraph):
     
     return dg
 
-
 def main(f,s):
     fin = open(f,'r')
     annotationFile = fin.readlines()
-    annotationFile = [line.replace('•','.') for line in annotationFile]
-    txtfile = open(f.replace('.ann','.txt')).readlines()
-    txtfile = [line.replace('•','.') for line in txtfile]
-    docid = re.split('\s+', [line for line in annotationFile if re.match('^T\d+\tDocument',line)][0], maxsplit=4)[-1]
-    docstr = ''.join(txtfile)
+    if len(annotationFile) <= 1: ## This isn't the right way to catch errors!
+        print "Content-Type: text/plain\n"
     
-    ann2rdf(annotationFile, docstr)
-    smush_sameas(annotationFile)
+        print "<annFileError>"
+    else:
+        annotationFile = [line.replace('•','.') for line in annotationFile]
+        txtfile = open(f.replace('.ann','.txt')).readlines()
+        txtfile = [line.replace('•','.') for line in txtfile]
+        docid = re.split('\s+', [line for line in annotationFile if re.match('^T\d+\tDocument',line)][0], maxsplit=4)[-1]
+        docstr = ''.join(txtfile)
+        
+        ann2rdf(annotationFile, docstr)
+        smush_sameas(annotationFile)
+        
+        dgsvg = makedot(g).draw(format='svg', prog='twopi')
+        
+        print "Content-Type: text/plain\n"
     
-    dgsvg = makedot(g).draw(format='svg', prog='twopi')
+        print dgsvg
     
-    print "Content-Type: text/plain\n"
-
-    print dgsvg
-
-    print '<filedelimiter>'
-    
-    print g.serialize(format = s)
-    
-    print '<filedelimiter>'
-    
-    print docstr
+        print '<filedelimiter>'
+        
+        print g.serialize(format = s)
+        
+        print '<filedelimiter>'
+        
+        print docstr
 
 
 if __name__ == "__main__":
     main(filepath, 'n3')
-    
-    
-
-#############################    TODO     ################################
-# Smushing by type and textSpan identity
-# Operate on the rdf graph or on the graphviz graph?

@@ -7,6 +7,9 @@
 deeds-00880644 most smushing.
 deeds-00110292.ann Robin's graph, intercoding exercise, compare w/others
 -->
+<!-- 
+<style type="text/css">@import "./sorter-green/style.css";</style> -->
+<link rel="stylesheet" type="text/css" href="http://localhost/Sites/Ann2DotRdf/sorter-green/style.css"></link>
 
 <style>
 body {font-size: 9pt}
@@ -22,6 +25,7 @@ body {font-size: 9pt}
 #ftcontainer {
     width: 200px;
     float: left;
+    clear: left;
 }
 #doc_text_display {
     display: none;
@@ -65,14 +69,45 @@ body {font-size: 9pt}
     padding: 0 0 0 24;
 }
 
+#searchAndResult {width: 45%; margin-left: 60px; float: left; padding: 6px; border: 1px solid green}
+/*
+#searchAndResult p {margin: 0px}
+*/
+#toggleSearch {
+    font-size: 12pt;
+    margin-left: 60px;
+    /*border: 1px solid;*/
+    /*width: 120px;*/
+    float: left;
+}
+#toggleSearch:hover {color: #800; cursor: pointer}
+#dome {float: left; padding: 6px; background-color: #fec; border: 3px double #800;}
+#dome td {font-size: 9pt}
+.tkey {border-top: 1px solid #800; border-right: 4px solid #800}
+#result-div {float: left; max-height: 300px; overflow: scroll}
+
+#simplemodal-container a.modalCloseImg {
+	background:url(close.png) no-repeat; /* adjust url as required */
+	width:25px;
+	height:29px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-15px;
+	right:-18px;
+	cursor:pointer;
+}
 
 </style>
+
 <script src="./jquery-1.7.1.min.js"></script>
 <script src="./jqueryFileTree/jqueryFileTree.js"></script>
-
+<script language="javascript" type="text/javascript" src="jquery.tablesorter.min.js"></script>
 <script type="text/javascript">
 
-var doc_text = "";
+var doc_text = ""; // the only global should be a json object with all the data: svg, text, and rdf.
+var dirs_with_ann_files = undefined
+
 
 function hideme() {
     $('#doc_text_display').toggle('fast');
@@ -108,7 +143,7 @@ function deployData(pydata) {
         }
     }
     doc_text = doc_text.join(' ');
-
+    
     $('#doc_text').empty();
     $('#doc_text_display').hide();
     $("#dotimg").empty();
@@ -146,6 +181,32 @@ function deployData(pydata) {
     });
 }
 
+
+
+/***********************/
+
+function graphme(filepath){
+    $.ajax({
+        url: "ann2rdf_dot.py",
+        dataType: 'text',
+        data: {'fp': filepath},
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        },
+        success: function(pydata) {
+            if (pydata.search("<filedelimiter>") >= 0) {
+                $(".expanded a").first().trigger('click');
+                deployData(pydata);
+                $('html, body').animate({
+                    scrollTop: $("#dotimg").offset().top
+                }, 2000);    
+            }
+            
+            else {alertError(pydata);}
+        }
+    });
+}
+
 /***********************/
 
 function alertError(pydata) {
@@ -159,14 +220,39 @@ function alertError(pydata) {
 
 /***********************/
 
+
 $(document).ready(function() {
+    //populate the 'directoriesToSearch' dropdown list
+    $.ajax({
+        url: "jqueryFileTree.py",
+        dataType: 'json',
+        data: {
+            'dirs': '/Users/jjc/Sites/Ann2DotRdf/chartex'
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        },
+        success: function(pydata) {
+            dirs_with_ann_files = pydata;
+            for (i=0; i<dirs_with_ann_files.length; i++){
+                $("#directoriesToSearch").append('<option value="'+ dirs_with_ann_files[i] +'">' + dirs_with_ann_files[i].split('/').slice(6).join('/') + '</option>');
+            }
+        }
+    });
+
+    $("#toggleSearch").click(function(){
+        $("#result-div").remove();
+        $("#searchAndResult").slideToggle();
+    });
+
+
     $('#ftcontainer').fileTree({
-        root: '/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12',
+        root: '/Users/jjc/Sites/Ann2DotRdf/chartex',
         script: 'jqueryFileTree.py',
         expandSpeed: 300,
         collapseSpeed: 300,
         multiFolder: false
-    }, function(file) { //NB the 'file' argument is the relative path of the file
+    }, function(file) { //NB the 'file' argument root + filename
         $.ajax({
             url: "ann2rdf_dot.py",
             dataType: 'text',
@@ -182,6 +268,43 @@ $(document).ready(function() {
             }
         });
     });
+
+    
+
+    $('#submitButton').click(function(){
+        // similar string search function
+        var dirToSearch = $("select#directoriesToSearch").val();
+        var EntityToSearch = $("select#EntityToSearch").val();
+        var editDistance = $("select#editDistance").val();
+        var targetString = $("input#searchstring").val();
+                
+        $.ajax({
+            type: "get",
+            url: "ann2rdf_dot.py",
+            data: {'searchstring': targetString, 'entity': EntityToSearch, 'editDistance': editDistance, 'dirToSearch': dirToSearch},
+            dataType: 'json',
+            success: function(pydata){
+                if (pydata.length > 0) {
+                    console.log(pydata);
+                    $("#result-div").remove();
+                    $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>found string</th><th>edit distance</th><th>file: click on the file to graph it below</th></tr></thead><tbody id="result"></tbody></table></div>');
+                    for (match in pydata){
+                        $("#result").append('<tr><td>' + pydata[match].text + '</td><td class="distance-cell">' + pydata[match].distance + '</td><td>' + '<a onclick="graphme(\'' + pydata[match].file + '\')" href="#">' + pydata[match].file.split('/').slice(6).join('/') + '</a></td></tr>');
+                    }
+                    $("#result-table").tablesorter();
+                } else {
+                    $("#result-div").remove();
+                    alert("No Result");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        return false
+    });
+
+
 });
 
 </script>
@@ -189,11 +312,74 @@ $(document).ready(function() {
 </head>
 
 <body>
-<div style="float: left; font-size: 200%; font-weight: bold; color: #880000; padding-top: 16px; width: 32px">NB:</div>
-<p class='legend'>This web application is fragile and provisional.
-<p class='legend'>Choose a corpus from the list at the left, then click on an annotation file.
-<p class='legend'>Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows),
-<p class='legend'>and below that, as an RDF/n3 graph.</p>
+<div id="legendDiv" style="float: left">
+    <div style="float: left; font-size: 200%; font-weight: bold; color: #880000; padding-top: 16px; width: 32px">NB:</div>
+    <p class='legend'>This web application is fragile and provisional.
+    <p class='legend'>Choose a corpus from the list at the left, then click on an annotation file.
+    <p class='legend'>Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows),
+    <p class='legend'>and below that, as an RDF/n3 graph.</p>
+</div>
+
+    <h1 id="toggleSearch">Damerau-Levenshtein Similarity Search <span style="font-size: 60%">(show/hide)</span></h1>
+
+
+<div id="searchAndResult">
+    <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. This search is case-insensitive.</p>
+    <form id="dome" method="post" action=""/>
+        <table>
+        <tr>
+            <td class="tkey">Directory to search:</td>
+            <td><select id="directoriesToSearch">
+              <option>All</option>
+            </select></td>
+        </tr>
+        
+        
+        <tr>
+            <td class="tkey">Entities to search:</td>
+            <td>
+            <select id="EntityToSearch">
+              <option></option>
+              <option>Person</option>
+              <option>Place</option>
+              <option>Site</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="tkey">Maximum Levenshtein distance:</td>
+            <td>
+            <select id="editDistance">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="tkey">Target string:</td>
+            <td><input id="searchstring" type="text" /></td>
+        </tr>
+        </table>
+        <input type="submit" value="Search" id="submitButton" />
+        <input type=reset value=Clear />
+    
+    </form>
+</div>
+
 <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
 <div id="ftcontainer"></div>
 <div id="dotimg"></div>

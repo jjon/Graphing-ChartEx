@@ -6,6 +6,7 @@ import pygraphviz as pgv
 import textwrap
 import cgi
 import cgitb
+import json
 import os
 import re
 
@@ -17,8 +18,12 @@ form = cgi.FieldStorage()
 os.environ['PATH'] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 ## Annotation file to graph
-## filepath = "/Users/jjc/Sites/Ann2DotRdf/bratData12-09-12/deeds/deeds-00880188.ann"
-filepath = form["fp"].value
+## filepath = "/Users/jjc/Sites/Ann2DotRdf/chartex/deeds/deeds-00880188.ann"
+filepath = form["fp"].value if "fp" in form else None
+searchstring = form["searchstring"].value if "searchstring" in form else None
+entity = form["entity"].value if "entity" in form else None
+editDistance = form["editDistance"].value if "editDistance" in form else None
+dirToSearch = form["dirToSearch"].value if "dirToSearch" in form else None
 
 ## graph, instance of rdflib.Graph
 g = Graph()
@@ -138,9 +143,11 @@ def makedot(rdfgraph):
     maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
     dg.graph_attr.update(root = maxDegreeNode[0], ranksep="3 equally", overlap=False)
     
+    
+    ##print json.dumps(edges, indent=4)
     return dg
 
-def main(f,s):
+def graphPage(f,s):
     fin = open(f,'r')
     annotationFile = fin.readlines()
     if len(annotationFile) <= 1: ## This isn't the right way to catch errors!
@@ -171,6 +178,119 @@ def main(f,s):
         
         print docstr
 
+def lev(seq1, seq2):
+    """
+    From Michael Homer's blog:
+    http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/
+    
+    Calculate the Damerau-Levenshtein distance between sequences.
+
+    This distance is the number of additions, deletions, substitutions,
+    and transpositions needed to transform the first sequence into the
+    second. Although generally used with strings, any sequences of
+    comparable objects will work.
+
+    Transpositions are exchanges of *consecutive* characters; all other
+    operations are self-explanatory.
+
+    This implementation is O(N*M) time and O(M) space, for N and M the
+    lengths of the two sequences.
+
+    >>> dameraulevenshtein('ba', 'abc')
+    2
+    >>> dameraulevenshtein('fee', 'deed')
+    2
+
+    It works with arbitrary sequences too:
+    >>> dameraulevenshtein('abcd', ['b', 'a', 'c', 'd', 'e'])
+    2
+    """
+    # codesnippet:D0DE4716-B6E6-4161-9219-2903BF8F547F
+    # Conceptually, this is based on a len(seq1) + 1 * len(seq2) + 1 matrix.
+    # However, only the current and two previous rows are needed at once,
+    # so we only store those.
+    oneago = None
+    thisrow = range(1, len(seq2) + 1) + [0]
+    for x in xrange(len(seq1)):
+        # Python lists wrap around for negative indices, so put the
+        # leftmost column at the *end* of the list. This matches with
+        # the zero-indexed strings and saves extra calculation.
+        twoago, oneago, thisrow = oneago, thisrow, [0] * len(seq2) + [x + 1]
+        
+        for y in xrange(len(seq2)):
+            delcost = oneago[y] + 1
+            addcost = thisrow[y - 1] + 1
+            subcost = oneago[y - 1] + (seq1[x] != seq2[y])
+            thisrow[y] = min(delcost, addcost, subcost)
+            # This block deals with transpositions
+            if (x > 0 and y > 0 and seq1[x] == seq2[y - 1]
+                and seq1[x-1] == seq2[y] and seq1[x] != seq2[y]):
+                thisrow[y] = min(thisrow[y], twoago[y - 2] + 1)
+    return thisrow[len(seq2) - 1]
+
+def splitAnnLine(line):
+    #eid, entity, start, end, text
+    return re.split('\s+', line, maxsplit=4)
+
+def levDistance(searchstring, entity, editDistance, dirToSearch):
+# >>> for d in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex'):
+# ...     for file in d[2]:
+# ...             if file.endswith('ann'):
+# ... ...                     print file
+# what's the list-comp equivalent?
+## solution: [os.path.join(t[0],file) for t in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex') for file in t[2] if file.endswith('ann')]
+
+
+    if dirToSearch == "All":
+        annfiles = []
+        for d in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex'):
+            for file in d[2]:
+                if file.endswith('ann'):
+                    annfiles.append(os.path.join(d[0], file))
+    else:
+        annfiles = [os.path.join(dirToSearch,x) for x in os.listdir(dirToSearch) if x.endswith('ann')]
+    result = []
+    for file in annfiles:
+        entities = [line for line in open(file,'r').readlines() if line.startswith('T')]
+        for line in entities:
+            eid, entype, start, end, text = splitAnnLine(line)
+            if entype == entity:
+                distance = lev(searchstring.lower(),text.strip().lower())
+                if distance <= int(editDistance):
+                    result.append({'file':file, 'eid':eid, 'start':start, 'end':end, 'text':text.strip(), 'distance':distance}) 
+        
+    return json.dumps(result)
+                
+        
+        
+    
 
 if __name__ == "__main__":
-    main(filepath, 'n3')
+    if filepath:
+        graphPage(filepath, 'n3')
+    else:
+        ## ok, this responds correctly, leaving the page alone if there's no filepath
+        ## TODO: build function to return json if dome in form
+        print "Content-Type: application/json\n"
+        
+        print levDistance(searchstring, entity, editDistance, dirToSearch)
+        
+
+
+###############################################################################
+#T1	Document 0 17	vicars-choral-413
+#['T43', 'Person', '847', '864', 'Roger de Grendale\n']
+#['R19', 'is_recipient_in', 'Arg1:T24', 'Arg2:T23', '']
+# 'R19': {'arg1': 'T24', 'arg2': 'T23', 'note': '', 'prop': 'is_recipient_in'}
+# *	same_as T48 T7 T55 T56 T57 T58 T62 T63
+# >>> g.add((statementId, RDF.type, RDF.Statement))
+# >>> g.add((statementId, RDF.subject, URIRef(u'http://rdflib.net/store/ConjunctiveGraph')))
+# >>> g.add((statementId, RDF.predicate, RDFS.label))
+# >>> g.add((statementId, RDF.object, Literal("Conjunctive Graph")))
+#   <rdf:Property rdf:ID="P131F.is_identified_by">
+#     <rdfs:comment>This property identifies a name used specifically to identify an E39 Actor. This property is a specialisation of P1 is identified by (identifies) is identified by.</rdfs:comment>
+#     <rdfs:domain rdf:resource="#E39.Actor" />
+#     <rdfs:range rdf:resource="#E82.Actor_Appellation" />
+#     <rdfs:subPropertyOf rdf:resource="#P1F.is_identified_by" />
+#   </rdf:Property>
+

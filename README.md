@@ -29,6 +29,8 @@ Simple smushing is done for Entities marked as same\_as.
 
 Currently, all the js is in the index.html.
 
+2012-10-22: Added Damerau-Levenshtein distance metric functionality: Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. This search is case-insensitive. There are lots of Python implementations of the Levenshtein distance algorithms, this one, from From [Michael Homer's blog:](http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/) is elegant and efficient.
+
 ## Requires:
 
 * Python 2.7, and:
@@ -38,4 +40,4 @@ Currently, all the js is in the index.html.
 * JavaScript
     * jquery-1.7.1
     * jqueryFileTree.js (jQuery plugin for access to filesystem)
-    
+    * jquery.tablesorter.min.js (jQuery plugin to sort html tables) 

@@ -9,7 +9,7 @@ deeds-00110292.ann Robin's graph, intercoding exercise, compare w/others
 -->
 <!-- 
 <style type="text/css">@import "./sorter-green/style.css";</style> -->
-<link rel="stylesheet" type="text/css" href="http://localhost/Sites/Ann2DotRdf/sorter-green/style.css"></link>
+<link rel="stylesheet" type="text/css" href="http://localhost/Sites/Ann2DotRdf/sorter-blue/style.css"></link>
 
 <style>
 body {font-size: 9pt}
@@ -20,6 +20,12 @@ body {font-size: 9pt}
     margin: 0 0 0 60; 
     border-left: 3px solid #880000;
     padding-left: 6px;
+}
+
+#remove_graphs {
+    width: 200px;
+    float: left;
+    clear: left;
 }
 
 #ftcontainer {
@@ -69,22 +75,37 @@ body {font-size: 9pt}
     padding: 0 0 0 24;
 }
 
-#searchAndResult {width: 45%; margin-left: 60px; float: left; padding: 6px; border: 1px solid green}
-/*
-#searchAndResult p {margin: 0px}
-*/
+#searchAndResult {width: 45%; min-width: 520px; margin-left: 60px; float: left; padding: 6px}
+
+.match-highlight {background-color: #ff9500;}
+
 #toggleSearch {
     font-size: 12pt;
-    margin-left: 60px;
-    /*border: 1px solid;*/
-    /*width: 120px;*/
+    margin: 0 0 0 60px;
     float: left;
 }
+
+#grepSearch {display: none}
+
 #toggleSearch:hover {color: #800; cursor: pointer}
-#dome {float: left; padding: 6px; background-color: #fec; border: 3px double #800;}
-#dome td {font-size: 9pt}
+.searchform {float: left; padding: 6px; background-color: #fec; border: 3px double #800;}
+.searchform td {font-size: 9pt}
 .tkey {border-top: 1px solid #800; border-right: 4px solid #800}
-#result-div {float: left; max-height: 300px; overflow: scroll}
+#result-div {
+    float: left; 
+    max-height: 300px; 
+    overflow: scroll;
+    border: 3px double #800;
+}
+#result-div a {
+    color: #300;
+    text-decoration: none;
+}
+
+#result-div a:hover {
+    color: #aa0400;
+    text-decoration: none;
+}
 
 #simplemodal-container a.modalCloseImg {
 	background:url(close.png) no-repeat; /* adjust url as required */
@@ -107,7 +128,7 @@ body {font-size: 9pt}
 
 var doc_text = ""; // the only global should be a json object with all the data: svg, text, and rdf.
 var dirs_with_ann_files = undefined
-
+var DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex/'
 
 function hideme() {
     $('#doc_text_display').toggle('fast');
@@ -227,7 +248,7 @@ $(document).ready(function() {
         url: "jqueryFileTree.py",
         dataType: 'json',
         data: {
-            'dirs': '/Users/jjc/Sites/Ann2DotRdf/chartex'
+            'dirs': DATADIR
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.response, textStatus, errorThrown);
@@ -235,7 +256,7 @@ $(document).ready(function() {
         success: function(pydata) {
             dirs_with_ann_files = pydata;
             for (i=0; i<dirs_with_ann_files.length; i++){
-                $("#directoriesToSearch").append('<option value="'+ dirs_with_ann_files[i] +'">' + dirs_with_ann_files[i].split('/').slice(6).join('/') + '</option>');
+                $("#directoriesToSearch, #grepDirs").append('<option value="'+ dirs_with_ann_files[i] +'">' + dirs_with_ann_files[i].split('/').slice(6).join('/') + '</option>');
             }
         }
     });
@@ -243,11 +264,27 @@ $(document).ready(function() {
     $("#toggleSearch").click(function(){
         $("#result-div").remove();
         $("#searchAndResult").slideToggle();
+        $(".searchform").each(function(){this.reset()})
+    });
+    
+    $("#lev-search").click(function(){
+        $("#result-div").remove();
+        $(".searchform").each(function(){this.reset()})
+        $("#levSearch").show('fast');
+        $("#grepSearch").hide('fast');
+    });
+    $("#grep-search").click(function(){
+        $("#result-div").remove();
+        $(".searchform").each(function(){this.reset()})
+        $("#grepSearch").show('fast');
+        $("#levSearch").hide('fast');
     });
 
 
+
+    // populate the filetree selection list
     $('#ftcontainer').fileTree({
-        root: '/Users/jjc/Sites/Ann2DotRdf/chartex',
+        root: DATADIR,
         script: 'jqueryFileTree.py',
         expandSpeed: 300,
         collapseSpeed: 300,
@@ -277,7 +314,6 @@ $(document).ready(function() {
         var EntityToSearch = $("select#EntityToSearch").val();
         var editDistance = $("select#editDistance").val();
         var targetString = $("input#searchstring").val();
-                
         $.ajax({
             type: "get",
             url: "ann2rdf_dot.py",
@@ -289,6 +325,8 @@ $(document).ready(function() {
                     $("#result-div").remove();
                     $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>found string</th><th>edit distance</th><th>file: click on the file to graph it below</th></tr></thead><tbody id="result"></tbody></table></div>');
                     for (match in pydata){
+                    //TODO: better to use the DATADIR constant and generate
+                    //the filename server-side as in the grepSearch below.
                         $("#result").append('<tr><td>' + pydata[match].text + '</td><td class="distance-cell">' + pydata[match].distance + '</td><td>' + '<a onclick="graphme(\'' + pydata[match].file + '\')" href="#">' + pydata[match].file.split('/').slice(6).join('/') + '</a></td></tr>');
                     }
                     $("#result-table").tablesorter();
@@ -301,10 +339,60 @@ $(document).ready(function() {
                 console.log(jqXHR.response, textStatus, errorThrown);
             }
         });
-        return false
+        return false;
     });
+    
 
+    $('#grepButton').click(function(){
+        var dirToSearch = $("#grepSearch option:selected").val();
+        var filetype = $("#grepSearch input:radio:checked").val();
+        var targetString = $("#grepSearch input:text").val();
 
+        $.ajax({
+            type: "get",
+            url: "ann2rdf_dot.py",
+            data: {'searchstring': targetString, 'filetype': filetype, 'dirToSearch': dirToSearch},
+            dataType: 'json',
+            success: function(pydata){
+                if (pydata.length > 0) {
+                    $("#result-div").remove();
+                    
+                    if (filetype == 'ann'){
+                    
+                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>entity&nbsp;type</th><th>matched entity</th></tr></thead><tbody id="result"></tbody></table></div>');
+                        for (match in pydata){
+                            $("#result").append('<tr><td><a href="#" onclick="graphme(\'' + DATADIR + pydata[match][0] + '\');">' + pydata[match][0] + '</a></td><td>' + pydata[match][1] + '</td><td>' + pydata[match][2] + '</td></tr>');
+                        }
+                    
+                    } else if (filetype == 'txt'){
+                    
+                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>matched text</th></tr></thead><tbody id="result"></tbody></table></div>');
+                        for (match in pydata){
+                            $("#result").append('<tr><td><a href="#" onclick="graphme(\'' + DATADIR + pydata[match][0] + '\');">' + pydata[match][0] + '</a></td><td>' + pydata[match][1] + '</td></tr>');
+                        }
+                    }
+                    
+                    
+                    $("#grep-result-table").tablesorter();
+                } else {
+                    $("#result-div").remove();
+                    alert("No Result");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        return false;
+    });
+    
+    $("#remove_graphs").click(function(){
+        $("#dotimg, #rdfout").empty();
+        $(".expanded a").first().trigger('click');
+        $('#doc_text').empty();
+        $('#doc_text_display').hide();
+        return false;
+    });
 });
 
 </script>
@@ -320,67 +408,108 @@ $(document).ready(function() {
     <p class='legend'>and below that, as an RDF/n3 graph.</p>
 </div>
 
-    <h1 id="toggleSearch">Damerau-Levenshtein Similarity Search <span style="font-size: 60%">(show/hide)</span></h1>
+    <h1 id="toggleSearch">Search and Sort Functions <span style="font-size: 60%">(show/hide)</span></h1>
 
 
 <div id="searchAndResult">
-    <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. This search is case-insensitive.</p>
-    <form id="dome" method="post" action=""/>
-        <table>
-        <tr>
-            <td class="tkey">Directory to search:</td>
-            <td><select id="directoriesToSearch">
-              <option>All</option>
-            </select></td>
-        </tr>
+    <ul style="margin: 0px">
+    <li><a id="lev-search" href="#">Levenshtein distance</a></li>
+    <li><a id="grep-search" href="#">Grep search</a></li>
+    </ul>
+    <div class="searchbox" id="levSearch">
+        <h3>Levenshtein Distance Search</h3>
+        <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches.<br />This search may not scale well because it opens each annotation file, one by one. The grep search will likely be faster because it relies on the *nix grep utility. This search is case-insensitive, and accepts Perl-type regular expressions.</p>
+
+        <form id="dome" class="searchform" method="post" action=""/>
+            <table>
+            <tr>
+                <td class="tkey">Directory to search:</td>
+                <td><select id="directoriesToSearch">
+                  <option>All</option>
+                </select></td>
+            </tr>
+            
+            
+            <tr>
+                <td class="tkey">Entities to search:</td>
+                <td>
+                <select id="EntityToSearch">
+                  <option>Person</option>
+                  <option>Place</option>
+                  <option>Site</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tkey">Maximum Levenshtein distance:</td>
+                <td>
+                <select id="editDistance">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tkey">Target string:</td>
+                <td><input id="searchstring" type="text" /></td>
+            </tr>
+            </table>
+            <input type="submit" value="Search" id="submitButton" />
+            <input type=reset value=Clear />
         
+        </form>
+    </div>
+    <div class="searchbox" id="grepSearch">
+        <h3>Grep Search</h3>
+        <p>Search the selected corpus and filetype for the target string. This strategy will likely scale better than the Levenshtein distance search because it relies on the *nix grep utility. The targetstring argument is passed directly to grep, so this search too accepts Perl-type regular expressions This search is case-insensitive.</p>
+
+        <form id="grepForm" class="searchform" method="post" action=""/>
+            <table>
+            <tr>
+                <td class="tkey">Directory to search:</td>
+                <td><select id="grepDirs">
+                  <option>All</option>
+                </select></td>
+            </tr>
+            
+            <tr>
+                <td class="tkey">filetype to search:</td>
+                <td>
+                  <input type="radio" name="radios" value="ann" checked>ann</input>
+                  <input type="radio" name="radios" value="txt">txt</input>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="tkey">Target string:</td>
+                <td><input id="grepsearchstring" type="text" /></td>
+            </tr>
+            </table>
+            <input type="submit" value="grepSearch" id="grepButton" />
+            <input type=reset value=Clear />
         
-        <tr>
-            <td class="tkey">Entities to search:</td>
-            <td>
-            <select id="EntityToSearch">
-              <option></option>
-              <option>Person</option>
-              <option>Place</option>
-              <option>Site</option>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td class="tkey">Maximum Levenshtein distance:</td>
-            <td>
-            <select id="editDistance">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-              <option>13</option>
-              <option>14</option>
-              <option>15</option>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td class="tkey">Target string:</td>
-            <td><input id="searchstring" type="text" /></td>
-        </tr>
-        </table>
-        <input type="submit" value="Search" id="submitButton" />
-        <input type=reset value=Clear />
-    
-    </form>
+        </form>
+    </div>
 </div>
 
 <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
+
+<a href="#" id="remove_graphs"><img align="left" src="close.png"/>clear graphs</a>
+
 <div id="ftcontainer"></div>
 <div id="dotimg"></div>
 <div id="rdfout"></div>

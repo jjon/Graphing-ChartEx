@@ -29,10 +29,12 @@ Simple smushing is done for Entities marked as same\_as.
 
 Currently, all the js is in the index.html.
 
-2012-10-22: Added Damerau-Levenshtein distance metric functionality: Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. This search is case-insensitive. There are lots of Python implementations of the Levenshtein distance algorithms, this one, from From [Michael Homer's blog:](http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/) is elegant and efficient.
+2012-10-22: Added Damerau-Levenshtein distance metric functionality: Search the selected corpus of annotation files (*.ann) for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. This search is case-insensitive, and uses the python regex module, so it accepts Perl-style regexes. There are lots of Python implementations of the Levenshtein distance algorithms, this one, from From [Michael Homer's blog:](http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/) is elegant and efficient.
+
+2012-10-27: Added grep search. The Levenshtein search may not scale well. It opens and searches each annotation file using os.walk() in the python code. We might refactor the levenshtein search to use grep instead (that's a TODO). This search uses subprocess.Popen(), and passes the target string directly to grep. It accepts Perl-style regexes and is case insensitive. This will search either the annotation files (\*.ann), for any marked up entity, or the charter text files themselves (\*.txt).
 
 ## Requires:
-
+* *nix for the grep search
 * Python 2.7, and:
     * rdflib
     * pygraphviz

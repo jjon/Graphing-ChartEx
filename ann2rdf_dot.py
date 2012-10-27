@@ -4,6 +4,7 @@
 from rdflib import Graph, Namespace, Literal, RDF, RDFS, OWL, XSD
 import pygraphviz as pgv
 import textwrap
+import subprocess
 import cgi
 import cgitb
 import json
@@ -12,7 +13,7 @@ import re
 
 cgitb.enable()
 form = cgi.FieldStorage()
-
+DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex'
 
 ## Because bbedit doesn't access env. vars and so can't find twopi at /usr/local/bin
 os.environ['PATH'] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -24,6 +25,7 @@ searchstring = form["searchstring"].value if "searchstring" in form else None
 entity = form["entity"].value if "entity" in form else None
 editDistance = form["editDistance"].value if "editDistance" in form else None
 dirToSearch = form["dirToSearch"].value if "dirToSearch" in form else None
+filetype = form["filetype"].value if "filetype" in form else None
 
 ## graph, instance of rdflib.Graph
 g = Graph()
@@ -233,20 +235,8 @@ def splitAnnLine(line):
     return re.split('\s+', line, maxsplit=4)
 
 def levDistance(searchstring, entity, editDistance, dirToSearch):
-# >>> for d in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex'):
-# ...     for file in d[2]:
-# ...             if file.endswith('ann'):
-# ... ...                     print file
-# what's the list-comp equivalent?
-## solution: [os.path.join(t[0],file) for t in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex') for file in t[2] if file.endswith('ann')]
-
-
     if dirToSearch == "All":
-        annfiles = []
-        for d in os.walk('/Users/jjc/Sites/Ann2DotRdf/chartex'):
-            for file in d[2]:
-                if file.endswith('ann'):
-                    annfiles.append(os.path.join(d[0], file))
+        annfiles = [os.path.join(t[0],file) for t in os.walk(DATADIR) for file in t[2] if file.endswith('ann')]
     else:
         annfiles = [os.path.join(dirToSearch,x) for x in os.listdir(dirToSearch) if x.endswith('ann')]
     result = []
@@ -261,19 +251,70 @@ def levDistance(searchstring, entity, editDistance, dirToSearch):
         
     return json.dumps(result)
                 
-        
-        
-    
 
+def match_span_with_context(m, ctxt_len, s):
+    """ get m from re.finditer() which returns a generator of matches """
+    m = m.span()
+    theMatch = s[m[0]:m[1]]
+    start = max(0, m[0]-ctxt_len)
+    finish = min(m[1]+ctxt_len, len(s))
+    lstr = s[start:m[0]]
+    rstr = s[m[1]:finish]
+    return "...%s<span class=\"match-highlight\">%s</span>%s...<br />" % (lstr, theMatch, rstr)
+
+
+def simpleSearch(searchstring, dirToSearch):
+    """ TODO: not implemented client-side. Let's go with the grep function below instead """
+        
+    if dirToSearch == "All":
+        txtfiles = [os.path.join(t[0],file) for t in os.walk(DATADIR) for file in t[2] if file.endswith('txt')]
+    else:
+        txtfiles = [os.path.join(dirToSearch,x) for x in os.listdir(dirToSearch) if x.endswith('txt')]
+
+    for file in txtfiles:
+        f = open(file)
+        text = re.sub('\n',' ',f.read())
+        f.close()
+        rpath = os.path.relpath(file, start=DATADIR)
+        keyword = re.compile(searchstring, re.IGNORECASE)
+        
+        for m in re.finditer(keyword, text):
+            return "%s: %s" % (rpath, match_span_with_context(m, 30, text.encode('utf-8')))
+
+def grep(arg, dirname, ext):
+    """ -R to recurse, -P to get perl type regexes
+        TODO: build client-side ajax call """
+    suffix = "*." + ext
+    p = subprocess.Popen(['grep', '-RPZi', arg, dirname, '--include', suffix], stdout=subprocess.PIPE)
+    stdout, stderr = p.communicate()
+    
+    lines = []
+    for line in stdout.split('\n'):
+        if line:
+            path, data = line.split('\x00')
+            file = os.path.relpath(path, start=DATADIR)
+            if ext == 'ann':
+                eid, entity, start, end, text = splitAnnLine(data)
+                lines.append((file, entity, text))
+            elif ext == 'txt':
+                lines.append((re.sub('.txt', '.ann', file), data))
+
+    return json.dumps(lines)
+
+    
 if __name__ == "__main__":
     if filepath:
         graphPage(filepath, 'n3')
-    else:
-        ## ok, this responds correctly, leaving the page alone if there's no filepath
-        ## TODO: build function to return json if dome in form
+    
+    elif editDistance:
         print "Content-Type: application/json\n"
         
         print levDistance(searchstring, entity, editDistance, dirToSearch)
+    
+    elif filetype:
+        print "Content-Type: application/json\n"
+        
+        print grep(searchstring, DATADIR, filetype)
         
 
 

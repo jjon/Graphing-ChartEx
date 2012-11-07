@@ -14,24 +14,28 @@ deeds-00110292.ann Robin's graph, intercoding exercise, compare w/others
 <style>
 body {font-size: 9pt}
 
+#legendDiv {width: 49%; margin-bottom: 30px;}
+
 .legend {
     font-weight: bold; 
     font-size: 130%; 
     margin: 0 0 0 60; 
     border-left: 3px solid #880000;
-    padding-left: 6px;
+    padding: 6 0 0 6;
 }
 
 #remove_graphs {
     width: 200px;
     float: left;
     clear: left;
+    margin-left: 30px;
 }
 
 #ftcontainer {
     width: 200px;
     float: left;
     clear: left;
+    margin-left: 30px;
 }
 #doc_text_display {
     display: none;
@@ -75,7 +79,9 @@ body {font-size: 9pt}
     padding: 0 0 0 24;
 }
 
-#searchAndResult {width: 45%; min-width: 520px; margin-left: 60px; float: left; padding: 6px}
+#searchsort {width: 49%; float: right}
+
+#searchAndResult {margin-left: 10px; float: left; padding: 6px}
 
 .match-highlight {background-color: #ff9500;}
 
@@ -85,6 +91,7 @@ body {font-size: 9pt}
     float: left;
 }
 
+#levSearch {display: none}
 #grepSearch {display: none}
 
 #toggleSearch:hover {color: #800; cursor: pointer}
@@ -106,6 +113,8 @@ body {font-size: 9pt}
     color: #aa0400;
     text-decoration: none;
 }
+
+.searchbox p {font-size: 120%; line-height: 1.5em}
 
 #simplemodal-container a.modalCloseImg {
 	background:url(close.png) no-repeat; /* adjust url as required */
@@ -188,7 +197,7 @@ function deployData(pydata) {
             }
         });
 
-        // call replaceOffset to highlight occurences of Literal text in the document text.
+        // call replaceOffset to highlight occurrences of Literal text in the document text.
         var fillColor = $(this).find('ellipse').css('fill');
         $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:' + fillColor + '">'));
         var X = e.pageX - 200;
@@ -200,6 +209,10 @@ function deployData(pydata) {
             top: Y
         }).toggle('slow');
     });
+    $('html, body').animate({
+        scrollTop: $("#dotimg").offset().top
+    }, 2000);    
+
 }
 
 
@@ -212,7 +225,7 @@ function graphme(filepath){
         dataType: 'text',
         data: {'fp': filepath},
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR.response, textStatus, errorThrown);
+            //console.log(jqXHR.response, textStatus, errorThrown);
         },
         success: function(pydata) {
             if (pydata.search("<filedelimiter>") >= 0) {
@@ -239,8 +252,36 @@ function alertError(pydata) {
     alert("that file has no annotations");
 }
 
-/***********************/
+/***********************
+/ gBooks search
+/**********************/
+function handleResponse(response) {
+    //Alan de Quixlay is the example that started it for gBooks
+    if (response.items.length > 0){
+        console.log(response);
+        $("#result-div").remove();
+        $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>Title (click to see in gBooks)</th><th>Date</th><th>Found snippet</th></tr></thead><tbody id="result"></tbody></table></div>');
+        
+        for (var i = 0; i < response.items.length; i++) {
+            var item = response.items[i];
+            var title = item.volumeInfo.title;
+            var date = item.volumeInfo.publishedDate;
+            var link = item.accessInfo.webReaderLink;
+            var snippet = (typeof item.searchInfo.textSnippet === 'undefined') ? "no snippet text" : item.searchInfo.textSnippet;
+            
+            // in production code, item.text should have the HTML entities escaped.
+            //document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title;
+            $("#result").append('<tr><td>' + '<a href="' + link + '"><img src="ex-link.png" />&nbsp;' + title + '</a></td><td>' + date + '</td><td>' + snippet + '</td></tr>');
+            $("#result-table").tablesorter();
+        }
+    }
+}
 
+
+
+/*********************************************************
+* some of this stuff does not have to be in document.ready
+**********************************************************/
 
 $(document).ready(function() {
     //populate the 'directoriesToSearch' dropdown list
@@ -251,7 +292,7 @@ $(document).ready(function() {
             'dirs': DATADIR
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR.response, textStatus, errorThrown);
+            //console.log(jqXHR.response, textStatus, errorThrown);
         },
         success: function(pydata) {
             dirs_with_ann_files = pydata;
@@ -261,22 +302,32 @@ $(document).ready(function() {
         }
     });
 
+
+    // this is pretty clumsy: use a jQuery ui widget instead.
     $("#toggleSearch").click(function(){
         $("#result-div").remove();
         $("#searchAndResult").slideToggle();
         $(".searchform").each(function(){this.reset()})
-    });
-    
+    });    
     $("#lev-search").click(function(){
         $("#result-div").remove();
         $(".searchform").each(function(){this.reset()})
         $("#levSearch").show('fast');
         $("#grepSearch").hide('fast');
+        $("#gbookSearch").hide('fast');
     });
     $("#grep-search").click(function(){
         $("#result-div").remove();
         $(".searchform").each(function(){this.reset()})
         $("#grepSearch").show('fast');
+        $("#levSearch").hide('fast');
+        $("#gbookSearch").hide('fast');
+    });
+    $("#gbooks-search").click(function(){
+        $("#result-div").remove();
+        $(".searchform").each(function(){this.reset()})
+        $("#gbookSearch").show('fast');
+        $("#grepSearch").hide('fast');
         $("#levSearch").hide('fast');
     });
 
@@ -297,7 +348,7 @@ $(document).ready(function() {
                 'fp': file
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.response, textStatus, errorThrown);
+                //console.log(jqXHR.response, textStatus, errorThrown);
             },
             success: function(pydata) {
                 if (pydata.search("<filedelimiter>") >= 0) {deployData(pydata);}
@@ -321,7 +372,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(pydata){
                 if (pydata.length > 0) {
-                    console.log(pydata);
+                    ////console.log(pydata);
                     $("#result-div").remove();
                     $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>found string</th><th>edit distance</th><th>file: click on the file to graph it below</th></tr></thead><tbody id="result"></tbody></table></div>');
                     for (match in pydata){
@@ -336,7 +387,7 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.response, textStatus, errorThrown);
+                //console.log(jqXHR.response, textStatus, errorThrown);
             }
         });
         return false;
@@ -359,14 +410,14 @@ $(document).ready(function() {
                     
                     if (filetype == 'ann'){
                     
-                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>entity&nbsp;type</th><th>matched entity</th></tr></thead><tbody id="result"></tbody></table></div>');
+                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>entity&nbsp;or&nbsp;relation</th><th>matched string</th></tr></thead><tbody id="result"></tbody></table></div>');
                         for (match in pydata){
                             $("#result").append('<tr><td><a href="#" onclick="graphme(\'' + DATADIR + pydata[match][0] + '\');">' + pydata[match][0] + '</a></td><td>' + pydata[match][1] + '</td><td>' + pydata[match][2] + '</td></tr>');
                         }
                     
                     } else if (filetype == 'txt'){
                     
-                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>matched text</th></tr></thead><tbody id="result"></tbody></table></div>');
+                        $("#searchAndResult").append('<div id="result-div"><table id="grep-result-table" class="tablesorter"><thead><tr><th>annotation&nbsp;file</th><th>document text</th></tr></thead><tbody id="result"></tbody></table></div>');
                         for (match in pydata){
                             $("#result").append('<tr><td><a href="#" onclick="graphme(\'' + DATADIR + pydata[match][0] + '\');">' + pydata[match][0] + '</a></td><td>' + pydata[match][1] + '</td></tr>');
                         }
@@ -380,11 +431,29 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.response, textStatus, errorThrown);
+                //console.log(jqXHR.response, textStatus, errorThrown);
             }
         });
         return false;
     });
+    
+    
+    
+    $("#gbooksButton").click(function(){
+        var targetString = $("#gbookSearch input:text").val();
+        console.log(targetString);
+        $.ajax({
+            url: "https://www.googleapis.com/books/v1/volumes?",
+            datatype: 'json',
+            data: "q=" + targetString + "&callback=handleResponse",
+            success: handleResponse,
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        })
+        return false;
+    });
+
     
     $("#remove_graphs").click(function(){
         $("#dotimg, #rdfout").empty();
@@ -403,109 +472,143 @@ $(document).ready(function() {
 <div id="legendDiv" style="float: left">
     <div style="float: left; font-size: 200%; font-weight: bold; color: #880000; padding-top: 16px; width: 32px">NB:</div>
     <p class='legend'>This web application is fragile and provisional.
-    <p class='legend'>Choose a corpus from the list at the left, then click on an annotation file.
-    <p class='legend'>Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows),
-    <p class='legend'>and below that, as an RDF/n3 graph.</p>
+    <p class='legend'>Choose a corpus from the list below and at the left, then click on an annotation file. Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows), and below that, as an RDF/n3 graph.</p>
+    <p class='legend'>Now with some experiments in searching and sorting: choose from the list under 'Search and Sort Functions' to search either the corpus of annotation files, or the text files of the charters in our corpus.</p>
 </div>
 
+<div id="searchsort">
     <h1 id="toggleSearch">Search and Sort Functions <span style="font-size: 60%">(show/hide)</span></h1>
-
-
-<div id="searchAndResult">
-    <ul style="margin: 0px">
-    <li><a id="lev-search" href="#">Levenshtein distance</a></li>
-    <li><a id="grep-search" href="#">Grep search</a></li>
-    </ul>
-    <div class="searchbox" id="levSearch">
-        <h3>Levenshtein Distance Search</h3>
-        <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches.<br />This search may not scale well because it opens each annotation file, one by one. The grep search will likely be faster because it relies on the *nix grep utility. This search is case-insensitive, and accepts Perl-type regular expressions.</p>
-
-        <form id="dome" class="searchform" method="post" action=""/>
-            <table>
-            <tr>
-                <td class="tkey">Directory to search:</td>
-                <td><select id="directoriesToSearch">
-                  <option>All</option>
-                </select></td>
-            </tr>
+    <div id="searchAndResult">
+        <p style="font-size: 120%; line-height: 1.5em">The following searches are experiments intended to support the use-case in which the researcher wishes to enrich or elucidate the body of source material currently under consideration. They are, as yet, only 'proof-of-concept' experiments. As such, they have been hacked together without much regard to integration or considerations of user-centered design.</p> 
+        <ul style="margin: 0px">
+        <li><a id="lev-search" href="#">Levenshtein distance</a></li>
+        <li><a id="grep-search" href="#">Grep search</a></li>
+        <li><a id="gbooks-search" href="#">gBooks search</a></li>
+        </ul>
+        <div class="searchbox" id="levSearch">
+            <h3>Damerau-Levenshtein Distance Search</h3>
+            <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. There are lots of Python implementations of the Levenshtein distance algorithms, this one, from <a href="http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/">Michael Homer's blog</a>: is elegant and efficient.</p>
             
+            <p>This search may not scale well because it opens each annotation file (using os.walk()), one by one, and then uses the python re module to execute the search. We could certainly refactor it to use grep input instead. The grep search will likely be faster because it relies on the *nix grep utility. This search is case-insensitive, and accepts Perl-type regular expressions.</p>
             
-            <tr>
-                <td class="tkey">Entities to search:</td>
-                <td>
-                <select id="EntityToSearch">
-                  <option>Person</option>
-                  <option>Place</option>
-                  <option>Site</option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="tkey">Maximum Levenshtein distance:</td>
-                <td>
-                <select id="editDistance">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                  <option>13</option>
-                  <option>14</option>
-                  <option>15</option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="tkey">Target string:</td>
-                <td><input id="searchstring" type="text" /></td>
-            </tr>
-            </table>
-            <input type="submit" value="Search" id="submitButton" />
-            <input type=reset value=Clear />
-        
-        </form>
-    </div>
-    <div class="searchbox" id="grepSearch">
-        <h3>Grep Search</h3>
-        <p>Search the selected corpus and filetype for the target string. This strategy will likely scale better than the Levenshtein distance search because it relies on the *nix grep utility. The targetstring argument is passed directly to grep, so this search too accepts Perl-type regular expressions This search is case-insensitive.</p>
-
-        <form id="grepForm" class="searchform" method="post" action=""/>
-            <table>
-            <tr>
-                <td class="tkey">Directory to search:</td>
-                <td><select id="grepDirs">
-                  <option>All</option>
-                </select></td>
-            </tr>
+            <p>hmm. On further consideration, its not at all clear that we can apply an edit-distance measurement in the context of a grep search.</p>
+    
+            <form id="dome" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory to search:</td>
+                    <td><select id="directoriesToSearch">
+                      <option>All</option>
+                    </select></td>
+                </tr>
+                
+                
+                <tr>
+                    <td class="tkey">Entities to search:</td>
+                    <td>
+                    <select id="EntityToSearch">
+                      <option>Person</option>
+                      <option>Place</option>
+                      <option>Site</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tkey">Maximum Levenshtein distance:</td>
+                    <td>
+                    <select id="editDistance">
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="searchstring" type="text" /></td>
+                </tr>
+                </table>
+                <input type="submit" value="Search" id="submitButton" />
+                <input type=reset value=Clear />
             
-            <tr>
-                <td class="tkey">filetype to search:</td>
-                <td>
-                  <input type="radio" name="radios" value="ann" checked>ann</input>
-                  <input type="radio" name="radios" value="txt">txt</input>
-                </td>
-            </tr>
+            </form>
+        </div>
+        <div class="searchbox" id="grepSearch">
+            <h3>Grep Search</h3>
+            <p>Search the selected corpus and filetype for the target string. This strategy will likely scale better than the Levenshtein distance search because it relies on the *nix grep utility. The target string argument is passed directly to grep, so this search too accepts Perl-type regular expressions This search is case-insensitive.</p>
+    
+            <form id="grepForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory to search:</td>
+                    <td><select id="grepDirs">
+                      <option>All</option>
+                    </select></td>
+                </tr>
+                
+                <tr>
+                    <td class="tkey">filetype to search:</td>
+                    <td>
+                      <input type="radio" name="radios" value="ann" checked>ann</input>
+                      <input type="radio" name="radios" value="txt">txt</input>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="grepsearchstring" type="text" /></td>
+                </tr>
+                </table>
+                <input type="submit" value="grepSearch" id="grepButton" />
+                <input type=reset value=Clear />
             
-            <tr>
-                <td class="tkey">Target string:</td>
-                <td><input id="grepsearchstring" type="text" /></td>
-            </tr>
-            </table>
-            <input type="submit" value="grepSearch" id="grepButton" />
-            <input type=reset value=Clear />
-        
-        </form>
+            </form>
+        </div>
+        <div class="searchbox" id="gbookSearch">
+            <h3>Google-books search</h3>
+            <p>While Google's motives are generally clear, I have grave reservations about their methods. In many ways, Google's project to scan the entire contents of several research libraries is laudable. Leaving aside the much discussed issues of intellectual property, the nature of these scans is seriously problematic. As we have excellent cause to know, scanning and OCR on published texts is an exacting and time-consuming process. Legacy data requires careful <b>curation</b>, not merely acquisition. On many published editions of 19<sup>th</sup> century resources, OCR has a <b>very</b> high, indeed unacceptable, error rate. Google's method, it appears, emphasizes merely acquisition and the result has been to populate the internet with a growing ocean of bad data.</p>
+            
+            <p>From the point of view of the individual scholar, Google's project has been, and can be a boon. These data are accompanied by a visual representation of the scanned text, either as pdf or dejaVu or some other image format. This means that for any individual scan, the text is human readable, and so the error rate in the OCR data is of less pressing concern. But, from the point of view of machine processing, the very high error rate of OCR essentially renders the data garbage. Google's procedure is thus, in effect, polluting the data-sphere at an alarming rate. As the available ocean of data grows rapidly beyond manageable proportions, this kind of pollution is becoming a very serious problem.</p>
+            
+            <p>Having said this, however, for the present use case the following search may have some utility. That use case in brief is this: the user is working on some body of charter or other historical source material. She is marking up these sources for her own purposes, according to some ontology/schema/vocabulary of her own devising, or according to some existing schema. In this process, the researcher encounters place names and names of principle actors and needs to answer questions like this: is this person/place the same or different from other persons of the same or similar name? What other sources are extant that contain reference to this person or other similarly named persons? What, generally, is the period or place in which this name appears, and in what contexts?</p>
+            
+            <p>In the case of well known historical personages, a search like this across Google Books is not very helpful. The scholar would be better served by some conventional library search. Try a search below, for example, on the string "Simon de Montfort": not particularly illuminating. On the other hand, searching on the string "Alan de Quixlay" (from our vicars-choral-397) gives results that can be immediately useful to the scholar trying to answer some of these questions</p>
+            
+            <p>The search interface below is as yet rudimentary. The google api for books is pretty rich, and this implementation does not go beyond the 'hello world' phase; moreover, it's implemented here pretty clumsily and is intended only as a 'proof of concept' illustration. For example, for the search below, there is no server-side processing. The query is issued and results retrieved via ajax and jsonp. It will be desirable, I think, to hit this api from the server instead where further processing using server-side data can be accessed as well.</p>
+    
+            <form id="gbookForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="gbooksSearchstring" type="text" /></td>
+                </tr>
+                </table>
+                <input type="submit" value="gbookSearch" id="gbooksButton" />
+                <input type=reset value=Clear />
+            
+            </form>
+        </div>
+    
+        <div id="content"></div>
+    
+        <script >
+        </script>
+    
     </div>
 </div>
-
 <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
 
 <a href="#" id="remove_graphs"><img align="left" src="close.png"/>clear graphs</a>

@@ -33,6 +33,8 @@ Currently, all the js is in the index.html.
 
 2012-10-27: Added grep search. The Levenshtein search may not scale well. It opens and searches each annotation file using os.walk() in the python code. We might refactor the levenshtein search to use grep instead (that's a TODO). This search uses subprocess.Popen(), and passes the target string directly to grep. It accepts Perl-style regexes and is case insensitive. This will search either the annotation files (\*.ann), for any marked up entity, or the charter text files themselves (\*.txt).
 
+2012-11-07: Added Google Books search, with comments on the shortcomings of Google Books.
+
 ## Requires:
 * *nix for the grep search
 * Python 2.7, and:

@@ -235,6 +235,11 @@ def splitAnnLine(line):
     return re.split('\s+', line, maxsplit=4)
 
 def levDistance(searchstring, entity, editDistance, dirToSearch):
+    ##TODO: change use of 'file' as variable here: don't shadow file()
+    
+## can't just feed these to splitAnnLine(): fewer elements, use different split
+#2	AnnotatorNotes T2	Summary identical to 32, though originals are not identical
+#1	AnnotatorNotes T1	{"piece_id": "5471224", "date_text": "1505 Nov 24"}
     if dirToSearch == "All":
         annfiles = [os.path.join(t[0],file) for t in os.walk(DATADIR) for file in t[2] if file.endswith('ann')]
     else:
@@ -264,7 +269,8 @@ def match_span_with_context(m, ctxt_len, s):
 
 
 def simpleSearch(searchstring, dirToSearch):
-    """ TODO: not implemented client-side. Let's go with the grep function below instead """
+    """ TODO: not implemented client-side. Let's go with the grep function below instead
+        TODO: change use of 'file' as variable here: don't shadow file() """
         
     if dirToSearch == "All":
         txtfiles = [os.path.join(t[0],file) for t in os.walk(DATADIR) for file in t[2] if file.endswith('txt')]
@@ -283,7 +289,10 @@ def simpleSearch(searchstring, dirToSearch):
 
 def grep(arg, dirname, ext):
     """ -R to recurse, -P to get perl type regexes
-        TODO: build client-side ajax call """
+        TODO: change use of 'file' as variable here: don't shadow file() """
+        ## This is pretty clumsy. after line.split('\x00'), really have to do something smarter with the result.
+
+
     suffix = "*." + ext
     p = subprocess.Popen(['grep', '-RPZi', arg, dirname, '--include', suffix], stdout=subprocess.PIPE)
     stdout, stderr = p.communicate()
@@ -293,9 +302,12 @@ def grep(arg, dirname, ext):
         if line:
             path, data = line.split('\x00')
             file = os.path.relpath(path, start=DATADIR)
-            if ext == 'ann':
+            if ext == 'ann': ## have to parse AnnotatorNotes separately?
                 eid, entity, start, end, text = splitAnnLine(data)
-                lines.append((file, entity, text))
+                if entity == "AnnotatorNotes":
+                    lines.append((file, entity, data))
+                else:
+                    lines.append((file, entity, text))
             elif ext == 'txt':
                 lines.append((re.sub('.txt', '.ann', file), data))
 

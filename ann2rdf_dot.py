@@ -135,10 +135,9 @@ def makedot(rdfgraph):
     dgdoc_node.attr['fontsize'] = "18.0"
     dgdoc_node.attr['id'] = "doc_node"
     
-    ## generate the edges from the edges dict, rather than from the rdflib graph
     for sub in edges:
         for ob in edges[sub][1:]:
-            dg.add_edge(sub, ob[0], taillabel = ob[1], labelfontsize='11.0', labelfloat=False)
+            dg.add_edge(sub, ob[0], label = ob[1], labelfontsize="11", labelangle=0, labeldistance=3, labelfloat=False)
     
     ## identify the maximum in-degree node, and make that the root of the digraph
     ## this makes for a less cluttered layout via the twopi algorithm
@@ -287,14 +286,14 @@ def simpleSearch(searchstring, dirToSearch):
         for m in re.finditer(keyword, text):
             return "%s: %s" % (rpath, match_span_with_context(m, 30, text.encode('utf-8')))
 
-def grep(arg, dirname, ext):
+def grep(arg, dirpath, ext):
     """ -R to recurse, -P to get perl type regexes
-        TODO: change use of 'file' as variable here: don't shadow file() """
-        ## This is pretty clumsy. after line.split('\x00'), really have to do something smarter with the result.
-
-
+        TODO: change use of 'file' as variable here: don't shadow file()
+        This is pretty clumsy. after line.split('\x00'),
+        really have to do something smarter with the result."""
+    dirpath = DATADIR if dirpath == 'All' else dirpath
     suffix = "*." + ext
-    p = subprocess.Popen(['grep', '-RPZi', arg, dirname, '--include', suffix], stdout=subprocess.PIPE)
+    p = subprocess.Popen(['grep', '-RPZi', arg, dirpath, '--include', suffix], stdout=subprocess.PIPE)
     stdout, stderr = p.communicate()
     
     lines = []
@@ -326,7 +325,7 @@ if __name__ == "__main__":
     elif filetype:
         print "Content-Type: application/json\n"
         
-        print grep(searchstring, DATADIR, filetype)
+        print grep(searchstring, dirToSearch, filetype)
         
 
 

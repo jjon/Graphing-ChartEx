@@ -24,13 +24,6 @@ body {font-size: 9pt}
     padding: 6 0 0 6;
 }
 
-#remove_graphs {
-    width: 200px;
-    float: left;
-    clear: left;
-    margin-left: 30px;
-}
-
 #ftcontainer {
     width: 200px;
     float: left;
@@ -60,6 +53,12 @@ body {font-size: 9pt}
     background-color: #f00;
 }
 
+.graph-button {
+    width: 200px;
+    float: left;
+    clear: left;
+    margin: 0 0 9px 30px
+}
 
 #dotimg {
     float:left;
@@ -133,11 +132,43 @@ body {font-size: 9pt}
 <script src="./jquery-1.7.1.min.js"></script>
 <script src="./jqueryFileTree/jqueryFileTree.js"></script>
 <script language="javascript" type="text/javascript" src="jquery.tablesorter.min.js"></script>
+<script src="./jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript"></script>
+<script src="../SVG/jquery.graphviz.js" type="text/javascript"></script>
+<script src="../commonjs/jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            (function($){
+                $(document).ready(function () {
+                    $("svg").graphviz({statusbar: true});
+                });
+            })(jQuery);
+        </script>
+
 <script type="text/javascript">
 
 var doc_text = ""; // the only global should be a json object with all the data: svg, text, and rdf.
 var dirs_with_ann_files = undefined
 var DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex/'
+
+/**********************/
+// abandoned this in favor of grow/shrink the graph in place
+// function exportSvg(svg){
+//     top.svgOut = window.open('','svgout',
+//         'menubar=0'
+//         + ', toolbar=1'
+//         + ', status=0'
+//         + ', scrollbars=1'
+//         + ', resizable=1'
+//     )
+// 
+// 
+//     top.svgOut.document.write(
+//         '<html><head><title>Console</title><script src="./jquery-1.7.1.min.js">\x3C/script><script src="./jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript">\x3C/script></head><body bgcolor=white onLoad="self.focus();"><div id="viewport">'+ svg.toSVG() + '</div></body></html>'
+//     )
+//     
+// }
+
+/********************************/
 
 function hideme() {
     $('#doc_text_display').toggle('fast');
@@ -258,7 +289,6 @@ function alertError(pydata) {
 function handleResponse(response) {
     //Alan de Quixlay is the example that started it for gBooks
     if (response.items.length > 0){
-        console.log(response);
         $("#result-div").remove();
         $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>Title (click to see in gBooks)</th><th>Date</th><th>Found snippet</th></tr></thead><tbody id="result"></tbody></table></div>');
         
@@ -331,8 +361,6 @@ $(document).ready(function() {
         $("#levSearch").hide('fast');
     });
 
-
-
     // populate the filetree selection list
     $('#ftcontainer').fileTree({
         root: DATADIR,
@@ -357,6 +385,29 @@ $(document).ready(function() {
         });
     });
 
+
+    $("#export_svg").toggle(
+        function(){
+            $("svg").svg();
+            var svgwrapper = $("svg").svg('get'),
+            bb = svgwrapper._svg.getBBox(),
+            w = bb.width,
+            h = bb.height;
+            
+            $("svg")[0].width.baseVal.value = w;
+            $("svg")[0].height.baseVal.value = h;
+        },
+        function(){
+            $("svg").svg();
+            var svgwrapper = $("svg").svg('get'),
+            bb = svgwrapper._svg.getBBox(),
+            w = bb.width,
+            h = bb.height;
+            
+            $("svg")[0].width.baseVal.value = 800;
+            $("svg")[0].height.baseVal.value = 800;
+        } 
+    );
     
 
     $('#submitButton').click(function(){
@@ -423,7 +474,6 @@ $(document).ready(function() {
                         }
                     }
                     
-                    
                     $("#grep-result-table").tablesorter();
                 } else {
                     $("#result-div").remove();
@@ -438,10 +488,8 @@ $(document).ready(function() {
     });
     
     
-    
     $("#gbooksButton").click(function(){
         var targetString = $("#gbookSearch input:text").val();
-        console.log(targetString);
         $.ajax({
             url: "https://www.googleapis.com/books/v1/volumes?",
             datatype: 'json',
@@ -611,9 +659,10 @@ $(document).ready(function() {
 </div>
 <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
 
-<a href="#" id="remove_graphs"><img align="left" src="close.png"/>clear graphs</a>
-
 <div id="ftcontainer"></div>
+<a href="#" id="remove_graphs" class="graph-button"><img align="left" src="close.png"/>clear graphs</a>
+<a name="here" href="#here" id="export_svg" class="graph-button"><img width="22" align="left" src="magnifier.png"/>toggle full-sized graph</a>
+
 <div id="dotimg"></div>
 <div id="rdfout"></div>
 

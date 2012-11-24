@@ -19,7 +19,9 @@ DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex'
 os.environ['PATH'] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 ## Annotation file to graph
-## filepath = "/Users/jjc/Sites/Ann2DotRdf/chartex/deeds/deeds-00880188.ann"
+## filepath = "/Users/jjc/Sites/brat/data/chartex/vicars-choral/vicars-choral-438.ann"
+## filepath = "/Users/jjc/Sites/Ann2DotRdf/chartex/cluny/gen-test1.ann"
+
 filepath = form["fp"].value if "fp" in form else None
 searchstring = form["searchstring"].value if "searchstring" in form else None
 entity = form["entity"].value if "entity" in form else None
@@ -42,6 +44,7 @@ crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
 
 ## colors for output nodes
 node_colors = {
+    'Actor': '#0000ff',
     'Person': '#00ffff',
     'Occupation': '#00aaff',
     'Institution': '#00a8aa',
@@ -49,6 +52,7 @@ node_colors = {
     'PlaceRef':'#ff5577',
     'Site':'#ff0000',
     'SiteRef': '#ff0000',
+    'ImpliedSiteRef': '#ff0000',
     'Event':'#ffcc00',
     'Transaction':'#ff9500',
     'Date':'#90ee90',
@@ -60,6 +64,7 @@ def ann2rdf(annfile, docstr):
     """still to deal with annotator's notes.
     This returns a raw graph with no smushing
     """
+    implied_siterefs = []
     
     for line in annfile:
         if line[0] == 'T':
@@ -73,9 +78,19 @@ def ann2rdf(annfile, docstr):
         if line[0] == "*":
             key, prop, a1, a2, note = re.split('\s+', line, maxsplit=4)
             g.add((this[a1], chartex[prop], this[a2]))
+        if line[0] == "A": # for example: A2	Implied-SiteRef T17 genitive
+            id, attr, ent, val = re.split('\s+', line, maxsplit=3)
+            implied_siterefs.append(ent) # Update a list of nodes having a particular attribute.
             
+    # NB: this will break if there's more than one document node:
     s = g.subjects(RDF.type, chartex.Document).next()
     g.add((s, chartex.textData, Literal(docstr,datatype=XSD.string)))
+    
+    ## after generating the graph, edit it to reflect Entities having a particular attribute.
+    for x in implied_siterefs:
+        g.set((this[x], RDF.type, chartex.ImpliedSiteRef))
+        g.set((this[x], chartex.textSpan, Literal("implied siteRef")))
+    
     return g
     
 def smush_sameas(annfile):

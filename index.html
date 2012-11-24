@@ -194,8 +194,7 @@ function replaceOffset(str, offsetArray, tag) {
 function deployData(pydata) {
     var dataIn = pydata.split('<filedelimiter>'); // use json instead of this
     var svg = $(dataIn[0]).find('svg');
-    var rdf = dataIn[1]; //.replace(/\n/gi,'<br />');
-    // getting rid of the pesky newlines. Should'a used json for transport!
+    var rdf = dataIn[1];
     doc_text = dataIn[2].split('\n');
     var str = '';
     for (str = 0; str < doc_text.length; str++) {
@@ -212,8 +211,10 @@ function deployData(pydata) {
     $("svg")[0].width.baseVal.value = 800;
     $("svg")[0].height.baseVal.value = 800;
 
-    //$("#rdfout").html("<div>" + rdf + "</div>"); //<> namespace declarations interpreted as html and brackets evaporate.
-    document.getElementById("rdfout").innerText = "\nThe same graph rendered as RDF/n3:\n\n" + rdf; //innerText is a MS invention, not standards compliant.
+    $("#rdfout").html('<pre>' + rdf + '</pre>');    
+    //document.getElementById("rdfout").innerText = "\nThe same graph rendered as RDF/n3:\n\n" + rdf; //innerText is a MS invention, not standards compliant.
+    
+    
     // click function for graph nodes: show doc_text w/offsets highlighted.
     $('.node').click(function(e) {
         var $that = $(this);
@@ -423,7 +424,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(pydata){
                 if (pydata.length > 0) {
-                    ////console.log(pydata);
+                    //console.log(pydata);
                     $("#result-div").remove();
                     $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>found string</th><th>edit distance</th><th>file: click on the file to graph it below</th></tr></thead><tbody id="result"></tbody></table></div>');
                     for (match in pydata){

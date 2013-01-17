@@ -1,16 +1,32 @@
-#!/usr/local/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-## Generates RDF for a directory full of .ann files
+
+## Generates RDF triples graph from a directory full of .ann and .txt files and
+## serializes it as one of 'xml', 'n3', 'turtle', 'nt', 'pretty-xml', or 'trix'
+## Depends on rdflib. I don't know what it's like to install this library on
+## windows. It might be as simple as: $ sudo easy_install rdflib
+## Usage: python ann2rdf.py path-to-dir format
+## (where format is one of: 'xml', 'n3', 'turtle', 'nt', 'pretty-xml', or 'trix')
 
 from rdflib import Graph, Namespace, Literal, RDF, RDFS, OWL, XSD
 import re
 import os
 import sys
 
+# NB: g is global, ann2rdf and addText don't return anything,
+# they just update this graph for each .ann and .txt file, and then generateGraph prints it
+g = Graph()
 
-def ann2rdf(g, annfile, ch_id):
-    """ Here is the crudest sort of parsing of the annotation file. Consider using brat's own annotation.py """
-    this = Namespace("http://yorkhci.org/chartex-schema/"+ ch_id + "#")
+g.bind("chartex", "http://yorkhci.org/chartex-schema#")
+g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
+chartex = Namespace("http://yorkhci.org/chartex-schema#")
+chartexDoc = Namespace("http://yorkhci.org/chartex-schema/")
+crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
+
+def ann2rdf(g, annfile, charter_id):
+    """ Here is the crudest sort of parsing of the annotation file. Consider using brat's own annotation.py
+    Note: if line[0] == "A" for 'A'ttributes which we're not currently using in our annotation scheme. """
+    this = Namespace("http://yorkhci.org/chartex-schema/"+ charter_id + "#")
     implied_siterefs = []
         
     for line in annfile:
@@ -30,78 +46,50 @@ def ann2rdf(g, annfile, ch_id):
             id, attr, ent, val = re.split('\s+', line, maxsplit=3)
             implied_siterefs.append(ent) # Update a list of nodes having a particular attribute.
     
-    ## after generating the graph, edit it to reflect Entities having a particular attribute.
+    ## after populating the graph, edit it to reflect Entities having a particular attribute.
     for x in implied_siterefs:
         g.set((this[x], RDF.type, chartex.ImpliedSiteRef))
         g.set((this[x], chartex.textSpan, Literal("implied siteRef")))
 
 
-def addText(g, chfiles):
+def addText(g, ann_files_dir):
     """ Add texts to their appropriate Document nodes """
     
     for sub in g.subjects(RDF.type, chartex["Document"]):
         id = os.path.split(str(sub.defrag()))
-        f_path = os.path.join(chfiles, id[1] + '.txt')
+        f_path = os.path.join(ann_files_dir, id[1] + '.txt')
         text = open(f_path, "r").read().replace('•','.').strip()
         g.add((sub, chartex.textData, Literal(text, datatype=XSD.string)))
 
 
 
-g = Graph()
-g.bind("chartex", "http://yorkhci.org/chartex-schema#")
-g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
-chartex = Namespace("http://yorkhci.org/chartex-schema#")
-chartexDoc = Namespace("http://yorkhci.org/chartex-schema/")
-crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
+def generateGraph(ann_files_dir, serialization_format):
+    for f in os.listdir(ann_files_dir):
+        annotationFile = ''
+        
+        f_path = os.path.join(ann_files_dir,f)
+        charter_id, ext = os.path.splitext(f)
+
+        if ext == '.ann':
+            annotationFile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
+            
+        ann2rdf(g, annotationFile, charter_id)
+        addText(g, ann_files_dir)
+        
+    print g.serialize(format=serialization_format)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) <= 1:
-        print >>sys.stderr, "Usage: python", sys.argv[0], "/path/to/directory/to/graph"
-    
+    if len(sys.argv) < 3:
+        sys.exit("""Usage: python ann2rdf.py path-to-dir format\n
+        \t(where format is one of: 'xml', 'n3', 'turtle', 'nt', 'pretty-xml', or 'trix')\n""")
+        
     elif not os.path.isdir(sys.argv[1]):
-        print >>sys.stderr, "directory %s unknown" % (sys.argv[1])
+        sys.exit("unknown directory: %s" % sys.argv[1])
         
     elif os.path.isdir(sys.argv[1]):
-        #print list((f for f in os.listdir(sys.argv[1]) if os.path.splitext(f)[1] == ".ann"))
-#         for annfile in (f for f in os.listdir(sys.argv[1]) if os.path.splitext(f)[1] == ".ann"):
-#             ch_id, ext = os.path.splitext(annfile)
-#             ann2rdf(g, annfile, ch_id)
-#             addText(g, sys.argv[1])
-#             print g.serialize(format="n3")
-        chfiles = sys.argv[1]
-        for f in os.listdir(chfiles):
-            annotationFile = ''
-            
-            f_path = os.path.join(chfiles,f)
-            ch_id, ext = os.path.splitext(f)
-    
-            if ext == '.ann':
-                annotationFile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
-                
-            ann2rdf(g, annotationFile, ch_id)
-            addText(g, chfiles)
-            
-        print g.serialize(format="n3")
-            
-            #>>sys.stderr, "directory %s contains no annotation files" % (sys.argv[1])
-    
-    else: print sys.argv
-    ## get this from varargs for command-line execution
-#     chfiles = "/Users/jjc/Sites/brat/data/chartex/deeds/"
-#     
-#     for f in os.listdir(chfiles):
-#         annotationFile = ''
-#         
-#         f_path = os.path.join(chfiles,f)
-#         ch_id, ext = os.path.splitext(f)
-# 
-#         if ext == '.ann':
-#             annotationFile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
-#             
-#         ann2rdf(g, annotationFile, ch_id)
-#         addText(g, chfiles)
-#         
-#     print g.serialize(format="n3")
-#     
-## Consider another version that generates sub-graphs for each document, named-graphs, contexts, whatever, if we can work out how to construct useful sparql queries against them.
+        try:
+            validfiles = (f for f in os.listdir(sys.argv[1]) if f.endswith('.ann')).next()
+            generateGraph(sys.argv[1], sys.argv[2])
+        except StopIteration:
+            sys.exit("there are no brat annotation files in directory: %s" % sys.argv[1])

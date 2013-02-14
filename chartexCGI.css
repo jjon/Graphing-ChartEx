@@ -1,0 +1,137 @@
+body {font-size: 11pt}
+h2 {border-top: 6px solid #aaa; margin-top: 16px; padding: 10 0 0 10}
+#intro {
+    width: 800px;
+    font-size: 120%
+}
+dl {}
+dt {font-weight: bold; background-color: #ccc}
+dd {padding-top: .5em}
+
+#ftcontainer {
+    font-size: 9pt;
+    width: 200px;
+    float: left;
+    clear: left;
+    margin-left: 30px;
+}
+#doc_text_display {
+    display: none;
+    background-color: #F5F5DC;
+    position: absolute;
+    text-align: center;
+    width: 400px;
+    border: double #999;
+    max-height: 400px;
+}
+
+#doc_text {
+    padding: 16px;
+    text-align: justify;
+    font-size: 9pt
+}
+
+.node {
+    cursor: pointer;
+}
+
+.doc-highlight {
+    background-color: #f00;
+}
+
+.graph-button {
+    width: 200px;
+    float: left;
+    clear: left;
+    margin: 0 0 9px 30px
+}
+
+#dotimg {
+    float:left;
+}
+
+#graph { width: 800px }
+
+#rdfout { 
+    clear: left;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Monaco, Verdana, Arial, Helvetica, sans-serif;
+}
+
+#modalsink {display: none}
+#modalsink pre {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt} 
+#simplemodal-overlay {background-color:#986;}
+
+#simplemodal-container {
+    color: #fff; 
+    background-color: #222; 
+    border:6px solid #888; 
+    padding:12px;
+}
+
+#simplemodal-container a.modalCloseImg {
+	background:url(close.png) no-repeat; /* adjust url as required */
+	width:16px;
+	height:16px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-5px;
+	left:-5px;
+	cursor:pointer;
+}
+
+.loader {
+    height: 20px;
+    display: none;
+    float: left
+}
+
+#sparqlForm {width: 98%}
+pre {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;}
+textarea {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;
+font-size: 10pt;}
+
+.jqueryFileTree {
+    padding: 0 0 0 24;
+}
+
+#searchsort {width: 80%; margin-left: auto; margin-right: auto}
+
+#searchAndResult {margin-left: 10px; float: left; padding: 0px 10px 60px 10px}
+
+.match-highlight {background-color: #ff9500;}
+
+#toggleSearch {
+    font-size: 24pt;
+    margin: 0 0 0 16px;
+    float: left;
+}
+
+
+.searchform {float: left; padding: 6px; background-color: #F5F5DC; border: 3px double #800;}
+.searchform td {font-size: 9pt}
+.tkey {border-top: 1px solid #800; border-right: 4px solid #800}
+#result-div {
+    float: left; 
+    max-height: 300px; 
+    overflow: scroll;
+    border: 3px double #800;
+}
+#result-div a {
+    color: #300;
+    text-decoration: none;
+}
+
+#result-div a:hover {
+    color: #aa0400;
+    text-decoration: none;
+}
+
+.searchbox {display: none}
+.searchbox p {
+    margin: auto;
+    padding: .25em;
+}

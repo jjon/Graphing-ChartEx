@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<title>Quick and Dirty: visualize graph as bubbles and arrows, and as rdf/n3</title>
+<link rel="stylesheet" type="text/css" href="sorter-blue/style.css"></link>
+<link href="chartexCGI.css" rel="stylesheet" type="text/css"></link>
+<script src="./jquery-1.7.1.min.js"></script>
+<script src="./jqueryFileTree/jqueryFileTree.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.tablesorter.min.js"></script>
+<script src="./jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript"></script>
+<script src="../SVG/jquery.graphviz.js" type="text/javascript"></script>
+<script src="../commonjs/jquery.simplemodal-1.4.3.js" type="text/javascript"></script>
+<script src="./chartexCGI.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function () {
+            $("svg").graphviz({statusbar: true});
+        });
+    })(jQuery);
+</script>
+</head>
+
+<body>
+
+<div id="searchsort">
+    <h1 id="toggleSearch">Grab Bag of functions on annotated documents, and RDF</h1>
+    <div id="searchAndResult">
+        <p id="intro">This web-application is a prototype containing implementations of some of the functionality that will be required of any sort of 'workbench' for working with charters annotated by BRAT, or encoded in RDF. These implementations are intended to work out <em>practical</em> problems with respect to <em>function</em> as opposed to <em>appearance</em>.</p> 
+        <ul style="margin: 0px">
+        <li><a class="swap graphDocument" id="graph-document" href="#">Graph a Document</a></li>
+        <li><a class="swap levSearch" id="lev-search" href="#">Levenshtein distance</a></li>
+        <li><a class="swap grepSearch" id="grep-search" href="#">Grep search</a></li>
+        <li><a class="swap gbookSearch" id="gbooks-search" href="#">gBooks search</a></li>
+        <li><a class="swap sparqlSearch" id="sparql-search" href="#">SPARQL search</a></li>
+        <li><a class="swap serializeDir" id="serialize" href="#">Serialize one of our corpora as RDF</a></li>
+        <li><a class="swap ADStests" id="ads-tests" href="#">Tests on ADS triple store</a></li>
+        </ul>
+
+        <div class="searchbox graphDocument" style="display:block">
+            <h2>Visualize a document as a directed graph (bubbles and arrows).</h2>
+            <p>Choose a corpus from the list below and at the left, then click on an annotation file. Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows), and below that, as an RDF/n3 graph.</p>
+            
+            <div id="ftcontainer"></div>
+            <a href="#" id="remove_graphs" class="graph-button"><img align="left" src="close.png"/>clear graphs</a>
+            <a name="here" href="#here" id="export_svg" class="graph-button"><img width="22" align="left" src="magnifier.png"/>toggle full-sized graph</a>
+
+        </div>
+        <div class="searchbox levSearch">
+            <h2>Damerau-Levenshtein Distance Search</h2>
+            <p>Search the selected corpus for marked up entities of the type selected that are similar to the target string. Selecting a Levenshtein distance of '0' will return exact matches. There are lots of Python implementations of the Levenshtein distance algorithms, this one, from <a href="http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/">Michael Homer's blog</a>: is elegant and efficient.</p>
+            
+            <p>This search may not scale well because it opens each annotation file (using os.walk()), one by one, and then uses the python re module to execute the search. We could certainly refactor it to use grep input instead. The grep search will likely be faster because it relies on the *nix grep utility. This search is case-insensitive, and accepts Perl-type regular expressions.</p>
+            
+            <p>hmm. On further consideration, its not at all clear that we can apply an edit-distance measurement in the context of a grep search.</p>
+    
+            <form id="dome" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory to search:</td>
+                    <td><select id="directoriesToSearch">
+                      <option>All</option>
+                    </select></td>
+                </tr>
+                
+                
+                <tr>
+                    <td class="tkey">Entities to search:</td>
+                    <td>
+                    <select id="EntityToSearch">
+                      <option>Person</option>
+                      <option>Place</option>
+                      <option>Site</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tkey">Maximum Levenshtein distance:</td>
+                    <td>
+                    <select id="editDistance">
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="searchstring" type="text" /></td>
+                </tr>
+                </table>
+                <img class="loader" src="./ajax-loader.gif" />
+                <input type="submit" value="Search" id="submitButton" />
+                <input type=reset value=Clear />
+            
+            </form>
+        </div>
+        <div class="searchbox grepSearch">
+            <h2>Grep Search</h2>
+            <p>Search the selected corpus and filetype for the target string. This strategy will likely scale better than the Levenshtein distance search because it relies on the *nix grep utility. The target string argument is passed directly to grep, so this search too accepts Perl-type regular expressions This search is case-insensitive.</p>
+    
+            <form id="grepForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory to search:</td>
+                    <td><select id="grepDirs">
+                      <option>All</option>
+                    </select></td>
+                </tr>
+                
+                <tr>
+                    <td class="tkey">filetype to search:</td>
+                    <td>
+                      <input type="radio" name="radios" value="ann" checked>ann</input>
+                      <input type="radio" name="radios" value="txt">txt</input>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="grepsearchstring" type="text" /></td>
+                </tr>
+                </table>
+                <img class="loader" src="./ajax-loader.gif" />
+                <input type="submit" value="grepSearch" id="grepButton" />
+                <input type=reset value=Clear />
+            
+            </form>
+        </div>
+        <div class="searchbox gbookSearch">
+            <h2>Google-books search</h2>
+            <p>While Google's motives are generally clear, I have grave reservations about their methods. In many ways, Google's project to scan the entire contents of several research libraries is laudable. Leaving aside the much discussed issues of intellectual property, the nature of these scans is seriously problematic. As we have excellent cause to know, scanning and OCR on published texts is an exacting and time-consuming process. Legacy data requires careful <b>curation</b>, not merely acquisition. On many published editions of 19<sup>th</sup> century resources, OCR has a <b>very</b> high, indeed unacceptable, error rate. Google's method, it appears, emphasizes merely acquisition and the result has been to populate the internet with a growing ocean of bad data.</p>
+            
+            <p>From the point of view of the individual scholar, Google's project has been, and can be a boon. These data are accompanied by a visual representation of the scanned text, either as pdf or dejaVu or some other image format. This means that for any individual scan, the text is human readable, and so the error rate in the OCR data is of less pressing concern. But, from the point of view of machine processing, the very high error rate of OCR essentially renders the data garbage. Google's procedure is thus, in effect, polluting the data-sphere at an alarming rate. As the available ocean of data grows rapidly beyond manageable proportions, this kind of pollution is becoming a very serious problem.</p>
+            
+            <p>Having said this, however, for the present use case the following search may have some utility. That use case in brief is this: the user is working on some body of charter or other historical source material. She is marking up these sources for her own purposes, according to some ontology/schema/vocabulary of her own devising, or according to some existing schema. In this process, the researcher encounters place names and names of principle actors and needs to answer questions like this: is this person/place the same or different from other persons of the same or similar name? What other sources are extant that contain reference to this person or other similarly named persons? What, generally, is the period or place in which this name appears, and in what contexts?</p>
+            
+            <p>In the case of well known historical personages, a search like this across Google Books is not very helpful. The scholar would be better served by some conventional library search. Try a search below, for example, on the string "Simon de Montfort": not particularly illuminating. On the other hand, searching on the string "Alan de Quixlay" (from our vicars-choral-397) gives results that can be immediately useful to the scholar trying to answer some of these questions</p>
+            
+            <p>The search interface below is as yet rudimentary. The google api for books is pretty rich, and this implementation does not go beyond the 'hello world' phase; moreover, it's implemented here pretty clumsily and is intended only as a 'proof of concept' illustration. For example, for the search below, there is no server-side processing. The query is issued and results retrieved via ajax and jsonp. It will be desirable, I think, to hit this api from the server instead where further processing using server-side data can be accessed as well.</p>
+    
+            <form id="gbookForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Target string:</td>
+                    <td><input id="gbooksSearchstring" type="text" /></td>
+                </tr>
+                </table>
+                <img class="loader" src="./ajax-loader.gif" />
+                <input type="submit" value="gbookSearch" id="gbooksButton" />
+                <input type=reset value=Clear />
+            
+            </form>
+        </div>
+        <div class="searchbox sparqlSearch">
+            <h2>SPARQL queries</h2>
+            <p>In the absence of some kind of triple store with a real API, like Sesame, I've cobbled one together using rdflib so that I can make some experiments with SPARQL queries. Python's rdflib module can be used with an in-memory store, such as is used in the example below, but it can also be used with several other sorts of back-ends: Sesame, or PostgreSQL, or MySQL and some other options. Rdflib's SPARQL implementation is robust, and cleaves closely to the specification, so queries that work here can be made to work with most other sparql end-points.</p>
+            
+            <p>For the purposes of this demonstration, an RDF graph of the whole of the Deeds corpus was made and stored as a plain text file. It didn't make sense to generate the whole graph for every query, but I didn't want to implement a relational database store just for the purposes of this experiment, so I generated the rdf graph and saved it as a text file: manageable for just our 50 documents in Deeds.</p>
+            
+            <p>With each query, the server reads the rdf file, creates an in-memory store, and applies the given SPARQL query to it. The sample query that's baked in is a CONSTRUCT query. SELECT queries, for the moment, won't produce useful results because the result is serialized as an rdf graph in n3 format. Other serializations are available of course, including now <a href="http://json-ld.org">JSON-LD</a> (JavaScript Object Notation for Linking Data) which seems promising for making our data interoperable.</p>
+            
+            <p>Note that the sparql plugin for rdflib appears to support the full current spec for the query language, including the available FILTERs. So we can use the sparql regex function for full-text searches of our RDF data, like this:
+            <pre>
+            CONSTRUCT { ?s ?p ?o .}
+            WHERE   { ?s ?p ?o .
+                FILTER regex(?o, "simon", "i")}
+            </pre>
+            </p>
+            <p>
+            And we can use the filter to retrieve all the triples for a particular document. This seems like a very clugy way to do this. I haven't worked out yet how to use sparql to address rdflib's version of 'contexts', but for the time being, this works:
+            <pre>
+            CONSTRUCT { ?s ?p ?o .}
+            WHERE     { ?s ?p ?o .
+                 FILTER regex(str(?s), "deeds-00880770", "i")}
+            </pre>
+            </p>
+            <form id="sparqlForm" class="searchform" method="post" action="">
+                <table>
+                <tr>
+                    <td class="tkey" style="text-align: center; padding: 12px">SPARQL<br>query:</td>
+                    <td>
+                        <textarea id="sparqlQuery" rows="16" cols="60">
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+PREFIX : &lt;http://yorkhci.org/chartex-schema#&gt;
+
+CONSTRUCT { ?s rdf:type :Document;
+               ?prop ?o .}
+WHERE     { ?s rdf:type :Document;
+               ?prop ?o .}
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit" id="sparqlButton" />
+                        <img class="loader" src="./ajax-loader.gif" />
+                    </td>
+                </tr> 
+                </table>
+            
+            </form>
+            <h2>TODOs:</h2>
+            <p>Currently, the rdf for a document corpus is generated using a separate namespace for each document. This will make it possible to make assertions like this:
+            <pre>
+                &lt;urn:deeds-000888#T13&gt; owl:sameAs &lt;urn:deeds-000889#T23&gt;
+            </pre>
+            
+            <p>This may turn out to be cumbersome for some kinds of inferencing. It may be more useful to make use of quads and named-graphs like this:</p>
+            <pre>
+                chartex:foo a chartex:graph;
+                    :fiz {
+                        chartex:Pid#T13 a chartex:Person;
+                        chartex:has_name "Simon" .
+                    };
+                    :buz {
+                        chartex:Pid#T23 a chartex:Person;
+                        chartex:has_name "Simon" .
+                    } .
+            </pre>
+            
+            <p>Tools like <a href="http://www.w3.org/2000/10/swap/doc/cwm.html">cwm</a> and others can do some pretty sophisticated querying and inferencing across named graphs (see especially <cite><a href="http://wifo5-03.informatik.uni-mannheim.de/bizer/SWTSGuide/carroll-ISWC2004.pdf">Named Graphs, Provenance and Trust</a></cite> (Bizer, Carroll, Hayes, Stickler (2004)). It appears that rdflib can do this too. It has thoroughly developed support for quads and contexts; I just haven't yet figured out how to address them with a sparql query</p>
+            
+        </div>
+        <div class="searchbox serializeDir" >
+            <h2>Serialize the RDF graph of all the annotations in a single corpus.</h2> 
+            <p>Use the box at the bottom to get a serialization of the RDF graph of all the Entities and Relations in a given corpus. This is the same machinery that I distributed on basecamp as a command line utility (<a href="https://universityofyork3.basecamphq.com/projects/8654407/file/145847108/ann2rdf.py">ann2rdf.py</a>). I got no response to that, so I surmised that installing the rdflib python library and running that utility at the command line was too onerous. So, I present the same thing here as a web service so that <b>A.</b> Arno and Marvin can get an idea about target formats for triples, and <b>B.</b> Chris can give some thought to RDF and LOD.</p>
+            
+            <p>Once again, I make appeal for feedback on this. I'm not sure I'm generating the graph in the best way. I need advice especially on
+                <dl>
+                    <dt>Namespaces</dt>
+                    <dd>In order to be able to distinguish between individual documents such that, for example, #T1 (the document Entity) in deeds-00880074 is a different node from #T1 in deeds-00880653, I created the URI in a different namespace, like this:
+                        <pre>
+        "http://yorkhci.org/chartex-schema/deeds-00880074#T1"
+        "http://yorkhci.org/chartex-schema/deeds-00880653#T1"
+                        </pre>
+                    This proliferation of namespaces could prove awkward for some purposes, but it served for the moment since we still don't have any real data.
+                    </dd>
+                    <dd>
+                    There are some other ways of doing this:
+                        <ul>
+                        <li>We could, for example, generate the identifier to the right of the hash in such a way as to identify the Entity uniquely, eg.
+                        <pre>"http://yorkhci.org/chartex-schema/deeds#00880074_T8T12_Person_Warinus_Goding"</pre> 
+                        That way we might limit the number of namespaces to one per corpus. This might help with the problem of dereferenceable URIs below:</li>
+                        <li>Or we might generate a separate graph for each document, and use the <a href="http://en.wikipedia.org/wiki/Named_graphs">"named graph"</a> extension to the RDF spec. The named graph paradigm will support more sophisticated inferencing. (for more on this, click on "SPARQL search" in the list above).</li>
+                        </ul>
+                    </dd>
+                    
+                    <dt>Dereferenceable URIs</dt>
+                    <dd>Persuant to best practices in LOD, URIs should be dereferenceable; <u>all</u> of them! This means that if somebody sticks "http://yorkhci.org/chartex-schema/deeds-00880074#T1" in a browser, <u>something</u> comprehensible should come back, either human or machine readable, preferably both (see: <a href="http://www.w3.org/TR/cooluris/">cool URIs</a>). This will require doing some thinking about infrastructure, and content negotiation. Maybe we want to use <a href="http://purl.org/docs/index.html">PURL</a>s?</dd>
+                </dl>
+            </p>
+            <hr />
+            <p>Choose a directory, choose a serialization format, push the button:</p>
+            <form id="serializeForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory of Brat annotations:</td>
+                    <td><select id="serializeDirs">
+                      <option>choose a directory:</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="tkey">Serialization format:</td>
+                    <td><select id="serFormat">
+                      <option>pretty-xml</option>
+                      <option>xml</option>
+                      <option>n3</option>
+                      <option>turtle</option>
+                      <option>nt</option>
+                      <option>trix</option>
+                    </select></td>
+                </tr>
+                    <td colspan="2">
+                        <input type="submit" value="serialize" id="serializeButton" />
+                        <img class="loader" src="./ajax-loader.gif" />
+                    </td>
+                </table>
+            
+            </form>
+
+        
+        </div>
+        <div class="searchbox ADStests">
+            <h2>Tests on our ADS triple store</h2>
+            <form id="ADStestsForm" class="searchform" method="post" action=""/>
+                <table>
+                <tr>
+                    <td class="tkey">Directory of Brat annotations:</td>
+                    <td><select id="ADSserializeDirs">
+                      <option>choose a directory</option>
+                    </select></td>
+                </tr>
+                    <td colspan="2">
+                        <input type="submit" value="serialize" id="ADSserializeButton" />
+                        <img class="loader" src="./ajax-loader.gif" />
+                        <button id="ADSaddButton">add</button>
+                        <button id="ADSgetButton">get</button>
+                        <button id="ADSdeleteButton">delete</button>
+                    </td>
+                </table>
+            
+            </form>
+
+        </div>
+        <div id="content"></div>
+    
+        <script >
+        </script>
+    
+    </div>
+    <div id="dotimg"></div>
+    <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
+    <div id="rdfout"></div>
+
+</div>
+<div id="modalsink"></div>
+</body>
+
+</html>

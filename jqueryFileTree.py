@@ -23,7 +23,6 @@ def getfiles():
                 e = st[1][1:] # get .ext and remove dot
                 r.append('<li class="file ext_%s"><a href="#" rel="%s">%s</a></li>' % (e,fp,f))
     r.append('</ul>')
-    ## r.append('<div id="directories" style="display:none">'+ dirs +'</dir>')
     return r
 
 if d:

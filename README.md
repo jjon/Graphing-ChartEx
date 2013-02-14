@@ -23,13 +23,10 @@ The [BRAT](http://brat.nlplab.org/) (Brat Rapid Annotation Tool), as used in the
 
 And like that. Strings for Entities are identified by id and text offsets, Relations by id, predicate, subject and object.
 
-ann2rdf_dot.py parses the brat annotation file and generates an RDF graph, and an graphviz/svg graph as output.
-
 Simple smushing is done for Entities marked as same\_as.
 
-Currently, all the js is in the index.html.
 
-2013-02-14: Lots of uncommitted development locally. Now that we finally have a triple store, gradually adding AllegroGraph functionality. Also refactored all the old stuff. ann2rdf_dot.py, ann2rdf, index.html, no longer relevant.
+2013-02-14: Lots of uncommitted and uncommented development locally. Now that we finally have a triple store, I'm gradually adding AllegroGraph functionality. Also refactored all the old stuff. ann2rdf_dot.py, ann2rdf, index.html, no longer relevant. Have now split out the js and the css into their own files.
 
 2012-11-07: Added Google Books search, with comments on the shortcomings of Google Books.
 
@@ -41,7 +38,9 @@ Currently, all the js is in the index.html.
 ## Requires:
 * *nix for the grep search
 * Python 2.7, and:
-    * rdflib
+    * requests
+        * This is a vast improvement over doing REST stuff with the standard libraries like urllib2 etc.
+    * rdflib (3.1.0)
     * pygraphviz
     * textwrap
 * JavaScript

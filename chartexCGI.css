@@ -1,12 +1,22 @@
 body {font-size: 11pt}
-h2 {border-top: 6px solid #aaa; margin-top: 16px; padding: 10 0 0 10}
+h2, h3 {border-top: 6px solid #aaa; margin-top: 16px; padding-top: 6px}
 #intro {
     width: 800px;
     font-size: 120%
 }
 dl {}
-dt {font-weight: bold; background-color: #ccc}
+dt {
+    font-weight: bold; 
+    background-color: rgb(200, 206, 171); 
+    padding-left: 6px;
+    margin-top: 16px;
+    line-height: 2em;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
 dd {padding-top: .5em}
+
+.sanserif td {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; padding: 5px}
 
 #ftcontainer {
     font-size: 9pt;
@@ -31,7 +41,7 @@ dd {padding-top: .5em}
     font-size: 9pt
 }
 
-.node {
+.node, .edge {
     cursor: pointer;
 }
 
@@ -61,7 +71,16 @@ dd {padding-top: .5em}
 }
 
 #modalsink {display: none}
-#modalsink pre {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt} 
+#modalsink pre {
+    font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt;
+    height: 80%;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 #simplemodal-overlay {background-color:#986;}
 
 #simplemodal-container {
@@ -90,7 +109,7 @@ dd {padding-top: .5em}
 }
 
 #sparqlForm {width: 98%}
-pre {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;}
+pre, code {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt;}
 textarea {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;
 font-size: 10pt;}
 
@@ -110,10 +129,18 @@ font-size: 10pt;}
     float: left;
 }
 
-
-.searchform {float: left; padding: 6px; background-color: #F5F5DC; border: 3px double #800;}
+.nofloat {float: none !important}
+.searchform {float: left; padding: 6px; background-color: rgb(200, 206, 171); border: 3px double #800;}
 .searchform td {font-size: 9pt}
-.tkey {border-top: 1px solid #800; border-right: 4px solid #800}
+
+.tkey {
+    border-top: 1px solid #800; 
+    border-right: 4px solid #800; 
+    text-align: right;
+    padding: 0 9;
+    white-space: nowrap;
+    font-weight: bold;
+}
 #result-div {
     float: left; 
     max-height: 300px; 
@@ -135,3 +162,13 @@ font-size: 10pt;}
     margin: auto;
     padding: .25em;
 }
+
+.SPOGretrieval {
+    clear: left;
+}
+
+.SPOGretrieval input[type=text] {
+    width: 500px
+}
+
+#cnt_chars {width: 100%}

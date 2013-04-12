@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Quick and Dirty: visualize graph as bubbles and arrows, and as rdf/n3</title>
+<title>Charter Excavation</title>
 <link rel="stylesheet" type="text/css" href="sorter-blue/style.css"></link>
 <link href="chartexCGI.css" rel="stylesheet" type="text/css"></link>
 <script src="./jquery-1.7.1.min.js"></script>
@@ -12,7 +12,10 @@
 <script src="../SVG/jquery.graphviz.js" type="text/javascript"></script>
 <script src="../commonjs/jquery.simplemodal-1.4.3.js" type="text/javascript"></script>
 <script src="./chartexCGI.js" type="text/javascript"></script>
+<script src="./textinputs_jquery.js" type="text/javascript"></script>
+<script src="./JSON-js/json2.js" type="text/javascript"></script>
 
+<!-- 
 <script type="text/javascript">
     (function($){
         $(document).ready(function () {
@@ -20,6 +23,7 @@
         });
     })(jQuery);
 </script>
+ -->
 </head>
 
 <body>
@@ -27,18 +31,22 @@
 <div id="searchsort">
     <h1 id="toggleSearch">Grab Bag of functions on annotated documents, and RDF</h1>
     <div id="searchAndResult">
-        <p id="intro">This web-application is a prototype containing implementations of some of the functionality that will be required of any sort of 'workbench' for working with charters annotated by BRAT, or encoded in RDF. These implementations are intended to work out <em>practical</em> problems with respect to <em>function</em> as opposed to <em>appearance</em>.</p> 
-        <ul style="margin: 0px">
-        <li><a class="swap graphDocument" id="graph-document" href="#">Graph a Document</a></li>
-        <li><a class="swap levSearch" id="lev-search" href="#">Levenshtein distance</a></li>
-        <li><a class="swap grepSearch" id="grep-search" href="#">Grep search</a></li>
-        <li><a class="swap gbookSearch" id="gbooks-search" href="#">gBooks search</a></li>
-        <li><a class="swap sparqlSearch" id="sparql-search" href="#">SPARQL search</a></li>
-        <li><a class="swap serializeDir" id="serialize" href="#">Serialize one of our corpora as RDF</a></li>
-        <li><a class="swap ADStests" id="ads-tests" href="#">Tests on ADS triple store</a></li>
-        </ul>
+        <p id="intro">This web-application is a prototype implementing some of the functionality that will be required of any sort of 'workbench' for working with charters annotated by BRAT, or encoded in RDF. These implementations are intended to work out practical problems with respect to server side services as opposed to user side services.</p> 
+        <ol style="margin: 0px">
+            <li><a class="swap graphDocument" id="graph-document" href="#">Graph a Document</a></li>
+            <li><a class="swap levSearch" id="lev-search" href="#">Levenshtein distance</a></li>
+            <li><a class="swap grepSearch" id="grep-search" href="#">Grep search</a></li>
+            <li><a class="swap gbookSearch" id="gbooks-search" href="#">gBooks search</a></li>
+            <li><a class="swap sparqlSearch" id="sparql-search" href="#">SPARQL search</a></li>
+            <li><a class="swap serializeDir" id="serialize" href="#">Serialize one of our corpora as RDF</a></li>
+            <li><a class="swap ADStests" id="ads-tests" href="#">Tests on ADS triple store</a></li>
+            <li><a class="swap ADSnamedGraphProblem" id="ads-namedGraph" href="#">My "Named Graph" problem illustrated</a></li>
+            <li><a class="swap ADSSparqlQueries" id="ads-SparqlQuery" href="#">Upload triples in different flavors;  issue Arbitrary SPARQL queries against the ADS store.</a></li>
+            <li><a class="swap graphsFromADS" id="lor-graph" href="#">Visualize Frodo Graph</a></li>
+            <li><a class="swap LODannotInterface" id="lor-lod" href="#">Use the SVG as an interface for annotation Entities and Relations.</a></li>
+        </ol>
 
-        <div class="searchbox graphDocument" style="display:block">
+        <div class="searchbox graphDocument">
             <h2>Visualize a document as a directed graph (bubbles and arrows).</h2>
             <p>Choose a corpus from the list below and at the left, then click on an annotation file. Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows), and below that, as an RDF/n3 graph.</p>
             
@@ -59,8 +67,8 @@
                 <table>
                 <tr>
                     <td class="tkey">Directory to search:</td>
-                    <td><select id="directoriesToSearch">
-                      <option>All</option>
+                    <td><select class="directoriesList">
+                      <option>choose a directory:</option>
                     </select></td>
                 </tr>
                 
@@ -103,10 +111,8 @@
                     <td><input id="searchstring" type="text" /></td>
                 </tr>
                 </table>
-                <img class="loader" src="./ajax-loader.gif" />
                 <input type="submit" value="Search" id="submitButton" />
                 <input type=reset value=Clear />
-            
             </form>
         </div>
         <div class="searchbox grepSearch">
@@ -117,9 +123,11 @@
                 <table>
                 <tr>
                     <td class="tkey">Directory to search:</td>
-                    <td><select id="grepDirs">
-                      <option>All</option>
-                    </select></td>
+                    <td>
+                        <select class="directoriesList">
+                        <option>choose a directory:</option>
+                        </select>
+                    </td>
                 </tr>
                 
                 <tr>
@@ -135,7 +143,6 @@
                     <td><input id="grepsearchstring" type="text" /></td>
                 </tr>
                 </table>
-                <img class="loader" src="./ajax-loader.gif" />
                 <input type="submit" value="grepSearch" id="grepButton" />
                 <input type=reset value=Clear />
             
@@ -167,7 +174,7 @@
             </form>
         </div>
         <div class="searchbox sparqlSearch">
-            <h2>SPARQL queries</h2>
+            <h2>SPARQL queries <span class="red">(NB: this sparql experiment is superceded by our ADS sparql endpoint)</span></h2>
             <p>In the absence of some kind of triple store with a real API, like Sesame, I've cobbled one together using rdflib so that I can make some experiments with SPARQL queries. Python's rdflib module can be used with an in-memory store, such as is used in the example below, but it can also be used with several other sorts of back-ends: Sesame, or PostgreSQL, or MySQL and some other options. Rdflib's SPARQL implementation is robust, and cleaves closely to the specification, so queries that work here can be made to work with most other sparql end-points.</p>
             
             <p>For the purposes of this demonstration, an RDF graph of the whole of the Deeds corpus was made and stored as a plain text file. It didn't make sense to generate the whole graph for every query, but I didn't want to implement a relational database store just for the purposes of this experiment, so I generated the rdf graph and saved it as a text file: manageable for just our 50 documents in Deeds.</p>
@@ -207,8 +214,8 @@ WHERE     { ?s rdf:type :Document;
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="submit" id="sparqlButton" />
                         <img class="loader" src="./ajax-loader.gif" />
+                        <input type="submit" value="submit" id="sparqlButton" />
                     </td>
                 </tr> 
                 </table>
@@ -266,17 +273,20 @@ WHERE     { ?s rdf:type :Document;
             </p>
             <hr />
             <p>Choose a directory, choose a serialization format, push the button:</p>
-            <form id="serializeForm" class="searchform" method="post" action=""/>
+
+
+            <!-- The following form can now be used anywhere and it will call the same click handler for class: serializeButton -->
+            <form class="searchform serializeForm" method="post" action=""/>
                 <table>
                 <tr>
                     <td class="tkey">Directory of Brat annotations:</td>
-                    <td><select id="serializeDirs">
+                    <td><select class="directoriesList">
                       <option>choose a directory:</option>
                     </select></td>
                 </tr>
                 <tr>
                     <td class="tkey">Serialization format:</td>
-                    <td><select id="serFormat">
+                    <td><select class="serFormat">
                       <option>pretty-xml</option>
                       <option>xml</option>
                       <option>n3</option>
@@ -286,8 +296,8 @@ WHERE     { ?s rdf:type :Document;
                     </select></td>
                 </tr>
                     <td colspan="2">
-                        <input type="submit" value="serialize" id="serializeButton" />
                         <img class="loader" src="./ajax-loader.gif" />
+                        <input type="submit" value="serialize" class="serializeButton" />
                     </td>
                 </table>
             
@@ -297,30 +307,430 @@ WHERE     { ?s rdf:type :Document;
         </div>
         <div class="searchbox ADStests">
             <h2>Tests on our ADS triple store</h2>
-            <form id="ADStestsForm" class="searchform" method="post" action=""/>
+            
+            <p>The default serialization for the following functions is 'turtle'. These take care of basic CRUD operations. Update can be accomplished by deletion of statements and addition of revised statements.</p>
+            <form id="ADStestsForm" class="serializeForm searchform" method="post" action=""/>
                 <table>
                 <tr>
                     <td class="tkey">Directory of Brat annotations:</td>
-                    <td><select id="ADSserializeDirs">
-                      <option>choose a directory</option>
+                    <td>
+                        <select class="directoriesList">
+                            <option>choose a directory</option>
+                        </select>
+                    </td>
+                    <td align="right">
+                        <img class="loader" src="./ajax-loader.gif" />
+                    </td>
+                </tr>
+                    <td colspan="3">
+                    <table border=1 width=500 class="sanserif">
+                        <tr>
+                            <td><input type="submit" value="serialize" id="ADSserializeButton" /></td>
+                            <td>Same code as before. This is just so you can get a look at what you're about to add, before adding it</td>
+                        </tr>
+                        <tr>
+                            <td><button id="ADSaddButton">add</button></td>
+                            <td>This serializes the RDF generated from the documents in the selected directory, and then adds the resulting triples to the ADS triple store, reporting how many statements were added</td>
+                        </tr>
+                        <tr>
+                            <td><button id="ADSgetButton">get</button></td>
+                            <td>This gets all the existing triples in the ADS triple store and displays them (currently in turtle format)</td>
+                        </tr>
+                        <tr>
+                            <td><button id="ADSdeleteButton">delete</button></td>
+                            <td>This deletes all the existing triples from the ADS triple store, reporting how many statements were deleted</td>
+                        </tr>
+                    </table>
+                    </td>
+                </table>
+                        
+            </form>
+
+        </div>
+        <div class="searchbox ADSnamedGraphProblem">
+            <h2>My "Named Graph" problem illustrated</h2>
+            <p>In the previous examples an RDF graph for an entire corpus of documents is generated and then stored on the ADS server. As previously discussed in <a href="#serialize">"Serialize one of our corpora as RDF"</a>, in order to distinguish between entities like "#T13" in one document and "#T13" in another, I've given them different namespaces like this: 
+                        <pre>
+        "http://yorkhci.org/chartex-schema/deeds-00880074#T1"
+        "http://yorkhci.org/chartex-schema/deeds-00880653#T1"
+                        </pre>
+            This leads to a lot of namespaces: one for every document. But we could instead provide a separate namespace for the corpus instead, and load our triples into separate "Named Graphs" or "Contexts". Our ADS AllegroGraph server is context aware so the following procedure is possible:</p>
+            
+            <dl>
+            <dt><button id="deleteStatements">(first, delete all statements)</button></dt>
+            <dd>lets load some sample triples. Our main graph will contain a namespace for each corpus like this: <code>@prefix:ex &lt;http://example/corpus/vicars_floral#&gt;</code>. Each set of triples, as they are generated from our brat annotations, will be stored in a different "Named Graph" or context, one for each document.
+                <pre>
+http://example/corpus/vicars_floral/VF-111 = (
+    (ex.T7, RDF.type, ex.Person),
+    (ex.T7, ex.has_spouse, ex.sally),
+    (ex.T7, RDFS.label, Literal('Simon', datatype=XSD.string))
+)
+
+http://example/corpus/vicars_floral/VF-112 = (
+    (ex.T14, RDF.type, ex.Person),
+    (ex.T14, ex.has_spouse, ex.sarah),
+    (ex.T14, RDFS.label, Literal('Simon', datatype=XSD.string))
+)
+                </pre>
+            <button id="namedGraph1">load triples</button>
+                
+            <p>Our triple store will then contain 6 statements, let's see them: <button id="namedGraph2">show triples</button></p>
+            
+            <p>But if we want to see statements about Simon that only appear in the context of one document, we can issue a sparql query to our graph that looks like this:
+                <pre>
+    CONSTRUCT  { ?s ?p ?o }
+    FROM &lt;http://example/corpus/vicars_floral/VF-112&gt;
+    WHERE   { ?s ?p ?o }
+                </pre>
+                
+            <button id="namedGraph3">issue query</button>
+            </p>
+            <p><button id="utilButton" style="display: none">utility button to execute arbitrary code from here in the page</button></p>
+            </dd>
+            
+            
+            
+            <dt>Does this have advantages? (See the discussion at <a href="#serialize">"Serialize one of our corpora as RDF"</a> above.)</dt>
+            <dd>
+            
+            <ul>
+                <li>Sparql queries will be simpler if we want to confine them to a single document.</li>
+                <li>With URIs like this for each graph, <code>http://example/corpus/vicars_floral/VF-112</code>, content negotiation could serve up text for individual documents?</li>
+                <li>Namespaces like http://example/corpus/vicars_floral# make individual corpora addressable in the graph?</li>
+            </ul>
+            
+            <p>This is giving me a headache, I still don't know what's best to do. Much will depend on the nature of the data coming from Brighton and Leiden, but even in terms of our brat annotated test data, there are issues here that I haven't got my head around yet.</p>
+            <p>What I'm most interested in aiming at is the ability for historians to annotate for themselves any entity or relation that appears in any document in our corpora, and, idealy, share it (or not, by choice) as LOD by storing it in our ADS triple store where it can enrich the raw data, and be searched and analysed by means of data mining just like the raw data. This issue is a vexed one in the LOD community, and I'm open to suggestions or observations</p>
+
+            <h3>Relevant Bibliography:</h3>        
+            <ul>
+                <li>Jeni tennison's blog <a href="http://www.jenitennison.com/blog/node/159">http://www.jenitennison.com/blog/node/159</a></li>
+            
+                <li>With an eye toward CIDOC, Vladimir Alexiev, <cite>Types and Annotations for CIDOC CRM Properties</cite> <a href="http://www.ontotext.com/sites/default/files/publications/CRM-Properties.pdf">http://www.ontotext.com/sites/default/files/publications/CRM-Properties.pdf</a></li>
+            </ul>
+            </dd>
+            </dl>
+            
+        </div>
+        <div class="searchbox ADSSparqlQueries">
+            <h2>Upload triples to ADS; Query them with SPARQL</h2>
+            <p>Now that we have a <i>bona fide</i> triple store supplied by the Archaelological Data Service, and a usable REST API to that store, it becomes more urgent that we consider the nature of the data that we propose to store there. There are competing desiderata, unanswered questions, and several possible approaches. Below, we can consider some of those approaches, and try them out to see if they will have the functionality we require.</p>
+            <dl>
+                <dt>Start by <button class="sendDelete">Deleting all the triples from our ADS store</button> for the purposes of the following experiments.</dt>
+                <dd>
+                <p>As before, select one of our corpora to graph, and a serialization format for it. There's more than one way to construct a graph from the brat annotation data that we have. If you consider the shape of the raw data you'll note that in the context of the corpus as a whole, designations like T1 or T14 are only meaningful within the context of a single document. Thus, within the corpus as a whole there might be multiple T14s, each designating a different entity. This is the textbook description of Blank, or Anonymous, nodes. So if we consider the corpus as a whole to be the default graph, then it is composed entirely of blank nodes.</p>
+                <p>While Blank Nodes accurately describe our brat annotation data, constructing our graph in this way will create all sorts of problems down the line, not the least of which is in making SPARQL queries against it. You can use the SPARQL form below to experiment with such queries.</p>
+                <form style="width:80%; margin-top: 16px" class="nofloat searchform serializeForm" method="post" action=""/>
+                    <table>
+                    <tr><td colspan=2>Use the form below to serialize a corpus, just to see what you're doing before adding triples to the store.</td></tr>
+                    <tr>
+                        <td class="tkey">Directory of Brat annotations:</td>
+                        <td><select class="directoriesList">
+                          <option>choose a directory:</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td class="tkey">Serialization format:</td>
+                        <td><select class="serFormat">
+                          <option>pretty-xml</option>
+                          <option>xml</option>
+                          <option>n3</option>
+                          <option>turtle</option>
+                          <option>nt</option>
+                          <option>trix</option>
+                        </select></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tkey">
+                            <input type="submit" value="serialize" class="serializeButton" />
+                        </td>
+                        <td>
+                            <input type="radio" name="graphstyle" value="chartexCGI.py" checked>chartexCGI.py</input><br>
+                            <input type="radio" name="graphstyle" value="chartexCGI_BN.py">chartexCGI_BN.py</input>
+                        </td>
+                    </tr>
+                    <tr><td colspan=2><hr></td></tr>
+                    <tr>
+                        <td class="tkey">
+                            <button id="ADSUpload">ADSUpload</button>
+                        </td>
+                        <td style="font-size: 11pt; padding-left: 10px">
+                            The ADSUpload button will ignore the serialization format selected above. Triples will be added using turtle format by default, but, of course this has no bearing on the graph that is thus created.
+                            <p><span style="font-size: 120%; font-style: italic; color: #a00">Nota Bene: </span>If <code>chartexCGI_BN.py</code> is selected, the triples will be generated as blank nodes and uploaded as multiple contexts, or "Named Graphs," one for each document. These graphs can be addressed by their URI's, for example: &lt;http://example.com/graph/deeds-00880074&gt;. <p>If <code>chartexCGI.py</code> is selected, the graph will be generated as before and uploaded as a turtle serialized graph with only the default context.
+                        </td>
+                    </tr>
+                    </table>
+                
+                </form>
+                
+                <p>Given the many problems associated with BNodes (a good summary of pros and cons to be found <a href="http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/">here</a>), the considerate and prudent data-provider (that would be us) should instead provide real URIs for all of the elements we offer for consumption. This necessitates a rational naming scheme: one that can be supported by real de-referencing mechanisms. That is, if we call something &lt;http://example.com/documents/deeds#00880074_T8T12_Person_Warinus_Goding&gt;, then if someone were to put that in a browser, something sensible ought to come back.</p>
+                <p>Up until these recent Blank Node experiments, I've been using URIs like this &lt;http://yorkhci.org/chartex-schema/deeds-00880196#T57&gt;, this is not tenable for a variety of reasons, but the most important is this: it doesn't make sense to a human being. This URI does uniquely identify a person named "Sthephano Scott," who appears in the document deeds-00880196, but this designation does not help a machine find and present useful information to the user, neither does it tell a human user anything interesting or useful.</p>
+                <p>
+                
+                </dd>
+                
+                <dt>Run an arbitrary SPARQL query against the triples in the ADS store</dt>
+                <dd><p>The SPARQL interface below will send a query as a simple GET request to our ADS HTTP interface. There is no content negotiation apart from choosing the format to display results. Such queries require no authentication.</p>
+                <p>The query below, baked in by default, is one that assumes the presence in the triple store of our Deeds corpus modeled as blank nodes (see above). This query illustrates that with such a model we can confine our query to within the context of a named graph.</p>
+                <p>The query can be edited or replaced at will.</p>
+                <form id="ADSsparqlForm" class="nofloat searchform" method="post" action="">
+                    <table>
+                        <tr>
+                            <td class="tkey" style="text-align: center; padding: 12px">SPARQL query:</td>
+                            <td>
+    <textarea id="ADSsparqlQuery" rows="16" cols="80">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+    PREFIX chartex: &lt;http://yorkhci.org/chartex-schema#&gt;
+    PREFIX xsd:&lt;http://www.w3.org/2001/XMLSchema#&gt;
+    CONSTRUCT { ?s ?p ?o;
+                    chartex:hasDocText ?doctext . }
+    FROM &lt;http://example.com/graph/deeds-00880074&gt;
+    WHERE {
+        ?s  rdf:type chartex:Person ;
+            chartex:textSpan "Beatrix Schryve"^^xsd:string;
+            ?p ?o.
+        ?s1 chartex:textData ?doctext .
+    }</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="submit" id="ADSsparqlButton" />
+                            </td>
+                            <td>Select a response format:
+                                <select class="serFormat">
+                                  <option>text/rdf+n3</option>
+                                  <option>application/rdf+xml</option>
+                                  <option>application/json</option>
+                                  <option>application/trix</option>
+                                  <option>text/x-nquads</option>
+                                  <option>application/x-quints+json</option>
+                                  <option>application/x-direct-triples</option>
+                                  <option>text/plain</option>
+                                  <option>text/integer</option>
+                                  <option>application/sparql-results+json</option>
+                                </select>
+                            </td>
+                        </tr> 
+                    </table>
+                </form>
+                </dd>
+    <!-- 
+                <dt>A proposal for naming scheme for Entity URIs</dt>
+                <dd><p>For brat annotations &lt;http://purl.chartex.org/documents/corpus/document/Entity#ID&gt; 
+                so: http://purl.chartex.org/documents/deeds/deeds-00880074/Person#Beatrix_Schryve or Person#T14, or Person#Beatrix_Schryve_beatrice_tenant_of_robert</p>
+                <p>PURLs will make it possible to persist our URIs even in the face of server changes in future, but more important they serve as an intelligent redirect mechanism. For example, if we have a url like this &lt;http://purl.chartex.org/documents/corpus&gt; that resolves to a web-page at &lt;http://brighton.server.ac.uk/chartex/our_corpora.html&gt;, then a URI like this: &lt;http://purl.chartex.org/documents/corpus/document/Entity#ID&gt; won't simply fail, it will be directed to a web-page that offers some actual information.</p>
+                </dd>
+     -->
+            </dl>        
+        </div>
+        <div class="searchbox graphsFromADS">
+        <h2>Visualize triples in the store</h2>
+        <p>The graphviz svg visualizations of our graphs is not optimal. So far they've been in here because they were easy to generate server-side without translating them into json first. Since there isn't anything built for the user interface, I don't know yet what sort of JSON data it will require, so for the purposes of illustration, I've just stuck with the SVG for now. If sombody knows a lot more about SVG than I do, they could probably turn this into a very cool UI; however, I think using js libraries like JIT will be more flexible for a client side UI.</p>
+        </p>Until now the bubbles and arrows visualizations have been generated from RDF that is generated in memory and derived from brat annotation files. Here we'll show how to generate them directly from the ADS triple store in response to SPARQL queries or other REST interactions.</p>
+            <ol>
+            <li>Let's start as before by <button class="sendDelete">Deleting all the triples from our ADS store</button></li>
+            <li>Supposing we have a very simple conveyance. Let's see this charter as it might be marked up in BRAT: (click to toggle) 
+            <button class="toggle_element">Frodo as brat sees it</button></li>
+            <img id="brat_baggins" src="brat_baggins.png" style="display: none" />
+            <li>Now let's generate an RDF graph from it and display it below as 'bubbles and arrows' <button id="bagginsTest">show me</button> We've done this exactly as we have done before:
+                <ol>
+                    <li>on the server side, we create an RDF graph in memory from the annotation data,</li>
+                    <li>then we create a 'dot' graph from it,</li>
+                    <li>from the dot graph we generate some svg using 'graphviz',</li>
+                    <li>and finally, we send the svg back to the client where it's displayed along with a text representation of the serialized RDF.</li>
+                </ol>
+            </li>
+            <li>Now let's clear this graph from the display below by clicking on the <button class="wipe">clear dotimg <br>and rdfout <br>elements below</button> button.</li>
+            <li>Now we will upload the triples in this Frodo graph to our (empty) ADS triple store:<button class="upload_frodo">upload Frodo triples</button></p></li>
+            
+            <li>
+                <p>Now let's retrieve those triples from the triplestore and visualize them as bubbles and arrows. <button class="viz_arbitrary_triples">visualize the triples<br>in the triple store</button></p>
+                <p>This time, instead of creating the graph in memory, we've retrieved it from the ADS triple store by means of a REST interaction that just retrieves all the statements in the store. Alternatively, we could generate a graph in response to a SPARQL query and visualize that.
+            </li>
+            
+            <li>Now let's add some more triples to the triple store, these for example:
+                <p style="font-size: 80%">
+                &lt;http://example.org/lortext#drogo_baggins&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://yorkhci.org/chartex-schema#Person&gt;<br>
+                &lt;http://example.org/lortext#drogo_baggins&gt; &lt;http://yorkhci.org/chartex-schema#textSpan&gt; "Drogo Baggins"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;<br>
+                &lt;http://example.org/lortext#T4&gt; &lt;http://yorkhci.org/chartex-schema#is_son_of&gt; &lt;http://example.org/lortext#drogo_baggins&gt;<br>
+                </p>
+            <button id="add_statement">add these statements</button></li>
+            <li>Now if you click on the <button class="viz_arbitrary_triples">visualize button</button>, we'll retrieve the statements in the triple store again. Ta Da! new triples.</li>
+            </ol>
+            <button class="toggle_full_size">toggle full sized graph</button>
+            
+            <form class="searchform getTriples" method="post" action=""/>
+            <!-- generic get triples form, makes redundant at least two buttons above -->
+                <table>
+                <tr>
+                    <td class="tkey"><button class="dump_triples">show me the triples</button></td>
+                    <td><select class="serFormat">
+                      <option>text/rdf+n3</option>
+                      <option>application/rdf+xml</option>
+                      <option>application/json</option>
+                      <option>application/trix</option>
+                      <option>text/x-nquads</option>
+                      <option>application/x-quints+json</option>
+                      <option>application/x-direct-triples</option>
+                      <option>text/plain</option>
+                      <option>text/integer</option>
                     </select></td>
                 </tr>
-                    <td colspan="2">
-                        <input type="submit" value="serialize" id="ADSserializeButton" />
-                        <img class="loader" src="./ajax-loader.gif" />
-                        <button id="ADSaddButton">add</button>
-                        <button id="ADSgetButton">get</button>
-                        <button id="ADSdeleteButton">delete</button>
-                    </td>
                 </table>
             
             </form>
 
+            
+            
+            </div>
+        <div class="searchbox LODannotInterface" style="display:block">
+            <h2>Annotating our data as Linked Open Data</h2>
+            <p>We can now store our data, either the brat annotation files or incoming data from Leiden, as RDF triples in the ADS AllegroGraph store. Historian/researchers will want to retrieve and display this data in various ways, they will also want to annotate it. The problem of annotation of RDF data has a history that does not begin with <a href="http://www.w3.org/2009/12/rdf-ws/papers/ws09">this article</a> (Lopes, Zimmermann et alia (2009)) but is nicely summarized by it. Since 2009, all of the enterprise level triple stores, including AllegroGraph, have implemented some version of Named Graphs, or contexts, and are - in fact - quad stores.* This makes annotating RDF feasible, as the original 'reification' mechanism in RDF has been, for several reasons, deemed too problematic for this purpose.</p>
+            
+            <p>Also since 2009, extensive work has been done by the W3C Open Annotation Community Group on creating a standardized ontology for the creation of RDF annotations. The <a href="http://www.openannotation.org/spec/core/">Open Annotation Data Model</a> which will be rolled out next month at Stanford University, and in June at the University of Manchester in the UK. Since it is precisely relevant to our application, it is worth quoting the stated justification of Open Annotation here in full.</p>
+            
+            <blockquote style="font-size: 80%">Annotating is a pervasive element of scholarly practice for both the humanist and the scientist. It is a method by which scholars organize existing knowledge and facilitate the creation and sharing of new knowledge. It is used by individual scholars when reading as an aid to memory, to add commentary, and to classify. It can facilitate shared editing, scholarly collaboration, and pedagogy. Over time annotations can have scholarly value in their own right. Yet scholars remain dissatisfied with the options available for annotating digital resources. Scholars wanting to annotate have to learn different annotation clients for different content repositories, have no easy way to integrate annotations made on different systems or created by colleagues using other tools, and are often limited to simplistic and constrained models of annotation. The importance of annotating as a scholarly practice coupled with the real-world limitations of existing practices and tools supporting annotation of digital content has had a retarding effect on the growth of digital scholarship and the level of digital resource use by scholars.</blockquote>
+            
+            <p>* Technically AG is a 'quint' store: in addition to triple + context, each statement has a unique id by default. We can see these ids if we serialize results as <code>application/x-quints+json</code>; however, we cannot address triples by id via the HTTP interface so far as I can tell.
+            
+            <h3>Steps toward creating graph annotations</h3>
+            <ol>
+                <li>Let's start as before by <button class="sendDelete">Deleting all the triples from our ADS store</button></li>
+                <li>Then <button class="upload_frodo">Upload the sample data concerning Bag End</button></li>
+                <li><button class="viz_arbitrary_triples">visualize the triples as SVG</button> (and <button class="wipe">delete the visualization</button>)</li>
+                <li>In order to annotate things in RDF, we need to be able to name them. In the case of atomic Entities this is straightforward (so long as we haven't made them blank nodes) because they already have a URI (NB: this has not been implemented here). In the case of triples, however, it's a little trickier. The first thing is that a UI will have to give the user an opportunity to identify a triple, or a group of triples that they want to annotate. The UI can to this in any number of ways, but here we'll visualize the triples as before using SVG. The SVG as it is rendered below makes the edge labels clickable. Right-click on any edge label, or several edge labels, and then click <button class="show_items">here</button> to see the result.</li>
+                <li>The collection of triples that the user has selected constitutes a graph. It's being held in a variable in the page. We can now give that graph a name, and upload it to the triplestore. Users should be presented with a choice of dereferenceable and logical URIs, or more likely, the authentication mechanism for a user will establish a default usr URI. For the purposes of demonstration, we'll construct a URI like this:<br>
+                <code>http://chartex.org/user_name/graph/Target#frodo_annotation1</code>.
+                </li>
+                <li>Now we can <button class="send_items">upload the named graph to the triple store</button>.
+                </li>
+                <li>Following the Open Annotation Data Model, we now have a 'named-graph' that can serve as a 'target' for an annotation. Whatever UI is provided for annotating our entities and relations, it should adhere to this <a href="http://www.openannotation.org/spec/core/#Introduction">OA specification</a>, creating Annotation entities (with appropriate URIs) that have, at minimum, oa:hasTarget, and oa:hasBodyattributes (Annotations will also have by default rdf:type oa:Annotation). Annotations created in this way can be stored in our ADS triple store and queried right along with our other data using SPARQL.
+                </li>
+                <li>
+                Now we can create an annotation:
+                    <form id="create_annotation" class="searchform nofloat" method="post" action=""/>
+                        <table>
+                        <tr>
+                            <td class="tkey">Annotation URI:</td>
+                            <td>
+                                http://chartex.org/user_name/graph/Annotation#frodo_annotation1
+                                <!-- <input id="targetURI" type="text" style="width: 400px" value="http://chartex.org/user_name/graph/Target#frodo_annotation1" /> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tkey">Target URI:</td>
+                            <td>
+                                http://chartex.org/user_name/graph/Target#frodo_annotation1
+                                <!-- <input id="targetURI" type="text" style="width: 400px" value="http://chartex.org/user_name/graph/Target#frodo_annotation1" /> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tkey">Body URI:</td>
+                            <td>
+                                http://chartex.org/user_name/graph/Body#frodo_annotation1
+                                <!-- <input id="targetURI" type="text" style="width: 400px" value="http://chartex.org/user_name/graph/Target#frodo_annotation1" /> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan=2>
+                            <p>In a proper UI, the fields above would be hidden, or the values filled in by default. The user needn't concern himself with the structure of the annotation data. Instead, lists should be offered of annotation types: commentary, provenance, trust, or what have you.</p>
+                            
+                            <p>The OA spec provides for an extensible vocabulary of annotation types, and the annotation body can be similarly complex semantically.</p>
+                            
+                            <p>The spec does not use a string literal for content text for reasons specified <a href="http://www.openannotation.org/spec/core/core.html#BodyEmbed">here</a>. Instead, our simple illustration will look like this in RDF:</p>
+                            <pre>
+             &lt;Body#frodo_annotation1&gt; a cnt:ContentAsText, dctypes:Text ;
+                cnt:chars "content" ;
+                dc:format "text/plain" .
+                            </pre>
+                            where our annotation Body will have two types, dctypes:Text and cnt:ContentAsText.
+                            </td>
+                        <tr>
+                            <td class="tkey">cnt:chars</td>
+                            <td><textarea id="cnt_chars" rows="5" name="content" cols="46">The issue of Frodo's family relationship to Bilbo is actually fairly obscure. Sally Seryus suggested in 1965 that Frodo was actually Bilbo's son, but no warrant for this assertion has yet been discovered.</textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2>In a UI, the user edited fields would be offered according to the type of annotation chosen.</td>
+                        </tr>
+                        </table>
+                        <img class="loader" src="./ajax-loader.gif" />
+                        <input type="submit" value="upload annotation triples" id="sendOA" />
+                        <input type=reset value=Clear />
+                    
+                    </form>
+                </li>
+            </ol>
+            
+            
+            <h3>Some generic functions that should be available everywhere:</h3>
+            <p>These are simple REST interactions. It ought to be possible to issue these requests directly from the web page rather than going through the server-side CGI program as these do. Same-origin policy prevents direct Ajax queries, but surely there's a substitute?</p>
+            <div style="margin: 16px 0px 0px 60px">
+                <form class="searchform getContexts" method="post" action=""/>
+                    <button class="get_contexts">show me all the contexts (named graphs) in the triple store</button>
+                </form>
+                <form class="searchform getTriples" style="clear: left" method="post" action=""/>
+                <!-- generic get triples form, makes redundant at least two buttons above -->
+                This is a generic function that will retrieve whatever triples are in the store.
+                    <table>
+                    <tr>
+                        <td class="tkey"><button class="dump_triples">show me the triples</button></td>
+                        <td><select class="serFormat">
+                          <option>text/rdf+n3</option>
+                          <option>application/rdf+xml</option>
+                          <option>application/json</option>
+                          <option>application/trix</option>
+                          <option>text/x-nquads</option>
+                          <option>application/x-quints+json</option>
+                          <option>application/x-direct-triples</option>
+                          <option>text/plain</option>
+                          <option>text/integer</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td colspan=2>(Note that <code>application/trix</code> will be the most useful format if there are named graphs in the store.)</td>
+                    </tr>
+                    
+                    </table>
+                
+                </form>
+                <form class="SPOGretrieval searchform" method="post" action=""/>
+                This is a generic function that will retrieve triples in the store filtered by, subject, predicate, object, or context.<br>(NB: URIs must be contained by <&nbsp;>).
+                <table>
+                        <tr>
+                            <td class="tkey">Subject</td><td><input class="subj" type=text /></td>
+                        </tr>
+                        <tr>
+                            <td class="tkey">Predicate</td><td><input class="pred" type=text /></td>
+                        </tr>
+                        <tr>
+                            <td class="tkey">Object</td><td><input class="obj" type=text /></td>
+                        </tr>
+                        <tr>
+                            <td class="tkey">Context</td><td><input class="ctxt" type=text /></td>
+                        </tr>
+                        <tr>
+                            <td class="tkey"><button class="get_filtered_triples">Get filtered triples</button></td>
+                            <td>Response Formats:<select class="serFormat">
+                              <option></option>
+                              <option>text/rdf+n3</option>
+                              <option>application/rdf+xml</option>
+                              <option>application/json</option>
+                              <option>application/trix</option>
+                              <option>text/x-nquads</option>
+                              <option>application/x-quints+json</option>
+                              <option>application/x-direct-triples</option>
+                              <option>text/plain</option>
+                              <option>text/integer</option>
+                            </select></td>
+                        </tr>
+                    </table>
+                            
+                </form>
+            </div>
         </div>
         <div id="content"></div>
-    
-        <script >
-        </script>
     
     </div>
     <div id="dotimg"></div>
@@ -328,6 +738,7 @@ WHERE     { ?s rdf:type :Document;
     <div id="rdfout"></div>
 
 </div>
+<img id="localLoader" src="./ajax-loader.gif" style="position: absolute; display: none" />
 <div id="modalsink"></div>
 </body>
 

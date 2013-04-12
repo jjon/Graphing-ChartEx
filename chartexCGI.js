@@ -1,5 +1,6 @@
+var doc_text = "";
+var items_for_annotation = {} // NB. this is global for debugging purposes only. It should be made private and passed to sendItemsToPy() in some other way.
 
-var doc_text = ""; // the only global should be a json object with all the data: svg, text, and rdf.
 var dirs_with_ann_files = undefined
 var DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex/'
 
@@ -8,6 +9,24 @@ function hideme() {
     $('#doc_text_display').toggle('fast');
     $('#doc_text').empty();
 }
+
+/**************** Hide this *******************/
+function hidethis(what){
+    $(what).empty();
+    $(what).hide();
+}
+
+
+/********* string repr of object keys ***********/
+function keyStrings(obj){
+    var returnstring = "";
+    for (k in obj){
+        returnstring += k + "\n";
+    }
+    
+    return returnstring;
+}
+
 
 /*******************************************/
 /* offsetArray is an array of offset tuples
@@ -23,6 +42,8 @@ function replaceOffset(str, offsetArray, tag) {
     }
     return arr.join('');
 }
+
+
 
 /************************/
 /* Graphme gets pydata. deployData just deploys it client side
@@ -97,14 +118,107 @@ function deployData(pydata) {
                 $("svg")[0].height.baseVal.value = 800;
             } 
         );
-
+    
     $('html, body').animate({
         scrollTop: $("#remove_graphs").offset().top
     }, 2000);    
+    $("#localLoader").css({position: "absolute"}).hide();
 
 }
 
 
+
+function vizTriples(pydata){
+    var dataIn = pydata.split('<filedelimiter>'); // use json instead of this
+    var svg = $(dataIn[0]).find('svg');
+    var rdf = dataIn[1];
+    items_for_annotation = {};
+    $('#doc_text').empty();
+    $('#doc_text_display').hide();
+    $("#dotimg").empty();
+    $("#dotimg").append(dataIn[0]);
+    $("svg")[0].width.baseVal.value = 400;
+    $("svg")[0].height.baseVal.value = 400;    
+    
+    
+    
+    $('.node').on('contextmenu', function(){return false;}).mousedown(function(event) {
+        switch (event.which) {
+            case 1:
+                var $that = $(this);
+                var offsets = [];
+                $that.find('text').contents().each(function(i) {
+                    var regexp = /\((\d+),\s(\d+)\)/g;
+                    var match = regexp.exec(this.data);
+                    if (match !== null) {
+                        offsets.push([match[1], match[2]]);
+                    }
+                });
+        
+                var fillColor = $(this).find('ellipse').css('fill');
+                $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:' + fillColor + '">'));
+                var X = event.pageX - 200;
+                var Y = event.pageY + 16;
+                $('#doc_text_display').hide();
+                $('#doc_text_display').css('overflow-y', 'auto');
+                $('#doc_text_display').css({
+                    left: X,
+                    top: Y
+                }).toggle('slow');
+                break;
+            case 2:
+                //alert('Middle mouse button pressed');
+                break;
+            case 3:
+                var entity = $(this).find('a')[0].getAttribute('xlink:title').toString();
+                // for the moment, let's just work with the edges below
+                //if (!(entity in items_for_annotation)){items_for_annotation[entity] = true;};
+                break;
+            default:
+                alert('You have a strange mouse');
+        }
+    });
+    
+    $('.edge').on('contextmenu', function(){return false;}).mousedown(function(event) {
+        
+        switch (event.which) {
+            case 1:
+                //alert('Left mouse button pressed');
+                break;
+            case 2:
+                //alert('Middle mouse button pressed');
+                break;
+            case 3:
+                
+                
+                var link_title = $(this).find('a')[0].getAttribute('xlink:title')
+                var edge_triple = link_title.split(', ');
+                if (!(edge_triple in items_for_annotation)){
+                    items_for_annotation[edge_triple] = true;
+                };
+                break;
+            default:
+                alert('You have a strange mouse');
+        }
+    });
+}
+
+function sendItemsToPy(annotation_graph_name){
+    $.ajax({
+        url: "chartexCGI.py",
+        dataType: 'text',
+        data: {'items': JSON.stringify(items_for_annotation), 'gname': '<' + annotation_graph_name + '>'},
+        error: function(jqXHR, textStatus, errorThrown) {
+            //console.log(jqXHR.response, textStatus, errorThrown);
+        },
+        success: showModal
+    });
+    $("#localLoader").hide();
+}
+
+function uploadAnnotationTriples(){
+    null
+}
 
 /*********************** this is redundant
 /* Generate dot graph from search result click.
@@ -150,8 +264,8 @@ function alertError(pydata) {
 /************************************/
 function handleResponse(response) {
     //Alan de Quixlay is the example that started it for gBooks
-    if (response.items.length > 0){
-        $(".loader").hide();
+    if (response.items){
+        $("#localLoader").hide();
         $("#result-div").remove();
         $("#searchAndResult").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>Title (click to see in gBooks)</th><th>Date</th><th>Found snippet</th></tr></thead><tbody id="result"></tbody></table></div>');
         
@@ -184,14 +298,259 @@ function showModal(response){
         overlayClose:true,
         opacity:80
     });
-    $(".loader").hide();
+    $("#localLoader").hide();
 }
 
-/*********************************************************
-* some of this stuff does not have to be in document.ready
-**********************************************************/
+function showLocalLoader(obj){
+    ot = obj.position().top
+    $("#localLoader").css({left: "8%", top: ot - 6}).show()
+}
+
+/******************************************************************************************************************
+* some of the following stuff does not have to be in document.ready.
+* apparently, naked click handlers do.
+********************************************************************************************************************/
 
 $(document).ready(function() {
+
+/*****************************/
+/* Baggins Annotation Test
+/*****************************/
+$("#bagginsTest").click(function(){
+    // recap an abbreviated deployData suite here with annotation functions
+    $.get("annoData", function(data,status){
+        var selected_triples = [];
+        var dataIn = data.split('<filedelimiter>'); // use json instead of this
+        var svg = $(dataIn[0]).find('svg');
+        var rdf = dataIn[1];
+        var doc_text = dataIn[2]
+
+        $('#doc_text').empty();
+        $('#doc_text_display').hide();
+        $("#dotimg").empty();
+        $("#dotimg").append(dataIn[0]);
+        $("svg")[0].width.baseVal.value = 400;
+        $("svg")[0].height.baseVal.value = 400;    
+        $("#rdfout").html('<pre>' + rdf + '</pre>');    
+        
+        
+        
+        $('.node').on('contextmenu', function(){return false;}).mousedown(function(event) {
+            switch (event.which) {
+                case 1:
+                    var $that = $(this);
+                    var offsets = [];
+                    $that.find('text').contents().each(function(i) {
+                        var regexp = /\((\d+),\s(\d+)\)/g;
+                        var match = regexp.exec(this.data);
+                        if (match !== null) {
+                            offsets.push([match[1], match[2]]);
+                        }
+                    });
+            
+                    var fillColor = $(this).find('ellipse').css('fill');
+                    $("#doc_text").html(replaceOffset(doc_text, offsets, '<span style="background-color:' + fillColor + '">'));
+                    var X = event.pageX - 200;
+                    var Y = event.pageY + 16;
+                    $('#doc_text_display').hide();
+                    $('#doc_text_display').css('overflow-y', 'auto');
+                    $('#doc_text_display').css({
+                        left: X,
+                        top: Y
+                    }).toggle('slow');
+                    break;
+                case 2:
+                    //alert('Middle mouse button pressed');
+                    break;
+                case 3:
+                    console.log($(this).find('a')[0].getAttribute('xlink:title'));
+                    break;
+                default:
+                    alert('You have a strange mouse');
+            }
+        });
+        
+        $('.edge').on('contextmenu', function(){return false;}).mousedown(function(event) {
+            
+            switch (event.which) {
+                case 1:
+                    //alert('Left mouse button pressed');
+                    break;
+                case 2:
+                    //alert('Middle mouse button pressed');
+                    break;
+                case 3:
+                    edge_triple = $(this).find('a')[0].getAttribute('xlink:title').split(', ');
+                    selected_triples.push(edge_triple);
+                    console.dir(selected_triples);
+                    //OK: now pass this to a form for creating an annotation
+                    break;
+                default:
+                    alert('You have a strange mouse');
+            }
+        });
+        
+    });
+// document.getElementById("edge2").getElementsByTagName('a')[0].getAttribute('xlink:title').split(', ')
+// use this instead of click: 
+
+})
+
+$(".send_items").click(function(){
+
+    var sample_annotation_uri = "http://chartex.org/user_name/graph/Target#frodo_annotation1";
+    sendItemsToPy(sample_annotation_uri);
+    showLocalLoader($(this));
+    return false;
+});
+
+$("#sendOA").click(function(){
+    /// this should be moved into a named function above
+    showLocalLoader($(this));
+    var annotation_uri = "http://chartex.org/user_name/graph/Annotation#frodo_annotation1"
+    var target_uri = "http://chartex.org/user_name/graph/Target#frodo_annotation1"
+    var body_uri = "http://chartex.org/user_name/graph/Body#frodo_annotation1"
+    var content_text = $("#cnt_chars").val();
+    $.ajax({
+        type: "get",
+        url: "chartexCGI.py",
+        data: {
+            "annotationURI": annotation_uri,
+            "targetURI": target_uri,
+            "bodyURI": body_uri,
+            "contentText": content_text
+        },
+        dataType: 'text',
+        success: showModal
+    });
+    return false;
+});
+
+$(".show_items").click(function(){
+    showModal(keyStrings(items_for_annotation))
+});
+
+
+$(".dump_triples").click(function(){
+    $thisform = $(this).parents(".getTriples");
+    var serialFormat = $thisform.find(".serFormat option:selected").val();
+    showLocalLoader($(this));
+    $.ajax({
+        type: "get",
+        url: "chartexCGI.py",
+        data: {"dumpTriples": true, "serialFormat": serialFormat},
+        dataType: 'text',
+        success: showModal
+    });
+    
+    return false;
+});
+
+$(".get_filtered_triples").click(function(){
+    showLocalLoader($(this));
+    $thisform = $(".get_filtered_triples").parents(".SPOGretrieval")
+    var s = $thisform.find("input.subj").val() || undefined;
+    var p = $thisform.find("input.pred").val() || undefined;
+    var o = $thisform.find("input.obj").val()  || undefined;
+    var g = $thisform.find("input.ctxt").val() || undefined;
+    var serialFormat = $thisform.find(".serFormat option:selected").val() || undefined;
+
+    $.ajax({
+        type: "get",
+        url: "chartexCGI.py",
+        data: {'SPOGretrieval': true,
+            's': s,
+            'p': p,
+            'o': o,
+            'g': g,
+            'serialFormat': serialFormat},
+        dataType: 'text',
+        success: showModal,
+        error: function(jqXHR, textStatus, errorThrown) {
+            //console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+    return false;    
+});
+
+$(".get_contexts").click(function(){
+    showLocalLoader($(this));
+
+    $.ajax({
+        type: "get",
+        url: "chartexCGI.py",
+        data: {'get_contexts': true},
+        dataType: 'text',
+        success: showModal,
+        error: function(jqXHR, textStatus, errorThrown) {
+            //console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+    return false;    
+
+});
+/*****************************/
+/* named graph problem
+/*****************************/
+
+$("#namedGraph1").click(function(){
+        showLocalLoader($(this));
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {"namedGraph1": true},
+            dataType: 'text',
+            success: showModal
+        });
+});
+
+$("#namedGraph2").click(function(){
+        showLocalLoader($(this));
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {"namedGraph2": true},
+            dataType: 'text',
+            success: showModal
+        });
+});
+
+$("#namedGraph3").click(function(){
+        showLocalLoader($(this));
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {"namedGraph3": true},
+            dataType: 'text',
+            success: showModal
+        });
+});
+
+$("#utilButton").click(function(e){
+//         showLocalLoader($(this));
+
+//         $.ajax({
+//             type: "get",
+//             url: "chartexCGI.py",
+//             data: {"utilButton": true},
+//             dataType: 'text',
+//             success: showModal
+//         });
+});
+
+$("#deleteStatements").click(function(){
+        showLocalLoader($(this));
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {"ADSdelete": true},
+            dataType: 'text',
+            success: showModal
+        });
+});
+
+
+
 //populate the 'directoriesToSearch' dropdown list
     $.ajax({
         url: "jqueryFileTree.py",
@@ -205,7 +564,7 @@ $(document).ready(function() {
         success: function(pydata) {
             dirs_with_ann_files = pydata;
             for (i=0; i<dirs_with_ann_files.length; i++){
-                $("#serializeDirs, #ADSserializeDirs, #directoriesToSearch, #grepDirs").append('<option value="'+ dirs_with_ann_files[i] +'">' + dirs_with_ann_files[i].split('/').slice(6).join('/') + '</option>');
+                $(".directoriesList").append('<option value="'+ dirs_with_ann_files[i] +'">' + dirs_with_ann_files[i].split('/').slice(6).join('/') + '</option>');
             }
         }
     });
@@ -218,6 +577,7 @@ $(document).ready(function() {
 
     /* remember that the following depends on classes being in the right order eg .swap .levSearch */    
     $(".swap").click(function(){
+        $(".expanded a").first().trigger('click');
         $('#doc_text').empty();
         $('#doc_text_display').hide();
         $("#dotimg").empty();
@@ -240,6 +600,9 @@ $(document).ready(function() {
     }, function(file) { //NB the 'file' argument root + filename
         $.ajax({
             url: "chartexCGI.py",
+            beforeSend: function(){
+                $("#localLoader").css({position: "fixed", left: "8%", top: "50%"}).show()
+            },
             dataType: 'text',
             data: {
                 'fp': file
@@ -256,11 +619,11 @@ $(document).ready(function() {
 /*****************************/
     $('#submitButton').click(function(){
         // similar string search function
-        var dirToSearch = $("select#directoriesToSearch").val();
+        var dirToSearch = $("select.directoriesList").val();
         var EntityToSearch = $("select#EntityToSearch").val();
         var editDistance = $("select#editDistance").val();
         var targetString = $("input#searchstring").val();
-        $(".loader").show();
+        showLocalLoader($(this));
         $.ajax({
             type: "get",
             url: "chartexCGI.py",
@@ -294,10 +657,11 @@ $(document).ready(function() {
 /* *NIX grep function search 
 /*****************************/
     $('#grepButton').click(function(){
+        if ($(".grepSearch input:text").val() == '') {alert("ya gotta gimme somethin'"); return false;};
         var dirToSearch = $(".grepSearch option:selected").val();
         var filetype = $(".grepSearch input:radio:checked").val();
         var targetString = $(".grepSearch input:text").val();
-        $(".loader").show();
+        showLocalLoader($(this));
 
         $.ajax({
             type: "get",
@@ -305,9 +669,11 @@ $(document).ready(function() {
             data: {'searchstring': targetString, 'filetype': filetype, 'dirToSearch': dirToSearch},
             dataType: 'json',
             success: function(pydata){
+                // really should break this out into a named function, and do something more rational
+                // with all that stupid templating crap.
                 if (pydata.length > 0) {
                     $("#result-div").remove();
-                    $(".loader").hide();
+                    $("#localLoader").hide();
                     
                     if (filetype == 'ann'){
                     
@@ -328,6 +694,7 @@ $(document).ready(function() {
                 } else {
                     $(".loader").hide();
                     $("#result-div").remove();
+                    $("#localLoader").hide();
                     alert("No Result");
                 }
             },
@@ -344,7 +711,7 @@ $(document).ready(function() {
 /*****************************/
     $("#gbooksButton").click(function(){
         var targetString = $(".gbookSearch input:text").val();
-        $(".loader").show();
+        showLocalLoader($(this));
         $.ajax({
             url: "https://www.googleapis.com/books/v1/volumes?",
             datatype: 'json',
@@ -358,22 +725,28 @@ $(document).ready(function() {
     });
 
 /*****************************/
-/* Just Serialize
+/* JUST SERIALIZE __ now this is independent of element ids
+/* example URL: http://neolography.com/chartex/chartexCGI.py?serialDir=/home/neolog/webapps/brat/brat-v1.3_Crunchy_Frog/data/inter-coding-exercise/Jon&serialFormat=n3
 /*****************************/
 
-    $("#serializeButton").click(function(){
-        var serialDir = $("#serializeDirs option:selected").val();
-        var serialFormat = $("#serFormat option:selected").val();
-        $(".loader").show();
+    $(".serializeButton").click(function(){
+        $thisform = $(this).parents(".serializeForm");
+        var serialDir = $thisform.find(".directoriesList option:selected").val();
+        var serialFormat = $thisform.find(".serFormat option:selected").val();
         
+        var ifradio = $thisform.find("input:radio:checked").val();
+        var pyfile = (ifradio == undefined)? "chartexCGI.py" : ifradio;
+        showLocalLoader($(this));
+        
+
         $.ajax({
             type: "get",
-            url: "chartexCGI.py",
+            url: pyfile,
             data: {"serialDir": serialDir, "serialFormat": serialFormat},
             dataType: 'text',
             success: showModal,
             error: function(jqXHR, textStatus, errorThrown) {
-                //console.log(jqXHR.response, textStatus, errorThrown);
+                console.log(jqXHR.response, textStatus, errorThrown);
             }
         
         });
@@ -381,13 +754,45 @@ $(document).ready(function() {
     });
 
 /*****************************/
+/* ADSUpload
+/*****************************/
+
+    $("#ADSUpload").click(function(){
+        $thisform = $("#ADSUpload").parents(".serializeForm")
+        var ADSserialDir = $thisform.find(".directoriesList option:selected").val();
+        var serialFormat = $thisform.find(".serFormat option:selected").val();
+
+        var ifradio = $thisform.find("input:radio:checked").val();
+        var pyfile = (ifradio == undefined)? "chartexCGI.py" : ifradio;
+
+        showLocalLoader($(this));
+                
+        $.ajax({
+            type: "get",
+            url: pyfile,
+            data: {"ADSUpload": true, "serialDir": ADSserialDir, "serialFormat": serialFormat},
+            dataType: 'text',
+            success: showModal,
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        
+        });
+
+        return false;
+    });
+
+
+
+/*****************************/
 /* ADS serialize
 /*****************************/
 
     $("#ADSserializeButton").click(function(){
-        var ADSserialDir = $("#ADSserializeDirs option:selected").val();
+        $thisform = $("#ADSserializeButton").parents(".serializeForm")
+        var ADSserialDir = $thisform.find(".directoriesList option:selected").val();
         var serialFormat = "turtle";
-        $(".loader").show();
+        showLocalLoader($(this));
         
         $.ajax({
             type: "get",
@@ -402,10 +807,14 @@ $(document).ready(function() {
         });
         return false;
     });
-    
+
+
+/**************************/
+
     $("#ADSaddButton").click(function(){
-        var addDir = $("#ADSserializeDirs option:selected").val();
-        $(".loader").show();
+        $thisform = $("#ADSaddButton").parents(".serializeForm")
+        var addDir = $thisform.find(".directoriesList option:selected").val();
+        showLocalLoader($(this));
         $.ajax({
             type: "get",
             url: "chartexCGI.py",
@@ -422,7 +831,7 @@ $(document).ready(function() {
     });
 
     $("#ADSgetButton").click(function(){
-        $(".loader").show();
+        showLocalLoader($(this));
         $.ajax({
             type: "get",
             url: "chartexCGI.py",
@@ -435,7 +844,7 @@ $(document).ready(function() {
     });
 
     $("#ADSdeleteButton").click(function(){
-        $(".loader").show();
+        showLocalLoader($(this));
         $.ajax({
             type: "get",
             url: "chartexCGI.py",
@@ -447,6 +856,11 @@ $(document).ready(function() {
         return false;
     });
 
+    $(".sendDelete").click(function(){
+        $("#ADSdeleteButton").trigger('click');
+        showLocalLoader($(this));
+        return false;
+    })
 
 /*****************************/
 /* SPARQL search
@@ -454,12 +868,39 @@ $(document).ready(function() {
     $("#sparqlButton").click(function(){
         var query = $("#sparqlQuery").setSelection(0, 10000);
         var text = $("#sparqlQuery").getSelection().text;
-        $(".loader").show();
+        showLocalLoader($(this));
     
         $.ajax({
             type: "get",
             url: "chartexCGI.py",
             data: {'sparqlQuery': text},
+            dataType: 'text',
+            success: showModal,
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        
+        return false;
+    });
+    
+    
+/*****************************/
+/* ADS SPARQL search
+/*****************************/
+    $("#ADSsparqlButton").click(function(){
+        var query = $("#ADSsparqlQuery").setSelection(0, 10000);
+        var text = $("#ADSsparqlQuery").getSelection().text;
+        var result_format = $("#ADSsparqlForm select").val();
+        
+        //console.log(result_format);
+        
+        showLocalLoader($(this));
+    
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {'ADSsparqlQuery': text, 'ADSresult_format': result_format},
             dataType: 'text',
             success: showModal,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -477,4 +918,84 @@ $(document).ready(function() {
         $('#doc_text_display').hide();
         return false;
     });
+    
+    $(".wipe").click(function(){
+        $("#remove_graphs").trigger('click');
+    });
+    
+    $(".toggle_element").click(function(){
+        $("#brat_baggins").toggle();
+    });
+    
+    $(".upload_frodo").click(function(){
+        showLocalLoader($(this));
+    
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {'upload_frodo': true},
+            dataType: 'text',
+            success: showModal,
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        
+        return false;    
+    });
+    
+    $(".viz_arbitrary_triples").click(function(){
+        showLocalLoader($(this));
+    
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {'viz_arbitrary_triples': true},
+            dataType: 'text',
+            success: function(pydata){
+                vizTriples(pydata);
+                $("#localLoader").hide();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        
+    });
+    
+
+    
+    $("#add_statement").click(function(){
+        triple = "http://yorkhci.org/chartex-schema/lortext#T4, http://yorkhci.org/chartex-schema#is_son_of, http://yorkhci.org/chartex-schema/lortext#T1"
+        
+        $.ajax({
+            type: "get",
+            url: "chartexCGI.py",
+            data: {'add_statement': triple},
+            dataType: 'text',
+            success: showModal,
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(jqXHR.response, textStatus, errorThrown);
+            }
+        });
+        
+        return false;
+    });
+    
+    $(".toggle_full_size").toggle(
+            function(){
+                $('#doc_text_display').hide();
+                $("svg")[0].width.baseVal.value = 800;
+                $("svg")[0].height.baseVal.value = 800;
+            },
+            function(){
+                $('#doc_text_display').hide();
+                $("svg")[0].width.baseVal.value = 1800;
+                $("svg")[0].height.baseVal.value = 1800;
+            } 
+        );
+    
 });
+
+
+    

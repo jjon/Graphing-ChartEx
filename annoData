@@ -1,0 +1,147 @@
+<svg width="600pt" height="600pt" viewBox="0.00 0.00 421.96 248.99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 244.995)">
+    <title>_anonymous_0</title>
+    <polygon fill="white" stroke="white" points="-4,5 -4,-244.995 418.963,-244.995 418.963,5 -4,5"></polygon>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T3 -->
+    <g id="http://yorkhci.org/chartex-schema/lortext#T3" class="node">
+      <title>http://yorkhci.org/chartex-schema/lortext#T3</title>
+      <g id="http://yorkhci.org/chartex-schema/lortext#T3">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T3">
+          <ellipse fill="#ff0000" stroke="black" cx="309.688" cy="-211.579" rx="45.5217" ry="29.3315"></ellipse>
+          <text text-anchor="middle" x="309.688" y="-214.379" font-family="Times,serif" font-size="14.00">Bag End</text>
+          <text text-anchor="middle" x="309.688" y="-197.579" font-family="Times,serif" font-size="14.00">(28, 35)</text>
+        </a>
+      </g>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T2 -->
+    <g id="http://yorkhci.org/chartex-schema/lortext#T2" class="node">
+      <title>http://yorkhci.org/chartex-schema/lortext#T2</title>
+      <g id="http://yorkhci.org/chartex-schema/lortext#T2">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T2">
+          <ellipse fill="#ff9500" stroke="black" cx="218.606" cy="-120.497" rx="42.4829" ry="29.3315"></ellipse>
+          <text text-anchor="middle" x="218.606" y="-123.297" font-family="Times,serif" font-size="14.00">dedit</text>
+          <text text-anchor="middle" x="218.606" y="-106.497" font-family="Times,serif" font-size="14.00">(22, 27)</text>
+        </a>
+      </g>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T3&#45;&gt;http://yorkhci.org/chartex&#45;schema/lortext#T2 -->
+    <g id="edge2" class="edge">
+      <title>http://yorkhci.org/chartex-schema/lortext#T3-&gt;http://yorkhci.org/chartex-schema/lortext#T2</title>
+      <g id="edge2">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T3, http://yorkhci.org/chartex-schema#is_parcel_in, http://yorkhci.org/chartex-schema/lortext#T2">
+          <path fill="none" stroke="black" d="M284.8,-186.691C274.084,-175.976 261.434,-163.325 250.078,-151.969"></path>
+          <polygon fill="black" stroke="black" points="252.381,-149.323 242.835,-144.726 247.431,-154.272 252.381,-149.323"></polygon>
+        </a>
+      </g>
+      <text text-anchor="middle" x="233.228" y="-155.33" font-family="Times,serif" font-size="14.00">is_parcel_in</text>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T1 -->
+    <g id="http://yorkhci.org/chartex-schema/lortext#T1" class="node">
+      <title>http://yorkhci.org/chartex-schema/lortext#T1</title>
+      <g id="http://yorkhci.org/chartex-schema/lortext#T1">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T1">
+          <ellipse fill="#00ffff" stroke="black" cx="127.524" cy="-211.579" rx="68.3614" ry="29.3315"></ellipse>
+          <text text-anchor="middle" x="127.524" y="-214.379" font-family="Times,serif" font-size="14.00">Bilbo Baggins</text>
+          <text text-anchor="middle" x="127.524" y="-197.579" font-family="Times,serif" font-size="14.00">(8, 21)</text>
+        </a>
+      </g>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T1&#45;&gt;http://yorkhci.org/chartex&#45;schema/lortext#T2 -->
+    <g id="edge4" class="edge">
+      <title>http://yorkhci.org/chartex-schema/lortext#T1-&gt;http://yorkhci.org/chartex-schema/lortext#T2</title>
+      <g id="edge4">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T1, http://yorkhci.org/chartex-schema#is_grantor_in, http://yorkhci.org/chartex-schema/lortext#T2">
+          <path fill="none" stroke="black" d="M154.852,-184.252C165.07,-174.034 176.753,-162.351 187.302,-151.802"></path>
+          <polygon fill="black" stroke="black" points="189.796,-154.257 194.392,-144.711 184.846,-149.308 189.796,-154.257"></polygon>
+        </a>
+      </g>
+      <text text-anchor="middle" x="133.749" y="-154.027" font-family="Times,serif" font-size="14.00">is_grantor_in</text>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T4 -->
+    <g id="http://yorkhci.org/chartex-schema/lortext#T4" class="node">
+      <title>http://yorkhci.org/chartex-schema/lortext#T4</title>
+      <g id="http://yorkhci.org/chartex-schema/lortext#T4">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T4">
+          <ellipse fill="#00ffff" stroke="black" cx="127.524" cy="-29.4156" rx="69.3343" ry="29.3315"></ellipse>
+          <text text-anchor="middle" x="127.524" y="-32.2156" font-family="Times,serif" font-size="14.00">Frodo Baggins</text>
+          <text text-anchor="middle" x="127.524" y="-15.4156" font-family="Times,serif" font-size="14.00">(39, 52)</text>
+        </a>
+      </g>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T4&#45;&gt;http://yorkhci.org/chartex&#45;schema/lortext#T2 -->
+    <g id="edge6" class="edge">
+      <title>http://yorkhci.org/chartex-schema/lortext#T4-&gt;http://yorkhci.org/chartex-schema/lortext#T2</title>
+      <g id="edge6">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T4, http://yorkhci.org/chartex-schema#is_recipient_in, http://yorkhci.org/chartex-schema/lortext#T2">
+          <path fill="none" stroke="black" d="M154.852,-56.7432C165.07,-66.9612 176.753,-78.6437 187.302,-89.1931"></path>
+          <polygon fill="black" stroke="black" points="184.846,-91.6874 194.392,-96.2836 189.796,-86.7376 184.846,-91.6874"></polygon>
+        </a>
+      </g>
+      <text text-anchor="middle" x="129.477" y="-75.7682" font-family="Times,serif" font-size="14.00">is_recipient_in</text>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T4&#45;&gt;http://yorkhci.org/chartex&#45;schema/lortext#T1 -->
+    <g id="edge8" class="edge">
+      <title>http://yorkhci.org/chartex-schema/lortext#T4-&gt;http://yorkhci.org/chartex-schema/lortext#T1</title>
+      <g id="edge8">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T4, http://yorkhci.org/chartex-schema#is_familial_relation_to, http://yorkhci.org/chartex-schema/lortext#T1">
+          <path fill="none" stroke="black" d="M127.524,-59.0888C127.524,-89.7876 127.524,-137.907 127.524,-171.869"></path>
+          <polygon fill="black" stroke="black" points="124.025,-171.919 127.524,-181.919 131.025,-171.919 124.025,-171.919"></polygon>
+        </a>
+      </g>
+      <text text-anchor="middle" x="63.7622" y="-118.279" font-family="Times,serif" font-size="14.00">is_familial_relation_to</text>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T5 -->
+    <g id="doc_node" class="node">
+      <title>http://yorkhci.org/chartex-schema/lortext#T5</title>
+      <g id="doc_node">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T5">
+          <ellipse fill="#007700" stroke="black" cx="309.688" cy="-29.4156" rx="103.913" ry="20.861"></ellipse>
+          <text text-anchor="middle" x="309.688" y="-22.2156" font-family="Times,serif" font-size="18.00" fill="white">Document: lortext</text>
+        </a>
+      </g>
+    </g>
+    <!-- http://yorkhci.org/chartex&#45;schema/lortext#T5&#45;&gt;http://yorkhci.org/chartex&#45;schema/lortext#T2 -->
+    <g id="edge10" class="edge">
+      <title>http://yorkhci.org/chartex-schema/lortext#T5-&gt;http://yorkhci.org/chartex-schema/lortext#T2</title>
+      <g id="edge10">
+        <a xlink:title="http://yorkhci.org/chartex-schema/lortext#T5, http://yorkhci.org/chartex-schema#refers_to, http://yorkhci.org/chartex-schema/lortext#T2">
+          <path fill="none" stroke="black" d="M289.02,-50.0835C277.613,-61.4911 263.202,-75.9022 250.393,-88.7113"></path>
+          <polygon fill="black" stroke="black" points="247.667,-86.4871 243.071,-96.0331 252.617,-91.4369 247.667,-86.4871"></polygon>
+        </a>
+      </g>
+      <text text-anchor="middle" x="244.83" y="-72.1974" font-family="Times,serif" font-size="14.00">refers_to</text>
+    </g>
+  </g>
+</svg>
+<filedelimiter>
+@prefix ns1: &lt;http://yorkhci.org/chartex-schema#> .
+
+&lt;http://yorkhci.org/chartex-schema/lortext#T3> a ns1:Site;
+    ns1:is_parcel_in &lt;http://yorkhci.org/chartex-schema/lortext#T2>;
+    ns1:textRange "(28, 35)";
+    ns1:textSpan "Bag End" .
+
+&lt;http://yorkhci.org/chartex-schema/lortext#T4> a ns1:Person;
+    ns1:is_familial_relation_to &lt;http://yorkhci.org/chartex-schema/lortext#T1>;
+    ns1:is_recipient_in &lt;http://yorkhci.org/chartex-schema/lortext#T2>;
+    ns1:textRange "(39, 52)";
+    ns1:textSpan "Frodo Baggins" .
+
+&lt;http://yorkhci.org/chartex-schema/lortext#T5> a ns1:Document;
+    ns1:refers_to &lt;http://yorkhci.org/chartex-schema/lortext#T2>;
+    ns1:textData """lortext
+Bilbo Baggins dedit Bag End ad Frodo Baggins consobrinum suum.
+"""^^&lt;http://www.w3.org/2001/XMLSchema#string>;
+    ns1:textRange "(0, 7)";
+    ns1:textSpan "lortext" .
+
+&lt;http://yorkhci.org/chartex-schema/lortext#T1> a ns1:Person;
+    ns1:is_grantor_in &lt;http://yorkhci.org/chartex-schema/lortext#T2>;
+    ns1:textRange "(8, 21)";
+    ns1:textSpan "Bilbo Baggins" .
+
+&lt;http://yorkhci.org/chartex-schema/lortext#T2> a ns1:Transaction;
+    ns1:textRange "(22, 27)";
+    ns1:textSpan "dedit" .
+<filedelimiter>lortext
+Bilbo Baggins dedit Bag End ad Frodo Baggins consobrinum suum.

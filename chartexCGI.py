@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*- #
 
 
-from rdflib import ConjunctiveGraph, Graph, Namespace, Literal, RDF, RDFS, OWL, XSD, plugin, query
+from rdflib import ConjunctiveGraph, Graph, Namespace, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
+from rdflib.resource import Resource
 from subprocess import Popen, PIPE
 import pygraphviz as pgv
+from pprint import pprint
+import traceback
 import re
 import os
 import sys
@@ -69,9 +72,15 @@ def ann2rdf(g, f_path):
         if line[0] == 'R':
             key, prop, a1, a2, note = re.split('\s+', line, maxsplit=4)
             g.add((this[a1.split(':')[1]], chartex[prop], this[a2.split(':')[1]]))
-        if line[0] == "*":
-            key, prop, a1, a2, note = re.split('\s+', line, maxsplit=4)
-            g.add((this[a1], chartex[prop], this[a2]))
+        if line[0] == "*": 
+            key, prop, nodes_string = line.split(None, 2)
+            l = nodes_string.split()
+            try:
+                while l:
+                    g.add( (this[l.pop()], chartex[prop], this[l[-1]]) )
+            except IndexError:
+                continue
+            
         if line[0] == "A": # for example: A2	Implied-SiteRef T17 genitive
             id, attr, ent, val = re.split('\s+', line, maxsplit=3)
             g.add((this[ent], RDF.type, chartex.ImpliedSiteRef))
@@ -106,7 +115,7 @@ def smush_sameas(g, f_path):
             g.remove((this[id],None,None))
 
 def makedot(rdfgraph):
-    dg = pgv.AGraph(strict=False, directed=True, ranksep="2.5", fontname="Times-Roman")
+    dg = pgv.AGraph(directed=True, fontname="Times-Roman")
     edges = {}
 
     for s in rdfgraph.subjects(): ## s will be the entity nodes. For each node key we'll wind up w/a list like this as value:
@@ -126,10 +135,10 @@ def makedot(rdfgraph):
             
             ## remaining object, predicate tuples appended to edges[x]
             elif o not in edges[s]:
-                edges[s].append((o, p.split('#')[1]))
+                edges[s].append((o, p))
         
         ## add the output nodes
-        dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id="node" + str(s).replace('#',''))
+        dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id=str(s), tooltip = s)
     
     gdoc_node = rdfgraph.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
     
@@ -142,12 +151,14 @@ def makedot(rdfgraph):
     ## generate the edges from the edges dict, rather than from the rdflib graph
     for sub in edges:
         for ob in edges[sub][1:]:
-            dg.add_edge(sub, ob[0], taillabel = ob[1], labelfontsize="11.0", labelangle=0, labeldistance=6, labelfloat=False)
+            dg.add_edge(sub, ob[0], label = ob[1].split('#')[1], labelfontsize="11.0", labelangle=0, labeldistance=6, labelfloat=False, tooltip = sub + ', ' + ob[1] + ', ' + ob[0])
+    ## If we store the whole triple in the svg edge label tooltip, we can retrieve it from the client-side svg like this:
+    ## document.getElementById("edge2").getElementsByTagName('a')[0].getAttribute('xlink:title').split(', ')
     
     ## identify the maximum in-degree node, and make that the root of the digraph
     ## this makes for a less cluttered layout via the twopi algorithm
     maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
-    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="3 equally", overlap=False)
+    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="3.0", overlap=False)
     
     
     ##print json.dumps(edges, indent=4)
@@ -157,14 +168,17 @@ def generateCorpusGraph(ann_files_dir, serialization_format):
     g = ConjunctiveGraph()
     g.bind("chartex", "http://yorkhci.org/chartex-schema#")
     g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
-
+    
     for f in os.listdir(ann_files_dir):
         annotationFile = ''
         if f.endswith('.ann'):
             f_path = os.path.join(ann_files_dir,f)
             ann2rdf(g, f_path)
+    
+    if serialization_format:
+        return g.serialize(format=serialization_format)
+    else: return g
         
-    return g.serialize(format=serialization_format)
 
 def generateDocumentGraph(filepath, serialization_format):
     g = Graph()
@@ -174,7 +188,7 @@ def generateDocumentGraph(filepath, serialization_format):
     ann2rdf(g, filepath)
     smush_sameas(g, filepath)
     
-    textData = g.objects(None, chartex.textData).next()
+    textData = g.objects(None, chartex.textData).next().encode('utf-8')
     dgsvg = makedot(g).draw(format='svg', prog='twopi')
     rdf = g.serialize(format=serialization_format).replace('<',"&lt;")
     
@@ -280,6 +294,13 @@ def sparql(deedsN3, query):
     result = testgraph.query(query)
     print result.serialize(format='n3')
 
+def ADSSparql(query, result_format=None):
+    result_format = result_format if result_format else "application/json"
+    
+    r = requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex", headers={'Accept': result_format}, params={"query":query})
+    
+    return r.content, r.request.__dict__, r.__dict__
+
 def addTriples(dir):
     graph = generateCorpusGraph(dir, 'turtle')
     
@@ -288,8 +309,128 @@ def addTriples(dir):
 def deleteTriples():
     return requests.delete("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", auth=ADS_AUTH)
     
-def getTriples():
-    return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Accept': 'text/rdf+n3'})
+def getTriples(format=None):
+    
+    ser_format = format if format else "application/rdf+xml"
+    return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Accept': ser_format}, auth=ADS_AUTH)
+
+def getNumberOfTriples():
+    return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/size", headers={'Accept': 'text/plain'}, auth=ADS_AUTH)
+    
+def uploadFrodoGraph():
+    graph = ConjunctiveGraph()
+    frodo = """
+        @prefix ns1: <http://yorkhci.org/chartex-schema#> .
+        
+        <http://example.org/lortext#T3> a ns1:Site;
+            ns1:is_parcel_in <http://example.org/lortext#T2>;
+            ns1:textRange "(28, 35)";
+            ns1:textSpan "Bag End"^^<http://www.w3.org/2001/XMLSchema#string> .
+        
+        <http://example.org/lortext#T4> a ns1:Person;
+            ns1:is_familial_relation_to <http://example.org/lortext#T1>;
+            ns1:is_recipient_in <http://example.org/lortext#T2>;
+            ns1:textRange "(39, 52)";
+            ns1:textSpan "Frodo Baggins"^^<http://www.w3.org/2001/XMLSchema#string> .
+        
+        <http://example.org/lortext#T5> a ns1:Document;
+            ns1:refers_to <http://example.org/lortext#T2>;
+            ns1:textData "lortext Bilbo Baggins dedit Bag End ad Frodo Baggins consobrinum suum."^^<http://www.w3.org/2001/XMLSchema#string>;
+            ns1:textRange "(0, 7)";
+            ns1:textSpan "lortext" .
+        
+        <http://example.org/lortext#T1> a ns1:Person;
+            ns1:is_grantor_in <http://example.org/lortext#T2>;
+            ns1:textRange "(8, 21)";
+            ns1:textSpan "Bilbo Baggins"^^<http://www.w3.org/2001/XMLSchema#string> .
+        
+        <http://example.org/lortext#T2> a ns1:Transaction;
+            ns1:textRange "(22, 27)";
+            ns1:textSpan "dedit"^^<http://www.w3.org/2001/XMLSchema#string> .    
+    """
+    
+    graph.parse(data=frodo, format="n3").serialize(format='nt')
+    
+    graph_out = graph.serialize(format='nt')
+    
+    r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph_out, auth=ADS_AUTH, params={"commit":200})    
+    return r
+
+def graphFrodo():
+    g = ConjunctiveGraph()
+
+def addStatements():
+    graph = Graph()
+    
+    return requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph, auth=ADS_AUTH, params={"commit":200})
+
+
+def generateSimonGraph():
+    g = ConjunctiveGraph()
+    ex = Namespace('http://example/corpus/vicars_floral#')
+    
+    triples = (
+        (ex.T7, RDF.type, ex.Person),
+        (ex.T7, ex.has_spouse, ex.sally),
+        (ex.T7, RDFS.label, Literal('Simon', datatype=XSD.string))
+    )
+    graph = Graph(g.store, "c1")
+    for t in triples: graph.add(t)
+    
+    triples = (
+        (ex.T14, RDF.type, ex.Person),
+        (ex.T14, ex.has_spouse, ex.sarah),
+        (ex.T14, RDFS.label, Literal('Simon', datatype=XSD.string))
+    )
+    graph = Graph(g.store, "c2")
+    for t in triples: graph.add(t)
+    
+    return g
+
+def printMe(r):
+    resp = r.__dict__
+    req = r.request.__dict__
+    debug = {"request": req, "response": resp}
+    pprint(debug)
+  
+def NG1():
+    g = generateSimonGraph()
+        
+    c1 = g.get_context('c1').serialize(format='nt')
+    c2 = g.get_context('c2').serialize(format='nt')
+    
+    
+    r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=c1, auth=ADS_AUTH, params={"context":"<http://example/corpus/vicars_floral/VF-111>"})
+    print "we've loaded %s triples" % r.content
+    
+    r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=c2, auth=ADS_AUTH, params={"context":"<http://example/corpus/vicars_floral/VF-112>"})
+    print "we've loaded %s triples" % r.content
+
+    return "ta-da!"
+    
+def sparqlSimon():
+    qry = """
+    PREFIX vf: <http://example/corpus/vicars_floral#> 
+    CONSTRUCT  { ?s ?p ?o }
+    FROM <http://example/corpus/vicars_floral/VF-112>
+    WHERE   { ?s ?p ?o }
+    """
+    
+    return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex", headers={'Content-Type': 'application/json', 'Accept': 'application/rdf+xml'}, auth=ADS_AUTH, params={"query":qry})
+
+def uploadArbitraryTriples(graph):
+    r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph.serialize(format='turtle'), auth=ADS_AUTH)
+    return r
+
+def utilityFunction():
+    requests.delete("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/namespaces", auth=ADS_AUTH)
+
+    requests.put("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/namespaces/vf", auth=ADS_AUTH, headers={'Accept': 'application/json', "Content-Type": "text/plain"}, data="http://example/corpus/vicars_floral#")
+    
+    return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/namespaces", auth=ADS_AUTH, headers={'Accept': 'application/json', "Content-Type": "application/json"}, hooks={'response': printMe})
+
+
+
 
 form = cgi.FieldStorage()
 
@@ -323,7 +464,25 @@ if __name__ == "__main__":
             
             print sparql(deedsN3, form["sparqlQuery"].value)
             
-        if "serialDir" in form:
+        
+        if "ADSsparqlQuery" in form:
+            print "Content-Type: application/json\n"
+            result = ADSSparql(form["ADSsparqlQuery"].value, form["ADSresult_format"].value)
+            print result[0] + "\n\n\nHTTP debug data below\n~~~~~~~~~~~~~~~~~~~~~"
+            pprint({"REQUEST_DATA": result[1]})
+            print "\n\n"
+            pprint({"RESPONSE_DATA": result[2]})
+
+        if "ADSUpload" in form:
+            sd = form["serialDir"].value
+            outgoingGraph = generateCorpusGraph(sd, serialization_format=None)
+            r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=outgoingGraph.serialize(format='turtle'), auth=ADS_AUTH)
+            
+            print "Content-Type: text/plain\n\n"
+            print "We've added %s statements to our ADS triple store" % r.content
+           
+        
+        elif "serialDir" in form:
             sd = form["serialDir"].value
             sf = form["serialFormat"].value
             if not os.path.isdir(sd):
@@ -349,7 +508,152 @@ if __name__ == "__main__":
             
             print "deleted all the triples (%s) from our ADS triple store" % deleteTriples().content
         
+        if 'namedGraph1' in form:
+            print "Content-Type: text/plain\n"
+            
+            print NG1()
+        
+        if 'namedGraph2' in form:
+            print "Content-Type: text/plain\n"
+            
+            print getTriples().content
+            print "there are %s statements in our triplestore" % getNumberOfTriples().content
+        
+        if 'namedGraph3' in form:
+            print "Content-Type: text/plain\n"
+            
+            print sparqlSimon().content
+         
+        if 'utilButton' in form:
+            print "Content-Type: text/plain\n"
+            
+            print utilityFunction().content
+         
+        if 'tripleSeq' in form:
+            print "Content-Type: text/plain\n"
+            
+            print AnnotationGraph()
+            
+        if 'upload_frodo' in form:
+            print "Content-Type: text/plain\n"
+            r = uploadFrodoGraph()
+            print "We've successfuly uploaded %s triples to our ADS triplestore" % r.content
+            print "~~~~~~~~~~~~\n~~~~~~~~~~~~"
+            printMe(r)
+            
+        if 'viz_arbitrary_triples' in form:
+            ### This really needs to be made more robust so that it can graph whatever triples we throw at it.
+            ### currently click on nodes fails in the absense of """ + '<filedelimiter>' + textData"""
+            ### this only works for individual documents (see generateDocumentGraph,
+            ### textData = g.objects(None, chartex.textData).next().encode('utf-8') )
+            ### where there can be expected to be only one textData object
+            
+            print "Content-Type: text/plain\n"
+            
+            graph_in = getTriples().content
+            cg = ConjunctiveGraph()
+            cg.parse(data = graph_in)
+            dgsvg = makedot(cg).draw(format='svg', prog='twopi')
+            rdf = cg.serialize()
+            print dgsvg + '<filedelimiter>' + rdf
+            
+        if 'add_statement' in form:
+            #t = form['add_statement'].value.split(',')
+            t = (URIRef('http://example.org/lortext#T4'), URIRef('http://yorkhci.org/chartex-schema#is_son_of'), URIRef("http://example.org/lortext#drogo_baggins"))
+            chartex = Namespace("http://yorkhci.org/chartex-schema#")
+            g = Graph()
+            g.add((URIRef("http://example.org/lortext#drogo_baggins"), RDF.type, chartex.Person))
+            g.add((URIRef("http://example.org/lortext#drogo_baggins"), chartex.textSpan, Literal("Drogo Baggins", datatype=XSD.string)))
+            g.add(t)
+                
+            print "Content-Type: text/plain\n"
+            r = uploadArbitraryTriples(g)
+            print "We've successfuly uploaded %s triples to our ADS triplestore" % r.content
+            print "~~~~~~~~~~~~\n~~~~~~~~~~~~"
+            printMe(r)     
+                        
+        if 'items' in form: ## NB: so far only geared to triples, not atomic entities.
+            annot_items = form['items'].value
+            annot_graph_name = form['gname'].value
+            aodict = json.loads(annot_items)
+            triple_list = []
+            g = ConjunctiveGraph()
+            for k in aodict.keys():
+                s,p,o = k.split(',')
+                triple_list.append((URIRef(s),URIRef(p),URIRef(o)))
+                
+            graph = Graph(g.store, URIRef(annot_graph_name))
+            for t in triple_list: graph.add(t)
+            
+            ## It looks like we don't need to create a ConjunctiveGraph for this. It's still not clear to me how the RDFlib treats named graphs as opposed to how AG implements 'contexts.'
+            
+            r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=g.serialize(format='nt'), auth=ADS_AUTH, params={"context": annot_graph_name})
+            
+            print "Content-Type: text/plain\n"
+            
+            print "we've loaded %s triples" % r.content 
+            
+        if 'annotationURI' in form:
+            aURI = form['annotationURI'].value
+            tURI = form['targetURI'].value
+            bURI = form['bodyURI'].value
+            cnt_text = form['contentText'].value
+            
+            g = Graph()
+            OA = Namespace("http://www.w3.org/ns/oa#")
+            dctypes = Namespace("http://purl.org/dc/dcmitype/")
+            cnt = Namespace("http://www.w3.org/2011/content#")
+            
+            anno_triples = [
+            (URIRef(aURI), RDF.type, OA.Annotation),
+            (URIRef(aURI), OA.hasTarget, URIRef(tURI)),
+            (URIRef(aURI), OA.hasBody, URIRef(bURI)),
+            (URIRef(bURI), RDF.type, dctypes.Text),
+            (URIRef(bURI), RDF.type, cnt.ContentAsText),
+            (URIRef(bURI), cnt.text, Literal(cnt_text, datatype=XSD.string)),            
+            ]
+            
+            for t in anno_triples: g.add(t)
+            
+            r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=g.serialize(format='nt'), auth=ADS_AUTH, params={"context": "<http://chartex.org/user_name/graph/graphID/frodo#annotation1>"})
+            
+            print "Content-Type: text/plain\n"
+            
+            print "we've loaded %s triples" % r.content, r.request.__dict__, r.__dict__
+
+        if 'dumpTriples' in form:
+            sf = form["serialFormat"].value
+            print "Content-Type: text/plain\n"
+            print getTriples(format=sf).content
+            
+        if 'SPOGretrieval' in form:
+            
+            p = {
+            'subj':form.getvalue('s', None),
+            'pred':form.getvalue('p', None),
+            'obj':form.getvalue('o', None),
+            'context':form.getvalue('g', None)
+            }
+            
+            rf = form.getvalue('serialFormat', 'application/rdf+xml')
+            
+            r = requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Accept': rf}, params=p)
+
+            print "Content-Type: text/plain\n"
+            print r.content
+            
+        if 'get_contexts' in form:
+            r = requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/contexts", headers={'Accept': 'application/json'})        
+            print "Content-Type: text/plain\n"
+            print r.content
+        
+
+        if not form:
+            print "Content-Type: text/plain\n"
+            
+            print "Show me your parameters and I'll show you my triples"
+            
     except StandardError as e:
         print "Content-Type: text/html\n"
         
-        print e
+        traceback.print_exc()

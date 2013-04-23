@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 
-from rdflib import ConjunctiveGraph, Graph, Namespace, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
+from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
 from rdflib.resource import Resource
 from subprocess import Popen, PIPE
 import pygraphviz as pgv
@@ -28,8 +28,8 @@ plugin.register(
   "rdfextras.sparql.query", "SPARQLQueryResult")
 
 
-chartex = Namespace("http://yorkhci.org/chartex-schema#")
-chartexDoc = Namespace("http://yorkhci.org/chartex-schema/")
+chartex = Namespace("http://chartex.org/chartex-schema#")
+chartexDoc = Namespace("http://chartex.org/chartex-schema/")
 crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
 node_colors = {
     'Actor': '#0000ff',
@@ -48,7 +48,8 @@ node_colors = {
     'Apparatus':'#00aa00'
     }
 
-def ann2rdf(g, f_path):
+def ann2rdf(f_path):
+    g = Graph()
     x_path, ext = os.path.splitext(f_path)
     charter_id = os.path.basename(x_path)
     doc_path = x_path + '.txt'
@@ -56,7 +57,7 @@ def ann2rdf(g, f_path):
     annfile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
     doctext = open(doc_path, "r").read().replace('•','.')
 
-    this = Namespace("http://yorkhci.org/chartex-schema/"+ charter_id + "#")
+    this = Namespace("http://chartex.org/document/"+ charter_id + "#")
     
     implied_siterefs = []
         
@@ -85,34 +86,69 @@ def ann2rdf(g, f_path):
             id, attr, ent, val = re.split('\s+', line, maxsplit=3)
             g.add((this[ent], RDF.type, chartex.ImpliedSiteRef))
             g.add((this[ent], chartex.caseAttr, chartex[val]))
-
-def smush_sameas(g, f_path):
-    """ concatenate entity ids of entities marked same_as,
-    use the result as the subject in aggregated statements,
-    then delete the original entity statements from the graph.
-    """
-    x_path, ext = os.path.splitext(f_path)
-    charter_id = os.path.basename(x_path)
-    this = Namespace("http://yorkhci.org/chartex-schema/"+ charter_id + "#")
-
-    annfile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
-    sameas = [re.split('\s+', x)[2:-1] for x in annfile if 'same_as' in x]
-    for idlist in sameas:
-        new_sub = ''.join(idlist)
-        
-        for id in idlist:
-            # add new aggregate subject, and add p,o from the old subjects.
-            for p,o in g.predicate_objects(this[id]):
-                g.add((this[new_sub],p,o))
-                
-            # remove triples pointing to old individual subjects,
-            # replace w/triples pointing to new aggregate subject
-            for s,p in g.subject_predicates(this[id]):
-                g.remove((s,p,this[id]))
-                g.add((s,p,this[new_sub]))
             
-            # remove old individual subjects
-            g.remove((this[id],None,None))
+    return g
+
+# def smush_sameas(g, f_path):
+#     """ concatenate entity ids of entities marked same_as,
+#     use the result as the subject in aggregated statements,
+#     then delete the original entity statements from the graph.
+#     """
+#     x_path, ext = os.path.splitext(f_path)
+#     charter_id = os.path.basename(x_path)
+#     this = Namespace("http://yorkhci.org/chartex-schema/"+ charter_id + "#")
+# 
+#     annfile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
+#     sameas = [re.split('\s+', x)[2:-1] for x in annfile if 'same_as' in x]
+#     for idlist in sameas:
+#         new_sub = ''.join(idlist)
+#         
+#         for id in idlist:
+#             # add new aggregate subject, and add p,o from the old subjects.
+#             for p,o in g.predicate_objects(this[id]):
+#                 g.add((this[new_sub],p,o))
+#                 
+#             # remove triples pointing to old individual subjects,
+#             # replace w/triples pointing to new aggregate subject
+#             for s,p in g.subject_predicates(this[id]):
+#                 g.remove((s,p,this[id]))
+#                 g.add((s,p,this[new_sub]))
+#             
+#             # remove old individual subjects
+#             g.remove((this[id],None,None))
+#             
+#     return g
+
+def find_roots(graph,prop,roots=None): 
+    """
+    Ripped off from rdflib-extras. Much cleverer than the listcomp I had, use this instead
+    """
+    non_roots=set()
+    if roots==None: roots=set()
+    for x,y in graph.subject_objects(prop): 
+        non_roots.add(x)
+        if x in roots: roots.remove(x)
+        if y not in non_roots: 
+            roots.add(y)
+    return roots
+
+def smushSameAs(graph):
+    firsts = find_roots(graph,chartex.same_as)
+    smush_lists = [list(graph.transitive_subjects(chartex.same_as,x)) for x in firsts]
+    for idlist in smush_lists:
+        new_frag = ''.join([x.rpartition('#')[-1] for x in idlist])
+        new_sub = x.defrag() + '#' + new_frag
+        for id in idlist:
+            for p,o in graph.predicate_objects(id):
+                if p != chartex.same_as: graph.add((URIRef(new_sub),p,o))
+            
+            for s,p in graph.subject_predicates(id):
+                graph.remove((s,p,id))
+                graph.add((s,p,URIRef(new_sub)))
+                
+            graph.remove((id,None,None))
+    return graph
+
 
 def makedot(rdfgraph):
     dg = pgv.AGraph(directed=True, fontname="Times-Roman")
@@ -140,13 +176,17 @@ def makedot(rdfgraph):
         ## add the output nodes
         dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id=str(s), tooltip = s)
     
-    gdoc_node = rdfgraph.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
-    
-    dgdoc_node = dg.get_node(gdoc_node)
-    dgdoc_node.attr['label'] = 'Document: ' + '\\n'.join(x for x in rdfgraph.objects(gdoc_node, chartex.textSpan)).replace('\n','')
-    dgdoc_node.attr['fontcolor'] = "white"
-    dgdoc_node.attr['fontsize'] = "18.0"
-    dgdoc_node.attr['id'] = "doc_node"
+    try:
+        gdoc_node = rdfgraph.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
+        
+        dgdoc_node = dg.get_node(gdoc_node)
+        dgdoc_node.attr['label'] = 'Document: ' + '\\n'.join(x for x in rdfgraph.objects(gdoc_node, chartex.textSpan)).replace('\n','')
+        dgdoc_node.attr['fontcolor'] = "white"
+        dgdoc_node.attr['fontsize'] = "18.0"
+        dgdoc_node.attr['id'] = "doc_node"
+    except StopIteration:
+        # do something smarter than this for the case where there is no "Document" element
+        pass
     
     ## generate the edges from the edges dict, rather than from the rdflib graph
     for sub in edges:
@@ -164,35 +204,48 @@ def makedot(rdfgraph):
     ##print json.dumps(edges, indent=4)
     return dg
 
-def generateCorpusGraph(ann_files_dir, serialization_format):
-    g = ConjunctiveGraph()
+def visualizeDocumentGraph(filepath):
+    """To support svgoutput FOR INDIVIDUAL DOCUMENT GRAPHS ONLY"""
+    g = ann2rdf(filepath)
     g.bind("chartex", "http://yorkhci.org/chartex-schema#")
+    g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
+    smushSameAs(g)
+    textData = g.objects(None, chartex.textData).next().encode('utf-8')
+    dgsvg = makedot(g).draw(format='svg', prog='twopi')
+    rdf = g.serialize(format='n3').replace('<',"&lt;")
+    
+    return dgsvg + '<filedelimiter>' + rdf + '<filedelimiter>' + textData
+    
+def generateDocumentGraph(filepath, serialization_format=None):
+    g = ann2rdf(filepath)
+    g.bind("chartex", "http://yorkhci.org/chartex-schema#")
+    g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")    
+    smushSameAs(g)    
+    if serialization_format: print g.serialize(format=serialization_format)
+    else: return g
+
+
+def generateCorpusGraph(ann_files_dir, serialization_format):
+    """Remember, generateDocumentGraph does same_as smushing at the individual document level"""
+    
+    g = ConjunctiveGraph()
+    g.bind("chartex", "http://chartex.org/chartex-schema#")
     g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
     
     for f in os.listdir(ann_files_dir):
         annotationFile = ''
         if f.endswith('.ann'):
+            docid = os.path.splitext(f)[0]
             f_path = os.path.join(ann_files_dir,f)
-            ann2rdf(g, f_path)
+            ctxt = URIRef("http://chartex.org/document-graphid/" + docid)
+            graph = Graph(g.store, ctxt)
+            for t in generateDocumentGraph(f_path).triples((None,None,None)):
+                graph.add(t)
     
     if serialization_format:
         return g.serialize(format=serialization_format)
     else: return g
         
-
-def generateDocumentGraph(filepath, serialization_format):
-    g = Graph()
-    g.bind("chartex", "http://yorkhci.org/chartex-schema#")
-    g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
-    
-    ann2rdf(g, filepath)
-    smush_sameas(g, filepath)
-    
-    textData = g.objects(None, chartex.textData).next().encode('utf-8')
-    dgsvg = makedot(g).draw(format='svg', prog='twopi')
-    rdf = g.serialize(format=serialization_format).replace('<',"&lt;")
-    
-    return dgsvg + '<filedelimiter>' + rdf + '<filedelimiter>' + textData
 
 def lev(seq1, seq2):
     """
@@ -320,7 +373,7 @@ def getNumberOfTriples():
 def uploadFrodoGraph():
     graph = ConjunctiveGraph()
     frodo = """
-        @prefix ns1: <http://yorkhci.org/chartex-schema#> .
+        @prefix ns1: <http://chartex.org/chartex-schema#> .
         
         <http://example.org/lortext#T3> a ns1:Site;
             ns1:is_parcel_in <http://example.org/lortext#T2>;
@@ -363,7 +416,6 @@ def addStatements():
     graph = Graph()
     
     return requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph, auth=ADS_AUTH, params={"commit":200})
-
 
 def generateSimonGraph():
     g = ConjunctiveGraph()
@@ -429,8 +481,8 @@ def utilityFunction():
     
     return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/namespaces", auth=ADS_AUTH, headers={'Accept': 'application/json', "Content-Type": "application/json"}, hooks={'response': printMe})
 
-
-
+# tstg = generateCorpusGraph("/Users/jjc/Sites/Ann2DotRdf/chartex/deeds", None)
+# print list(tstg.contexts())
 
 form = cgi.FieldStorage()
 
@@ -438,7 +490,7 @@ if __name__ == "__main__":
     try:
         if "fp" in form:
             print "Content-Type: text/plain\n"
-            print generateDocumentGraph(form["fp"].value, 'n3')
+            print visualizeDocumentGraph(form["fp"].value)
         
         if "editDistance" in form:
             print "Content-Type: application/json\n"
@@ -476,11 +528,22 @@ if __name__ == "__main__":
         if "ADSUpload" in form:
             sd = form["serialDir"].value
             outgoingGraph = generateCorpusGraph(sd, serialization_format=None)
-            r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=outgoingGraph.serialize(format='turtle'), auth=ADS_AUTH)
+            for c in outgoingGraph.contexts():
+                r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=c.serialize(format='turtle'), auth=ADS_AUTH, params={"context":"<" + c.identifier + ">", "commit":200})
             
             print "Content-Type: text/plain\n\n"
             print "We've added %s statements to our ADS triple store" % r.content
-           
+
+
+
+#         if "ADSUpload" in form:
+#             sd = form["serialDir"].value
+#             outgoingGraph = generateCorpusGraph(sd, serialization_format=None)
+#             r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=outgoingGraph.serialize(format='turtle'), auth=ADS_AUTH)
+#             
+#             print "Content-Type: text/plain\n\n"
+#             print "We've added %s statements to our ADS triple store" % r.content
+#            
         
         elif "serialDir" in form:
             sd = form["serialDir"].value
@@ -594,6 +657,8 @@ if __name__ == "__main__":
             print "we've loaded %s triples" % r.content 
             
         if 'annotationURI' in form:
+            """Very narrowly construed example. A more fully realized annotation function needs to be A. broken out of this __main__ conditional, and B. Much more functionality than just a text comment. Come to think of it, annotation will have to be its own module"""
+            
             aURI = form['annotationURI'].value
             tURI = form['targetURI'].value
             bURI = form['bodyURI'].value
@@ -656,4 +721,4 @@ if __name__ == "__main__":
     except StandardError as e:
         print "Content-Type: text/html\n"
         
-        traceback.print_exc()
+        print e

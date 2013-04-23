@@ -472,7 +472,7 @@ http://example/corpus/vicars_floral/VF-112 = (
                 
                 <dt>Run an arbitrary SPARQL query against the triples in the ADS store</dt>
                 <dd><p>The SPARQL interface below will send a query as a simple GET request to our ADS HTTP interface. There is no content negotiation apart from choosing the format to display results. Such queries require no authentication.</p>
-                <p>The query below, baked in by default, is one that assumes the presence in the triple store of our Deeds corpus modeled as blank nodes (see above). This query illustrates that with such a model we can confine our query to within the context of a named graph.</p>
+                <p>The query below, baked in by default, is one that assumes the presence in the triple store of our Deeds corpus. This query illustrates that with such a model we can confine our query to within the context of a named graph.</p>
                 <p>The query can be edited or replaced at will.</p>
                 <form id="ADSsparqlForm" class="nofloat searchform" method="post" action="">
                     <table>
@@ -481,11 +481,11 @@ http://example/corpus/vicars_floral/VF-112 = (
                             <td>
     <textarea id="ADSsparqlQuery" rows="16" cols="80">
     PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
-    PREFIX chartex: &lt;http://yorkhci.org/chartex-schema#&gt;
+    PREFIX chartex: &lt;http://chartex.org/chartex-schema#&gt;
     PREFIX xsd:&lt;http://www.w3.org/2001/XMLSchema#&gt;
     CONSTRUCT { ?s ?p ?o;
                     chartex:hasDocText ?doctext . }
-    FROM &lt;http://example.com/graph/deeds-00880074&gt;
+    FROM &lt;http://chartex.org/document-graphid/deeds-00880074&gt;
     WHERE {
         ?s  rdf:type chartex:Person ;
             chartex:textSpan "Beatrix Schryve"^^xsd:string;
@@ -660,6 +660,8 @@ http://example/corpus/vicars_floral/VF-112 = (
                         <input type=reset value=Clear />
                     
                     </form>
+                </li>
+                <li>Now have a look at the triples (use 'show me the triples' below, with <code>application/trix</code> as the format). The edges in the graph that the user clicked on are now a named graph, and the 'Target' of an 'Annotation' node. The same can be done for individual nodes (Entities), but that's not implemented here.
                 </li>
             </ol>
             

@@ -944,6 +944,18 @@ $("#deleteStatements").click(function(){
         return false;    
     });
     
+
+/*************************************************************************/
+/* Nota Bene: visualize arbitrary triples won't! It depends on a server
+/side function to generate SVG. This function expects a narrow range of
+/types of graphs derived from brat annotation files. I'm not going to
+/refactor it to be more general, because there are much better client-side
+/solutions for visualization (d3 and JIT for example). Any client-side
+/visualization should get the data from the triple store and generate the
+/visualization in the browser. If there's too much data to do that
+/client-side, then the visualization will likely be useless to the user
+/anyway.
+/*************************************************************************/
     $(".viz_arbitrary_triples").click(function(){
         showLocalLoader($(this));
     

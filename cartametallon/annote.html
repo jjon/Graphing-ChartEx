@@ -1,0 +1,30 @@
+<div id="annot-dialog">
+    <h1>Confidence Metric Annotation Dialog</h1>
+    <p>The Data Mining system has made this assertion about entities in our charters: <span class="embolden">{0}</span>,<br />
+    and it has assigned a confidence metric to that assertion: <span class="embolden">{1}</span>.</p>
+    <p>In the table below you can record your evaluation of this assertion. The data you enter here will not change the Data Mining data, it will merely annotate it. These annotations can be retrieved by the DM system and integrated to improve its results.</p>
+    
+    <ul>
+    <li>The "Username" should be all lower case ascii characters. It will be used to construct a unique ID for this annotation.</li>
+    <li>If you feel that there is sufficient warrant for DMs assertion, you can record a confidence factor of 1.0. If the assertion is clearly in error, assign a factor of 0.0. If there is not sufficient warrant to make a determination, leave the default value: 'No Change'</li>
+    <li>The "Comment" field is optional and can be used to record any further observations about DM's assertion: reasons for changing the confidence metric, 'see also' notations, inspirational haiku, or what have you.</li>
+    </ul>
+    <table id="confidence-annotation-input">
+        <tr>
+            <td class='tkey'>Username: </td>
+            <td><input name="user" type="text"></td>
+        </tr>
+        <tr>
+            <td class='tkey'>Confidence: </td>
+            <td>1.0:<input name="cvalue" type="radio" value="1.0">&nbsp; 0.0:<input name="cvalue" type="radio" value="0.0">&nbsp; No Change:<input name="cvalue" type="radio" value="nochange" checked></td>
+        </tr>
+        <tr>
+            <td class='tkey'>Comment: </td>
+            <td><textarea id="annotComment" rows="9" cols="65"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: center"><button id="dothis">save this annotation to the ADS triple-store</button></td>
+        </tr>
+    </table>
+</div>

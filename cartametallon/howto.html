@@ -1,0 +1,33 @@
+<div id="howto"><h1>HOW TO CARTAMETALLON</h1>
+
+<p>The data output from Leiden's Data Mining efforts contains all the data that we've marked up in charters with the addition of <code>might_be</code> assertions about some of the entities in those charters, and a confidence metric for each such assertion. These assert that, for example, the Henry le Furbur who appears in vicars-choral-399, <code>might_be</code> the same Henry le Furbur who appears in vicars-choral-400 with a 0.9748 degree of certainty. This web application allows users to browse the charter markup data derived from the DM output and stored on the ADS AllegroGraph triple store as RDF triples. In addition, users can browse these <code>might_be</code> assertions, compare the charter texts they are based on, annotate the confidence metrics, and store those annotations on the ADS server as feedback for Leiden's DM systems.</p>
+
+<p>The beautiful and dynamic graphs drawn by the biomine tool can be very useful for visualizing the aggregate of the DM data, but historians tend to be very document-centric. This browser is similarly document-centric.</p>
+
+<h2>The Home Document:</h2>
+
+<p>When the page is first loaded, a list of the available documents will appear in the <code>document list</code>. (Currently, these are drawn from the brat installation in the VCGoodramgate, VCPetergate, and vicars-choral corpora). Clicking on one of these filenames will, after a moment, generate a graph of the data therein. This is a familiar directed graph of the data that we marked up in the charters.</p>
+
+<p>Additionally, the text of the document in question will appear in the home document text box. This box may be hidden/shown by clicking on <code>text for this document</code>. The home document text box can be resized or scrolled to see the full content.</p>
+
+<p>Certain of the nodes of this graph may be marked as empty ellipses rather than filled ones. These indicate that in addition to the basic entity data, there are <code>might_be</code> assertions associated with these entities. Clicking on any of the nodes in this graph will call up the entity data that we included in our brat markup, along with <code>might_be</code> relations if there are any for that node. Also, clicking on a node will highlight the places in the home document text box where that entity appears.</p>
+
+<h2>Entity Data Box:</h2>
+
+<p>The table at the top of the Entity Data Box contains the basic data for the entity and the relations it participates in within the home document. If the entity has <code>might_be</code> relations to entities in other documents, these will be displayed in the Confidence Data Table below.</p>
+
+<p>The confidence data table has 4 columns: the first is the entity id as defined by the DM system, the second is the DM system's "short name" for that entity, the third is the document id where that entity appears, and the last is the confidence metric, expressed as a number between 0 and 1.</p>
+
+<h2>External Document Boxes:</h2>
+
+<p>The document ids in col. 3 of the entity data box are links. Clicking on any of these links will retrieve the text of that document and display it below the text of the home document. In these text boxes, the entity in question will be highlighted in the text. You can open as many of these boxes as you like. They are all, resizeable, scrollable, and you can drag them to any place on the page that is convenient for comparison with the home document. The external document boxes may be dismissed one at a time, or they will all go away when you click a new node in the directed graph, or if you choose a new document to graph.</p>
+
+<h2>Confidence Metric Annotation: (<em>under development</em>)</h2>
+
+<p>Column 4 of the confidence data table is the confidence metric. Clicking on the button next to this number will bring up the Annotation Dialog (currently under development). This dialog will allow you to choose a username, revise the confidence metric up or down, and supply a comment on your decision.</p>
+
+<p>In the example of Henry le Furbur in vc399: if you find sufficient warrant for the assertion that the Henry le Furbur who appears in vicars-choral-399, <code>might_be</code> the same Henry le Furbur who appears in vicars-choral-400 with a 0.9748 degree of certainty, you can revise the confidence metric to 1.0. If you find that there is no warrant for that assertion, you can revise the confidence metric to 0.0. And in the comment text box you can record any notes about your evaluation.</p>
+
+<p>This annotation will not change Leiden's DM data, it merely annotates it. The annotation will be stored on The ADS triple store associated with a username of your choosing (ascii, lowercase, no spaces). Leiden can then retrieve all of the annotations on their confidence data as feedback data for further processing.</p>
+
+</div>

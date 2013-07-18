@@ -1,0 +1,299 @@
+body {font-size: 11pt}
+h2, h3 {border-top: 6px solid #aaa; margin-top: 16px; padding-top: 6px}
+#intro {
+    width: 800px;
+    font-size: 120%
+}
+dl {}
+dt {
+    font-weight: bold; 
+    background-color: rgb(200, 206, 171); 
+    padding-left: 6px;
+    margin-top: 16px;
+    line-height: 2em;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
+dd {padding-top: .5em}
+
+.sanserif td {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; padding: 5px}
+
+#ftcontainer {
+    font-size: 9pt;
+    width: 200px;
+    float: left;
+    clear: left;
+    margin-left: 30px;
+}
+#entity_data_display {
+    display: none;
+    background-color: #F5F5DC;
+    position: absolute;
+    cursor: move;
+    border: double #999;
+    height: 400px;
+    /* resize: both; */
+}
+
+#entity_data {
+    padding: 16px;
+    text-align: justify;
+    font-size: 9pt;
+    /* width: 90% */}
+
+ 
+#annot-dialog {
+    background-color: #fec;
+    color: black;
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 9pt;
+    padding: 0 9px 30px 9px;
+    width: 98%;
+    height:90%;
+}
+ 
+#confidence-annotation-input {
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+.tkey {
+    border-top: 1px solid #600; 
+    border-right: 4px solid #600; 
+    text-align: right;
+    padding: 0 9;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.embolden {font-size: 120%; font-weight: bold;}
+
+.exdoc {
+    width: 400px;
+    height: 260px;
+    position: absolute;
+    border: double #600;
+    padding: 9px;
+    resize: both;
+    cursor: move;
+    overflow: auto;
+    background-color: rgb(255, 238, 204);
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+h1 {
+    font-size: 1.5em; 
+    background-color: #b96; 
+    border-radius: 4px; 
+    -webkit-border-radius: 4px;
+    padding-left: .5em
+}
+
+#howto {
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 10pt;
+    padding: 16px;
+}
+svg {
+    cursor: move;
+    border: dotted #aaa
+}
+
+#databox-wrap {
+    display: none;
+    background-color: #F5F5DC;
+    position: absolute;
+    text-align: center;
+    /*width: 400px;*/
+    border: double #999;
+    max-height: 400px;
+}
+
+#graphed-charter-text {
+    background-color: #fff;
+    resize: both;
+    float: left;
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 9pt;
+    height: 260;
+    border: double #600;
+    padding: 6px;
+    display: block;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.msg {
+    font-family: verdana, helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.node, .edge {
+    cursor: pointer;
+}
+
+.doc-highlight {
+    background-color: #f00;
+}
+
+.graph-button {
+    width: 200px;
+    float: left;
+    margin: 0 0 9px 3px
+}
+
+#dotimg {
+    float:left;
+    margin-left: 280px;
+    width: 80%;
+    height: 100%;
+    border: double #600;
+    overflow: scroll
+}
+
+.block-toggle {
+    float: left;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+#graph { width: 800px }
+
+#rdfout { 
+    clear: left;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Monaco, Verdana, Arial, Helvetica, sans-serif;
+}
+
+#modalsink {display: none}
+#modalsink pre {
+    font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt;
+    height: 80%;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+#simplemodal-overlay {background-color:#986;}
+
+#simplemodal-container {
+    color: #fff; 
+    background-color: #222; 
+    border:6px solid #888; 
+    padding:12px;
+}
+
+#simplemodal-container a.modalCloseImg {
+	background:url(../images/close.png) no-repeat; /* adjust url as required */
+	width:16px;
+	height:16px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-5px;
+	left:-5px;
+	cursor:pointer;
+}
+
+#localLoader {
+    position: fixed;
+    display: none;
+    top: 30%;
+    left: 40%;
+    width: 100px;
+    padding: 60;
+    background-color: #123;
+    opacity: .8;
+    border: double #600;
+    z-index: 2000;
+}
+
+
+#sparqlForm {width: 98%}
+pre, code {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt;}
+textarea {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;
+font-size: 10pt;}
+
+.jqueryFileTree {
+    padding: 0 0 0 24;
+}
+
+#searchsort {width: 80%; margin-left: auto; margin-right: auto}
+
+#searchAndResult {margin-left: 10px; float: left; padding: 0px 10px 60px 10px}
+
+.match-highlight {background-color: #ff9500;}
+
+#toggleSearch {
+    font-size: 24pt;
+    margin: 0 0 0 16px;
+    float: left;
+}
+
+.nofloat {float: none !important}
+.searchform {float: left; background-color: rgb(200, 206, 171); border: 3px double #600;}
+.ctrl-box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 260px;
+    border: 1px solid #008;
+    padding: 10 0 10 16;
+    background-color: rgb(200, 206, 171);
+}
+
+.toggle-img {padding-right: 4px}
+
+#tabledisplay {/*float: left*/}
+
+.searchform td {font-size: 9pt}
+
+.tkey {
+    border-top: 1px solid #600; 
+    border-right: 4px solid #600; 
+    text-align: right;
+    padding: 0 9;
+    white-space: nowrap;
+    font-weight: bold;
+}
+#result-div {
+    float: left; 
+    width: 230px;
+    max-height: 260px; 
+    overflow: scroll;
+    border: 3px double #600;
+}
+#result-div a {
+    color: #300;
+    text-decoration: none;
+}
+
+#result-div a:hover {
+    color: #aa0400;
+    text-decoration: none;
+}
+
+#result-table {width: 100%; line-height: .5;}
+
+.searchbox {display: none}
+.searchbox p {
+    margin: auto;
+    padding: .25em;
+}
+
+.SPOGretrieval {
+    clear: left;
+}
+
+.SPOGretrieval input[type=text] {
+    width: 500px
+}
+
+#cnt_chars {width: 100%}

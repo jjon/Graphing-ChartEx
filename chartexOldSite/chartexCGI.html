@@ -3,17 +3,21 @@
 
 <head>
 <title>Charter Excavation</title>
-<link rel="stylesheet" type="text/css" href="sorter-blue/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../sorter-blue/style.css"></link>
 <link href="chartexCGI.css" rel="stylesheet" type="text/css"></link>
-<script src="./jquery-1.7.1.min.js"></script>
-<script src="./jqueryFileTree/jqueryFileTree.js"></script>
-<script language="javascript" type="text/javascript" src="jquery.tablesorter.min.js"></script>
-<script src="./jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript"></script>
-<script src="../SVG/jquery.graphviz.js" type="text/javascript"></script>
-<script src="../commonjs/jquery.simplemodal-1.4.3.js" type="text/javascript"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.draggable.js"></script>
+<script src="../jqueryFileTree/jqueryFileTree.js"></script>
+<script language="javascript" type="text/javascript" src="../jquery.tablesorter.min.js"></script>
+<script src=".././jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript"></script>
+<script src="../../SVG/jquery.graphviz.js" type="text/javascript"></script>
+<script src="../../commonjs/jquery.simplemodal.js" type="text/javascript"></script>
 <script src="./chartexCGI.js" type="text/javascript"></script>
-<script src="./textinputs_jquery.js" type="text/javascript"></script>
-<script src="./JSON-js/json2.js" type="text/javascript"></script>
+<script src=".././textinputs_jquery.js" type="text/javascript"></script>
+<script src=".././JSON-js/json2.js" type="text/javascript"></script>
 
 <!-- 
 <script type="text/javascript">
@@ -46,13 +50,18 @@
             <li><a class="swap LODannotInterface" id="lor-lod" href="#">Use the SVG as an interface for annotation Entities and Relations.</a></li>
         </ol>
 
-        <div class="searchbox graphDocument">
+        <div class="searchbox graphDocument"  style="display: block">
             <h2>Visualize a document as a directed graph (bubbles and arrows).</h2>
             <p>Choose a corpus from the list below and at the left, then click on an annotation file. Our <i>brat</i> annotations will be rendered as a directed graph (bubbles and arrows), and below that, as an RDF/n3 graph.</p>
             
             <div id="ftcontainer"></div>
-            <a href="#" id="remove_graphs" class="graph-button"><img align="left" src="close.png"/>clear graphs</a>
-            <a name="here" href="#here" id="export_svg" class="graph-button"><img width="22" align="left" src="magnifier.png"/>toggle full-sized graph</a>
+            <div class="ctrl-box" style="float: left; clear: left">
+                <a href="#" id="remove_graphs" class="graph-button"><img align="left" src="../images/close.png"/>clear graphs</a>
+                <a name="here" href="#here" id="export_svg" class="graph-button"><img width="22" align="left" src="../images/magnifier.png"/>toggle full-sized graph</a>
+                <div class="graph-button" style="border-left: double #800; padding-left: 6px">scale graph size:<input id="sliderX" type="range" min="800" max="2400" value="800" onchange="moveSlider(this, 'x')" style="width: 90%" /></div>
+    
+                <label class="graph-button"><input class="no-smushing" type="checkbox">&nbsp;No 'same_as' smushing</input></label>
+            </div>
 
         </div>
         <div class="searchbox levSearch">
@@ -243,7 +252,7 @@ WHERE     { ?s rdf:type :Document;
             <p>Tools like <a href="http://www.w3.org/2000/10/swap/doc/cwm.html">cwm</a> and others can do some pretty sophisticated querying and inferencing across named graphs (see especially <cite><a href="http://wifo5-03.informatik.uni-mannheim.de/bizer/SWTSGuide/carroll-ISWC2004.pdf">Named Graphs, Provenance and Trust</a></cite> (Bizer, Carroll, Hayes, Stickler (2004)). It appears that rdflib can do this too. It has thoroughly developed support for quads and contexts; I just haven't yet figured out how to address them with a sparql query</p>
             
         </div>
-        <div class="searchbox serializeDir" >
+        <div class="searchbox serializeDir">
             <h2>Serialize the RDF graph of all the annotations in a single corpus.</h2> 
             <p>Use the box at the bottom to get a serialization of the RDF graph of all the Entities and Relations in a given corpus. This is the same machinery that I distributed on basecamp as a command line utility (<a href="https://universityofyork3.basecamphq.com/projects/8654407/file/145847108/ann2rdf.py">ann2rdf.py</a>). I got no response to that, so I surmised that installing the rdflib python library and running that utility at the command line was too onerous. So, I present the same thing here as a web service so that <b>A.</b> Arno and Marvin can get an idea about target formats for triples, and <b>B.</b> Chris can give some thought to RDF and LOD.</p>
             
@@ -295,9 +304,12 @@ WHERE     { ?s rdf:type :Document;
                       <option>trix</option>
                     </select></td>
                 </tr>
-                    <td colspan="2">
+                    <td>
                         <img class="loader" src="./ajax-loader.gif" />
                         <input type="submit" value="serialize" class="serializeButton" />
+                    </td>
+                    <td>
+                        <label><input class="no-smushing" type="checkbox">&nbsp;No 'same_as' smushing</input></label>
                     </td>
                 </table>
             
@@ -443,21 +455,30 @@ http://example/corpus/vicars_floral/VF-112 = (
 
                     <tr>
                         <td class="tkey">
-                            <input type="submit" value="serialize" class="serializeButton" />
+                            <input type="submit" value="only serialize, do not upload" class="serializeButton" />
                         </td>
                         <td>
-                            <input type="radio" name="graphstyle" value="chartexCGI.py" checked>chartexCGI.py</input><br>
-                            <input type="radio" name="graphstyle" value="chartexCGI_BN.py">chartexCGI_BN.py</input>
+                            <ul style="float: right; width: 60%; margin: 0px">
+
+                                <li><code>chartexCGI.py</code>: If this is selected, all the triples will have URIs, and the graph for each document will have a context name. This option will respect the "No same_as smushing" switch.</li>
+                                <li><code>chartexCGI_BN.py</code>: If this is selected, the triples will be generated as blank nodes, but the graph for each document will have a URI as a context name. This option <span style="color: #800; font-weight: bold">does not</span> respect the "No 'same_as' smushing" switch.</li>
+                        
+                            </ul>
+                            <div style="float: left; width: 30%; margin: 0px">
+                                <input type="radio" name="graphstyle" value="chartexCGI.py" checked>chartexCGI.py</input><br>
+                                <input type="radio" name="graphstyle" value="chartexCGI_BN.py">chartexCGI_BN.py</input><br>
+                                <label><input class="no-smushing" type="checkbox">&nbsp;No 'same_as' smushing</input></label>
+                            </div>
                         </td>
                     </tr>
                     <tr><td colspan=2><hr></td></tr>
                     <tr>
                         <td class="tkey">
-                            <button id="ADSUpload">ADSUpload</button>
+                            <button id="ADSUpload">serialize and upload to ADS</button>
+
                         </td>
                         <td style="font-size: 11pt; padding-left: 10px">
-                            The ADSUpload button will ignore the serialization format selected above. Triples will be added using turtle format by default, but, of course this has no bearing on the graph that is thus created.
-                            <p><span style="font-size: 120%; font-style: italic; color: #a00">Nota Bene: </span>If <code>chartexCGI_BN.py</code> is selected, the triples will be generated as blank nodes and uploaded as multiple contexts, or "Named Graphs," one for each document. These graphs can be addressed by their URI's, for example: &lt;http://example.com/graph/deeds-00880074&gt;. <p>If <code>chartexCGI.py</code> is selected, the graph will be generated as before and uploaded as a turtle serialized graph with only the default context.
+                            This button will respect the options selected above in generating the RDF. It will ignore the serialization format since it has no bearing on the graph that is created. Triples will be added to the store using turtle format by default.
                         </td>
                     </tr>
                     </table>
@@ -533,7 +554,7 @@ http://example/corpus/vicars_floral/VF-112 = (
             <li>Let's start as before by <button class="sendDelete">Deleting all the triples from our ADS store</button></li>
             <li>Supposing we have a very simple conveyance. Let's see this charter as it might be marked up in BRAT: (click to toggle) 
             <button class="toggle_element">Frodo as brat sees it</button></li>
-            <img id="brat_baggins" src="brat_baggins.png" style="display: none" />
+            <img id="brat_baggins" src="../images/brat_baggins.png" style="display: none" />
             <li>Now let's generate an RDF graph from it and display it below as 'bubbles and arrows' <button id="bagginsTest">show me</button> We've done this exactly as we have done before:
                 <ol>
                     <li>on the server side, we create an RDF graph in memory from the annotation data,</li>
@@ -559,7 +580,7 @@ http://example/corpus/vicars_floral/VF-112 = (
             <button id="add_statement">add these statements</button></li>
             <li>Now if you click on the <button class="viz_arbitrary_triples">visualize button</button>, we'll retrieve the statements in the triple store again. Ta Da! new triples.</li>
             </ol>
-            <button class="toggle_full_size">toggle full sized graph</button>
+            
             
             <form class="searchform getTriples" method="post" action=""/>
             <!-- generic get triples form, makes redundant at least two buttons above -->
@@ -585,7 +606,7 @@ http://example/corpus/vicars_floral/VF-112 = (
             
             
             </div>
-        <div class="searchbox LODannotInterface" style="display:block">
+        <div class="searchbox LODannotInterface">
             <h2>Annotating our data as Linked Open Data</h2>
             <p>We can now store our data, either the brat annotation files or incoming data from Leiden, as RDF triples in the ADS AllegroGraph store. Historian/researchers will want to retrieve and display this data in various ways, they will also want to annotate it. The problem of annotation of RDF data has a history that does not begin with <a href="http://www.w3.org/2009/12/rdf-ws/papers/ws09">this article</a> (Lopes, Zimmermann et alia (2009)) but is nicely summarized by it. Since 2009, all of the enterprise level triple stores, including AllegroGraph, have implemented some version of Named Graphs, or contexts, and are - in fact - quad stores.* This makes annotating RDF feasible, as the original 'reification' mechanism in RDF has been, for several reasons, deemed too problematic for this purpose.</p>
             
@@ -736,11 +757,11 @@ http://example/corpus/vicars_floral/VF-112 = (
     
     </div>
     <div id="dotimg"></div>
-    <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="close.png" onclick="hideme()"/><div id="doc_text"></div></div>
+    <div id="doc_text_display"><img style="float: left; cursor: pointer;" src="../images/close.png" onclick="hideme()"/><div id="doc_text"></div></div>
     <div id="rdfout"></div>
 
 </div>
-<img id="localLoader" src="./ajax-loader.gif" style="position: absolute; display: none" />
+<img id="localLoader" src="../images/ajax-loader.gif" style="position: absolute; display: none" />
 <div id="modalsink"></div>
 </body>
 

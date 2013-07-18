@@ -3,6 +3,8 @@
 
 Graphing medieval charters: BioNLP Shared Task format to Graphviz and RDF
 
+This repo contains the essential files for my first set of experiments with our marked-up charters and RDF. There is also code for interaction with our AllegroGraph store that should be ported to the cartametallon eventually. No point in re-inventing the wheel. The main distinction between this work and the cartametallon is that this works directly with the output data from BRAT, as below. The cartametallon works with the biomine .bmg files.
+
 The [BRAT](http://brat.nlplab.org/) (Brat Rapid Annotation Tool), as used in the ChartEx project for marking up medieval charters, Generates stand-off markup that is a version of the [BioNLP Shared Task](http://2011.bionlp-st.org/) format. eg.:
 
     T1	Transaction 188 270	dederunt concesserunt et presenti scripto cirographato confirmauerunt in escambium

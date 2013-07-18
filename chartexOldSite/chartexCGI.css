@@ -53,7 +53,7 @@ dd {padding-top: .5em}
     width: 200px;
     float: left;
     clear: left;
-    margin: 0 0 9px 30px
+    margin: 0 0 9px 3px
 }
 
 #dotimg {
@@ -130,7 +130,8 @@ font-size: 10pt;}
 }
 
 .nofloat {float: none !important}
-.searchform {float: left; padding: 6px; background-color: rgb(200, 206, 171); border: 3px double #800;}
+.searchform {float: left; background-color: rgb(200, 206, 171); border: 3px double #800;}
+.ctrl-box {float: left; padding: 6px; background-color: rgb(200, 206, 171); border: 3px double #800;}
 .searchform td {font-size: 9pt}
 
 .tkey {

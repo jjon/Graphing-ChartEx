@@ -54,6 +54,7 @@ function deployData(pydata) {
     var rdf = dataIn[1];
     var doc_text = dataIn[2]
     
+    
 // beware the trailing newline: much of this possibly not necessary
 //     var str = '';
 //     for (str = 0; str < doc_text.length; str++) {
@@ -114,8 +115,8 @@ function deployData(pydata) {
             },
             function(){
                 $('#doc_text_display').hide();
-                $("svg")[0].width.baseVal.value = 800;
-                $("svg")[0].height.baseVal.value = 800;
+                $("svg")[0].width.baseVal.value = 1800;
+                $("svg")[0].height.baseVal.value = 1800;
             } 
         );
     
@@ -124,6 +125,20 @@ function deployData(pydata) {
     }, 2000);    
     $("#localLoader").css({position: "absolute"}).hide();
 
+}
+
+
+var moveSlider = function(slider, direction) {
+    $('#doc_text_display').hide();
+	svalue = slider.value;
+    svg = $("svg")[0];
+
+    if (svg){
+        svg.width.baseVal.value = parseInt(svalue);
+        svg.height.baseVal.value = parseInt(svalue);
+    } else {
+        return false;
+    }
 }
 
 
@@ -165,6 +180,7 @@ function vizTriples(pydata){
                     left: X,
                     top: Y
                 }).toggle('slow');
+
                 break;
             case 2:
                 //alert('Middle mouse button pressed');
@@ -228,7 +244,7 @@ function graphme(filepath){
     $.ajax({
         url: "chartexCGI.py",
         dataType: 'text',
-        data: {'fp': filepath},
+        data: {'fp': filepath, 'noSmushing': no-smushing},
         error: function(jqXHR, textStatus, errorThrown) {
             //console.log(jqXHR.response, textStatus, errorThrown);
         },
@@ -305,13 +321,15 @@ function showLocalLoader(obj){
     ot = obj.position().top
     $("#localLoader").css({left: "8%", top: ot - 6}).show()
 }
-
 /******************************************************************************************************************
 * some of the following stuff does not have to be in document.ready.
 * apparently, naked click handlers do.
 ********************************************************************************************************************/
 
 $(document).ready(function() {
+    $(function() {
+        $( "#doc_text_display" ).draggable();
+    });
 
 /*****************************/
 /* Baggins Annotation Test
@@ -598,6 +616,9 @@ $("#deleteStatements").click(function(){
         collapseSpeed: 300,
         multiFolder: false
     }, function(file) { //NB the 'file' argument root + filename
+        
+        var noSmushing = $(".no-smushing").is(':checked');
+        
         $.ajax({
             url: "chartexCGI.py",
             beforeSend: function(){
@@ -605,7 +626,8 @@ $("#deleteStatements").click(function(){
             },
             dataType: 'text',
             data: {
-                'fp': file
+                'fp': file,
+                'noSmushing': noSmushing
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR.response, textStatus, errorThrown);
@@ -733,16 +755,17 @@ $("#deleteStatements").click(function(){
         $thisform = $(this).parents(".serializeForm");
         var serialDir = $thisform.find(".directoriesList option:selected").val();
         var serialFormat = $thisform.find(".serFormat option:selected").val();
-        
+        var noSmushing = $thisform.find(".no-smushing").is(':checked');
         var ifradio = $thisform.find("input:radio:checked").val();
         var pyfile = (ifradio == undefined)? "chartexCGI.py" : ifradio;
         showLocalLoader($(this));
         
+        //console.log(noSmushing);
 
         $.ajax({
             type: "get",
             url: pyfile,
-            data: {"serialDir": serialDir, "serialFormat": serialFormat},
+            data: {"serialDir": serialDir, "serialFormat": serialFormat, "noSmushing": noSmushing},
             dataType: 'text',
             success: showModal,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -761,7 +784,7 @@ $("#deleteStatements").click(function(){
         $thisform = $("#ADSUpload").parents(".serializeForm")
         var ADSserialDir = $thisform.find(".directoriesList option:selected").val();
         var serialFormat = $thisform.find(".serFormat option:selected").val();
-
+        var noSmushing = $thisform.find(".no-smushing").is(':checked');
         var ifradio = $thisform.find("input:radio:checked").val();
         var pyfile = (ifradio == undefined)? "chartexCGI.py" : ifradio;
 
@@ -770,7 +793,10 @@ $("#deleteStatements").click(function(){
         $.ajax({
             type: "get",
             url: pyfile,
-            data: {"ADSUpload": true, "serialDir": ADSserialDir, "serialFormat": serialFormat},
+            data: {"ADSUpload": true,
+                "serialDir": ADSserialDir,
+                "serialFormat": serialFormat,
+                "noSmushing": noSmushing},
             dataType: 'text',
             success: showModal,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -994,18 +1020,6 @@ $("#deleteStatements").click(function(){
         return false;
     });
     
-    $(".toggle_full_size").toggle(
-            function(){
-                $('#doc_text_display').hide();
-                $("svg")[0].width.baseVal.value = 800;
-                $("svg")[0].height.baseVal.value = 800;
-            },
-            function(){
-                $('#doc_text_display').hide();
-                $("svg")[0].width.baseVal.value = 1800;
-                $("svg")[0].height.baseVal.value = 1800;
-            } 
-        );
     
 });
 

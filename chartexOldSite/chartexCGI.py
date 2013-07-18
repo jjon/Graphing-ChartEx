@@ -1,24 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
+import cgi
+import cgitb
 
-from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
-from rdflib.resource import Resource
-from subprocess import Popen, PIPE
-import pygraphviz as pgv
-from pprint import pprint
-import traceback
+cgitb.enable(format="text")
+
 import re
 import os
 import sys
-import textwrap
-import cgi
-import cgitb
 import json
+from subprocess import Popen, PIPE
+import textwrap
+import pygraphviz as pgv
+from pprint import pprint
 import requests
-from chartexCGIconfig import ADS_AUTH, DATADIR, deedsN3
+from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
 
-cgitb.enable(format="text")
+sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
+from chartexCGIconfig import ADS_AUTH, DATADIR, deedsN3
 
 plugin.register(
   "sparql", query.Processor,
@@ -27,10 +27,10 @@ plugin.register(
   "sparql", query.Result,
   "rdfextras.sparql.query", "SPARQLQueryResult")
 
-
 chartex = Namespace("http://chartex.org/chartex-schema#")
 chartexDoc = Namespace("http://chartex.org/chartex-schema/")
 crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
+
 node_colors = {
     'Actor': '#0000ff',
     'Person': '#00ffff',
@@ -89,36 +89,6 @@ def ann2rdf(f_path):
             
     return g
 
-# def smush_sameas(g, f_path):
-#     """ concatenate entity ids of entities marked same_as,
-#     use the result as the subject in aggregated statements,
-#     then delete the original entity statements from the graph.
-#     """
-#     x_path, ext = os.path.splitext(f_path)
-#     charter_id = os.path.basename(x_path)
-#     this = Namespace("http://yorkhci.org/chartex-schema/"+ charter_id + "#")
-# 
-#     annfile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
-#     sameas = [re.split('\s+', x)[2:-1] for x in annfile if 'same_as' in x]
-#     for idlist in sameas:
-#         new_sub = ''.join(idlist)
-#         
-#         for id in idlist:
-#             # add new aggregate subject, and add p,o from the old subjects.
-#             for p,o in g.predicate_objects(this[id]):
-#                 g.add((this[new_sub],p,o))
-#                 
-#             # remove triples pointing to old individual subjects,
-#             # replace w/triples pointing to new aggregate subject
-#             for s,p in g.subject_predicates(this[id]):
-#                 g.remove((s,p,this[id]))
-#                 g.add((s,p,this[new_sub]))
-#             
-#             # remove old individual subjects
-#             g.remove((this[id],None,None))
-#             
-#     return g
-
 def find_roots(graph,prop,roots=None): 
     """
     Ripped off from rdflib-extras. Much cleverer than the listcomp I had, use this instead
@@ -148,7 +118,6 @@ def smushSameAs(graph):
                 
             graph.remove((id,None,None))
     return graph
-
 
 def makedot(rdfgraph):
     dg = pgv.AGraph(directed=True, fontname="Times-Roman")
@@ -204,28 +173,27 @@ def makedot(rdfgraph):
     ##print json.dumps(edges, indent=4)
     return dg
 
-def visualizeDocumentGraph(filepath):
+def visualizeDocumentGraph(filepath, smush=True):
     """To support svgoutput FOR INDIVIDUAL DOCUMENT GRAPHS ONLY"""
     g = ann2rdf(filepath)
     g.bind("chartex", "http://yorkhci.org/chartex-schema#")
     g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
-    smushSameAs(g)
+    if smush: smushSameAs(g)
     textData = g.objects(None, chartex.textData).next().encode('utf-8')
     dgsvg = makedot(g).draw(format='svg', prog='twopi')
     rdf = g.serialize(format='n3').replace('<',"&lt;")
     
     return dgsvg + '<filedelimiter>' + rdf + '<filedelimiter>' + textData
     
-def generateDocumentGraph(filepath, serialization_format=None):
+def generateDocumentGraph(filepath, serialization_format=None, smush=True):
     g = ann2rdf(filepath)
     g.bind("chartex", "http://yorkhci.org/chartex-schema#")
     g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")    
-    smushSameAs(g)    
+    if smush: smushSameAs(g)    
     if serialization_format: print g.serialize(format=serialization_format)
     else: return g
 
-
-def generateCorpusGraph(ann_files_dir, serialization_format):
+def generateCorpusGraph(ann_files_dir, serialization_format, smush=True):
     """Remember, generateDocumentGraph does same_as smushing at the individual document level"""
     
     g = ConjunctiveGraph()
@@ -239,13 +207,12 @@ def generateCorpusGraph(ann_files_dir, serialization_format):
             f_path = os.path.join(ann_files_dir,f)
             ctxt = URIRef("http://chartex.org/document-graphid/" + docid)
             graph = Graph(g.store, ctxt)
-            for t in generateDocumentGraph(f_path).triples((None,None,None)):
+            for t in generateDocumentGraph(f_path, smush=smush).triples((None,None,None)):
                 graph.add(t)
     
     if serialization_format:
         return g.serialize(format=serialization_format)
     else: return g
-        
 
 def lev(seq1, seq2):
     """
@@ -355,11 +322,22 @@ def ADSSparql(query, result_format=None):
     return r.content, r.request.__dict__, r.__dict__
 
 def addTriples(dir):
+    """Add all the triples for a corpus"""
     graph = generateCorpusGraph(dir, 'turtle')
     
     return requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph, auth=ADS_AUTH, params={"commit":200})
     
+def addStatements():
+    """ Add arbitrary Statements.
+        ToDo: finish this: function needs an argument: seq of triples? graph? what?
+        ToDo: create default graph name?
+    """
+    graph = Graph()
+    
+    return requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph, auth=ADS_AUTH, params={"commit":200})
+
 def deleteTriples():
+    """ Deletes ALL the triples in the ADS triple store """
     return requests.delete("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", auth=ADS_AUTH)
     
 def getTriples(format=None):
@@ -411,11 +389,6 @@ def uploadFrodoGraph():
 
 def graphFrodo():
     g = ConjunctiveGraph()
-
-def addStatements():
-    graph = Graph()
-    
-    return requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=graph, auth=ADS_AUTH, params={"commit":200})
 
 def generateSimonGraph():
     g = ConjunctiveGraph()
@@ -481,16 +454,66 @@ def utilityFunction():
     
     return requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/namespaces", auth=ADS_AUTH, headers={'Accept': 'application/json', "Content-Type": "application/json"}, hooks={'response': printMe})
 
-# tstg = generateCorpusGraph("/Users/jjc/Sites/Ann2DotRdf/chartex/deeds", None)
-# print list(tstg.contexts())
+# ################## GENERATE EXHIBIT JSONP ##################
+# #valueTypes: text, html, number, date, boolean, item, url
+
+def objCase(case):
+    """ToDo: add in a BNode case?"""
+    if isinstance(case, Literal):
+        return str(case)
+    if isinstance(case, URIRef):
+        return case.split('/')[-1]
+        
+def predCase(case):
+    return case.split('#')[-1]
+
+def generateExhibitItem(subj, graph):
+    item = {'label': subj.split('/')[-1]}
+    for p,o in graph.predicate_objects(subj):
+        if predCase(p) == "type":
+            item["type"] = [ predCase(o) for o in graph.objects(subj, p) ]
+        else:
+            item[predCase(p)] = [ objCase(o) for o in graph.objects(subj, p) ]
+    
+    # make single objects not a list.
+    for x in item:
+        if len(item[x]) == 1:
+            item[x] = item[x][0]
+    
+    return item
+
+def generateExhibitJson(graph):
+    """ ToDo: instead of testing for string "text", test for type of object.
+        Should be able to generate Exhibit data for any graph: including results of sparql construct queries.
+    """
+    d2json = {
+        'items': [],
+        'types': {o.split('#')[-1]: {"uri": o} for o in graph.objects(None, RDF['type'])},
+        'properties': {p.split('#')[-1]: {"uri": p, "valueType": "item" if "text" not in p else "text"} for p in graph.predicates()}
+    }
+    
+    del d2json['properties']['type']
+    
+    for s in set(graph.subjects()):
+        d2json['items'].append(generateExhibitItem(s,tstg))
+            
+    return json.dumps(d2json)
+    
+## local example:
+# tstg = generateCorpusGraph("/Users/jjc/Sites/Ann2DotRdf/chartex/deeds", None, smush=True)
+# print generateExhibitJson(tstg)
+# 
+
 
 form = cgi.FieldStorage()
 
 if __name__ == "__main__":
     try:
         if "fp" in form:
+            smushing = form["noSmushing"].value == 'false'
             print "Content-Type: text/plain\n"
-            print visualizeDocumentGraph(form["fp"].value)
+            
+            print visualizeDocumentGraph(form["fp"].value, smush=smushing)
         
         if "editDistance" in form:
             print "Content-Type: application/json\n"
@@ -501,7 +524,7 @@ if __name__ == "__main__":
                 form["editDistance"].value,
                 form["dirToSearch"].value
                 )
-            
+
         if "filetype" in form:
             print "Content-Type: application/json\n"
             
@@ -515,8 +538,7 @@ if __name__ == "__main__":
             print "Content-Type: text/html\n"
             
             print sparql(deedsN3, form["sparqlQuery"].value)
-            
-        
+                    
         if "ADSsparqlQuery" in form:
             print "Content-Type: application/json\n"
             result = ADSSparql(form["ADSsparqlQuery"].value, form["ADSresult_format"].value)
@@ -527,33 +549,29 @@ if __name__ == "__main__":
 
         if "ADSUpload" in form:
             sd = form["serialDir"].value
-            outgoingGraph = generateCorpusGraph(sd, serialization_format=None)
+            smushing = form["noSmushing"].value == 'false'
+            outgoingGraph = generateCorpusGraph(sd, serialization_format=None, smush=smushing)
             for c in outgoingGraph.contexts():
-                r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=c.serialize(format='turtle'), auth=ADS_AUTH, params={"context":"<" + c.identifier + ">", "commit":200})
+                r = requests.post(
+                    "http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements",
+                    headers={'Content-Type': 'text/turtle'},
+                    data=c.serialize(format='turtle'),
+                    auth=ADS_AUTH, params={"context":"<" + c.identifier + ">", "commit":200}
+                )
             
             print "Content-Type: text/plain\n\n"
             print "We've added %s statements to our ADS triple store" % r.content
 
-
-
-#         if "ADSUpload" in form:
-#             sd = form["serialDir"].value
-#             outgoingGraph = generateCorpusGraph(sd, serialization_format=None)
-#             r = requests.post("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements", headers={'Content-Type': 'text/turtle'}, data=outgoingGraph.serialize(format='turtle'), auth=ADS_AUTH)
-#             
-#             print "Content-Type: text/plain\n\n"
-#             print "We've added %s statements to our ADS triple store" % r.content
-#            
-        
         elif "serialDir" in form:
             sd = form["serialDir"].value
             sf = form["serialFormat"].value
+            smushing = form["noSmushing"].value == 'false'
             if not os.path.isdir(sd):
                 print "Content-Type: text/plain\n\n"
                 print "unknown directory: %s" % sd
             else:
                 print "Content-Type: text/plain\n"
-                print generateCorpusGraph(sd, sf)                
+                print generateCorpusGraph(sd, sf, smush=smushing)                
         
         if 'ADSadd' in form:
             d = form["addDir"].value
@@ -603,14 +621,14 @@ if __name__ == "__main__":
             print "We've successfuly uploaded %s triples to our ADS triplestore" % r.content
             print "~~~~~~~~~~~~\n~~~~~~~~~~~~"
             printMe(r)
-            
+
         if 'viz_arbitrary_triples' in form:
             ### This really needs to be made more robust so that it can graph whatever triples we throw at it.
-            ### currently click on nodes fails in the absense of """ + '<filedelimiter>' + textData"""
+            ### currently click on nodes fails in the absence of """ + '<filedelimiter>' + textData"""
             ### this only works for individual documents (see generateDocumentGraph,
             ### textData = g.objects(None, chartex.textData).next().encode('utf-8') )
             ### where there can be expected to be only one textData object
-            
+            ### Not really any point in fixing this just now: client-side visualization is better.            
             print "Content-Type: text/plain\n"
             
             graph_in = getTriples().content
@@ -657,7 +675,7 @@ if __name__ == "__main__":
             print "we've loaded %s triples" % r.content 
             
         if 'annotationURI' in form:
-            """Very narrowly construed example. A more fully realized annotation function needs to be A. broken out of this __main__ conditional, and B. Much more functionality than just a text comment. Come to think of it, annotation will have to be its own module"""
+            """This is a very narrowly construed example. A more fully realized annotation function needs to be A. broken out of this __main__ conditional, and B. Much more functionality than just a text comment. Come to think of it, annotation will have to be its own module"""
             
             aURI = form['annotationURI'].value
             tURI = form['targetURI'].value
@@ -684,7 +702,9 @@ if __name__ == "__main__":
             
             print "Content-Type: text/plain\n"
             
-            print "we've loaded %s triples" % r.content, r.request.__dict__, r.__dict__
+            print "we've loaded %s triples" % r.content
+            print "~~~~~~~~~~~~\n~~~~~~~~~~~~"
+            printMe(r)     
 
         if 'dumpTriples' in form:
             sf = form["serialFormat"].value
@@ -711,12 +731,17 @@ if __name__ == "__main__":
             r = requests.get("http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/contexts", headers={'Accept': 'application/json'})        
             print "Content-Type: text/plain\n"
             print r.content
-        
+            
+
+    
+        if 'bugtest' in form:
+            print "Content-Type: text/plain\n\n"
+            print "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque sollicitudin. Fusce varius pellentesque ligula. Proin condimentum purus a nunc tempor pellentesque.\n"
 
         if not form:
             print "Content-Type: text/plain\n"
-            
-            print "Show me your parameters and I'll show you my triples"
+            print "\n"
+            print "show me yer parameters, and I'll show you my triples"
             
     except StandardError as e:
         print "Content-Type: text/html\n"

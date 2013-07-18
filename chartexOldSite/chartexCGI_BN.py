@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
-from rdflib import Graph, ConjunctiveGraph, Namespace, Literal, RDF, RDFS, OWL, XSD, BNode
+from rdflib import Graph, URIRef, ConjunctiveGraph, Namespace, Literal, RDF, RDFS, OWL, XSD, BNode
 import re
 import os
 import sys
@@ -17,8 +17,8 @@ form = cgi.FieldStorage()
 DATADIR = '/Users/jjc/Sites/Ann2DotRdf/chartex'
 
 
-chartex = Namespace("http://yorkhci.org/chartex-schema#")
-chartexDoc = Namespace("http://yorkhci.org/chartex-schema/")
+chartex = Namespace("http://chartex.org/chartex-schema#")
+chartexDoc = Namespace("http://chartex.org/chartex-schema/")
 crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
 
 def ann2rdf_bn(f_path):
@@ -110,7 +110,7 @@ def generateDocumentGraph(filepath, serialization_format=None):
 
 def generateCorpusGraph(ann_files_dir, serialization_format):
     g = ConjunctiveGraph()
-    g.bind("chartex", "http://yorkhci.org/chartex-schema#")
+    g.bind("chartex", "http://chartex.org/chartex-schema#")
     g.bind("crm", "http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
 
     for f in os.listdir(ann_files_dir):
@@ -118,7 +118,7 @@ def generateCorpusGraph(ann_files_dir, serialization_format):
         if f.endswith('.ann'):
             docid = os.path.splitext(f)[0]
             f_path = os.path.join(ann_files_dir,f)
-            ctxt = "<http://example.com/graph/" + docid + ">"
+            ctxt = URIRef("http://example.com/graph/" + docid)
             graph = Graph(g.store, ctxt)
             for t in generateDocumentGraph(f_path).triples((None,None,None)):
                 graph.add(t)
@@ -152,7 +152,15 @@ if __name__ == "__main__":
                 print "unknown directory: %s" % sd
             else:
                 print "Content-Type: text/plain\n"
-                print generateCorpusGraph(sd, sf)  
+                print generateCorpusGraph(sd, sf)
+                
+        if "checkdb" in form:
+            print "Content-Type: text/plain\n"
+            print "FOOBAR BAZ"
+#             conn = sqlite3.connect('/home/neolog/IP.db')
+#             c = conn.cursor()
+#             
+#             print c.execute('''select IPs.ip, dates.isodate from IPs, dates where IPs.ip = "173.199.116.11";''').fetchall()
                 
         
     except StandardError as e:

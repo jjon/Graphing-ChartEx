@@ -12,7 +12,7 @@ from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, R
 import requests
 import pygraphviz as pgv
 import textwrap
-from chartexCGIconfig import ADS_AUTH
+from chartexCGIconfig import ADS_AUTH, VB_AUTH
 import cProfile
 
 ## I run this from my editor, it is thus a very ad hoc sort of
@@ -141,7 +141,7 @@ print rdflib.__version__
 #     "http://localhost:9211/repositories/chartex/statements",
 #     headers={'Content-Type': 'text/x-nquads'},
 #     data=cg.serialize(format='nquads'),
-#     auth=('jjon','neolog'),
+#     auth=VB_AUTH,
 #     params={"commit":1000}
 # )
 

@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 import sys
+sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/") # to get access to the chartexCGIconfig module
+sys.path.insert(1, '/Users/jjc/ComputerInfo/RDF/rdflib') # to use the dev version
 import os
 import json
 from pprint import pprint
 from decimal import Decimal
+import rdflib
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
 import requests
 import pygraphviz as pgv
 import textwrap
-sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
 from chartexCGIconfig import ADS_AUTH
+import cProfile
 
 ## I run this from my editor, it is thus a very ad hoc sort of
 ## thing. Use it to generate the graph and examine it; then
@@ -93,6 +96,7 @@ for rel in relations:
         rgraph = Graph(cg.store, gid[rel[0]+rel[2]+rel[1]])
         rgraph.add((s,p,o))
         cg.add(( rgraph.identifier, chartex['goodness'], Literal(goodness, datatype=XSD.decimal) ))
+        ## I don't appear to gain anything by creating a separate graph to hold these statements, so we add them to the default graph. AG will figure out where to put them on upload???
     
     ## add the triple also to the appropriate document graph
     ## might_be is the only relation that can lie between entities in different documents
@@ -101,16 +105,22 @@ for rel in relations:
     if p != chartex['might_be']:
         g.add((s,p,o))  
  
-print len(cg)
+
+#cProfile.run('cg.serialize(format="trig")')
+print rdflib.__version__
+#print len([c for c in cg.contexts()])
+#print cg.serialize(format='nquads')
 
 # there may be a bug in the serialization of context-aware stores. Serializing a graph of 78k statements takes just under an hour
-# print cg.serialize(format="trig")
+# in my (unmerged) version of rdflib repo, this is fixed
 
 
 ######################## UPLOAD TO THE ADS AllegroGraph TRIPLE-STORE ###########################
 ## Upload by the following means takes around 3 hours
+## Next time I do this, try serializing as nquads first then upload with 'Content-Type': text/x-nquads
+## this works good uploading to Vbox store: MUCH more efficient (the difference between about 30sec and 50min!), especially since my local branch of rdflib has fixed quad serialization functions.
 
-######### ADS UPLOAD ############
+######### ADS UPLOAD (deprecated! revise as below for Vbox AG server)############
 # for c in cg.contexts():
 #     r = requests.post(
 #         "http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements",
@@ -125,7 +135,15 @@ print len(cg)
 #print cg.serialize(format="trig")
 
 
-
+###### Upload to local Vbox AG server ######
+## to figure out: what's the difference between http://localhost:9211/repositories/chartex/statements and http://localhost:9211/catalogs/system/repositories/chartex/statements ?
+# r = requests.post(
+#     "http://localhost:9211/repositories/chartex/statements",
+#     headers={'Content-Type': 'text/x-nquads'},
+#     data=cg.serialize(format='nquads'),
+#     auth=('jjon','neolog'),
+#     params={"commit":1000}
+# )
 
 
 

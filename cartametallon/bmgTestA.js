@@ -1,4 +1,4 @@
-tmplist = {"names":["g"],"values":[["<http://chartex.org/graphid/vicars-choral-416>"],["<http://chartex.org/graphid/vicars-choral-415>"],["<http://chartex.org/graphid/vicars-choral-413>"],["<http://chartex.org/graphid/vicars-choral-english-390>"],["<http://chartex.org/graphid/vicars-choral-428>"],["<http://chartex.org/graphid/vicars-choral-429>"],["<http://chartex.org/graphid/vicars-choral-422>"],["<http://chartex.org/graphid/vicars-choral-423>"],["<http://chartex.org/graphid/vicars-choral-400>"],["<http://chartex.org/graphid/vicars-choral-401>"],["<http://chartex.org/graphid/vicars-choral-402>"],["<http://chartex.org/graphid/vicars-choral-403>"],["<http://chartex.org/graphid/vicars-choral-399>"]]}
+// tmplist = {"names":["g"],"values":[["<http://chartex.org/graphid/vicars-choral-416>"],["<http://chartex.org/graphid/vicars-choral-415>"],["<http://chartex.org/graphid/vicars-choral-413>"],["<http://chartex.org/graphid/vicars-choral-english-390>"],["<http://chartex.org/graphid/vicars-choral-428>"],["<http://chartex.org/graphid/vicars-choral-429>"],["<http://chartex.org/graphid/vicars-choral-422>"],["<http://chartex.org/graphid/vicars-choral-423>"],["<http://chartex.org/graphid/vicars-choral-400>"],["<http://chartex.org/graphid/vicars-choral-401>"],["<http://chartex.org/graphid/vicars-choral-402>"],["<http://chartex.org/graphid/vicars-choral-403>"],["<http://chartex.org/graphid/vicars-choral-399>"]]}
 
 //tmpglobal = null
 //tmpglobal1 = null
@@ -306,18 +306,18 @@ function bmgTest(){
 }
 
 function getDocs(){
-    getDocumentTable(tmplist);
+//     getDocumentTable(tmplist);
 
-//     $.ajax({
-//         type: "get",
-//         url: "bmgTestA.py",
-//         data: {'getDocumentContexts': true},
-//         dataType: 'json',
-//         success: getDocumentTable,
-//         error: function(jqXHR, textStatus, errorThrown) {
-//             console.log(jqXHR.response, textStatus, errorThrown);
-//         }
-//     });
+    $.ajax({
+        type: "get",
+        url: "bmgTestA.py",
+        data: {'getDocumentContexts': true},
+        dataType: 'json',
+        success: getDocumentTable,
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
 }
 
 function graphMe(charter){

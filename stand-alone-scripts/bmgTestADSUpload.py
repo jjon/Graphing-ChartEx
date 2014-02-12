@@ -50,7 +50,7 @@ entity_dict = {
         } for x in entities
     }
 
-# the result looks like this ('Document' nodes also have a 'TextData' field):
+# the result looks like this ('Document' nodes also have a 'TextData' field):"#F0E0D0"
 #     'Person_992': {   'File': 'vicars-choral-414',
 #                       'ShortName': 'William de Waleby',
 #                       'Summary': 'William de Waleby',
@@ -107,7 +107,7 @@ for rel in relations:
  
 
 #cProfile.run('cg.serialize(format="trig")')
-print rdflib.__version__
+#print rdflib.__version__
 #print len([c for c in cg.contexts()])
 #print cg.serialize(format='nquads')
 
@@ -121,31 +121,33 @@ print rdflib.__version__
 ## this works good uploading to Vbox store: MUCH more efficient (the difference between about 30sec and 50min!), especially since my local branch of rdflib has fixed quad serialization functions.
 
 ######### ADS UPLOAD (deprecated! revise as below for Vbox AG server)############
-# for c in cg.contexts():
-#     r = requests.post(
-#         "http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements",
-#         headers={'Content-Type': 'text/turtle'},
-#         data=c.serialize(format='turtle'),
-#         auth=ADS_AUTH,
-#         params={"context":"<" + c.identifier + ">", "commit":1000}
-#     )
+# r = requests.post(
+#     "http://data.archaeologydataservice.ac.uk/sparql/repositories/chartex/statements",
+#     headers={'Content-Type': 'text/x-nquads'},
+#     data=cg.serialize(format='nquads'),
+#     auth=ADS_AUTH,
+#     params={"commit":1000}
+# )
 # 
 # pprint(r.__dict__, indent=4)
 
-#print cg.serialize(format="trig")
+print cg.serialize(format="nquads")
 
 
-###### Upload to local Vbox AG server ######
+###### Upload to local VMfusion AG server ######
 ## to figure out: what's the difference between http://localhost:9211/repositories/chartex/statements and http://localhost:9211/catalogs/system/repositories/chartex/statements ?
 # r = requests.post(
-#     "http://localhost:9211/repositories/chartex/statements",
+#     "http://192.168.240.139:10035/repositories/vicarsChoral/statements",
 #     headers={'Content-Type': 'text/x-nquads'},
 #     data=cg.serialize(format='nquads'),
 #     auth=VB_AUTH,
 #     params={"commit":1000}
 # )
-
-
+# 
+# print r.content
+# print "~~~~~~~~~"
+# pprint(r.__dict__)
+# 
 
  
 ############### UPLOAD BY URL? ###################
@@ -158,9 +160,6 @@ print rdflib.__version__
 # )
 # 
 # 
-# print r.content
-# print "~~~~~~~~~"
-# pprint(r.__dict__)
 
 
 

@@ -190,9 +190,9 @@ def getText(pattern, root=os.curdir):
             yield dtext
 
 def visualizeDocumentGraph(guri):
-    gstring = getContextGraph(guri)
+    gstring = getContextGraph(guri, "application/rdf+xml")
     g = Graph()
-    g.parse(data=gstring, format='n3')
+    g.parse(data=gstring)
     dgsvg = makedot(g).draw(format='svg', prog='twopi')
     dname = g.objects(None, chartex.File).next() + '.txt'
 
@@ -253,6 +253,7 @@ def annotateConfidence(target, un, con, com):
     # http://chartex.org/graphid/Person_11139might_bePerson_11339 (this triple is actually in there, why?, weird!
     target = re.sub('[<>]', '', target)
     thisAnnotationURI =  "http://chartex.org/user/%s/annotation/%s" % (un, sha1(target).hexdigest())
+    confidence = Literal(con) if con == 'nochange' else Literal(con,datatype=XSD.decimal)
     
     if (int(annotationExists('<' + thisAnnotationURI + '>')) > 0):
         return ("You've already annotated this statement: %s \nPresumably you could make a separate annotation with a different username. If you start doing that, you should keep track of all your usernames. When we have authentication and session logic, this won't be necessary.\n\nAnnotation triples:\n" % (target,), getSingleConfidenceAnnotation('<' + thisAnnotationURI + '>', 'application/rdf+xml'))
@@ -264,7 +265,7 @@ def annotateConfidence(target, un, con, com):
             (thisann, RDF.type, oa.Annotation),
             (thisann, oa.hasTarget, URIRef(target)),
             (thisann, oa.hasBody, bodyNode),
-            (bodyNode, chartex.confidenceMetric, Literal(con,datatype=XSD.decimal)),
+            (bodyNode, chartex.suggestedConfidenceMetric, confidence),
             (bodyNode, chartex.userComment, Literal(com))
         ]
         for t in triples: g.add(t)
@@ -290,13 +291,13 @@ def getSingleConfidenceAnnotation(annID, result_format=None):
         %s a oa:Annotation ;
             oa:hasTarget ?target ;
             chartex:userComment ?uc;
-            chartex:confidenceMetric ?cm .
+            chartex:suggestedConfidenceMetric ?cm .
         }
     WHERE {
         %s ?p ?o .
         %s oa:hasTarget ?target .
         ?o chartex:userComment ?uc;
-            chartex:confidenceMetric ?cm .
+            chartex:suggestedConfidenceMetric ?cm .
         %s rdf:type oa:Annotation .
         }
     """ % (annID, annID, annID, annID)
@@ -319,13 +320,13 @@ def retrieveConfidenceAnnotations(result_format=None):
         ?s a oa:Annotation ;
             oa:hasTarget ?target ;
             chartex:userComment ?uc;
-            chartex:confidenceMetric ?cm .
+            chartex:suggestedConfidenceMetric ?cm .
         }
     WHERE {
         ?s ?p ?o .
         ?s oa:hasTarget ?target .
         ?o chartex:userComment ?uc;
-            chartex:confidenceMetric ?cm .
+            chartex:suggestedConfidenceMetric ?cm .
         ?s rdf:type oa:Annotation .
         }
     """

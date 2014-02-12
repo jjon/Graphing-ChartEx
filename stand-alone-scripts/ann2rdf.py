@@ -35,7 +35,7 @@ def ann2rdf(g, annfile, charter_id):
             g.add((this[eid], RDF.type, chartex[entity]))
             g.add((this[eid], chartex.textRange, Literal((int(start), int(end)))))
             g.add((this[eid], chartex.textSpan, Literal(text.strip())))
-
+        
         if line[0] == 'R':
             key, prop, a1, a2, note = re.split('\s+', line, maxsplit=4)
             g.add((this[a1.split(':')[1]], chartex[prop], this[a2.split(':')[1]]))
@@ -65,7 +65,7 @@ def generateGraph(ann_files_dir, serialization_format):
         
         f_path = os.path.join(ann_files_dir,f)
         charter_id, ext = os.path.splitext(f)
-
+        
         if ext == '.ann':
             annotationFile = [line.replace('•','.') for line in open(f_path, "r").readlines()]
             
@@ -74,7 +74,7 @@ def generateGraph(ann_files_dir, serialization_format):
         
     print g.serialize(format=serialization_format)
 
-#generateGraph("/Users/jjc/Sites/brat/data/chartex/cluny", "n3")
+generateGraph("/Users/jjc/Sites/brat/data/chartex/cluny", "n3")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

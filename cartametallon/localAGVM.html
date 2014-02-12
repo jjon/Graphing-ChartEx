@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<title>Charter Excavation</title>
+<link rel="stylesheet" type="text/css" href="../sorter-blue/style.css"></link>
+<link href="../../commonjs/jquery-ui-1.10.3/themes/base/jquery.ui.theme.css" rel="stylesheet" type="text/css"></link>
+<link href="../../commonjs/jquery-ui-1.10.3/themes/base/jquery.ui.resizable.css" rel="stylesheet" type="text/css"></link>
+
+<link href="bmgTestA.css" rel="stylesheet" type="text/css"></link>
+<script src="../../commonjs/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.draggable.js"></script>
+<script src="../../commonjs/jquery-ui-1.10.3/ui/jquery.ui.resizable.js"></script>
+<script src="../jqueryFileTree/jqueryFileTree.js"></script>
+<script src="../jquery.tablesorter.min.js" language="javascript" type="text/javascript"></script>
+<script src="../jquery.svg.package-1.4.5/jquery.svg.js" type="text/javascript"></script>
+<script src="../../SVG/jquery.graphviz.js" type="text/javascript"></script>
+<script src="../../commonjs/jquery.simplemodal.js" type="text/javascript"></script>
+<script src="./localAGVM.js" type="text/javascript"></script>
+<script src="../textinputs_jquery.js" type="text/javascript"></script>
+<script src="../JSON-js/json2.js" type="text/javascript"></script>
+<script src="../html5slider.js" type="text/javascript"></script>
+<script>
+
+var moveSlider = function(slider, direction) {
+    $('#entity_data_display').hide();
+	svalue = slider.value;
+    svg = $("svg")[0];
+
+    if (svg){
+        svg.width.baseVal.value = parseInt(svalue);
+        svg.height.baseVal.value = parseInt(svalue);
+    } else {
+        return false;
+    }
+}
+
+
+
+</script>
+<style>
+</style>
+</head>
+
+<body>
+<div id="dotimg"></div>
+
+<div class="ctrl-box">
+    <div class="legend" style="text-align: center; font-family: verdana, helvetica, sans-serif; font-size: 9pt; margin-bottom: 9px; border-bottom: double #800; width: 90%">
+    <div id="graph-size" style="text-align: center; font-family: verdana, helvetica, sans-serif; font-size: 80%"></div>
+    <h1 style="padding-left: 0em">CARTAMETALLON</h1><p>Fossicking about among the charters: <button id='howtobutton'>Documentation (sparse)</button><button id="getAnnot">retrieve confidence annotations</button></p></div>
+    <div class="graph-button" style="padding-left: 6px">scale graph size:<input id="sliderX" type="range" min="800" max="3500" value="800" onchange="moveSlider(this, 'x')" style="width: 90%" /></div>
+
+    <div class="block-toggle"><img class="toggle-img" src="../../../Sites/images/icons/down13.gif" />text for this document</div>
+    <div id="graphed-charter-text" style="display: none"></div>
+
+    <div class="block-toggle"><img style="padding-right: 9px" src="../../../Sites/images/icons/down13.gif" />document list</div>
+    <div id="tabledisplay"></div>
+
+</div>
+
+<div id="entity_data_display">
+    <img style="position: absolute; cursor: pointer;" src="../images/close.png" onclick="hideme()"/>
+    <div id="entity_data"></div>
+</div>
+<div id="databox-wrap">
+    <img class="closeThis" style="float: left; cursor: pointer;" src="../images/close.png" />
+    <div id="databox"></div>
+</div>
+<div id="thetext"></div>
+<img id="localLoader" src="../images/loader.gif" />
+<div id="modalsink"></div>
+
+</body>
+</html>

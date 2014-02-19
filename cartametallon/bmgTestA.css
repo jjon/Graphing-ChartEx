@@ -263,24 +263,25 @@ font-size: 10pt;}
     white-space: nowrap;
     font-weight: bold;
 }
-#result-div {
+.result-div {
     float: left; 
     width: 230px;
     max-height: 260px; 
     overflow: scroll;
     border: 3px double #600;
 }
-#result-div a {
+.result-div a {
     color: #300;
     text-decoration: none;
 }
 
-#result-div a:hover {
+.result-div a:hover {
     color: #aa0400;
     text-decoration: none;
 }
 
 #result-table {width: 100%; line-height: .5;}
+#document-table {width: 100%; line-height: .5;}
 
 .searchbox {display: none}
 .searchbox p {

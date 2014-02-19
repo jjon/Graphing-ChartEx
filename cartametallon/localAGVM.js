@@ -3,6 +3,7 @@
 //tmpglobal = null
 //tmpglobal1 = null
 docpath = "/Users/jjc/Sites/Ann2DotRdf/chartex/vicars-choral/"
+DEEDS_DIR = "/Users/jjc/Sites/Ann2DotRdf/chartex/deeds/"
 
 function showModal(response){
     response = response.replace(/</g, "&lt;");
@@ -70,7 +71,7 @@ String.prototype.format = function () {
 
 function getDocumentTable(data){
     $("#tabledisplay").empty();
-    $("#tabledisplay").append('<div id="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>Charter</th></tr></thead><tbody id="result"></tbody></table></div>');
+    $("#tabledisplay").append('<div class="result-div"><table id="result-table" class="tablesorter"><thead><tr><th>Charter</th></tr></thead><tbody id="result"></tbody></table></div>');
     data.values.forEach(function(item){
         var adoc = item[0].split('/').pop().replace('>', '');
         $("#result").append('<tr><td>' + '<a class="charterID" href="#" name="' + adoc + '" onClick="graphMe(\'' + adoc + '\');showLocalLoader();">' + adoc + '</a></td></tr>');
@@ -78,6 +79,24 @@ function getDocumentTable(data){
     $("#result-table").tablesorter();
     
     setTimeout(hideLocalLoader, 500);
+    $(".block-toggle").find('img')[0].src = "http://localhost/Sites/images/icons/down13.gif";
+}
+
+function getDeedsDocumentTable(data){
+    $("#deedsList").empty();
+    $("#deedsList").append('<div class="result-div"><table id="document-table" class="tablesorter"><thead><tr><th>Charter</th></tr></thead><tbody id="result"></tbody></table></div>');
+    data.forEach(function(item){
+        
+        var doc = item.split('.');
+        
+        if (doc[1] == 'ann'){
+        
+            $("#document-table").append('<tr><td>' + '<a class="charterID" href="#" name="' + doc + '" onClick="generateDocumentGraph(\'' + item + '\');showLocalLoader();">' + item + '</a></td></tr>');
+        }
+    });
+    $("#document-table").tablesorter();
+    
+    //setTimeout(hideLocalLoader, 500);
     $(".block-toggle").find('img')[0].src = "http://localhost/Sites/images/icons/down13.gif";
 }
 
@@ -293,6 +312,41 @@ function deploySVG(json){ //called by graphMe(charterid)
     hideLocalLoader();
 }
 
+function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid)\
+    // TODO modify this to display brat charter graph, no bmg data.
+    
+    _json = json;
+    var svg = json.svg;
+    var filename = json.charterText.split('\n')[0];
+    chartertext = json.charterText;
+    
+    $("#graphed-charter-text").append('div class="content"').text(json.charterText);
+    $("#graphed-charter-text").prepend("<h1>"+ filename +".txt</h1>");
+    $("#graphed-charter-text").show();
+    $("#dotimg").empty();
+    $("#dotimg").append(svg);
+    $("svg").draggable();
+    
+    $('.node').click(function(e) {
+        var fill = $(this).find('ellipse').attr('fill');
+        var nodeID = $(this).attr('id');
+        var offsets = json.entityAttributes[nodeID].offsets;
+        var html = inContext(chartertext.split(''), offsets);
+        
+        $("#graphed-charter-text").html(html).find("span").css('background-color', fill);
+        $("#graphed-charter-text").prepend("<h1>" + filename + "</h1>");
+        
+        //$("g[id='http://chartex.org/document/deeds-00880041#T3']").find('ellipse').attr('fill')
+        
+    });
+    
+    var gwidth = $("svg")[0].width.baseVal.value;
+    var gheight = $("svg")[0].height.baseVal.value;
+    $("svg")[0].width.baseVal.value = 800;
+    $("svg")[0].height.baseVal.value = 800;
+    hideLocalLoader();
+}
+
 function bmgTest(){
     $.ajax({
         url: "localAGVM.py",
@@ -314,6 +368,21 @@ function getDocs(){
         data: {'getDocumentContexts': true},
         dataType: 'json',
         success: getDocumentTable,
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+}
+
+function getDeedsDocs(){
+//     getDocumentTable(tmplist);
+
+    $.ajax({
+        type: "get",
+        url: "localAGVM.py",
+        data: {'getDeedsDocuments': true},
+        dataType: 'json',
+        success: getDeedsDocumentTable,
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.response, textStatus, errorThrown);
         }
@@ -355,6 +424,21 @@ function graphMe(charter){
     });
 }
 
+function generateDocumentGraph(charter){
+    hideme();
+    $.ajax({
+        type: "get",
+        url: "localAGVM.py",
+        data: {"generateDocumentGraph": charter},
+        dataType: 'json',
+        success: deployBratCharterSVG,
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+
+}
+
 function howto(){ // use instead: $.get with a local template as above in annotateTarget
     $.ajax({
         type: "get",
@@ -374,7 +458,7 @@ $(document).ready(function() {
     showLocalLoader();
     getDocs();
     getGraphSize();
-    
+    getDeedsDocs();
     
     $( "#entity_data_display" ).draggable().resizable();
 

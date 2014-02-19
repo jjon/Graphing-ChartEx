@@ -2,9 +2,6 @@
 # -*- coding: utf-8 -*- #
 import cgi
 import cgitb
-
-cgitb.enable(format="text")
-
 import re
 import os
 import sys
@@ -16,14 +13,17 @@ from decimal import Decimal
 
 sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
-
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
+
 import requests
 import pygraphviz as pgv
 import textwrap
+
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
 from localAGconfig import localAG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
+from brat2rdf import *
 
+cgitb.enable(format="text")
 
 node_colors = {
     'Actor': '#0000ff',
@@ -145,7 +145,7 @@ def makedot(rdfgraph):
             
             ## Literals will be part of label for output node
             if isinstance(o,Literal):
-                labl = rdfgraph.objects(s, chartex.ShortName).next()
+                labl = rdfgraph.objects(s, chartex.ShortName).next() ## this is bmg specific.
                 #labl += '\\n'.join(textwrap.wrap(o + '\\n', 30))
             
             ## remaining object, predicate tuples appended to edges[x]
@@ -215,6 +215,26 @@ def getText(pattern, root=os.curdir):
         for filename in fnmatch.filter(files, pattern):
             dtext = open(os.path.join(path, filename)).read()
             yield dtext
+            
+def generateDocumentGraph(fpath):
+    g = ann2rdf(fpath)
+    g = smushSameAs(g)
+    dtext = g.objects(None, chartex.textData).next()
+    dgsvg = makeBratCharterdot(g).draw(format='svg', prog='twopi')
+    
+    d = {
+        'svg': dgsvg,
+        'n3': g.serialize(format='n3'),
+        'entityAttributes':
+            {s:{'offsets':[eval(t) for t in g.objects(s, chartex.textRange)], 'textSpans': [t for t in g.objects(s, chartex.textSpan)]} for s in set(g.subjects())},
+        'entityRelations':
+            {s:{p.partition('#')[-1]:str(o) for p,o in g.predicate_objects(s) if not isinstance(o,Literal) and not p == RDF.type} for s in set(g.subjects())},
+        'charterText': dtext
+    }
+
+    return json.dumps(d)
+
+#print generateDocumentGraph(DATADIR + "deeds/deeds-00880132.ann")
 
 def visualizeDocumentGraph(guri):
     ## BUG: if we let getContextGraph have its default result
@@ -450,12 +470,26 @@ if __name__ == "__main__":
             print
             print ADSSparql(query)
             
+        if 'getDeedsDocuments' in form:
+        
+            deedsList = os.listdir(DATADIR + "deeds/")
+
+            print "Content-Type: application/json\r\n\r\n"
+            print
+            print json.dumps(deedsList)
+            
         if 'graphMe' in form:
             charter = form.getvalue('graphMe')
             uri = "<http://chartex.org/graphid/" + charter + ">"
             
             print "Content-Type: application/json\r\n\r\n"
             print visualizeDocumentGraph(uri)
+    
+        if 'generateDocumentGraph' in form:
+            charter = form.getvalue('generateDocumentGraph')
+            
+            print "Content-Type: application/json\r\n\r\n"
+            print generateDocumentGraph(DATADIR + "deeds/" + charter)
     
         if 'bugtest' in form:
             print "Content-Type: text/plain\n\n"

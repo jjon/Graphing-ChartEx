@@ -220,7 +220,7 @@ def generateDocumentGraph(fpath):
     g = ann2rdf(fpath)
     g = smushSameAs(g)
     dtext = g.objects(None, chartex.textData).next()
-    dgsvg = makeBratCharterdot(g).draw(format='svg', prog='twopi')
+    dgsvg = brat2dot(g).draw(format='svg', prog='twopi')
     
     d = {
         'svg': dgsvg,

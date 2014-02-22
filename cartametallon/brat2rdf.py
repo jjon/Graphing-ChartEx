@@ -134,64 +134,59 @@ def smushSameAs(graph):
             graph.remove((id,None,None))
     return graph
     
-def makeBratCharterdot(rdfgraph):
+def brat2dot(rdf):
     dg = pgv.AGraph(directed=True, fontname="Times-Roman")
-    edges = {}
-
-    for s in rdfgraph.subjects(): ## s will be the entity nodes. For each node key we'll wind up w/a list like this as value:
-    ## [u'Person', (rdflib.term.URIRef('#T27T24'), u'is_a_previous_tenant_of'), (rdflib.term.URIRef('#T4'), u'is_daughter_of')]
-        edges[s] = []
-        labl = ""
-        
-        ## build label and chose edges to show edges[x][0] for entity type
-        for p,o in rdfgraph.predicate_objects(s):
-            if p.split('#')[1] == 'type':
-                edges[s].insert(0, o.split('#')[1])
-                continue
+    
+    # make a dictionary of all the Entities.
+    # This gets all the nodes for the graph because all the Entities
+    # are 'subjects' of at least a 'type' relation
+    graphdict = {s: {'type': [ t.split('#')[-1] for t in rdf.objects(s, RDF.type) ],
+                    'edges': [ (p,o) for p,o in rdf.predicate_objects(s) if isinstance(o,URIRef) and p != RDF.type ],
+                    'offsets': [ eval(o) for p,o in rdf.predicate_objects(s) if p == chartex.textRange ],
+                    'literals': [ o for p,o in rdf.predicate_objects(s) if p == chartex.textSpan ]
+                    }
+                for s in rdf.subjects()}
                 
-#             if p.split('#')[1] == 'might_be':
-#                 pass
-            
-            ## Literals will be part of label for output node
-            if isinstance(o,Literal):
-                labl += '\\n'.join(textwrap.wrap(o + '\\n', 30))
-            
-            ## remaining object, predicate tuples appended to edges[x]
-            elif o not in edges[s]:
-                edges[s].append((o, p))
-        
-        ## add the output nodes
-        dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id=str(s), tooltip = s)
-
-## for bmg translation TODO: still need to revise this    
-    try:
-        gdoc_node = rdfgraph.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
-        dgdoc_node = dg.get_node(gdoc_node)
-        dgdoc_node.attr['label'] = 'Document: ' + '\\n'.join(x for x in rdfgraph.objects(gdoc_node, chartex.File))
+    # add and style all the nodes
+    for s in graphdict:
+        dg.add_node(s,
+                    label = '\\n'.join(textwrap.wrap(graphdict[s]['literals'][-1], 30))
+                        if len(graphdict[s]['literals']) == 1
+                        else '\\n'.join(graphdict[s]['literals']),
+                    style = 'filled',
+                    fillcolor = node_colors[graphdict[s]['type'][-1]],
+                    shape = 'ellipse',
+                    id = str(s),
+                    tooltip = s
+                )
+    
+    # add and style all the edges            
+    for s in graphdict:
+        for edge in graphdict[s]['edges']:
+            dg.add_edge(
+                    s, edge[1],
+                    label = edge[0].split('#')[1],
+                    fontsize="11.0",
+                    tooltip = s + ', ' + edge[0] + ', ' + edge[1]                    
+                )
+                
+    maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
+    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="0.75:0.5:0.25", overlap=False)
+    
+    # tinker with individual nodes like this:
+    for dnode in [n for n in rdf.subjects(RDF.type, chartex.Document)]:
+        dgdoc_node = dg.get_node(dnode)
+        dgdoc_node.attr['label'] = "Charter:\\n" + dgdoc_node.attr['label']
         dgdoc_node.attr['fontcolor'] = "white"
         dgdoc_node.attr['fontsize'] = "18.0"
         dgdoc_node.attr['id'] = "doc_node"
-    except StopIteration:
-        # do something smarter than this for the case where there is no "Document" element
-        pass
-    
-    ## could use transaction nodes to coerce root?
-    ## transaction_nodes = list(rdfgraph.subjects(RDF.type, chartex.Transaction))
-    
-    ## generate the edges from the edges dict, rather than from the rdflib graph
-    for sub in edges:
-        for ob in edges[sub][1:]:
-            dg.add_edge(sub, ob[0], label = ob[1].split('#')[1], fontsize="11.0", tooltip = sub + ', ' + ob[1] + ', ' + ob[0])
-            ## these don't work:, labelangle="-2.0", labeldistance="1.6", labelfloat=False ; how come?
-    ## If we store the whole triple in the svg edge label tooltip, we can retrieve it from the client-side svg like this:
-    ## document.getElementById("edge2").getElementsByTagName('a')[0].getAttribute('xlink:title').split(', ')
 
-    ## identify the maximum in-degree node, and make that the root of the digraph
-    ## this makes for a less cluttered layout via the twopi algorithm
-    maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
-    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="1.0", overlap=False)
-    
-    
-    ##print json.dumps(edges, indent=4)
     return dg
 
+
+
+
+if __name__ == "__main__":
+    g = ann2rdf(tstdoc)
+    g.serialize(format="n3")
+    print brat2dot(smushSameAs(g))

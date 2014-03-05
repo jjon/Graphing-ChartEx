@@ -6,7 +6,8 @@ h2, h3 {border-top: 6px solid #aaa; margin-top: 16px; padding-top: 6px}
 }
 dl {}
 dt {
-    font-weight: bold; 
+    font-weight: bold;
+    color: #800;
     background-color: rgb(200, 206, 171); 
     padding-left: 6px;
     margin-top: 16px;
@@ -17,6 +18,35 @@ dt {
 dd {padding-top: .5em}
 
 .sanserif td {font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; padding: 5px}
+.alink {
+    text-decoration: none;
+    font-size: 90%;
+}
+.alink:hover {
+    text-decoration: underline overline;
+}
+
+#documentList {
+    float: left;
+    width: 230px;
+    max-height: 260px;
+    overflow: scroll;
+    border: 3px double #600;
+    background: #fec;
+    font-family: verdana, helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+#documentList a {
+    color: #300;
+    text-decoration: none;
+}
+
+#documentList a:hover {
+    color: #aa0400;
+    text-decoration: none;
+}
+
 
 #ftcontainer {
     font-size: 9pt;
@@ -95,7 +125,8 @@ h1 {
     font-size: 10pt;
     padding: 16px;
 }
-svg {
+
+#dotimg svg {
     cursor: move;
     border: dotted #aaa
 }

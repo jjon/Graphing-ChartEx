@@ -15,13 +15,12 @@ from decimal import Decimal
 sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
-
 import requests
 import pygraphviz as pgv
 import textwrap
 
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
-from localAGconfig import localAG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
+from localAGconfig import AG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
 
 tstdoc = DATADIR + "deeds/deeds-00880132.ann"
 chartex = Namespace("http://chartex.org/chartex-schema#")
@@ -77,6 +76,8 @@ def ann2rdf(f_path):
     implied_siterefs = []
         
     for line in annfile:
+        # NB: following will break on lines with text fragments like this:
+        # T6	Apparatus 800 814;832 839;854 859	observaverimus intrare idque
         if line[0] == 'T':
             eid, entity, start, end, text = re.split('\s+', line, maxsplit=4)
             g.add((this[eid], RDF.type, chartex[entity]))
@@ -135,11 +136,15 @@ def smushSameAs(graph):
     return graph
     
 def brat2dot(rdf):
+    if len(rdf) == 0:
+        return "sorry, nothing there. the graph has no nodes"
+        
     dg = pgv.AGraph(directed=True, fontname="Times-Roman")
     
     # make a dictionary of all the Entities.
     # This gets all the nodes for the graph because all the Entities
     # are 'subjects' of at least a 'type' relation
+    # Remember: contents of the edges dict are rdflib.term objects!
     graphdict = {s: {'type': [ t.split('#')[-1] for t in rdf.objects(s, RDF.type) ],
                     'edges': [ (p,o) for p,o in rdf.predicate_objects(s) if isinstance(o,URIRef) and p != RDF.type ],
                     'offsets': [ eval(o) for p,o in rdf.predicate_objects(s) if p == chartex.textRange ],
@@ -147,31 +152,34 @@ def brat2dot(rdf):
                     }
                 for s in rdf.subjects()}
                 
-    # add and style all the nodes
+    # add and style all the nodes (need two loops to ensure all nodes in the dict before creating edges between them)
     for s in graphdict:
-        dg.add_node(s,
-                    label = '\\n'.join(textwrap.wrap(graphdict[s]['literals'][-1], 30))
-                        if len(graphdict[s]['literals']) == 1
-                        else '\\n'.join(graphdict[s]['literals']),
-                    style = 'filled',
-                    fillcolor = node_colors[graphdict[s]['type'][-1]],
-                    shape = 'ellipse',
-                    id = str(s),
-                    tooltip = s
-                )
+        dg.add_node(
+            s,
+            label = '\\n'.join(textwrap.wrap(graphdict[s]['literals'][-1], 30))
+                if len(graphdict[s]['literals']) == 1
+                else '\\n'.join(graphdict[s]['literals']),
+            style = 'filled',
+            fillcolor = node_colors[graphdict[s]['type'][-1]],
+            shape = 'ellipse',
+            id = str(s),
+            tooltip = str(s)
+        )
     
-    # add and style all the edges            
+    # add and style all the edges
+    # Remember: contents of the edges dict are rdflib.term objects.
+    # Ergo: generate tooltip from strings to avoid logger warnings re bad URIs
     for s in graphdict:
         for edge in graphdict[s]['edges']:
             dg.add_edge(
-                    s, edge[1],
-                    label = edge[0].split('#')[1],
-                    fontsize="11.0",
-                    tooltip = s + ', ' + edge[0] + ', ' + edge[1]                    
-                )
+                s, edge[1],
+                label = edge[0].split('#')[1],
+                fontsize="11.0",
+                tooltip = str(s) + ', ' + str(edge[0]) + ', ' + str(edge[1])                    
+            )
                 
     maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
-    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="0.75:0.5:0.25", overlap=False)
+    dg.graph_attr.update(root = maxDegreeNode[0], mindist=0, ranksep="0.5:0.3:0.2", overlap=False)
     
     # tinker with individual nodes like this:
     for dnode in [n for n in rdf.subjects(RDF.type, chartex.Document)]:

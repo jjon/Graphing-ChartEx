@@ -20,8 +20,11 @@ import pygraphviz as pgv
 import textwrap
 
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
-from localAGconfig import localAG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
+from localAGconfig import AG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
 from brat2rdf import *
+import logging
+
+logging.basicConfig(level=10)
 
 cgitb.enable(format="text")
 
@@ -67,7 +70,7 @@ oa = Namespace("http://www.w3.org/ns/oa#")
 
 def getGraphSize(uri=None):
     r = requests.get(AGVM_VC_REPO + "/size",
-        auth=localAG_AUTH,
+        auth=AG_AUTH,
         params={'context': uri})
         
     return r.content
@@ -75,7 +78,7 @@ def getGraphSize(uri=None):
 def getContexts():
     r = requests.get(AGVM_VC_REPO + "/contexts", 
         headers={'Accept': 'application/json'},
-        auth=localAG_AUTH)        
+        auth=AG_AUTH)        
     print "Content-Type: text/plain\n"
     return r.content
 
@@ -84,7 +87,7 @@ def getContextGraph(uri=None, rf=None):
     r = requests.get(AGVM_VC_REPO + "/statements", 
         headers={'Accept': rf}, 
         params={'context': uri},
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
     
     return r.content
 
@@ -97,7 +100,7 @@ def getSubjGraph(uri, rf=None):
     r = requests.get(AGVM_VC_REPO + "/statements", 
         headers={'Accept': rf}, 
         params={'subj': uri, 'pred': pred},
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
 
     guri = eval(r.content)[0][3]
     return guri
@@ -108,7 +111,7 @@ def getSPOG(subj=None, pred=None, obj=None, context=None, rf=None):
     r = requests.get(AGVM_VC_REPO + "/statements",
         headers={'Accept': rf},
         params=p,
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
 
     return r.content
    
@@ -121,7 +124,7 @@ def ADSSparql(query, result_format=None):
     r = requests.get(AGVM_VC_REPO, 
         headers={'Accept': result_format}, 
         params={"query":query},
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
     
     return r.content
 
@@ -154,8 +157,7 @@ def makedot(rdfgraph):
         
         ## add the output nodes
         dg.add_node(s, label=labl, style='filled', fillcolor=node_colors[edges[s][0]], shape='ellipse', id=str(s), tooltip = s)
-
-## for bmg translation TODO: still need to revise this    
+    
     try:
         gdoc_node = rdfgraph.subjects(RDF.type, chartex.Document).next() ## NB. more than 1 Document element will break this.
         dgdoc_node = dg.get_node(gdoc_node)
@@ -167,24 +169,23 @@ def makedot(rdfgraph):
         # do something smarter than this for the case where there is no "Document" element
         pass
     
-    ## could use transaction nodes to coerce root?
-    ## transaction_nodes = list(rdfgraph.subjects(RDF.type, chartex.Transaction))
-    
     ## generate the edges from the edges dict, rather than from the rdflib graph
     for sub in edges:
         for ob in edges[sub][1:]:
-            dg.add_edge(sub, ob[0], label = ob[1].split('#')[1], fontsize="11.0", tooltip = sub + ', ' + ob[1] + ', ' + ob[0])
-            ## these don't work:, labelangle="-2.0", labeldistance="1.6", labelfloat=False ; how come?
+            dg.add_edge(sub, ob[0], label = ob[1].split('#')[1], fontsize="11.0", tooltip = str(sub) + ', ' + str(ob[1]) + ', ' + str(ob[0]))
+            
+    ## NB: generate tooltip above from strings, not rdflib.term objects to avoid logger warnings
+            
     ## If we store the whole triple in the svg edge label tooltip, we can retrieve it from the client-side svg like this:
     ## document.getElementById("edge2").getElementsByTagName('a')[0].getAttribute('xlink:title').split(', ')
 
     ## identify the maximum in-degree node, and make that the root of the digraph
     ## this makes for a less cluttered layout via the twopi algorithm
     maxDegreeNode = max([x for x in dg.iterdegree()], key= lambda tup: tup[1]) ## iterdegree returns a tuple (node, degree)
-    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="1.0", overlap=False)
+    dg.graph_attr.update(root = maxDegreeNode[0], ranksep="0.75:0.5:0.25", overlap=False)
     
     
-    ##print json.dumps(edges, indent=4)
+    # print json.dumps(edges, indent=4)
     return dg
 
 def singleDocConfidenceData(guri):
@@ -218,8 +219,12 @@ def getText(pattern, root=os.curdir):
             
 def generateDocumentGraph(fpath):
     g = ann2rdf(fpath)
+    
+    if len(g) == 0:
+        return json.dumps({'debugdata': "this graph has no nodes"})
+    
     g = smushSameAs(g)
-    dtext = g.objects(None, chartex.textData).next()
+    dtext = list(g.objects(None, chartex.textData))
     dgsvg = brat2dot(g).draw(format='svg', prog='twopi')
     
     d = {
@@ -229,12 +234,14 @@ def generateDocumentGraph(fpath):
             {s:{'offsets':[eval(t) for t in g.objects(s, chartex.textRange)], 'textSpans': [t for t in g.objects(s, chartex.textSpan)]} for s in set(g.subjects())},
         'entityRelations':
             {s:{p.partition('#')[-1]:str(o) for p,o in g.predicate_objects(s) if not isinstance(o,Literal) and not p == RDF.type} for s in set(g.subjects())},
-        'charterText': dtext
+        'charterText': dtext[0] if dtext else "no text",
+        'charterID': fpath,
+        'debugdata': None
     }
 
     return json.dumps(d)
 
-#print generateDocumentGraph(DATADIR + "deeds/deeds-00880132.ann")
+#print generateDocumentGraph(DATADIR + "inter-coding-exercise/bob/YM_D_SN_48.ann")
 
 def visualizeDocumentGraph(guri):
     ## BUG: if we let getContextGraph have its default result
@@ -280,8 +287,14 @@ def visualizeDocumentGraph(guri):
 
 #print visualizeDocumentGraph("<http://chartex.org/graphid/vicars-choral-122>")    
 
-def exDoc(entID, filename): #TODO: get the offsets too, via sparql
-    """ vicars-choral-403.txt, Person_10428 """
+def exDoc(entID, filename):
+    """ example arguments: vicars-choral-403.txt, Person_10428 
+        RDFlib logger doesn't like this, complains when generating
+        the string formatting tuple % ('<' + file_str + '>', '<' + ent_str + '>')"""
+    
+    file_str = '<' + gid + filename.replace('.txt','') + '>'
+    ent_str = '<' + chartex + entID + '>'
+    
     q = """
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX chartex: <http://chartex.org/chartex-schema#>
@@ -289,7 +302,7 @@ def exDoc(entID, filename): #TODO: get the offsets too, via sparql
     where {
         graph %s {%s chartex:TextRange ?o .}
     }   
-    """  % ('<' + gid[filename.replace('.txt','') + '>'], '<' + chartex[entID] + '>')
+    """  % (file_str, ent_str)
     
     r = ADSSparql(q)
     offsets = json.loads(r)['values']
@@ -299,6 +312,8 @@ def exDoc(entID, filename): #TODO: get the offsets too, via sparql
     res['color'] = node_colors[entID.split('_')[0]]
     res['offsets'] = offsets
     return json.dumps(res)
+    
+#print exDoc("Person_10428", "vicars-choral-403.txt")
 
 def annotationExists(id):
     return getSPOG(subj=id, rf='text/integer')
@@ -331,7 +346,7 @@ def annotateConfidence(target, un, con, com):
             AGVM_VC_REPO + "/statements",
             headers={'Content-Type': 'text/turtle'},
             data=g.serialize(format='turtle'),
-            auth=localAG_AUTH
+            auth=AG_AUTH
         )
 
         return (g.serialize(format='pretty-xml'), r.__dict__)
@@ -363,7 +378,7 @@ def getSingleConfidenceAnnotation(annID, result_format=None):
     r = requests.get(AGVM_VC_REPO,
         headers={'Accept': rf},
         params={'query': qry},
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
     return r.content
     
 # print getSingleConfidenceAnnotation('<http://chartex.org/user/jjon/annotation/849140ffd067b00929d3a37fbbee37e9b3a9cc59>', 'text/rdf+n3')
@@ -397,7 +412,7 @@ def retrieveConfidenceAnnotations(result_format=None):
     r = requests.get(AGVM_VC_REPO,
         headers={'Accept': rf},
         params={'query': qry},
-        auth=localAG_AUTH)
+        auth=AG_AUTH)
     return r.content
 
 def deleteTriples(json):
@@ -405,7 +420,7 @@ def deleteTriples(json):
         "http://140.142.31.21:10035/repositories/vicarsChoral/statements/delete",
         headers={'Content-Type': 'application/json'},
         data=json,
-        auth=localAG_AUTH
+        auth=AG_AUTH
     )
     return r.content
 
@@ -489,7 +504,7 @@ if __name__ == "__main__":
             charter = form.getvalue('generateDocumentGraph')
             
             print "Content-Type: application/json\r\n\r\n"
-            print generateDocumentGraph(DATADIR + "deeds/" + charter)
+            print generateDocumentGraph(charter)
     
         if 'bugtest' in form:
             print "Content-Type: text/plain\n\n"
@@ -499,7 +514,7 @@ if __name__ == "__main__":
             
             print "Content-Type: text/plain\n"
             print "\n"
-            print "lookin' for somthin' ?"
+            print "Lookin' for somethin' ?"
             
     except StandardError as e:
         print "Content-Type: text/html\n"

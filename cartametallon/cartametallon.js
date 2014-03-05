@@ -91,7 +91,7 @@ function inContext(txtin, offsets){
 function annotateGraph(target, username, confidence, comment){
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {"target": target, "username": username, "confidence": confidence, "comment": comment},
         dataType: 'text',
         success: function(data){
@@ -131,7 +131,7 @@ function annotateTarget(annbutton){
 function retrieveConfidenceAnnotations(){
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {'getConfidenceAnnotations': true, 'format':'text/rdf+n3'},
         dataType: 'text',
         success: function(data){
@@ -148,7 +148,7 @@ function retrieveConfidenceAnnotations(){
 function exDoc(entID, filename, event){
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {"exDoc": filename, "entID": entID},
         dataType: 'json',
         success: function(json){
@@ -332,7 +332,7 @@ function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid
 
 function bmgTest(){
     $.ajax({
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         dataType: 'text',
         error: function(jqXHR, textStatus, errorThrown) {
             //console.log(jqXHR.response, textStatus, errorThrown);
@@ -347,7 +347,7 @@ function getDocs(){
 
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {'getDocumentContexts': true},
         dataType: 'json',
         success: getDocumentTable,
@@ -369,7 +369,7 @@ function getGraphSize(uri){
     
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {'getGraphSize': uri},
         dataType: 'text',
         success: deployGraphSize,
@@ -383,7 +383,7 @@ function graphMe(charter){
     hideme();
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {"graphMe": charter},
         dataType: 'json',
         success: deploySVG,
@@ -397,7 +397,7 @@ function generateDocumentGraph(charter){
     hideme();
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {"generateDocumentGraph": charter},
         dataType: 'json',
         success: function(json){
@@ -413,7 +413,7 @@ function generateDocumentGraph(charter){
 function howto(){ // use instead: $.get with a local template as above in annotateTarget
     $.ajax({
         type: "get",
-        url: "localAGVM.py",
+        url: "cartametallon.py",
         data: {"howto": true},
         dataType: 'html',
         success: showModalHTML,

@@ -14,6 +14,7 @@ from decimal import Decimal
 
 sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
+#print rdflib.__version__
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
 import requests
 import pygraphviz as pgv
@@ -22,7 +23,8 @@ import textwrap
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
 from localAGconfig import AG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
 
-tstdoc = DATADIR + "deeds/deeds-00880132.ann"
+tstdoc = DATADIR + "deeds/deeds-00880111.ann"
+#tstdoc = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
 chartex = Namespace("http://chartex.org/chartex-schema#")
 chartexDoc = Namespace("http://chartex.org/chartex-schema/")
 crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
@@ -60,9 +62,26 @@ Entities = {
     'Document':True,
     'Apparatus':True
     }
-
-
+ 
+def collapse_entity_relation(g, relation):
+    # TODO: move this and other stuff into an RDF module.
+    
+    for ent in g.subjects():
+        for p,o in g.predicate_objects(ent):
+            if p == relation:
+                newLiteral = list(g.objects(o,chartex.textSpan))[0] + ''.join(list(g.objects(o,chartex.textRange)))
+                g.add((ent, chartex.textSpan, Literal(newLiteral)))
+                g.remove((ent,p,o))
+                
+    return g
+            
+def delete_entities(g, ent):
+    g.remove((None, RDF.type, ent))
+        
+    return g
+                   
 def ann2rdf(f_path):
+    # Mac Path: /Users/jjc/Sites/Ann2DotRdf/chartex/Giovanni_Scriba/GScriba_DCCCLXI.ann
     g = Graph()
     x_path, ext = os.path.splitext(f_path)
     charter_id = os.path.basename(x_path)
@@ -76,12 +95,17 @@ def ann2rdf(f_path):
     implied_siterefs = []
         
     for line in annfile:
-        # NB: following will break on lines with text fragments like this:
+        # TODO NB: following will break on lines with text fragments like this:
         # T6	Apparatus 800 814;832 839;854 859	observaverimus intrare idque
+        
         if line[0] == 'T':
-            eid, entity, start, end, text = re.split('\s+', line, maxsplit=4)
+            eid, ent_and_offsets, text = line.split('\t')
+            entity, offsets = ent_and_offsets.split(' ', 1)
+            offsets = [list([int(y) for y in x.split()]) for x in offsets.split(';')]
+            
+            
             g.add((this[eid], RDF.type, chartex[entity]))
-            g.add((this[eid], chartex.textRange, Literal((int(start), int(end)))))
+            g.add((this[eid], chartex.textRange, Literal(offsets)))
             g.add((this[eid], chartex.textSpan, Literal(text.strip())))
             if entity == "Document":
                 g.add(( this[eid], chartex.textData, Literal(doctext, datatype=XSD.string) ))
@@ -104,6 +128,10 @@ def ann2rdf(f_path):
             g.add((this[ent], chartex.caseAttr, chartex[val]))
             
     return g
+    
+#print ann2rdf('/Users/jjc/Sites/Ann2DotRdf/chartex/Giovanni_Scriba/GScriba_DCCCLXI.ann').serialize(format='n3')
+#print ann2rdf( DATADIR + "deeds/deeds-00880111.ann").serialize(format='n3')
+
 
 def find_roots(graph,prop,roots=None): 
     """
@@ -118,9 +146,11 @@ def find_roots(graph,prop,roots=None):
             roots.add(y)
     return roots
 
+import itertools
 def smushSameAs(graph):
     firsts = find_roots(graph,chartex.same_as)
     smush_lists = [list(graph.transitive_subjects(chartex.same_as,x)) for x in firsts]
+    
     for idlist in smush_lists:
         new_frag = ''.join([x.rpartition('#')[-1] for x in idlist])
         new_sub = x.defrag() + '#' + new_frag
@@ -133,14 +163,32 @@ def smushSameAs(graph):
                 graph.add((s,p,URIRef(new_sub)))
                 
             graph.remove((id,None,None))
+            
+        # smush multiple text ranges
+        offset_lists = [eval(x) for x in list(graph.objects(new_sub, chartex.textRange))]
+        offsets = list(itertools.chain.from_iterable(offset_lists))
+        graph.remove((new_sub, chartex.textRange, None))
+        graph.add((new_sub, chartex.textRange, Literal(offsets) ))
+        
     return graph
+
+def filter_witnesses(d):
+    for x in d:
+        d[x]['edges'] = [e for e in d[x]['edges'] if e[0] != chartex.is_witness_to]
+    return {x:y for x,y in d.items()
+        if not ("Person" in y['type'] and y['edges'] == [])
+        }
+    # this doesn't work yet: need a condition to remove d entries of 'type' Person where 'edges' is empty
+    # {x:y for x,y in d.items() if not ("Person" in y['type'] and y['edges'] == [])}
+    ## works, but just causes more trouble: and not all(item[0] == chartex.occupation_is for item in y['edges'])
+
     
-def brat2dot(rdf):
+def brat2dot(rdf, wits):
     if len(rdf) == 0:
         return "sorry, nothing there. the graph has no nodes"
-        
-    dg = pgv.AGraph(directed=True, fontname="Times-Roman")
     
+    dg = pgv.AGraph(directed=True, fontname="Times-Roman")
+
     # make a dictionary of all the Entities.
     # This gets all the nodes for the graph because all the Entities
     # are 'subjects' of at least a 'type' relation
@@ -151,8 +199,12 @@ def brat2dot(rdf):
                     'literals': [ o for p,o in rdf.predicate_objects(s) if p == chartex.textSpan ]
                     }
                 for s in rdf.subjects()}
-                
-    # add and style all the nodes (need two loops to ensure all nodes in the dict before creating edges between them)
+    
+    # suppress witness nodes and edges:
+    if wits:
+        graphdict = filter_witnesses(graphdict)
+        
+    # add and style the nodes
     for s in graphdict:
         dg.add_node(
             s,
@@ -187,14 +239,16 @@ def brat2dot(rdf):
         dgdoc_node.attr['label'] = "Charter:\\n" + dgdoc_node.attr['label']
         dgdoc_node.attr['fontcolor'] = "white"
         dgdoc_node.attr['fontsize'] = "18.0"
-        dgdoc_node.attr['id'] = "doc_node"
+        dgdoc_node.attr['id'] = dnode
 
     return dg
 
-
-
-
 if __name__ == "__main__":
     g = ann2rdf(tstdoc)
-    g.serialize(format="n3")
-    print brat2dot(smushSameAs(g))
+    gdict = brat2dot(smushSameAs(g), False)
+    
+    print g.serialize(format='n3')
+    
+#     collapse_entity_relation(g, chartex.occupation_is)
+#     collapse_entity_relation(g, chartex.is_of)
+#     print delete_entities(g, chartex.Occupation).serialize(format='n3')

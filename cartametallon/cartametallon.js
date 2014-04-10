@@ -227,9 +227,11 @@ function getEntityData(entID, json, $that){
     }
 
     // highlight entity in context
+    // NB: we're doing this very differently now in the brat2rdf code
+    //      changing both the way we create the rdf graph, AND how we generate the dot AND deploy it here
     var color = $that.find('ellipse').attr('fill')
     var offin = json.entityAttributes[entID].TextRange;
-    var offout = eval('[' + offin.replace(/\s/g, ',').replace(/\(/g, '[').replace(/\)/g, ']') + ']');
+    var offout = eval('[' + offin.replace(/\s/g, ',').replace(/\(/g, '[').replace(/\)/g, ']') + ']');    
     var txt = json.charterText.split('');
     var html = inContext(txt, offout);
     
@@ -313,7 +315,7 @@ function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid
     $('.node').click(function(e) {
         var fill = $(this).find('ellipse').attr('fill');
         var nodeID = $(this).attr('id');
-        var offsets = json.entityAttributes[nodeID].offsets;
+        var offsets = eval(json.entityAttributes[nodeID].offsets);
         var html = inContext(chartertext.split(''), offsets);
         
         $("#graphed-charter-text").html(html).find("span").css('background-color', fill);
@@ -393,12 +395,12 @@ function graphMe(charter){
     });
 }
 
-function generateDocumentGraph(charter){
+function generateDocumentGraph(charter, wits){
     hideme();
     $.ajax({
         type: "get",
         url: "cartametallon.py",
-        data: {"generateDocumentGraph": charter},
+        data: {"generateDocumentGraph": charter, "witnesses": wits},
         dataType: 'json',
         success: function(json){
             deployBratCharterSVG(json);
@@ -436,7 +438,8 @@ $(document).ready(function() {
         collapseSpeed: 300,
         multiFolder: true
     }, function(file) {
-        generateDocumentGraph(file);
+        wits = $("#suppress_witnesses").is(':checked')
+        generateDocumentGraph(file, wits);
     });
 
     

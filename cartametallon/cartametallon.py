@@ -13,7 +13,10 @@ from decimal import Decimal
 
 sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
+# print rdflib.__version__
+
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
+from rdflib.tools.rdf2dot import *
 
 import requests
 import pygraphviz as pgv
@@ -91,7 +94,10 @@ def getContextGraph(uri=None, rf=None):
     
     return r.content
 
-#print getContextGraph('<http://chartex.org/graphid/vicars-choral-122>')
+# print getContextGraph('<http://chartex.org/graphid/vicars-choral-122>', 'text/rdf+n3')
+# g = Graph()
+# print len(g.parse(data=vc122, format='n3'))
+
 
 def getSubjGraph(uri, rf=None):
     """TODO: revise this so that it's a general solution to retrieve a subgraph by name. Right now it breaks if rf is not 'application/json'"""
@@ -164,7 +170,7 @@ def makedot(rdfgraph):
         dgdoc_node.attr['label'] = 'Document: ' + '\\n'.join(x for x in rdfgraph.objects(gdoc_node, chartex.File))
         dgdoc_node.attr['fontcolor'] = "white"
         dgdoc_node.attr['fontsize'] = "18.0"
-        dgdoc_node.attr['id'] = "doc_node"
+        dgdoc_node.attr['id'] = gdoc_node
     except StopIteration:
         # do something smarter than this for the case where there is no "Document" element
         pass
@@ -217,31 +223,34 @@ def getText(pattern, root=os.curdir):
             dtext = open(os.path.join(path, filename)).read()
             yield dtext
             
-def generateDocumentGraph(fpath):
-    g = ann2rdf(fpath)
+def generateDocumentGraph(rdf, fpath, wits):
+### d now has the right string for offsets, no do eval in the js
     
-    if len(g) == 0:
+    if len(rdf) == 0:
         return json.dumps({'debugdata': "this graph has no nodes"})
     
-    g = smushSameAs(g)
-    dtext = list(g.objects(None, chartex.textData))
-    dgsvg = brat2dot(g).draw(format='svg', prog='twopi')
+    rdf = smushSameAs(rdf)
+    dtext = list(rdf.objects(None, chartex.textData))
+    dgsvg = brat2dot(rdf, wits).draw(format='svg', prog='twopi')
     
     d = {
         'svg': dgsvg,
-        'n3': g.serialize(format='n3'),
+        'n3': rdf.serialize(format='n3'),
         'entityAttributes':
-            {s:{'offsets':[eval(t) for t in g.objects(s, chartex.textRange)], 'textSpans': [t for t in g.objects(s, chartex.textSpan)]} for s in set(g.subjects())},
+            {s:{'offsets': list(rdf.objects(s, chartex.textRange))[0],
+                'textSpans': [t for t in rdf.objects(s, chartex.textSpan)]} for s in set(rdf.subjects())},
         'entityRelations':
-            {s:{p.partition('#')[-1]:str(o) for p,o in g.predicate_objects(s) if not isinstance(o,Literal) and not p == RDF.type} for s in set(g.subjects())},
+            {s:{p.partition('#')[-1]:str(o) for p,o in rdf.predicate_objects(s) if not isinstance(o,Literal) and not p == RDF.type} for s in set(rdf.subjects())},
         'charterText': dtext[0] if dtext else "no text",
         'charterID': fpath,
-        'debugdata': None
+        'debugdata': wits
     }
+    
+    return d
 
-    return json.dumps(d)
-
-#print generateDocumentGraph(DATADIR + "inter-coding-exercise/bob/YM_D_SN_48.ann")
+# fpath = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
+# fpath = DATADIR + "deeds/deeds-00880111.ann"
+# print generateDocumentGraph(ann2rdf(fpath), fpath, False)
 
 def visualizeDocumentGraph(guri):
     ## BUG: if we let getContextGraph have its default result
@@ -502,9 +511,10 @@ if __name__ == "__main__":
     
         if 'generateDocumentGraph' in form:
             charter = form.getvalue('generateDocumentGraph')
-            
+            wits = True if form.getvalue('witnesses') == 'true' else False
+            rdf = ann2rdf(charter)
             print "Content-Type: application/json\r\n\r\n"
-            print generateDocumentGraph(charter)
+            print json.dumps(generateDocumentGraph(rdf, charter, wits))
     
         if 'bugtest' in form:
             print "Content-Type: text/plain\n\n"

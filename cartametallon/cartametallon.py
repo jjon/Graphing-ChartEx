@@ -13,7 +13,6 @@ from decimal import Decimal
 
 sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
-# print rdflib.__version__
 
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
 from rdflib.tools.rdf2dot import *
@@ -124,6 +123,16 @@ def getSPOG(subj=None, pred=None, obj=None, context=None, rf=None):
 ## check to see 'if exists', by checking for number:         
 ## print getSPOG(rf='text/integer', pred="<http://www.w3.org/ns/oa#hasTarget>", obj="<http://chartex.org/graphid/Person_10434might_bePerson_10622>")
 
+# temp = getSPOG(rf='application/trix', context="<http://chartex.org/graphid/vicars-choral-444>")
+# tempg = ConjunctiveGraph()
+# tempg.parse(data=temp, format='trix')
+# for x in tempg[rdflib.term.URIRef(u'http://chartex.org/chartex-schema#Person_9587'): : ]:
+#     print x
+    
+    
+    
+    
+    
 def ADSSparql(query, result_format=None):
     result_format = result_format if result_format else "application/json"
     
@@ -251,6 +260,7 @@ def generateDocumentGraph(rdf, fpath, wits):
 # fpath = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
 # fpath = DATADIR + "deeds/deeds-00880111.ann"
 # print generateDocumentGraph(ann2rdf(fpath), fpath, False)
+# print ann2rdf(fpath).serialize(format='trig')
 
 def visualizeDocumentGraph(guri):
     ## BUG: if we let getContextGraph have its default result
@@ -389,9 +399,6 @@ def getSingleConfidenceAnnotation(annID, result_format=None):
         params={'query': qry},
         auth=AG_AUTH)
     return r.content
-    
-# print getSingleConfidenceAnnotation('<http://chartex.org/user/jjon/annotation/849140ffd067b00929d3a37fbbee37e9b3a9cc59>', 'text/rdf+n3')
-
 
 
 def retrieveConfidenceAnnotations(result_format=None):
@@ -433,104 +440,205 @@ def deleteTriples(json):
     )
     return r.content
 
+######## Upload and Delete a Document Context Graph from AG triple-store #######
+## We're not ACID compliant here. For that we're going to need sessions
+## this is just simple:
+## 1. generate rdf from annotation file, and upload it as a named graph to the AG store
+## 2. delete graph from AG store by graph name 
+## TODO: implement in js
+## Also, the more generalizable approach would be to use SPARQL update queries
+## but we're mindful of the problems that my experiments with the ADS AG store (may have) created
+################################################################################
+
+def uploadDocumentContext(annfile):
+    docid = annfile.split('/').pop().split('.')[0]
+    cg = ConjunctiveGraph(identifier=gid['tempUploadGraph'])
+    cg.addN([(s,p,o,gid[docid]) for (s,p,o) in ann2rdf(annfile)])
+
+    r = requests.post(
+        AGVM_VC_REPO + "/statements",
+        headers={'Content-Type': 'text/x-nquads'},
+        data=cg.serialize(format='nquads'),
+        auth=AG_AUTH,
+        params={"commit":1000}
+    )
+    return r.content
+    
+#print uploadDocumentContext('/Users/jjc/Sites/Ann2DotRdf/chartex/Giovanni_Scriba/GScriba_DCCCLXI.ann')
+
+def deleteDocumentContext(annfile):
+    graphid = "<" + gid[annfile.split('/').pop().split('.')[0]] + ">"
+    
+    r = requests.delete(
+        AGVM_VC_REPO + "/statements",
+        headers={'Content-Type': 'application/json', 'charset': 'utf-8'},
+        auth=AG_AUTH,
+        params={"context": graphid}
+    )
+    return r.content
+
+#print deleteDocumentContext("<http://chartex.org/graphid/GScriba_DCCCLXI>")
+#print getSPOG(context="<http://chartex.org/graphid/GScriba_DCCCLXI>")
 
 form = cgi.FieldStorage()
 
-if __name__ == "__main__":
-    try:
-        if 'getGraphSize' in form:
-            graphuri = form.getvalue('getGraphSize')
-            graphuri = None if graphuri == 'true' else graphuri
-            print "Content-type: text/plain\n\n"
-            print
-            print getGraphSize(graphuri)
-            
+
+try:
+    if 'deleteGraph' in form:
+        annfile = form.getvalue('deleteGraph')
+        response = deleteDocumentContext(annfile)
+        print "Content-type: text/plain\n\n"
+        print
+        if int(response) > 0:
+            print json.dumps({"message": "number of triples deleted: ", "payload": response})
+        else:
+            print json.dumps({"message": "for some reason, the number of triples deleted was: ", "payload": response})
+
+    if 'commitGraph' in form:
+        annfile = form.getvalue('commitGraph')
+        response = uploadDocumentContext(annfile)
+
+        print "Content-type: text/plain\n\n"
+        print
+        if int(response) > 0:
+            print json.dumps({"message": "number of triples added: ", "payload": response})
+        else:
+            print json.dumps({"message": "for some reason, the number of triples deleted was: ", "payload": response})
+
+    if 'graphExists' in form:
+        graphid = '<' + form.getvalue('graphID') + '>'
+        format = form.getvalue('format') if form.getvalue('format') else None
+        ## getSPOG(subj=None, pred=None, obj=None, context=None, rf=None):
+        print "Content-type: text/plain\n\n"
+        print
+        if int(getSPOG(context=graphid, rf='text/integer')) > 0:
+            print json.dumps({"graphexists": True, "payload": getSPOG(context=graphid, rf="application/trix")})
+        else:
+            print json.dumps({"graphexists": False, "payload":"There is not yet a graph in our triplestore with URI:\n" + graphid + "\nsee above for how to commit this graph to our triplestore."} )
         
-        if 'getConfidenceAnnotations' in form:
-            format = form.getvalue('format')
-            print "Content-type: text/plain\n\n"
-            print
-            print retrieveConfidenceAnnotations(format)
-                        
-        if 'target' in form:
-            target = form.getvalue('target')
-            un = form.getvalue('username')
-            con = form.getvalue('confidence')
-            com = form.getvalue('comment')
-            result, debug = annotateConfidence(target, un, con, com)
-            print "Content-type: text/plain\n\n"
-            print
-            print result, debug
-
-        if 'howto' in form:
-            howto = open('/Users/jjc/Sites/Ann2DotRdf/cartametallon/howto.html', 'r').read()
-            print "Content-Type: text/html\n\n"
-            print
-            print howto
-            
-        if 'exDoc' in form:
-            filename = form.getvalue('exDoc')
-            entID = form.getvalue('entID')
-            print "Content-Type: application/json\r\n\r\n"
-            print
-            print exDoc(entID, filename)
-            
-        if 'getContexts' in form:
-            print "Content-Type: text/plain\n\n"
-            print getContexts()
-
-        if 'mightBeGoodness' in form:
-            entID = form.getvalue('mightBeGoodness')
-            query = """PREFIX chartex: <http://chartex.org/chartex-schema#> select ?entity ?text ?file ?goodness WHERE { ?entity chartex:TextSpan ?text ; chartex:File ?file . GRAPH ?g {  chartex:%s  chartex:might_be ?entity . } ?g chartex:goodness ?goodness . }""" % (entID)
+    if 'getGraphSize' in form:
+        graphuri = form.getvalue('getGraphSize')
+        graphuri = None if graphuri == 'true' else graphuri
+        print "Content-type: text/plain\n\n"
+        print
+        print getGraphSize(graphuri)    
     
-            print "Content-Type: application/json\r\n\r\n"
-            print
-            print ADSSparql(query)
-            
-        if 'getDocumentContexts' in form:
-            query = """select distinct ?g WHERE { GRAPH ?g { ?s ?p ?o } . FILTER regex(str(?g), "vicars-choral") }"""
+    if 'getConfidenceAnnotations' in form:
+        format = form.getvalue('format')
+        print "Content-type: text/plain\n\n"
+        print
+        print retrieveConfidenceAnnotations(format)
+                    
+    if 'target' in form:
+        target = form.getvalue('target')
+        un = form.getvalue('username')
+        con = form.getvalue('confidence')
+        com = form.getvalue('comment')
+        result, debug = annotateConfidence(target, un, con, com)
+        print "Content-type: text/plain\n\n"
+        print
+        print result, debug
 
-            print "Content-Type: application/json\r\n\r\n"
-            print
-            print ADSSparql(query)
-            
-        if 'getDeedsDocuments' in form:
+    if 'howto' in form:
+        howto = open('/Users/jjc/Sites/Ann2DotRdf/cartametallon/howto.html', 'r').read()
+        print "Content-Type: text/html\n\n"
+        print
+        print howto
         
-            deedsList = os.listdir(DATADIR + "deeds/")
-
-            print "Content-Type: application/json\r\n\r\n"
-            print
-            print json.dumps(deedsList)
-            
-        if 'graphMe' in form:
-            charter = form.getvalue('graphMe')
-            uri = "<http://chartex.org/graphid/" + charter + ">"
-            
-            print "Content-Type: application/json\r\n\r\n"
-            print visualizeDocumentGraph(uri)
-    
-        if 'generateDocumentGraph' in form:
-            charter = form.getvalue('generateDocumentGraph')
-            wits = True if form.getvalue('witnesses') == 'true' else False
-            rdf = ann2rdf(charter)
-            print "Content-Type: application/json\r\n\r\n"
-            print json.dumps(generateDocumentGraph(rdf, charter, wits))
-    
-        if 'bugtest' in form:
-            print "Content-Type: text/plain\n\n"
-            print "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque sollicitudin. Fusce varius pellentesque ligula. Proin condimentum purus a nunc tempor pellentesque.\n"
-    
-        if not form:
-            
-            print "Content-Type: text/plain\n"
-            print "\n"
-            print "Lookin' for somethin' ?"
-            
-    except StandardError as e:
-        print "Content-Type: text/html\n"
+    if 'exDoc' in form:
+        filename = form.getvalue('exDoc')
+        entID = form.getvalue('entID')
+        print "Content-Type: application/json\r\n\r\n"
+        print
+        print exDoc(entID, filename)
         
-        print e.__dict__
+    if 'getContexts' in form:
+        print "Content-Type: text/plain\n\n"
+        print getContexts()
 
+    if 'mightBeGoodness' in form:
+        entID = form.getvalue('mightBeGoodness')
+        query = """PREFIX chartex: <http://chartex.org/chartex-schema#> select ?entity ?text ?file ?goodness WHERE { ?entity chartex:TextSpan ?text ; chartex:File ?file . GRAPH ?g {  chartex:%s  chartex:might_be ?entity . } ?g chartex:goodness ?goodness . }""" % (entID)
+
+        print "Content-Type: application/json\r\n\r\n"
+        print
+        print ADSSparql(query)
+        
+    if 'getDocumentContexts' in form:
+        query = """select distinct ?g WHERE { GRAPH ?g { ?s ?p ?o } . FILTER regex(str(?g), "vicars-choral") }"""
+
+        print "Content-Type: application/json\r\n\r\n"
+        print
+        print ADSSparql(query)
+        
+    if 'getDeedsDocuments' in form:
+    
+        deedsList = os.listdir(DATADIR + "deeds/")
+
+        print "Content-Type: application/json\r\n\r\n"
+        print
+        print json.dumps(deedsList)
+        
+    if 'graphMe' in form:
+        charter = form.getvalue('graphMe')
+        uri = "<http://chartex.org/graphid/" + charter + ">"
+        
+        print "Content-Type: application/json\r\n\r\n"
+        print visualizeDocumentGraph(uri)
+
+    if 'generateDocumentGraph' in form:
+        charter = form.getvalue('generateDocumentGraph')
+        wits = True if form.getvalue('witnesses') == 'true' else False
+        rdf = ann2rdf(charter)
+        print "Content-Type: application/json\r\n\r\n"
+        print json.dumps(generateDocumentGraph(rdf, charter, wits))
+
+    if 'bugtest' in form:
+        print "Content-Type: text/plain\n\n"
+        print "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque sollicitudin. Fusce varius pellentesque ligula. Proin condimentum purus a nunc tempor pellentesque.\n"
+
+    if not form:
+        
+        print "Content-Type: text/plain\n"
+        print "\n"
+        print "Lookin' for somethin' ?"
+        
+except StandardError as e:
+    print "Content-Type: text/html\n"
+    
+    print e.__dict__
+
+
+# if __name__ == "__main__":
+#     print getContexts()
+#     
+#     
+    #print rdflib.__version__
+
+#     fpath = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
+#     fpath = DATADIR + "deeds/deeds-00880111.ann"
+#     print generateDocumentGraph(ann2rdf(fpath), fpath, False)
+#     print ann2rdf(fpath).serialize(format='trig')
+
+
+
+    #print getContextGraph('<http://chartex.org/graphid/vicars-choral-122>', 'application/trix')
+    #print json.dumps(getSPOG(rf='text/rdf+n3', context="<http://chartex.org/graphid/vicars-choral-444>"))
+    #print singleDocConfidenceData("<http://chartex.org/graphid/vicars-choral-444>")
+    #print visualizeDocumentGraph("<http://chartex.org/graphid/vicars-choral-122>")
+    #print exDoc("Person_10428", "vicars-choral-403.txt")
+
+#    print ADSSparql("""
+#         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#         PREFIX chartex: <http://chartex.org/chartex-schema#>
+#         select ?o
+#         where {
+#             graph <http://chartex.org/graphid/vicars-choral-122> {?s chartex:TextRange ?o .}
+#         }   
+#     
+#     """)
+    
+    
 # PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 # PREFIX chartex: <http://chartex.org/chartex-schema#>
 # PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>

@@ -49,7 +49,13 @@ var moveSlider = function(slider, direction) {
 <div class="ctrl-box">
     <div class="legend" style="text-align: center; font-family: verdana, helvetica, sans-serif; font-size: 9pt; margin-bottom: 9px; border-bottom: double #800; width: 90%">
     <div id="graph-size" style="text-align: center; font-family: verdana, helvetica, sans-serif; font-size: 80%"></div>
-    <h1 style="padding-left: 0em">CARTAMETALLON</h1><p>Fossicking about among the charters: <button id='howtobutton'>Documentation (sparse)</button><button id="getAnnot">retrieve confidence annotations</button></p></div>
+    <h1 style="padding-left: 0em">CARTAMETALLON</h1>
+    <p>Fossicking about among the charters: 
+    <button id='howtobutton'>Documentation (sparse)</button>
+    <button id="getAnnot">retrieve confidence annotations</button>
+    <button id="n3serialization">view/copy/commit RDF</button>
+    </p></div>
+    
     <div class="graph-button" style="padding-left: 6px">scale graph size:
     <input id="sliderX" type="range" min="800" max="3500" value="800" onchange="moveSlider(this, 'x')" style="width: 90%" />
     <a class="alink" href="#" id="show-brat">see the markup in brat</a>

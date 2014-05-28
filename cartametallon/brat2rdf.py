@@ -97,7 +97,6 @@ def ann2rdf(f_path):
     for line in annfile:
         # TODO NB: following will break on lines with text fragments like this:
         # T6	Apparatus 800 814;832 839;854 859	observaverimus intrare idque
-        
         if line[0] == 'T':
             eid, ent_and_offsets, text = line.split('\t')
             entity, offsets = ent_and_offsets.split(' ', 1)
@@ -146,7 +145,7 @@ def find_roots(graph,prop,roots=None):
             roots.add(y)
     return roots
 
-import itertools
+import itertools # better: just define a little recursive list flattener.
 def smushSameAs(graph):
     firsts = find_roots(graph,chartex.same_as)
     smush_lists = [list(graph.transitive_subjects(chartex.same_as,x)) for x in firsts]
@@ -245,10 +244,5 @@ def brat2dot(rdf, wits):
 
 if __name__ == "__main__":
     g = ann2rdf(tstdoc)
-    gdict = brat2dot(smushSameAs(g), False)
-    
-    print g.serialize(format='n3')
-    
-#     collapse_entity_relation(g, chartex.occupation_is)
-#     collapse_entity_relation(g, chartex.is_of)
-#     print delete_entities(g, chartex.Occupation).serialize(format='n3')
+    g.serialize(format="n3")
+    print brat2dot(smushSameAs(g))

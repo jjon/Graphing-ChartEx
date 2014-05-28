@@ -26,6 +26,41 @@ dd {padding-top: .5em}
     text-decoration: underline overline;
 }
 
+#rdfcontrol {
+    float: left;
+    width: 95%;
+    border: 3px double grey;
+    background-color: rgb(200, 206, 171);
+    padding: 16px;
+}
+
+#rdfcontrol table {
+    border-collapse: collapse;
+    margin-left: 60px;
+    width: 80%;
+}
+
+#rdfcontrol div.buttonrow {
+    color: black;
+    float: left;
+    margin: 6 40;
+}
+
+#rdfcontrol div.explain {
+    border-top: 1px solid #800;
+    padding: 6px;
+    display: table-cell;
+}
+
+#rdfcontrol div.execute {
+    width: 100px;
+    float: left;
+    border-right: 6px solid #800;
+    border-bottom: 1px solid #800;
+    padding: 6px;
+    display: table-cell;
+}
+
 #documentList {
     float: left;
     width: 230px;
@@ -124,6 +159,7 @@ h1 {
     font-family: verdana, helvetica, sans-serif;
     font-size: 10pt;
     padding: 16px;
+    line-height: 1.5;
 }
 
 #dotimg svg {

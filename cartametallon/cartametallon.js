@@ -290,6 +290,76 @@ function deploySVG(json){ //called by graphMe(charterid)
     hideLocalLoader();
 }
 
+
+
+function getNamedGraphFromAG(json) {
+    var charter = json.charterID.split('/').pop().split('.')[0];
+    var graphID = "http://chartex.org/graphid/" + charter;
+    $.ajax({
+        type: "get",
+        url: "cartametallon.py",
+        data: {'graphExists': true, 'graphID': graphID},
+        dataType: 'json',
+        success: function(res){
+            if (!res.graphexists){
+                $("#modalsink pre").text(res.payload);
+                $("#upload-graph").removeAttr('disabled');
+                $("#delete-graph").attr('disabled', 'disabled');
+                hideLocalLoader();
+            } else {
+                $("#modalsink pre").text(res.payload);
+                $("#upload-graph").attr('disabled', 'disabled');
+                $("#delete-graph").removeAttr('disabled');
+                hideLocalLoader();
+            };
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+}
+
+function commitGraph(charterID){
+
+    $.ajax({
+        type: "get",
+        url: "cartametallon.py",
+        data: {'commitGraph': charterID},
+        dataType: 'json',
+        success: function(result){
+            $("#modalsink pre").text(result.message + result.payload);
+            if (result.payload > 0) {
+                $("#upload-graph").attr('disabled', 'disabled');
+            }
+            hideLocalLoader();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+
+}
+
+function deleteGraph(charter){
+    $.ajax({
+        type: "get",
+        url: "cartametallon.py",
+        data: {'deleteGraph': charter},
+        dataType: 'json',
+        success: function(result){
+            $("#modalsink pre").text(result.message + result.payload);
+            if (result.payload > 0) {
+                $("#delete-graph").attr('disabled', 'disabled');
+            }
+            hideLocalLoader();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.response, textStatus, errorThrown);
+        }
+    });
+
+}
+
 function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid)
     _json = json;
     if (json.debugdata == "this graph has no nodes") {
@@ -298,13 +368,15 @@ function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid
         return false;
     };
     
-    var brat = "http://neolography.com/brat/#/";
-    
+    //    var brat = "http://neolography.com/brat/#/";
+    var brat = "http://localhost/Sites/brat/index.xhtml#/chartex/";
     var svg = json.svg;
     var filename = json.charterText.split('\n')[0];
     var bratURL = brat + json.charterID.split('chartex/')[1].slice(0,-4)
     var chartertext = json.charterText;
-    
+//     console.log(json.charterID);
+//     console.log(bratURL);
+
     $("#graphed-charter-text").append('div class="content"').text(json.charterText);
     $("#graphed-charter-text").prepend("<h1>"+ filename +".txt</h1>");
     $("#graphed-charter-text").show();
@@ -322,6 +394,60 @@ function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid
         $("#graphed-charter-text").prepend("<h1>" + filename + "</h1>");
         
     });
+    
+    $("#n3serialization").click(function(e) {
+        thisGraphID = json.charterID.split('/').pop().split('.')[0]
+
+        rdfcontrol = "<div id='rdfcontrol'>\
+        <p style='font-size: 160%; padding-bottom: 16px; color: #800; width: 100%'>http://chartex.org/graphid/" + thisGraphID + "</p>\
+        <div class='buttonrow'><div class='execute'><button id='graph-exists'>show named graph in store</button></div>\
+            <div class='explain'>\
+            the canonical URI for this graph is \"http://chartex.org/graphid/" + thisGraphID + "\"\
+            if a graph by that name exists in our AllegroGraph triplestore, clicking on this button will display it below, serialized in the \'trix\' format\
+            </div>\
+        </div>\
+        <div class='buttonrow'><div class='execute'><button id='restoreN3'>show n3 serialization</button></div>\
+            <div class='explain'>\
+            restore the N3 serialization of this graph below\
+            </div>\
+        </div>\
+        <div class='buttonrow'><div class='execute'><button id='upload-graph' disabled>commit graph to AG triple store</button></div>\
+            <div class='explain'>\
+            If a graph with this canonical name does not exist in the AG triple store it will be created\
+            </div>\
+        </div>\
+        <div class='buttonrow'><div class='execute'><button id='delete-graph' disabled>delete graph from AG triple store</button></div>\
+            <div class='explain'>\
+            If a graph with this canonical name exists in the AG triple store, it will be deleted\
+            </div>\
+        </div>\
+        </div>"
+
+
+
+
+        showModal(json.n3);
+        $("#modalsink").prepend(rdfcontrol);
+        $("#graph-exists").click(function(e) {
+            showLocalLoader();
+            getNamedGraphFromAG(json);
+        });
+        
+        $("#restoreN3").click(function(e) {
+            $("#modalsink pre").text(json.n3);
+        });
+        
+        $("#upload-graph").click(function(e) {
+            showLocalLoader();
+            commitGraph(json.charterID);
+        });
+
+        $("#delete-graph").click(function(e) {
+            showLocalLoader();
+            deleteGraph(json.charterID);
+        });
+
+    })
         
     $("#show-brat").attr({'href': bratURL, 'target':'_blank'});
         
@@ -468,6 +594,7 @@ $(document).ready(function() {
         event.preventDefault();
         return false;
     });
+    
     
     $(".block-toggle").click(function(){
         $that = this;

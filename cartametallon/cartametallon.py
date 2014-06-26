@@ -133,7 +133,7 @@ def getSPOG(subj=None, pred=None, obj=None, context=None, rf=None):
     
     
     
-def ADSSparql(query, result_format=None):
+def AGSparql(query, result_format=None):
     result_format = result_format if result_format else "application/json"
     
     r = requests.get(AGVM_VC_REPO, 
@@ -223,7 +223,7 @@ def singleDocConfidenceData(guri):
     }
     """ % (guri,)
     
-    return ADSSparql(q)
+    return AGSparql(q)
     
 def getText(pattern, root=os.curdir):
     """ somebody else's code. The generator is good, but, didn't I do this with GREP?"""
@@ -323,7 +323,7 @@ def exDoc(entID, filename):
     }   
     """  % (file_str, ent_str)
     
-    r = ADSSparql(q)
+    r = AGSparql(q)
     offsets = json.loads(r)['values']
     
     res = {}
@@ -480,10 +480,20 @@ def deleteDocumentContext(annfile):
 #print deleteDocumentContext("<http://chartex.org/graphid/GScriba_DCCCLXI>")
 #print getSPOG(context="<http://chartex.org/graphid/GScriba_DCCCLXI>")
 
+
 form = cgi.FieldStorage()
 
 
 try:
+
+#   this triggers the bug, but still don't know what it is.
+#     if arbitrarySparql in form:
+#         query = form.getvalue('arbitrarySparql')
+#         rf = form.getvalue('resultFormat')
+#         print "Content-Type: application/json\r\n\r\n"
+#         print
+#         print AGSparql(query)
+
     if 'deleteGraph' in form:
         annfile = form.getvalue('deleteGraph')
         response = deleteDocumentContext(annfile)
@@ -562,14 +572,14 @@ try:
 
         print "Content-Type: application/json\r\n\r\n"
         print
-        print ADSSparql(query)
+        print AGSparql(query)
         
     if 'getDocumentContexts' in form:
         query = """select distinct ?g WHERE { GRAPH ?g { ?s ?p ?o } . FILTER regex(str(?g), "vicars-choral") }"""
 
         print "Content-Type: application/json\r\n\r\n"
         print
-        print ADSSparql(query)
+        print AGSparql(query)
         
     if 'getDeedsDocuments' in form:
     
@@ -628,7 +638,7 @@ except StandardError as e:
     #print visualizeDocumentGraph("<http://chartex.org/graphid/vicars-choral-122>")
     #print exDoc("Person_10428", "vicars-choral-403.txt")
 
-#    print ADSSparql("""
+#    print AGSparql("""
 #         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 #         PREFIX chartex: <http://chartex.org/chartex-schema#>
 #         select ?o

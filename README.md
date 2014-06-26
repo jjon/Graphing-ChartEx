@@ -16,7 +16,7 @@ The software in this repository consists of
     
     __2014-02-12 Update:__ The ADS has updated their instance of the AllegroGraph triple store, the code here has been modified accordingly. ADS will continue to host our data for the time being, and the CARTAMETALLON at Neolography will continue to work against that data; however, continued development will be conducted against a local AllegroGraph instance running in a virtual machine and that code will be reflected in files: localAGVM\*.*
 
-* __stand-alone-scripts:__ A series of python scripts serving a variety of functions: Preparing texts for input into the brat annotation tool; translating brat output into RDF; translating biomine output into RDF; uploading RDF graphs to the triple store via REST interations; Issuing arbitrary SPARQL queries to the triple store and parsing their responses. These are all <i>ad hoc</i> scripts and not intended for production use.
+* __stand-alone-scripts:__ A series of python scripts serving a variety of functions: Preparing texts for input into the brat annotation tool; translating brat output into RDF; translating biomine output into RDF; uploading RDF graphs to the triple store via REST interactions; Issuing arbitrary SPARQL queries to the triple store and parsing their responses. These are all <i>ad hoc</i> scripts and not intended for production use.
 
 ## Requires:
 * Python 2.7 standard library, and modules:

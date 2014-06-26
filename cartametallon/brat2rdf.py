@@ -95,7 +95,7 @@ def ann2rdf(f_path):
     implied_siterefs = []
         
     for line in annfile:
-        # TODO NB: following will break on lines with text fragments like this:
+        # text fragment example:
         # T6	Apparatus 800 814;832 839;854 859	observaverimus intrare idque
         if line[0] == 'T':
             eid, ent_and_offsets, text = line.split('\t')
@@ -112,6 +112,7 @@ def ann2rdf(f_path):
         if line[0] == 'R':
             key, prop, a1, a2, note = re.split('\s+', line, maxsplit=4)
             g.add((this[a1.split(':')[1]], chartex[prop], this[a2.split(':')[1]]))
+        
         if line[0] == "*": 
             key, prop, nodes_string = line.split(None, 2)
             l = nodes_string.split()

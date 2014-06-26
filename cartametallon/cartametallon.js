@@ -361,7 +361,7 @@ function deleteGraph(charter){
 }
 
 function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid)
-    _json = json;
+    //_json = json; //just for debugging introspection
     if (json.debugdata == "this graph has no nodes") {
         hideLocalLoader();
         alert("Aborting. That graph has no nodes.");

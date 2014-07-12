@@ -23,6 +23,12 @@ from pprint import pprint
 from collections import OrderedDict, defaultdict
 ## Giovanni Scriba vol.2: starting with charter 804, ending with 1306 total of 503
 
+
+def replace_all(text, d):
+    for x, y in d.iteritems():
+        text = text.replace(x, y)
+    return text
+
 def lev(seq1, seq2):
     """ Return Levenshtein distance metric
     (ripped from http://pydoc.net/Python/Whoosh/2.3.2/whoosh.support.levenshtein/)
@@ -44,7 +50,9 @@ def lev(seq1, seq2):
     return thisrow[len(seq2) - 1]
 
 def rom2ar(rom):
-    """ returns arabic equivalent of Roman numeral """
+    """ From the Python tutor mailing list:
+    János Juhász janos.juhasz at VELUX.com
+    returns arabic equivalent of Roman numeral """
     roman_codec = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
     roman = rom.upper()
     roman = list(roman)
@@ -118,7 +126,7 @@ for line in txtlist:
 
 #pprint (charters)
 
-## charters is now an existing data structure. The following for loop acts upon the same list of lines to find footnote markers and footnote texts, store them in a temporary structure (fndict) and then write them out to the 'footnote' field of the 'charters' dictionary.
+## SECOND PASS: charters is now an existing data structure. The following for loop acts upon the same list of lines to find footnote markers and footnote texts, store them in a temporary structure (fndict) and then write them out to the 'footnote' field of the 'charters' dictionary.
 for line in txtlist:
     if slug.match(line):
         this_charter = slug.match(line).group(3)
@@ -147,7 +155,22 @@ for line in txtlist:
             except KeyError:
                 print "KeyError in charter: %s\nFrom Line: \"%s\""  % (this_charter, line)
 
-pprint(charters)
+
+## THIRD PASS: delete footnote texts from charter 'text' field and clean up other stuff (multiple spaces, linebreaks, etc.)
+## hmm, we'll have to iterate and capture groups to delete serial instances.
+textnotes = re.compile(r"\n\(\d\).*")
+for ch in charters:
+    txt = charters[ch]['text']
+    notes = textnotes.findall(txt)
+    
+    if notes:
+        #notes[0] = ' ' + notes[0]
+        repl = {x: '' for x in notes}
+        charters[ch]['text'] = replace_all(txt, repl)
+        
+    
+
+pprint (charters)
 
 ################################ OCR cleanup routines ####################################
 

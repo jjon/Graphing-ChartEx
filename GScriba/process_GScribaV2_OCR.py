@@ -156,23 +156,29 @@ for line in txtlist:
                 print "KeyError in charter: %s\nFrom Line: \"%s\""  % (this_charter, line)
 
 
-## THIRD PASS: delete footnote texts from charter 'text' field and clean up other stuff (multiple spaces, linebreaks, etc.)
-## hmm, we'll have to iterate and capture groups to delete serial instances.
+## THIRD PASS: delete footnote texts from charter 'text' field
 textnotes = re.compile(r"\n\(\d\).*")
 for ch in charters:
     txt = charters[ch]['text']
     notes = textnotes.findall(txt)
     
     if notes:
-        #notes[0] = ' ' + notes[0]
-        repl = {x: '' for x in notes}
+        repl = {x: ' ' for x in notes}
         charters[ch]['text'] = replace_all(txt, repl)
-        
-    
+
+## FOURTH PASS: strip out rubrics into metadata and strip whitespace from remaining text in 'text' field.
+for ch in charters:
+    txt_lines = charters[ch]['text'].split('\n')
+    charters[ch]['rubric'] = txt_lines[1]
+    charters[ch]['text'] = ' '.join([t.strip() for t in txt_lines[2:]])
+## OK, that works, but it leaves out charters with no rubric, eg. " ......], so we fix the rubrics manually"    
+            
 
 pprint (charters)
 
 ################################ OCR cleanup routines ####################################
+## Commented out sections below were ad-hoc routines to divide up the ocr text into charters and clean it up a bit in order to run the code above to get a dictionary of texts and metadata.
+
 
 ## watch out for footnotes split across pages as for no. 1149 n.1: (fixed in working)
 

@@ -333,3 +333,7 @@ pprint (charters)
 # GScriba = fin.read()
 # it = roman.finditer(GScriba)
 # print len([x.group(0).strip().strip('.') for x in it])
+
+################# Q & A #####################
+# 887: misprint in original?: 'Testes Todescus Cantarus, Martinus, Petrus Ferrarii et Lahfran \xe2\x80\xa2 Testes Todescus Cantarus, Martinus, Petrus Ferrarii et Lanfran'
+# 1090: superscript a in text? currency designation?: 'pro .xvi.•'

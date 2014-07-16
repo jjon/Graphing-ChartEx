@@ -193,44 +193,40 @@ for ch in charters:
             
 
 
-#pprint (charters)
+pprint (charters)
 
 ########### Output HTML ###############
-
-for x in charters:
-    if charters[x]['footnote']:
-        fnlst = charters[x]['footnote']
-        fns = ""
-        for i in fnlst:
-            fns += "<li>(%s) %s</li>" % (i[0], i[1])
-    else:
-        fns = ""   
-        
-    blob = htmlBlob(
-        """
-        <div>
-            <div class="charter">
-                <h1>%(head)s</h1>
-                <div class="folio">%(folio)s</div>
-                <div class="summary">%(summary)s</div>
-                <div class="rubric">%(rubric)s</div>
-                <div class="charter-text">%(charter_text)s</div>
-                <div class="footnotes"><ul>%(footnote)s</ul></div>
-            </div>
-        </div>
-        """,
-        head = charters[x]['chid'],
-        folio = charters[x]['folio'],
-        summary = charters[x]['summary'],
-        rubric = charters[x]['rubric'],
-        charter_text = charters[x]['text'],
-        footnote = fns,
-    )
-    
-    print blob
-#### TODO:
-# check inline folio refs, as in GScriba_MCXCVI
-
+# for x in charters:
+#     if charters[x]['footnote']:
+#         fnlst = charters[x]['footnote']
+#         fns = ""
+#         for i in fnlst:
+#             fns += "<li>(%s) %s</li>" % (i[0], i[1])
+#     else:
+#         fns = ""   
+#         
+#     blob = htmlBlob(
+#         """
+#         <div>
+#             <div class="charter">
+#                 <h1>%(head)s</h1>
+#                 <div class="folio">%(folio)s</div>
+#                 <div class="summary">%(summary)s</div>
+#                 <div class="rubric">%(rubric)s</div>
+#                 <div class="charter-text">%(charter_text)s</div>
+#                 <div class="footnotes"><ul>%(footnote)s</ul></div>
+#             </div>
+#         </div>
+#         """,
+#         head = charters[x]['chid'],
+#         folio = charters[x]['folio'],
+#         summary = charters[x]['summary'],
+#         rubric = charters[x]['rubric'],
+#         charter_text = charters[x]['text'],
+#         footnote = fns,
+#     )
+#     
+#     print blob
 
 ################################ OCR cleanup routines ####################################
 ## Commented out sections below were ad-hoc routines to divide up the ocr text into charters and clean it up a bit in order to run the code above to get a dictionary of texts and metadata.

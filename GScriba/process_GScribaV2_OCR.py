@@ -19,20 +19,10 @@
 
 import re
 import json
-import cgi
+# import cgi # use cgi.escape() if we need to escape the charter text for the HTML
 from pprint import pprint
 from collections import OrderedDict, defaultdict
 ## Giovanni Scriba vol.2: starting with charter 804, ending with 1306 total of 503
-
-def htmlBlob(text, **values):
-	'''
-	Interpolate values into text, then remove newlines and the whitespace following them. If putting attributes on new lines for clarity, don't forget the terminal space. This will also escape double quotes in the result, for insertion into a quoted json environment. (note: with % we can enforce type too)]
-	Note: didn't need the second call to re.sub because simplejson takes care of excaping the double quotes!
-	'''
-	try:
-	    return re.sub('(^\n*|\n+)[ \t]*', '', text % values)
-	except:
-	    print values
 
 def replace_all(text, d):
     for x, y in d.iteritems():
@@ -78,6 +68,13 @@ def rom2ar(rom):
     
     return result
 
+def htmlBlob(text, **values):
+	'''
+	Interpolate values into text, then remove newlines and the whitespace following them. If putting attributes on new lines for clarity, don't forget the terminal space. This will also escape double quotes in the result, for insertion into a quoted json environment. (note: with % we can enforce type too)]
+	Note: didn't need the second call to re.sub because simplejson takes care of excaping the double quotes!
+	'''
+	return re.sub('(^\n*|\n+)[ \t]*', '', text % values)
+
 ### NB. romstr is a crude filter for text beginning with I,V,X,L,C,D, or M.
 ### Single character occurance of these numerals will be missed out and must be manually edited.
 
@@ -90,7 +87,7 @@ notemark = re.compile(r"\(\d\)(?<!^\(\d\))")
 fndict = {}
 n = 0
 this_charter = ''
-this_folio = '[fo. 101 r.]' ### modify this depending on doc number xrange()
+this_folio = '[fo. 100 v.]' ### presuming 1st charter is fo. 100 v.. Modify this depending on doc number xrange()
 
 txtlist = fin.readlines()
 dir_out = "/Users/jjc/Documents/GiovanniScriba/testCorpus/"
@@ -189,11 +186,11 @@ for ch in charters:
     txt_lines = charters[ch]['text'].split('\n')
     charters[ch]['rubric'] = txt_lines[1]
     charters[ch]['text'] = ' '.join([t.strip() for t in txt_lines[2:]])
-## OK, that works, but it leaves out charters with no rubric, eg. " ......], so we fixed the rubrics manually"    
+## OK, that worked, but it left out charters with no rubric, eg. " ......], so we fixed the rubrics manually"    
             
 
 
-pprint (charters)
+#pprint (charters)
 
 ########### Output HTML ###############
 # for x in charters:

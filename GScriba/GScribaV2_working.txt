@@ -1511,8 +1511,6 @@ Adalasie filie Tabarie] .
 
 (1) Cancellato: Raimundus.
 
-\ <Y
-
  voco me quietum et solutum de Ib..xviiii. e dotibus Adalasie filie Tabarie dilecte sponse mee et inde me quietum appello atque solutum. Actum in Clavica prope domum Sigembaldi Calegarii. Millesimo .CLxii., .VIIII. die aprilis, indictione .vIIII.
 
 [~~~~ GScriba_CMLVII :::: 957 ~~~~]
@@ -2789,7 +2787,7 @@ Anne de Treia] .
 [~~~~ GScriba_MLXXVIII :::: 1078 ~~~~]
 L'abazia di S. Andrea di Sestri Ponente vende una terra ad Amico Grillo (18 agosto 1163).
 
-&mici Grilli] .
+Amici Grilli] .
 
 • Testes Oto Iudex de Mediolano, Simon Aurie, Nicola Alcherii,
 

@@ -19,10 +19,20 @@
 
 import re
 import json
+import cgi
 from pprint import pprint
 from collections import OrderedDict, defaultdict
 ## Giovanni Scriba vol.2: starting with charter 804, ending with 1306 total of 503
 
+def htmlBlob(text, **values):
+	'''
+	Interpolate values into text, then remove newlines and the whitespace following them. If putting attributes on new lines for clarity, don't forget the terminal space. This will also escape double quotes in the result, for insertion into a quoted json environment. (note: with % we can enforce type too)]
+	Note: didn't need the second call to re.sub because simplejson takes care of excaping the double quotes!
+	'''
+	try:
+	    return re.sub('(^\n*|\n+)[ \t]*', '', text % values)
+	except:
+	    print values
 
 def replace_all(text, d):
     for x, y in d.iteritems():
@@ -123,8 +133,16 @@ for line in txtlist:
             except: ## this use of try/except seems clumsy and fragile. Must be a better way.
                 pass 
             d['text'] = templst[0] + ''.join(templst[2:]).strip()
-
-#pprint (charters)
+            
+            if fol.search(d['text']):
+                # this fails in 11 cases:
+                # 992, 1000, 1006, 1008, 1047, 1093, 1140, 1171, 1173, 1196, 1212
+                # where, for example, 1212 [fo. 154 r.][fo. 154 r.]
+                # should be: 1212 [fo. 153 v.][fo. 154 r.]
+                # still not clear why; multiple text lines? footnote interference?
+                
+                this_folio = fol.search(d['text']).group(0)
+                d['folio'] = d['folio'] + fol.search(d['text']).group(0)
 
 ## SECOND PASS: charters is now an existing data structure. The following for loop acts upon the same list of lines to find footnote markers and footnote texts, store them in a temporary structure (fndict) and then write them out to the 'footnote' field of the 'charters' dictionary.
 for line in txtlist:
@@ -171,10 +189,48 @@ for ch in charters:
     txt_lines = charters[ch]['text'].split('\n')
     charters[ch]['rubric'] = txt_lines[1]
     charters[ch]['text'] = ' '.join([t.strip() for t in txt_lines[2:]])
-## OK, that works, but it leaves out charters with no rubric, eg. " ......], so we fix the rubrics manually"    
+## OK, that works, but it leaves out charters with no rubric, eg. " ......], so we fixed the rubrics manually"    
             
 
-pprint (charters)
+
+#pprint (charters)
+
+########### Output HTML ###############
+
+for x in charters:
+    if charters[x]['footnote']:
+        fnlst = charters[x]['footnote']
+        fns = ""
+        for i in fnlst:
+            fns += "<li>(%s) %s</li>" % (i[0], i[1])
+    else:
+        fns = ""   
+        
+    blob = htmlBlob(
+        """
+        <div>
+            <div class="charter">
+                <h1>%(head)s</h1>
+                <div class="folio">%(folio)s</div>
+                <div class="summary">%(summary)s</div>
+                <div class="rubric">%(rubric)s</div>
+                <div class="charter-text">%(charter_text)s</div>
+                <div class="footnotes"><ul>%(footnote)s</ul></div>
+            </div>
+        </div>
+        """,
+        head = charters[x]['chid'],
+        folio = charters[x]['folio'],
+        summary = charters[x]['summary'],
+        rubric = charters[x]['rubric'],
+        charter_text = charters[x]['text'],
+        footnote = fns,
+    )
+    
+    print blob
+#### TODO:
+# check inline folio refs, as in GScriba_MCXCVI
+
 
 ################################ OCR cleanup routines ####################################
 ## Commented out sections below were ad-hoc routines to divide up the ocr text into charters and clean it up a bit in order to run the code above to get a dictionary of texts and metadata.

@@ -118,6 +118,7 @@ for line in txtlist:
             d['footnote'] = []
             if slug.match(line):
                 templst.append(chid + '\n')
+                prev_folio = d['folio'] # keep track of the folio mark when the charter dict is first created in order to add new folio to this field when folio changes in the charter text.
             elif fol.match(line):
                 this_folio = line.strip() ## update the variable instead of appending to templst
                 continue
@@ -136,10 +137,13 @@ for line in txtlist:
                 # 992, 1000, 1006, 1008, 1047, 1093, 1140, 1171, 1173, 1196, 1212
                 # where, for example, 1212 [fo. 154 r.][fo. 154 r.]
                 # should be: 1212 [fo. 153 v.][fo. 154 r.]
-                # still not clear why; multiple text lines? footnote interference?
-                
+                # each time this condition executes it reads the whole text field so this_folio gets updated multiple times for the charter thus losing the previous folio. Maybe go back to using a separate pass to fix this? Or, set a flag in the slug.match condition?
+
+                # with fix in line 121 above only two errors 1006 '[fo. 126 r.][fo. 127 r.]' and 1047 '[fo. 132 r.][fo. 133 r.]'
+
+
                 this_folio = fol.search(d['text']).group(0)
-                d['folio'] = d['folio'] + fol.search(d['text']).group(0)
+                d['folio'] = prev_folio + fol.search(d['text']).group(0)
 
 ## SECOND PASS: charters is now an existing data structure. The following for loop acts upon the same list of lines to find footnote markers and footnote texts, store them in a temporary structure (fndict) and then write them out to the 'footnote' field of the 'charters' dictionary.
 for line in txtlist:
@@ -190,7 +194,7 @@ for ch in charters:
             
 
 
-#pprint (charters)
+pprint (charters)
 
 ########### Output HTML ###############
 # for x in charters:

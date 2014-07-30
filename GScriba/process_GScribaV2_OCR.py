@@ -141,7 +141,9 @@ for line in txtlist:
 
                 # with fix in line 121 above only two errors 1006 '[fo. 126 r.][fo. 127 r.]' and 1047 '[fo. 132 r.][fo. 133 r.]'
 
-
+                # TODO: maybe better to parse the folio string and enter as metadate in d.
+                # here's a regex to parse it: fo_re = re.compile('\[fo.\s*(\d+)\s*([vr])\.*\]')
+                
                 this_folio = fol.search(d['text']).group(0)
                 d['folio'] = prev_folio + fol.search(d['text']).group(0)
 
@@ -194,7 +196,9 @@ for ch in charters:
             
 
 
-pprint (charters)
+for x in charters:
+    if charters[x]['folio'] == "[fo. 118 r.] (1)":
+        pprint (charters[x])
 
 ########### Output HTML ###############
 # for x in charters:

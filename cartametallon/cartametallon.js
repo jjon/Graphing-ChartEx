@@ -374,9 +374,7 @@ function deployBratCharterSVG(json){ //called by generateDocumentGraph(charterid
     var filename = json.charterText.split('\n')[0];
     var bratURL = brat + json.charterID.split('chartex/')[1].slice(0,-4)
     var chartertext = json.charterText;
-//     console.log(json.charterID);
-//     console.log(bratURL);
-
+    
     $("#graphed-charter-text").append('div class="content"').text(json.charterText);
     $("#graphed-charter-text").prepend("<h1>"+ filename +".txt</h1>");
     $("#graphed-charter-text").show();
@@ -589,12 +587,10 @@ $(document).ready(function() {
     //  using .on() gets also dynamically created elements.
         showLocalLoader();
         entID = $(this).parent().siblings()[0].textContent;
-        console.log(this.name);
         exDoc(entID, this.name, event);
         event.preventDefault();
         return false;
     });
-    
     
     $(".block-toggle").click(function(){
         $that = this;

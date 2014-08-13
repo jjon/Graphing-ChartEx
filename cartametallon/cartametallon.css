@@ -239,8 +239,8 @@ h1 {
 
 #modalsink {display: none}
 #modalsink pre {
-    font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace; font-size: 9pt;
-    height: 80%;
+    font-family: "bitstream vera sans mono", monaco, verdana, arial, monospace;
+    font-size: 9pt;
     white-space: pre-wrap;       /* css-3 */
     white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
@@ -255,6 +255,7 @@ h1 {
     background-color: #222; 
     border:6px solid #888; 
     padding:12px;
+    height: 80%;
 }
 
 #simplemodal-container a.modalCloseImg {

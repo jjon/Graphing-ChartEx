@@ -133,7 +133,7 @@ for line in txtlist:
             d['text'] = templst[0] + ''.join(templst[2:]).strip()
             
             if fol.search(d['text']):
-                # this fails in 11 cases:
+                # this failed in 11 cases:
                 # 992, 1000, 1006, 1008, 1047, 1093, 1140, 1171, 1173, 1196, 1212
                 # where, for example, 1212 [fo. 154 r.][fo. 154 r.]
                 # should be: 1212 [fo. 153 v.][fo. 154 r.]
@@ -141,7 +141,7 @@ for line in txtlist:
 
                 # with fix in line 121 above only two errors 1006 '[fo. 126 r.][fo. 127 r.]' and 1047 '[fo. 132 r.][fo. 133 r.]'
 
-                # TODO: maybe better to parse the folio string and enter as metadate in d.
+                # TODO: manually fix those two errors. Maybe better to parse the folio string and enter as metadata in d.
                 # here's a regex to parse it: fo_re = re.compile('\[fo.\s*(\d+)\s*([vr])\.*\]')
                 
                 this_folio = fol.search(d['text']).group(0)
@@ -194,11 +194,11 @@ for ch in charters:
     charters[ch]['text'] = ' '.join([t.strip() for t in txt_lines[2:]])
 ## OK, that worked, but it left out charters with no rubric, eg. " ......], so we fixed the rubrics manually"    
             
+pprint(charters)
 
-
-for x in charters:
-    if charters[x]['folio'] == "[fo. 118 r.] (1)":
-        pprint (charters[x])
+# for x in charters:
+#     if charters[x]['folio']:
+#         print charters[x]['folio']
 
 ########### Output HTML ###############
 # for x in charters:

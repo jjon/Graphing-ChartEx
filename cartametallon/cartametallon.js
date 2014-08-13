@@ -7,7 +7,7 @@ function showModal(response){
     $("#modalsink").modal({
         minWidth: 800,
         maxWidth: 1000,
-        maxHeight: 650,
+        maxHeight: 50,
         overlayClose:true,
         opacity:80
     });

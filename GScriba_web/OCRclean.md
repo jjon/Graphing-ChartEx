@@ -102,6 +102,8 @@ def lev(seq1, seq2):
     return thisrow[len(seq2) - 1]
 ```
 
+There's a lot of calculation going on there. It isn't very efficient to call `lev()` on every line in our text, but we don't really care. We've only got 803 charters in vol. 1. That's a pretty small number. If it takes 30 seconds to run our script, so be it.
+
 ### Roman to Arabic numerals
 You'll also note that the published edition numbers the charters with roman numerals. Converting roman numerals into arabic is an instructive puzzle to work out in Python. Here's the cleanest and most elegant solution I know:
 

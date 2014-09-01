@@ -367,7 +367,7 @@ The trickiest part is to get the footnote texts appearing at the bottom of the p
     GScriba = fin.readlines()
 
     notetext = re.compile(r"^\(\d+\)")
-    notemark = re.compile(r"\(\d+\)(?<!^\(\d\))") # lookbehind to see that the (1) marker does not begin a line
+    notemark = re.compile(r"\(\d+\)(?<!^\(\d\))") # lookbehind to see that a marker (e.g. '(1)') does not begin a line
     this_charter = 1
     pg = re.compile("~~~~~ PAGE \d+ ~~~~~")
     pgno = 1

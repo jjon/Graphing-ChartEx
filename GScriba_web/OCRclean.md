@@ -63,7 +63,7 @@ You can see from the scan that each charter has the following metadata associate
 * Frequently a collection of in-text numbered footnote markers, whose text appears at the bottom of each page, sequentially numbered, and restarting from 1 on each new page.
 * The Latin text of the charter itself
 
-This is typical of such resources, though editorial conventions will vary widely. The point is: this is an __ordered__ data set, not just a great big string of characters. With some fairly straightforward Python scripts, we can turn our OCR output into an ordered data set, in this case, a python dictionary, which we can then use for a variety of purposes.
+This is typical of such resources, though editorial conventions will vary widely. The point is: this is an __ordered__ data set, not just a great big string of characters. With some fairly straightforward Python scripts, we can turn our OCR output into an ordered data set, in this case, a python dictionary, __before__ we start trying to proofread the Latin charter texts. With such an ordered data set in hand, we can undertake that task, and potentially others as well, much more effectively.
 
 ## A few useful functions before we start:
 ### Levenshtein distance

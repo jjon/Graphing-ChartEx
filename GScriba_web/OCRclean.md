@@ -79,6 +79,8 @@ You will note that some of this metadata is page-bound and some of it is charter
 
 These strings are not regular enough to reliably find with regular expressions; however, if you know what the strings are supposed to look like, you can compose some kind of string similarity algorithm to test each string against an exemplar and measure the likelihood that it is a page header. Fortunately, I didn't have to compose such an algorithm, Vladimir Levenshtein did it for us in 1965 (see: <http://en.wikipedia.org/wiki/Levenshtein_distance>). A computer language can encode this algorithm in any number of ways, here's an effective Python function that will work for us:
 
+
+```python
     def lev(seq1, seq2):
         """ Return Levenshtein distance metric
         (ripped from http://pydoc.net/Python/Whoosh/2.3.2/whoosh.support.levenshtein/)
@@ -98,7 +100,7 @@ These strings are not regular enough to reliably find with regular expressions; 
                     and seq1[x-1] == seq2[y] and seq1[x] != seq2[y]):
                     thisrow[y] = min(thisrow[y], twoago[y - 2] + 1)
         return thisrow[len(seq2) - 1]
-
+```
 
 ### Roman to Arabic numerals
 You'll also note that the published edition numbers the charters with roman numerals. Converting roman numerals into arabic is an instructive puzzle to work out in Python. Here's the cleanest and most elegant solution I know:

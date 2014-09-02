@@ -461,9 +461,6 @@ Now that we have an ordered data structure, we can do many things with it. As a 
 
 ```python
 fout = open("your_page.html", 'w')
-
-fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
-
 fout.write("""
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 

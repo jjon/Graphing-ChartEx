@@ -126,16 +126,8 @@ def rom2ar(rom):
     return result
 ```
 
-### HTML templating
-At the end, when we have our data in a python dictionary, as an illustration of its utility we're going to output the data as HTML. Here's a useful function for that. (NB there are plenty of more able templating frameworks for python, e.g. Jinja <http://jinja.pocoo.org/>)
 
-```python
-def htmlBlob(text, **values):
-    """ crude templating function to get HTML out of a python dictionary"""
-    return re.sub('(^\n*|\n+)[ \t]*', '', text % values)
-```
-
-A couple of other things we'll need:
+## A couple of other things we'll need:
 At the top of your Python module, you're going to want to `import re`. Regular expressions are your friend. However, bear in mind Jamie Zawinski's quip: 
 
 >Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.
@@ -466,6 +458,8 @@ Printing out your Python dictionary as a literal string is not a bad thing to do
 Now that we have an ordered data structure, we can do many things with it. As a very simple example, lets just print it out as html for display on a web-site:
 
 ```python
+fout = open("your_page.html", 'w')
+
 fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
 
 fout.write("""
@@ -491,43 +485,33 @@ fout.write("""
 """)
 
 for x in charters:
+    d = charters[x]
     try:
-        if charters[x]['footnotes']:
-            fnlst = charters[x]['footnotes']
-            fns = ""
-            for i in fnlst:
-                fns += "<li>(%s) %s</li>" % (i[0], i[1])
-        else:
-            fns = ""   
+        d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""
     
-        blob = htmlBlob(
-            """
+        d['text'] = ' '.join(d['text'])
+        
+        blob = """
             <div>
                 <div class="charter">
-                    <h1>%(head)s</h1>
+                    <h1>%(chid)s</h1>
                     <div class="folio">%(folio)s (pg. %(pgno)d)</div>
                     <div class="summary">%(summary)s</div>
                     <div class="marginal">%(marginal)s</div>
-                    <div class="charter-text">%(charter_text)s</div>
-                    <div class="footnotes"><ul>%(footnotes)s</ul></div>
+                    <div class="text">%(text)s
+                    <div class="footnotes">%(footnotes)s</div>
+                    </div>
                 </div>
             </div>
-            """,
-            head = charters[x]['chid'],
-            pgno = charters[x]['pgno'],
-            folio = charters[x]['folio'],
-            summary = charters[x]['summary'],
-            marginal = charters[x]['marginal'],
-            charter_text = '<br>'.join(charters[x]['text']),
-            footnotes = fns,
-        )
-
-        fout.write(blob)
+            """
+            
+        fout.write(blob % d)
         fout.write("\n\n")
     except:
         pass
-    
+        
 fout.write("""</body></html>""")
+
 ```
     
 Drop the resulting file on a web browser, and you've got a nicely formated electronic edition. This is not a trivial example. If you're serious about creating a clean, error free, electronic edition of anything, you've got to do some serious proofreading. Having a source text formatted for reading is crucial; moreover, if your proofreader can change the font, spacing, color, layout, and so forth at will, you can increase their accuracy and productivity substantially. With this example in a modern web browser, tweaking those parameters with some simple css declarations is easy. Also, with some ordered HTML to work with, you might crowd-source the OCR error correction, instead of hiring an army of illiterate street urchins.

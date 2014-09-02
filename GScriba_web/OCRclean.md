@@ -487,7 +487,8 @@ for x in charters:
     d = charters[x]
     try:
         d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""    
-        d['text'] = ' '.join(d['text'])        
+        d['text'] = ' '.join(d['text'])
+        
         blob = """
             <div>
                 <div class="charter">
@@ -511,7 +512,7 @@ fout.write("""</body></html>""")
 
 ```
     
-Drop the resulting file on a web browser, and you've got a nicely formated electronic edition. This is not a trivial example. If you're serious about creating a clean, error free, electronic edition of anything, you've got to do some serious proofreading. Having a source text formatted for reading is crucial; moreover, if your proofreader can change the font, spacing, color, layout, and so forth at will, you can increase their accuracy and productivity substantially. With this example in a modern web browser, tweaking those parameters with some simple css declarations is easy. Also, with some ordered HTML to work with, you might crowd-source the OCR error correction, instead of hiring an army of illiterate street urchins.
+Drop the resulting file on a web browser, and you've got a nicely formated electronic edition. Being able to do this with your, mostly uncorrected, OCR output is not a trivial advantage. If you're serious about creating a clean, error free, electronic edition of anything, you've got to do some serious proofreading. Having a source text formatted for reading is crucial; moreover, if your proofreader can change the font, spacing, color, layout, and so forth at will, you can increase their accuracy and productivity substantially. With this example in a modern web browser, tweaking those parameters with some simple css declarations is easy. Also, with some ordered HTML to work with, you might crowd-source the OCR error correction, instead of hiring that army of illiterate street urchins.
 
 Beyond this though, there's lots you can do with an ordered data set, including feeding it back through a markup tool like the [brat](http://brat.nlplab.org) as we did for the ChartEx project. Domain experts can then start adding layers of semantic tagging even if you don't do any further OCR error correction.
 

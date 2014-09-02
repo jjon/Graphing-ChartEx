@@ -454,7 +454,7 @@ Print out our resulting dictionary using `pprint(charters)` and you'll see somet
 }
 ```
     
-Printing out your Python dictionary as a literal string is not a bad thing to do. For a text this size, the resulting file is perfectly manageable, can be mailed around usefully and read into a python repl session very simply using `eval()`, or pasted directly into a Python module file. On the other hand, if you want an even more reliable way to serialize it in an exclusively Python context, look into [Pickle](https://docs.python.org/2/library/pickle.html). If you need to move it to some other context, JavaScript for example, Python's [`json`](https://docs.python.org/2/library/json.html#module-json) module will translate effectively.
+Printing out your Python dictionary as a literal string is not a bad thing to do. For a text this size, the resulting file is perfectly manageable, can be mailed around usefully and read into a python repl session very simply using `eval()`, or pasted directly into a Python module file. On the other hand, if you want an even more reliable way to serialize it in an exclusively Python context, look into [`Pickle`](https://docs.python.org/2/library/pickle.html). If you need to move it to some other context, JavaScript for example, or some `RDF` triple stores, Python's [`json`](https://docs.python.org/2/library/json.html#module-json) module will translate effectively. If you have to get some kind of XML output, I will be very sorry for you, but the [`lxml`](http://lxml.de/) python module may ease the pain a little.
 
 ## Order from disorder, huzzah.
 Now that we have an ordered data structure, we can do many things with it. As a very simple example, lets just print it out as html for display on a web-site:

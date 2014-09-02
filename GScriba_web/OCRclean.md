@@ -248,7 +248,7 @@ L.T. O'Hara's [introduction](http://programminghistorian.org/lessons/cleaning-oc
 
 ## Find and normalize folio markers
 
-Many of the folio markers (e.g. [fo. 16 v.]) appear on the same line as the roman numeral for the charter heading. To normalize those charter headings for the operation above we had to put a page break between the folio marker and the charter number. So many of the folio markers are on their own line already; however, sometimes the folio changes in the middle of the charter text somewhere. We want these markers to stay where they are. We need to make sure all the folio markers are free of errors so that we can find them by means of a regular expression. Again, since we know how many folios there are, we can know if we've found them all. Note that since we used `.readlines()`, GScriba is a list, so the script below will print the line number from the sourcefile as well as the line itself. This will report all the correctly formated folio markers, so that you can find and fix the ones that are broken.
+Many of the folio markers (e.g. [fo. 16 v.]) appear on the same line as the roman numeral for the charter heading. To normalize those charter headings for the operation above we had to put a line break between the folio marker and the charter number, so many of the folio markers are on their own line already. However, sometimes the folio changes in the middle of the charter text somewhere. We want these markers to stay where they are. We need to make sure all the folio markers are free of errors so that we can find them by means of a regular expression. Again, since we know how many folios there are, we can know if we've found them all. Note that since we used `.readlines()`, GScriba is a list, so the script below will print the line number from the sourcefile as well as the line itself. This will report all the correctly formated folio markers, so that you can find and fix the ones that are broken.
 
 ```python
 for line in GScriba:
@@ -334,7 +334,7 @@ for line in GScriba:
         templist = [] # this works because we're proceeding in document order: templist continues to exist as we iterate through each line in the charter, then is reset to the empty list when we start a new charter(slug.match(line))
     if chno:
         d = charters[chno]
-        d['footnotes'] = []
+        d['footnotes'] = [] # we're going to populate this list in a later operation.
     
         if not re.match('[\n\t]+', line): # filter empty lines
             d['chid'] = chid

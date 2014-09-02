@@ -59,7 +59,7 @@ def htmlBlob(text, **values):
 	Interpolate values into text, then remove newlines and the whitespace following them. If putting attributes on new lines for clarity, don't forget the terminal space. This will also escape double quotes in the result, for insertion into a quoted json environment. (note: with % we can enforce type too)]
 	Note: didn't need the second call to re.sub because simplejson takes care of excaping the double quotes!
 	'''
-	return re.sub('(^\n*|\n+)[ \t]*', '', text % values)
+	return (text % values)
 
 ### NB. romstr is a crude filter for text beginning with I,V,X,L,C,D, or M.
 ### Single character occurance of these numerals will be missed out and must be manually edited.
@@ -167,7 +167,14 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 #     i = fol.finditer(line)
 #     if len(list(i)) > 1: print line
 ### but be alert for the possibility that a charter may span more than one folio.
-#
+
+
+# GScriba = fin.readlines()
+# for line in GScriba:
+#     match = fol.search(line)
+#     if match:
+#         print GScriba.index(line), match.group(0)
+
 ### FIX ITALIAN SUMMARY LINES
 ### the following script finds me cases in which the line following the charter
 ### header does not end with a date formatted thus: \(\d+.*\d+\) and reports the
@@ -181,16 +188,17 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 #     number of italian summaries:  797
 #     797 + 5 = 802 = expected number of charters.
 #
-# slug_and_firstline = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]\n(.*)(\([0-9]?.*\d+\))")
+# slug_and_firstline = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]\n(.*)(\(\d?.*\d+\))")
 # num_firstlines = 0
-# fin = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out3.txt", 'r')
+# fin = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out4.txt", 'r')
 # GScriba = fin.read() # NB: not a list of lines, but a single string
+# 
 # i = slug_and_firstline.finditer(GScriba)
 # for x in i:
 #     num_firstlines += 1
 #     chno = int(x.group(3))
 #     if chno != n + 1:
-#         print "charter: %s" % x.group(3) #NB: reports charter NEXT after the problem and will miss consecutive problems.
+#         print "charter: %d" % (n + 1) #NB: this will miss consecutive problems.
 #     n = chno
 # 
 # print "number of italian summaries: ", num_firstlines
@@ -246,9 +254,6 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 #     i = r.finditer(line)
 #     for mark in [eval(x.group(0)) for x in i]:
 #         pgfnlist.append(mark)
-
-### TODO: find and delete footer lines:
-### 	M CHIAODANOM. MORESCO, 11 cartolare di Giovanni Scriba, Vol. I.	25.
 
 ########################## Fix page numbering (again!) ########################
 # Going through those 62 pages brings a page numbering error to light: we missed
@@ -354,9 +359,9 @@ for ch in charters:
         d['summary'] = d['text'].pop(0).strip()
         d['marginal'] = d['text'].pop(0).strip()
     except IndexError: # this will report that the charters on p 214 are missing
-        pass #print "missing charter ", ch
-    
-
+        print "missing charter ", ch
+#     
+# 
 ######### Assign footnotes to respective charters and add to metadata #########
 # The next tricky bit is to get the footnote texts appearing at the bottom of
 # the page associated with their appropriate charters. For this we go back to
@@ -366,13 +371,12 @@ for ch in charters:
 # beginning with '(1)' etc.
 
 
-notetext = re.compile(r"^\(\d\)")
-notemark = re.compile(r"\(\d\)(?<!^\(\d\))") # lookbehind to see that the (1) marker does not begin a line
+notetext = re.compile(r"^\(\d+\)")
+notemark = re.compile(r"\(\d+\)(?<!^\(\d\))") # lookbehind to see that the (1) marker does not begin a line
 this_charter = 1
-r = re.compile("\(\d{1,2}\)")
+#r = re.compile("\(\d{1,2}\)")
 pg = re.compile("~~~~~ PAGE \d+ ~~~~~")
 pgno = 1
-pgfnlist = []
 fndict = {}
 
 for line in GScriba:
@@ -395,9 +399,9 @@ for line in GScriba:
             try:
                 fndict[text]['fntext'] = re.sub('\(\d+\)', '', line).strip()
             except KeyError:
-                pass#print "printer's error? ", "pgno:", pgno, line
+                print "printer's error? ", "pgno:", pgno, line
 
-    
+pprint(charters)    
 # We now have a regular data structure in which the available metadata has been abstracted away from the text of the charter itself. That text is still full of OCR errors, of course, but it's now possible to do some machine processing of the corpus of charters as a whole without the page-bound infrastructure getting in the way. For example, we might simply want an HTML representation of the charters so that we can control the styling of the various elements. This is a huge advantage all by itself: proofreaders have a much easier time of it when the elements of the corpus aren't just a mass of undifferentiated lines of text.
 
 # Or we might want to generate some SQL statements that will insert our data in a relational database, output some rudimentary TEI/xml, or get an RDF graph from our data. All kinds of things are now possible when we have a regular data structure rather than just a mass of error-filled OCR output.
@@ -405,66 +409,55 @@ for line in GScriba:
 # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 
 ########### Output HTML ###############
-fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
-
-fout.write("""
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
-<html>
-<head>
-  <title>Giovanni Scriba Vol. I</title>
-  <style>
-    h1 {text-align: center; color: #800; font-size: 16pt; margin-bottom: 0px; margin-top: 16px;}
-    ul {list-style-type: none;}
-    .sep {color: #800; text-align: center}
-    .charter {width: 650px; margin-left: auto; margin-right: auto; margin-top: 60px; border-top: double #800;}
-    .folio {color: #777;}
-    .summary {color: #777; margin: 12px 0px 12px 12px;}
-    .marginal {color: red}
-    .charter-text {margin-left: 16px}
-    .footnotes
-    .page-number {font-size: 60%}
-  </style></head>
-
-<body>
-""")
-
-for x in charters:
-    try:
-        if charters[x]['footnotes']:
-            fnlst = charters[x]['footnotes']
-            fns = ""
-            for i in fnlst:
-                fns += "<li>(%s) %s</li>" % (i[0], i[1])
-        else:
-            fns = ""   
-        
-        blob = htmlBlob(
-            """
-            <div>
-                <div class="charter">
-                    <h1>%(head)s</h1>
-                    <div class="folio">%(folio)s, (pg.%(pgno)d)</div>
-                    <div class="summary">%(summary)s</div>
-                    <div class="marginal">%(marginal)s</div>
-                    <div class="charter-text">%(charter_text)s</div>
-                    <div class="footnotes"><ul>%(footnotes)s</ul></div>
-                </div>
-            </div>
-            """,
-            head = charters[x]['chid'],
-            pgno = charters[x]['pgno'],
-            folio = charters[x]['folio'],
-            summary = charters[x]['summary'],
-            marginal = charters[x]['marginal'],
-            charter_text = '<br>'.join(charters[x]['text']),
-            footnotes = fns,
-        )
-    
-        fout.write(blob)
-        fout.write("\n\n")
-    except:
-        pass
-        
-fout.write("""</body></html>""")
+# fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
+# 
+# fout.write("""
+# <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+# 
+# <html>
+# <head>
+#   <title>Giovanni Scriba Vol. I</title>
+#   <style>
+#     h1 {text-align: center; color: #800; font-size: 16pt; margin-bottom: 0px; margin-top: 16px;}
+#     ul {list-style-type: none;}
+#     .sep {color: #800; text-align: center}
+#     .charter {width: 650px; margin-left: auto; margin-right: auto; margin-top: 60px; border-top: double #800;}
+#     .folio {color: #777;}
+#     .summary {color: #777; margin: 12px 0px 12px 12px;}
+#     .marginal {color: red}
+#     .charter-text {margin-left: 16px}
+#     .footnotes
+#     .page-number {font-size: 60%}
+#   </style></head>
+# 
+# <body>
+# """)
+# 
+# for x in charters:
+#     d = charters[x]
+#     try:
+#         d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""
+#     
+#         d['text'] = ' '.join(d['text'])
+#         
+#         blob = """
+#             <div>
+#                 <div class="charter">
+#                     <h1>%(chid)s</h1>
+#                     <div class="folio">%(folio)s (pg. %(pgno)d)</div>
+#                     <div class="summary">%(summary)s</div>
+#                     <div class="marginal">%(marginal)s</div>
+#                     <div class="text">%(text)s
+#                     <div class="footnotes">%(footnotes)s</div>
+#                     </div>
+#                 </div>
+#             </div>
+#             """
+#             
+#         fout.write(blob % d)
+#         fout.write("\n\n")
+#     except:
+#         pass
+#         
+# fout.write("""</body></html>""")
 

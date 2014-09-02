@@ -486,10 +486,8 @@ fout.write("""
 for x in charters:
     d = charters[x]
     try:
-        d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""
-    
-        d['text'] = ' '.join(d['text'])
-        
+        d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""    
+        d['text'] = ' '.join(d['text'])        
         blob = """
             <div>
                 <div class="charter">

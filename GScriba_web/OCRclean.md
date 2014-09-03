@@ -15,13 +15,12 @@ This is where a scripting language like Python comes very much in handy. For our
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
+| col 3 is      | ![GS page 110](gs_pg110.png) | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
 
- |: ![GS page 110](gs_pg110.png) :|
- 
+
 The OCR output from such scans look like this even after some substantial clean-up (I've wrapped the longest lines so that they fit here):
 
     110	MARIO CHIAUDANO MATTIA MORESCO

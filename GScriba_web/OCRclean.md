@@ -496,9 +496,8 @@ for x in charters:
                     <div class="folio">%(folio)s (pg. %(pgno)d)</div>
                     <div class="summary">%(summary)s</div>
                     <div class="marginal">%(marginal)s</div>
-                    <div class="text">%(text)s
+                    <div class="text">%(text)s</div>
                     <div class="footnotes">%(footnotes)s</div>
-                    </div>
                 </div>
             </div>
             """

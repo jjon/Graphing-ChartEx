@@ -244,7 +244,7 @@ L.T. O'Hara's [introduction](http://programminghistorian.org/lessons/cleaning-oc
 1. `re.compile()` creates a regular expression object that has a number of methods. You should be familiar with `.match()`, and `.search()`, but also `.findall()` and `.finditer()`
 2. Bear in mind the difference between `.match()` and `.search()`: `.match()` will only match at the __beginning__ of a line, whereas `.search()` will match anywhere in the line __but then it stops__, it'll __only__ return the first match it finds.
 3. `.match()` and `.search()` return match objects, to retrieve the matched string you need `match.group(0)`. If your compiled regular expression has grouping parentheses in it (like our 'slug' regex above), you can retrieve those substrings of the matched string using `match.group(1)` etc.
-4. `.findall()` and `.finditer` will return __all__ occurances of the matched string; `.findall()` returns them as a list of strings, but .finditer() returns an __iterator of match objects__.
+4. `.findall()` and `.finditer()` will return __all__ occurances of the matched string; `.findall()` returns them as a list of strings, but .finditer() returns an __iterator of match objects__.
 
 ## Find and normalize folio markers
 
@@ -356,7 +356,7 @@ for line in GScriba:
 ```
 
 ## Find and normalize the 'marginal notation' and Italian summary lines
-Now that we have a python dictionary to work with, rather than a list of lines of text, we're not bound to work in document order. Once we have a data structure like that, we can iterate through each of the charter dictionaries and look at the lines in the text field by index number. We can do that with a loop like the one below. In all cases, the first line of each charter's text field should be the Italian summary as we have insured above. The second line in MOST cases, represents a kind of marginal notation usually ended by the ']' character (which OCR misreads a lot). We have to find the cases that do not meet this criterion, supply or correct the missing ']', and in the cases where there is no marginal notation I've supplied "no marginal]" The following script will print the charter number and first two lines of the text field for those charters that do not meet these criteria.
+Now that we have a python dictionary to work with, rather than a list of lines of text, we're not bound to work in document order. Once we have a data structure like that, we can iterate through each of the charter dictionaries and look at the lines in the text field by index number. We can do that with a loop like the one below. In all cases, the first line of each charter's text field should be the Italian summary as we have insured above. The second line in MOST cases, represents a kind of marginal notation usually ended by the ']' character (which OCR misreads a lot). We have to find the cases that do not meet this criterion, supply or correct the missing ']', and in the cases where there is no marginal notation I've supplied "no marginal]" in my working text. The following script will print the charter number and first two lines of the text field for those charters that do not meet these criteria.
 
 ```python
 for ch in charters:
@@ -371,7 +371,7 @@ for ch in charters:
         print ch, "oops" # to pass the charters from the missing page 214
 ```
 
-The `try: except:` blocks are made necessary by the fact that in my OCR output, the data for pg 214 somehow got missed out, but they're generally a good idea.
+The `try: except:` blocks are made necessary by the fact that in my OCR output, the data for pg 214 somehow got missed out, but they're generally a good idea. You will inevitably have anomalies in your text that you will have to isolate and work around. Python is very helpful here in that you can do a lot more in the `except:` clause beyond just printing "oops". You could call a function that performs a whole separate operation on those anomalous bits.
 
 Once we're satisfied that line 1 and line 2 in the 'text' field for each charter are the Italian Summary and the marginal notation respectively, we can make another iteration of the charters dictionary, removing those lines from the text field and creating new fields in the charter entry for them. NOTA BENE: we are now modifying a data structure in memory rather than editing successive text files.
 
@@ -386,7 +386,7 @@ for ch in charters:
 ```    
 
 ##Assign footnotes to their respective charters and add to metadata
-The trickiest part is to get the footnote texts appearing at the bottom of the page associated with their appropriate charters. For this we go back to the same list of lines that we built the dictionary from. We're depending on all the footnote markers appearing within the charter text, i.e. none of them are at the beginning of a line. And, each of the footnote texts is on a separate line beginning with '(1)' etc. We design regexes that can distinguish between the two and construct a container to hold them as we iterate over the lines. As we iterate over the lines of the text file, we find and assign markers and texts to our temporary container, and then, each time we reach a page break, we assign them to their appropriate fields in our existing Python dictionary `charters` and reset our temporary container to the empty dict.
+The trickiest part is to get the footnote texts appearing at the bottom of the page associated with their appropriate charters. For this we go back to the same list of lines that we built the dictionary from. We're depending on all the footnote markers appearing within the charter text, i.e. none of them are at the beginning of a line. And, each of the footnote texts is on a separate line beginning with '(1)' etc. We design regexes that can distinguish between the two and construct a container to hold them as we iterate over the lines. As we iterate over the lines of the text file, we find and assign markers and texts to our temporary container, and then, each time we reach a page break, we assign them to their appropriate fields in our existing Python dictionary `charters` and reset our temporary container to the empty `dict`.
 
 ```python
 fin = open("your_current_source_file.txt", 'r')
@@ -485,7 +485,7 @@ fout.write("""
 
 for x in charters:
     d = charters[x]
-    try:
+    try: # bear in mind that you're modifying your in-memory dict here for a specialized purpose.
         d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""    
         d['text'] = ' '.join(d['text'])
         

@@ -357,7 +357,7 @@ for ch in charters:
     d = charters[ch]
     try:
         d['summary'] = d['text'].pop(0).strip()
-        d['marginal'] = d['text'].pop(0).strip()
+        d['marginal'] = d['text'].pop(0).strip().strip('.').strip()
     except IndexError: # this will report that the charters on p 214 are missing
         print "missing charter ", ch
 #     
@@ -401,10 +401,27 @@ for line in GScriba:
             except KeyError:
                 print "printer's error? ", "pgno:", pgno, line
 
-pprint(charters)    
 # We now have a regular data structure in which the available metadata has been abstracted away from the text of the charter itself. That text is still full of OCR errors, of course, but it's now possible to do some machine processing of the corpus of charters as a whole without the page-bound infrastructure getting in the way. For example, we might simply want an HTML representation of the charters so that we can control the styling of the various elements. This is a huge advantage all by itself: proofreaders have a much easier time of it when the elements of the corpus aren't just a mass of undifferentiated lines of text.
 
 # Or we might want to generate some SQL statements that will insert our data in a relational database, output some rudimentary TEI/xml, or get an RDF graph from our data. All kinds of things are now possible when we have a regular data structure rather than just a mass of error-filled OCR output.
+
+
+############## correcting and parsing dates ###############
+import sys
+for x in charters:
+    d = charters[x]
+    try:
+        i = re.finditer('\((\d{1,2})?(.*?)(\d{1,4})?\)', d['summary'])
+        dt = list(i)[-1]
+        if lev(dt.group(2),"settembre") < 5 and lev(dt.group(2),"settembre") > 2:
+            print dt.group(0)
+    except:
+        print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+
+
+import csvkit
+print dir(csvkit)
+
 
 # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 
@@ -448,6 +465,7 @@ pprint(charters)
 #                     <div class="summary">%(summary)s</div>
 #                     <div class="marginal">%(marginal)s</div>
 #                     <div class="text">%(text)s
+#                     </div>
 #                     <div class="footnotes">%(footnotes)s</div>
 #                     </div>
 #                 </div>

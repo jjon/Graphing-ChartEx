@@ -12,7 +12,7 @@ Going through a text file line by line and correcting OCR errors one at a time i
 
 This is where a scripting language like Python comes very much in handy. For our project we wanted to prepare some of the documents from a 12th century collection of *imbreviatura* from the Italian scribe known as [Giovanni Scriba](http://www.worldcat.org/oclc/17591390) so that they could be marked up by historians for subsequent NLP analysis or potentially for other purposes as well. The pages of the 1935 published edition look like this.
 
-![GS pg. 110](gs_pg110.png)
+![GS page 110](gs_pg110.png)
 
 The OCR output from such scans look like this even after some substantial clean-up (I've wrapped the longest lines so that they fit here):
 
@@ -496,9 +496,8 @@ for x in charters:
                     <div class="folio">%(folio)s (pg. %(pgno)d)</div>
                     <div class="summary">%(summary)s</div>
                     <div class="marginal">%(marginal)s</div>
-                    <div class="text">%(text)s
+                    <div class="text">%(text)s</div>
                     <div class="footnotes">%(footnotes)s</div>
-                    </div>
                 </div>
             </div>
             """

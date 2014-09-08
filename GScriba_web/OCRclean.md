@@ -324,7 +324,7 @@ GScriba = fin.readlines()
 for line in GScriba:
     if fol.match(line):
         this_folio = fol.match(line).group(0)
-        continue
+        continue # update the variable but otherwise do nothing with this line.
     if slug.match(line):
         m = slug.match(line)
         this_charter = m.group(0)
@@ -332,27 +332,25 @@ for line in GScriba:
         chno = int(m.group(3))
         charters[chno] = {}
         templist = [] # this works because we're proceeding in document order: templist continues to exist as we iterate through each line in the charter, then is reset to the empty list when we start a new charter(slug.match(line))
+        continue # we generate the entry, but do nothing with the text of this line.
     if chno:
         d = charters[chno]
-        d['footnotes'] = [] # we're going to populate this list in a later operation.
-    
-        if not re.match('[\n\t]+', line): # filter empty lines
-            d['chid'] = chid
-            d['chno'] = chno
-            d['folio'] = this_folio
-            d['pgno'] = this_page
-            if slug.match(line):
-                continue
-            elif pgno.match(line):
-                this_page = int(pgno.match(line).group(1)) # if line is a pagebreak, update variable
-            elif re.match('^\(\d+\)', line):
-                continue
-            elif fol.search(line):
-                this_folio = fol.search(line).group(0) # if folio changes within the text, update variable
-                templist.append(line)
-            else:
-                templist.append(line)
-        d['text'] = templist
+        d['footnotes'] = []
+        d['chid'] = chid
+        d['chno'] = chno
+        d['folio'] = this_folio
+        d['pgno'] = this_page
+        if re.match('^\(\d+\)', line):
+            continue # this line is footnote text, we'll deal with it later
+        if pgno.match(line):
+            this_page = int(pgno.match(line).group(1)) # if line is a pagebreak, update the variable
+        elif fol.search(line):
+            this_folio = fol.search(line).group(0) # if folio changes within the text, update variable
+            templist.append(line)
+        else:
+            templist.append(line)
+        d['text'] = [x for x in templist if not x == '\n'] # strip empty lines
+        
 ```
 
 ## Find and normalize the 'marginal notation' and Italian summary lines

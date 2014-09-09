@@ -401,10 +401,7 @@ for line in GScriba:
 #                 
 # ####### repair charter 404
 charters[404]['summary'] = ''
-# 
-# 
-# 
-pprint(charters)
+#pprint(charters)
 
 
 
@@ -415,10 +412,10 @@ pprint(charters)
 
 
 ############## correcting and parsing dates ###############
-# import sys
+# # find and repair misspelled month names:
+import sys
 # from collections import Counter
-# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
-# summaries = [charters[x]['summary'] for x in charters]
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 # c = Counter()
 # 
 # for x in charters:
@@ -427,29 +424,40 @@ pprint(charters)
 #         i = summary_date.finditer(d['summary'])
 #         dt = list(i)[-1]
 #         c.update([dt.group(2).strip()])
-# #         if lev(dt.group(2),"settembre") < 5 and lev(dt.group(2),"settembre") > 2:
-# #             print dt.group(0)
+#     except:
+#         pass # print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+# 
+# months = [x[0] for x in c.most_common(12)] # or just make a list with the correct spellings.
+# 
+# for ch in charters:
+#     try:
+#         d = charters[ch]
+#         i = summary_date.finditer(d['summary'])
+#         dt = list(i)[-1]
+#         if dt.group(2).strip() not in months:
+#             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
 #     except:
 #         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
-# 
-# months = [x[0] for x in c.most_common(12)]
-# summaries = [(charters[x]['chno'],charters[x]['summary']) for x in charters]
-# print months
-# print len(summaries)
-# for s in summaries:
+
+# # count the dates to be sure every charter has one:
+# for ch in charters:
 #     try:
-#         i = summary_date.finditer(s[1])
-#         summary_month = list(i)[-1].group(2).strip()
-#         for mo in months:
-#             if lev(mo, summary_month) > 2 :
-#                 print s[0], summaries.index(s)+1, (mo, summary_month)
+#         d = charters[ch]
+#         i = summary_date.finditer(d['summary'])
+#         dt = list(i)[-1]
+#         print dt.group(0)
 #     except:
-#         print summaries.index(s)
-# 
+#         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
 
-# Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
+# # TODO: parse the dates and add to metadata.
 
+
+
+
+
+pprint(charters)
 ########### Output HTML ###############
+# # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 # fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
 # 
 # fout.write("""

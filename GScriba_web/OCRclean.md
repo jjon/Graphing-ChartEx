@@ -177,7 +177,7 @@ For the first several operations we're going to want to produce new and revised 
 
 We want to find all the page headers, both *recto* and *verso* and replace them with consistent strings that we can easily find with a regular expression. The following code looks for lines that are similar to what we know are our page headers to within a certain threshold. It will take some experimentation to find what this threshold is for your text. Since my *recto* and *verso* headers are roughly the same length, both have the same similarity score of 26. Your milage will vary. Nota Bene: the shorter the page header string, the more likely it is that this trick will not work.
 
-the `print` statements will write to std out. Use them to test until you have a Levenshtein score that finds all, or most, of the page headers. Once you've got that, then uncomment the `fout.write()` lines and write your result out to a new file.
+the `print` statements will write to std out. Use them to test until you have a Levenshtein score that finds all, or most, of the page headers. Once you've found and fixed the headers that the script didn't find, uncomment the `fout.write()` lines and write your result out to a new file.
 
 ```python
 fin = open("our_base_OCR_result.txt", 'r')
@@ -197,6 +197,7 @@ for line in GScriba:
         #fout.write("~~~~~ PAGE %d ~~~~~\n\n" % n)
     else:
         #fout.write(line)
+        pass
 
 print n
 ```

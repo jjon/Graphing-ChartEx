@@ -83,7 +83,7 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 ### the following finds 430 page headers, which is right because the OCR output for p. 214 is missing
 #
 # fin = open("/Users/jjc/Documents/GiovanniScriba/V1/GScribaV1_base.txt", 'r')
-# fout = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out.txt", 'w')
+# fout = open("/Users/jjc/Desktop/temp.txt", 'w')
 # txtlist = fin.readlines()
 # 
 # for line in txtlist:
@@ -99,6 +99,7 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 #         fout.write("~~~~~ PAGE HEADER ~~~~~\n\n")
 #     else:
 #         fout.write(line)
+#         pass
 #     
 # print n
 
@@ -294,7 +295,7 @@ GScriba = fin.readlines()
 for line in GScriba:
     if fol.match(line):
         this_folio = fol.match(line).group(0)
-        continue
+        continue # update the variable but otherwise do nothing with this line.
     if slug.match(line):
         m = slug.match(line)
         this_charter = m.group(0)
@@ -302,27 +303,24 @@ for line in GScriba:
         chno = int(m.group(3))
         charters[chno] = {}
         templist = [] # this works because we're proceeding in document order: templist continues to exist as we iterate through each line in the charter, then is reset to the empty list when we start a new charter(slug.match(line))
+        continue # we generate the entry, but do nothing with the text of this line.
     if chno:
         d = charters[chno]
         d['footnotes'] = []
-        
-        if not re.match('[\n\t]+', line): # filter empty lines
-            d['chid'] = chid
-            d['chno'] = chno
-            d['folio'] = this_folio
-            d['pgno'] = this_page
-            if slug.match(line):
-                continue
-            elif pgno.match(line):
-                this_page = int(pgno.match(line).group(1)) # if line is a pagebreak, update variable
-            elif re.match('^\(\d+\)', line):
-                continue
-            elif fol.search(line):
-                this_folio = fol.search(line).group(0) # if folio changes within the text, update variable
-                templist.append(line)
-            else:
-                templist.append(line)
-        d['text'] = templist
+        d['chid'] = chid
+        d['chno'] = chno
+        d['folio'] = this_folio
+        d['pgno'] = this_page
+        if re.match('^\(\d+\)', line):
+            continue # this line is footnote text, we'll deal with it later
+        if pgno.match(line):
+            this_page = int(pgno.match(line).group(1)) # if line is a pagebreak, update the variable
+        elif fol.search(line):
+            this_folio = fol.search(line).group(0) # if folio changes within the text, update variable
+            templist.append(line)
+        else:
+            templist.append(line)
+        d['text'] = [x for x in templist if not x == '\n'] # strip empty lines
         
 
 ##### Check & Correct 'summary' and 'marginal' lines and add to metadata ######
@@ -359,7 +357,7 @@ for ch in charters:
         d['summary'] = d['text'].pop(0).strip()
         d['marginal'] = d['text'].pop(0).strip().strip('.').strip()
     except IndexError: # this will report that the charters on p 214 are missing
-        print "missing charter ", ch
+        pass #print "missing charter ", ch
 #     
 # 
 ######### Assign footnotes to respective charters and add to metadata #########
@@ -399,7 +397,17 @@ for line in GScriba:
             try:
                 fndict[text]['fntext'] = re.sub('\(\d+\)', '', line).strip()
             except KeyError:
-                print "printer's error? ", "pgno:", pgno, line
+                pass#print "printer's error? ", "pgno:", pgno, line
+#                 
+# ####### repair charter 404
+charters[404]['summary'] = ''
+# 
+# 
+# 
+pprint(charters)
+
+
+
 
 # We now have a regular data structure in which the available metadata has been abstracted away from the text of the charter itself. That text is still full of OCR errors, of course, but it's now possible to do some machine processing of the corpus of charters as a whole without the page-bound infrastructure getting in the way. For example, we might simply want an HTML representation of the charters so that we can control the styling of the various elements. This is a huge advantage all by itself: proofreaders have a much easier time of it when the elements of the corpus aren't just a mass of undifferentiated lines of text.
 
@@ -407,21 +415,37 @@ for line in GScriba:
 
 
 ############## correcting and parsing dates ###############
-import sys
-for x in charters:
-    d = charters[x]
-    try:
-        i = re.finditer('\((\d{1,2})?(.*?)(\d{1,4})?\)', d['summary'])
-        dt = list(i)[-1]
-        if lev(dt.group(2),"settembre") < 5 and lev(dt.group(2),"settembre") > 2:
-            print dt.group(0)
-    except:
-        print d['chno'], "Unexpected error:", sys.exc_info()[:2]
-
-
-import csvkit
-print dir(csvkit)
-
+# import sys
+# from collections import Counter
+# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+# summaries = [charters[x]['summary'] for x in charters]
+# c = Counter()
+# 
+# for x in charters:
+#     d = charters[x]
+#     try:
+#         i = summary_date.finditer(d['summary'])
+#         dt = list(i)[-1]
+#         c.update([dt.group(2).strip()])
+# #         if lev(dt.group(2),"settembre") < 5 and lev(dt.group(2),"settembre") > 2:
+# #             print dt.group(0)
+#     except:
+#         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+# 
+# months = [x[0] for x in c.most_common(12)]
+# summaries = [(charters[x]['chno'],charters[x]['summary']) for x in charters]
+# print months
+# print len(summaries)
+# for s in summaries:
+#     try:
+#         i = summary_date.finditer(s[1])
+#         summary_month = list(i)[-1].group(2).strip()
+#         for mo in months:
+#             if lev(mo, summary_month) > 2 :
+#                 print s[0], summaries.index(s)+1, (mo, summary_month)
+#     except:
+#         print summaries.index(s)
+# 
 
 # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 

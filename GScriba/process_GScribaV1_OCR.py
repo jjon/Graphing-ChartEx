@@ -413,9 +413,9 @@ charters[404]['summary'] = ''
 
 ############## correcting and parsing dates ###############
 # # find and repair misspelled month names:
-import sys
+# import sys
 # from collections import Counter
-summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 # c = Counter()
 # 
 # for x in charters:
@@ -428,6 +428,8 @@ summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 #         pass # print d['chno'], "Unexpected error:", sys.exc_info()[:2]
 # 
 # months = [x[0] for x in c.most_common(12)] # or just make a list with the correct spellings.
+# print months
+
 # 
 # for ch in charters:
 #     try:
@@ -449,13 +451,38 @@ summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 #     except:
 #         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
 
-# # TODO: parse the dates and add to metadata.
+################## parse the dates and add to metadata.
+# # Out of 803 charters, 29 have dates that won't parse. Most of them because
+# # they are only mo and yr, some for other reasons including printer's errors
+# # like "31 settembre 1160"
+import sys
+from datetime import datetime as dt
+from datetime import date
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 
+Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 
-
-
+r = re.compile("\(\d{1,2}\)")
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+for ch in charters:
+    c = charters[ch]
+    i = summary_date.finditer(c['summary'])
+    match_list = list(i)
+    for m in match_list:
+        try:
+            c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+        except:
+            c['date'] = "date won't parse, see summary line"
 
 pprint(charters)
+
+# for ch in charters:
+#     try:
+#         if type(charters[ch]['date']) == str:
+#             print charters[ch]['summary'], '\r'
+#     except:
+#         print ch
+
 ########### Output HTML ###############
 # # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 # fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')

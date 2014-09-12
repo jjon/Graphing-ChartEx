@@ -453,16 +453,16 @@ Once you're satisfied that all the parenthetical date expressions are present an
 This module is part of the standard library, is a deep subject, and ought to be the subject of its own tutorial, given the importance of dates for historians. As with a lot of other python modules, a good introduction is Doug Hellmann's [PyMOTW](http://pymotw.com/2/datetime/)(module of the week). An even more able extention library is [mxDateTime](http://www.egenix.com/products/python/mxBase/mxDateTime/).
 
 ```python
-    from datetime import date
-    for ch in charters:
-        c = charters[ch]
-        i = summary_date.finditer(c['summary'])
-        match_list = list(i)
-        for m in match_list:
-            try:
-                c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
-            except:
-                c['date'] = "date won't parse, see summary line"
+from datetime import date
+for ch in charters:
+    c = charters[ch]
+    i = summary_date.finditer(c['summary'])
+    match_list = list(i)
+    for m in match_list:
+        try:
+            c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+        except:
+            c['date'] = "date won't parse, see summary line"
 ```
 
 Out of 803 charters, 29 wouldn't parse, mostly because the date included only month and year. SQL will work with date objects with null values (1156-05-00), but Python will not. You can store these as strings, supply a 01 as the default day, or just do as I have done and refer to the relevant source text.

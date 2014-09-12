@@ -424,11 +424,11 @@ for line in GScriba:
 Note that we use `eval()` because we want to turn strings like this '(1)' into integers like this: 1.
 
 ## Dates
-Dates are hard. Students of British history cling to [Cheyney](http://www.worldcat.org/oclc/41238508) as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
+Dates are hard. Students of British history cling to [Cheyney](http://www.worldcat.org/oclc/41238508) as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, and innumerable other local variations, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
 
-Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can to some simple calendar arithmetic.
+Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can do some simple calendar arithmetic.
 
-First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them, something like this:
+First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them manually, something like this:
 
 ```python
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the `?`s.
@@ -476,7 +476,8 @@ week = datetime.timedelta(weeks=1)
 for ch in charters:
     try:
         dt = charters[ch]['date']
-        if abs(dt - datetime.date(1160,12,25)) < week * 3:
+        christmas = datetime.date(1160,12,25)
+        if abs(dt - christmas) < week * 3:
             print charters[ch]['chno'], dt
     except:
         pass

@@ -336,7 +336,7 @@ for line in GScriba:
         continue # we generate the entry, but do nothing with the text of this line.
     if chno:
         d = charters[chno]
-        d['footnotes'] = []
+        d['footnotes'] = [] # We'll populate this empty list in a separate operation
         d['chid'] = chid
         d['chno'] = chno
         d['folio'] = this_folio
@@ -422,6 +422,69 @@ for line in GScriba:
 ```
 
 Note that we use `eval()` because we want to turn strings like this '(1)' into integers like this: 1.
+
+## Dates
+Dates are hard. Students of British history cling to [Cheyney](http://www.worldcat.org/oclc/41238508) as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
+
+Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can to some simple calendar arithmetic.
+
+First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them, something like this:
+
+```python
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the `?`s.
+
+# And we want to make Python speak italian:
+Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
+
+import sys
+for ch in charters:
+    try:
+        d = charters[ch]
+        i = summary_date.finditer(d['summary'])
+        dt = list(i)[-1] # Always the last parenthetical expression.
+        if dt.group(2).strip() not in Ital2int.keys():
+            print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
+    except:
+        print d['chno'], "The usual suspects ", sys.exc_info()[:2]
+```
+
+Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure as dates rather than just strings. For this you can use the `datetime` module.
+
+This module is part of the standard library, is a deep subject, and ought to be the subject of its own tutorial, given the importance of dates for historians. As with a lot of other python modules, a good introduction is Doug Hellmann's [PyMOTW](http://pymotw.com/2/datetime/)(module of the week). An even more able extention library is [mxDateTime](http://www.egenix.com/products/python/mxBase/mxDateTime/).
+
+```python
+    from datetime import date
+    for ch in charters:
+        c = charters[ch]
+        i = summary_date.finditer(c['summary'])
+        match_list = list(i)
+        for m in match_list:
+            try:
+                c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+            except:
+                c['date'] = "date won't parse, see summary line"
+
+pprint(charters)
+```
+
+Out of 803 charters, 29 wouldn't parse, mostly because the date included only month and year. SQL will work with date objects with null values (1156-05-00), but Python will not. You can store these as strings, supply a 01 as the default day, or just do as I have done and refer to the relevant source text.
+
+Once you've got date objects, you can do date arithmetic. Supposing we wanted to find all the charters dated within 3 weeks of Christmas in 1160
+
+```python
+week = datetime.timedelta(weeks=1)
+for ch in charters:
+    try:
+        dt = charters[ch]['date']
+        if abs(dt - datetime.date(1160,12,25)) < week * 3:
+            print charters[ch]['chno'], dt
+    except:
+        pass
+```
+
+Cool, huh?
+
+Now you've got a data structure that you can do something with, in this case a Python dictionary: `charters`.
 
 ## The resulting dictionary looks like this
 Print out our resulting dictionary using `pprint(charters)` and you'll see something like this:

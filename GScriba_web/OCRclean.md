@@ -489,26 +489,25 @@ Now you've got a data structure that you can do something with, in this case a P
 Print out our resulting dictionary using `pprint(charters)` and you'll see something like this:
 
 ```python
-{1: {'chid': 'GScriba_I',
-     'chno': 1,
-     'folio': '[fo. 1 r.]',
-     'footnotes': [(1,
-                    'Il foglio e guasti nei margini, specialmente in quello superiore laterale destro. Le lacune del testo sono dovute appunto a tale stato del ms.'),
-                   (2,
-                    'Quanto e con parentesi e scritto nel margine sinistro del ins.')],
-     'marginal': '(Test)es Anne fi(lie) quondam Ogerii Mussi] (2).',
-     'pgno': 1,
-     'summary': 'si obbliga di dare ad Anna figlia del fu Ogerio Musso determinati quantitativi di merci al ritorno dal viaggio di Alessandria o al S. Giovanni prossimo (dicembre 1154).',
-     'text': ['....domine Anne quondam filie Ogerii Mussi qu.... de Guidone ex parte ipsius usque ad adventum navium Alexand(riam).... postquam venerit aut usque ad sanctum Iohannem in istis quatuor mercibus, videlicet (quartam in pipere, quartam in bra\xc3\x81ili sel)vatico, quartam in alumine \xc3\x81ucarino et quartam in bono bombace, quod si non fecero pe(nam dupli stipulanti promitto) in bonis meis. Retineo tamen michi in predictis libris si voluero convenire ipsam Annam de.... de aliquo quod quondam filius meus sibi remiserit de dotibus eius. Actum ante domum Donumdei de Tercio, (millesimo) centesimo quinquagesimo quarto, mense decembris, indicione secunda.\n']},
- 2: {'chid': 'GScriba_II',
-     'chno': 2,
-     'folio': '[fo. 1 r.]',
-     'footnotes': [],
-     'marginal': 'Laus Guiscardi Galli, A. de Goticone et Carenconis].',
-     'pgno': 2,
-     'summary': 'I consoli di Genova assolvono con sentenza Guiscardo Gallo, Anselmo di Gotizone e Carenzone da ogni domanda proposta contro di essi dolla moglie del fu Arnaldo Pedisino (dicembre 1154).',
-     'text': ['  Ante domum Ogerii de Guidone. Consules Ionathas Crispinus et Fredencon Gont(ardus),... (Guiscar)dum Gallum et Anselmum de\n',
-              'Goticone et Carenconem quondam Wuilielmi Catti sororem ad.. ipsi habuerant in potestate de rebus quondam Arnaldi Pedisini ex parte ipsius Arnaldi (et omnium) personarum pro ipso et laudave runt quod nec heredes ipsius Arnaldi aut aliqua persona per ipsum ulterius possit.... aut aliquomodo inquietare predictos Guiscardum Anselmum seu Carenconem de libris illis. Hanc vero laudem prememorati.... idcirco fecerunt quum eorum ipsorum iussu et sta tuitione dederunt ipsi Guiscardus, Anselmus et Carencio predictas .xxviii. lb. uxori prefati quondam Arnaldi ex parte ipsius Arnaldi de dotibus suis quas consules eam debere cognoverant ita... (mense decembris), indicione secunda.\n']}
+{
+ 52: {'chid': 'GScriba_LII',
+      'chno': 52,
+      'date': datetime.date(1156, 3, 27),
+      'folio': '[fo. 6 r.]',
+      'footnotes': [(1, 'Cancellato: m.')],
+      'marginal': 'no marginal]',
+      'pgno': 29,
+      'summary': 'I consoli di Genova riconoscono con sentenza il diritto di Romano di Casella di pagarsi sui beni di Gerardo Confector per un credito che aveva verso il medesimo (27 marzo 1156).',
+      'text': ['    In pontili capituli consules E. Aurie, W. Buronus, Ogerius Ventus laudaverunt quod Romanus de Casella haberet in bonis Gerardi Confectoris s. .xxvi. denariorum et possit eos accipere sine contradicione eius et omnium pro eo. Hoc ideo quia, cum; Romanus ante ipsos inde conquereretur, ipso Gerardo debitum non negante, sed quod de usura esset obiiciendo, iuravit nominatus Romanus quod capitalis erat (1) et non de usura, unde ut supra laudaverunt , .MCLVI., sexto kalendas aprilis, indicione tercia.\n']},
+ 53: {'chid': 'GScriba_LIII',
+      'chno': 53,
+      'date': datetime.date(1156, 3, 27),
+      'folio': '[fo. 6 r.]',
+      'footnotes': [],
+      'marginal': 'Belmusti]',
+      'pgno': 29,
+      'summary': "Maestro Arnaldo e Giordan nipote del fu Giovanni di Piacenza si obbligano di pagare una somma nell'ottava della prossima Pasqua, per merce ricevuta (27 marzo 1156).",
+      'text': ['  Testes Conradus Porcellus, Albericus, Vassallus Gambalixa, Petrus Artodi. Nos Arnaldus magister et Iordan nepos quondam Iohannis Placentie accepimus a te Belmusto tantum bracile unde promittimus dare tibi vel tuo certo misso lb. .xLIII. denariorum usque octavam proximi pasce, quod si non fecerimus penam dupli tibi stipulanti promittimus, bona pignori, possis unumquemque convenire de toto. Actum prope campanile Sancti Laurentii, millesimo centesimo .Lv., sexto kalendas aprilis, indictione tercia.\n']},
 .
 .
 . etc.

@@ -463,8 +463,6 @@ This module is part of the standard library, is a deep subject, and ought to be 
                 c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
             except:
                 c['date'] = "date won't parse, see summary line"
-
-pprint(charters)
 ```
 
 Out of 803 charters, 29 wouldn't parse, mostly because the date included only month and year. SQL will work with date objects with null values (1156-05-00), but Python will not. You can store these as strings, supply a 01 as the default day, or just do as I have done and refer to the relevant source text.

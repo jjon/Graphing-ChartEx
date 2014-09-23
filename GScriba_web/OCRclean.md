@@ -457,8 +457,7 @@ from datetime import date
 for ch in charters:
     c = charters[ch]
     i = summary_date.finditer(c['summary'])
-    match_list = list(i)
-    for m in match_list:
+    for m in i:
         try:
             c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
         except:
@@ -490,6 +489,9 @@ Print out our resulting dictionary using `pprint(charters)` and you'll see somet
 
 ```python
 {
+.
+.
+. 
  52: {'chid': 'GScriba_LII',
       'chno': 52,
       'date': datetime.date(1156, 3, 27),

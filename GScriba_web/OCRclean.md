@@ -436,7 +436,6 @@ summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch th
 # And we want to make Python speak Italian:
 Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 
-# When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like ValueError and the like; however, in _ad hoc_ scripts like this `sys.exc_info()` is a quick and dirty way to get information about any exception that may be raised.
 import sys
 for ch in charters:
     try:
@@ -448,6 +447,7 @@ for ch in charters:
     except:
         print d['chno'], "The usual suspects ", sys.exc_info()[:2]
 ```
+- Note: When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like `ValueError` and the like; however, in _ad hoc_ scripts like this, using `sys.exc_info` is a quick and dirty way to get information about any exception that may be raised.
 
 Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure as dates rather than just strings. For this you can use the `datetime` module.
 

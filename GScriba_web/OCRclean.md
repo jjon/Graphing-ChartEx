@@ -426,16 +426,17 @@ Note that we use `eval()` because we want to turn strings like this '(1)' into i
 ## Dates
 Dates are hard. Students of British history cling to [Cheyney](http://www.worldcat.org/oclc/41238508) as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, and innumerable other local variations, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
 
-Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can do some simple calendar arithmetic.
+Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` objects. Then, if we want, we can do some simple calendar arithmetic.
 
 First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them manually, something like this:
 
 ```python
-summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the `?`s.
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the optional quantifiers: `?`.
 
-# And we want to make Python speak italian:
+# And we want to make Python speak Italian:
 Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 
+# When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like ValueError and the like; however, in _ad hoc_ scripts like this `sys.exc_info()` is a quick and dirty way to get information about any exception that may be raised.
 import sys
 for ch in charters:
     try:
@@ -451,6 +452,7 @@ for ch in charters:
 Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure as dates rather than just strings. For this you can use the `datetime` module.
 
 This module is part of the standard library, is a deep subject, and ought to be the subject of its own tutorial, given the importance of dates for historians. As with a lot of other python modules, a good introduction is Doug Hellmann's [PyMOTW](http://pymotw.com/2/datetime/)(module of the week). An even more able extention library is [mxDateTime](http://www.egenix.com/products/python/mxBase/mxDateTime/).
+
 
 ```python
 from datetime import date
@@ -477,7 +479,7 @@ for ch in charters:
         if abs(dt - christmas) < week * 3:
             print charters[ch]['chno'], dt
     except:
-        pass
+        pass # avoid this idiom in production code
 ```
 
 Cool, huh?

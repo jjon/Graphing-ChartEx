@@ -61,6 +61,16 @@ def htmlBlob(text, **values):
 	'''
 	return (text % values)
 
+
+def return_iso(s):
+    """just experimenting here"""
+    for m in summary_date.finditer(s):
+            try:
+                    return datetime.date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+            except:
+                    return "date won't parse", sys.exc_info()[0]
+
+
 ### NB. romstr is a crude filter for text beginning with I,V,X,L,C,D, or M.
 ### Single character occurance of these numerals will be missed out and must be manually edited.
 
@@ -430,16 +440,19 @@ charters[404]['summary'] = ''
 # months = [x[0] for x in c.most_common(12)] # or just make a list with the correct spellings.
 # print months
 
+# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+# Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 # 
+# import sys
 # for ch in charters:
 #     try:
 #         d = charters[ch]
 #         i = summary_date.finditer(d['summary'])
 #         dt = list(i)[-1]
-#         if dt.group(2).strip() not in months:
+#         if dt.group(2).strip() not in Ital2int.keys():
 #             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
 #     except:
-#         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+#         print d['chno'], "The usual suspects: ", sys.exc_info()[:2]
 
 # # count the dates to be sure every charter has one:
 # for ch in charters:
@@ -455,34 +468,73 @@ charters[404]['summary'] = ''
 # # Out of 803 charters, 29 have dates that won't parse. Most of them because
 # # they are only mo and yr, some for other reasons including printer's errors
 # # like "31 settembre 1160"
+
+# Dates are hard. Students of British history cling to (Cheyney)[http://www.worldcat.org/oclc/41238508] as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
+# 
+# Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can to some simple calendar arithmetic.
+# 
+# First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them:
+# 
 import sys
-from datetime import datetime as dt
-from datetime import date
+import datetime
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 
 Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 
-r = re.compile("\(\d{1,2}\)")
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
 for ch in charters:
     c = charters[ch]
     i = summary_date.finditer(c['summary'])
-    match_list = list(i)
-    for m in match_list:
+    
+    for m in i:
         try:
-            c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+            c['date'] = datetime.date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
         except:
             c['date'] = "date won't parse, see summary line"
 
-pprint(charters)
+###### Dealing with None #########
+# for ch in charters:
+#     c = charters[ch]
+#     dt = summary_date.search(c['summary'])
+#     print dt.group(0) if dt else "FOOBAR"
+    
+### roman numeral noodling ###
+# for ch in charters:
+#     txt = ' '.join(charters[ch]['text'])
+#     print re.findall('[DdCcLlXxVvIi]{2,}', txt)
 
+### simple word frequency table ###
+import string
+# join() all the text fields in each charter and join() the result for an aggregate txt
+txt = ' '.join([' '.join(charters[x]['text']) for x in charters])
+# jetison the punctuation
+txt = txt.translate(string.maketrans("",""), string.punctuation)
+from collections import Counter
+c = Counter(txt.split())
+# gets us a list of frequencies
+
+# how long the longest?
+just = max([len(x) for x in c])
+
+# print out the most common pretty:
+for x in c.most_common():
+    print "%s: %s" % (x[0].rjust(just), str(x[1]).ljust(just))
+
+# Maybe we want to have a look at the frequency of mostly proper names: if x[0][0].isupper():
+
+# week = datetime.timedelta(weeks=1)
 # for ch in charters:
 #     try:
-#         if type(charters[ch]['date']) == str:
-#             print charters[ch]['summary'], '\r'
-#     except:
-#         print ch
-
+#         dt = charters[ch]['date']
+#         if type(dt) == 'str': print 'foo'
+#         christmas = datetime.date(1160,12,25)
+#         if abs(dt - christmas) < week * 3:
+#             print charters[ch]['chno'], dt
+#     except TypeError:
+#         pass #print charters[ch]['date']
+#     except KeyError:
+#         print charters[ch]['chno'], sys.exc_info()[:2]
+# 
 ########### Output HTML ###############
 # # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
 # fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')

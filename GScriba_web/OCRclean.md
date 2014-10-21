@@ -434,20 +434,20 @@ First we have to find and correct all the dates in the same way as we have done 
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the optional quantifiers: `?`.
 
 # And we want to make Python speak Italian:
-Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
+ital2int = {'gennaio': 1, 'febbraio': 2, 'marzo': 3, 'aprile': 4, 'maggio': 5, 'giugno': 6, 'luglio': 7, 'agosto': 8, 'settembre': 9, 'ottobre': 10, 'novembre': 11, 'dicembre': 12}
 
 import sys
 for ch in charters:
     try:
         d = charters[ch]
         i = summary_date.finditer(d['summary'])
-        dt = list(i)[-1] # Always the last parenthetical expression.
-        if dt.group(2).strip() not in Ital2int.keys():
+        dt = list(i)[-1] # Always the last parenthetical expression, in case there is more than one.
+        if dt.group(2).strip() not in ital2int.keys():
             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
     except:
         print d['chno'], "The usual suspects ", sys.exc_info()[:2]
 ```
-- Note: When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like `ValueError` and the like; however, in _ad hoc_ scripts like this, using `sys.exc_info` is a quick and dirty way to get information about any exception that may be raised.
+- Note: When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like `ValueError` and the like; however, in _ad hoc_ scripts like this, using `sys.exc_info` is a quick and dirty way to get information about any exception that may be raised. (The [sys](http://pymotw.com/2/sys/index.html#module-sys) module is full of such stuff, useful for debugging)
 
 Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure as dates rather than just strings. For this you can use the `datetime` module.
 
@@ -461,14 +461,14 @@ for ch in charters:
     i = summary_date.finditer(c['summary'])
     for m in i:
         try:
-            c['date'] = date( int(m.group(3)), Ital2int[m.group(2).strip()], int(m.group(1)) )
+            c['date'] = date( int(m.group(3)), ital2int[m.group(2).strip()], int(m.group(1)) )
         except:
             c['date'] = "date won't parse, see summary line"
 ```
 
 Out of 803 charters, 29 wouldn't parse, mostly because the date included only month and year. SQL will work with date objects with null values (1156-05-00), but Python will not. You can store these as strings, supply a 01 as the default day, or just do as I have done and refer to the relevant source text.
 
-Once you've got date objects, you can do date arithmetic. Supposing we wanted to find all the charters dated within 3 weeks of Christmas in 1160
+Once you've got date objects, you can do date arithmetic. Supposing we wanted to find all the charters dated to within 3 weeks of Christmas, 1160.
 
 ```python
 week = datetime.timedelta(weeks=1)

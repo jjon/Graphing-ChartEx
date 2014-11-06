@@ -1,4 +1,4 @@
-# Cleaning OCR Output
+#Cleaning OCR Output:
 
 It is often the case that historians involved in digital projects wish to work with digitized texts, so they think "OK, I'll just scan this fabulously rich and useful collection of original source material and do wonderful things with the digital text that results". (Those of us who have done this, now smile ruefully). Such historians quickly discover that even the best OCR results in unacceptably high error rates. So the historian now thinks "OK I'll get some grant money, and I'll enlist the help of an army of RAs/Grad students/Undergrads/Barely literate street urchins, to correct errors in my OCR output. (We smile again, even more sadly now).
    
@@ -175,7 +175,7 @@ L.T. O'Hara's [introduction](http://programminghistorian.org/lessons/cleaning-oc
 1. `re.compile()` creates a regular expression object that has a number of methods. You should be familiar with `.match()`, and `.search()`, but also `.findall()` and `.finditer()`
 2. Bear in mind the difference between `.match()` and `.search()`: `.match()` will only match at the __beginning__ of a line, whereas `.search()` will match anywhere in the line __but then it stops__, it'll __only__ return the first match it finds.
 3. `.match()` and `.search()` return match objects, to retrieve the matched string you need `match.group(0)`. If your compiled regular expression has grouping parentheses in it (like our 'slug' regex below), you can retrieve those substrings of the matched string using `match.group(1)` etc.
-4. `.findall()` and `.finditer()` will return __all__ occurances of the matched string; `.findall()` returns them as a list of strings, but .finditer() returns an __iterator of match objects__.
+4. `.findall()` and `.finditer()` will return __all__ occurances of the matched string; `.findall()` returns them as a list of strings, but .finditer() returns an __iterator of match objects__. (read the docs on the method [.finditer()](https://docs.python.org/2/library/re.html#re.finditer).)
 
 
 
@@ -223,7 +223,7 @@ for line in GScriba:
     if recto_lev_score < 26 :
         
         # If we increment a variable 'n' to count the number of headers we've found,
-        # then that variable should be our page number.
+        # then the value of that variable should be our page number.
         n += 1
         print "recto: %s %s" % (recto_lev_score, line)
         
@@ -323,7 +323,7 @@ for line in GScriba:
             print n, "KeyError, line number ", GScriba.index(line), " reads: ", line
 ```
 
-Then write out a new file with an easy-to-find-by-regex string for each charter in place of the bare Roman Numeral. Comment out the `for` loop above, and replace it with this one:
+Since we know how many charters there should be, if the value of n does not equal that number, then we know we've got a problem somewhere, and the print statements should help us find it. Once we've found, and fixed, all the roman numeral charter headings, then we can write out a new file with an easy-to-find-by-regex string, a 'slug,' for each charter in place of the bare roman numeral. Comment out the `for` loop above, and replace it with this one:
 
 ```python             
 for line in GScriba:
@@ -339,12 +339,16 @@ While it's important in itself for us to have our OCR output reliably divided up
 
 ## Find and normalize folio markers
 
-Our OCR'd text is from the 1935 published edition of Giovanni Scriba. This is a transcription of a manuscript cartulary which was in the form of a bound book. The published edition preserves the pagination of that original by noting where the original pages change: [fo. 16 r.] the face side of the 16th leaf in the book, followed by its reverse [fo. 16 v.]. This is metadata that we want to preserve for each of the charters so that they can be referenced with respect to the original, as well as with respect to the published edition by page number.
+Our OCR'd text is from the 1935 published edition of *Giovanni Scriba*. This is a transcription of a manuscript cartulary which was in the form of a bound book. The published edition preserves the pagination of that original by noting where the original pages change: [fo. 16 r.] the face side of the 16th leaf in the book, followed by its reverse [fo. 16 v.]. This is metadata that we want to preserve for each of the charters so that they can be referenced with respect to the original, as well as with respect to the published edition by page number.
 
 Many of the folio markers (e.g. "[fo. 16 v.]") appear on the same line as the roman numeral for the charter heading. To normalize those charter headings for the operation above we had to put a line break between the folio marker and the charter number, so many of the folio markers are on their own line already. However, sometimes the folio changes in the middle of the charter text somewhere. We want these markers to stay where they are. We need to make sure all the folio markers are free of errors so that we can find them by means of a regular expression. Again, since we know how many folios there are, we can know if we've found them all. Note that since we used `.readlines()`, GScriba is a list, so the script below will print the line number from the sourcefile as well as the line itself. This will report all the correctly formated folio markers, so that you can find and fix the ones that are broken.
 
 ```python
+# note the optional quantifiers '\s?'. We want to find as many as we can, and
+# the OCR is erratic about whitespace, so our regex is permissive. But as
+# you find and correct these strings, you will want to make them consistent.
 fol = re.compile("\[fo\.\s?\d+\s?[rv]\.\s?\]")
+
 for line in GScriba:
     if fol.match(line):
         # since GScriba is a list, we can get the index of any of its members to find the line number in our input file.
@@ -373,7 +377,7 @@ Since those roman numeral headings are now reliably findable with our 'slug' reg
 slug_and_firstline = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]\n(.*)(\(\d?.*\d+\))")
 ```
 
-Let's break down that regex using the verbose mode (again, see O'Hara's [tutorial](http://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions.html)). Our 'slug' for each charter takes the form "[~~~~ GScriba_CCVII :::: 207 ~~~~]" for example. The compiled pattern above is exactly equivalent to the folowing (note the re.VERBOSE switch at the end):
+Let's break down that regex using the verbose mode (again, see O'Hara's [tutorial](http://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions.html)). Our 'slug' for each charter takes the form "[~\~\~\~ GScriba_CCVII :::: 207 ~~~~]" for example. The compiled pattern above is exactly equivalent to the folowing (note the re.VERBOSE switch at the end):
 
 ```python
 slug_and_firstline = re.compile(r"""
@@ -407,7 +411,7 @@ GScriba = fin.read()
 # finditer() creates an iterator 'i' that we can do a 'for' loop over.
 i = slug_and_firstline.finditer(GScriba)
 
-# each element 'x' in that iterator is a regex match.
+# each element 'x' in that iterator is a regex match object.
 for x in i:
     # count the summary lines we find. Remember, we know how many 
     # there should be, because we know how many charters there are.
@@ -429,7 +433,7 @@ Again, run the script repeatedly until all the Italian Summary lines are present
 
 ##<a name="footnote-section"></a> Find and normalize footnote markers and texts
 
-One of the trickiest bits to untangle, is the infuriating editorial convention of restarting the foonote numbering with each new page. This makes it hard to associate a footnote text (page-bound data), with a footnote marker (charter-bound data). Before we can do that we have to ensure that each footnote text that appears at the bottom of the page, appears in our sourcefile on its own separate line with no leading white-space. And that __none__ of the footnote markers within the text appears at the beginning of a line. And we must ensure that every footnote string, "(1)" for example, appears __exactly__ twice on a page: once as an in-text marker, and once at the bottom for the footnote text. The following script reports the page number of any page that fails that test, along with a list of the footnote strings it found on that page.
+One of the trickiest bits to untangle, is the infuriating editorial convention of restarting the footnote numbering with each new page. This makes it hard to associate a footnote text (page-bound data), with a footnote marker (charter-bound data). Before we can do that we have to ensure that each footnote text that appears at the bottom of the page, appears in our sourcefile on its own separate line with no leading white-space. And that __none__ of the footnote markers within the text appears at the beginning of a line. And we must ensure that every footnote string, "(1)" for example, appears __exactly__ twice on a page: once as an in-text marker, and once at the bottom for the footnote text. The following script reports the page number of any page that fails that test, along with a list of the footnote strings it found on that page.
 
 ```python
 fin = open("your_current_source_file.txt", 'r')
@@ -469,18 +473,18 @@ for line in GScriba:
 
 Note that the elements in the iterator 'i' are string matches. We want the strings that were matched, `group(0)`. e.g. "(1)". And if we do eval("(1)") we get an integer that we can add to our list.
 
-Our `Counter` is a very handy special data structure. We know that we want each value in our `pgfnlist` to appear twice. Our `Counter` will give us a hash where the keys are the elements that appear, and the values are how many times each key appears Like this:
+Our `Counter` is a very handy special data structure. We know that we want each value in our `pgfnlist` to appear twice. Our `Counter` will give us a hash where the keys are the elements that appear, and the values are how many times each element appears. Like this:
 
 ```python
->>> l = [1,2,2,3]
+>>> l = [1,2,3,1,3]
 >>> c = Counter(l)
 >>> print c
-Counter({2: 2, 1: 1, 3: 1})
+Counter({1: 2, 3: 2, 2: 1})
 ```
 
 So if for a given page we get a list of footnote markers like this `[1,2,3,1,3]` then our test will fail: `if list(set(c.values()))[0] != 2`
 
-because:
+because we know each element must appear __exactly twice__:
 
 ```python
 >>> l = [1,2,3,1,3]
@@ -537,7 +541,7 @@ charters = {
 }
 ```
 
-For this first pass, we'll just create this basic structure and then in subsequent loops we will add to and modify this dictionary until we get what we want. Once this loop disposes of the easily searched lines (folio, page, and charter headers) and creates an container for footnotes, the fall-through default will be to add the remaining lines to the text field, which is a python list.
+For this first pass, we'll just create this basic structure and then in subsequent loops we will add to and modify this dictionary until we get what we want. Once this loop disposes of the easily searched lines (folio, page, and charter headers) and creates an empty container for footnotes, the fall-through default will be to add the remaining lines to the text field, which is a python list.
 
 
 ```python
@@ -627,7 +631,7 @@ for ch in charters:
 
 Once we're satisfied that line 1 and line 2 in the 'text' field for each charter are the Italian Summary and the marginal notation respectively, we can make another iteration of the charters dictionary, removing those lines from the text field and creating new fields in the charter entry for them.
 
-NOTA BENE: we are now modifying a data structure in memory rather than editing successive text files. So this script should be __added__ to the one above that created your skeleton dictionary. That script created the `charters` dictionary in memory, and this one will modify it
+NOTA BENE: we are now modifying a data structure in memory rather than editing successive text files. So this script should be __added__ to the one above that created your skeleton dictionary. That script creates the `charters` dictionary in memory, and this one modifies it
 
 ```python
 for ch in charters:
@@ -652,7 +656,7 @@ Note how we construct that temporary container. `fndict` starts out as an empty 
 
 Now we have all the necessary information to assign the footnotes to the empty 'footnotes' list in the `charters` dictionary: the number of the footnote (the key), the charter it belongs to (chid), and the text of the footnote (fntext). 
 
-This is a common pattern in programming, and very useful: in an iterative process of some kind, you use an accumulator (our `fndict`) to gather bits of data, then when your sentinal encounters a specified condition (the pagebreak) it does something with the data.
+This is a common pattern in programming, and very useful: in an iterative process of some kind, you use an accumulator (our `fndict`) to gather bits of data, then when your sentinel encounters a specified condition (the pagebreak) it does something with the data.
 
 
 ```python
@@ -694,7 +698,7 @@ for line in GScriba:
                 print "printer's error? ", "pgno:", pgno, line
 ```
 
-> Note: `try: except:` comes to the rescue again here. The loop above kept breaking because in 3 instances it emerged that there existed footnotes at the bottom of a page for which there were no markers within the text, so when I tried to address the non-existent entry in `fndict`, I got a `KeyError`. My `except:` clause allowed me to find and look at the error, and determine that the error was in the original and nothing I could do anything about, so when generating the final version of `charters` I replaced the `print` statement with `pass`. Texts made by humans are messy; no getting around it; `try: except:` exists to deal with that reality.
+> Note: `try: except:` comes to the rescue again here. The loop above kept breaking because in 3 instances it emerged that there existed footnotes at the bottom of a page for which there were no markers within the text. This was an editorial oversight in the published edition, not an OCR error. The result was that when I tried to address the non-existent entry in `fndict`, I got a `KeyError`. My `except:` clause allowed me to find and look at the error, and determine that the error was in the original and nothing I could do anything about, so when generating the final version of `charters` I replaced the `print` statement with `pass`. Texts made by humans are messy; no getting around it; `try: except:` exists to deal with that reality.
 
 NOTA BENE: Again, bear in mind that we are modifying a data structure in memory rather than editing successive text files. So this loop should be __added__ to your script __below__ the summary and marginal loop, which is __below__ the loop that created your skeleton dictionary.
 
@@ -724,7 +728,7 @@ for ch in charters:
 ```
 >Note: When using `try/except` blocks, you should usually trap __specific__ errors in the except clause, like `ValueError` and the like; however, in _ad hoc_ scripts like this, using `sys.exc_info` is a quick and dirty way to get information about any exception that may be raised. (The [sys](http://pymotw.com/2/sys/index.html#module-sys) module is full of such stuff, useful for debugging)
 
-Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure (created by the loops discussed in the preceeding sections) as dates rather than just strings. For this you can use the `datetime` module.
+Once you're satisfied that all the parenthetical date expressions are present and correct, and conform to your regular expression, you can parse them and add them to your data structure as dates rather than just strings. For this you can use the `datetime` module.
 
 This module is part of the standard library, is a deep subject, and ought to be the subject of its own tutorial, given the importance of dates for historians. As with a lot of other python modules, a good introduction is Doug Hellmann's [PyMOTW](http://pymotw.com/2/datetime/)(module of the week). An even more able extention library is [mxDateTime](http://www.egenix.com/products/python/mxBase/mxDateTime/). Suffice it here to say that the `datetime.date` module expects parameters like this:
 
@@ -744,8 +748,9 @@ for ch in charters:
     c = charters[ch]
     i = summary_date.finditer(c['summary'])
     for m in i:
-        # remember 'i' is an iterator so even if there is more than one parenthetical expression
-        # in c['summary'], the try clause will succeed on the last one, or fail on all of them.
+        # remember 'i' is an iterator so even if there is more than one
+        # parenthetical expression in c['summary'], the try clause will
+        # succeed on the last one, or fail on all of them.
         try:
             c['date'] = date( int(m.group(3)), ital2int[m.group(2).strip()], int(m.group(1)) )
         except:
@@ -788,7 +793,7 @@ chno: 798, date: 1161-01-06
 ```
 
 Cool, huh?
-## Our completed data structure
+# Our completed data structure
 
 Now we've corrected our canonical text as much as we need to to differentiate between the various bits of meta-data that we want to capture, and we've created a data structure in memory, our `charters` dictionary, by making 4 passes, each one extending and modifying the dictionary in memory.
 

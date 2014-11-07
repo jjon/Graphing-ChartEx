@@ -1,4 +1,24 @@
-#Cleaning OCR Output:
+1. [Preliminaries](#prelim) 
+    * [Levenshtein Distance Function](#levenshtein-distance)
+    * [Roman Numerals Function](#Roman-Numerals)
+    * [Imports and Globals](#imports-globals)
+    * [Regex Review](#regex-review)
+    * [Deploying the code snippets](#deployment)
+2. [Iterative processing of OCR output texts](#OCRprocessing)
+    * [Chunk up the text by pages](#pages)
+    * [Chunk up the text by charter](#charters)
+    * [Fixing folio markers](#folios)
+    * [Fixing the summary lines](#summary)
+    * [Fixing the footnotes](#footnotes)
+3. [Creating the dictionary](#dictionary)
+    * [Generate the skeleton dictionary](#first-pass)
+    * [Add marginal notation and summary lines](#second-pass)
+    * [Assign footnotes to their respective charters](#third-pass)
+    * [Parse and assign dates](#fourth-pass)
+4. [Completed dictionary](#completed-dict)
+    * [Applications](#applications)
+    
+#Generating an Ordered Data Set from a Text File:
 
 It is often the case that historians involved in digital projects wish to work with digitized texts, so they think "OK, I'll just scan this fabulously rich and useful collection of original source material and do wonderful things with the digital text that results". (Those of us who have done this, now smile ruefully). Such historians quickly discover that even the best OCR results in unacceptably high error rates. So the historian now thinks "OK I'll get some grant money, and I'll enlist the help of an army of RAs/Grad students/Undergrads/Barely literate street urchins, to correct errors in my OCR output. (We smile again, even more sadly now).
    
@@ -70,8 +90,41 @@ You can see from the scan that each charter has the following metadata associate
 
 This is typical of such resources, though editorial conventions will vary widely. The point is: this is an __ordered__ data set, not just a great big string of characters. With some fairly straightforward Python scripts, we can turn our OCR output into an ordered data set, in this case, a [python dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries), __before__ we start trying to proofread the Latin charter texts. With such an ordered data set in hand, we can undertake that task, and potentially others as well, much more effectively.
 
-## A couple of useful functions before we start:
-### Levenshtein distance
+So, the aim of this tutorial is to take a plain text file, like the OCR output above and turn it into a python dictionary with fields for the Latin text of the charter and for each of the metadata elements mentioned above:
+
+```python
+{
+.
+.
+. 
+ 52: {'chid': 'GScriba_LII',
+      'chno': 52,
+      'date': datetime.date(1156, 3, 27),
+      'folio': '[fo. 6 r.]',
+      'footnotes': [(1, 'Cancellato: m.')],
+      'marginal': 'no marginal]',
+      'pgno': 29,
+      'summary': 'I consoli di Genova riconoscono con sentenza il diritto di Romano di Casella di pagarsi sui beni di Gerardo Confector per un credito che aveva verso il medesimo (27 marzo 1156).',
+      'text': ['    In pontili capituli consules E. Aurie, W. Buronus, Ogerius Ventus laudaverunt quod Romanus de Casella haberet in bonis Gerardi Confectoris s. .xxvi. denariorum et possit eos accipere sine contradicione eius et omnium pro eo. Hoc ideo quia, cum; Romanus ante ipsos inde conquereretur, ipso Gerardo debitum non negante, sed quod de usura esset obiiciendo, iuravit nominatus Romanus quod capitalis erat (1) et non de usura, unde ut supra laudaverunt , .MCLVI., sexto kalendas aprilis, indicione tercia.\n']},
+ 53: {'chid': 'GScriba_LIII',
+      'chno': 53,
+      'date': datetime.date(1156, 3, 27),
+      'folio': '[fo. 6 r.]',
+      'footnotes': [],
+      'marginal': 'Belmusti]',
+      'pgno': 29,
+      'summary': "Maestro Arnaldo e Giordan nipote del fu Giovanni di Piacenza si obbligano di pagare una somma nell'ottava della prossima Pasqua, per merce ricevuta (27 marzo 1156).",
+      'text': ['  Testes Conradus Porcellus, Albericus, Vassallus Gambalixa, Petrus Artodi. Nos Arnaldus magister et Iordan nepos quondam Iohannis Placentie accepimus a te Belmusto tantum bracile unde promittimus dare tibi vel tuo certo misso lb. .xLIII. denariorum usque octavam proximi pasce, quod si non fecerimus penam dupli tibi stipulanti promittimus, bona pignori, possis unumquemque convenire de toto. Actum prope campanile Sancti Laurentii, millesimo centesimo .Lv., sexto kalendas aprilis, indictione tercia.\n']},
+.
+.
+. etc.
+}
+```
+
+Remember, this is just a text representation of a data structure that lives in computer memory. Python calls this sort of structure a 'dictionary', other programming languages may call it a 'hash', or an 'associative array'. The point is that it is infinitely easier to do any sort of programmatic analysis or manipulation of a digital text if it is in such a form, rather than in the form of a plain text file. The advantage is that such a data structure can be queried, or calculations can be performed on the data, without first having to parse the text.
+
+##<a name="prelim"></a> A couple of useful functions before we start:
+###<a name="levenshtein-distance"></a> Levenshtein distance
 You will note that some of the metadata listed above is page-bound and some of it is charter-bound. Getting these untangled from each other is our aim. There is a class of page-bound data that is useless for our purposes, and only meaningful in the context of a physical book: page headers and footers. In our text, these look like this on *recto* leaves (in a codex, a book, *recto* is the right-side page, and *verso* its reverse, the left-side page)
 
 ![recto header](recto_header.png)
@@ -119,7 +172,7 @@ def lev(seq1, seq2):
 
 This is a pretty sophisticated bit of programming that the folks at the whoosh project have done for us. Understanding what's going on in here is instructive, but not necessary. We can just apply it to our text to find and modify the page header strings (see below in the "Chunk up the text by pages" section). The `lev()` function takes two strings as parameters and returns a number that indicates the 'string distance' between them, or, how many changes had to be made to turn the first string into the second. So: `lev("fizz", "buzz")` returns '2'
 
-### Roman to Arabic numerals
+###<a name="Roman-Numerals"></a> Roman to Arabic numerals
 You'll also note that in the published edition, the charters are numbered with roman numerals. Converting roman numerals into arabic is an instructive puzzle to work out in Python. Here's the cleanest and most elegant solution I know:
 
 ```python
@@ -144,10 +197,10 @@ def rom2ar(rom):
 ```
 (run [this little script](http://neolography.com/staging/Roman_to_Arabic.txt) to see why I think it's a beautiful algorithm)
 
-## Some other things we'll need:
+##<a name="imports-globals"></a> Some other things we'll need:
 At the top of your Python module, you're going to want to import some python modules that are a part of the standard library. (see Fred Gibbs's tutorial [*Introducing Modules*](http://programminghistorian.org/lessons/installing-python-modules-pip)).
 
-1. First among these is the "re" (regular expression) module `import re`. Regular expressions are your friend. However, bear in mind Jamie Zawinski's quip: 
+1. First among these is the "re" (regular expression) module `import re`. Regular expressions are your friends. However, bear in mind Jamie Zawinski's quip: 
 
     >Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.
 
@@ -155,20 +208,9 @@ At the top of your Python module, you're going to want to import some python mod
 
 2. Also: `from pprint import pprint`. `pprint` is just a pretty-printer for python objects like lists and dictionaries. You'll want it because python dictionaries are much easier to read if they are formatted.
 
-3. And: `from collections import Counter`. We'll want this for the [Find and normalize footnote markers and texts](#footnote-section) section below. This is not really necessary, but we'll do some counting that would require a lot of lines of fiddly code and this will save us the trouble. The collections module has lots of deep magic in it and is well worth getting familiar with. (Again, see Doug Hellmann's PyMOTW for the [collections](http://pymotw.com/2/collections/index.html#module-collections) module. I should also point out that his book [*The Python Standard Library By Example*](http://doughellmann.com/pages/python-standard-library-by-example.html) is one well worth having.)
+3. And: `from collections import Counter`. We'll want this for the [Find and normalize footnote markers and texts](#footnotes) section below. This is not really necessary, but we'll do some counting that would require a lot of lines of fiddly code and this will save us the trouble. The collections module has lots of deep magic in it and is well worth getting familiar with. (Again, see Doug Hellmann's PyMOTW for the [collections](http://pymotw.com/2/collections/index.html#module-collections) module. I should also point out that his book [*The Python Standard Library By Example*](http://doughellmann.com/pages/python-standard-library-by-example.html) is one well worth having.)
 
-4. At the top we'll also establish some global variables to help us keep track of where we are in some of the `for` loops to follow.
-
-    ```python
-    n = 0
-    this_folio  = '[fo. 1 r.]'
-    this_page = 1
-    charters = dict()
-    ```
-    
-    Also, we'll be making use of a lot of compiled regular expressions. These will be defined below as we need them, but it will be useful to introduce them at the top of your module file as global variables so that they can be available to any of the scripts that follow, or any *ad hoc* scripts you may write.
-
-## A very brief review of regular expressions as they are implemented in python
+##<a name="regex-review"></a> A very brief review of regular expressions as they are implemented in python
 
 L.T. O'Hara's [introduction](http://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions.html) to using python flavored regular expressions is invaluable. In this context we should review a couple of basic facts about Python's implementation of regular expressions, the `re` module, which is part of Python's standard library.
 
@@ -177,22 +219,55 @@ L.T. O'Hara's [introduction](http://programminghistorian.org/lessons/cleaning-oc
 3. `.match()` and `.search()` return match objects, to retrieve the matched string you need `match.group(0)`. If your compiled regular expression has grouping parentheses in it (like our 'slug' regex below), you can retrieve those substrings of the matched string using `match.group(1)` etc.
 4. `.findall()` and `.finditer()` will return __all__ occurances of the matched string; `.findall()` returns them as a list of strings, but .finditer() returns an __iterator of match objects__. (read the docs on the method [.finditer()](https://docs.python.org/2/library/re.html#re.finditer).)
 
+##<a name="deployment"></a> A note on how to deploy the code in this tutorial:
+The code in this tutorial is for Python 2.7.x, Python 3 is quite a different animal.
+
+When you write code in a text file and then execute it, either at the command line, or from within your text editor or IDE, the Python interpreter executes the code line by line, from top to bottom. So, often the code on the bottom of the page will depend on code above it.
+
+One way to use the code snippets in section 2 might be to have all of them in a single file and comment out the bits that you don't want to run. Each time you execute the file, you will want to be sure that there is a logical control flow from the `#!` line at the top, through your various `import`s and assignment of global variables, and each loop, or block.
+
+Or, each of the subsections in section 2 can also be treated as a separate script, each would then do its own `import`ing and assignment of global variables.
+
+In either case, you will want to keep careful track of the input textfiles you use and the output files you generate e.g. `basefile.txt`, `file1_page_chunks.txt`, `file2_charter_chunks.txt`. In addition to these intermediate stages, you may also want to keep a separate, constantly updated version of a `canonical.txt`, or `working.txt` that represents the aggregate of  the corrections and modifications you've made to your OCR text.
+
+In section 3, "Generating an ordered data set from a text file", you will be operating on a data set in computer memory (the `charters` dictionary) that will be generated from the latest, most correct, input text you have. So you will want to maintain a single file in which you define the dictionary at the top, along with your `import` statements and the assignment of global variables, followed by each of the four loops that will populate and then modify that dictionary.
+
+```python
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import re
+from pprint import pprint
+from collections import Counter
+
+# followed by any global variables you will need, like:
+
+n = 0
+this_folio  = '[fo. 1 r.]'
+this_page = 1
+
+# compiled regular expressions like:
+slug = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]")
+fol = re.compile("\[fo\.\s?\d+\s?[rv]\.\s?\]")
+pgbrk = re.compile("~~~~~ PAGE (\d+) ~~~~~")
+
+# the canonical file you will be reading from
+fin = open("/path/to/your/current/canonical.txt", 'r')
+GScriba = fin.readlines()
 
 
+# then the empty dictionary:
+charters = dict()
 
-# Iterative processing of text files
+# followed by the 4 'for' loops in section 2 that will populate and then modify this dictionary
+```
+
+
+#<a name="OCRprocessing"></a> Iterative processing of text files
 
 For the first several operations we're going to want to produce new and revised text files to use as input for our subsequent operations in order to keep track of our progress, and go back to an earlier stage when things go haywire, as they certainly will do. The code here is highly edited. As you continue to refine your text files, you will write lots of little *ad hoc* scripts to check on the efficacy of what you've done so far.
 
-A note on how to deploy the code in this tutorial: When you write code in a text file and then execute it, either at the command line, or from within your text editor or IDE, the python interpreter executes the code line by line, from top to bottom. So, often the code on the bottom of the page will depend on code above it.
-
-One way to use this code then might be to have all of it in a single file and comment out the bits that you don't want to run. Each time you execute the file, you will want to be sure that there is a logical control flow from the `#!` line at the top, through your various `import`s and assignment of global variables, and each loop, or block, some using the output of one as the input of another.
-
-Or, each of the subsections that follow can also be treated as a separate script, each would then do its own `import`ing and assignment of variables.
-
-In either case, you will want to keep careful track of the input textfiles you use and the output files you generate e.g. `basefile.txt`, `file1_page_chunks.txt`, `file2_charter_chunks.txt`. In the subsections of "Generating an ordered data set from a text file" section below, you will be operating on a data set in computer memory that will be generated from the latest, most correct, input text you have. You might keep a separate, constantly updated version for this, `canonical.txt`, or `working.txt`.
-
-## Chunk up the text by pages
+##<a name="pages"></a> Chunk up the text by pages
 
 First of all, we want to find all the page headers, both *recto* and *verso* and replace them with consistent strings that we can easily find with a regular expression. The following code looks for lines that are similar to what we know are our page headers to within a certain threshold. It will take some experimentation to find what this threshold is for your text. Since my *recto* and *verso* headers are roughly the same length, both have the same similarity score of 26.
 
@@ -288,7 +363,7 @@ heredum meorum contradicione. Actum in capitulo .MCLV., mensis iulii, indicione 
 
 Note that for many of the following operations, we will use `GScriba = fin.readlines()` so `GScriba` will be a __python list__ of the lines in our input text. Keep this firmly in mind, as the `for` loops that we will use will depend on the fact that we will iterate through the lines of our text __In Document Order__.
 
-## Chunk up the text by charter (or sections, or letters, or what-have-you)
+##<a name="charters"></a> Chunk up the text by charter (or sections, or letters, or what-have-you)
 
 For this you'll need a regex to find roman numerals. Here's one: `romstr = re.compile("\s*[IVXLCDM]{2,}")`. We'll put it at the top of our module file as a 'global' variable so it will be available to any of the bits of code that come later.
 
@@ -337,7 +412,7 @@ for line in GScriba:
 
 While it's important in itself for us to have our OCR output reliably divided up by page and by charter, the most important thing about these initial operations is that you know how many pages there are, and how many charters there are, and you can use that knowledge to check on subsequent operations. If you want to do something to every charter, you can reliably test whether or not it worked because you can count the number of charters that it worked on.
 
-## Find and normalize folio markers
+##<a name="folios"></a> Find and normalize folio markers
 
 Our OCR'd text is from the 1935 published edition of *Giovanni Scriba*. This is a transcription of a manuscript cartulary which was in the form of a bound book. The published edition preserves the pagination of that original by noting where the original pages change: [fo. 16 r.] the face side of the 16th leaf in the book, followed by its reverse [fo. 16 v.]. This is metadata that we want to preserve for each of the charters so that they can be referenced with respect to the original, as well as with respect to the published edition by page number.
 
@@ -366,7 +441,7 @@ for line in GScriba:
 
 Again, as before, once you've found and corrected all the folio markers in your input file, save it with a new name and use it as the input to the next section.
 
-## Find and normalize the Italian summary lines.
+##<a name="summary"></a> Find and normalize the Italian summary lines.
 This important line is invariably the first one after the charter heading.
 
 ![italian summary line](italian_summary.png)
@@ -431,7 +506,7 @@ print "number of italian summaries: ", num_firstlines
 
 Again, run the script repeatedly until all the Italian Summary lines are present and correct, then save your input file with a new name and use it the input file for the next bit:
 
-##<a name="footnote-section"></a> Find and normalize footnote markers and texts
+##<a name="footnotes"></a> Find and normalize footnote markers and texts
 
 One of the trickiest bits to untangle, is the infuriating editorial convention of restarting the footnote numbering with each new page. This makes it hard to associate a footnote text (page-bound data), with a footnote marker (charter-bound data). Before we can do that we have to ensure that each footnote text that appears at the bottom of the page, appears in our sourcefile on its own separate line with no leading white-space. And that __none__ of the footnote markers within the text appears at the beginning of a line. And we must ensure that every footnote string, "(1)" for example, appears __exactly__ twice on a page: once as an in-text marker, and once at the bottom for the footnote text. The following script reports the page number of any page that fails that test, along with a list of the footnote strings it found on that page.
 
@@ -482,7 +557,9 @@ Our `Counter` is a very handy special data structure. We know that we want each 
 Counter({1: 2, 3: 2, 2: 1})
 ```
 
-So if for a given page we get a list of footnote markers like this `[1,2,3,1,3]` then our test will fail: `if list(set(c.values()))[0] != 2`
+So if for a given page we get a list of footnote markers like this `[1,2,3,1,3]` then our test will fail:
+
+`if list(set(c.values()))[0] != 2`
 
 because we know each element must appear __exactly twice__:
 
@@ -507,13 +584,13 @@ As before, run this script repeatedly until you are satisfied that all footnotes
 Our text file still has lots of OCR errors in it, but we've gone through it and found and corrected all the specific metadata bits that we want in our ordered data set. Now we can use our corrected text file to build a Python dictionary.
 
 
-# Generating an ordered data set from a text file
+#<a name="dictionary"></a> Creating the Dictionary
 
 Now that we've cleaned up enough of the OCR that we can successfully differentiate the component parts of the page from each other, we can now sort the various bits of the meta-data, and the charter text itself, into their own separate fields of a Python dictionary.
 
 We have a number of things to do: correctly number each charter as to charter number, folio, and page; separate out the Italian summary and the marginal notation lines; and associate the footnote texts with their appropriate charter. To do all this, sometimes it is convenient to make more than one pass.
 
-## Create a skeleton data structure.
+##<a name="first-pass"></a> Create a skeleton dictionary.
 
 The following `for` loop will generate a python dictionary whose keys are the charter numbers, and whose values are a nested dictionary that has fields for all the metadata we want to store for each charter. so it has the form:
 
@@ -610,7 +687,7 @@ for line in GScriba:
         
 ```
 
-## Find and normalize the 'marginal notation' and Italian summary lines
+##<a name="second-pass"></a> Add the 'marginal notation' and Italian summary lines to the dictionary
 When we generated the dictionary of dictionaries above, we assigned fields for footnotes (just an empty list for now), charterID, charter number, the folio, and the page number. All remaining lines were appended to a list and assigned to the field 'text'. In all cases, the first line of each charter's text field should be the Italian summary as we have insured above. The second line in MOST cases, represents a kind of marginal notation usually ended by the ']' character (which OCR misreads a lot). We have to find the cases that do not meet this criterion, supply or correct the missing ']', and in the cases where there is no marginal notation I've supplied "no marginal]" in my working text. The following diagnostic script will print the charter number and first two lines of the text field for those charters that do not meet these criteria. Run this script separately on your canonical text file to correct and update it.
 
 ```python
@@ -643,7 +720,7 @@ for ch in charters:
         print "missing charter ", ch
 ```    
 
-##Assign footnotes to their respective charters and add to metadata
+##<a name="third-pass"></a> Assign footnotes to their respective charters and add to dictionary
 The trickiest part is to get the footnote texts appearing at the bottom of the page associated with their appropriate charters. For this we go back to the same list of lines that we built the dictionary from. We're depending on all the footnote markers appearing within the charter text, i.e. none of them are at the beginning of a line. And, each of the footnote texts is on a separate line beginning with '(1)' etc. We design regexes that can distinguish between the two and construct a container to hold them as we iterate over the lines. As we iterate over the lines of the text file, we find and assign markers and texts to our temporary container, and then, each time we reach a page break, we assign them to their appropriate fields in our existing Python dictionary `charters` and reset our temporary container to the empty `dict`.
 
 Note how we construct that temporary container. `fndict` starts out as an empty dictionary. As we iterate through the lines of our input text, if we find footnote markers within the line, we create an entry in `fndict` whose key is the footnote number, and whose value is another dictionary. In that dictionary we record the id of the charter that the footnote belongs to, and we create an empty field for the footnote text. When we find the foonote texts (`ntexts`) at the bottom of the page, we look up the footnote number in our container `fndict` and write the text of the line to the empty field we made. So when we come to the end of the page, we have a dictionary of footnotes that looks like this:
@@ -702,7 +779,7 @@ for line in GScriba:
 
 NOTA BENE: Again, bear in mind that we are modifying a data structure in memory rather than editing successive text files. So this loop should be __added__ to your script __below__ the summary and marginal loop, which is __below__ the loop that created your skeleton dictionary.
 
-## Dates
+##<a name="fourth-pass"></a> Parse Dates and add to the dictionary
 Dates are hard. Students of British history cling to [Cheyney](http://www.worldcat.org/oclc/41238508) as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, and innumerable other local variations, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
 
 Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` objects. Then, if we want, we can do some simple calendar arithmetic.
@@ -793,14 +870,15 @@ chno: 798, date: 1161-01-06
 ```
 
 Cool, huh?
-# Our completed data structure
+
+#<a name="completed-dict"></a> Our completed data structure
 
 Now we've corrected our canonical text as much as we need to to differentiate between the various bits of meta-data that we want to capture, and we've created a data structure in memory, our `charters` dictionary, by making 4 passes, each one extending and modifying the dictionary in memory.
 
 1. create the skeleton
-2. separate out and record dictionary fields for the `summary` and `marginal` lines 
+2. separate out the `summary` and `marginal` lines and create dictionary fields for them.
 3. collect and assign footnotes to their respective charters
-4. parse the dates in the `summary` lines, and add them to their respective charters
+4. parse the dates in the `summary` field, and add them to their respective charters
 
 Print out our resulting dictionary using `pprint(charters)` and you'll see something like this:
 
@@ -835,11 +913,13 @@ Print out our resulting dictionary using `pprint(charters)` and you'll see somet
     
 Printing out your Python dictionary as a literal string is not a bad thing to do. For a text this size, the resulting file is perfectly manageable, can be mailed around usefully and read into a python repl session very simply using `eval()`, or pasted directly into a Python module file. On the other hand, if you want an even more reliable way to serialize it in an exclusively Python context, look into [`Pickle`](https://docs.python.org/2/library/pickle.html). If you need to move it to some other context, JavaScript for example, or some `RDF` triple stores, Python's [`json`](https://docs.python.org/2/library/json.html#module-json) module will translate effectively. If you have to get some kind of XML output, I will be very sorry for you, but the [`lxml`](http://lxml.de/) python module may ease the pain a little.
 
-## Order from disorder, huzzah.
-Now that we have an ordered data structure, we can do many things with it. As a very simple example, lets just print it out as html for display on a web-site:
+##<a name="applications"></a> Order from disorder, huzzah.
+Now that we have an ordered data structure, we can do many things with it. As a very simple example, let's append some code that just prints `charters` out as html for display on a web-site:
 
 ```python
-fout = open("your_page.html", 'w')
+fout = open("your_page.html", 'w') # create a text file to write the html to
+
+# write to the file your html header with some CSS formatting declarations
 fout.write("""
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
@@ -862,10 +942,12 @@ fout.write("""
 <body>
 """)
 
+# a loop that will write out a blob of html code for each of the charters in our dictionary
 for x in charters:
     d = charters[x]
     try: # bear in mind that you're modifying your in-memory dict here for a specialized purpose.
         d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""    
+        
         d['text'] = ' '.join(d['text'])
         
         blob = """
@@ -880,8 +962,13 @@ for x in charters:
                 </div>
             </div>
             """
-            
+        
         fout.write(blob % d)
+
+        # `string % dictionary` is a neat trick for html templating
+        # that makes use of python's string interpolation syntax
+        # see: http://www.diveintopython.net/html_processing/dictionary_based_string_formatting.html
+            
         fout.write("\n\n")
     except:
         pass

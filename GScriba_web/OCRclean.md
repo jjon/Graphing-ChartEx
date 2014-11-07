@@ -142,7 +142,7 @@ def rom2ar(rom):
 
     return result
 ```
-
+(run [this little script](http://neolography.com/staging/Roman_to_Arabic.txt) to see why I think it's a beautiful algorithm)
 
 ## Some other things we'll need:
 At the top of your Python module, you're going to want to import some python modules that are a part of the standard library. (see Fred Gibbs's tutorial [*Introducing Modules*](http://programminghistorian.org/lessons/installing-python-modules-pip)).

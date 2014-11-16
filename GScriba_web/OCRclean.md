@@ -30,7 +30,7 @@ and
 
 Going through a text file line by line and correcting OCR errors one at a time is hugely error-prone, as any proof reader will tell you. There are ways to automate some of this tedious work. A scripting language like Perl or Python can allow you to search your OCR output text for common errors and correct them using "Regular Expressions", a language for describing patterns in text. (So called because they express a ["regular language"](http://en.wikipedia.org/wiki/Regular_language). See L.T. O'Hara's [tutorial on Regular Expressions](http://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions.html).) Regular Expressions, however, are only useful if the expressions you are searching for are ... well ... regular. Unfortunately, much of what you have in OCR output is highly *irregular*. If you could impose some order on it: create an ordered data set out of it, your Regular Expression tools would become much more powerful.
 
-Consider, for example, what happens if your OCR interpreted a lot of strings like this "21 July, 2012" as "2l July, 20l2", turning the integer '1' into an 'l'. You would love to be able to write a search and replace script that would turn all instances of 2l into 21, but then what would happen if you had lots of occurrences of strings like this in your text: "2lb. hammer". You'd get a bunch of 21b. hammers; not what you want. If only you could tell your script: only change 2l into 21 in sections where there are dates, not weights.
+Consider, for example, what happens if your OCR interpreted a lot of strings like this "21 July, 1921" as "2l July, 192l", turning the integer '1' into an 'l'. You would love to be able to write a search and replace script that would turn all instances of 2l into 21, but then what would happen if you had lots of occurrences of strings like this in your text: "2lb. hammer". You'd get a bunch of 21b. hammers; not what you want. If only you could tell your script: only change 2l into 21 in sections where there are dates, not weights.
 
 Very often the texts that historians wish to digitize are, in fact, ordered data sets: ordered collections of primary source documents, or a legal code say, or a cartulary. But the editorial structure imposed upon such resources is usually designed for a particular kind of data retrieval technology i.e., a codex, a book. For a digitized text you need a different kind of structure. If you can get rid of the book related infrastructure and reorganize the text according to the sections and divisions that you're interested in, you will wind up with data that is much easier to do search and replace operations on, and as a bonus, your text will become immediately useful in a variety of other contexts as well.
 
@@ -230,7 +230,7 @@ Or, each of the subsections in section 2 can also be treated as a separate scrip
 
 In either case, you will want to keep careful track of the input textfiles you use and the output files you generate e.g. `basefile.txt`, `file1_page_chunks.txt`, `file2_charter_chunks.txt`. In addition to these intermediate stages, you may also want to keep a separate, constantly updated version of a `canonical.txt`, or `working.txt` that represents the aggregate of  the corrections and modifications you've made to your OCR text.
 
-In section 3, "Generating an ordered data set from a text file", you will be operating on a data set in computer memory (the `charters` dictionary) that will be generated from the latest, most correct, input text you have. So you will want to maintain a single file in which you define the dictionary at the top, along with your `import` statements and the assignment of global variables, followed by each of the four loops that will populate and then modify that dictionary.
+In section 3, "Creating the Dictionary", you will be operating on a data set in computer memory (the `charters` dictionary) that will be generated from the latest, most correct, input text you have. So you will want to maintain a single file in which you define the dictionary at the top, along with your `import` statements and the assignment of global variables, followed by each of the four loops that will populate and then modify that dictionary.
 
 ```python
 #!/usr/bin/python
@@ -942,13 +942,20 @@ fout.write("""
 <body>
 """)
 
-# a loop that will write out a blob of html code for each of the charters in our dictionary
+# a loop that will write out a blob of html code for each of the charters in our dictionary:
 for x in charters:
-    d = charters[x]
-    try: # bear in mind that you're modifying your in-memory dict here for a specialized purpose.
-        d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""    
+    
+    # use a shallow copy so that charters[x] is not modified for this specialized purpose
+    d = charters[x].copy()
+    
+    try:
+        if d['footnotes']: # remember, this is a list of tuples
+            fnlist = ["<li>(%s) %s</li>" % (t[0], t[1]) for t in d['footnotes']]
+            d['footnotes'] = "<ul>" + ''.join(fnlist) + "</ul>"
+        else:
+            d['footnotes'] = ""
         
-        d['text'] = ' '.join(d['text'])
+        d['text'] = ' '.join(d['text']) # d['text'] is a list of strings
         
         blob = """
             <div>
@@ -971,7 +978,16 @@ for x in charters:
             
         fout.write("\n\n")
     except:
-        pass
+        # insert entries noting the absence of charters on the missing pg. 214
+        erratum = """
+            <div>
+                <div class="charter">
+                    <h1>Charter no. %d is missing because the scan for Pg. 214 was ommited</h1>
+                </div>
+            </div>
+            """  % d['chno']
+            
+        fout.write(erratum)
         
 fout.write("""</body></html>""")
 

@@ -950,7 +950,7 @@ for x in charters:
     
     try:
         if d['footnotes']: # remember, this is a list of tuples
-            fnlist = ["<li>(%s) %s</li>" % (t[0], t[1]) for t in d['footnotes']]
+            fnlist = ["<li>(%s) %s</li>" % t for t in d['footnotes']]
             d['footnotes'] = "<ul>" + ''.join(fnlist) + "</ul>"
         else:
             d['footnotes'] = ""

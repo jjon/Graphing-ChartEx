@@ -498,7 +498,15 @@ function getGraphSize(uri){
         url: "cartametallon.py",
         data: {'getGraphSize': uri},
         dataType: 'text',
-        success: deployGraphSize,
+        success: function(data){
+            if (data.indexOf("requests.exceptions.Timeout") > -1) {
+                hideLocalLoader();
+                $("#AGlist").text(">>> AG STORE NOT CONNECTED")
+                alert(data);
+            } else {
+                deployGraphSize(data)
+            };
+        },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.response, textStatus, errorThrown);
         }

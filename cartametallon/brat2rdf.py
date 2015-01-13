@@ -23,8 +23,8 @@ import textwrap
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
 from localAGconfig import AG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
 
-tstdoc = DATADIR + "deeds/deeds-00880111.ann"
-#tstdoc = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
+#tstdoc = DATADIR + "deeds/deeds-00880111.ann"
+tstdoc = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"
 chartex = Namespace("http://chartex.org/chartex-schema#")
 chartexDoc = Namespace("http://chartex.org/chartex-schema/")
 crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
@@ -246,4 +246,4 @@ def brat2dot(rdf, wits):
 if __name__ == "__main__":
     g = ann2rdf(tstdoc)
     g.serialize(format="n3")
-    print brat2dot(smushSameAs(g))
+    print brat2dot(smushSameAs(g), False)

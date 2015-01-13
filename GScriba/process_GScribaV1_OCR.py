@@ -102,13 +102,13 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 #     if recto_lev_score < 26 :
 #         n += 1
 #         print "recto: %s %s" % (recto_lev_score, line)
-#         fout.write("~~~~~ PAGE HEADER ~~~~~\n\n")
+#         #fout.write("~~~~~ PAGE HEADER ~~~~~\n\n")
 #     elif verso_lev_score < 26 :
 #         n += 1
 #         print "verso: %s %s" % (verso_lev_score, line)
-#         fout.write("~~~~~ PAGE HEADER ~~~~~\n\n")
+#         #fout.write("~~~~~ PAGE HEADER ~~~~~\n\n")
 #     else:
-#         fout.write(line)
+#         #fout.write(line)
 #         pass
 #     
 # print n
@@ -131,21 +131,21 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 ### charter numbers to be at the beginning of lines: .match().
 #
 ### !!! don't get fin and fout mixed up !!!
-# fin = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out2.txt", 'r')
+fin = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out.txt", 'r')
 # fout = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out3.txt", 'w')
 # 
 # GScriba = fin.readlines()
-# # for line in GScriba:
-# #     if romstr.match(line) or line in ['V','X','L','C','D']:
-# #         rnum = line.strip().strip('.')
-# #         n += 1
-# #         try:
-# #             if n != rom2ar(rnum):
-# #                 print n, "something missing, line number ", GScriba.index(line), " reads: ", line
-# #                 n = rom2ar(rnum)
-# #         except KeyError:
-# #             print n, "KeyError, line number ", GScriba.index(line), " reads: ", line
-#             
+# for line in GScriba:
+#     if romstr.match(line):
+#         rnum = line.strip().strip('.')
+#         n += 1
+#         try:
+#             if n != rom2ar(rnum):
+#                 print n, "something missing, line number ", GScriba.index(line), " reads: ", line
+#                 n = rom2ar(rnum)
+#         except KeyError:
+#             print n, "KeyError, line number ", GScriba.index(line), " reads: ", line
+            
 ### We keep running this script repeatedly, fixing stuff as we find it until we
 ### get only the following errors:
 #     5 something missing, line number  35  reads:  VI. 
@@ -299,6 +299,9 @@ charters = dict() #OrderedDict()    ### watch out for this: an OrderedDict is no
 ### of the easily searched lines (folio, page, and charter header), the
 ### fallthrough default will be to add the remaining lines to the text field,
 ### which is a python list.
+
+### Note: if efficiency is an issue, multiple iterations over the dict may not be a good idea. Maybe better to use a dictview. After this loop populates the dict, subsequent iterations could be over
+
 fin = open("/Users/jjc/Documents/GiovanniScriba/V1/v1test_out6.txt", 'r')
 GScriba = fin.readlines()
 
@@ -331,59 +334,49 @@ for line in GScriba:
         else:
             templist.append(line)
         d['text'] = [x for x in templist if not x == '\n'] # strip empty lines
-        
 
-##### Check & Correct 'summary' and 'marginal' lines and add to metadata ######
-### Once we have a data structure like that, we can iterate through each of the
-### charter dictionaries and look at the lines in the text field by index
-### number. We can do that with a loop like the one below. In all cases, the
-### first line should be the Italian summary as we have insured above. The
-### second line in MOST cases, represents a kind of marginal notation (which
-### I've inaccurately refered to in the code as a 'rubric')  usually ended by
-### the ']' character (which OCR misreads alot). We have to find the cases that
-### do not meet this criterion, supply or correct the missing ']', and in the
-### cases where there is no marginal notation I've supplied "no marginal]"
-# for ch in charters:
-#     txt = charters[ch]['text']
-#     try:
-#         line1 = txt[0]
-#         line2 = txt[1]
-#         if line2 and ']' in line2:
-#             n += 1
-#             print "charter: %d\ntext, line 1: %s\ntext, line 2: %s" % (ch, line1, line2)
-#     except:
-#         print ch, "oops" # to pass the charters from the missing page 214
-#
-### Once we're satisfied that line 1 and line 2 in the 'text' field for each
-### charter are the Italian Summary and the marginal notation respectively, we
-### can make another iteration of the charters dictionary, removing those lines
-### from the text field and creating new fields in the charter entry for them.
-### NOTA BENE: we are now modifying a data structure in memory rather than
-### editing successive text files.
-
-for ch in charters:
-    d = charters[ch]
-    try:
-        d['summary'] = d['text'].pop(0).strip()
-        d['marginal'] = d['text'].pop(0).strip().strip('.').strip()
-    except IndexError: # this will report that the charters on p 214 are missing
-        pass #print "missing charter ", ch
-#     
+# ##### Check & Correct 'summary' and 'marginal' lines and add to metadata ######
+# ### Once we have a data structure like that, we can iterate through each of the
+# ### charter dictionaries and look at the lines in the text field by index
+# ### number. We can do that with a loop like the one below. In all cases, the
+# ### first line should be the Italian summary as we have insured above. The
+# ### second line in MOST cases, represents a kind of marginal notation (which
+# ### I've inaccurately refered to in the code as a 'rubric')  usually ended by
+# ### the ']' character (which OCR misreads alot). We have to find the cases that
+# ### do not meet this criterion, supply or correct the missing ']', and in the
+# ### cases where there is no marginal notation I've supplied "no marginal]"
+# # for ch in charters:
+# #     txt = charters[ch]['text']
+# #     try:
+# #         line1 = txt[0]
+# #         line2 = txt[1]
+# #         if line2 and ']' in line2:
+# #             n += 1
+# #             print "charter: %d\ntext, line 1: %s\ntext, line 2: %s" % (ch, line1, line2)
+# #     except:
+# #         print ch, "oops" # to pass the charters from the missing page 214
+# #
+# ### Once we're satisfied that line 1 and line 2 in the 'text' field for each
+# ### charter are the Italian Summary and the marginal notation respectively, we
+# ### can make another iteration of the charters dictionary, removing those lines
+# ### from the text field and creating new fields in the charter entry for them.
+# ### NOTA BENE: we are now modifying a data structure in memory rather than
+# ### editing successive text files.
 # 
-######### Assign footnotes to respective charters and add to metadata #########
-# The next tricky bit is to get the footnote texts appearing at the bottom of
-# the page associated with their appropriate charters. For this we go back to
-# the same list of lines that we built the dictionary from. We're depending on
-# all the footnote markers appearing within the charter text, i.e. none of them are at
-# the beginning of a line. And, each of the footnote texts is on a separate line
-# beginning with '(1)' etc.
-
-
+# ######### Assign footnotes to respective charters and add to metadata #########
+# # The next tricky bit is to get the footnote texts appearing at the bottom of
+# # the page associated with their appropriate charters. For this we go back to
+# # the same list of lines that we built the dictionary from. We're depending on
+# # all the footnote markers appearing within the charter text, i.e. none of them are at
+# # the beginning of a line. And, each of the footnote texts is on a separate line
+# # beginning with '(1)' etc.
+# 
+# 
 notetext = re.compile(r"^\(\d+\)")
 notemark = re.compile(r"\(\d+\)(?<!^\(\d\))") # lookbehind to see that the (1) marker does not begin a line
 this_charter = 1
 #r = re.compile("\(\d{1,2}\)")
-pg = re.compile("~~~~~ PAGE \d+ ~~~~~")
+pg = re.compile("~~~~~ PAGE (\d+) ~~~~~")
 pgno = 1
 fndict = {}
 
@@ -398,7 +391,7 @@ for line in GScriba:
         pgno += 1
         fndict = {}     
     if slug.match(line):
-        this_charter = slug.match(line).group(3)
+        this_charter = int(slug.match(line).group(3))
     if nmarkers:
         for marker in [eval(x) for x in nmarkers]:
             fndict[marker] = {'chid':this_charter, 'fntext': ''}
@@ -407,74 +400,83 @@ for line in GScriba:
             try:
                 fndict[text]['fntext'] = re.sub('\(\d+\)', '', line).strip()
             except KeyError:
-                pass#print "printer's error? ", "pgno:", pgno, line
-#                 
-# ####### repair charter 404
+                pass #print "printer's error? ", "pgno:", pgno, line
+# #                 
+## sequentially renumber footnotes here?
+
+for ch in charters:
+    d = charters[ch]
+    try:
+        d['summary'] = d['text'].pop(0).strip()
+        d['marginal'] = d['text'].pop(0).strip().strip('.').strip()
+    except IndexError: # this will report that the charters on p 214 are missing
+        pass #print "missing charter ", ch
+#     
+# # ####### repair charter 404
 charters[404]['summary'] = ''
-#pprint(charters)
-
-
-
-
-# We now have a regular data structure in which the available metadata has been abstracted away from the text of the charter itself. That text is still full of OCR errors, of course, but it's now possible to do some machine processing of the corpus of charters as a whole without the page-bound infrastructure getting in the way. For example, we might simply want an HTML representation of the charters so that we can control the styling of the various elements. This is a huge advantage all by itself: proofreaders have a much easier time of it when the elements of the corpus aren't just a mass of undifferentiated lines of text.
-
-# Or we might want to generate some SQL statements that will insert our data in a relational database, output some rudimentary TEI/xml, or get an RDF graph from our data. All kinds of things are now possible when we have a regular data structure rather than just a mass of error-filled OCR output.
-
-
-############## correcting and parsing dates ###############
-# # find and repair misspelled month names:
-# import sys
-# from collections import Counter
-# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
-# c = Counter()
 # 
-# for x in charters:
-#     d = charters[x]
-#     try:
-#         i = summary_date.finditer(d['summary'])
-#         dt = list(i)[-1]
-#         c.update([dt.group(2).strip()])
-#     except:
-#         pass # print d['chno'], "Unexpected error:", sys.exc_info()[:2]
 # 
-# months = [x[0] for x in c.most_common(12)] # or just make a list with the correct spellings.
-# print months
-
-# summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
-# Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
 # 
-# import sys
-# for ch in charters:
-#     try:
-#         d = charters[ch]
-#         i = summary_date.finditer(d['summary'])
-#         dt = list(i)[-1]
-#         if dt.group(2).strip() not in Ital2int.keys():
-#             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
-#     except:
-#         print d['chno'], "The usual suspects: ", sys.exc_info()[:2]
-
-# # count the dates to be sure every charter has one:
-# for ch in charters:
-#     try:
-#         d = charters[ch]
-#         i = summary_date.finditer(d['summary'])
-#         dt = list(i)[-1]
-#         print dt.group(0)
-#     except:
-#         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
-
-################## parse the dates and add to metadata.
-# # Out of 803 charters, 29 have dates that won't parse. Most of them because
-# # they are only mo and yr, some for other reasons including printer's errors
-# # like "31 settembre 1160"
-
-# Dates are hard. Students of British history cling to (Cheyney)[http://www.worldcat.org/oclc/41238508] as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
 # 
-# Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can to some simple calendar arithmetic.
+# # We now have a regular data structure in which the available metadata has been abstracted away from the text of the charter itself. That text is still full of OCR errors, of course, but it's now possible to do some machine processing of the corpus of charters as a whole without the page-bound infrastructure getting in the way. For example, we might simply want an HTML representation of the charters so that we can control the styling of the various elements. This is a huge advantage all by itself: proofreaders have a much easier time of it when the elements of the corpus aren't just a mass of undifferentiated lines of text.
 # 
-# First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them:
+# # Or we might want to generate some SQL statements that will insert our data in a relational database, output some rudimentary TEI/xml, or get an RDF graph from our data. All kinds of things are now possible when we have a regular data structure rather than just a mass of error-filled OCR output.
 # 
+# 
+# ############## correcting and parsing dates ###############
+# # # find and repair misspelled month names:
+# # import sys
+# # from collections import Counter
+# # summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+# # c = Counter()
+# # 
+# # for x in charters:
+# #     d = charters[x]
+# #     try:
+# #         i = summary_date.finditer(d['summary'])
+# #         dt = list(i)[-1]
+# #         c.update([dt.group(2).strip()])
+# #     except:
+# #         pass # print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+# # 
+# # months = [x[0] for x in c.most_common(12)] # or just make a list with the correct spellings.
+# # print months
+# 
+# # summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
+# # Ital2int = {'luglio': 7, 'marzo': 3, 'agosto': 8, 'febbraio': 2, 'settembre': 9, 'giugno': 6, 'dicembre': 12, 'ottobre': 10, 'novembre': 11, 'gennaio': 1, 'maggio': 5, 'aprile': 4}
+# # 
+# # import sys
+# # for ch in charters:
+# #     try:
+# #         d = charters[ch]
+# #         i = summary_date.finditer(d['summary'])
+# #         dt = list(i)[-1]
+# #         if dt.group(2).strip() not in Ital2int.keys():
+# #             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
+# #     except:
+# #         print d['chno'], "The usual suspects: ", sys.exc_info()[:2]
+# 
+# # # count the dates to be sure every charter has one:
+# # for ch in charters:
+# #     try:
+# #         d = charters[ch]
+# #         i = summary_date.finditer(d['summary'])
+# #         dt = list(i)[-1]
+# #         print dt.group(0)
+# #     except:
+# #         print d['chno'], "Unexpected error:", sys.exc_info()[:2]
+# 
+# ################## parse the dates and add to metadata.
+# # # Out of 803 charters, 29 have dates that won't parse. Most of them because
+# # # they are only mo and yr, some for other reasons including printer's errors
+# # # like "31 settembre 1160"
+# 
+# # Dates are hard. Students of British history cling to (Cheyney)[http://www.worldcat.org/oclc/41238508] as to a spar on a troubled ocean. And, given the way the Gregorian calendar was adopted so gradually, correct date reckoning for medieval sources will always require care and local knowledge. Nevertheless, here too Python can be of some help.
+# # 
+# # Our Italian summary line invariably contains a date drawn from the text, and it's conveniently set off from the rest of the line by parentheses. So we can parse them and create Python `date` object. Then, if we want, we can to some simple calendar arithmetic.
+# # 
+# # First we have to find and correct all the dates in the same way as we have done for the other metadata elements. Devise a script that will report the errors, and then fix them:
+# # 
 import sys
 import datetime
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)')
@@ -492,53 +494,116 @@ for ch in charters:
         except:
             c['date'] = "date won't parse, see summary line"
 
-###### Dealing with None #########
+
+########### Sequentially renumbering footnotes ############
+#enumerate fnlist for d['footnotes']:
+# [(t[0],t[1][1]) for t in enumerate(fns)] OR [(fns.index(t)+1, t[1]) for t in fns]
+# 
+# #and for d['text'] we can do:
+# t = ' '.join([x.strip() for x in d['text']])
+# 
+# #this ridiculous one-liner will renumber the in-text footnote references (*whew*)
+# ntregex = re.compile(r"\(\d+\)")
+# ''.join(["(%s)" % str(x[0]) +  x[1] for x in enumerate(re.split(ntregex, t))]).replace('(0)', '').strip()
+# 
+# # or we could write it out:
+# t = ' '.join([x.strip() for x in d['text']])
+# fnrefs_enumerated = enumerate(re.split(ntregex, t))
+# fnlst = ["(%s)" % str(x[0]) +  x[1] for x in fnrefs_enumerated]
+# charter_text = ''.join(fnlst).replace('(0)', '').strip()
+
+# >>> ntregex = re.compile(r"\(\d+\)")
+# >>> t = "a string (2) another (3) another string (1) and another (2) more (3) strings"
+# >>> fnrefs_enumerated = enumerate(re.split(ntregex, t))
+# >>> fnlst = ["(%s)" % str(x[0]) +  x[1] for x in fnrefs_enumerated]
+# >>> charter_text = ''.join(fnlst).replace('(0)', '').strip()
+# >>> charter_text
+# 'a string (1) another (2) another string (3) and another (4) more (5) strings'
+# 
+# # or the one-liner:
+# >>> t
+# 'a string (2) another (3) another string (1) and another (2) more (3) strings'
+# >>> ''.join(["(%s)" % str(x[0]) +  x[1] for x in enumerate(re.split(ntregex, t))]).replace('(0)', '').strip()
+# 'a string (1) another (2) another string (3) and another (4) more (5) strings'
+#
+#### fails where there's a numbered footnote reference in either the summary or the marginal lines
+#### it's really not worth fixing this. (errrg!)
+# ntregex = re.compile(r"\(\d+\)")
 # for ch in charters:
-#     c = charters[ch]
-#     dt = summary_date.search(c['summary'])
-#     print dt.group(0) if dt else "FOOBAR"
+#     d = charters[ch]
+#     d['footnotes'] = [(t[0]+1,t[1][1]) for t in enumerate(d['footnotes'])]
+#     
+#     # to include sum and marg lines, do this in an earlier pass?
+#     t = ' '.join([x.strip() for x in d['text']])
+#     d['text'] = ''.join(["(%s)" % str(x[0]) +  x[1] for x in enumerate(re.split(ntregex, t))]).replace('(0)', '').strip()
+
+##pprint(charters)
+
+ 
+# ###### Dealing with None #########
+# # for ch in charters:
+# #     c = charters[ch]
+# #     dt = summary_date.search(c['summary'])
+# #     print dt.group(0) if dt else "FOOBAR"
+#     
+# ### roman numeral noodling ###
+# # for ch in charters:
+# #     txt = ' '.join(charters[ch]['text'])
+# #     print re.findall('[DdCcLlXxVvIi]{2,}', txt)
+# 
+# ### simple word frequency table ###
+# # import string
+# # # join() all the text fields in each charter and join() the result for an aggregate txt
+# # txt = ' '.join([' '.join(charters[x]['text']) for x in charters])
+# # # jetison the punctuation
+# # txt = txt.translate(string.maketrans("",""), string.punctuation)
+# # from collections import Counter
+# # c = Counter(txt.split())
+# # # gets us a list of frequencies
+# # 
+# # # how long the longest?
+# # just = max([len(x) for x in c])
+# # 
+# # # print out the most common pretty:
+# # for x in c.most_common():
+# #     print "%s: %s" % (x[0].rjust(just), str(x[1]).ljust(just))
+# 
+# # Maybe we want to have a look at the frequency of mostly proper names: if x[0][0].isupper():
+import datetime
+week = datetime.timedelta(weeks=1)
+years = []        
+
+######## this works, but seems ridiculous:
+for ch in charters:
+    d = charters[ch]
+    try:
+        years.append(d['date'].year)
+    except: pass
     
-### roman numeral noodling ###
-# for ch in charters:
-#     txt = ' '.join(charters[ch]['text'])
-#     print re.findall('[DdCcLlXxVvIi]{2,}', txt)
+result = {}
 
-### simple word frequency table ###
-import string
-# join() all the text fields in each charter and join() the result for an aggregate txt
-txt = ' '.join([' '.join(charters[x]['text']) for x in charters])
-# jetison the punctuation
-txt = txt.translate(string.maketrans("",""), string.punctuation)
-from collections import Counter
-c = Counter(txt.split())
-# gets us a list of frequencies
+for year in set(years):
+    result[year] = []
+    for ch in charters:
+        try:
+            dt = charters[ch]['date']
+            christmas = datetime.date(year,12,25)
+            if abs(dt - christmas) < week * 3:
+                result[year].append((charters[ch]['chno'], dt.isoformat()))
+        except TypeError:
+            pass #print charters[ch]['date']
+        except KeyError:
+            pass #print charters[ch]['chno'], sys.exc_info()[:2]
 
-# how long the longest?
-just = max([len(x) for x in c])
+for c in range(315, 335):
+    pprint(charters[c])
 
-# print out the most common pretty:
-for x in c.most_common():
-    print "%s: %s" % (x[0].rjust(just), str(x[1]).ljust(just))
-
-# Maybe we want to have a look at the frequency of mostly proper names: if x[0][0].isupper():
-
-# week = datetime.timedelta(weeks=1)
-# for ch in charters:
-#     try:
-#         dt = charters[ch]['date']
-#         if type(dt) == 'str': print 'foo'
-#         christmas = datetime.date(1160,12,25)
-#         if abs(dt - christmas) < week * 3:
-#             print charters[ch]['chno'], dt
-#     except TypeError:
-#         pass #print charters[ch]['date']
-#     except KeyError:
-#         print charters[ch]['chno'], sys.exc_info()[:2]
-# 
-########### Output HTML ###############
-# # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
-# fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
-# 
+# # 
+# ########### Output HTML ###############
+# # # Here's a simple script to output some vanilla HTML: (NB there are some much more able templating engines than this for getting HTML out of python data structures)
+# # fout = open("/Users/jjc/Documents/GiovanniScriba/V1/GScriba_Vol1.html", 'w')
+# # 
+# fout = open("/Users/jjc/Desktop/temp.html", 'w')
 # fout.write("""
 # <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 # 
@@ -562,31 +627,44 @@ for x in c.most_common():
 # """)
 # 
 # for x in charters:
-#     d = charters[x]
-#     try:
-#         d['footnotes'] = "<ul>" + ''.join(["<li>(%s) %s</li>" % (i[0], i[1]) for i in d['footnotes']]) + "</ul>" if d['footnotes'] else ""
+#     if "societas" in charters[x]['summary']:
+#         d = charters[x].copy()
+#         try:
+#             if d['footnotes']: # remember, this is a list of tuples
+#                 fnlist = ["<li>(%s) %s</li>" % t for t in d['footnotes']]
+#                 d['footnotes'] = "<ul>" + ''.join(fnlist) + "</ul>"
+#             else:
+#                 d['footnotes'] = ""
 #     
-#         d['text'] = ' '.join(d['text'])
+#             d['text'] = ' '.join(d['text'])
 #         
-#         blob = """
-#             <div>
-#                 <div class="charter">
-#                     <h1>%(chid)s</h1>
-#                     <div class="folio">%(folio)s (pg. %(pgno)d)</div>
-#                     <div class="summary">%(summary)s</div>
-#                     <div class="marginal">%(marginal)s</div>
-#                     <div class="text">%(text)s
-#                     </div>
-#                     <div class="footnotes">%(footnotes)s</div>
+#             blob = """
+#                 <div>
+#                     <div class="charter">
+#                         <h1>%(chid)s</h1>
+#                         <div class="folio">%(folio)s (pg. %(pgno)d)</div>
+#                         <div class="summary">%(summary)s</div>
+#                         <div class="marginal">%(marginal)s</div>
+#                         <div class="text">%(text)s
+#                         </div>
+#                         <div class="footnotes">%(footnotes)s</div>
+#                         </div>
 #                     </div>
 #                 </div>
-#             </div>
-#             """
+#                 """
 #             
-#         fout.write(blob % d)
-#         fout.write("\n\n")
-#     except:
-#         pass
+#             fout.write(blob % d)
+#             fout.write("\n\n")
+#         except:
+#             # insert entries noting the absence of charters on the missing pg. 214
+#             erratum = """
+#                 <div>
+#                     <div class="charter">
+#                         <h1>Charter no. %d is missing because the scan for Pg. 214 was ommited</h1>
+#                     </div>
+#                 </div>
+#                 """  % d['chno']
+#             
+#             fout.write(erratum)
 #         
 # fout.write("""</body></html>""")
-

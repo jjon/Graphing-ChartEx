@@ -1,0 +1,24 @@
+T1	Document 0 16	Ward2_59A_233_15
+#1	AnnotatorNotes T1	{"piece_id": "5472159", "date_text": "1544 Apr 19"}
+T2	Person 37 51	Thomas Audeley
+T3	Transaction 146 158	distribution
+T4	Site 166 171	lands
+T5	Place 188 201	Hertfordshire
+T6	Place 203 210	Suffolk
+T7	Place 212 218	London
+T8	Place 230 244	Cambridgeshire
+T9	Place 220 225	Essex
+R1	is_located_in Arg1:T4 Arg2:T5	
+R2	is_located_in Arg1:T4 Arg2:T6	
+R3	is_located_in Arg1:T4 Arg2:T7	
+R4	is_located_in Arg1:T4 Arg2:T9	
+R5	is_located_in Arg1:T4 Arg2:T8	
+R6	is_parcel_in Arg1:T4 Arg2:T3	
+R7	refers_to Arg1:T1 Arg2:T3	
+T10	Occupation 53 73	knight of the garter
+T11	Person 75 97	lord Audeley of Walden
+T12	Occupation 102 123	Chancellor of England
+R8	occupation_is Arg1:T2 Arg2:T10	
+*	same_as T2 T11
+R9	occupation_is Arg1:T2 Arg2:T12	
+R10	is_grantor_in Arg1:T2 Arg2:T3	

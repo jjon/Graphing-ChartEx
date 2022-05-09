@@ -1,0 +1,56 @@
+T1	Document 0 17	vicars-choral-394
+T2	Transaction 18 23	Grant
+T3	Person 27 43	Henry de Bryland
+T4	Occupation 44 52	merchant
+T5	Place 56 60	York
+T6	Person 64 84	Ludbert de Cussefeld
+T7	Occupation 85 93	merchant
+T8	Site 136 140	land
+T9	Site 146 155	buildings
+T10	Site 159 168	Petergate
+T11	Person 187 193	Cecily
+T12	Person 206 215	mag• John
+T13	Occupation 220 229	physician
+T14	Site 260 264	land
+T15	Person 268 286	William de capella
+T16	SiteRef 291 295	that
+R1	is_breadth_marker_to Arg1:T16 Arg2:T8	
+T17	Person 299 315	Roger de Wichton
+T18	Site 345 352	Peterg'
+T19	Site 360 365	lands
+T20	Person 369 378	W[illiam]
+T21	Person 383 390	R[oger]
+T22	Person 406 413	Ludbert
+T23	Person 441 448	Henry's
+T24	Person 496 502	Cecily
+T25	Person 532 537	Henry
+T26	Institution 595 641	vicars of the minster of blessed Peter of York
+T28	Person 741 752	Peter Stoyl
+R2	refers_to Arg1:T1 Arg2:T2	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_of Arg1:T3 Arg2:T5	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	occupation_is Arg1:T6 Arg2:T7	
+R10	is_parcel_in Arg1:T8 Arg2:T2	
+R11	is_part_of Arg1:T9 Arg2:T8	
+R14	is_daughter_of Arg1:T11 Arg2:T12	
+R15	occupation_is Arg1:T12 Arg2:T13	
+R16	is_breadth_marker_to Arg1:T14 Arg2:T8	
+R17	is_a_tenant_of Arg1:T15 Arg2:T14	
+R18	is_a_tenant_of Arg1:T17 Arg2:T16	
+R19	is_length_marker_to Arg1:T18 Arg2:T8	
+R21	is_a_tenant_of Arg1:T20 Arg2:T19	
+R22	is_length_marker_to Arg1:T19 Arg2:T8	
+R23	is_a_tenant_of Arg1:T21 Arg2:T19	
+*	same_as T22 T6
+*	same_as T23 T3 T25
+*	same_as T24 T11
+R24	is_a_landlord_of Arg1:T28 Arg2:T8	
+R25	is_a_tenant_of Arg1:T3 Arg2:T8	
+R12	is_part_of Arg1:T8 Arg2:T10	
+T27	Apparatus 790 857	Seal•  [later 13th century] SOURCE: VC 3/1/1, fo• 39• NOTE: See 388
+R3	contains Arg1:T1 Arg2:T27	
+*	same_as T18 T10
+R4	is_a_landlord_of Arg1:T11 Arg2:T8	
+R13	is_a_landlord_of Arg1:T26 Arg2:T8	

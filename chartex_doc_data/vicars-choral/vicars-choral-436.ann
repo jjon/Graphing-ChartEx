@@ -1,0 +1,41 @@
+T1	Document 0 17	vicars-choral-436
+T2	Transaction 186 193	granted
+T3	Person 34 38	John
+T4	Person 46 61	Thomas de Cotes
+T5	Place 65 78	Ravensereodde
+T6	Person 84 89	Ellen
+T7	Person 99 115	Peter de Appilby
+T8	Site 149 158	six shops
+T9	Site 162 170	Petergat
+R1	is_part_of Arg1:T8 Arg2:T9	
+T10	Person 197 205	Margaret
+T11	Person 215 234	Nicholas de Langton
+R2	is_widow_of Arg1:T6 Arg2:T7	
+R3	is_widow_of Arg1:T10 Arg2:T11	
+R4	is_grantor_in Arg1:T6 Arg2:T2	
+R5	is_parcel_in Arg1:T8 Arg2:T2	
+R6	is_recipient_in Arg1:T10 Arg2:T2	
+T12	Transaction 262 273	quitclaimed
+T13	Site 274 283	the shops
+*	same_as T13 T8
+R7	is_son_of Arg1:T3 Arg2:T4	
+R8	is_grantor_in Arg1:T3 Arg2:T12	
+R9	is_parcel_in Arg1:T13 Arg2:T12	
+T14	Person 310 314	John
+*	same_as T14 T3
+T15	Person 353 367	Hamo de Hessay
+R10	is_recipient_in Arg1:T15 Arg2:T12	
+T16	Person 335 342	Ellen's
+*	same_as T16 T6
+T17	Place 492 496	York
+T18	Date 498 568	eve of the purification of the blessed Virgin Mary 1345, 20 Edward III
+R11	refers_to Arg1:T1 Arg2:T12	
+R12	refers_to Arg1:T1 Arg2:T2	
+R13	is_dated Arg1:T1 Arg2:T18	
+R14	is_of Arg1:T4 Arg2:T5	
+R15	is_location_of Arg:T17 Arg2:T12	
+R16	precedes Arg1:T2 Arg2:T12	
+T19	Apparatus 569 631	[1 February 1345/6)• SOURCE: VC 3/I/I, fo• I27V• NOTE: See 433
+R17	contains Arg1:T1 Arg2:T19	
+T20	Apparatus 383 490	Warranty• Seal• Witnesses: as 435 (reading Womme for Wome, Durant for Dourant, and Kelsterne for Kelstern')
+R18	contains Arg1:T1 Arg2:T20	

@@ -1,0 +1,49 @@
+T1	Document 0 17	vicars-choral-418
+T2	Transaction 18 24	Demise
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 28 42	Nicholas Urger
+T4	Person 44 60	Thomas le Graunt
+T5	Person 66 87	Thomas de Bolingbrok'
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_grantor_in Arg1:T4 Arg2:T2	
+R5	is_grantor_in Arg1:T5 Arg2:T2	
+T7	Place 101 105	York
+R8	is_of Arg1:T5 Arg2:T7	
+R9	is_of Arg1:T4 Arg2:T7	
+R10	is_of Arg1:T3 Arg2:T7	
+T8	Person 127 133	Thomas
+T9	Person 141 154	William Urger
+R11	is_son_of Arg1:T8 Arg2:T9	
+R12	is_participant_in Arg1:T8 Arg2:T2	
+T10	Person 168 189	William de Aurelianis
+T11	Occupation 190 196	priest
+R13	occupation_is Arg1:T10 Arg2:T11	
+R14	is_recipient_in Arg1:T10 Arg2:T2	
+T12	Site 202 210	messuage
+T13	Site 218 239	street of St• Leonard
+R15	is_parcel_in Arg1:T12 Arg2:T2	
+R16	is_part_of Arg1:T12 Arg2:T13	
+T14	Place 243 247	York
+R17	is_located_in Arg1:T13 Arg2:T14	
+T15	Person 300 320	Geoffrey de Losinges
+T16	Site 288 296	messuage
+R18	is_boundary_to Arg1:T16 Arg2:T12	
+R19	is_a_tenant_of Arg1:T15 Arg2:T16	
+T17	Site 325 329	land
+T18	Person 336 359	William [de Aurelianis]
+*	same_as T18 T10
+T19	Apparatus 344 359	[de Aurelianis]
+R21	is_boundary_to Arg1:T17 Arg2:T12	
+T20	Institution 376 410	master and brothers of St• Leonard
+R22	is_a_previous_grantor_of Arg1:T20 Arg2:T17	
+T21	Date 464 503	morrow of the Annunciation 36 Henry III
+R23	is_dated Arg1:T1 Arg2:T21	
+T24	Apparatus 504 1254	[26 March 1252]• SOURCE: VC 6/2/6 [early 4th-century rent roll], dorse• NOTE: This and the next three charters form a group• The land here granted to William de Orleans (Aurelianis) was evidently that which Thomas de Snape later granted to Robert de Weighton and his wife Margery: 419 (the text of both charters comes from the same source)• Robert and Margery were also the recipients of grants of what may have been adjoining, or nearby, land: 420-1• One of those grants carried a rent charge of 5s• to the vicars: 420• The 'street of St• Leonard' is the early name for that part of modern High Petergate between Bootham Bar and Duncombe Place, and is derived from St• Leonard's Hospital which stood within the city wall south-west of High Petergate
+R25	contains Arg1:T1 Arg2:T19	
+T26	Person 436 450	John de Seleby
+T27	Occupation 451 456	mayor
+R27	occupation_is Arg1:T26 Arg2:T27	
+R28	is_witness_to Arg1:T26 Arg2:T2	
+R29	is_a_previous_tenant_of Arg1:T9 Arg2:T12	
+R24	contains Arg1:T1 Arg2:T24	
+R2	is_a_previous_recipient_of Arg1:T18 Arg2:T17	

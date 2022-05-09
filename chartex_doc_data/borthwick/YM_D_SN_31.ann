@@ -1,0 +1,43 @@
+T1	Document 0 10	YM/D/SN/31
+T2	Transaction 12 28	Bargain and sale
+#1	AnnotatorNotes T1	{"Creation Dates": "20 July 1585", "Title": "Bargain and sale"}
+T3	Person 29 43	Mark Stapleton
+T4	Place 47 52	Balne
+T5	Occupation 54 60	yeoman
+T6	Person 62 75	Robert Bawlne
+T7	Occupation 77 83	yeoman
+T8	Person 88 92	John
+T9	Site 102 110	2 closes
+T10	Place 139 144	Balen
+R1	is_located_in Arg1:T9 Arg2:T10	
+T11	Site 155 160	lands
+T12	Person 164 179	Thomas Mydleton
+T13	Site 196 206	Balne moor
+T14	Site 233 240	highway
+T15	Site 258 268	Balne moor
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_recipient_in Arg1:T6 Arg2:T2	
+R4	is_recipient_in Arg1:T8 Arg2:T2	
+R5	is_of Arg1:T3 Arg2:T4	
+R6	occupation_is Arg1:T3 Arg2:T5	
+R7	occupation_is Arg1:T6 Arg2:T7	
+R8	is_son_of Arg1:T8 Arg2:T6	
+R9	is_parcel_in Arg1:T9 Arg2:T2	
+R10	is_a_tenant_of Arg1:T12 Arg2:T11	
+R11	is_western_directional_marker_to Arg1:T11 Arg2:T9	
+R12	is_eastern_directional_marker_to Arg1:T13 Arg2:T9	
+R13	is_southern_directional_marker_to Arg1:T14 Arg2:T9	
+R14	is_northern_directional_marker_to Arg1:T15 Arg2:T9	
+R15	refers_to Arg1:T1 Arg2:T2	
+T16	Site 118 135	Cross Hill closes
+*	same_as T9 T16
+*	same_as T15 T13
+T17	Person 331 340	Stapleton
+*	same_as T17 T3 T20
+T18	Person 496 509	Robert Bawlne
+*	same_as T18 T6
+T19	Person 514 528	John Eastwoode
+R16	is_participant_in Arg1:T19 Arg2:T2	
+T20	Person 552 561	Stapleton
+T21	Person 566 575	Elizabeth
+R17	is_wife_of Arg1:T21 Arg2:T20	

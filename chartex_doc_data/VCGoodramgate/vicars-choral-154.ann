@@ -1,0 +1,50 @@
+T1	Document 0 17	vicars-choral-154
+T2	Person 36 59	mag. Nicholas de Seleby
+T3	Occupation 60 73	canon of York
+T4	Person 75 101	Henry de Sexdecim Wallibus
+T5	Person 103 117	John de Seleby
+T6	Person 123 138	Agnes de Seleby
+T7	Person 148 167	Hugh lord of Seleby
+T8	Person 181 195	Hugh de Seleby
+T9	Occupation 205 218	mayor of York
+T10	Apparatus 293 305	(contulisse)
+T11	Institution 313 319	vicars
+T12	Person 347 351	Hugh
+T13	Site 413 417	land
+T14	Site 421 433	Gutherumgate
+T15	Site 449 457	the gate
+T16	Apparatus 458 473	(versus portam)
+T17	Site 486 490	land
+T18	Person 494 501	Gilbert
+T19	Occupation 505 516	parcheminer
+T20	SiteRef 521 525	that
+T21	Person 529 533	Hugh
+T22	Occupation 538 544	knight
+T23	Apparatus 546 796	Seal. [after 1235; possibly early 1240s] SOURCE: VC 3/1/1, fo. 14.DATE: Hugh de Selby was last recorded as mayor in 1235 (see dating note to 21); Nicholas de Selby was canon of York by 1240 x 1244. NOTE: See 151. The gate referred to is Monkgate Bar.
+T24	Transaction 284 292	conveyed
+R1	refers_to Arg1:T1 Arg2:T24	
+R2	contains Arg1:T1 Arg2:T10	
+R3	contains Arg1:T1 Arg2:T16	
+R4	contains Arg1:T1 Arg2:T23	
+R5	occupation_is Arg1:T2 Arg2:T3	
+R6	is_widow_of Arg1:T6 Arg2:T7	
+R7	occupation_is Arg1:T8 Arg2:T9	
+R8	is_other_relation_to Arg1:T2 Arg2:T8	
+R9	is_other_relation_to Arg1:T4 Arg2:T8	
+R10	is_familial_relation_to Arg1:T5 Arg2:T8	
+*	same_as T7 T8
+R11	is_grantor_in Arg1:T2 Arg2:T24	
+R12	is_grantor_in Arg1:T4 Arg2:T24	
+R13	is_grantor_in Arg1:T5 Arg2:T24	
+R14	is_grantor_in Arg1:T6 Arg2:T24	
+R15	is_recipient_in Arg1:T11 Arg2:T24	
+R16	not_same_as Arg1:T12 Arg2:T8	
+R17	is_part_of Arg1:T13 Arg2:T14	
+R18	is_parcel_in Arg1:T13 Arg2:T24	
+R19	is_length_marker_to Arg1:T15 Arg2:T14	
+R20	occupation_is Arg1:T18 Arg2:T19	
+R21	is_a_tenant_of Arg1:T18 Arg2:T17	
+R22	is_boundary_to Arg1:T17 Arg2:T13	
+R23	is_boundary_to Arg1:T20 Arg2:T13	
+R24	occupation_is Arg1:T21 Arg2:T22	
+R25	is_a_tenant_of Arg1:T21 Arg2:T20	

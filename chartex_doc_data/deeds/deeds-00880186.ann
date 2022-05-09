@@ -1,0 +1,62 @@
+T1	Document 0 14	deeds-00880186
+#1	AnnotatorNotes T1	{'editorial date':'1275/1280', 'transaction type': 'Grant'}
+T2	Person 51 73	Robertus filius Rogeri
+T3	Occupation 74 79	fabri
+T4	Place 83 91	Haustede
+T5	Transaction 92 142	concessi dedi et hac presenti carta mea confirmavi
+T6	Institution 192 238	fratribus hospitalis sancti Iohannis Ierusalem
+T7	Place 254 267	Mapeltrestede
+T8	Person 321 349	fratri Willelmo de Chelesham
+T10	Site 530 551	tenemento et mesuagio
+T12	Site 599 608	mesuagium
+T13	Person 615 623	Iohannis
+T14	Site 627 636	mesuagium
+T15	Person 637 654	Willelmi le Buk[]
+T16	Place 799 812	Mapeltrestede
+T17	Person 921 929	Robertus
+T18	Person 1150 1165	Roberto Bulluk[
+T19	Person 1167 1193	Iohanne de Albo Monasterio
+T20	Person 1194 1211	Roberto de Polhey
+T21	Person 1212 1228	Iohanne de Solio
+T22	Person 1229 1245	Ricardo Everwyne
+T23	Person 1246 1253	Ricardo
+T24	Person 1269 1286	Gilberto de Hamme
+T26	Person 1305 1322	Gilberto Panell[]
+T27	Person 1323 1343	Willelmo de Panimere
+*	same_as T17 T2
+R1	occupation_is Arg1:T2 Arg2:T3	
+R2	is_of Arg1:T2 Arg2:T4	
+R3	is_grantor_in Arg1:T2 Arg2:T5	
+R4	is_recipient_in Arg1:T6 Arg2:T5	
+R5	is_located_in Arg1:T6 Arg2:T7	
+R6	is_recipient_in Arg1:T8 Arg2:T5	
+R8	is_officeholder_in Arg1:T8 Arg2:T6	
+R9	is_parcel_in Arg1:T10 Arg2:T5	
+R11	is_boundary_to Arg1:T12 Arg2:T10	
+R12	is_a_tenant_of Arg1:T13 Arg2:T12	
+R13	is_boundary_to Arg1:T14 Arg2:T10	
+R14	is_a_tenant_of Arg1:T15 Arg2:T14	
+*	same_as T16 T7 T30
+R15	is_witness_to Arg1:T27 Arg2:T5	
+R16	is_witness_to Arg1:T26 Arg2:T5	
+R18	is_witness_to Arg1:T24 Arg2:T5	
+R19	is_witness_to Arg1:T23 Arg2:T5	
+R20	is_witness_to Arg1:T22 Arg2:T5	
+R21	is_witness_to Arg1:T21 Arg2:T5	
+R22	is_witness_to Arg1:T20 Arg2:T5	
+R23	is_witness_to Arg1:T19 Arg2:T5	
+R24	is_witness_to Arg1:T18 Arg2:T5	
+R25	refers_to Arg1:T1 Arg2:T5	
+T9	Occupation 355 363	magistro
+T28	Institution 367 380	Mapeltrestede
+R7	occupation_is Arg1:T8 Arg2:T9	
+R26	is_officeholder_in Arg1:T8 Arg2:T28	
+*	same_as T6 T28
+T30	Place 367 380	Mapeltrestede
+T11	Person 564 581	Iohanne le ferruy
+T25	Person 1287 1304	Iohanne le ferruy
+R10	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R17	is_witness_to Arg1:T25 Arg2:T5	
+*	same_as T11 T25 T13
+T32	Place 242 248	Anglia
+R28	is_part_of Arg1:T7 Arg2:T32	

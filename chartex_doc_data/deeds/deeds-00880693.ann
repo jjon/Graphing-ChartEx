@@ -1,0 +1,44 @@
+T1	Document 0 14	deeds-00880693
+#1	AnnotatorNotes T1	{'editorial date':'1229', 'transaction type': 'Agreement/Lease'}
+T2	Person 45 67	Gilbertum de Oddewelle
+T3	Person 71 91	Simonem de Oddewelle
+T4	Person 116 125	Gilbertus
+T5	Transaction 126 147	invadiavit et dimisit
+T6	Person 157 163	Simoni
+T7	Place 176 182	terram
+T8	Place 209 214	villa
+T9	Date 235 295	festo sancti Michaelis anno regni regis Henrici terciodecimo
+R2	is_part_of Arg1:T7 Arg2:T8	
+T10	Person 435 444	Gilbertus
+T11	Person 483 489	Simoni
+T12	Place 195 205	parva Dune
+*	same_as T7 T12
+T13	Person 657 666	Gilbertus
+T14	Person 692 698	Simoni
+T15	Person 1257 1266	Gilbertus
+T16	Person 1305 1311	Simoni
+T17	Person 1461 1476	Willelmo parkar
+T18	Person 1477 1498	Rogero filio Galfridi
+T20	Person 1499 1517	Alexandro de Waude
+T21	Person 1518 1533	Ricardo Valense
+T22	Person 1534 1551	Gilberto de Cruce
+T23	Person 1552 1566	Rogero potserd
+T24	Person 1567 1573	Hugone
+T25	Occupation 1574 1581	clerico
+R1	occupation_is Arg1:T24 Arg2:T25	
+R3	is_grantor_in Arg1:T2 Arg2:T5	
+R4	refers_to Arg1:T1 Arg2:T5	
+R5	is_dated Arg1:T1 Arg2:T9	
+R6	is_recipient_in Arg1:T3 Arg2:T5	
+*	same_as T2 T4 T10 T13 T15
+*	same_as T3 T6 T11 T14 T16
+R7	is_parcel_in Arg1:T7 Arg2:T5	
+R8	is_witness_to Arg1:T17 Arg2:T5	
+R9	is_witness_to Arg1:T18 Arg2:T5	
+R11	is_witness_to Arg1:T20 Arg2:T5	
+R12	is_witness_to Arg1:T21 Arg2:T5	
+R13	is_witness_to Arg1:T22 Arg2:T5	
+R14	is_witness_to Arg1:T23 Arg2:T5	
+R15	is_witness_to Arg1:T24 Arg2:T5	
+T26	Place 218 232	Gestingethorpe
+*	same_as T8 T26

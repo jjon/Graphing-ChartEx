@@ -1,0 +1,11 @@
+T1	Document 0 13	cluny-BB_0067
+#1	AnnotatorNotes T1	{'title summary':'Charta qua Albericus et Belegrinus, germanus suus, et Ansoldus et Hageda, uxor ejus, vendunt Hugoni et Lilliæ uxori campum prope villam de Bieria.', 'dorsal text':'(Au dos:) Venditio Ugoni in Biierias.'}
+T2	Person 32 37	Ugono
+T3	Person 50 56	Lillia
+R1	is_husband_of Arg1:T2 Arg2:T3	
+T4	Person 72 81	Albericus
+T5	Person 94 104	Belegrinus
+T6	Person 108 116	Ansoldus
+T7	Person 129 135	Hageda
+T8	Transaction 149 162	vindedissimus
+T9	Site 169 174	campo

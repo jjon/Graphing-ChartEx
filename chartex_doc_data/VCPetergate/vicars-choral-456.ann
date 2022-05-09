@@ -1,0 +1,70 @@
+T1	Document 0 17	vicars-choral-456
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 53	Christopher le Spencer
+T4	Occupation 54 61	esquire
+T5	Person 65 80	Richard Ulskelf
+T6	Occupation 81 112	warden of the college of vicars
+T7	Institution 121 127	vicars
+T8	Site 160 168	messuage
+T9	Person 177 189	Robert Warde
+T10	Occupation 202 210	merchant
+T11	Place 214 218	York
+T12	Site 283 291	messuage
+T13	Site 296 305	all lands
+T14	Site 310 319	tenements
+T15	Site 328 339	Hornpotlane
+T16	Site 348 358	stone hall
+T17	Person 362 377	John de Langton
+T18	Person 400 417	William Ormeshede
+T19	Apparatus 419 445	Warranty. Seal. Witnesses:
+T20	Person 446 461	Richard Russell
+T21	Occupation 462 467	mayor
+T22	Person 469 481	John Lillyng
+T23	Person 483 496	John Gascoign
+T24	Occupation 499 507	sheriffs
+T25	Person 509 521	Robert Howom
+T26	Person 523 539	Henry de Preston
+T27	Person 541 555	Robert de Yar'
+T28	Person 557 570	Simon Waughen
+T29	Place 584 588	York
+T30	Date 590 606	18 May 9 Henry V
+T31	Apparatus 607 920	[1421]. SOURCE: VC 3/Vi 349 (288 mm. x 160 mm.) ENDORSEMENT: Hornpottlayn. SEAL: round (30 mm. dia.), red, impression of a shield with a design of? three trees, legend. NOTE: See 443. On the same day as Spencer made this quitclaim, he made a provisional grant of a 20s. rent from land elsewhere in the city: 108-9
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T31	
+R3	occupation_is Arg1:T3 Arg2:T4	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+R6	occupation_is Arg1:T5 Arg2:T6	
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+R8	is_parcel_in Arg1:T8 Arg2:T2	
+R9	is_a_previous_tenant_of Arg1:T9 Arg2:T8	
+R10	occupation_is Arg1:T9 Arg2:T10	
+R11	is_of Arg1:T9 Arg2:T11	
+*	same_as T12 T8
+R12	is_parcel_in Arg1:T13 Arg2:T2	
+R13	is_parcel_in Arg1:T14 Arg2:T2	
+R14	is_boundary_to Arg1:T15 Arg2:T12	
+R15	is_boundary_to Arg1:T15 Arg2:T13	
+R16	is_boundary_to Arg1:T15 Arg2:T14	
+R17	is_boundary_to Arg1:T16 Arg2:T12	
+R18	is_boundary_to Arg1:T16 Arg2:T13	
+R19	is_boundary_to Arg1:T16 Arg2:T14	
+R20	is_a_previous_grantor_of Arg1:T17 Arg2:T16	
+R21	is_a_tenant_of Arg1:T18 Arg2:T12	
+R22	is_a_tenant_of Arg1:T18 Arg2:T13	
+R23	is_a_tenant_of Arg1:T18 Arg2:T14	
+R24	contains Arg1:T1 Arg2:T19	
+R25	occupation_is Arg1:T20 Arg2:T21	
+R26	occupation_is Arg1:T22 Arg2:T24	
+R27	occupation_is Arg1:T23 Arg2:T24	
+R28	is_witness_to Arg1:T20 Arg2:T2	
+R29	is_witness_to Arg1:T22 Arg2:T2	
+R30	is_witness_to Arg1:T23 Arg2:T2	
+R31	is_witness_to Arg1:T25 Arg2:T2	
+R32	is_witness_to Arg1:T26 Arg2:T2	
+R33	is_witness_to Arg1:T27 Arg2:T2	
+R34	is_witness_to Arg1:T28 Arg2:T2	
+R35	is_location_of Arg:T29 Arg2:T2	
+R36	is_dated Arg1:T1 Arg2:T30	
+T32	Apparatus 220 266	as in 450 (omitting reference to the chamber),
+R37	contains Arg1:T1 Arg2:T32	

@@ -1,0 +1,24 @@
+T1	Document 0 17	vicars-choral-156
+T2	Person 38 54	Hugh le Marchand
+T3	Transaction 60 88	given, granted and confirmed
+T4	Person 117 122	Alice
+T5	Person 143 158	Henry de Nevill
+T6	Site 167 171	land
+T7	Site 179 185	corner
+T8	Site 189 196	Aldwark
+T9	Person 292 309	Robert de Barneby
+T10	Site 271 275	land
+T11	Person 413 418	Alice
+T12	Person 734 738	Hugh
+T13	Person 782 787	Alice
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_grantor_in Arg1:T2 Arg2:T3	
+R3	is_recipient_in Arg1:T4 Arg2:T3	
+R4	is_widow_of Arg1:T4 Arg2:T5	
+R5	is_part_of Arg1:T6 Arg2:T7	
+R6	is_part_of Arg1:T7 Arg2:T8	
+R7	is_parcel_in Arg1:T6 Arg2:T3	
+*	same_as T10 T6
+R8	is_a_previous_grantor_of Arg1:T9 Arg2:T10	
+*	same_as T11 T4 T13
+*	same_as T12 T2

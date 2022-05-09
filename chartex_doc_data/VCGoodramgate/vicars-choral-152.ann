@@ -1,0 +1,69 @@
+T1	Document 0 17	vicars-choral-152
+T2	Person 38 42	Adam
+T3	Occupation 43 51	chaplain
+T4	Person 59 65	Robert
+T5	Occupation 70 76	hatter
+T6	Transaction 82 110	given, granted and confirmed
+T7	Person 138 144	Alicia
+T8	Person 166 181	Henry de Nevill
+T9	Site 187 195	messuage
+T10	Site 207 218	Goodramgate
+T11	Site 255 263	messuage
+T12	Site 285 290	house
+T13	Person 294 311	Robert de Barneby
+T14	Site 320 331	Goodramlith
+T15	Person 508 514	Alicia
+T16	Person 691 709	lord Hugh de Selby
+T17	Occupation 710 723	mayor of York
+T18	Person 867 871	Adam
+T19	Person 973 979	Alicia
+T20	Person 1108 1124	John de Warthill
+T21	Person 1126 1145	Robert de Skegnesse
+T22	Person 1147 1163	Peter de Barneby
+T23	Person 1165 1184	Galfrid de Queldric
+T24	Person 1187 1204	William Malesover
+T25	Person 1206 1211	Roger
+T26	Occupation 1212 1248	clerk of the Lord Archbishop of York
+T27	Person 1250 1264	Adam Punchardu
+T28	Person 1266 1283	John de Ogleforth
+T29	Person 1285 1292	William
+T30	Occupation 1293 1300	vintner
+T31	Person 1302 1321	Robert de Moonkgate
+T32	Person 1323 1337	Adam de Wycton
+T33	Person 1339 1352	John de Leeds
+T34	Occupation 1354 1359	clerk
+T35	Apparatus 1377 1455	SOURCE: VC 3/Vi 125 (177 mm. x 113 mm.) ENDORSEMENT: Goodramgate, one messuage
+R1	refers_to Arg1:T1 Arg2:T6	
+R2	contains Arg1:T1 Arg2:T35	
+R3	occupation_is Arg1:T2 Arg2:T3	
+R4	is_son_of Arg1:T2 Arg2:T4	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	is_grantor_in Arg1:T2 Arg2:T6	
+R7	is_recipient_in Arg1:T7 Arg2:T6	
+R8	is_widow_of Arg1:T7 Arg2:T8	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_length_marker_to Arg1:T14 Arg2:T10	
+*	same_as T11 T9
+R11	is_parcel_in Arg1:T9 Arg2:T6	
+R12	is_breadth_marker_to Arg1:T12 Arg2:T9	
+R13	is_length_marker_to Arg1:T12 Arg2:T9	
+R14	is_a_tenant_of Arg1:T13 Arg2:T12	
+*	same_as T15 T7 T19
+R15	occupation_is Arg1:T16 Arg2:T17	
+R16	is_participant_in Arg1:T16 Arg2:T6	
+*	same_as T18 T2
+R17	occupation_is Arg1:T25 Arg2:T26	
+R18	occupation_is Arg1:T29 Arg2:T30	
+R19	occupation_is Arg1:T33 Arg2:T34	
+R20	is_witness_to Arg1:T20 Arg2:T6	
+R21	is_witness_to Arg1:T21 Arg2:T6	
+R22	is_witness_to Arg1:T22 Arg2:T6	
+R23	is_witness_to Arg1:T23 Arg2:T6	
+R24	is_witness_to Arg1:T24 Arg2:T6	
+R25	is_witness_to Arg1:T25 Arg2:T6	
+R26	is_witness_to Arg1:T27 Arg2:T6	
+R27	is_witness_to Arg1:T28 Arg2:T6	
+R28	is_witness_to Arg1:T29 Arg2:T6	
+R29	is_witness_to Arg1:T31 Arg2:T6	
+R30	is_witness_to Arg1:T32 Arg2:T6	
+R31	is_witness_to Arg1:T33 Arg2:T6	

@@ -1,0 +1,106 @@
+T1	Document 0 17	vicars-choral-430
+T2	Transaction 111 118	granted
+T3	Person 44 54	John Broun
+T4	Occupation 55 61	rector
+T5	Institution 69 106	church of Elvyngton next (iuxta) York
+T6	Person 119 134	John de Eskrick
+T7	Occupation 138 144	nayler
+T8	Place 148 152	York
+T9	Site 167 171	land
+T10	Site 177 186	buildings
+T11	Site 190 198	Petergat
+T12	Site 212 216	shop
+T13	Site 285 293	Petergat
+T14	Site 302 306	land
+T15	Person 310 314	John
+T16	Person 322 337	Robert de Eryum
+T17	Site 372 376	land
+T18	Person 380 384	John
+T19	Person 411 418	William
+T20	Person 426 442	Walter de Scorby
+T21	Occupation 443 449	mercer
+T22	Person 469 485	Robert le Graunt
+T23	Site 224 231	chamber
+T24	Site 495 502	chamber
+T25	Site 526 530	land
+T26	Person 539 559	Nicholas de Langeton
+T27	Person 582 599	Henry de Scorreby
+T28	Site 614 622	Petergat
+T29	Site 631 635	land
+T30	Person 639 643	John
+T31	Person 659 674	John de Eskryck
+T32	Person 716 726	John Broun
+T33	Person 888 903	John de Eskryck
+T34	Person 935 940	Broun
+T35	Person 978 983	Broun
+T36	Person 1045 1060	John de Escryck
+T37	Apparatus 1103 1107	Seal
+T38	Person 1120 1141	Richard de Huntyngton
+T39	Person 1143 1158	Robert del Wald
+T40	Person 1160 1179	Niel de Menyngthorp
+T41	Person 1181 1201	William of Mounckgat
+T42	Person 1203 1214	William Paa
+T43	Person 1216 1233	Roger del Shiyres
+T44	Person 1235 1253	William de Appelby
+T45	Occupation 1254 1259	clerk
+T46	Place 1273 1277	York
+T47	Date 1279 1300	3 June 1333, 7 Edward
+T48	Apparatus 1301 1733	SOURCE: VC 3/Vi 317 (251 mm• x 194 mm•)• Indented at top• ENDORSEMENT: Indentura de quadam ichoppa et terris et ten' Petergate• SEAL: remains of vesica, plain, impression of a paschal lamb• NOTE: This and the next two charters form a group• Before the completion of the 12-year term the property had been retrieved by Thomas son of Nicholas Broun, evidently a relative of John: 431• Thomas later granted it to Robert del Wald: 431-2
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_dated Arg1:T1 Arg2:T47	
+R3	is_location_of Arg:T46 Arg2:T2	
+R4	contains Arg1:T1 Arg2:T37	
+R5	contains Arg1:T1 Arg2:T48	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_officeholder_in Arg1:T3 Arg2:T5	
+R8	is_grantor_in Arg1:T3 Arg2:T2	
+R9	is_recipient_in Arg1:T6 Arg2:T2	
+R10	occupation_is Arg1:T6 Arg2:T7	
+R11	is_of Arg1:T6 Arg2:T8	
+R12	is_parcel_in Arg1:T9 Arg2:T2	
+R13	is_part_of Arg1:T10 Arg2:T9	
+R14	is_part_of Arg1:T9 Arg2:T11	
+R15	is_part_of Arg1:T12 Arg2:T9	
+R16	is_part_of Arg1:T23 Arg2:T12	
+T49	Site 249 253	shop
+*	same_as T49 T12
+*	same_as T13 T11 T28
+R17	is_son_of Arg1:T15 Arg2:T16	
+R18	is_a_tenant_of Arg1:T15 Arg2:T14	
+R19	is_a_tenant_of Arg1:T18 Arg2:T17	
+T50	SiteRef 403 407	that
+R20	is_a_tenant_of Arg1:T19 Arg2:T50	
+R21	is_son_of Arg1:T19 Arg2:T20	
+R22	occupation_is Arg1:T19 Arg2:T21	
+R23	is_length_marker_to Arg1:T13 Arg2:T49	
+R24	is_length_marker_to Arg1:T14 Arg2:T49	
+R25	is_breadth_marker_to Arg1:T17 Arg2:T49	
+R26	is_breadth_marker_to Arg1:T50 Arg2:T49	
+R27	is_a_previous_tenant_of Arg1:T22 Arg2:T50	
+*	same_as T24 T23
+T51	SiteRef 574 578	that
+R28	is_a_previous_tenant_of Arg1:T26 Arg2:T25	
+R29	is_a_tenant_of Arg1:T27 Arg2:T51	
+R30	is_a_tenant_of Arg1:T30 Arg2:T29	
+*	same_as T30 T15 T18
+R31	is_breadth_marker_to Arg1:T25 Arg2:T24	
+R32	is_breadth_marker_to Arg1:T51 Arg2:T24	
+R33	is_length_marker_to Arg1:T28 Arg2:T24	
+R34	is_length_marker_to Arg1:T29 Arg2:T24	
+*	same_as T31 T6 T33 T36
+*	same_as T32 T3 T34 T35
+R35	is_witness_to Arg1:T38 Arg2:T2	
+R36	is_witness_to Arg1:T39 Arg2:T2	
+R37	is_witness_to Arg1:T40 Arg2:T2	
+R38	is_witness_to Arg1:T41 Arg2:T2	
+R39	is_witness_to Arg1:T42 Arg2:T2	
+R40	is_witness_to Arg1:T43 Arg2:T2	
+R41	is_witness_to Arg1:T44 Arg2:T2	
+R42	occupation_is Arg1:T44 Arg2:T45	
+T52	Person 392 398	Robert
+R43	is_son_of Arg1:T18 Arg2:T52	
+*	same_as T52 T16 T53
+T53	Person 651 657	Robert
+R44	is_son_of Arg1:T30 Arg2:T53	
+T54	Apparatus 95 100	iuxta
+R45	contains Arg1:T1 Arg2:T54	

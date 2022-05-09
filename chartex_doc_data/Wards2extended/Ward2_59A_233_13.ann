@@ -1,0 +1,49 @@
+T1	Document 0 16	Ward2_59A_233_13
+#1	AnnotatorNotes T1	{"piece_id": "5472157", "date_text": "1594 July 31"}
+T2	Site 303 318	Stanwaye Heathe
+T3	Site 273 294	pasture for 100 sheep
+*	same_as T3 T2
+T4	Person 36 51	Beatrice Audley
+T5	Apparatus 53 60	Audeley
+R1	contains Arg1:T1 Arg2:T5	
+T6	Place 65 73	Gosbecks
+R2	is_of Arg1:T4 Arg2:T6	
+T7	Place 77 84	Stanway
+T8	Place 86 91	Essex
+R3	is_part_of Arg1:T6 Arg2:T7	
+R4	is_part_of Arg1:T7 Arg2:T8	
+T9	Occupation 93 98	widow
+R5	occupation_is Arg1:T4 Arg2:T9	
+T10	Transaction 17 26	Indenture
+R6	refers_to Arg1:T1 Arg2:T10	
+R7	is_grantor_in Arg1:T4 Arg2:T10	
+T11	Person 103 116	Thomas Audley
+R8	is_recipient_in Arg1:T11 Arg2:T10	
+T12	Apparatus 118 125	Audeley
+R9	contains Arg1:T1 Arg2:T12	
+T13	Place 140 147	Stanway
+R10	is_son_of Arg1:T11 Arg2:T4	
+T14	Place 149 154	Essex
+R11	is_of Arg1:T11 Arg2:T13	
+R12	is_part_of Arg1:T13 Arg2:T14	
+T15	Occupation 156 165	gentleman
+R13	occupation_is Arg1:T11 Arg2:T15	
+T16	Site 170 186	15 acres of land
+R14	is_parcel_in Arg1:T16 Arg2:T10	
+T17	Site 199 210	Comon Fylde
+T18	Place 215 222	Stanway
+T19	Place 224 229	Essex
+R15	is_part_of Arg1:T18 Arg2:T19	
+*	same_as T16 T17
+T20	Place 238 255	manor of Gosbecks
+R16	is_located_in Arg1:T16 Arg2:T20	
+R17	is_parcel_in Arg1:T3 Arg2:T10	
+R18	is_located_in Arg1:T17 Arg2:T18	
+R19	is_located_in Arg1:T3 Arg2:T18	
+T21	Person 382 397	Peter Whelcombe
+T22	Apparatus 420 460	Dorse, note that the lease was cancelled
+T23	Person 402 418	Richard Tunstall
+R20	is_witness_to Arg1:T21 Arg2:T10	
+R21	is_witness_to Arg1:T23 Arg2:T10	
+R22	contains Arg1:T1 Arg2:T22	
+*	same_as T6 T20

@@ -1,0 +1,30 @@
+T1	Document 0 17	vicars-choral-391
+T2	Apparatus 1331 1370	SOURCE VC 3/1/1, fo• 39V• NOTE: See 388
+T4	Apparatus 18 301	Grant by the community of vicars of the church of blessed Peter of York to William de Orleans chaplain of land in Petergate which Walter de Rome and his wife Agnes once held of them, lying between land once of Ralph Cauwel and that ofJohn Blinsleg; paying 6s•  [earlier 13th century]
+T5	Institution 371 419	universitas vicariorum ecclesie beati Petri Ebor
+T6	Transaction 496 575	dedisse, concessisse, et hac presenti carta sigillo nostro roborata confirmasse
+T7	Person 576 598	Willelmo de Aurilianis
+T8	Occupation 599 608	capellano
+T9	Site 642 648	terram
+T10	Site 677 686	Petergate
+T11	Person 692 708	Walterus de Roma
+T12	Person 712 717	Agnes
+T13	Site 771 777	terram
+T14	Person 786 800	Radulfi Cauwel
+T15	Site 804 810	terram
+T16	Person 811 829	Johannis Blinsleg'
+R1	refers_to Arg1:T1 Arg2:T6	
+R3	contains Arg1:T1 Arg2:T4	
+R4	contains Arg1:T1 Arg2:T2	
+R5	is_grantor_in Arg1:T5 Arg2:T6	
+R7	is_recipient_in Arg1:T7 Arg2:T6	
+R8	occupation_is Arg1:T7 Arg2:T8	
+R9	is_wife_of Arg1:T12 Arg2:T11	
+R10	is_a_previous_tenant_of Arg1:T11 Arg2:T9	
+R11	is_a_previous_tenant_of Arg1:T14 Arg2:T13	
+R12	is_a_tenant_of Arg1:T16 Arg2:T15	
+R13	is_boundary_to Arg1:T13 Arg2:T9	
+R14	is_boundary_to Arg1:T15 Arg2:T9	
+R16	is_a_previous_tenant_of Arg1:T12 Arg2:T9	
+R17	is_parcel_in Arg1:T9 Arg2:T6	
+R15	is_part_of Arg1:T9 Arg2:T10	

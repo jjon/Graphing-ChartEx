@@ -1,0 +1,52 @@
+T1	Document 0 17	vicars-choral-125
+T2	Transaction 18 23	Grant
+T3	Person 27 43	Thomas de Ludham
+T4	Occupation 44 98	canon of the prebend of Wetewang in the church of York
+T6	Person 119 126	William
+T7	Occupation 140 144	dean
+T8	Institution 153 169	chapter of York,
+T11	Institution 215 221	vicars
+T12	Site 234 238	land
+T13	Site 244 253	buildings
+T14	Site 257 269	Gutherumgate
+T15	Person 291 305	John le Romayn
+T16	Person 321 327	Thomas
+T18	Institution 350 383	canons of the prebend of Wetewang
+T19	Person 392 398	Thomas
+T21	Person 467 473	Thomas
+T22	Person 522 528	Thomas
+T23	Institution 552 567	chapter of York
+T25	Person 580 604	mag. William de Wykewayn
+T26	Occupation 605 623	chancellor of York
+T27	Person 625 642	Stephen de Sutton
+T28	Person 644 661	mag. John le Gras
+T29	Occupation 663 669	canons
+T30	Person 671 695	mag. Thomas of Munkegate
+T31	Occupation 696 705	succentor
+T32	Apparatus 719 1250	[1264 x 21 June 1279; possibly 1273] SOURCE: VC 3/Vi 109 (223 mm. X 141 mm.; torn in half). ENDORSEMENT: Carta Thome de Ludham in Gotherumgate; de feoffamento vicariorum; iiij. solidos de prebende de Wetewang. SEAL: two slits. COPY: VC 3/1/1, fo. 16. DATE: While William de Wickwane was chancellor and before his election, on 22 June 1279, as archbishop of York. A more precise date is suggested by Ludham's ordination of a chantry for himself in York Minster on or shortly before 19 September 1273 (YML, P 1(1), ix). NOTE: See 122
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T32	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_participant_in Arg1:T6 Arg2:T2	
+R8	occupation_is Arg1:T6 Arg2:T7	
+R9	is_participant_in Arg1:T8 Arg2:T2	
+R11	is_recipient_in Arg1:T11 Arg2:T2	
+R12	is_parcel_in Arg1:T12 Arg2:T2	
+R13	is_part_of Arg1:T13 Arg2:T12	
+R14	is_part_of Arg1:T12 Arg2:T14	
+R15	is_a_previous_grantor_of Arg1:T15 Arg2:T12	
+*	same_as T16 T3 T19 T21 T22
+R18	is_witness_to Arg1:T25 Arg2:T2	
+R19	occupation_is Arg1:T25 Arg2:T26	
+R20	is_witness_to Arg1:T27 Arg2:T2	
+R21	is_witness_to Arg1:T28 Arg2:T2	
+R22	occupation_is Arg1:T28 Arg2:T29	
+R23	is_witness_to Arg1:T30 Arg2:T2	
+R24	occupation_is Arg1:T30 Arg2:T31	
+T9	Institution 177 206	warden of the house of vicars
+R10	is_recipient_in Arg1:T9 Arg2:T2	
+R5	occupation_is Arg1:T3 Arg2:T4	
+*	same_as T23 T8
+R2	is_grantor_in Arg1:T18 Arg2:T2	
+T5	Apparatus 127 139	[de Langton]
+R6	contains Arg1:T1 Arg2:T5	

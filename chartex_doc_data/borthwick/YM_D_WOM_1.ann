@@ -1,0 +1,44 @@
+T1	Document 0 10	YM/D/WOM/1
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "24 September, 1529", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 34	Jonn Rykkard
+T4	Place 38 48	Pollington
+T5	Occupation 50 56	yeoman
+R2	is_of Arg1:T3 Arg2:T4	
+R3	occupation_is Arg1:T3 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Site 145 155	Two closes
+R5	is_parcel_in Arg1:T6 Arg2:T2	
+T7	Place 159 165	Fulham
+T8	Place 190 199	Womersley
+T9	Site 212 220	Pydcroft
+T10	Site 251 262	North croft
+T11	Site 224 232	Pykcroft
+T12	Person 285 289	John
+R6	is_part_of Arg1:T10 Arg2:T6	
+R7	is_located_in Arg1:T6 Arg2:T7	
+R8	is_part_of Arg1:T7 Arg2:T8	
+R9	is_part_of Arg1:T9 Arg2:T6	
+*	same_as T11 T9
+T13	Person 58 73	Robert Horshyll
+T14	Person 296 309	Edmund Nevyll
+T15	Person 75 91	William Horshyll
+T16	Person 130 143	Robert Sarkon
+T17	Person 356 368	William Byrd
+T18	Person 114 124	Thomas Moy
+T19	Person 318 332	William Calice
+T20	Person 93 112	Thomas Barrowclowgh
+R10	is_recipient_in Arg1:T13 Arg2:T2	
+T21	Person 334 354	Christopher Prestman
+R11	is_recipient_in Arg1:T15 Arg2:T2	
+R12	is_a_tenant_of Arg1:T12 Arg2:T6	
+R13	is_recipient_in Arg1:T20 Arg2:T2	
+R14	is_recipient_in Arg1:T18 Arg2:T2	
+R15	is_recipient_in Arg1:T16 Arg2:T2	
+R16	is_witness_to Arg1:T14 Arg2:T2	
+R17	is_witness_to Arg1:T19 Arg2:T2	
+R18	is_witness_to Arg1:T21 Arg2:T2	
+R19	is_witness_to Arg1:T17 Arg2:T2	
+T22	Occupation 311 315	gent
+R20	occupation_is Arg1:T14 Arg2:T22	

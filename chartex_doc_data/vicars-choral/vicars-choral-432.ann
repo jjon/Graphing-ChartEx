@@ -1,0 +1,46 @@
+T1	Document 0 17	vicars-choral-432
+#1	AnnotatorNotes T1	"Quitclaim by Thomas son of Nicholas Broun of York clerk to" lopped off. It appears in previous charter 431
+T2	Transaction 103 113	quitclaims
+T3	Person 18 33	Robert del Wald
+T4	Occupation 46 52	potter
+R1	occupation_is Arg1:T3 Arg2:T4	
+T5	Place 56 60	York
+R2	is_of Arg1:T3 Arg2:T5	
+T6	Site 66 82	shop and chamber
+T8	Apparatus 84 94	as in 431•
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T9	Apparatus 150 165	Warranty• Seal•
+R5	is_parcel_in Arg1:T6 Arg2:T2	
+T10	Person 177 196	Niel de Menyngthorp
+T11	Person 198 219	Henry de Coupmanthorp
+T12	Person 221 237	Robert de Snayth
+T13	Person 239 253	John de Moreby
+T14	Occupation 254 264	irenmanger
+R6	occupation_is Arg1:T13 Arg2:T14	
+T15	Person 266 277	William Paa
+T16	Person 279 296	Robert de Skelton
+T17	Person 298 312	John Archebaud
+T18	Person 314 328	John de Harwod
+T19	Person 330 350	Geoffrey de Lethelay
+T20	Person 352 370	William de Appelby
+T21	Occupation 371 376	clerk
+R7	occupation_is Arg1:T20 Arg2:T21	
+T22	Place 390 394	York
+T23	Date 396 420	I i July 1343, 17 Edward
+R8	is_dated Arg1:T1 Arg2:T23	
+R9	refers_to Arg1:T1 Arg2:T2	
+R10	is_witness_to Arg1:T10 Arg2:T2	
+R11	is_witness_to Arg1:T11 Arg2:T2	
+R12	is_witness_to Arg1:T12 Arg2:T2	
+R13	is_witness_to Arg1:T13 Arg2:T2	
+R14	is_witness_to Arg1:T15 Arg2:T2	
+R15	is_witness_to Arg1:T16 Arg2:T2	
+R16	is_witness_to Arg1:T17 Arg2:T2	
+R17	is_witness_to Arg1:T18 Arg2:T2	
+R18	is_witness_to Arg1:T19 Arg2:T2	
+R19	is_witness_to Arg1:T20 Arg2:T2	
+T24	Apparatus 421 880	SOURCE: VC 3/Vi 319 (274 mm• x160 mm•) ENDORSEMENT: De domo de Petergate; [in a 6th-cent• hand] de una shopa in Petergate et talamo superedificato quod de novo Stokdall • • • de novo edificavit• SEAL: slit• NOTE: See 430• `Stokdall' in the endorsement may be identified as Alderman John Stockdale, who in his will of 1507 bequeathed his new house in Petergate to his wife (Testamenta Eboracensia, ed• J• Raine, iv (Surtees Society Eli, 1869 for 1868), 256-7)•
+R20	contains Arg1:T1 Arg2:T24	
+R21	contains Arg1:T1 Arg2:T9	
+R3	contains Arg1:T1 Arg2:T8	
+R22	is_location_of Arg:T22 Arg2:T2	

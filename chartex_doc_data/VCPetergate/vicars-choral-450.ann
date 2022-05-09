@@ -1,0 +1,74 @@
+T1	Document 0 17	vicars-choral-450
+T2	Transaction 18 23	Grant
+T3	Person 27 41	Beatrice Warde
+T4	Person 51 63	Robert Warde
+T5	Occupation 76 84	merchant
+T6	Place 88 92	York
+T7	Person 96 107	John Watton
+T8	Occupation 108 116	chaplain
+T9	Person 121 132	John Malton
+T10	Occupation 133 138	clerk
+T11	Site 144 152	messuage
+T12	Site 158 167	buildings
+T13	Site 171 180	Petergate
+T14	Site 196 207	Hornpotlane
+T15	Site 216 220	land
+T16	Person 224 235	John Bolton
+T17	Site 256 265	Petergate
+T18	Person 269 280	John Bolton
+T19	Site 283 287	land
+T20	Site 297 303	moiety
+T21	Site 309 316	chamber
+T22	Person 382 393	John Watton
+T23	Person 398 409	John Malton
+T24	Place 563 567	York
+T25	Date 569 585	3 July 8 Henry V
+T26	Apparatus 586 732	[1420] ENDORSEMENT: Carta Beatricis Warde Johnanni Watton et Johanni Malton de domo in qua Johannes Kyng manet; quintus Seal: as 448 NOTE: See 443
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T26	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_widow_of Arg1:T3 Arg2:T4	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	is_of Arg1:T4 Arg2:T6	
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+R8	occupation_is Arg1:T7 Arg2:T8	
+R9	is_recipient_in Arg1:T9 Arg2:T2	
+R10	occupation_is Arg1:T9 Arg2:T10	
+R11	is_parcel_in Arg1:T11 Arg2:T2	
+R12	is_part_of Arg1:T12 Arg2:T11	
+R13	is_part_of Arg1:T11 Arg2:T13	
+R14	is_boundary_to Arg1:T14 Arg2:T11	
+R15	is_boundary_to Arg1:T15 Arg2:T11	
+R16	is_a_tenant_of Arg1:T16 Arg2:T15	
+R17	is_boundary_to Arg1:T17 Arg2:T11	
+R18	is_boundary_to Arg1:T19 Arg2:T11	
+R19	is_a_tenant_of Arg1:T18 Arg2:T19	
+R20	is_parcel_in Arg1:T20 Arg2:T2	
+R21	is_part_of Arg1:T20 Arg2:T21	
+*	same_as T22 T7
+*	same_as T23 T9
+T27	Apparatus 412 428	Seal. Witnesses:
+R22	contains Arg1:T1 Arg2:T27	
+T28	Person 429 444	Thomas del Gare
+T29	Occupation 445 450	mayor
+R23	occupation_is Arg1:T28 Arg2:T29	
+R24	is_witness_to Arg1:T28 Arg2:T2	
+T30	Person 452 463	John Bolton
+R25	is_witness_to Arg1:T30 Arg2:T2	
+T31	Person 465 476	Thomas Davi
+R26	is_witness_to Arg1:T31 Arg2:T2	
+T32	Occupation 478 486	sheriffs
+R27	occupation_is Arg1:T30 Arg2:T32	
+R28	occupation_is Arg1:T31 Arg2:T32	
+T33	Person 488 501	Thomas Santon
+R29	is_witness_to Arg1:T33 Arg2:T2	
+T34	Person 503 519	Henry de Preston
+R30	is_witness_to Arg1:T34 Arg2:T2	
+T35	Person 521 534	Simon Waughen
+R31	is_witness_to Arg1:T35 Arg2:T2	
+T36	Person 536 550	William Barton
+R32	is_witness_to Arg1:T36 Arg2:T2	
+R33	is_location_of Arg:T24 Arg2:T2	
+R34	is_dated Arg1:T1 Arg2:T25	
+T37	Apparatus 318 327	as in 445
+R35	contains Arg1:T1 Arg2:T37	

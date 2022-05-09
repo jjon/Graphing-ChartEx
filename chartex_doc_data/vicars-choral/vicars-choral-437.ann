@@ -1,0 +1,18 @@
+T1	Document 0 17	vicars-choral-437
+T2	Transaction 18 27	Quitclaim
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 31 35	John
+T4	Person 43 58	Robert de Cotes
+T5	Person 62 76	Hamo de Hessay
+T6	Site 96 105	six shops
+T7	Place 109 118	Petergate
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_son_of Arg1:T3 Arg2:T4	
+R4	is_recipient_in Arg1:T5 Arg2:T2	
+T8	Place 88 92	York
+R5	is_of Arg1:T5 Arg2:T8	
+R6	is_located_in Arg1:T6 Arg2:T7	
+R7	is_parcel_in Arg1:T6 Arg2:T2	
+#1	AnnotatorNotes T1	Do we really need to link this to the transaction?
+T9	Apparatus 120 209	Warranty• Seal• Witnesses: as 435• Date: as 436• SOURCE: VC 3/1/1, fo• 128• NOTE: See 433
+R8	contains Arg1:T1 Arg2:T9	

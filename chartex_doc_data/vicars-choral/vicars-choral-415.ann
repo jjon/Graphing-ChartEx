@@ -1,0 +1,67 @@
+T1	Document 0 17	vicars-choral-415
+T2	Apparatus 695 795	SOURCE: VC 3/Vi 327 (190 mm• x 162 mm•) ENDORSEMENT: /d em; SymOn Evesham• SEAL: two tags• NOTE: See
+T4	Transaction 18 39	Release and quitclaim
+R1	refers_to Arg1:T1 Arg2:T4	
+T5	Person 43 63	Thomas de Molschroft
+R2	is_grantor_in Arg1:T5 Arg2:T4	
+T6	Person 80 84	John
+R3	is_brother_of Arg1:T5 Arg2:T6	
+R4	is_grantor_in Arg1:T6 Arg2:T4	
+T7	Person 110 130	mag• Hugh de Evesham
+T8	Occupation 131 136	canon
+R5	occupation_is Arg1:T7 Arg2:T8	
+T9	Place 151 155	York
+R6	is_of Arg1:T7 Arg2:T9	
+R7	is_participant_in Arg1:T7 Arg2:T4	
+T10	Institution 183 234	warden of the house of vicars of the church of York
+R8	is_recipient_in Arg1:T10 Arg2:T4	
+T11	Site 253 257	land
+R9	is_parcel_in Arg1:T11 Arg2:T4	
+T12	Person 279 300	mag• Simon de Evesham
+T13	Occupation 310 333	archdeacon of Rychemund
+R10	occupation_is Arg1:T12 Arg2:T13	
+R11	is_a_previous_grantor_of Arg1:T12 Arg2:T11	
+T14	Site 354 360	corner
+T15	Site 364 373	Petergate
+R12	is_part_of Arg1:T14 Arg2:T15	
+R13	is_boundary_to Arg1:T14 Arg2:T11	
+T16	Site 381 395	prebendal land
+T17	Institution 399 408	Ampilford
+R14	is_a_tenant_of Arg1:T17 Arg2:T16	
+R15	is_boundary_to Arg1:T16 Arg2:T11	
+T18	Site 424 430	houses
+T19	Person 437 461	mag• Thomas de Grymeston
+R16	is_a_tenant_of Arg1:T19 Arg2:T18	
+R17	is_part_of Arg1:T18 Arg2:T11	
+T20	Institution 475 481	vicars
+T21	Place 489 493	York
+R18	is_location_of Arg:T21 Arg2:T4	
+T22	Date 495 518	16 Kalends October i278
+R19	is_dated Arg1:T1 Arg2:T22	
+T24	Apparatus 519 534	[16 September]•
+T25	Person 546 561	John le Especer
+T26	Person 563 580	Robert le Especer
+T27	Person 582 588	Walter
+T28	Person 604 626	mag• Robert de Tokelay
+T29	Person 628 645	John de Rychemund
+T30	Person 647 663	Ralph le Curtays
+T31	Person 665 681	Thomas le corner
+R20	is_witness_to Arg1:T25 Arg2:T4	
+R21	is_witness_to Arg1:T26 Arg2:T4	
+R22	is_witness_to Arg1:T27 Arg2:T4	
+R23	is_witness_to Arg1:T28 Arg2:T4	
+R24	is_witness_to Arg1:T29 Arg2:T4	
+R25	is_witness_to Arg1:T30 Arg2:T4	
+R26	is_witness_to Arg1:T31 Arg2:T4	
+R27	contains Arg1:T1 Arg2:T2	
+T3	Site 137 146	PETERGATE
+R28	is_of Arg1:T7 Arg2:T3	
+R29	is_located_in Arg1:T3 Arg2:T9	
+T23	Apparatus 483 487	Seal
+R30	contains Arg1:T1 Arg2:T24	
+R31	contains Arg1:T1 Arg2:T23	
+T32	Occupation 593 602	goldsmith
+R32	occupation_is Arg1:T27 Arg2:T32	
+R33	is_a_landlord_of Arg1:T20 Arg2:T18	
+T33	Institution 243 249	vicars
+R34	is_recipient_in Arg1:T33 Arg2:T4	

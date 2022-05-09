@@ -1,0 +1,72 @@
+T1	Document 0 17	vicars-choral-435
+T2	Person 34 38	John
+T3	Person 46 61	Robert de Cotes
+T4	Place 65 77	Ravenserodde
+T5	Person 83 87	John
+T6	Person 95 110	Thomas de Cotes
+T7	Place 114 126	Ravenserodde
+T8	Site 227 235	messuage
+T10	Person 250 258	Margaret
+T11	Person 268 287	Nicholas de Langton
+R1	is_widow_of Arg1:T10 Arg2:T11	
+T12	Site 337 345	messuage
+*	same_as T12 T8
+T13	Person 352 362	Margaret's
+T14	Person 387 401	Hamo de Hessay
+T15	Place 413 417	York
+R2	is_of Arg1:T14 Arg2:T15	
+T17	Transaction 321 327	grants
+T18	Transaction 131 138	granted
+R3	is_grantor_in Arg1:T5 Arg2:T18	
+R4	is_recipient_in Arg1:T2 Arg2:T18	
+R5	is_son_of Arg1:T2 Arg2:T3	
+R7	is_son_of Arg1:T5 Arg2:T6	
+R8	is_of Arg1:T6 Arg2:T7	
+R9	is_parcel_in Arg1:T8 Arg2:T18	
+*	same_as T13 T10
+R10	is_recipient_in Arg1:T14 Arg2:T17	
+R11	is_participant_in Arg1:T13 Arg2:T17	
+R12	is_a_tenant_of Arg1:T10 Arg2:T8	
+R13	is_parcel_in Arg1:T8 Arg2:T17	
+T19	Person 460 476	John de Shirburn
+T20	Person 484 495	William Gra
+T21	Person 497 511	Thomas de York
+T22	Person 523 535	John de Wome
+T23	Person 537 541	John
+T24	Person 549 568	Nicholas de Langton
+T25	Person 570 583	John Clervaus
+T26	Person 585 597	John Dourant
+T27	Person 599 621	Richard de Briggenhale
+T28	Person 623 641	Walter de Kelstern
+T29	Place 656 660	York
+R14	is_location_of Arg:T29 Arg2:T17	
+T30	Date 662 730	Sunday after feast of the conversion of St• Paul 1345, 20 Edward III
+T31	Occupation 477 482	mayor
+R15	occupation_is Arg1:T19 Arg2:T31	
+T32	Occupation 513 521	bailiffs
+R16	occupation_is Arg1:T20 Arg2:T32	
+R17	occupation_is Arg1:T21 Arg2:T32	
+R18	is_son_of Arg1:T23 Arg2:T24	
+R19	is_witness_to Arg1:T28 Arg2:T17	
+R20	is_witness_to Arg1:T27 Arg2:T17	
+R21	is_witness_to Arg1:T26 Arg2:T17	
+R22	is_witness_to Arg1:T25 Arg2:T17	
+R23	is_witness_to Arg1:T23 Arg2:T17	
+R24	is_witness_to Arg1:T22 Arg2:T17	
+R25	is_witness_to Arg1:T21 Arg2:T17	
+R26	is_witness_to Arg1:T20 Arg2:T17	
+R27	is_witness_to Arg1:T19 Arg2:T17	
+T33	Apparatus 433 448	Warranty• Seal•
+R28	is_dated Arg1:T1 Arg2:T30	
+T34	Place 239 243	York
+R31	is_located_in Arg1:T8 Arg2:T34	
+R32	contains Arg1:T1 Arg2:T33	
+T35	Apparatus 731 792	[29 January 1345/6]• SOURCE: VC 3/1/1, fo• 128• NOTE: See 433
+R33	contains Arg1:T1 Arg2:T35	
+R29	precedes Arg1:T18 Arg2:T17	
+R30	is_grantor_in Arg1:T2 Arg2:T17	
+R34	is_parcel_in Arg1:T12 Arg2:T17	
+R35	refers_to Arg1:T1 Arg2:T18	
+R36	refers_to Arg1:T1 Arg2:T17	
+R37	not_same_as Arg1:T2 Arg2:T5	
+R6	is_of Arg1:T3 Arg2:T4	

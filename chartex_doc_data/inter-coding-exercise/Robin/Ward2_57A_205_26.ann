@@ -1,0 +1,74 @@
+T1	Document 0 10	57A/205/26
+T2	Transaction 24 40	bargain and sale
+T3	Person 44 60	Nicholas Sterley
+T4	Person 62 78	Marmaduke Wyvell
+T5	Occupation 80 87	esquire
+T6	Person 89 105	William Woodward
+T7	Occupation 107 116	gentleman
+T8	Occupation 118 124	deputy
+T9	Person 141 161	Sir James Strangweys
+T10	Occupation 163 169	knight
+T11	Person 171 188	Peter Doddesworth
+T12	Occupation 190 199	gentleman
+T13	Occupation 201 207	deputy
+T14	Person 224 241	Christopher Danby
+T15	Occupation 243 250	esquire
+T16	Person 256 269	Anthony Brugh
+T17	Occupation 271 280	gentleman
+T18	Occupation 286 292	deputy
+T19	Person 296 310	Lancelot Asshe
+T20	Person 315 330	Ralph Dranffeld
+T21	Occupation 332 340	esquires
+T22	Occupation 129 137	attorney
+T23	Occupation 212 220	attorney
+T24	Person 345 356	Robert Roos
+T25	Place 360 367	Nayland
+T26	Place 369 376	Suffolk
+T27	Occupation 378 388	clothmaker
+T28	Site 474 479	grove
+T29	Site 488 498	Kyngeffeld
+T30	Site 514 523	Levenheth
+T31	Place 526 533	Suffolk
+T32	Site 585 597	Nayland Park
+T33	Place 601 616	Great Horkesley
+T34	Place 618 623	Essex
+T35	Person 636 652	Nicholas Sterley
+T36	Date 657 665	1531 Nov
+T37	Apparatus 666 675	854716506
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_dated Arg1:T1 Arg2:T36	
+R3	contains Arg1:T1 Arg2:T37	
+R4	occupation_is Arg1:T4 Arg2:T5	
+R5	occupation_is Arg1:T6 Arg2:T7	
+R6	occupation_is Arg1:T6 Arg2:T8	
+R7	occupation_is Arg1:T6 Arg2:T22	
+R8	is_other_relation_to Arg1:T6 Arg2:T9	
+R9	occupation_is Arg1:T9 Arg2:T10	
+R10	occupation_is Arg1:T11 Arg2:T12	
+R11	occupation_is Arg1:T11 Arg2:T13	
+R12	occupation_is Arg1:T11 Arg2:T23	
+R13	is_other_relation_to Arg1:T11 Arg2:T14	
+R14	occupation_is Arg1:T14 Arg2:T15	
+R15	occupation_is Arg1:T16 Arg2:T17	
+R16	occupation_is Arg1:T16 Arg2:T18	
+R17	is_other_relation_to Arg1:T16 Arg2:T19	
+R18	is_other_relation_to Arg1:T16 Arg2:T20	
+R19	occupation_is Arg1:T20 Arg2:T21	
+R20	occupation_is Arg1:T19 Arg2:T21	
+R21	is_recipient_in Arg1:T24 Arg2:T2	
+R22	is_of Arg1:T24 Arg2:T25	
+R23	is_part_of Arg1:T25 Arg2:T26	
+R24	occupation_is Arg1:T24 Arg2:T27	
+R25	is_parcel_in Arg1:T28 Arg2:T2	
+R26	is_parcel_in Arg1:T32 Arg2:T2	
+*	same_as T28 T29
+R27	is_boundary_to Arg1:T30 Arg2:T29	
+R28	is_located_in Arg1:T30 Arg2:T31	
+R29	is_located_in Arg1:T32 Arg2:T33	
+R30	is_part_of Arg1:T33 Arg2:T34	
+*	same_as T35 T3
+R31	is_grantor_in Arg1:T3 Arg2:T2	
+R32	is_grantor_in Arg1:T4 Arg2:T2	
+R33	is_grantor_in Arg1:T6 Arg2:T2	
+R34	is_grantor_in Arg1:T11 Arg2:T2	
+R35	is_grantor_in Arg1:T16 Arg2:T2	

@@ -1,0 +1,76 @@
+T1	Document 0 17	vicars-choral-405
+T2	Transaction 18 23	Grant
+T4	Person 76 98	mag• John de Esingwald
+T5	Person 114 118	Emma
+T6	Person 123 144	mag• Simon de Evesham
+T7	Occupation 145 162	precentor of York
+T9	Site 166 170	land
+T10	Site 176 185	buildings
+T11	Site 189 198	Petergate
+T12	Person 218 227	mag• John
+T13	Site 243 250	chamber
+T14	Person 258 267	precentor
+T15	Site 298 304	street
+T16	Site 312 317	court
+T17	Institution 325 346	prebendary of Barneby
+T18	Site 355 361	houses
+T19	Person 369 378	precentor
+T20	SiteRef 383 388	those
+T21	Institution 396 417	prebend of Eselington
+T22	Person 450 455	Simon
+T23	Site 458 465	chamber
+T24	Person 531 537	Isabel
+T25	Person 709 719	mag• Simon
+T26	Person 739 745	Isabel
+T27	Person 753 775	mag• John de Esingwald
+T28	Person 780 784	Emma
+T29	Person 803 823	William de Ampleford
+T30	Person 837 842	Alice
+T31	Person 889 895	Isabel
+T32	Person 897 901	John
+T33	Person 907 911	Emma
+T34	Person 929 936	William
+T35	Person 941 946	Alice
+T36	Person 969 976	William
+T37	Person 981 986	Alice
+R1	refers_to Arg1:T1 Arg2:T2	
+R6	is_mother_of Arg1:T5 Arg2:T4	
+T3	Person 27 33	Isabel
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_participant_in Arg1:T4 Arg2:T2	
+R9	is_recipient_in Arg1:T6 Arg2:T2	
+R10	occupation_is Arg1:T6 Arg2:T7	
+R12	is_parcel_in Arg1:T9 Arg2:T2	
+R13	is_part_of Arg1:T10 Arg2:T9	
+R14	is_part_of Arg1:T9 Arg2:T11	
+*	same_as T12 T4 T27 T32
+R16	is_a_tenant_of Arg1:T3 Arg2:T9	
+R17	is_eastern_directional_marker_to Arg1:T13 Arg2:T9	
+R18	is_a_tenant_of Arg1:T14 Arg2:T13	
+*	same_as T14 T6 T19 T22 T25
+*	same_as T15 T11
+R19	is_breadth_marker_to Arg1:T15 Arg2:T9	
+R20	is_breadth_marker_to Arg1:T16 Arg2:T9	
+R21	is_a_tenant_of Arg1:T17 Arg2:T16	
+R22	is_boundary_to Arg1:T18 Arg2:T9	
+R24	is_a_tenant_of Arg1:T21 Arg2:T20	
+*	same_as T23 T13
+R25	is_a_tenant_of Arg1:T22 Arg2:T23	
+R26	is_western_directional_marker_to Arg1:T23 Arg2:T9	
+*	same_as T24 T3 T26 T31
+*	same_as T28 T5 T33
+R29	is_wife_of Arg1:T30 Arg2:T29	
+*	same_as T34 T29 T36
+*	same_as T35 T30 T37
+R15	is_a_landlord_of Arg1:T4 Arg2:T9	
+R8	is_a_landlord_of Arg1:T5 Arg2:T9	
+R11	is_eastern_directional_marker_to Arg1:T20 Arg2:T9	
+T8	Apparatus 467 509	deinceps secundurn extentarn camere illius
+R23	contains Arg1:T1 Arg2:T8	
+T38	Apparatus 1017 1544	Seal• Witnesses: as 404 (reading Peter the vicar for Peter de Tadecastr' vicar, and adding Richard the clerk at end of list)• [1241 x 1247] SOURCE: VC 3/I/I, fos• v•-2 (struck through)• DATE: When Simon de Evesham was precentor• NOTE: See 403• Heslington prebend, whose land is here recorded as a boundary, may be identified as Ampleforth prebend (cf• 408-15)• For the Heslington estate of Ampleforth prebend see 'Extents of the prebends of York [c• 1295], ed• T• A• M• Bishop, Miscellanea, iv (YASRS xciv, 1937 for 1936), 24-5
+R2	contains Arg1:T1 Arg2:T38	
+R3	is_a_tenant_of Arg1:T19 Arg2:T18	
+T39	Apparatus 670 678	Warranty
+R4	contains Arg1:T1 Arg2:T39	
+R30	is_a_landlord_of Arg1:T30 Arg2:T9	
+R31	is_a_landlord_of Arg1:T29 Arg2:T9	

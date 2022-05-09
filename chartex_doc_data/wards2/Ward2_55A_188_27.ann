@@ -1,0 +1,45 @@
+T1	Document 0 16	Ward2_55A_188_27
+#1	AnnotatorNotes T1	{"piece_id": "5471250", "date_text": "1352 Apr 2"}
+T2	Person 26 30	Adam
+T3	Person 38 53	William le Cook
+T4	Person 97 109	John Upechar
+T5	Person 126 134	Margaret
+R1	is_son_of Arg1:T2 Arg2:T3	
+R2	is_wife_of Arg1:T5 Arg2:T4	
+T6	Site 161 168	Maynhen
+T7	Person 242 246	Adam
+T8	Person 254 269	William le Cook
+T9	Person 282 296	Peter Perpound
+T10	Person 298 309	John Rokele
+T11	Person 311 325	Richard Neuton
+T12	Person 327 337	Adam?Karal
+T13	Person 339 352	Richard Sprot
+R3	is_son_of Arg1:T7 Arg2:T8	
+*	same_as T2 T7
+*	same_as T3 T8
+T14	Place 57 68	Wormingford
+T15	Apparatus 70 84	Wychmondeforde
+T16	Place 87 92	Essex
+T17	Place 194 205	Wormingford
+T18	Place 216 227	Wormingford
+R4	is_part_of Arg1:T14 Arg2:T16	
+R5	is_located_in Arg1:T6 Arg2:T17	
+T19	Apparatus 171 189	location specified
+T20	Transaction 17 22	Grant
+R6	refers_to Arg1:T1 Arg2:T20	
+R7	is_grantor_in Arg1:T2 Arg2:T20	
+R8	is_recipient_in Arg1:T4 Arg2:T20	
+R9	is_recipient_in Arg1:T5 Arg2:T20	
+R10	is_of Arg1:T4 Arg2:T14	
+R11	is_of Arg1:T3 Arg2:T14	
+R13	contains Arg1:T1 Arg2:T15	
+R14	contains Arg1:T1 Arg2:T19	
+R15	is_witness_to Arg1:T9 Arg2:T20	
+R16	is_witness_to Arg1:T10 Arg2:T20	
+R17	is_witness_to Arg1:T11 Arg2:T20	
+R18	is_witness_to Arg1:T12 Arg2:T20	
+R19	is_witness_to Arg1:T13 Arg2:T20	
+T21	Site 148 152	land
+R12	is_parcel_in Arg1:T21 Arg2:T20	
+*	same_as T21 T6
+R20	is_location_of Arg:T18 Arg2:T20	

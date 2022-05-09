@@ -1,0 +1,50 @@
+T1	Document 0 17	vicars-choral-461
+T2	Transaction 18 23	Grant
+T3	Person 27 44	Barthamus Daweson
+T4	Occupation 45 61	alderman of York
+T5	Person 65 78	Thomas Marser
+T6	Occupation 79 87	chaplain
+T7	Site 297 305	tenement
+T8	Institution 95 127	chantry of St•  John of Beverley
+T9	Institution 173 197	cathedral church of York
+T10	Site 333 339	corner
+T11	Site 342 351	Petergate
+T12	Site 356 368	Girdelergate
+T13	Place 372 376	York
+T14	Site 397 409	Girdelergate
+T15	Site 431 435	land
+T16	Institution 443 494	master and brothers of the hospital of St•  Leonard
+T17	Site 527 536	Petergate
+T18	Site 556 560	land
+T19	Institution 568 587	master and brothers
+T20	Person 656 662	Thomas
+T21	Apparatus 719 723	Seal
+T22	Apparatus 755 1093	[1513]•  SOURCE: VC 3/Vi 351 (333 mm•  x 136 rnm• ) ENDORSEMENT: this evidence is for vii d•  •  •  from a •  •  in stainegate yearly•  SEAL: round (26 mm•  dia• ), red, impression•  NOTE: Thomas Marser was a vicar who later became the vicars' warden (VC 6/4/43 and 75)•  Girdlergate is an alternative name for Gloverlane•  St•  Andrewgat
+T23	Date 726 754	York, 5 October 5 Henry VIII
+R1	is_boundary_to Arg1:T10 Arg2:T7	
+R2	is_part_of Arg1:T10 Arg2:T11	
+R3	is_part_of Arg1:T10 Arg2:T12	
+R4	is_located_in Arg1:T7 Arg2:T13	
+R5	is_breadth_marker_to Arg1:T14 Arg2:T7	
+R6	is_southern_directional_marker_to Arg1:T14 Arg2:T7	
+R7	is_a_tenant_of Arg1:T16 Arg2:T15	
+R8	is_breadth_marker_to Arg1:T15 Arg2:T7	
+R9	is_northern_directional_marker_to Arg1:T15 Arg2:T7	
+R10	is_length_marker_to Arg1:T17 Arg2:T7	
+R11	is_eastern_directional_marker_to Arg1:T17 Arg2:T7	
+R12	is_western_directional_marker_to Arg1:T18 Arg2:T7	
+R13	is_length_marker_to Arg1:T18 Arg2:T7	
+R14	is_a_tenant_of Arg1:T19 Arg2:T18	
+*	same_as T19 T16
+*	same_as T20 T5
+R15	refers_to Arg1:T1 Arg2:T2	
+R16	is_dated Arg1:T1 Arg2:T23	
+R17	contains Arg1:T1 Arg2:T21	
+R18	contains Arg1:T1 Arg2:T22	
+R19	is_parcel_in Arg1:T7 Arg2:T2	
+R20	is_grantor_in Arg1:T3 Arg2:T2	
+R21	occupation_is Arg1:T3 Arg2:T4	
+R22	is_recipient_in Arg1:T5 Arg2:T2	
+R23	occupation_is Arg1:T5 Arg2:T6	
+R24	is_officeholder_in Arg1:T5 Arg2:T8	
+R25	is_officeholder_in Arg1:T5 Arg2:T9	

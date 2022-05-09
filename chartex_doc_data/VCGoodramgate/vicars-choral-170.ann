@@ -1,0 +1,60 @@
+T1	Document 0 17	vicars-choral-170
+T2	Person 31 50	Agnes de Queldr[i]c
+T3	Transaction 18 27	Quitclaim
+T4	Person 66 69	Bou
+T5	Person 73 86	William Haget
+T6	Site 90 94	land
+T7	Site 99 105	houses
+T8	Site 109 119	Gwdrumgate
+T9	Site 132 136	land
+T10	Person 143 150	William
+T11	Person 175 196	William de Parlington
+T12	Person 210 214	Emma
+T13	Person 228 248	Beatrice de Queldric
+T14	Person 267 272	Agnes
+T15	Person 287 294	William
+T16	Person 490 497	William
+T17	Apparatus 523 539	Seal. Witnesses:
+T18	Person 540 556	Walter de Stokes
+T19	Occupation 557 562	mayor
+T20	Person 564 578	John le Specer
+T21	Person 580 598	Robert de Bromholm
+T22	Person 600 612	Robert Blund
+T23	Person 614 629	Simon le Graunt
+T24	Person 631 647	Ives of Husegate
+T25	Person 649 663	John de Sutton
+T26	Person 665 681	Henry de Holteby
+T27	Person 683 698	Roger de Playce
+T28	Person 700 723	mag. Nicholas de London
+T29	Person 725 748	James of the churchyard
+T30	Person 750 769	Thomas de Tollerton
+T31	Apparatus 790 1154	possibly 1269] SOURCE: VC 3/Vi 129 (290 mm. x 194 mm.) ENDORSEMENT: none. SEAL: vesica (broken), black, impression of a fleur-de-lys, legend. Hole in MS. One word is missing. DATE: Bromholme and Blund are given as bailiffs during the mayoralty assigned to Stokes in 1269 (dating note to 67). NOTE: There is no certain connection between this charter and the vicars
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	contains Arg1:T1 Arg2:T31	
+R3	contains Arg1:T1 Arg2:T17	
+R4	is_grantor_in Arg1:T2 Arg2:T3	
+R5	is_widow_of Arg1:T2 Arg2:T4	
+R6	is_recipient_in Arg1:T5 Arg2:T3	
+R7	is_part_of Arg1:T7 Arg2:T6	
+R8	is_part_of Arg1:T6 Arg2:T8	
+R9	is_parcel_in Arg1:T6 Arg2:T3	
+R10	is_boundary_to Arg1:T9 Arg2:T6	
+R11	is_a_tenant_of Arg1:T10 Arg2:T9	
+*	same_as T10 T5 T15 T16
+R12	is_a_previous_grantor_of Arg1:T11 Arg2:T9	
+R13	is_wife_of Arg1:T12 Arg2:T11	
+R14	is_daughter_of Arg1:T12 Arg2:T13	
+*	same_as T14 T2
+R15	occupation_is Arg1:T18 Arg2:T19	
+R16	is_witness_to Arg1:T18 Arg2:T3	
+R17	is_witness_to Arg1:T20 Arg2:T3	
+R18	is_witness_to Arg1:T21 Arg2:T3	
+R19	is_witness_to Arg1:T22 Arg2:T3	
+R20	is_witness_to Arg1:T23 Arg2:T3	
+R21	is_witness_to Arg1:T24 Arg2:T3	
+R22	is_witness_to Arg1:T25 Arg2:T3	
+R23	is_witness_to Arg1:T26 Arg2:T3	
+R24	is_witness_to Arg1:T27 Arg2:T3	
+R25	is_witness_to Arg1:T28 Arg2:T3	
+R26	is_witness_to Arg1:T29 Arg2:T3	
+R27	is_witness_to Arg1:T30 Arg2:T3	

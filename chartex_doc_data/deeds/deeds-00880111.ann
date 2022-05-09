@@ -1,0 +1,54 @@
+T1	Document 0 14	deeds-00880111
+#1	AnnotatorNotes T1	{'editorial date':'1210', 'transaction type': 'Agreement/Lease'}
+T5	Person 80 99	Simonem de Oddewell
+T2	Person 45 59	Willelmum Ioye
+T3	Place 180 193	Mapeltrestede
+T4	Person 1452 1471	Willelmo de la Mare
+T8	Person 1429 1449	Gilberto de Oddewell
+T9	Person 1345 1366	Ricardo de Bellocampo
+T10	Person 1367 1385	Hugone de la Zandr
+T11	Person 1388 1411	Galfrido filio Willelmi
+T13	Person 1412 1426	Ricardo Hurand
+T14	Person 282 298	Roberti de Fonte
+T15	Person 240 247	Walteri
+T16	Occupation 248 272	persone de Mapeltrestede
+T19	Person 126 135	Willelmus
+*	same_as T2 T19 T20 T21 T30 T32
+T20	Person 543 551	Willelmo
+T21	Person 600 608	Willelmo
+T22	Person 153 159	Simoni
+*	same_as T5 T22 T25 T26 T27 T31
+T25	Person 522 527	Simon
+T26	Person 971 977	Simone
+T27	Person 1093 1099	Simoni
+T28	Person 1329 1344	Willelmo Andree
+T30	Person 765 774	Willelmus
+T31	Person 811 817	Simoni
+T32	Person 880 889	Willelmus
+T35	Place 63 76	Mapeltrestede
+T36	Transaction 136 143	dimisit
+T37	Site 160 176	duas acras terre
+T38	Site 233 239	gravam
+T17	Site 276 281	domum
+R1	is_of Arg1:T2 Arg2:T35	
+R2	is_grantor_in Arg1:T19 Arg2:T36	
+R3	is_recipient_in Arg1:T22 Arg2:T36	
+R4	is_parcel_in Arg1:T37 Arg2:T36	
+R5	is_located_in Arg1:T37 Arg2:T3	
+R6	is_boundary_to Arg1:T38 Arg2:T37	
+R7	occupation_is Arg1:T15 Arg2:T16	
+R8	is_a_tenant_of Arg1:T15 Arg2:T38	
+R9	is_boundary_to Arg1:T17 Arg2:T37	
+R10	is_a_tenant_of Arg1:T14 Arg2:T17	
+T6	Date 318 454	festo sancti Michaelis proximo ante reditum regis Iohannis cum exercitu ab Hibernia scilicet anno regni eiusdem regis Iohannis duodecimo
+R11	is_dated Arg1:T1 Arg2:T6	
+R12	refers_to Arg1:T1 Arg2:T36	
+R13	is_witness_to Arg1:T28 Arg2:T36	
+R14	is_witness_to Arg1:T9 Arg2:T36	
+R15	is_witness_to Arg1:T10 Arg2:T36	
+R16	is_witness_to Arg1:T11 Arg2:T36	
+R17	is_witness_to Arg1:T13 Arg2:T36	
+R18	is_witness_to Arg1:T8 Arg2:T36	
+R19	is_witness_to Arg1:T4 Arg2:T36	
+T7	Event 354 401	reditum regis Iohannis cum exercitu ab Hibernia
+R20	precedes Arg1:T6 Arg2:T7	

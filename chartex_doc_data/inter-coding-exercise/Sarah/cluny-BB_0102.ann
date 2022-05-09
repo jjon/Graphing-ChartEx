@@ -1,0 +1,50 @@
+T1	Document 0 13	cluny-BB_0102
+T2	Person 28 36	Bernardo
+T3	Person 66 73	Elenane
+T4	Date 1507 1571	die veneris, in mense genoario, in annos XII regnante Karlo rege
+R2	is_dated Arg1:T1 Arg2:T4	
+T5	Person 1461 1474	Christophorus
+T6	Person 1446 1455	S• Eldino
+T7	Person 1427 1444	S• Leotgerio Ardo
+T8	Person 1414 1425	S• Rotberto
+T9	Person 1400 1412	S• Adallelmo
+T10	Person 43 52	Magnardus
+R1	is_wife_of Arg1:T3 Arg2:T10	
+T11	Transaction 87 100	vendedissimus
+R3	refers_to Arg1:T1 Arg2:T11	
+R4	is_grantor_in Arg1:T3 Arg2:T11	
+R5	is_grantor_in Arg1:T10 Arg2:T11	
+R6	is_recipient_in Arg1:T2 Arg2:T11	
+R7	is_witness_to Arg1:T5 Arg2:T11	
+R8	is_witness_to Arg1:T7 Arg2:T11	
+R9	is_witness_to Arg1:T6 Arg2:T11	
+R10	is_witness_to Arg1:T9 Arg2:T11	
+R11	is_witness_to Arg1:T8 Arg2:T11	
+T12	Site 110 128	cur[tilo] et vinia
+R12	is_parcel_in Arg1:T12 Arg2:T11	
+T13	Place 168 186	paugo Matisconense
+T14	Place 191 207	agro Crosiacense
+T15	Place 217 231	villa Crosiago
+T16	Site 233 241	curtilus
+R13	is_located_in Arg1:T12 Arg2:T13	
+R14	is_located_in Arg1:T12 Arg2:T14	
+R15	is_located_in Arg1:T12 Arg2:T15	
+R16	is_part_of Arg1:T16 Arg2:T12	
+T17	Site 264 269	terra
+T18	Institution 270 283	Sancti Joanni
+R17	is_a_tenant_of Arg1:T18 Arg2:T17	
+R18	is_breadth_marker_to Arg1:T17 Arg2:T16	
+T19	Site 299 304	terra
+T20	Person 305 311	Eldino
+R19	is_a_tenant_of Arg1:T20 Arg2:T19	
+R20	is_breadth_marker_to Arg1:T19 Arg2:T16	
+T21	Site 327 332	terra
+T22	Person 333 340	Racecco
+R21	is_a_tenant_of Arg1:T22 Arg2:T21	
+R22	is_length_marker_to Arg1:T21 Arg2:T16	
+T23	Site 356 367	via puplica
+R23	is_length_marker_to Arg1:T23 Arg2:T16	
+T24	Place 1316 1340	Salenciago villa puplice
+R24	is_location_of Arg:T24 Arg2:T11	
+R25	is_part_of Arg1:T15 Arg2:T14	
+R26	is_part_of Arg1:T14 Arg2:T13	

@@ -1,0 +1,38 @@
+T1	Document 0 17	vicars-choral-163
+T2	Institution 74 104	warden and community of vicars
+T3	Person 109 126	mag. John de Caen
+T4	Occupation 127 140	canon of York
+T5	Institution 146 163	warden and vicars
+T6	Person 209 218	mag. John
+T7	Site 259 265	houses
+T8	Site 269 281	Gotherumgate
+T9	Person 296 311	mag. John Roman
+T10	Occupation 321 339	archbishop of York
+T11	Institution 376 382	vicars
+T12	Person 393 404	king Edward
+T13	Person 428 445	mag. John de Caen
+T14	Institution 490 496	vicars
+T15	Site 507 513	houses
+T16	Person 531 540	mag. John
+T17	Occupation 564 578	canon of York,
+T18	Institution 666 672	vicars
+T19	Place 1013 1017	York
+T20	Date 1019 1051	feast of St. Mary Magdalene 1298
+T21	Apparatus 1052 1675	[22 July].SOURCE: VC 3/Vi 130 (267 mm. x 153 mm.). Indented at top. ENDORSEMENT: Contra magistrum Johannem de Cademo canonicum Ebor'; Guthrumgate; xl s. SEAL: Slit. COPY: VC 3/1/1, fo. 52r.—v. NOTE: See 162. The assistance given to the vicars by John de Caen was evidently in securing a licence to acquire land in mortmain, granted by Edward I in June 1298: note to 268. A rent roll for the term Pentecost to Martinmas 1309 (VC 4/1/1) has the entry for a rent paid by Caen for the Goodramgate houses struck through, with a note that the money was assigned to his obit on 1 October, suggesting that he died in 1 October 1309
+T22	Transaction 247 254	granted
+R1	refers_to Arg1:T1 Arg2:T22	
+R2	contains Arg1:T1 Arg2:T21	
+R3	is_grantor_in Arg1:T2 Arg2:T22	
+R4	is_recipient_in Arg1:T3 Arg2:T22	
+R5	occupation_is Arg1:T3 Arg2:T4	
+*	same_as T5 T2 T11 T14 T18
+*	same_as T6 T3 T13 T16
+R6	is_parcel_in Arg1:T7 Arg2:T22	
+R7	is_part_of Arg1:T7 Arg2:T8	
+R8	is_a_previous_tenant_of Arg1:T9 Arg2:T7	
+R9	occupation_is Arg1:T9 Arg2:T10	
+R10	is_previous_participant_in Arg1:T12 Arg2:T22	
+*	same_as T15 T7
+*	same_as T17 T4
+R11	is_location_of Arg:T19 Arg2:T22	
+R12	is_dated Arg1:T1 Arg2:T20	

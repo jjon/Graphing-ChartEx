@@ -1,0 +1,50 @@
+T1	Document 0 10	YM/D/SN/48
+T2	Transaction 12 21	Feoffment
+T3	Date 23 40	17 September 1602
+T4	Person 41 57	Robert Middleton
+T5	Place 61 71	Great Heck
+T6	Occupation 73 79	yeoman
+T7	Person 81 96	Nicholas Waller
+T8	Place 107 116	Sykehouse
+T9	Person 121 136	Nicholas Waller
+T10	Place 147 157	Balne Hall
+T11	Place 159 175	parish of Snaith
+T12	Occupation 177 182	gents
+T13	Site 185 193	Messuage
+T14	Site 217 225	5 closes
+T15	Site 246 251	lands
+T16	Person 255 270	Thomas Rickard,
+T17	Occupation 271 275	gent
+T18	Site 309 319	Gayte lane
+T19	Site 337 345	Cat lane
+T20	Site 394 401	Lowgate
+T21	Place 405 410	Balne
+T22	Person 470 482	Thomas Smith
+T23	Site 422 442	messuage and a close
+T24	Site 497 505	4 closes
+T25	Person 509 520	Middleton's
+R1	is_part_of Arg1:T14 Arg2:T13	
+R2	is_parcel_in Arg1:T13 Arg2:T2	
+R3	is_part_of Arg1:T23 Arg2:T13	
+R4	is_part_of Arg1:T24 Arg2:T13	
+R5	is_an_occupant_of_a Arg1:T25 Arg2:T24	
+R6	is_an_occupant_of_a Arg1:T22 Arg2:T23	
+R7	is_located_in Arg1:T20 Arg2:T21	
+R8	is_of Arg1:T4 Arg2:T5	
+R9	occupation_is Arg1:T4 Arg2:T6	
+R10	is_of Arg1:T7 Arg2:T8	
+R11	is_of Arg1:T9 Arg2:T10	
+R12	is_part_of Arg1:T10 Arg2:T11	
+R13	occupation_is Arg1:T9 Arg2:T12	
+R14	occupation_is Arg1:T7 Arg2:T12	
+*	same_as T25 T4
+R15	not_same_as Arg1:T7 Arg2:T9	
+R16	is_grantor_in Arg1:T4 Arg2:T2	
+R17	is_recipient_in Arg1:T7 Arg2:T2	
+R18	is_recipient_in Arg1:T9 Arg2:T2	
+R19	occupation_is Arg1:T16 Arg2:T17	
+R20	is_a_tenant_of Arg1:T16 Arg2:T15	
+R21	is_eastern_directional_marker_to Arg1:T15 Arg2:T13	
+R22	is_western_directional_marker_to Arg1:T15 Arg2:T13	
+R23	is_southern_directional_marker_to Arg1:T18 Arg2:T13	
+R24	is_northern_directional_marker_to Arg1:T19 Arg2:T13	

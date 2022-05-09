@@ -1,0 +1,127 @@
+T1	Document 0 17	vicars-choral-413
+T6	Transaction 88 105	assigns and gives
+R1	refers_to Arg1:T1 Arg2:T6	
+T7	Person 34 55	mag• Simon de Evesham
+T8	Occupation 56 79	archdeacon of Rychemund
+R3	occupation_is Arg1:T7 Arg2:T8	
+R4	is_grantor_in Arg1:T7 Arg2:T6	
+T9	Institution 113 161	dean and chapter of the cathedral church of York
+R5	is_recipient_in Arg1:T9 Arg2:T6	
+T10	Site 162 166	land
+T11	Site 172 181	buildings
+R6	is_parcel_in Arg1:T10 Arg2:T6	
+R7	is_part_of Arg1:T11 Arg2:T10	
+T12	Place 185 189	York
+R8	is_located_in Arg1:T10 Arg2:T12	
+T13	Site 208 217	Steingate
+T14	Site 234 238	land
+T15	Institution 246 263	prebend of Masham
+R9	is_a_tenant_of Arg1:T15 Arg2:T14	
+R10	is_boundary_to Arg1:T13 Arg2:T10	
+R11	is_boundary_to Arg1:T14 Arg2:T10	
+T16	Site 272 279	virgate
+T17	Site 294 304	stone wall
+R12	is_part_of Arg1:T16 Arg2:T10	
+R13	is_boundary_to Arg1:T17 Arg2:T16	
+T18	Site 317 323	houses
+T20	Site 360 364	land
+T21	Institution 372 389	prebend of Masham
+T19	Institution 331 351	prebend of Ampelford
+R14	is_a_tenant_of Arg1:T19 Arg2:T18	
+R15	is_a_tenant_of Arg1:T21 Arg2:T20	
+R16	is_boundary_to Arg1:T18 Arg2:T16	
+R17	is_boundary_to Arg1:T20 Arg2:T16	
+T22	Place 467 473	Bubwyz
+T23	Transaction 399 416	assigns and gives
+R18	refers_to Arg1:T1 Arg2:T23	
+T24	Institution 424 440	dean and chapter
+*	same_as T24 T9 T29
+R19	is_recipient_in Arg1:T24 Arg2:T23	
+T25	Site 444 448	area
+R20	is_parcel_in Arg1:T25 Arg2:T23	
+T26	Site 454 463	buildings
+R21	is_part_of Arg1:T26 Arg2:T25	
+R22	is_located_in Arg1:T25 Arg2:T22	
+T27	Site 504 521	courtyard (curia)
+T28	Site 534 538	land
+T29	Institution 494 503	chapter's
+R23	is_a_tenant_of Arg1:T29 Arg2:T27	
+R24	is_boundary_to Arg1:T28 Arg2:T25	
+T30	Person 552 570	Robert de Mustroyl
+R25	is_a_previous_tenant_of Arg1:T30 Arg2:T28	
+T31	Site 579 587	Derewent
+R26	is_boundary_to Arg1:T31 Arg2:T25	
+T32	Site 591 599	windmill
+R27	is_parcel_in Arg1:T32 Arg2:T23	
+T33	Person 621 639	Oliver de Midelton
+R28	is_a_previous_grantor_of Arg1:T33 Arg2:T32	
+T34	Site 643 657	bovate of land
+T35	Site 663 667	toft
+R29	is_part_of Arg1:T35 Arg2:T34	
+R30	is_parcel_in Arg1:T34 Arg2:T23	
+T36	Person 689 698	Maud Base
+R31	is_a_previous_grantor_of Arg1:T36 Arg2:T34	
+T37	Person 711 718	William
+R32	is_daughter_of Arg1:T36 Arg2:T37	
+T38	Site 720 724	land
+T39	Person 746 762	Cecily de Bubwyz
+R33	is_parcel_in Arg1:T38 Arg2:T23	
+R34	is_a_previous_grantor_of Arg1:T39 Arg2:T38	
+T40	Site 783 790	orchard
+*	same_as T40 T38
+T41	Site 806 815	courtyard
+T42	Site 819 825	meadow
+R35	is_parcel_in Arg1:T42 Arg2:T23	
+R36	is_part_of Arg1:T41 Arg2:T25	
+R37	is_located_in Arg1:T27 Arg2:T22	
+R38	is_boundary_to Arg1:T27 Arg2:T25	
+T43	Person 847 864	Roger de Grendale
+R39	is_a_previous_grantor_of Arg1:T43 Arg2:T42	
+T44	Site 866 884	4a• of arable land
+R40	is_parcel_in Arg1:T44 Arg2:T23	
+T45	Person 906 932	mag• Nicholas de Mundevyle
+R41	is_a_previous_grantor_of Arg1:T45 Arg2:T44	
+T46	Site 1011 1028	2 bovates of land
+R42	is_parcel_in Arg1:T46 Arg2:T23	
+T47	Place 980 986	Lathum
+R43	is_located_in Arg1:T46 Arg2:T47	
+T48	Person 1000 1010	mag• Simon
+R44	is_a_landlord_of Arg1:T48 Arg2:T46	
+*	same_as T48 T7 T55 T56 T57 T58 T62 T63
+T49	Person 1572 1592	Thomas the goldsmith
+T50	Site 1544 1549	house
+T51	Site 1554 1558	area
+R45	is_part_of Arg1:T51 Arg2:T50	
+R46	is_a_previous_landlord_of Arg1:T49 Arg2:T50	
+R47	is_part_of Arg1:T50 Arg2:T10	
+T52	Institution 1615 1681	altars of the blessed Virgin Mary, St• Mary Magdalen, and St• John
+T53	Institution 1694 1719	fabric of the said church
+R49	is_a_landlord_of Arg1:T53 Arg2:T50	
+T5	Institution 1142 1170	vicars of the church of York
+R51	is_participant_in Arg1:T5 Arg2:T6	
+T2	Apparatus 2864 3006	a priest; (right) tag• COPY: VC 3/1/1, fos• 50v•-51• DATE: When Simon de Evesham was archdeacon of Richmond• Probably after 411• NOTE: See 403
+R50	contains Arg1:T1 Arg2:T2	
+T3	Apparatus 514 521	(curia)
+R52	contains Arg1:T1 Arg2:T3	
+R53	is_grantor_in Arg1:T7 Arg2:T23	
+R48	is_a_landlord_of Arg1:T52 Arg2:T50	
+T4	Apparatus 2636 2863	[1262 x 1269-71] SOURCE: VC 3/Vi 376 (266 mm• x 173 mm•) ENDORSEMENT: Collatia terra rum facta vicariis de Bubwit' cum Stayngate et Petergat ex dono Symonis Avesham• SEALS: (left) vesica (40 mm• x 43 mm•), plain, impression of?
+R2	contains Arg1:T1 Arg2:T4	
+T54	Person 968 976	free man
+R54	is_a_tenant_of Arg1:T54 Arg2:T46	
+T55	Person 1074 1084	Mag• Simon
+T56	Person 1284 1295	mag• Simon'
+T57	Person 1730 1740	mag• Simon
+T58	Person 2142 2152	Mag• Simon
+T59	Apparatus 2191 2202	conductione
+T60	Apparatus 1432 1437	ianue
+T61	Apparatus 1506 1533	[The vicars are also to pay
+R55	contains Arg1:T1 Arg2:T60	
+R56	contains Arg1:T1 Arg2:T61	
+T62	Person 2507 2517	mag• Simon
+R57	contains Arg1:T1 Arg2:T59	
+T63	Person 2580 2585	Simon
+T64	Place 2345 2352	Bubwyth
+T65	Institution 2396 2412	church of Bubwyz
+*	same_as T64 T22
+R58	is_located_in Arg1:T65 Arg2:T64	

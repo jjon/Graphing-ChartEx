@@ -1,0 +1,38 @@
+T1	Document 0 14	deeds-00880091
+#1	AnnotatorNotes T1	{'editorial date':'1186/87', 'transaction type': 'Grant'}
+T2	Person 84 109	Willelmus filius Audelini
+T3	Occupation 110 129	domini regis dapife
+T4	Transaction 185 227	concessi dedi et presenti carta confirmavi
+T5	Institution 302 333	domus hospitalis Ierusalimitani
+T6	Site 378 387	ecclesiam
+T7	Place 401 420	parva Mapeltrestede
+R1	is_located_in Arg1:T6 Arg2:T7	
+T8	Person 1377 1386	Valeriano
+T9	Occupation 1387 1393	priore
+T10	Person 1397 1406	Augustino
+T11	Occupation 1407 1415	canonico
+T12	Institution 1416 1439	sancte Marie de Sudwerc
+T13	Person 1440 1447	Waltero
+T14	Person 1451 1458	Serlone
+T15	Occupation 1459 1469	capellanis
+T16	Institution 1470 1480	hospitalis
+R2	occupation_is Arg1:T8 Arg2:T9	
+R3	occupation_is Arg1:T10 Arg2:T11	
+R4	is_officeholder_in Arg1:T10 Arg2:T12	
+R5	occupation_is Arg1:T13 Arg2:T15	
+R6	occupation_is Arg1:T14 Arg2:T15	
+R7	is_officeholder_in Arg1:T14 Arg2:T16	
+R8	is_officeholder_in Arg1:T13 Arg2:T16	
+T17	Date 1481 1575	anno incarnacionis dominice millesimo centesimo octogesimo sexto sexto decimo kalendas aprilis
+T18	Place 1581 1591	London[iam
+*	same_as T16 T5
+R9	is_start_for Arg1:T17 Arg2:T4	
+R10	occupation_is Arg1:T2 Arg2:T3	
+R11	is_grantor_in Arg1:T2 Arg2:T4	
+R12	is_recipient_in Arg1:T5 Arg2:T4	
+R13	is_parcel_in Arg1:T6 Arg2:T4	
+R14	refers_to Arg1:T1 Arg2:T4	
+R15	is_dated Arg1:T1 Arg2:T17	
+T19	Person 1052 1059	Iuliane
+R16	is_wife_of Arg1:T19 Arg2:T2	
+R17	is_location_of Arg:T18 Arg2:T4	

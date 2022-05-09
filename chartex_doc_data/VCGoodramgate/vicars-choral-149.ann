@@ -1,0 +1,27 @@
+T1	Document 0 17	vicars-choral-149
+T2	Transaction 18 23	Grant
+T3	Person 42 60	John de Fetherstan
+T4	Institution 68 74	vicars
+T5	Person 182 199	Robert de Winton'
+T6	Occupation 205 222	precentor of York
+T7	Site 255 260	house
+T8	Site 264 276	Gutherumgat'
+T9	Person 283 289	Robert
+T10	Occupation 294 298	cook
+T11	Person 312 315	Eve
+T12	Person 364 370	Robert
+T13	Institution 383 411	fabric of the church of York
+T14	Apparatus 446 573	Warranty. Seal. [1236 x 1240] SOURCE: VC 3/1/1, fo. 18v. DATE: After Robert de Winchester's death (see 532 note). NOTE: See 146
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T14	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_recipient_in Arg1:T4 Arg2:T2	
+R5	occupation_is Arg1:T5 Arg2:T6	
+R6	is_a_previous_grantor_of Arg1:T5 Arg2:T7	
+R7	is_parcel_in Arg1:T7 Arg2:T2	
+R8	is_part_of Arg1:T7 Arg2:T8	
+R9	occupation_is Arg1:T9 Arg2:T10	
+R10	is_wife_of Arg1:T11 Arg2:T9	
+R11	is_participant_in Arg1:T13 Arg2:T2	
+*	same_as T12 T5
+R12	is_a_tenant_of Arg1:T9 Arg2:T7	

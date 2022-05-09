@@ -1,0 +1,43 @@
+T1	Document 0 14	deeds-00880779
+#1	AnnotatorNotes T1	{'editorial date':'1230/42', 'transaction type': 'Quitclaim'}
+T2	Person 51 66	Gila de Espania
+T3	Person 80 93	Willelmi Joye
+T4	Person 119 138	Simoni de Oddewelle
+T5	Site 173 178	grava
+T6	Site 158 164	partem
+T7	Person 232 238	Simone
+T8	Place 242 247	villa
+T9	Place 251 264	Gestingthorpe
+T10	Person 325 333	Willelmo
+T11	Transaction 94 118	dimisi et quiete clamavi
+T12	Person 686 703	Willelmo de Ponte
+T13	Person 704 719	Willelmo Gernun
+T14	Person 720 736	Waltero de Poley
+T15	Person 737 754	Roberto Hildeherd
+T16	Person 757 775	Rogero de Besevile
+T17	Person 776 797	Rogero filio Galfridi
+T19	Person 798 818	Ricardo de Owlveshoo
+T20	Person 819 839	Roberto de Chelmesho
+T21	Person 840 857	Gilberto de Cruce
+R1	is_widow_of Arg1:T2 Arg2:T3	
+R2	is_grantor_in Arg1:T2 Arg2:T11	
+R3	is_recipient_in Arg1:T4 Arg2:T11	
+R4	is_part_of Arg1:T6 Arg2:T5	
+T23	Person 184 193	Willelmus
+R6	is_a_previous_tenant_of Arg1:T23 Arg2:T5	
+R7	is_a_landlord_of Arg1:T7 Arg2:T5	
+*	same_as T7 T4
+R9	is_located_in Arg1:T5 Arg2:T8	
+*	same_as T10 T23 T3
+R10	is_witness_to Arg1:T12 Arg2:T11	
+R11	refers_to Arg1:T1 Arg2:T11	
+R12	is_witness_to Arg1:T13 Arg2:T11	
+R13	is_witness_to Arg1:T14 Arg2:T11	
+R14	is_witness_to Arg1:T15 Arg2:T11	
+R15	is_witness_to Arg1:T16 Arg2:T11	
+R16	is_witness_to Arg1:T17 Arg2:T11	
+R17	is_witness_to Arg1:T19 Arg2:T11	
+R18	is_witness_to Arg1:T20 Arg2:T11	
+R19	is_witness_to Arg1:T21 Arg2:T11	
+*	same_as T8 T9
+R5	is_parcel_in Arg1:T6 Arg2:T11	

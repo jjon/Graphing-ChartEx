@@ -1,0 +1,68 @@
+T1	Document 0 15	Ward2_55_188_10
+#1	AnnotatorNotes T1	{"piece_id": "5471233", "date_text": "1609 July 8"}
+T2	Transaction 16 30	Grant and sale
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 34 47	Edward Jenner
+T4	Place 51 59	Brantham
+T5	Place 61 68	Suffolk
+T6	Occupation 70 76	yeoman
+T7	Person 82 88	Martha
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_grantor_in Arg1:T7 Arg2:T2	
+R4	is_of Arg1:T3 Arg2:T4	
+R5	is_part_of Arg1:T4 Arg2:T5	
+R6	occupation_is Arg1:T3 Arg2:T6	
+R7	is_wife_of Arg1:T7 Arg2:T3	
+T8	Person 103 116	Thomas Wither
+T9	Place 120 133	Fordham Magna
+T10	Place 135 140	Essex
+T11	Occupation 142 160	doctor of theology
+R8	is_of Arg1:T8 Arg2:T9	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	occupation_is Arg1:T8 Arg2:T11	
+T12	Site 171 179	messuage
+T13	Site 187 193	garden
+R11	is_recipient_in Arg1:T8 Arg2:T2	
+T14	Site 198 208	two crofts
+T15	Site 217 224	Plumers
+R12	is_part_of Arg1:T15 Arg2:T14	
+T16	Site 230 237	Fremude
+T17	Site 250 256	crofts
+R13	not_same_as Arg1:T17 Arg2:T14	
+T18	Site 265 272	Lynches
+T19	Site 276 294	Northcroft Balland
+T20	Site 301 308	Heardes
+R14	is_part_of Arg1:T19 Arg2:T17	
+R15	is_part_of Arg1:T20 Arg2:T17	
+R16	is_parcel_in Arg1:T12 Arg2:T2	
+R18	is_part_of Arg1:T16 Arg2:T14	
+R19	is_part_of Arg1:T18 Arg2:T17	
+T21	Place 314 321	Fordham
+T22	Place 323 328	Essex
+R22	is_part_of Arg1:T21 Arg2:T22	
+R23	is_located_in Arg1:T12 Arg2:T21	
+T23	Apparatus 340 396	Signed by Edward Jenner, seal and mark of Martha Jenner•
+T24	Person 440 453	John Stephens
+T25	Person 455 469	Martin Bassill
+T26	Person 474 487	John Jacksonn
+T27	Person 407 420	Edward Jenner
+T28	Person 623 629	Martha
+*	same_as T27 T3
+*	same_as T28 T7
+T29	Person 649 661	George Sayer
+T30	Person 663 676	John Stephens
+T31	Person 681 692	James Abbes
+T32	Apparatus 489 597	[Endorsed]: Seisin delivered in the presence of John Jacksonn, Thomas Flacke, Geoffrey Neuton, Thomas Sterne
+R25	is_witness_to Arg1:T24 Arg2:T2	
+R27	is_witness_to Arg1:T25 Arg2:T2	
+R28	is_witness_to Arg1:T26 Arg2:T2	
+R30	is_witness_to Arg1:T29 Arg2:T2	
+R31	is_witness_to Arg1:T30 Arg2:T2	
+R32	is_witness_to Arg1:T31 Arg2:T2	
+#2	AnnotatorNotes T32	Seisin delivered a separate transaction?
+R33	contains Arg1:T1 Arg2:T23	
+R34	contains Arg1:T1 Arg2:T32	
+R17	is_part_of Arg1:T13 Arg2:T12	
+R20	is_part_of Arg1:T14 Arg2:T12	
+R21	is_parcel_in Arg1:T17 Arg2:T2	
+R24	is_located_in Arg1:T17 Arg2:T21	

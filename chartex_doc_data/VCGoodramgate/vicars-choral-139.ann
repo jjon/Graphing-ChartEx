@@ -1,0 +1,38 @@
+T1	Document 0 17	vicars-choral-139
+T2	Person 38 45	William
+T3	Person 53 60	William
+T4	Person 68 76	Sygherit
+T5	Transaction 82 110	given, granted and confirmed
+T6	Institution 164 200	friars of the order of the preachers
+T7	Site 225 229	land
+T8	Site 233 244	Goodramgate
+T9	Site 269 273	land
+T10	Person 277 296	Thomas de vestiario
+T11	Site 301 305	land
+T12	Person 311 317	Robert
+T13	Person 325 331	Yngolf
+T14	Person 340 362	Nicholas de Buggethorp
+T15	Site 465 469	land
+T16	Site 473 482	Petergate
+T17	Person 512 529	William le Furbur
+T18	Person 546 567	Alicia de Buggerthorp
+T19	Institution 601 607	friars
+T20	Institution 815 838	Lord Archbishop of York
+R1	refers_to Arg1:T1 Arg2:T5	
+R2	is_son_of Arg1:T2 Arg2:T3	
+R3	is_son_of Arg1:T3 Arg2:T4	
+R4	is_grantor_in Arg1:T2 Arg2:T5	
+R5	is_recipient_in Arg1:T6 Arg2:T5	
+R6	is_parcel_in Arg1:T7 Arg2:T5	
+R7	is_part_of Arg1:T7 Arg2:T8	
+R8	is_boundary_to Arg1:T9 Arg2:T7	
+R9	is_a_tenant_of Arg1:T10 Arg2:T9	
+R10	is_boundary_to Arg1:T11 Arg2:T7	
+R11	is_a_previous_tenant_of Arg1:T12 Arg2:T11	
+R12	is_son_of Arg1:T12 Arg2:T13	
+R13	is_a_previous_grantor_of Arg1:T14 Arg2:T11	
+R14	is_part_of Arg1:T15 Arg2:T16	
+R15	is_a_previous_tenant_of Arg1:T17 Arg2:T15	
+R16	is_a_previous_landlord_of Arg1:T18 Arg2:T15	
+*	same_as T19 T6
+R17	is_a_landlord_of Arg1:T20 Arg2:T7	

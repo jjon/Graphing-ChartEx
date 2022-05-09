@@ -1,0 +1,81 @@
+T1	Document 0 17	vicars-choral-441
+T2	Transaction 18 23	Grant
+T3	Person 67 81	John de Arnale
+T4	Person 93 108	Robert del Wald
+T5	Place 85 89	York
+T6	Place 113 117	York
+T7	Site 133 141	messuage
+T8	Site 145 154	Petergate
+R1	is_part_of Arg1:T7 Arg2:T8	
+R2	is_parcel_in Arg1:T7 Arg2:T2	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_of Arg1:T3 Arg2:T5	
+R5	is_of Arg1:T4 Arg2:T6	
+T9	Person 197 218	William de Huntington
+T10	Person 231 247	William de Ripon
+T11	Person 252 267	Robert de Craik
+T13	Institution 316 342	dean of the church of York
+T14	Person 358 364	Robert
+T15	Person 410 416	Robert
+T16	Person 421 426	Agnes
+T17	Person 439 457	Richard de Bubwith
+T18	Person 526 541	Robert del Wald
+R7	refers_to Arg1:T1 Arg2:T2	
+R8	is_recipient_in Arg1:T4 Arg2:T2	
+T19	Site 185 193	tenement
+T20	SiteRef 223 227	that
+T21	Site 287 296	Petergate
+T22	Site 304 308	land
+R10	is_breadth_marker_to Arg1:T19 Arg2:T7	
+R11	is_breadth_marker_to Arg1:T20 Arg2:T7	
+R12	is_length_marker_to Arg1:T21 Arg2:T7	
+R13	is_length_marker_to Arg1:T22 Arg2:T7	
+*	same_as T14 T18 T4
+R14	is_son_of Arg1:T15 Arg2:T14	
+R15	is_daughter_of Arg1:T16 Arg2:T17	
+T23	Person 570 585	Henry de Scorby
+T24	Person 593 610	Thomas de Duffeld
+T25	Person 612 632	William de Hadington
+T26	Person 634 652	William de Skelton
+T27	Person 664 685	Thomas de Menyngthorp
+T28	Person 694 715	William de Huntington
+T29	Person 717 727	William Pa
+T30	Person 729 747	Richard de Warewik
+T31	Person 749 769	Geoffrey de Lethelay
+T32	Person 771 785	Robert de Cave
+T33	Person 787 803	Thomas de Hessay
+T34	Date 823 889	Thursday after feast of St• Peter and St• Paul 1348, 22 Edward III
+T35	Apparatus 890 1417	[3 July]• SOURCE: VC 3/Vi 320 (249 mm• x 132 mm•)• Indented at top and along the left-hand side• ENDORSEMENT: Petergat'• SEAL: slit• NOTE: This and the next charter apparently relate to the same or adjoining land in view of the common reference to the dean's land as a boundary• The connection with the vicars (at least for 442) is revealed on the dorse of 442, where an 8s• rent charge to the vicars ' is recorded• Possibly the land was that on which the vicars themselves imposed a similar rent in the late 13th century (423)
+R17	is_a_tenant_of Arg1:T9 Arg2:T19	
+R18	is_a_tenant_of Arg1:T10 Arg2:T20	
+R19	is_a_tenant_of Arg1:T11 Arg2:T20	
+T36	Place 817 821	York
+R21	is_witness_to Arg1:T23 Arg2:T2	
+T37	Occupation 586 591	mayor
+R22	occupation_is Arg1:T23 Arg2:T37	
+T38	Occupation 654 662	bailiffs
+R23	occupation_is Arg1:T26 Arg2:T38	
+R24	occupation_is Arg1:T25 Arg2:T38	
+R25	occupation_is Arg1:T24 Arg2:T38	
+T39	Occupation 686 692	potter
+R26	occupation_is Arg1:T27 Arg2:T39	
+R27	is_witness_to Arg1:T24 Arg2:T2	
+R28	is_witness_to Arg1:T25 Arg2:T2	
+R29	is_witness_to Arg1:T26 Arg2:T2	
+R30	is_witness_to Arg1:T27 Arg2:T2	
+R31	is_witness_to Arg1:T28 Arg2:T2	
+R32	is_witness_to Arg1:T29 Arg2:T2	
+R33	is_witness_to Arg1:T30 Arg2:T2	
+R34	is_witness_to Arg1:T31 Arg2:T2	
+R35	is_witness_to Arg1:T32 Arg2:T2	
+R36	is_witness_to Arg1:T33 Arg2:T2	
+R37	is_dated Arg1:T1 Arg2:T34	
+R6	is_a_tenant_of Arg1:T13 Arg2:T22	
+R9	contains Arg1:T1 Arg2:T35	
+T12	Apparatus 553 569	Seal• Witnesses:
+R16	contains Arg1:T1 Arg2:T12	
+R20	not_same_as Arg1:T14 Arg2:T15	
+*	same_as T21 T8
+R38	is_recipient_in Arg1:T15 Arg2:T2	
+R39	is_recipient_in Arg1:T16 Arg2:T2	
+R40	is_location_of Arg:T36 Arg2:T2	

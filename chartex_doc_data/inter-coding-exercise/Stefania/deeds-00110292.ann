@@ -1,0 +1,118 @@
+T1	Document 0 14	deeds-00110292
+T2	Date 15 65	Anno domini millesimo cc quinquagesimo mense Julii
+T3	Occupation 85 92	priorem
+T4	Institution 96 112	conuentum de n[]
+T5	Person 116 133	Michaelem Boueton
+T6	Place 137 146	Goldint[]
+T8	Institution 169 187	prior et conuentus
+T9	Person 277 280	m[]
+T10	Site 281 297	tres rodas terre
+T11	Site 305 313	dimidiam
+T12	Site 317 322	campo
+T14	Site 629 635	terram
+T15	Person 636 653	Roberti le Bracur
+T16	Person 677 680	m[]
+T17	Person 826 833	Michael
+T19	Institution 841 860	priori et conuentui
+T20	Site 861 889	tres rodas et dimidiam terre
+T21	Site 899 907	una roda
+T22	Site 920 939	Mulnedichefurlong[]
+T23	Site 946 952	terram
+T25	Institution 962 982	prioris et conuentus
+T26	Person 81 84	w[]
+T7	Site 986 994	una roda
+T18	Site 1007 1015	culturam
+T24	Site 1028 1041	Offinesbrok[]
+T27	Site 1048 1054	terram
+T28	Institution 1064 1084	prioris et conuentus
+T29	Site 1088 1096	una roda
+T30	Site 1106 1120	Longefurlong[]
+T31	Site 1127 1133	terram
+T32	Institution 1143 1163	prioris et conuentus
+T33	Site 1167 1173	terram
+T34	Person 1174 1189	Nicholai Wygani
+T35	Site 1193 1205	dimidia roda
+T36	Site 1218 1225	le Lowe
+T37	Site 1232 1238	terram
+T38	Institution 1248 1268	prioris et conuentus
+T39	Institution 1293 1312	priori et conuentui
+T40	Person 1323 1331	Michaele
+T41	Institution 1427 1445	prior et conuentus
+T42	Person 1455 1463	Michaeli
+T43	Person 1490 1497	Michael
+T44	Institution 1519 1538	priori et conuentui
+T45	Transaction 188 209	dederunt concesserunt
+T46	Transaction 243 270	confirmauerunt in escambium
+*	same_as T45 T46
+T47	Place 326 332	Gold[]
+T48	Site 338 350	dimidia acra
+T49	Site 363 380	Mulnedichefurlong
+T50	Site 387 393	terram
+T51	Person 394 410	Roberti Wanbaken
+T52	Site 414 420	terram
+T53	Person 421 436	Symonis de aula
+T54	Site 440 448	una roda
+T55	Site 461 484	Puttenhostretefurlong[]
+T56	Site 491 497	terram
+T57	Person 498 519	Roberti filii Symonis
+T58	Site 523 529	terram
+T59	Person 530 551	Roberti de Pulhangr[]
+T60	Site 555 567	dimidia roda
+T61	Site 577 586	Limbuttes
+T62	Site 593 599	terram
+T63	Person 600 624	domine Matildis de Gold[
+R1	refers_to Arg1:T1 Arg2:T45	
+R2	is_dated Arg1:T1 Arg2:T2	
+R3	occupation_is Arg1:T26 Arg2:T3	
+*	same_as T8 T4 T19
+R6	is_officeholder_in Arg1:T26 Arg2:T4	
+R7	is_of Arg1:T5 Arg2:T6	
+R8	is_parcel_in Arg1:T10 Arg2:T46	
+*	same_as T9 T5 T16 T17 T40 T42 T43
+R10	is_part_of Arg1:T11 Arg2:T10	
+R12	is_part_of Arg1:T48 Arg2:T10	
+R13	is_part_of Arg1:T48 Arg2:T49	
+R14	is_a_tenant_of Arg1:T51 Arg2:T50	
+R15	is_boundary_to Arg1:T50 Arg2:T48	
+R16	is_located_in Arg1:T12 Arg2:T47	
+R17	is_boundary_to Arg1:T52 Arg2:T48	
+R18	is_a_tenant_of Arg1:T53 Arg2:T52	
+R19	is_part_of Arg1:T54 Arg2:T10	
+R20	is_part_of Arg1:T54 Arg2:T55	
+R21	is_a_tenant_of Arg1:T57 Arg2:T56	
+R22	is_boundary_to Arg1:T56 Arg2:T54	
+R23	is_part_of Arg1:T58 Arg2:T54	
+R24	is_a_tenant_of Arg1:T59 Arg2:T58	
+R25	is_part_of Arg1:T60 Arg2:T10	
+R26	is_part_of Arg1:T60 Arg2:T61	
+R27	is_boundary_to Arg1:T62 Arg2:T60	
+R28	is_a_tenant_of Arg1:T63 Arg2:T62	
+R29	is_a_tenant_of Arg1:T15 Arg2:T14	
+R30	is_boundary_to Arg1:T14 Arg2:T60	
+R32	is_a_grantor_of Arg1:T17 Arg2:T20	
+R33	is_a_recipient_of Arg1:T19 Arg2:T20	
+R4	is_a_grantor_of Arg1:T26 Arg2:T10	
+R5	is_a_grantor_of Arg1:T4 Arg2:T10	
+R9	is_a_recipient_of Arg1:T5 Arg2:T10	
+R31	is_parcel_in Arg1:T20 Arg2:T46	
+R34	is_part_of Arg1:T21 Arg2:T20	
+R35	is_part_of Arg1:T21 Arg2:T22	
+R36	is_a_tenant_of Arg1:T25 Arg2:T23	
+R37	is_boundary_to Arg1:T23 Arg2:T21	
+R39	is_part_of Arg1:T7 Arg2:T18	
+*	same_as T18 T24
+R40	is_a_tenant_of Arg1:T28 Arg2:T27	
+R41	is_boundary_to Arg1:T27 Arg2:T7	
+R42	is_part_of Arg1:T29 Arg2:T20	
+R38	is_part_of Arg1:T7 Arg2:T20	
+R43	is_part_of Arg1:T29 Arg2:T30	
+R44	is_boundary_to Arg1:T31 Arg2:T29	
+R45	is_a_tenant_of Arg1:T32 Arg2:T31	
+R46	is_boundary_to Arg1:T33 Arg2:T29	
+R47	is_a_tenant_of Arg1:T34 Arg2:T33	
+R48	is_part_of Arg1:T35 Arg2:T20	
+R49	is_part_of Arg1:T35 Arg2:T36	
+R50	is_boundary_to Arg1:T37 Arg2:T35	
+R51	is_a_tenant_of Arg1:T38 Arg2:T37	
+*	same_as T39 T38 T41 T44
+R11	is_part_of Arg1:T10 Arg2:T12	

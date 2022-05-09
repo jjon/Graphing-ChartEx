@@ -1,0 +1,44 @@
+T1	Document 0 10	YM/D/SN/39
+T2	Transaction 12 39	Bond, pursuant to Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "3 July, 1594", "Title": "Bond, pursuant to Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Occupation 68 74	yeoman
+T4	Occupation 100 106	yeoman
+T5	Person 40 56	Nicholas Porritt
+T6	Place 60 66	Barlby
+R2	is_of Arg1:T5 Arg2:T6	
+R3	occupation_is Arg1:T5 Arg2:T3	
+T7	Person 76 87	Robert Bate
+T8	Place 91 98	Gowdall
+R4	is_of Arg1:T7 Arg2:T8	
+R5	occupation_is Arg1:T7 Arg2:T4	
+T9	Site 164 181	2 selions of land
+R6	is_grantor_in Arg1:T5 Arg2:T2	
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T10	Site 193 199	1 acre
+*	same_as T9 T10
+T11	Site 208 218	west field
+R9	is_part_of Arg1:T9 Arg2:T11	
+T12	Place 222 228	Snaith
+T13	Place 233 239	Cowick
+T14	Site 243 255	Middle Oxney
+R10	is_located_in Arg1:T11 Arg2:T12	
+R11	is_located_in Arg1:T11 Arg2:T13	
+T15	Site 266 271	lands
+T16	SiteRef 313 318	those
+T17	Person 275 289	Thomas Dawnaye
+T18	Occupation 291 294	esq
+R13	is_eastern_directional_marker_to Arg1:T15 Arg2:T9	
+R14	is_a_tenant_of Arg1:T17 Arg2:T15	
+R15	occupation_is Arg1:T17 Arg2:T18	
+R16	is_western_directional_marker_to Arg1:T16 Arg2:T9	
+T19	Person 322 336	George Lambert
+R17	is_a_tenant_of Arg1:T19 Arg2:T16	
+T20	Site 363 377	More land stye
+R18	is_northern_directional_marker_to Arg1:T20 Arg2:T9	
+T21	Site 395 407	Nether Oxney
+R19	is_southern_directional_marker_to Arg1:T21 Arg2:T9	
+R12	is_boundary_to Arg1:T14 Arg2:T9	
+T22	Person 428 437	Porritt's
+*	same_as T22 T5

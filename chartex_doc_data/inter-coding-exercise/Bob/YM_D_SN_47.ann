@@ -1,0 +1,23 @@
+T1	Document 0 11	YM/D/SN/47;
+T2	Transaction 12 30	Exchange of lands;
+T3	Date 31 41	1 May 1600
+R1	is_dated Arg1:T1 Arg2:T3	
+R2	refers_to Arg1:T1 Arg2:T2	
+T4	Person 42 57	Edward Stanhope
+T5	Place 61 72	Gray's Inn,
+T6	Place 73 79	Middx•
+T7	Occupation 82 86	esq•
+T8	Person 89 101	Paul Riccard
+T9	Place 105 112	Cowick,
+T10	Occupation 113 120	yeoman•
+T11	Person 122 130	Stanhope
+T12	Person 134 142	Riccard:
+T13	Person 191 207	Thomas Dilcocke,
+T14	Occupation 208 213	gent•
+T15	Place 229 239	Snaithings
+T16	Site 245 268	place called the Whate,
+T17	Site 143 163	8 swathes of meadow,
+T18	Site 278 287	4 swathes
+T19	Site 293 304	crown lands
+T20	Site 321 337	Riccard's meadow
+R3	is_located_in Arg1:T16 Arg2:T15	

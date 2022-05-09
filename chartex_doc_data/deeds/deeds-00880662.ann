@@ -1,0 +1,23 @@
+T1	Document 0 14	deeds-00880662
+#1	AnnotatorNotes T1	{'editorial date':'1274', 'transaction type': 'Appointment'}
+T2	Person 77 99	Laurencius de Bumstede
+T3	Person 142 148	Petrum
+T4	Person 255 271	Galfridus Gurray
+T5	Site 306 314	mesuagio
+T6	Place 336 341	villa
+T7	Institution 354 379	magistro de Mapeltrestede
+T8	Place 657 663	Stouwe
+T9	Date 664 762	die dominica in festo sancti Martini anno regni regis Edwardi filii regis Henrici secundo finiente
+T10	Transaction 162 197	ad tradendam et liberandam seisinam
+R1	is_brother_of Arg1:T3 Arg2:T2	
+R2	is_recipient_in Arg1:T7 Arg2:T10	
+R3	is_parcel_in Arg1:T5 Arg2:T10	
+R4	is_located_in Arg1:T5 Arg2:T6	
+R5	is_a_landlord_of Arg1:T2 Arg2:T5	
+R6	is_grantor_in Arg1:T3 Arg2:T10	
+R7	is_a_tenant_of Arg1:T4 Arg2:T5	
+R8	is_location_of Arg:T8 Arg2:T10	
+R9	is_dated Arg1:T1 Arg2:T9	
+R10	refers_to Arg1:T1 Arg2:T10	
+T11	Place 345 353	Halstede
+*	same_as T6 T11

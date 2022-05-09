@@ -1,0 +1,90 @@
+T1	Document 0 15	Ward2_55_188_13
+#1	AnnotatorNotes T1	{"piece_id": "5471236", "date_text": "1567 Aug 21"}
+T2	Transaction 16 21	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 27 40	John Whiteman
+T4	Person 99 110	John Bridge
+T5	Place 122 129	Fordham
+T6	Person 172 187	Thomas Whiteman
+T7	Person 192 197	Agnes
+T8	Person 244 255	John Bridge
+T9	Person 274 284	John Waspe
+T10	Person 324 334	John Sidey
+T11	Site 363 371	tenement
+T12	Site 379 385	garden
+T13	Site 392 397	croft
+T16	Person 510 521	John Bridge
+T17	Place 526 533	Fordham
+T18	Place 535 540	Essex
+T19	Person 589 602	John Whiteman
+T20	Person 606 619	Cecilia Waspe
+T21	Person 642 654	George Waspe
+T22	Person 714 727	Robert Jenner
+T23	Person 744 757	Robert Farser
+T24	Person 729 742	Robert Jenner
+T25	Person 759 771	Walter Jolly
+T26	Person 773 787	Robert Fissher
+T27	Person 789 800	John Jenner
+T28	Person 802 818	William Pagevars
+T29	Apparatus 831 852	Seal of John Whiteman
+T30	Place 44 51	Fordham
+T31	Place 53 58	Essex
+R2	is_of Arg1:T3 Arg2:T30	
+T32	Place 131 136	Essex
+R4	is_of Arg1:T4 Arg2:T5	
+R6	is_familial_relation_to Arg1:T3 Arg2:T4	
+R7	is_grantor_in Arg1:T3 Arg2:T2	
+R8	is_son_of Arg1:T3 Arg2:T6	
+R9	is_wife_of Arg1:T7 Arg2:T6	
+R10	is_daughter_of Arg1:T7 Arg2:T8	
+*	same_as T8 T4 T16
+R11	is_recipient_in Arg1:T9 Arg2:T2	
+T33	Place 288 299	Wakes Colne
+T34	Place 301 306	Essex
+R12	is_of Arg1:T9 Arg2:T33	
+R13	is_part_of Arg1:T33 Arg2:T34	
+T35	Place 338 349	Mount Bures
+T36	Place 351 356	Essex
+R14	is_of Arg1:T10 Arg2:T35	
+R15	is_part_of Arg1:T35 Arg2:T36	
+R16	is_recipient_in Arg1:T10 Arg2:T2	
+R17	is_part_of Arg1:T12 Arg2:T11	
+R18	is_parcel_in Arg1:T11 Arg2:T2	
+R23	is_a_previous_tenant_of Arg1:T16 Arg2:T11	
+R24	is_located_in Arg1:T11 Arg2:T17	
+R27	is_part_of Arg1:T17 Arg2:T18	
+T15	Apparatus 542 561	location specified)
+T37	Event 577 585	marriage
+R28	precedes Arg1:T37 Arg2:T2	
+*	same_as T19 T3
+R29	is_wife_of Arg1:T20 Arg2:T19	
+R30	is_daughter_of Arg1:T20 Arg2:T21	
+R31	not_same_as Arg1:T22 Arg2:T24	
+T38	Occupation 60 70	husbandman
+R32	occupation_is Arg1:T3 Arg2:T38	
+T39	Occupation 308 318	husbandman
+R33	occupation_is Arg1:T9 Arg2:T39	
+R34	is_witness_to Arg1:T22 Arg2:T2	
+R35	is_witness_to Arg1:T24 Arg2:T2	
+R36	is_witness_to Arg1:T23 Arg2:T2	
+R37	is_witness_to Arg1:T25 Arg2:T2	
+R38	is_witness_to Arg1:T26 Arg2:T2	
+R39	is_witness_to Arg1:T27 Arg2:T2	
+R40	is_witness_to Arg1:T28 Arg2:T2	
+T40	Apparatus 657 665	Endorsed
+R41	contains Arg1:T1 Arg2:T40	
+R42	contains Arg1:T1 Arg2:T15	
+R43	contains Arg1:T1 Arg2:T29	
+R44	is_part_of Arg1:T30 Arg2:T31	
+R3	is_part_of Arg1:T13 Arg2:T11	
+T41	Apparatus 473 490	details specified
+T42	Apparatus 418 435	details specified
+R19	contains Arg1:T1 Arg2:T42	
+R5	is_part_of Arg1:T5 Arg2:T32	
+T14	Site 450 455	croft
+T43	Site 464 470	Herdes
+*	same_as T14 T43
+R20	is_a_previous_tenant_of Arg1:T16 Arg2:T14	
+R21	is_located_in Arg1:T14 Arg2:T17	
+R22	is_parcel_in Arg1:T14 Arg2:T2	
+R25	contains Arg1:T1 Arg2:T41	

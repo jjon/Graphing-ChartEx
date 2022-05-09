@@ -1,0 +1,38 @@
+T1	Document 0 17	vicars-choral-398
+T2	Transaction 18 23	Grant
+T3	Person 27 31	John
+T4	Person 39 44	David
+T5	Occupation 49 58	parmenter
+T6	Person 88 111	rnag• Robert de Wynton'
+T7	Occupation 112 129	precentor of York
+T9	Person 169 175	Robert
+T10	Site 292 297	lands
+T11	Site 301 310	Petergat'
+T12	Place 318 340	parish of Holy Trinity
+T13	Site 360 364	land
+T14	Institution 372 393	canons of Bridlington
+T15	SiteRef 398 402	that
+T16	Person 409 415	Robert
+T17	Occupation 422 428	hatter
+T18	Person 438 448	John Puset
+T19	Person 450 456	Robert
+T20	Place 557 569	city of York
+T22	Apparatus 571 904	Warranty•  [1235 x 1240] SOURCE: VC 3/1/1, fos• 18v•-19• DATE: When Robert de Winchester was precentor (see 532 note)• NOTE: The rent here granted to Robert de Winchester was assigned, along with other rents, by Winchester's executors to the vicars as the endowment of an obit: 532 (where John son of David is called John de Bokenay)
+R1	is_boundary_to Arg1:T15 Arg2:T10	
+R2	refers_to Arg1:T1 Arg2:T2	
+R4	contains Arg1:T1 Arg2:T22	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_son_of Arg1:T3 Arg2:T4	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	occupation_is Arg1:T6 Arg2:T7	
+*	same_as T9 T6 T19
+R11	is_parcel_in Arg1:T10 Arg2:T2	
+R12	is_part_of Arg1:T10 Arg2:T11	
+R13	is_located_in Arg1:T10 Arg2:T12	
+R14	is_boundary_to Arg1:T13 Arg2:T10	
+R15	is_a_tenant_of Arg1:T14 Arg2:T13	
+R16	is_a_tenant_of Arg1:T16 Arg2:T15	
+R17	occupation_is Arg1:T16 Arg2:T17	
+R18	is_a_landlord_of Arg1:T18 Arg2:T15	
+R19	is_part_of Arg1:T12 Arg2:T20	
+R7	occupation_is Arg1:T3 Arg2:T5	

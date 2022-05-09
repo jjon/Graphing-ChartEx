@@ -1,0 +1,37 @@
+T1	Document 0 14	deeds-00880902
+#1	AnnotatorNotes T1	{'editorial date':'1285', 'transaction type': 'Court Record, Pleas of the Crown'}
+T2	Institution 15 57	Prior hospitalis sancti Iohannis Ierusalem
+T3	Person 100 118	Isabelle de Oddewe
+T4	Site 201 210	tenemento
+T5	Place 235 248	Gestingthorpe
+R1	is_a_landlord_of Arg1:T3 Arg2:T4	
+T6	Transaction 122 129	placito
+R2	is_participant_in Arg1:T3 Arg2:T6	
+R3	is_participant_in Arg1:T2 Arg2:T6	
+R4	is_a_tenant_of Arg1:T2 Arg2:T4	
+R5	is_located_in Arg1:T4 Arg2:T5	
+T8	Site 325 343	centum acras terre
+T9	Place 373 378	villa
+*	same_as T9 T5 T7
+T10	Place 631 640	Oddewelle
+T11	Institution 616 622	curiam
+R6	is_officeholder_in Arg1:T3 Arg2:T11	
+T12	Site 616 622	curiam
+R7	is_located_in Arg1:T12 Arg2:T10	
+T13	Date 739 794	tempore domini h[enrici] regis patris domini regis nunc
+T14	Person 873 890	Roberti de Maneby
+T16	Institution 921 935	istius prioris
+T17	Occupation 899 906	prioris
+*	same_as T16 T2
+R8	is_previous_officeholder_in Arg1:T14 Arg2:T16	
+T19	Place 61 67	Anglia
+R9	is_located_in Arg1:T2 Arg2:T19	
+T7	Place 382 395	Gestingthorpe
+T18	Person 1008 1016	Isabelle
+*	same_as T18 T3 T15
+R10	occupation_is Arg1:T14 Arg2:T17	
+T15	Person 1284 1292	Isabella
+R12	refers_to Arg1:T1 Arg2:T6	
+*	same_as T8 T4
+R13	is_parcel_in Arg1:T4 Arg2:T6	
+R11	precedes Arg1:T13 Arg2:T6	

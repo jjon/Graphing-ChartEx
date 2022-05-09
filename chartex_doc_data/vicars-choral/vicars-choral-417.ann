@@ -1,0 +1,58 @@
+T1	Document 0 17	vicars-choral-417
+T2	Transaction 18 25	Release
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Apparatus 469 703	SOURCE: VC/8, Metcalfe notebks• V, no• 23• NOTE: See 403• A reference to what is evidently this charter is made in a marginal note against the cartulary copy of 410• Richard was the heir of Thomas the goldsmith (YML, L 2/2a, fos• 3o-1
+T5	Date 443 467	Tuesday 24 December 5325
+R2	is_dated Arg1:T1 Arg2:T5	
+T6	Occupation 55 64	goldsmith
+T7	Place 68 72	York
+T9	Person 76 96	mag: John de Tinwell
+T10	Institution 111 126	house of vicars
+T11	Occupation 97 103	warden
+R5	occupation_is Arg1:T9 Arg2:T11	
+R6	is_officeholder_in Arg1:T9 Arg2:T10	
+R8	is_recipient_in Arg1:T9 Arg2:T2	
+T12	Site 132 140	messuage
+R9	is_parcel_in Arg1:T12 Arg2:T2	
+T13	Site 160 169	Petergate
+T14	Site 174 178	land
+T15	Institution 186 207	prebend of Ampleforth
+R10	is_a_tenant_of Arg1:T15 Arg2:T14	
+R11	is_boundary_to Arg1:T14 Arg2:T12	
+R12	is_boundary_to Arg1:T13 Arg2:T12	
+T16	Site 220 229	Petergate
+T17	Site 234 238	land
+T18	Institution 246 263	prebend of Masham
+R13	is_a_tenant_of Arg1:T18 Arg2:T17	
+T19	Site 281 285	land
+T20	Institution 293 311	prebends of Masham
+T21	Institution 313 320	Barneby
+T22	Institution 326 337	Arnpleforth
+R17	is_a_tenant_of Arg1:T20 Arg2:T19	
+R18	is_a_tenant_of Arg1:T21 Arg2:T19	
+R19	is_a_tenant_of Arg1:T22 Arg2:T19	
+R20	is_boundary_to Arg1:T19 Arg2:T12	
+R15	is_boundary_to Arg1:T16 Arg2:T12	
+R16	is_boundary_to Arg1:T17 Arg2:T12	
+T23	Person 350 369	Nicholas de Langton
+T24	Occupation 370 375	mayor
+R21	occupation_is Arg1:T23 Arg2:T24	
+T25	Person 377 388	Simon Gower
+T26	Person 390 401	William Hon
+T27	Person 407 426	Richard de Tyckhill
+T28	Occupation 428 436	bailiffs
+R22	occupation_is Arg1:T27 Arg2:T28	
+R23	occupation_is Arg1:T25 Arg2:T28	
+R24	occupation_is Arg1:T26 Arg2:T28	
+R25	is_witness_to Arg1:T23 Arg2:T2	
+R26	is_witness_to Arg1:T25 Arg2:T2	
+R27	is_witness_to Arg1:T26 Arg2:T2	
+R28	is_witness_to Arg1:T27 Arg2:T2	
+T8	Person 29 36	Richard
+T29	Person 44 50	German
+R3	is_son_of Arg1:T8 Arg2:T29	
+R4	occupation_is Arg1:T29 Arg2:T6	
+R7	is_of Arg1:T8 Arg2:T7	
+R29	is_grantor_in Arg1:T8 Arg2:T2	
+R30	contains Arg1:T1 Arg2:T3	
+*	same_as T16 T13

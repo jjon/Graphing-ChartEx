@@ -1,0 +1,66 @@
+T1	Document 0 15	Ward2_55_188_18
+#1	AnnotatorNotes T1	{"piece_id": "5471241", "date_text": "1453 July 26"}
+T2	Transaction 16 37	Grant and enfeoffment
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 41 62	Richard Whithirmarssh
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Person 64 76	John Bretoun
+R3	is_grantor_in Arg1:T4 Arg2:T2	
+T5	Occupation 78 87	gentleman
+R4	occupation_is Arg1:T4 Arg2:T5	
+T6	Person 89 104	Thomas Braunche
+T7	Occupation 106 114	chaplain
+R5	occupation_is Arg1:T6 Arg2:T7	
+R6	is_grantor_in Arg1:T6 Arg2:T2	
+T8	Apparatus 136 146	Hintlesham
+T9	Person 116 134	Robert Hyntlessham
+R7	is_grantor_in Arg1:T9 Arg2:T2	
+R8	contains Arg1:T1 Arg2:T8	
+T10	Person 153 167	Simon Laughton
+R9	is_grantor_in Arg1:T10 Arg2:T2	
+T11	Person 172 186	Richard Symond
+T12	Place 190 197	Fordham
+T13	Place 199 204	Essex
+R10	is_recipient_in Arg1:T11 Arg2:T2	
+R11	is_of Arg1:T11 Arg2:T12	
+R12	is_part_of Arg1:T12 Arg2:T13	
+T14	Site 279 304	two pieces of arable land
+T15	Site 332 339	Plomers
+T16	Site 346 353	Lynches
+R13	is_part_of Arg1:T15 Arg2:T14	
+R14	is_part_of Arg1:T16 Arg2:T14	
+T17	Person 206 218	William Bury
+R15	is_recipient_in Arg1:T17 Arg2:T2	
+T18	Occupation 220 229	gentleman
+R16	occupation_is Arg1:T17 Arg2:T18	
+T19	Person 231 243	John Snowdon
+T20	Person 245 257	John Laurens
+R17	is_recipient_in Arg1:T19 Arg2:T2	
+R18	is_recipient_in Arg1:T20 Arg2:T2	
+T21	Person 263 274	Robert Sely
+R19	is_recipient_in Arg1:T21 Arg2:T2	
+R20	is_parcel_in Arg1:T14 Arg2:T2	
+T22	Site 367 377	four acres
+R21	is_part_of Arg1:T22 Arg2:T14	
+T23	Apparatus 379 396	details specified
+R22	contains Arg1:T1 Arg2:T23	
+T24	Place 401 408	Fordham
+T25	Apparatus 410 428	location specified
+R23	is_located_in Arg1:T14 Arg2:T24	
+R24	contains Arg1:T1 Arg2:T25	
+T26	Person 528 543	Robert Cresfeld
+T27	Person 511 526	Richard Laurens
+T28	Person 496 509	Roger Laurens
+T29	Person 481 494	John Cresfeld
+T30	Occupation 474 479	clerk
+T31	Person 457 472	Thomas Wangford
+R25	occupation_is Arg1:T31 Arg2:T30	
+R26	is_witness_to Arg1:T31 Arg2:T2	
+R27	is_witness_to Arg1:T29 Arg2:T2	
+R28	is_witness_to Arg1:T28 Arg2:T2	
+R29	is_witness_to Arg1:T27 Arg2:T2	
+R30	is_witness_to Arg1:T26 Arg2:T2	
+T32	Place 437 444	Fordham
+R31	is_location_of Arg:T32 Arg2:T2	
+T33	Apparatus 556 577	Three seals surviving
+R32	contains Arg1:T1 Arg2:T33	

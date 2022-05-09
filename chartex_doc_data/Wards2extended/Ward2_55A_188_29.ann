@@ -1,0 +1,41 @@
+T1	Document 0 16	Ward2_55A_188_29
+#1	AnnotatorNotes T1	{"piece_id": "5471252", "date_text": "1530 June 29"}
+T2	Transaction 17 30	Final concord
+T4	Person 133 146	Robert Jenner
+T5	Person 181 191	John Brett
+T6	Person 193 204	John Bredge
+T7	Person 206 217	Walter Kyng
+T8	Person 219 232	Thomas Pechye
+T9	Person 250 262	Richard Duke
+T10	Site 288 296	messuage
+T11	Site 298 304	garden
+T12	Site 309 325	12 acres of land
+T13	Person 378 394	Robert Brudenell
+T16	Occupation 157 167	bricklayer
+R2	occupation_is Arg1:T4 Arg2:T16	
+#2	AnnotatorNotes T2	Final concord, must everyone be merely "participant" ?
+R4	is_parcel_in Arg1:T11 Arg2:T2	
+R5	is_parcel_in Arg1:T12 Arg2:T2	
+T17	Place 329 336	Fordham
+T18	Place 338 343	Essex
+T19	Place 354 365	Westminster
+R6	is_located_in Arg1:T10 Arg2:T17	
+R7	is_located_in Arg1:T11 Arg2:T17	
+R8	is_located_in Arg1:T12 Arg2:T17	
+R9	is_part_of Arg1:T17 Arg2:T18	
+R3	is_parcel_in Arg1:T10 Arg2:T2	
+R10	is_location_of Arg:T19 Arg2:T2	
+T20	Apparatus 169 178	brykleyer
+T21	Apparatus 148 154	Jenour
+R12	is_participant_in Arg1:T4 Arg2:T2	
+R13	is_participant_in Arg1:T5 Arg2:T2	
+R14	is_participant_in Arg1:T6 Arg2:T2	
+R15	is_participant_in Arg1:T7 Arg2:T2	
+R16	is_participant_in Arg1:T8 Arg2:T2	
+R17	is_participant_in Arg1:T9 Arg2:T2	
+R18	is_witness_to Arg1:T13 Arg2:T2	
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Institution 43 64	Court of Common Pleas
+R11	is_located_in Arg1:T3 Arg2:T19	
+R19	contains Arg1:T1 Arg2:T21	
+R20	contains Arg1:T1 Arg2:T20	

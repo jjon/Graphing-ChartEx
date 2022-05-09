@@ -1,0 +1,74 @@
+T1	Document 0 13	cluny-BB_0102
+T2	Person 28 36	Bernardo
+T3	Person 43 52	Magnardus
+T4	Person 66 73	Elenane
+R1	is_wife_of Arg1:T4 Arg2:T3	
+T5	Transaction 87 100	vendedissimus
+T6	Site 110 119	cur[tilo]
+T7	Site 123 128	vinia
+T8	Place 168 173	paugo
+T9	Place 174 187	Matisconense,
+T10	Site 191 195	agro
+T11	Site 196 207	Crosiacense
+T12	Site 217 222	villa
+T13	Site 223 231	Crosiago
+T14	Site 233 241	curtilus
+T15	Site 264 269	terra
+T16	Institution 270 283	Sancti Joanni
+T17	Site 299 304	terra
+T18	Person 305 311	Eldino
+T19	Site 327 332	terra
+T20	Person 333 340	Racecco
+T21	Site 356 367	via puplica
+T22	Site 377 419	in longo perticas agripinales XXX, de lato
+T23	Site 420 448	perticas in uno fronte IIII,
+T25	Site 464 476	perticas III
+T26	Site 481 535	in medio loco ubi clavam fecit perticas III et dimidia
+T27	Site 599 605	campus
+T28	Site 609 615	pradus
+R2	is_part_of Arg1:T7 Arg2:T6	
+R3	is_part_of Arg1:T27 Arg2:T6	
+R4	is_part_of Arg1:T28 Arg2:T6	
+*	same_as T14 T6 T24
+R5	is_length_marker_to Arg1:T15 Arg2:T14	
+R6	is_length_marker_to Arg1:T17 Arg2:T14	
+R7	is_breadth_marker_to Arg1:T19 Arg2:T14	
+R8	is_breadth_marker_to Arg1:T21 Arg2:T14	
+R9	is_length_marker_to Arg1:T22 Arg2:T14	
+R10	is_breadth_marker_to Arg1:T23 Arg2:T14	
+R11	is_breadth_marker_to Arg1:T25 Arg2:T14	
+R12	is_breadth_marker_to Arg1:T26 Arg2:T14	
+T29	Site 1316 1326	Salenciago
+T30	Site 1327 1340	villa puplice
+*	same_as T30 T29
+T31	Date 1507 1571	die veneris, in mense genoario, in annos XII regnante Karlo rege
+T32	Person 1461 1474	Christophorus
+T33	Person 1345 1353	Magnardo
+T34	Person 1358 1365	Elenane
+T35	Person 1403 1412	Adallelmo
+T36	Person 1417 1425	Rotberto
+T37	Person 1430 1444	Leotgerio Ardo
+T38	Person 1449 1455	Eldino
+R13	refers_to Arg1:T1 Arg2:T5	
+R14	is_dated Arg1:T1 Arg2:T31	
+*	same_as T33 T3
+*	same_as T34 T4
+R15	is_recipient_in Arg1:T2 Arg2:T5	
+R16	is_grantor_in Arg1:T3 Arg2:T5	
+R17	is_grantor_in Arg1:T4 Arg2:T5	
+R18	is_parcel_in Arg1:T6 Arg2:T5	
+R19	is_part_of Arg1:T6 Arg2:T12	
+*	same_as T12 T13
+*	same_as T10 T11
+*	same_as T8 T9
+R20	is_part_of Arg1:T12 Arg2:T10	
+R21	is_located_in Arg1:T10 Arg2:T8	
+R22	is_witness_to Arg1:T35 Arg2:T5	
+R23	is_witness_to Arg1:T36 Arg2:T5	
+R24	is_witness_to Arg1:T37 Arg2:T5	
+R25	is_witness_to Arg1:T38 Arg2:T5	
+R26	is_participant_in Arg1:T32 Arg2:T5	
+R27	is_a_landlord_of Arg1:T16 Arg2:T15	
+R28	is_a_tenant_of Arg1:T18 Arg2:T17	
+R29	is_a_tenant_of Arg1:T20 Arg2:T19	
+T24	Site 572 579	curtilo

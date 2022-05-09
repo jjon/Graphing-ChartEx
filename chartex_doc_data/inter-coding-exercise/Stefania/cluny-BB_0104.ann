@@ -1,0 +1,83 @@
+T1	Document 0 13	cluny-BB_0104
+T2	Person 31 39	Ricfredo
+T3	Person 52 61	Otelliane
+R1	is_wife_of Arg1:T3 Arg2:T2	
+T4	Person 67 78	Engelfredus
+T5	Person 91 97	Osanna
+R2	is_wife_of Arg1:T5 Arg2:T4	
+T6	Transaction 111 123	vendedisimus
+R3	is_grantor_in Arg1:T4 Arg2:T6	
+R4	is_grantor_in Arg1:T5 Arg2:T6	
+R5	is_recipient_in Arg1:T2 Arg2:T6	
+R6	is_recipient_in Arg1:T3 Arg2:T6	
+T7	Place 175 179	pago
+T8	Place 180 192	Matisconense
+*	same_as T7 T8
+T9	Site 197 201	agro
+T10	Site 202 211	Maciacens
+*	same_as T9 T10
+T11	Site 216 221	villa
+T12	Site 222 232	Besorniago
+*	same_as T11 T12
+R7	is_part_of Arg1:T11 Arg2:T9	
+R8	is_located_in Arg1:T9 Arg2:T7	
+T13	Site 251 257	campus
+T14	Site 268 275	Alpucio
+T15	Site 293 310	tres partes terre
+T16	Person 319 325	emtore
+*	same_as T16 T2
+T17	Site 333 349	quarte par terre
+T18	Person 350 358	Ansierio
+R9	is_a_tenant_of Arg1:T16 Arg2:T15	
+R12	is_boundary_to Arg1:T15 Arg2:T13	
+R13	is_a_tenant_of Arg1:T18 Arg2:T17	
+R14	is_boundary_to Arg1:T17 Arg2:T13	
+T20	Site 443 448	prato
+T21	Site 452 457	campo
+T22	Site 485 491	Avanda
+T23	Site 519 524	terre
+T24	Site 1130 1137	Maciago
+T25	Site 1138 1143	villa
+T26	Date 1378 1442	die dominico, in mense aprilo, in annos XII rengnante Karlo rege
+T27	Person 527 532	Elmon
+T28	Site 548 553	terre
+T29	Person 554 560	Bernar
+T30	Site 583 588	terre
+T31	Person 589 595	Rairan
+R15	is_part_of Arg1:T13 Arg2:T11	
+R16	is_part_of Arg1:T20 Arg2:T11	
+R18	is_part_of Arg1:T21 Arg2:T20	
+*	same_as T22 T20
+R17	is_a_tenant_of Arg1:T27 Arg2:T23	
+R19	is_a_tenant_of Arg1:T29 Arg2:T28	
+R20	is_a_tenant_of Arg1:T31 Arg2:T30	
+T32	Site 625 636	unda corent
+T33	Person 1148 1158	Engelfredo
+T34	Person 1163 1170	Osenane
+T35	Person 1227 1234	Bernono
+T36	Person 1239 1246	Otberto
+T37	Person 1251 1261	Ermengerio
+T38	Person 1266 1273	Bernoar
+T39	Person 1278 1284	Garoar
+T40	Person 1289 1294	Gotal
+T41	Person 1299 1306	Anserio
+T42	Person 1312 1317	Aidus
+R21	is_length_marker_to Arg1:T23 Arg2:T20	
+R22	is_length_marker_to Arg1:T28 Arg2:T20	
+R23	is_breadth_marker_to Arg1:T30 Arg2:T20	
+R24	is_breadth_marker_to Arg1:T32 Arg2:T20	
+*	same_as T24 T25
+*	same_as T33 T4
+*	same_as T34 T5
+R25	is_witness_to Arg1:T35 Arg2:T6	
+R26	is_witness_to Arg1:T36 Arg2:T6	
+R27	is_witness_to Arg1:T37 Arg2:T6	
+R28	is_witness_to Arg1:T38 Arg2:T6	
+R29	is_witness_to Arg1:T39 Arg2:T6	
+R30	is_witness_to Arg1:T40 Arg2:T6	
+R31	is_witness_to Arg1:T41 Arg2:T6	
+R33	is_participant_in Arg1:T42 Arg2:T6	
+R34	refers_to Arg1:T1 Arg2:T6	
+R35	is_dated Arg1:T1 Arg2:T26	
+R10	is_parcel_in Arg1:T13 Arg2:T6	
+R11	is_parcel_in Arg1:T20 Arg2:T6	

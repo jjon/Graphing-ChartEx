@@ -1,0 +1,43 @@
+T1	Document 0 17	vicars-choral-122
+T2	Person 38 60	William de Mala Palude
+T3	Occupation 61 74	canon of York
+T5	Transaction 80 108	given, granted and confirmed
+T6	Person 137 147	Hugh Pusat
+T7	Site 181 185	land
+T8	Institution 192 199	prebend
+T9	Site 203 214	Goodramgate
+T10	Person 231 250	Gamell de Burgetorp
+T11	Person 506 524	Radulf de Wigetoft
+T12	Person 526 547	Matthew de St Sampson
+T13	Person 549 570	Galfrido Distefalding
+T14	Person 572 579	Serlone
+T15	Occupation 580 586	cleric
+T16	Person 588 597	Alexander
+T17	Person 605 611	Ingulf
+T18	Person 613 622	Alexander
+T19	Occupation 623 629	priest
+T20	Person 631 638	Aufredo
+T21	Person 640 655	Turstino Galien
+T22	Person 657 664	Galopin
+T23	Person 666 677	Symone coco
+R1	refers_to Arg1:T1 Arg2:T5	
+R2	is_grantor_in Arg1:T2 Arg2:T5	
+R3	occupation_is Arg1:T2 Arg2:T3	
+R5	is_grantor_in Arg1:T6 Arg2:T5	
+R6	is_parcel_in Arg1:T7 Arg2:T5	
+R7	is_a_landlord_of Arg1:T8 Arg2:T7	
+R8	is_part_of Arg1:T7 Arg2:T9	
+R9	is_a_previous_tenant_of Arg1:T10 Arg2:T7	
+R10	is_witness_to Arg1:T11 Arg2:T5	
+R11	is_witness_to Arg1:T12 Arg2:T5	
+R12	is_witness_to Arg1:T13 Arg2:T5	
+R13	is_witness_to Arg1:T14 Arg2:T5	
+R14	occupation_is Arg1:T14 Arg2:T15	
+R15	is_witness_to Arg1:T16 Arg2:T5	
+R16	is_son_of Arg1:T16 Arg2:T17	
+R17	occupation_is Arg1:T18 Arg2:T19	
+R18	is_witness_to Arg1:T18 Arg2:T5	
+R19	is_witness_to Arg1:T20 Arg2:T5	
+R20	is_witness_to Arg1:T21 Arg2:T5	
+R21	is_witness_to Arg1:T22 Arg2:T5	
+R22	is_witness_to Arg1:T23 Arg2:T5	

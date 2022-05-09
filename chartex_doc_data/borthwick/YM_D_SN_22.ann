@@ -1,0 +1,26 @@
+T1	Document 0 10	YM/D/SN/22
+T2	Transaction 12 48	Copy of court roll (manor of Snaith)
+#1	AnnotatorNotes T1	{"Creation Dates": "28 September 1580-17th century", "Title": "Copy of court roll (manor of Snaith)"}
+T3	Person 62 73	Edith Hirde
+T4	Person 94 108	Thomas Ricarde
+R1	is_daughter_of Arg1:T3 Arg2:T4	
+T5	Site 120 133	2 built tofts
+T6	Place 156 162	Snaith
+R2	is_located_in Arg1:T5 Arg2:T6	
+T7	Site 168 175	3 roods
+T8	Site 183 193	west field
+R3	is_part_of Arg1:T7 Arg2:T8	
+R4	is_parcel_in Arg1:T5 Arg2:T2	
+R5	is_parcel_in Arg1:T7 Arg2:T2	
+T9	Apparatus 358 450	[A 17th century endorsement reads: `Copies of lands in Snaith purchased of Dorothea Holmes']
+R6	is_recipient_in Arg1:T3 Arg2:T2	
+R7	is_grantor_in Arg1:T4 Arg2:T2	
+R8	is_a_previous_tenant_of Arg1:T4 Arg2:T5	
+R9	is_a_previous_tenant_of Arg1:T4 Arg2:T7	
+R10	is_a_tenant_of Arg1:T3 Arg2:T5	
+R11	is_a_tenant_of Arg1:T3 Arg2:T7	
+R12	refers_to Arg1:T1 Arg2:T2	
+T10	Place 197 203	Snaith
+R13	is_located_in Arg1:T8 Arg2:T10	
+T11	Occupation 75 80	widow
+R14	occupation_is Arg1:T3 Arg2:T11	

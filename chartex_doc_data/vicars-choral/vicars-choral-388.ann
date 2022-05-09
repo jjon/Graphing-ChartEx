@@ -1,0 +1,85 @@
+T1	Document 0 17	vicars-choral-388
+T10	Person 390 396	Petrus
+T11	Person 404 419	Johannis Stoile
+T12	Person 481 488	Ricardo
+T13	Person 676 696	Nicholai de Bugetorp
+T14	Person 717 733	Martini Grandeth
+T15	Person 762 769	Ricardo
+T16	Person 1079 1083	Emme
+T17	Person 1090 1107	Roberti Grantdeth
+T18	Person 1544 1560	Hugone de Seleby
+T20	Person 1616 1624	Ada Flur
+T21	Person 1626 1642	Willelmo Turkill
+T23	Person 1667 1674	Waltero
+T24	Person 1691 1706	Waltero de Roma
+T25	Person 1708 1722	Radulpho Caule
+T26	Person 1724 1742	Henrico de capella
+T27	Person 1744 1762	Galfrido de Ottele
+T28	Person 1764 1779	Thoma aurifabro
+T29	Person 1781 1793	Simone longo
+T30	Person 1795 1802	J• albo
+T31	Person 1804 1810	Roaldo
+T32	Person 1815 1824	Reginaldo
+T35	Apparatus 1848 3113	SOURCE: VC 3/Vi 314 (150 mm• x 115 mm•) 'ENDORSEMENT: Carta Petri filiiJohannis Stoile; Petergate• SEAL: round (41 mm• dia•), green, impression of a bird with spread wings, legend *SIGILL' PETRI FIE' JOH'IS STOILE COPY: VC 3/1/i, fo• 46v• DATE: Hugh de Selby was mayor several times between 1226 and 1235 (dating note to 21), the period in which Richard the succentor is found witnessing charters (YMF i• 76; ii• 'or , (?) 144)• NOTE: This and the next six charters form a group• Richard the succentor later granted the land to the vicars, possibly as the endowment of an obit: 389• When he acquired the land a rent charge of 12d• was payable to the heirs of Emma daughter of Robert Grandeth, the capital lords of the fee: 388, 393• The heirs were presumably Emma's daughters Ellen and Agnes; Ellen later received the 12d• from the vicars: 392• The vicars evidently at first sub-let the land to Walter de Rome and his wife Agnes but later granted it to William de Orleans (Aurilianis): 390•-1• A grant to John the physician was confirmed by Ellen, whose charter covered both her share of the land and that of her sister: 392-3• Cecily daughter of John the physician later granted the land to Henry de Bryeland, who in turn granted it to Ludbert de Cussefeld: 393-4•
+T37	Person 1645 1665	Ricardo dispensatore
+T19	Person 1590 1599	Alexandra
+T38	Occupation 489 509	capellano succentori
+T39	Institution 510 524	Ebor' ecclesie
+T36	Transaction 420 480	dedi, concessi, et hac carta sigillo meo impressa confirmavi
+T40	Site 548 554	terram
+T41	Site 565 574	edificiis
+T42	Site 605 614	Petergate
+T43	Site 660 666	terram
+T44	Site 701 707	terram
+T45	Person 1285 1293	Ricardum
+T46	Person 1418 1425	Ricardo
+T47	Person 1236 1242	Petrus
+T48	Person 1361 1367	Petrus
+R2	refers_to Arg1:T1 Arg2:T36	
+T2	Apparatus 18 348	Grant by Peter son of John Stoile to Richard the chaplain succentor of York of land with buildings in Petergate, lying in length and breadth between land once of Nicholas de Bugthorpe and that once of Martin Grandeth; paying Peter and his heirs id• at Christmas and the heirs of Emma daughter of Robert Grandeth 12d• [1226 x 1235]
+R3	is_son_of Arg1:T10 Arg2:T11	
+R4	is_grantor_in Arg1:T10 Arg2:T36	
+R5	is_recipient_in Arg1:T12 Arg2:T36	
+R6	occupation_is Arg1:T12 Arg2:T38	
+R7	is_officeholder_in Arg1:T12 Arg2:T39	
+R8	is_parcel_in Arg1:T40 Arg2:T36	
+R9	is_part_of Arg1:T41 Arg2:T40	
+R11	is_breadth_marker_to Arg1:T43 Arg2:T40	
+R12	is_breadth_marker_to Arg1:T44 Arg2:T40	
+R13	is_a_previous_tenant_of Arg1:T13 Arg2:T43	
+R14	is_a_previous_tenant_of Arg1:T14 Arg2:T44	
+*	same_as T15 T12 T45 T46
+*	same_as T10 T47 T48
+R15	is_daughter_of Arg1:T16 Arg2:T17	
+R17	is_witness_to Arg1:T27 Arg2:T36	
+R18	is_witness_to Arg1:T18 Arg2:T36	
+R19	is_witness_to Arg1:T19 Arg2:T36	
+R20	is_witness_to Arg1:T20 Arg2:T36	
+R21	is_witness_to Arg1:T21 Arg2:T36	
+R22	is_witness_to Arg1:T37 Arg2:T36	
+R23	is_witness_to Arg1:T23 Arg2:T36	
+R24	is_witness_to Arg1:T24 Arg2:T36	
+R25	is_witness_to Arg1:T25 Arg2:T36	
+R26	is_witness_to Arg1:T26 Arg2:T36	
+R27	is_witness_to Arg1:T28 Arg2:T36	
+R28	is_witness_to Arg1:T29 Arg2:T36	
+R29	is_witness_to Arg1:T30 Arg2:T36	
+R30	is_witness_to Arg1:T31 Arg2:T36	
+R31	is_witness_to Arg1:T32 Arg2:T36	
+T3	Occupation 1566 1572	maiore
+T4	Institution 1573 1588	civitatis Ebor'
+R33	occupation_is Arg1:T18 Arg2:T3	
+R34	is_officeholder_in Arg1:T18 Arg2:T4	
+R10	is_part_of Arg1:T40 Arg2:T42	
+R32	is_length_marker_to Arg1:T42 Arg2:T40	
+T5	Person 1606 1614	Radulphi
+R35	is_son_of Arg1:T19 Arg2:T5	
+T6	Person 1681 1689	Nicholai
+R36	is_son_of Arg1:T23 Arg2:T6	
+R1	contains Arg1:T1 Arg2:T2	
+T7	Occupation 1826 1836	capellanis
+R37	occupation_is Arg1:T32 Arg2:T7	
+R38	occupation_is Arg1:T31 Arg2:T7	
+R39	is_length_marker_to Arg1:T40 Arg2:T43	
+R40	is_length_marker_to Arg1:T40 Arg2:T44	
+R16	is_a_landlord_of Arg1:T16 Arg2:T40	

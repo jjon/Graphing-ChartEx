@@ -1,0 +1,75 @@
+T1	Document 0 17	vicars-choral-129
+T2	Person 38 47	Alexander
+T3	Person 55 60	Pagan
+T4	Transaction 66 80	given, granted
+T5	Person 147 167	John Fancis Rumanger
+T6	Site 182 186	half
+T7	Site 197 201	land
+T8	Site 205 216	Goodramgate
+T9	Site 235 257	church of Holy Trinity
+T10	Person 506 515	Alexander
+T11	Person 645 649	John
+T12	Person 712 721	Alexander
+T13	Person 753 757	John
+T14	Person 868 872	John
+T15	Person 937 949	William Wine
+T16	Person 951 959	Benedict
+T17	Person 961 967	Morgan
+T18	Person 969 976	Gaufrid
+T19	Person 978 984	Thomas
+T20	Occupation 986 995	chaplains
+T21	Person 997 1012	Roger de Bavent
+T22	Person 1014 1018	Hugh
+T23	Person 1026 1032	Lefwin
+T24	Person 1034 1053	Henry de Fishergate
+T25	Person 1055 1068	Richard White
+T26	Person 1070 1083	Yves Rumanger
+T27	Person 1085 1103	William de Fulford
+T28	Person 1105 1109	Yuno
+T29	Occupation 1110 1118	merchant
+T30	Person 1120 1139	William of Richmond
+T31	Person 1141 1155	William Botulf
+T32	Person 1157 1163	Samson
+T33	Occupation 1164 1170	tailor
+T34	Person 1172 1179	Rodulph
+T35	Occupation 1180 1189	goldsmith
+T36	Person 1191 1207	Thomas portebref
+T37	Person 1209 1215	Robert
+T38	Occupation 1220 1227	butcher
+R1	is_son_of Arg1:T2 Arg2:T3	
+R2	refers_to Arg1:T1 Arg2:T4	
+R3	is_grantor_in Arg1:T2 Arg2:T4	
+R4	is_recipient_in Arg1:T5 Arg2:T4	
+R5	is_part_of Arg1:T6 Arg2:T7	
+R6	is_part_of Arg1:T7 Arg2:T8	
+R7	is_parcel_in Arg1:T6 Arg2:T4	
+R8	is_boundary_to Arg1:T9 Arg2:T6	
+*	same_as T10 T2 T12
+*	same_as T13 T5 T11
+R9	is_witness_to Arg1:T15 Arg2:T4	
+R10	is_witness_to Arg1:T16 Arg2:T4	
+R11	is_witness_to Arg1:T17 Arg2:T4	
+R12	is_witness_to Arg1:T18 Arg2:T4	
+R13	is_witness_to Arg1:T19 Arg2:T4	
+R14	occupation_is Arg1:T19 Arg2:T20	
+R15	occupation_is Arg1:T18 Arg2:T20	
+R16	occupation_is Arg1:T17 Arg2:T20	
+R17	occupation_is Arg1:T16 Arg2:T20	
+R18	is_witness_to Arg1:T21 Arg2:T4	
+R19	is_witness_to Arg1:T22 Arg2:T4	
+R20	is_son_of Arg1:T22 Arg2:T23	
+R21	is_witness_to Arg1:T24 Arg2:T4	
+R22	is_witness_to Arg1:T25 Arg2:T4	
+R23	is_witness_to Arg1:T26 Arg2:T4	
+R24	is_witness_to Arg1:T27 Arg2:T4	
+R25	is_witness_to Arg1:T28 Arg2:T4	
+R26	occupation_is Arg1:T28 Arg2:T29	
+R27	is_witness_to Arg1:T30 Arg2:T4	
+R28	is_witness_to Arg1:T31 Arg2:T4	
+R29	is_witness_to Arg1:T32 Arg2:T4	
+R30	occupation_is Arg1:T32 Arg2:T33	
+R31	occupation_is Arg1:T34 Arg2:T35	
+R32	is_witness_to Arg1:T34 Arg2:T4	
+R33	is_witness_to Arg1:T36 Arg2:T4	
+R34	occupation_is Arg1:T37 Arg2:T38	
+R35	is_witness_to Arg1:T37 Arg2:T4	

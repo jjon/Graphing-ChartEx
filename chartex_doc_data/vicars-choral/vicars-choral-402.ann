@@ -1,0 +1,74 @@
+T1	Document 0 17	vicars-choral-402
+T2	Transaction 18 23	Grant
+T3	Person 27 42	Henry le furbur
+T4	Site 46 55	Petergate
+T5	Institution 63 101	dean and chapter of the church of York
+T6	Institution 135 141	vicars
+T7	Site 245 249	seld
+T8	Site 256 282	solar as wide as two selds
+T9	Site 291 300	Petergate
+T10	Site 314 325	8 feet wide
+T11	Site 347 359	14 feet deep
+T12	Site 378 390	16 feet wide
+T13	Site 412 424	14 feet deep
+T14	Site 447 451	land
+T15	Person 479 494	Henry le furbur
+T16	Site 503 507	land
+T17	Person 511 529	William le floutur
+T18	Institution 557 589	abbot of Fountains (de Fontibus)
+T19	Apparatus 576 588	(de Fontibus
+T20	Person 598 603	Henry
+T21	Person 764 779	Ralph le furbur
+T22	Person 781 793	Simon Surlaf
+T23	Person 795 811	Richard Hornepot
+T24	Person 813 827	Henry Clutepot
+T25	Person 829 838	Alexander
+T26	Person 851 864	John de Paris
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T19	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_recipient_in Arg1:T5 Arg2:T2	
+R7	is_participant_in Arg1:T6 Arg2:T2	
+R8	is_parcel_in Arg1:T7 Arg2:T2	
+R9	is_parcel_in Arg1:T8 Arg2:T2	
+R10	is_part_of Arg1:T8 Arg2:T9	
+R11	is_part_of Arg1:T7 Arg2:T9	
+R12	is_breadth_marker_to Arg1:T10 Arg2:T7	
+T29	Site 336 342	street
+*	same_as T29 T9 T30
+R13	is_breadth_marker_to Arg1:T29 Arg2:T7	
+T30	Site 401 407	street
+R15	is_breadth_marker_to Arg1:T30 Arg2:T8	
+R18	is_boundary_to Arg1:T14 Arg2:T8	
+R19	is_boundary_to Arg1:T14 Arg2:T7	
+T31	Institution 462 468	vicars
+*	same_as T31 T6
+R20	is_a_tenant_of Arg1:T31 Arg2:T14	
+R21	is_a_landlord_of Arg1:T15 Arg2:T14	
+R22	is_a_tenant_of Arg1:T17 Arg2:T16	
+R23	is_boundary_to Arg1:T16 Arg2:T8	
+R24	is_boundary_to Arg1:T16 Arg2:T7	
+R25	is_a_landlord_of Arg1:T18 Arg2:T16	
+*	same_as T20 T15 T3
+R26	is_witness_to Arg1:T21 Arg2:T2	
+R27	is_witness_to Arg1:T22 Arg2:T2	
+R28	is_witness_to Arg1:T23 Arg2:T2	
+R29	is_witness_to Arg1:T24 Arg2:T2	
+R30	is_witness_to Arg1:T25 Arg2:T2	
+R31	is_witness_to Arg1:T26 Arg2:T2	
+R32	is_of Arg1:T3 Arg2:T4	
+T32	Site 306 310	seld
+*	same_as T32 T7
+T33	Site 369 374	solar
+*	same_as T33 T8
+R14	is_length_marker_to Arg1:T11 Arg2:T7	
+R16	is_breadth_marker_to Arg1:T12 Arg2:T8	
+R17	is_length_marker_to Arg1:T13 Arg2:T8	
+T34	Apparatus 695 763	Warranty• Seal• Witnesses: [from VC 8/Metcalfe notebks• Via, no• 69]
+T27	Apparatus 871 999	[mid 13th century] SOURCE: VC 3/1/1, fo• 48v• NOTE: For the adjoining land which the vicars had from Henry le furbur see 399-401
+R3	contains Arg1:T1 Arg2:T27	
+T28	Occupation 843 849	glover
+R4	occupation_is Arg1:T25 Arg2:T28	
+R33	contains Arg1:T1 Arg2:T34	
+T35	Apparatus 119 126	ad opus
+R34	contains Arg1:T1 Arg2:T35	

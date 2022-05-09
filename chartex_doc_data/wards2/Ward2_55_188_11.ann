@@ -1,0 +1,38 @@
+T1	Document 0 15	Ward2_55_188_11
+#1	AnnotatorNotes T1	{"piece_id": "5471234", "date_text": "1575 Apr 20"}
+T2	Transaction 16 35	Grant and quitclaim
+T3	Person 39 51	John Whytman
+T4	Person 86 99	Robert Jenner
+T5	Person 241 253	John Whytman
+T6	Person 266 276	John Fludd
+T7	Person 278 287	John Rose
+T8	Person 292 306	Richard Newton
+T9	Site 145 150	field
+T10	Place 203 210	Fordham
+R1	is_located_in Arg1:T9 Arg2:T10	
+T11	Place 55 62	Fordham
+T12	Place 64 69	Essex
+T13	Place 103 119	Stoke by Nayland
+T14	Place 121 128	Suffolk
+T15	Apparatus 212 230	location specified
+R2	is_of Arg1:T3 Arg2:T11	
+R3	is_part_of Arg1:T11 Arg2:T12	
+R4	is_of Arg1:T4 Arg2:T13	
+R5	is_part_of Arg1:T13 Arg2:T14	
+T16	Occupation 71 81	husbandman
+T17	Occupation 130 136	yeoman
+R6	occupation_is Arg1:T3 Arg2:T16	
+R7	occupation_is Arg1:T4 Arg2:T17	
+R8	is_grantor_in Arg1:T3 Arg2:T2	
+R9	is_recipient_in Arg1:T4 Arg2:T2	
+R10	is_parcel_in Arg1:T9 Arg2:T2	
+*	same_as T5 T3
+R11	is_witness_to Arg1:T6 Arg2:T2	
+R12	is_witness_to Arg1:T7 Arg2:T2	
+R13	is_witness_to Arg1:T8 Arg2:T2	
+R14	refers_to Arg1:T1 Arg2:T2	
+R15	contains Arg1:T1 Arg2:T15	
+T18	Site 177 199	three and a half acres
+*	same_as T11 T10
+T19	Site 159 164	Heard
+*	same_as T19 T9 T18

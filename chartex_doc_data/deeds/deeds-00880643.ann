@@ -1,0 +1,78 @@
+T1	Document 0 14	deeds-00880643
+#1	AnnotatorNotes T1	{'editorial date':'1291', 'transaction type': 'Quitclaim'}
+T2	Site 518 525	pastura
+T4	Person 77 94	Mauricius Huraunt
+T5	Person 98 106	Iohannes
+R1	is_son_of Arg1:T5 Arg2:T4	
+T6	Transaction 163 256	concessisse remisisse et omnino pro nobis et heredibus nostris et assignatis quietum clamasse
+T7	Institution 324 344	hospitalis Ierusalem
+T8	Person 348 375	fratri Alexandro de Mitcham
+T9	Occupation 381 408	preceptori de Mapeltrestede
+T10	Site 553 560	sepibus
+T11	Place 575 580	villa
+T12	Site 604 611	pastura
+T13	Person 625 641	Rogeri Fraunceys
+T14	Site 657 663	terram
+T15	Person 670 676	Rogeri
+T16	Site 689 695	Esthey
+T17	Institution 705 727	priorisse de Hidyngham
+T18	Site 748 754	terram
+T19	Person 755 774	Sewal[] de Stubbele
+T20	Site 854 859	bosco
+T21	Person 860 883	Iohannis filii Willelmi
+T23	Site 893 904	regiam viam
+T24	Place 918 926	Halstede
+T25	Place 934 954	Mapeltrestede parvam
+T26	Person 994 1003	Mauricius
+T27	Person 1007 1015	Iohannes
+T28	Person 1249 1280	domino Willelmo de Hanyngfeld[]
+T29	Occupation 1281 1287	milite
+T30	Person 1288 1300	Willelmo Dyn
+T31	Person 1303 1322	Nicholao le harpour
+T32	Person 1323 1345	Iohanne filio Willelmi
+T34	Person 1346 1353	Iohanne
+T35	Person 1360 1375	Hugonis Sewalle
+T36	Person 1388 1408	Willelmo de Stubbele
+R2	is_grantor_in Arg1:T4 Arg2:T6	
+R3	is_grantor_in Arg1:T5 Arg2:T6	
+R4	refers_to Arg1:T1 Arg2:T6	
+R5	is_recipient_in Arg1:T7 Arg2:T6	
+R6	is_recipient_in Arg1:T8 Arg2:T6	
+R7	occupation_is Arg1:T8 Arg2:T9	
+R8	is_parcel_in Arg1:T2 Arg2:T6	
+R9	is_boundary_to Arg1:T10 Arg2:T2	
+R10	is_located_in Arg1:T2 Arg2:T11	
+*	same_as T12 T2 T3
+R11	is_a_previous_landlord_of Arg1:T13 Arg2:T12	
+R12	is_a_tenant_of Arg1:T15 Arg2:T14	
+*	same_as T14 T16
+R15	is_a_landlord_of Arg1:T19 Arg2:T18	
+R16	is_southern_directional_marker_to Arg1:T18 Arg2:T2	
+R17	is_breadth_marker_to Arg1:T18 Arg2:T2	
+R14	is_northern_directional_marker_to Arg1:T14 Arg2:T2	
+R13	is_a_landlord_of Arg1:T17 Arg2:T14	
+R18	is_breadth_marker_to Arg1:T14 Arg2:T2	
+R19	is_western_directional_marker_to Arg1:T20 Arg2:T2	
+R20	is_length_marker_to Arg1:T20 Arg2:T2	
+R21	is_a_landlord_of Arg1:T21 Arg2:T20	
+R23	is_eastern_directional_marker_to Arg1:T23 Arg2:T2	
+R24	is_length_marker_to Arg1:T23 Arg2:T2	
+*	same_as T26 T4
+*	same_as T27 T5
+R27	is_witness_to Arg1:T28 Arg2:T6	
+R28	occupation_is Arg1:T28 Arg2:T29	
+R29	is_witness_to Arg1:T30 Arg2:T6	
+R30	is_witness_to Arg1:T31 Arg2:T6	
+R31	is_witness_to Arg1:T32 Arg2:T6	
+*	same_as T32 T21
+R32	is_witness_to Arg1:T34 Arg2:T6	
+R34	is_witness_to Arg1:T36 Arg2:T6	
+T3	Site 533 546	Prudfoteswode
+T37	Place 584 592	Halstede
+*	same_as T11 T37
+R35	is_son_of Arg1:T34 Arg2:T35	
+T33	Place 1379 1387	Stubbele
+R33	is_of Arg1:T34 Arg2:T33	
+*	same_as T15 T13
+R22	is_boundary_to Arg1:T24 Arg2:T23	
+R25	is_boundary_to Arg1:T25 Arg2:T23	

@@ -1,0 +1,49 @@
+T1	Document 0 14	Ward2_55_188_3
+#1	AnnotatorNotes T1	{"piece_id": "5471226", "date_text": "1578 Aug 6"}
+T2	Transaction 15 29	Grant and sale
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 33 47	Anthony Fuller
+T4	Place 51 67	Stoke by Nayland
+T5	Place 69 76	Suffolk
+R2	is_part_of Arg1:T4 Arg2:T5	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Occupation 78 84	yeoman
+R5	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 89 100	Robert Kyng
+T8	Place 104 117	West Bergholt
+T9	Place 119 124	Essex
+T10	Occupation 126 132	yeoman
+R6	is_recipient_in Arg1:T7 Arg2:T2	
+R7	is_of Arg1:T7 Arg2:T8	
+R8	is_part_of Arg1:T8 Arg2:T9	
+R9	occupation_is Arg1:T7 Arg2:T10	
+T11	Site 141 149	messuage
+R10	is_parcel_in Arg1:T11 Arg2:T2	
+T13	Site 173 179	garden
+T14	Site 186 191	croft
+R11	is_part_of Arg1:T13 Arg2:T11	
+R12	is_part_of Arg1:T14 Arg2:T11	
+T15	Apparatus 193 211	details specified)
+R13	contains Arg1:T1 Arg2:T15	
+T16	Place 215 222	Fordham
+T17	Place 224 229	Essex
+R14	is_part_of Arg1:T16 Arg2:T17	
+R15	is_located_in Arg1:T11 Arg2:T16	
+T18	Person 322 336	Robert Durrant
+R16	is_witness_to Arg1:T18 Arg2:T2	
+T19	Person 338 350	John Dyffytt
+R17	is_witness_to Arg1:T19 Arg2:T2	
+T20	Apparatus 400 436	Seal and signature of Anthony Fuller
+R18	contains Arg1:T1 Arg2:T20	
+T21	Person 352 365	Thomas Freman
+T22	Person 367 380	George Armond
+R19	is_witness_to Arg1:T21 Arg2:T2	
+R20	is_witness_to Arg1:T22 Arg2:T2	
+T23	Person 385 398	Edmund Potter
+R21	is_witness_to Arg1:T23 Arg2:T2	
+*	same_as T9 T17
+T12	Site 158 164	Lyarde
+*	same_as T12 T11
+T24	Apparatus 264 274	[Endorsed]
+R22	contains Arg1:T1 Arg2:T24	

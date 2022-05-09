@@ -1,0 +1,115 @@
+T1	Document 0 14	deeds-00110292
+T2	Date 15 65	Anno domini millesimo cc quinquagesimo mense Julii
+T3	Institution 96 110	conuentum de n
+T4	Person 81 82	w
+T5	Occupation 85 92	priorem
+R1	occupation_is Arg1:T4 Arg2:T5	
+R2	is_officeholder_in Arg1:T4 Arg2:T3	
+T6	Person 116 133	Michaelem Boueton
+T7	Place 137 144	Goldint
+R3	is_of Arg1:T6 Arg2:T7	
+T8	Transaction 188 270	dederunt concesserunt et presenti scripto cirographato confirmauerunt in escambium
+R4	refers_to Arg1:T1 Arg2:T8	
+R5	is_dated Arg1:T1 Arg2:T2	
+T9	Transaction 66 74	conuenit
+R6	refers_to Arg1:T1 Arg2:T9	
+R7	precedes Arg1:T8 Arg2:T9	
+R8	is_participant_in Arg1:T4 Arg2:T9	
+R9	is_participant_in Arg1:T6 Arg2:T9	
+T10	Institution 169 187	prior et conuentus
+*	same_as T10 T3 T34 T39 T44 T48 T54
+R10	is_grantor_in Arg1:T10 Arg2:T8	
+T11	Person 277 278	m
+*	same_as T6 T11 T33
+R11	is_recipient_in Arg1:T11 Arg2:T8	
+T12	Site 281 313	tres rodas terre sue et dimidiam
+T13	Site 317 330	campo de Gold
+R12	is_parcel_in Arg1:T12 Arg2:T8	
+R13	is_part_of Arg1:T12 Arg2:T13	
+T14	Site 338 350	dimidia acra
+R14	is_part_of Arg1:T14 Arg2:T12	
+T15	Site 363 380	Mulnedichefurlong
+T16	Person 394 410	Roberti Wanbaken
+T17	Site 387 393	terram
+R15	is_boundary_to Arg1:T17 Arg2:T14	
+R16	is_a_tenant_of Arg1:T16 Arg2:T17	
+T18	Site 414 420	terram
+R17	is_boundary_to Arg1:T18 Arg2:T14	
+T19	Person 421 436	Symonis de aula
+R18	is_a_tenant_of Arg1:T19 Arg2:T18	
+R19	is_part_of Arg1:T14 Arg2:T15	
+T20	Site 440 448	una roda
+R20	is_part_of Arg1:T20 Arg2:T12	
+T21	Site 461 482	Puttenhostretefurlong
+R21	is_part_of Arg1:T20 Arg2:T21	
+T22	Site 491 497	terram
+T23	Person 498 519	Roberti filii Symonis
+T24	Site 523 529	terram
+T25	Person 530 549	Roberti de Pulhangr
+R22	is_a_tenant_of Arg1:T25 Arg2:T24	
+R23	is_a_tenant_of Arg1:T23 Arg2:T22	
+R24	is_boundary_to Arg1:T22 Arg2:T20	
+R25	is_boundary_to Arg1:T24 Arg2:T20	
+T26	Site 555 567	dimidia roda
+T27	Site 577 586	Limbuttes
+R26	is_part_of Arg1:T26 Arg2:T27	
+R27	is_part_of Arg1:T26 Arg2:T12	
+T28	Person 600 623	domine Matildis de Gold
+T29	Person 636 653	Roberti le Bracur
+T30	Site 629 635	terram
+T31	Site 593 599	terram
+R28	is_boundary_to Arg1:T31 Arg2:T26	
+R29	is_a_tenant_of Arg1:T28 Arg2:T31	
+R30	is_a_tenant_of Arg1:T29 Arg2:T30	
+R31	is_boundary_to Arg1:T30 Arg2:T26	
+T32	Transaction 813 818	dedit
+R32	precedes Arg1:T32 Arg2:T9	
+R33	not_same_as Arg1:T32 Arg2:T8	
+T33	Person 826 833	Michael
+R34	is_grantor_in Arg1:T33 Arg2:T32	
+T34	Institution 841 860	priori et conuentui
+R35	is_recipient_in Arg1:T34 Arg2:T32	
+T35	Site 861 889	tres rodas et dimidiam terre
+R36	is_parcel_in Arg1:T35 Arg2:T32	
+R37	not_same_as Arg1:T35 Arg2:T12	
+T36	Site 899 907	una roda
+T37	Site 920 937	Mulnedichefurlong
+R38	is_part_of Arg1:T36 Arg2:T37	
+T38	Site 946 952	terram
+T39	Institution 962 982	prioris et conuentus
+R40	is_boundary_to Arg1:T38 Arg2:T36	
+R41	is_a_tenant_of Arg1:T39 Arg2:T38	
+T40	Site 986 994	una roda
+T41	Site 1007 1015	culturam
+T42	Site 1028 1039	Offinesbrok
+R43	is_part_of Arg1:T40 Arg2:T41	
+*	same_as T41 T42
+T43	Site 1048 1054	terram
+T44	Institution 1064 1084	prioris et conuentus
+R44	is_boundary_to Arg1:T43 Arg2:T40	
+R45	is_a_tenant_of Arg1:T44 Arg2:T43	
+T45	Site 1088 1096	una roda
+T46	Site 1106 1118	Longefurlong
+R46	is_part_of Arg1:T45 Arg2:T46	
+R47	is_part_of Arg1:T45 Arg2:T35	
+R42	is_part_of Arg1:T40 Arg2:T35	
+R39	is_part_of Arg1:T36 Arg2:T35	
+T47	Site 1127 1133	terram
+T48	Institution 1143 1163	prioris et conuentus
+R48	is_a_tenant_of Arg1:T48 Arg2:T47	
+R49	is_boundary_to Arg1:T47 Arg2:T45	
+T49	Site 1167 1173	terram
+R50	is_boundary_to Arg1:T49 Arg2:T45	
+T50	Person 1174 1189	Nicholai Wygani
+R51	is_a_tenant_of Arg1:T50 Arg2:T49	
+T51	Site 1193 1205	dimidia roda
+R52	is_part_of Arg1:T51 Arg2:T35	
+T52	Site 1218 1225	le Lowe
+R53	is_part_of Arg1:T51 Arg2:T52	
+T53	Site 1232 1238	terram
+T54	Institution 1248 1268	prioris et conuentus
+R54	is_a_tenant_of Arg1:T54 Arg2:T53	
+R55	is_boundary_to Arg1:T53 Arg2:T51	
+R56	not_same_as Arg1:T36 Arg2:T40	
+R57	not_same_as Arg1:T45 Arg2:T40	
+R58	not_same_as Arg1:T20 Arg2:T40	

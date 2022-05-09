@@ -1,0 +1,56 @@
+T1	Document 0 14	deeds-00880149
+#1	AnnotatorNotes T1	{'editorial date':'1260', 'transaction type': 'Grant'}
+T2	Person 51 70	Willelmus Scotticus
+T3	Place 74 80	Paston
+R1	is_of Arg1:T2 Arg2:T3	
+T4	Transaction 81 131	concessi dedi et hac presenti carta mea confirmavi
+T5	Person 132 152	Rogero de Odelthesho
+T6	Occupation 153 160	clerico
+T7	Site 227 236	tenemento
+T8	Person 242 256	Warinus Goding
+T9	Place 291 319	villa de magna Mapeltrestede
+T10	Person 332 348	Willelmi Scotici
+T11	Person 388 394	Rogero
+T12	Person 574 587	Warini Goding
+T13	Person 873 892	Willelmus Scotticus
+T14	Person 1060 1066	Rogero
+T15	Place 1311 1325	Hengham Castri
+T16	Date 1326 1414	duodecimo die ianuarii anno regni regis Henrici filii regis Iohannis quadragesimo quarto
+T17	Person 1429 1445	Henrico de Vagor
+T18	Person 1446 1461	Adam Gravassall
+T19	Person 1462 1485	Reginaldo de Selverlegh
+T20	Person 1486 1508	Roberto filio Iohannis
+T22	Occupation 1509 1516	clerico
+T23	Person 1517 1529	Martino crok
+T24	Person 1530 1544	Galfrido Ruffo
+T25	Person 1545 1562	Iohanne le Waleis
+T26	Person 1563 1578	Martino le Bele
+T27	Person 1579 1586	Huberto
+T28	Occupation 1587 1594	clerico
+T29	Person 1595 1610	Roberto Fouvell
+R2	is_location_of Arg:T15 Arg2:T4	
+R3	is_dated Arg1:T1 Arg2:T16	
+R4	is_witness_to Arg1:T29 Arg2:T4	
+R5	is_witness_to Arg1:T27 Arg2:T4	
+R6	is_witness_to Arg1:T26 Arg2:T4	
+R7	is_witness_to Arg1:T25 Arg2:T4	
+R8	is_witness_to Arg1:T24 Arg2:T4	
+R9	is_witness_to Arg1:T23 Arg2:T4	
+R10	is_witness_to Arg1:T20 Arg2:T4	
+R11	is_witness_to Arg1:T19 Arg2:T4	
+R12	is_witness_to Arg1:T18 Arg2:T4	
+R13	is_witness_to Arg1:T17 Arg2:T4	
+R14	occupation_is Arg1:T20 Arg2:T22	
+R15	occupation_is Arg1:T27 Arg2:T28	
+*	same_as T13 T10
+*	same_as T14 T11 T5
+*	same_as T12 T8
+R16	occupation_is Arg1:T5 Arg2:T6	
+R17	is_parcel_in Arg1:T7 Arg2:T4	
+R18	is_grantor_in Arg1:T2 Arg2:T4	
+R19	is_recipient_in Arg1:T5 Arg2:T4	
+R20	is_familial_relation_to Arg1:T10 Arg2:T2	
+R21	is_a_previous_landlord_of Arg1:T10 Arg2:T7	
+R22	is_a_tenant_of Arg1:T8 Arg2:T7	
+R23	is_located_in Arg1:T7 Arg2:T9	
+R24	refers_to Arg1:T1 Arg2:T4	

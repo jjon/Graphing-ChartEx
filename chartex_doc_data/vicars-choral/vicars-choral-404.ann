@@ -1,0 +1,65 @@
+T1	Document 0 17	vicars-choral-404
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 51	William de Ampleford
+T4	Person 65 70	Alice
+T5	Person 74 95	mag• Simon de Evesham
+T6	Occupation 96 113	precentor of York
+T8	Site 176 180	land
+T9	Person 195 204	precentor
+T10	Site 207 214	chamber
+T11	Place 218 222	York
+T12	Person 227 232	Alice
+T13	Person 242 249	William
+T14	Person 277 284	William
+T15	Person 400 405	Simon
+T16	Person 489 494	Simon
+T17	Person 512 519	William
+T18	Person 601 611	mag• Simon
+T19	Person 617 624	William
+T20	Person 629 634	Alice
+T21	Apparatus 670 675	Seal•
+T22	Person 687 702	Robert Ie moine
+T23	Person 704 725	Roger de St• Margaret
+T24	Occupation 727 736	chaplains
+T25	Person 738 747	mag• John
+T26	Person 763 769	Thomas
+T27	Person 785 803	Robert de St• Paul
+T28	Person 805 819	Walter de Roma
+T29	Person 821 839	Richard de Moserne
+T30	Person 841 860	Peter de Tadecastr'
+T31	Occupation 861 866	vicar
+T32	Person 868 882	William Blunde
+T34	Apparatus 898 1015	[1241 x 1247] SOURCE: VC 3/1/1, fo• Ir•—v• (struck through)• DATE: When Simon de Evesham was precentor• NOTE: See 403
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T21	
+R4	contains Arg1:T1 Arg2:T34	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_grantor_in Arg1:T4 Arg2:T2	
+R8	is_recipient_in Arg1:T5 Arg2:T2	
+R9	occupation_is Arg1:T5 Arg2:T6	
+R11	is_parcel_in Arg1:T8 Arg2:T2	
+*	same_as T9 T5 T15 T16 T18
+R12	is_a_tenant_of Arg1:T9 Arg2:T10	
+R13	is_boundary_to Arg1:T10 Arg2:T8	
+R14	is_located_in Arg1:T10 Arg2:T11	
+*	same_as T12 T4 T20
+*	same_as T13 T3 T14 T17 T19
+R15	is_witness_to Arg1:T22 Arg2:T2	
+R16	is_witness_to Arg1:T23 Arg2:T2	
+R17	occupation_is Arg1:T22 Arg2:T24	
+R18	occupation_is Arg1:T23 Arg2:T24	
+R19	is_witness_to Arg1:T25 Arg2:T2	
+R20	is_witness_to Arg1:T26 Arg2:T2	
+R21	is_witness_to Arg1:T27 Arg2:T2	
+R22	is_witness_to Arg1:T28 Arg2:T2	
+R23	occupation_is Arg1:T30 Arg2:T31	
+R24	is_witness_to Arg1:T29 Arg2:T2	
+R25	is_witness_to Arg1:T30 Arg2:T2	
+R26	is_witness_to Arg1:T32 Arg2:T2	
+R6	is_wife_of Arg1:T4 Arg2:T3	
+T7	Occupation 752 761	physician
+T35	Occupation 774 783	goldsmith
+R10	occupation_is Arg1:T26 Arg2:T35	
+T33	Place 322 331	Ampleford
+R3	is_of Arg1:T3 Arg2:T33	
+R27	occupation_is Arg1:T25 Arg2:T7	

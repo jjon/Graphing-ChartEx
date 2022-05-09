@@ -1,0 +1,34 @@
+T1	Document 0 10	YM/D/SN/35
+T2	Transaction 12 28	Bargain and sale
+#1	AnnotatorNotes T1	{"Creation Dates": "1 June 1591", "Title": "Bargain and sale"}
+T3	Person 29 44	John Mauliverer
+T4	Place 48 55	Letwell
+T5	Occupation 57 60	esq
+R1	is_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T5	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 63 76	Stephen Parke
+T7	Place 80 87	Bingham
+T8	Place 89 94	Notts
+R4	is_part_of Arg1:T7 Arg2:T8	
+R5	is_of Arg1:T6 Arg2:T7	
+T9	Occupation 97 103	yeoman
+R6	occupation_is Arg1:T6 Arg2:T9	
+R7	is_recipient_in Arg1:T6 Arg2:T2	
+T10	Site 105 125	Messuage or tenement
+T11	Place 129 135	Snaith
+R8	is_located_in Arg1:T10 Arg2:T11	
+T12	Person 178 191	Walter Blekye
+R9	is_a_previous_tenant_of Arg1:T12 Arg2:T10	
+R10	is_parcel_in Arg1:T10 Arg2:T2	
+T13	Site 205 215	horse mill
+T14	Place 219 225	Snaith
+R11	is_located_in Arg1:T13 Arg2:T14	
+T15	Person 270 281	John Walker
+R12	is_a_tenant_of Arg1:T15 Arg2:T13	
+R13	is_parcel_in Arg1:T13 Arg2:T2	
+R14	refers_to Arg1:T1 Arg2:T2	
+T16	Person 355 365	Mauliverer
+T17	Person 370 377	Dorothy
+R15	is_wife_of Arg1:T17 Arg2:T16	
+*	same_as T16 T3

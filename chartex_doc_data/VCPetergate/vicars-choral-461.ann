@@ -1,0 +1,55 @@
+T1	Document 0 17	vicars-choral-461
+T2	Transaction 18 23	Grant
+T3	Person 27 44	Barthamus Daweson
+T4	Occupation 45 53	alderman
+T5	Place 57 61	York
+T6	Person 65 78	Thomas Marser
+T7	Occupation 79 195	chaplain of the chantry of St. John of Beverley behind the statue of St. Christopher in the cathedral church of York
+T9	Institution 204 227	successors as chaplains
+T11	Site 294 312	tenement now waste
+T12	Site 330 336	corner
+T13	Site 340 349	Petergate
+T14	Site 354 366	Girdelergate
+T15	Site 395 407	Girdelergate
+T16	Site 429 433	land
+T17	Institution 441 491	master and brothers of the hospital of St. Leonard
+T18	Site 524 533	Petergate
+T19	Institution 565 584	master and brothers
+T20	Person 652 658	Thomas
+T21	Institution 667 677	successors
+T22	Apparatus 714 719	Seal.
+T23	Place 720 724	York
+T24	Date 726 748	5 October 5 Henry VIII
+T25	Apparatus 749 1056	[1513]. SOURCE: VC 3/Vi 351 (333 mm. x 136 mm.) ENDORSEMENT: this evidence is for vii d. . . from a . . in stainegate yearly. SEAL: round (26 mm. dia.), red, impression. NOTE: Thomas Marser was a vicar who later became the vicars' warden (VC 6/4/43 and 75). Girdlergate is an alternative name for Gloverlane
+R4	refers_to Arg1:T1 Arg2:T2	
+R5	contains Arg1:T1 Arg2:T22	
+R6	is_dated Arg1:T1 Arg2:T24	
+R7	contains Arg1:T1 Arg2:T25	
+R8	is_grantor_in Arg1:T3 Arg2:T2	
+R9	occupation_is Arg1:T3 Arg2:T4	
+R10	is_of Arg1:T3 Arg2:T5	
+R11	is_recipient_in Arg1:T6 Arg2:T2	
+R12	occupation_is Arg1:T6 Arg2:T7	
+R13	is_parcel_in Arg1:T11 Arg2:T2	
+R14	is_part_of Arg1:T12 Arg2:T13	
+R15	is_part_of Arg1:T12 Arg2:T14	
+T26	Place 370 374	York
+R16	is_located_in Arg1:T11 Arg2:T26	
+R17	is_part_of Arg1:T11 Arg2:T12	
+R18	is_breadth_marker_to Arg1:T15 Arg2:T11	
+R19	is_southern_directional_marker_to Arg1:T15 Arg2:T11	
+R20	is_breadth_marker_to Arg1:T16 Arg2:T11	
+R21	is_a_tenant_of Arg1:T17 Arg2:T16	
+R22	is_northern_directional_marker_to Arg1:T16 Arg2:T11	
+R23	is_length_marker_to Arg1:T18 Arg2:T11	
+R24	is_eastern_directional_marker_to Arg1:T18 Arg2:T11	
+T27	Site 553 557	land
+R25	is_length_marker_to Arg1:T27 Arg2:T11	
+R26	is_western_directional_marker_to Arg1:T27 Arg2:T11	
+R27	is_a_tenant_of Arg1:T19 Arg2:T27	
+*	same_as T19 T17
+*	same_as T27 T16
+*	same_as T20 T6
+R28	is_location_of Arg:T23 Arg2:T2	
+R1	is_recipient_in Arg1:T9 Arg2:T2	
+*	same_as T21 T9

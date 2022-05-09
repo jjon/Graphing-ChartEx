@@ -1,0 +1,43 @@
+T1	Document 0 17	vicars-choral-407
+T2	Person 36 58	mag• John de Esingwald
+T3	Person 91 114	William Raven de Fenton
+T4	Person 123 144	mag• Simon de Evesham
+T5	Occupation 145 172	archdeacon of the Estriding
+T7	Site 176 180	land
+T8	Person 187 194	William
+T9	Person 203 212	mag• John
+T10	Place 216 220	York
+T11	Site 236 242	houses
+T12	Person 257 292	rnag• Geoffrey de Norwich (Norwico)
+T13	Apparatus 284 291	Norwico
+T14	Occupation 298 315	precentor of York
+T15	Site 320 324	land
+T16	Institution 332 349	prebend of Massam
+T17	Transaction 355 366	quitclaimed
+T18	Site 371 375	land
+T19	Person 383 393	archdeacon
+T22	Apparatus 395 553	Seal• Witnesses: as 406,  [1247 x 1262] SOURCE: VC 3/1/1, fo• i (struck through), DATE: When Simon de Evesham was archdeacon of the East Riding, NOTE; See 403
+R2	contains Arg1:T1 Arg2:T13	
+R5	contains Arg1:T1 Arg2:T22	
+R6	is_grantor_in Arg1:T2 Arg2:T17	
+*	same_as T18 T7
+T23	Transaction 80 84	sale
+R8	precedes Arg1:T23 Arg2:T17	
+R9	is_grantor_in Arg1:T3 Arg2:T23	
+R10	is_recipient_in Arg1:T4 Arg2:T23	
+R11	is_recipient_in Arg1:T4 Arg2:T17	
+R12	occupation_is Arg1:T4 Arg2:T5	
+R14	is_parcel_in Arg1:T7 Arg2:T23	
+*	same_as T8 T3
+*	same_as T9 T2
+R15	is_located_in Arg1:T7 Arg2:T10	
+R16	is_boundary_to Arg1:T11 Arg2:T7	
+R17	is_a_previous_tenant_of Arg1:T12 Arg2:T11	
+R19	is_boundary_to Arg1:T15 Arg2:T7	
+R20	is_a_tenant_of Arg1:T16 Arg2:T15	
+R7	is_parcel_in Arg1:T18 Arg2:T17	
+*	same_as T19 T4
+R21	refers_to Arg1:T1 Arg2:T17	
+R1	is_a_landlord_of Arg1:T2 Arg2:T7	
+R3	occupation_is Arg1:T12 Arg2:T14	
+R4	refers_to Arg1:T1 Arg2:T23	

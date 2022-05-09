@@ -1,0 +1,56 @@
+T1	Document 0 14	Ward2_55_188_2
+#1	AnnotatorNotes T1	{"piece_id": "5471225", "date_text": "1530 June 5"}
+T2	Transaction 15 50	Grant, enfeoffment and confirmation
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 54 66	John Mayston
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Place 70 77	Boxsted
+T5	Apparatus 79 84	Essex
+R3	contains Arg1:T1 Arg2:T5	
+R4	is_of Arg1:T3 Arg2:T4	
+T6	Person 94 104	John Brett
+T7	Person 106 118	William Kyng
+T8	Place 122 129	Fordham
+T9	Apparatus 131 136	Essex
+R5	contains Arg1:T1 Arg2:T9	
+R6	is_of Arg1:T7 Arg2:T8	
+R7	is_grantor_in Arg1:T6 Arg2:T2	
+R8	is_grantor_in Arg1:T7 Arg2:T2	
+T10	Person 139 152	William Warde
+R9	is_grantor_in Arg1:T10 Arg2:T2	
+T11	Person 158 170	John Marteyn
+R10	is_grantor_in Arg1:T11 Arg2:T2	
+T12	Person 211 222	John Symond
+T13	Person 240 253	Walter Symond
+R11	is_son_of Arg1:T12 Arg2:T13	
+T14	Person 277 288	John Symond
+R12	is_recipient_in Arg1:T14 Arg2:T2	
+T15	Site 304 329	two pieces of arable land
+R13	is_parcel_in Arg1:T15 Arg2:T2	
+T16	Site 357 364	Plomers
+T17	Site 371 378	Lynches
+R14	is_part_of Arg1:T16 Arg2:T15	
+R15	is_part_of Arg1:T17 Arg2:T15	
+T18	Apparatus 380 398	(details specified
+R16	contains Arg1:T1 Arg2:T18	
+R17	is_a_tenant_of Arg1:T14 Arg2:T15	
+*	same_as T14 T12
+R18	is_participant_in Arg1:T12 Arg2:T2	
+T19	Place 403 410	Fordham
+R19	is_located_in Arg1:T15 Arg2:T19	
+T20	Apparatus 411 443	(location specified)• [Endorsed]
+R20	contains Arg1:T1 Arg2:T20	
+T21	Person 480 495	Geoffrey Newton
+T22	Person 497 511	Geoffrey Baker
+T23	Person 513 525	Thomas Jenor
+T24	Apparatus 527 533	Jenner
+T25	Person 536 548	Robert Jenor
+T26	Person 557 568	Walter Kyng
+T27	Person 570 581	Thomas Kyng
+R21	is_witness_to Arg1:T21 Arg2:T2	
+R22	is_witness_to Arg1:T22 Arg2:T2	
+R23	contains Arg1:T1 Arg2:T24	
+R24	is_witness_to Arg1:T23 Arg2:T2	
+R25	is_witness_to Arg1:T25 Arg2:T2	
+R26	is_witness_to Arg1:T26 Arg2:T2	
+R27	is_witness_to Arg1:T27 Arg2:T2	

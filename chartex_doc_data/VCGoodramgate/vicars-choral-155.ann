@@ -1,0 +1,75 @@
+T1	Document 0 17	vicars-choral-155
+T2	Person 38 55	Robert de Barneby
+T3	Occupation 56 66	cordwainer
+T4	Transaction 72 100	given, granted and confirmed
+T5	Person 149 177	Hugh le Merchand of Monkgate
+T6	Site 191 195	land
+T7	Site 183 187	part
+T8	Site 199 210	Goodramgate
+T9	Person 233 243	Hugh Sesse
+T10	Occupation 244 252	chaplain
+T11	Site 261 267	corner
+T12	Site 271 278	Aldwark
+T13	Site 300 304	part
+T14	Site 308 312	land
+T15	Site 337 341	land
+T16	Person 345 351	Robert
+T17	Occupation 356 362	hatter
+T18	Site 375 392	40 feet in length
+T19	Site 405 418	King's street
+T20	Site 422 430	Monklith
+T21	Site 435 451	30 feet in width
+T22	Site 460 464	land
+T23	Person 477 490	Hugh de Puset
+T24	Person 524 540	Hugh le Marchand
+T25	Site 739 752	King's street
+T26	Site 712 716	land
+T27	Person 782 795	Hugh de Puset
+T28	Person 946 952	Robert
+T29	Person 1042 1046	Hugh
+T30	Person 1154 1171	Henry de Fiskgate
+T31	Person 1173 1180	Richard
+T32	Person 1188 1195	Gilbert
+T33	Person 1197 1216	Randulf de Monkgate
+T34	Person 1236 1243	Johanne
+T35	Occupation 1247 1253	harper
+R1	occupation_is Arg1:T34 Arg2:T35	
+T36	Person 1255 1272	Johanne de Henele
+T37	Apparatus 1274 1350	SOURCE: VC 3/Vi 113i (168 mm. x 96 mm.) ENDORSEMENT: About that part towards
+R2	refers_to Arg1:T1 Arg2:T4	
+R3	contains Arg1:T1 Arg2:T37	
+R4	occupation_is Arg1:T2 Arg2:T3	
+R5	is_grantor_in Arg1:T2 Arg2:T4	
+R6	is_recipient_in Arg1:T5 Arg2:T4	
+R7	is_part_of Arg1:T7 Arg2:T6	
+R8	is_part_of Arg1:T6 Arg2:T8	
+R9	occupation_is Arg1:T9 Arg2:T10	
+R10	is_a_previous_grantor_of Arg1:T9 Arg2:T7	
+R11	is_parcel_in Arg1:T7 Arg2:T4	
+R12	is_part_of Arg1:T7 Arg2:T11	
+R13	is_part_of Arg1:T11 Arg2:T12	
+*	same_as T13 T7
+R14	is_part_of Arg1:T13 Arg2:T14	
+*	same_as T14 T6 T26
+R15	is_a_tenant_of Arg1:T16 Arg2:T15	
+R16	occupation_is Arg1:T16 Arg2:T17	
+R17	is_boundary_to Arg1:T15 Arg2:T7	
+R18	is_part_of Arg1:T18 Arg2:T7	
+R19	is_length_marker_to Arg1:T19 Arg2:T7	
+*	same_as T19 T20 T25
+R20	is_part_of Arg1:T21 Arg2:T7	
+R21	is_breadth_marker_to Arg1:T22 Arg2:T7	
+R22	is_a_previous_tenant_of Arg1:T23 Arg2:T22	
+*	same_as T24 T5 T29
+*	same_as T27 T23
+T38	Site 760 764	land
+*	same_as T38 T22
+*	same_as T28 T16
+R23	is_witness_to Arg1:T30 Arg2:T4	
+R24	is_son_of Arg1:T31 Arg2:T32	
+T39	Person 1218 1234	Peter ategatinde
+R25	is_witness_to Arg1:T31 Arg2:T4	
+R26	is_witness_to Arg1:T33 Arg2:T4	
+R27	is_witness_to Arg1:T39 Arg2:T4	
+R28	is_witness_to Arg1:T34 Arg2:T4	
+R29	is_witness_to Arg1:T36 Arg2:T4	

@@ -1,0 +1,48 @@
+T1	Document 0 13	cluny-BB_0102
+#1	AnnotatorNotes T1	{'title summary':'Charta qua Magnardus et uxor ejus Helena vendunt Bernardo curtilum in villa Crosiago.', 'dorsal text':'(Au dos:) Bernardus in Crosiaco.', 'markup notes':"It's hard to know how to treat the land of St. Joan, the land of Eldino, and the land of Racecco. The former sounds like the property of a religious institution, the latter two sound like the properties of persons. Note that there is an Eldino among the witnesses."}
+T2	Person 43 52	Magnardus
+T3	Person 66 73	Elenane
+T4	Person 28 36	Bernardo
+T5	Transaction 87 100	vendedissimus
+R1	refers_to Arg1:T1 Arg2:T5	
+R2	is_recipient_in Arg1:T4 Arg2:T5	
+R3	is_grantor_in Arg1:T2 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T5	
+T6	Site 110 119	cur[tilo]
+R5	is_location_of Arg1:T6 Arg2:T5	
+T7	Place 168 186	paugo Matisconense
+T8	Place 191 207	agro Crosiacense
+T9	Place 217 231	villa Crosiago
+R6	is_located_in Arg1:T6 Arg2:T7	
+R7	is_part_of Arg1:T7 Arg2:T8	
+R8	is_part_of Arg1:T8 Arg2:T9	
+T10	Site 264 269	terra
+T11	Site 270 283	Sancti Joanni
+*	same_as T11 T10
+R9	is_breadth_marker_to Arg1:T10 Arg2:T6	
+T12	Site 299 304	terra
+T13	Site 305 311	Eldino
+*	same_as T13 T12
+R10	is_breadth_marker_to Arg1:T12 Arg2:T6	
+T14	Site 327 332	terra
+T15	Site 333 340	Racecco
+*	same_as T15 T14
+T16	Site 356 367	via puplica
+R11	is_length_marker_to Arg1:T14 Arg2:T6	
+R12	is_length_marker_to Arg1:T16 Arg2:T6	
+T17	Place 1316 1340	Salenciago villa puplice
+R13	is_location_of Arg1:T17 Arg2:T5	
+T18	Date 1507 1571	die veneris, in mense genoario, in annos XII regnante Karlo rege
+R14	is_dated Arg1:T1 Arg2:T18	
+T19	Person 1403 1412	Adallelmo
+T20	Person 1417 1425	Rotberto
+T21	Person 1430 1444	Leotgerio Ardo
+T22	Person 1449 1455	Eldino
+R15	is_witness_to Arg1:T19 Arg2:T5	
+R16	is_witness_to Arg1:T20 Arg2:T5	
+R17	is_witness_to Arg1:T21 Arg2:T5	
+R18	is_witness_to Arg1:T22 Arg2:T5	
+T23	Site 123 128	vinia
+R19	is_part_of Arg1:T23 Arg2:T6	
+T24	Site 233 241	curtilus
+*	same_as T24 T6

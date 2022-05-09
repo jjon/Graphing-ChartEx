@@ -1,0 +1,27 @@
+T1	Document 0 13	cluny-BB_0060
+T3	Person 52 58	Lillie
+T4	Person 89 97	Diodatus
+T5	Transaction 98 103	vendo
+T6	Site 110 115	campo
+T7	Site 219 224	terra
+T8	Site 368 373	campo
+T9	Site 534 539	campo
+T10	Person 993 1000	Diodato
+T11	Person 1035 1044	Ingelelmo
+T12	Person 1073 1080	Gotaldo
+T13	Person 1085 1092	Domnoer
+T14	Person 1097 1104	Vulbert
+T15	Person 1147 1156	Grimoveno
+T16	Date 1222 1284	die sabati, in mense marcio, in annos nono renante Otdono rege
+T17	Person 1120 1129	Ataldrico
+T18	Person 1134 1142	Rogenono
+T19	Person 1109 1115	Dodono
+T20	Person 352 361	venditore
+T21	Place 173 195	villa a Kasal Bertrudo
+T22	Person 181 195	Kasal Bertrudo
+T2	Person 32 37	Ugono
+R1	is_wife_of Arg1:T3 Arg2:T2	
+T23	Place 133 147	Augustudinense
+T24	Place 157 168	Telliedense
+T25	Site 278 283	terra
+*	same_as T4 T10

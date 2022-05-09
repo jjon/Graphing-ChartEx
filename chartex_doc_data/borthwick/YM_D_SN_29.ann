@@ -1,0 +1,12 @@
+T1	Document 0 10	YM/D/SN/29
+#1	AnnotatorNotes T1	{"Creation Dates": "20 November 1584", "Title": ""}
+T2	Transaction 24 29	rents
+T3	Person 39 55	Richard Radcliff
+T4	Occupation 57 61	gent
+R1	occupation_is Arg1:T3 Arg2:T4	
+T5	Site 68 73	lands
+R2	is_parcel_in Arg1:T5 Arg2:T2	
+T6	Person 82 91	Mr Metham
+R3	is_a_landlord_of Arg1:T6 Arg2:T5	
+R4	is_a_tenant_of Arg1:T3 Arg2:T5	
+R5	refers_to Arg1:T1 Arg2:T2	

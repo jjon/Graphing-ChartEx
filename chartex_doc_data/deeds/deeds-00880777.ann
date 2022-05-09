@@ -1,0 +1,56 @@
+T1	Document 0 14	deeds-00880777
+#1	AnnotatorNotes T1	{'editorial date':'1225/30', 'transaction type': 'Grant'}
+T2	Person 51 74	Alexander de Chelmeshoo
+T3	Transaction 75 128	concessi et dedi et hac presenti carta mea confirmavi
+T4	Person 129 148	Simoni de Oddewelle
+T5	Person 152 160	Margerie
+T6	Site 183 189	partem
+T7	Place 204 217	Gestingthorpe
+T8	Site 221 227	crofta
+T9	Site 234 239	domum
+T10	Person 248 255	Simonis
+T11	Site 259 267	cheminum
+T12	Place 284 293	Chelmesho
+T13	Site 309 314	curie
+T14	Person 323 330	Simonis
+T15	Person 763 772	Alexander
+T16	Person 879 885	Simoni
+T17	Person 898 906	Margerie
+T18	Person 1098 1106	Margeria
+T19	Person 1080 1085	Simon
+T20	Person 1170 1178	Isabelle
+T21	Person 1248 1269	Gilberto de Oddewelle
+T22	Person 1270 1292	Willelmo de Toppesfeld
+T23	Person 1295 1311	Ordmero parkario
+T24	Person 1312 1335	Galfrido filio Willelmi
+T27	Person 1359 1374	Roberto potserd
+T28	Person 1377 1394	Gilberto de Cruce
+T29	Person 1395 1416	Rogero filio Galfridi
+T31	Person 1336 1358	Manulpho filio Mangeri
+R4	refers_to Arg1:T1 Arg2:T3	
+R5	is_grantor_in Arg1:T2 Arg2:T3	
+R6	is_recipient_in Arg1:T4 Arg2:T3	
+R7	is_wife_of Arg1:T5 Arg2:T4	
+R8	is_recipient_in Arg1:T5 Arg2:T3	
+R9	is_part_of Arg1:T6 Arg2:T8	
+R11	is_located_in Arg1:T8 Arg2:T7	
+R12	is_boundary_to Arg1:T9 Arg2:T8	
+R13	is_a_tenant_of Arg1:T10 Arg2:T9	
+*	same_as T10 T4 T14 T16 T19
+R14	is_boundary_to Arg1:T11 Arg2:T8	
+R10	is_parcel_in Arg1:T6 Arg2:T3	
+R15	is_boundary_to Arg1:T12 Arg2:T11	
+R16	is_breadth_marker_to Arg1:T13 Arg2:T6	
+R17	is_a_tenant_of Arg1:T14 Arg2:T13	
+*	same_as T15 T2
+*	same_as T17 T5 T18
+R18	is_wife_of Arg1:T20 Arg2:T15	
+R19	is_participant_in Arg1:T20 Arg2:T3	
+R20	is_witness_to Arg1:T21 Arg2:T3	
+R21	is_witness_to Arg1:T22 Arg2:T3	
+R22	is_witness_to Arg1:T23 Arg2:T3	
+R23	is_witness_to Arg1:T24 Arg2:T3	
+R24	is_witness_to Arg1:T31 Arg2:T3	
+R25	is_witness_to Arg1:T27 Arg2:T3	
+R26	is_witness_to Arg1:T28 Arg2:T3	
+R27	is_witness_to Arg1:T29 Arg2:T3	

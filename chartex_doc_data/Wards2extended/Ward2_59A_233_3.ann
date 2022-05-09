@@ -1,0 +1,66 @@
+T1	Document 0 15	Ward2_59A_233_3
+#1	AnnotatorNotes T1	{"piece_id": "5472147", "date_text": "1564 Sept 10"}
+T2	Transaction 29 45	bargain and sale
+R1	refers_to Arg1:T1 Arg2:T32	
+T3	Person 49 62	Thomas Audley
+T4	Apparatus 64 71	Audeley
+T5	Place 76 83	Stanway
+T6	Place 85 90	Essex
+T7	Occupation 92 101	gentleman
+T8	Person 106 121	Edmund Markaunt
+T9	Place 129 147	parish of St Giles
+T10	Place 155 165	Colchester
+T11	Place 167 172	Essex
+T13	Site 190 196	meadow
+T14	Site 204 218	'Chene Meadowe
+T15	Site 223 238	'Horsse Meadowe
+T16	Place 278 294	parish of Lexden
+T17	Place 296 301	Essex
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_of Arg1:T3 Arg2:T5	
+R5	is_part_of Arg1:T5 Arg2:T6	
+R6	occupation_is Arg1:T3 Arg2:T7	
+R7	is_recipient_in Arg1:T8 Arg2:T2	
+R8	is_of Arg1:T8 Arg2:T9	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_part_of Arg1:T10 Arg2:T11	
+T12	Occupation 174 183	gentleman
+R11	occupation_is Arg1:T8 Arg2:T12	
+R12	is_parcel_in Arg1:T13 Arg2:T2	
+*	same_as T13 T14 T15
+R13	is_located_in Arg1:T13 Arg2:T16	
+R14	is_part_of Arg1:T16 Arg2:T17	
+T18	Site 380 384	land
+T19	Place 388 398	Colchester
+T20	Place 400 406	Lexden
+T21	Place 411 417	Myland
+T22	Place 419 424	Essex
+T23	Institution 462 487	priory of Crutched Friars
+T24	Place 491 501	Colchester
+R15	is_located_in Arg1:T23 Arg2:T24	
+T25	Person 521 535	Richard Cabell
+T26	Apparatus 605 628	Seal of Edmund Markaunt
+R16	contains Arg1:T1 Arg2:T4	
+T27	Person 537 549	John Bodyham
+T28	Person 551 566	Richard Newbold
+T29	Person 568 581	Thomas Menley
+T30	Person 586 603	Anthony Bannester
+R17	is_witness_to Arg1:T25 Arg2:T2	
+R18	is_witness_to Arg1:T27 Arg2:T2	
+R19	contains Arg1:T1 Arg2:T26	
+R20	is_witness_to Arg1:T30 Arg2:T2	
+R21	is_witness_to Arg1:T29 Arg2:T2	
+R22	is_witness_to Arg1:T28 Arg2:T2	
+R23	is_a_previous_tenant_of Arg1:T23 Arg2:T18	
+R24	is_located_in Arg1:T18 Arg2:T19	
+R25	is_located_in Arg1:T18 Arg2:T20	
+R26	is_located_in Arg1:T18 Arg2:T21	
+R27	is_part_of Arg1:T21 Arg2:T22	
+R28	is_part_of Arg1:T20 Arg2:T22	
+R29	is_part_of Arg1:T19 Arg2:T22	
+T32	Transaction 338 348	indentures
+R30	precedes Arg1:T32 Arg2:T2	
+R32	is_parcel_in Arg1:T18 Arg2:T32	
+R31	is_participant_in Arg1:T3 Arg2:T32	
+R33	is_participant_in Arg1:T8 Arg2:T32	

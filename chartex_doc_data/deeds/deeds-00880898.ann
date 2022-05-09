@@ -1,0 +1,52 @@
+T1	Document 0 14	deeds-00880898
+#1	AnnotatorNotes T1	{'editorial date':'1307', 'transaction type': 'Grant'}
+T2	Person 51 70	Gilbertus Goldeston
+T3	Transaction 71 121	dedi concessi et hac presenti carta mea confirmavi
+R1	refers_to Arg1:T1 Arg2:T3	
+T4	Person 122 140	Nicholao Goldeston
+T5	Site 164 173	tenementa
+T6	Place 191 196	villa
+T7	Place 200 213	Gestingthorpe
+T8	Place 246 253	Odewell
+T21	Person 629 637	Nicholao
+T22	Person 829 837	Gilberto
+T23	Person 984 993	Gilbertus
+T24	Person 1099 1107	Nicholao
+T25	Date 1330 1396	mense novembris anno regni regis Edwardi filii regis Edwardi primo
+R2	is_dated Arg1:T1 Arg2:T25	
+T26	Person 1411 1437	domino Alano de Goldyngham
+T27	Person 1438 1464	domino Iohanne de Wastoill
+T28	Occupation 1465 1474	militibus
+T29	Person 1475 1491	Iohanne Burdleys
+T30	Person 1492 1514	Roberto filio Nicholai
+T32	Person 1532 1553	Radulpho de Wetherden
+T33	Person 1554 1568	Galfrido warde
+T34	Person 1569 1583	Waltero Morell
+T35	Person 1584 1604	Rogero de Abotteston
+T36	Person 1605 1622	Waltero le Dekyne
+T37	Person 1623 1635	Roberto wall
+T38	Person 1636 1659	Ricardo Loue de Cantuar
+R3	is_grantor_in Arg1:T2 Arg2:T3	
+R4	is_recipient_in Arg1:T4 Arg2:T3	
+R5	is_parcel_in Arg1:T5 Arg2:T3	
+R6	is_located_in Arg1:T5 Arg2:T8	
+R7	is_located_in Arg1:T8 Arg2:T6	
+*	same_as T6 T7
+*	same_as T21 T4 T24
+*	same_as T23 T2 T22
+R20	is_witness_to Arg1:T26 Arg2:T3	
+R21	is_witness_to Arg1:T27 Arg2:T3	
+R22	occupation_is Arg1:T27 Arg2:T28	
+R23	occupation_is Arg1:T26 Arg2:T28	
+R24	is_witness_to Arg1:T29 Arg2:T3	
+R25	is_witness_to Arg1:T30 Arg2:T3	
+R27	is_witness_to Arg1:T32 Arg2:T3	
+R28	is_witness_to Arg1:T33 Arg2:T3	
+R29	is_witness_to Arg1:T34 Arg2:T3	
+R30	is_witness_to Arg1:T35 Arg2:T3	
+R31	is_witness_to Arg1:T36 Arg2:T3	
+R32	is_witness_to Arg1:T37 Arg2:T3	
+R33	is_witness_to Arg1:T38 Arg2:T3	
+R34	is_familial_relation_to Arg1:T4 Arg2:T2	
+T9	Place 1518 1531	Gestingthorpe
+R8	is_of Arg1:T30 Arg2:T9	

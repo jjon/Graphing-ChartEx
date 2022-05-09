@@ -1,0 +1,70 @@
+T1	Document 0 14	deeds-00880638
+#1	AnnotatorNotes T1	{'editorial date':'1274', 'transaction type': 'Grant'}
+T2	Transaction 87 140	concessi et dedi et hac presenti carta mea confirmavi
+T4	Person 141 161	Rogero de Othulvesho
+T5	Person 382 396	Warino Withors
+T6	Person 400 408	Margeria
+T7	Person 547 565	Rogero de Snaudone
+T8	Person 652 671	Sewallo de Stublegh
+T9	Person 842 849	Warinus
+T10	Person 850 858	Margeria
+T11	Person 859 866	Rogerus
+T12	Person 870 878	Sewallus
+T13	Person 1145 1151	Rogero
+T14	Person 1431 1437	Petrus
+T15	Person 1625 1645	Rogero de Othulvesho
+T16	Person 1866 1888	Willelmo filio Ricardi
+T17	Person 1889 1911	Phillippo filio Andree
+T20	Person 1912 1935	Waltero de Cole cestria
+T21	Person 1936 1952	Rogero Fraunceys
+T22	Person 1953 1973	Willelmo de Stublegh
+T23	Person 1974 1992	Iohanne de Herlaue
+T24	Person 1993 2004	Ricardo Dye
+T25	Person 2005 2025	Willelmo de Marevill
+T26	Person 2026 2042	Mauricio Huraund
+T27	Person 2043 2058	Simone de Ponte
+T28	Person 2059 2077	Iordano de Stutton
+T3	Apparatus 58 66	[filius]
+T29	Person 51 74	Petrus [filius] Albrici
+T30	Occupation 162 169	clerico
+T31	Place 345 353	Halstede
+T32	Place 916 924	Halstede
+T33	Place 2098 2106	Halstede
+T34	Date 2107 2195	die appostolorum Philippi et Iacobi anno regni regis Edwardi filii regis Henrici secundo
+R2	is_recipient_in Arg1:T4 Arg2:T2	
+*	same_as T5 T9
+*	same_as T6 T10
+*	same_as T4 T13 T15
+*	same_as T7 T11
+*	same_as T8 T12
+*	same_as T31 T32 T33 T36 T18 T19
+R1	is_grantor_in Arg1:T29 Arg2:T2	
+R3	occupation_is Arg1:T4 Arg2:T30	
+R4	refers_to Arg1:T1 Arg2:T2	
+*	same_as T29 T14
+R5	is_a_tenant_in Arg1:T5 Arg2:T2	
+R7	is_a_tenant_in Arg1:T7 Arg2:T2	
+R8	is_a_tenant_in Arg1:T8 Arg2:T2	
+R13	is_witness_to Arg1:T28 Arg2:T2	
+R14	is_witness_to Arg1:T16 Arg2:T2	
+R15	is_witness_to Arg1:T17 Arg2:T2	
+R16	is_witness_to Arg1:T20 Arg2:T2	
+R17	is_witness_to Arg1:T21 Arg2:T2	
+R18	is_witness_to Arg1:T22 Arg2:T2	
+R19	is_witness_to Arg1:T23 Arg2:T2	
+R20	is_witness_to Arg1:T24 Arg2:T2	
+R21	is_witness_to Arg1:T25 Arg2:T2	
+R22	is_witness_to Arg1:T26 Arg2:T2	
+R23	is_witness_to Arg1:T27 Arg2:T2	
+R24	is_dated Arg1:T1 Arg2:T34	
+R30	is_a_tenant_in Arg1:T6 Arg2:T2	
+T37	Site 817 827	tenementis
+R9	is_parcel_in Arg1:T37 Arg2:T2	
+R27	is_location_of Arg:T33 Arg2:T2	
+T36	Place 78 86	Halstede
+R28	is_of Arg1:T29 Arg2:T36	
+R12	is_wife_of Arg1:T6 Arg2:T5	
+R6	is_located_in Arg1:T37 Arg2:T32	
+R10	contains Arg1:T1 Arg2:T3	
+T18	Place 336 341	villa
+T19	Place 907 912	villa

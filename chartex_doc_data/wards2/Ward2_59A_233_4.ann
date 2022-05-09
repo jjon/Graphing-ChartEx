@@ -1,0 +1,39 @@
+T1	Document 0 15	Ward2_59A_233_4
+#1	AnnotatorNotes T1	{"piece_id": "5472148", "date_text": "1597 Apr 11"}
+T2	Person 35 48	Thomas Audley
+T4	Place 62 70	Gosbecks
+T5	Place 72 77	Essex
+T6	Occupation 79 88	gentleman
+T7	Transaction 90 96	leases
+T8	Person 100 114	Richard Plomer
+T9	Place 118 134	Layer-de-la-Haye
+T10	Place 136 141	Essex
+T11	Occupation 143 149	yeoman
+T12	Site 155 168	mansion house
+T13	Site 176 184	Gosbecks
+T14	Site 198 236	buildings, barns, stables, and gardens
+T15	Site 261 275	pieces of land
+T16	Apparatus 277 295	location specified
+T17	Person 375 389	Thomas Audeley
+T18	Person 394 406	Andrew Asshe
+R1	refers_to Arg1:T1 Arg2:T7	
+R2	is_witness_to Arg1:T17 Arg2:T7	
+T3	Apparatus 50 57	Audeley
+R3	contains Arg1:T1 Arg2:T3	
+R4	contains Arg1:T1 Arg2:T16	
+R5	is_grantor_in Arg1:T2 Arg2:T7	
+R6	is_of Arg1:T2 Arg2:T4	
+R7	is_part_of Arg1:T4 Arg2:T5	
+R8	is_recipient_in Arg1:T8 Arg2:T7	
+R9	is_of Arg1:T8 Arg2:T9	
+R10	is_part_of Arg1:T9 Arg2:T10	
+R11	is_parcel_in Arg1:T12 Arg2:T7	
+R12	occupation_is Arg1:T2 Arg2:T6	
+R13	occupation_is Arg1:T8 Arg2:T11	
+*	same_as T12 T13
+R14	is_part_of Arg1:T14 Arg2:T12	
+R15	is_part_of Arg1:T15 Arg2:T12	
+R16	is_located_in Arg1:T13 Arg2:T4	
+R17	is_witness_to Arg1:T18 Arg2:T7	
+T19	Apparatus 408 430	Seal of Richard Plomer
+R18	contains Arg1:T1 Arg2:T19	

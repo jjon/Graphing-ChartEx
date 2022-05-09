@@ -1,0 +1,54 @@
+T1	Document 0 9	YM/D/SN/6
+T2	Transaction 11 20	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "12 March 1454", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 21 36	Geoffrey Barker
+T4	Place 40 46	Snaith
+T5	Person 51 59	Isabella
+R2	is_of Arg1:T3 Arg2:T4	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_wife_of Arg1:T5 Arg2:T3	
+T6	Person 70 84	Richard Edmond
+T7	Place 88 94	Snaith
+R5	is_of Arg1:T6 Arg2:T7	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+T8	Person 99 109	John Osset
+R7	is_recipient_in Arg1:T8 Arg2:T2	
+T9	Site 111 131	Moiety of a messuage
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T10	Place 151 157	Snaith
+R9	is_located_in Arg1:T9 Arg2:T10	
+T11	Site 139 147	west end
+R10	is_located_in Arg1:T11 Arg2:T10	
+R11	is_part_of Arg1:T9 Arg2:T11	
+T12	Site 168 187	messuage and garden
+R12	is_eastern_directional_marker_to Arg1:T12 Arg2:T9	
+T13	Person 191 197	Edmond
+R13	is_a_tenant_of Arg1:T13 Arg2:T12	
+*	same_as T13 T6
+T14	Person 243 260	Richard de Snayth
+T15	Site 219 226	orchard
+R14	is_a_previous_tenant_of Arg1:T14 Arg2:T15	
+R15	is_western_directional_marker_to Arg1:T15 Arg2:T9	
+T16	Site 283 293	common way
+T17	Place 302 308	Snaith
+T18	Site 309 315	fields
+R16	is_located_in Arg1:T18 Arg2:T17	
+T19	Place 319 323	Dorr
+R17	is_southern_directional_marker_to Arg1:T16 Arg2:T9	
+R18	is_part_of Arg1:T16 Arg2:T18	
+T20	Site 349 354	marsh
+T21	Place 342 348	Snaith
+R19	is_located_in Arg1:T20 Arg2:T21	
+R20	is_northern_directional_marker_to Arg1:T20 Arg2:T9	
+T22	Person 374 389	Richard Dylcock
+T23	Person 391 405	Thomas Dylcock
+T24	Person 414 426	John Bubwith
+T25	Person 428 438	John Wygan
+T26	Person 440 450	John Thorp
+R21	is_witness_to Arg1:T22 Arg2:T2	
+R22	is_witness_to Arg1:T23 Arg2:T2	
+R23	is_witness_to Arg1:T24 Arg2:T2	
+R24	is_witness_to Arg1:T25 Arg2:T2	
+R25	is_witness_to Arg1:T26 Arg2:T2	
+R26	is_boundary_to Arg1:T19 Arg2:T16	

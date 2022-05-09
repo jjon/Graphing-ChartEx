@@ -1,0 +1,43 @@
+T1	Document 0 15	Ward2_55_188_20
+#1	AnnotatorNotes T1	{"piece_id": "5471243", "date_text": "1530 June 1"}
+T2	Transaction 16 25	Quitclaim
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 29 40	John Symond
+T4	Person 58 72	Walter Symonde
+R2	is_son_of Arg1:T3 Arg2:T4	
+T5	Person 87 99	John Mayston
+T6	Place 110 116	Boxted
+T7	Place 118 123	Essex
+R3	is_part_of Arg1:T6 Arg2:T7	
+R4	is_of Arg1:T5 Arg2:T6	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_recipient_in Arg1:T5 Arg2:T2	
+T8	Person 125 135	John Brett
+T9	Person 137 149	William Kyng
+T10	Place 153 160	Fordham
+T11	Place 162 167	Essex
+T12	Person 169 182	William Warde
+T13	Person 187 199	John Marteyn
+T14	Place 204 210	Leyham
+R7	is_recipient_in Arg1:T8 Arg2:T2	
+R8	is_recipient_in Arg1:T9 Arg2:T2	
+R9	is_of Arg1:T9 Arg2:T10	
+R10	is_part_of Arg1:T10 Arg2:T11	
+R11	is_recipient_in Arg1:T12 Arg2:T2	
+R12	is_recipient_in Arg1:T13 Arg2:T2	
+R13	is_of Arg1:T13 Arg2:T14	
+T15	Site 216 241	two pieces of arable land
+R14	is_parcel_in Arg1:T15 Arg2:T2	
+T16	Site 269 276	Plomers
+T17	Site 283 290	Lynches
+R15	is_part_of Arg1:T16 Arg2:T15	
+R16	is_part_of Arg1:T17 Arg2:T15	
+T18	Apparatus 293 310	details specified
+R17	contains Arg1:T1 Arg2:T18	
+T19	Place 315 322	Fordham
+T20	Place 324 329	Essex
+R18	is_part_of Arg1:T19 Arg2:T20	
+R19	is_located_in Arg1:T15 Arg2:T19	
+*	same_as T19 T10
+T21	Apparatus 330 372	(location specified)• Seal of John Symonde
+R20	contains Arg1:T1 Arg2:T21	

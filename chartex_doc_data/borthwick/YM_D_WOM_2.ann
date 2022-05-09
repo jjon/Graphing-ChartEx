@@ -1,0 +1,54 @@
+T1	Document 0 10	YM/D/WOM/2
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "20 April, 1553", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 35	John Horssell
+T4	Person 53 68	Robert Horssell
+R2	is_son_of Arg1:T3 Arg2:T4	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+T5	Person 80 93	John Horssell
+T6	Person 102 111	John Anby
+T7	Person 120 132	Thomas Byrde
+T8	Person 134 150	William Horssell
+T9	Person 152 171	Christopher Cloughe
+T10	Person 237 251	William Talzer
+T11	Person 173 185	John Hassard
+R4	is_recipient_in Arg1:T5 Arg2:T2	
+R5	is_recipient_in Arg1:T6 Arg2:T2	
+R6	is_recipient_in Arg1:T7 Arg2:T2	
+R7	is_recipient_in Arg1:T8 Arg2:T2	
+T12	Person 187 196	Henry Moy
+T13	Person 198 212	William Pagett
+T14	Person 214 228	William Rayner
+T15	Person 258 262	Gyll
+*	same_as T10 T15
+T16	Person 264 280	John Barocloughe
+R8	is_recipient_in Arg1:T10 Arg2:T2	
+R9	is_recipient_in Arg1:T9 Arg2:T2	
+R10	is_recipient_in Arg1:T11 Arg2:T2	
+R11	is_recipient_in Arg1:T12 Arg2:T2	
+R12	is_recipient_in Arg1:T13 Arg2:T2	
+R13	is_recipient_in Arg1:T14 Arg2:T2	
+R14	is_recipient_in Arg1:T16 Arg2:T2	
+T17	Person 282 300	William Grysthweit
+R15	is_recipient_in Arg1:T17 Arg2:T2	
+T18	Person 302 318	George Middelton
+T19	Person 327 340	William Beall
+T20	Person 349 365	Nicholas Bateman
+T21	Person 371 388	William Middelton
+R16	is_recipient_in Arg1:T18 Arg2:T2	
+R17	is_recipient_in Arg1:T19 Arg2:T2	
+R18	is_recipient_in Arg1:T20 Arg2:T2	
+R19	is_recipient_in Arg1:T21 Arg2:T2	
+T22	Site 390 400	Two closes
+R20	is_parcel_in Arg1:T22 Arg2:T2	
+T23	Place 404 410	Fulham
+T24	Place 435 444	Womersley
+R21	is_part_of Arg1:T23 Arg2:T24	
+R22	is_located_in Arg1:T22 Arg2:T23	
+T25	Site 457 465	Pydcroft
+T26	Site 469 477	Pykcroft
+*	same_as T25 T26
+R23	is_part_of Arg1:T25 Arg2:T22	
+T27	Site 496 507	North croft
+R24	is_part_of Arg1:T27 Arg2:T22	

@@ -1,0 +1,52 @@
+T1	Document 0 13	cluny-BB_0060
+#1	AnnotatorNotes T1	{'title summary':'Charta qua Deodatus vendit Hugoni et Lilliæ uxori campum in villa de Kasal Bertrudo.', 'dorsal text':'(Au dos:) Venditio Diodati in Kasal Bertrudo.'}
+T2	Person 32 37	Ugono
+T3	Person 52 58	Lillie
+R1	is_wife_of Arg1:T3 Arg2:T2	
+T4	Transaction 98 103	vendo
+R2	is_recipient_in Arg1:T2 Arg2:T4	
+R3	is_recipient_in Arg1:T3 Arg2:T4	
+T5	Person 89 97	Diodatus
+R4	is_grantor_in Arg1:T5 Arg2:T4	
+T6	Site 110 115	campo
+T7	Place 157 168	Telliedense
+T8	Place 133 147	Augustudinense
+T9	Place 181 195	Kasal Bertrudo
+T10	Site 219 224	terra
+R5	is_boundary_to Arg1:T10 Arg2:T6	
+T11	Person 228 235	Algerio
+T12	Person 239 248	Atalberto
+R6	is_a_tenant_of Arg1:T11 Arg2:T10	
+R7	is_a_tenant_of Arg1:T12 Arg2:T10	
+T13	Site 278 283	terra
+T14	Person 287 292	Aldra
+R8	is_a_tenant_of Arg1:T14 Arg2:T13	
+R9	is_boundary_to Arg1:T13 Arg2:T6	
+T15	Site 308 320	rivo publico
+T16	Site 338 343	vinea
+R10	is_boundary_to Arg1:T15 Arg2:T6	
+R11	is_boundary_to Arg1:T16 Arg2:T6	
+T17	Site 453 458	vinea
+*	same_as T17 T16
+T18	Site 439 444	prato
+T19	Site 412 419	termido
+T20	Person 352 361	venditore
+*	same_as T20 T5 T22
+T21	Site 368 373	campo
+*	same_as T21 T6 T18
+T22	Person 993 1000	Diodato
+T23	Person 1035 1044	Ingelelmo
+T24	Occupation 1046 1053	clerici
+T25	Person 1073 1080	Gotaldo
+T26	Person 1085 1091	Domnoe
+T27	Person 1097 1103	Vulber
+T28	Person 1109 1115	Dodono
+T29	Person 1120 1129	Ataldrico
+T30	Person 1134 1142	Rogenono
+T31	Person 1147 1156	Grimoveno
+T32	Person 1161 1170	Custabulo
+T33	Person 1172 1182	Ingelelmus
+T34	Person 1195 1205	Teutramnus
+T35	Date 1222 1284	die sabati, in mense marcio, in annos nono renante Otdono rege
+R12	is_dated Arg1:T4 Arg2:T35	
+R13	refers_to Arg1:T1 Arg2:T4	

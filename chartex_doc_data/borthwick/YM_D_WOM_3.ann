@@ -1,0 +1,51 @@
+T1	Document 0 10	YM/D/WOM/3
+#1	AnnotatorNotes T1	{"Creation Dates": "1583", "Title": ""}
+T2	Transaction 11 19	Petition
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 23 37	Peter Standley
+T4	Place 41 50	Womersley
+T5	Occupation 52 55	esq
+R2	is_participant_in Arg1:T3 Arg2:T2	
+R3	is_of Arg1:T3 Arg2:T4	
+T6	Person 62 75	dame Margaret
+R4	is_wife_of Arg1:T6 Arg2:T3	
+T7	Person 107 124	William Gascoigne
+T8	Occupation 126 128	kt
+R5	occupation_is Arg1:T7 Arg2:T8	
+R6	is_widow_of Arg1:T6 Arg2:T7	
+T9	Site 244 249	close
+T10	Place 253 262	Womersley
+R7	is_located_in Arg1:T9 Arg2:T10	
+T11	Person 289 306	Nicholas Skeltone
+R8	is_an_occupant_of_a Arg1:T11 Arg2:T9	
+T12	Person 220 229	Gascoigne
+*	same_as T12 T7 T20
+T13	Transaction 234 241	granted
+R9	precedes Arg1:T13 Arg2:T2	
+R10	is_parcel_in Arg1:T9 Arg2:T2	
+R11	is_parcel_in Arg1:T9 Arg2:T13	
+R12	is_grantor_in Arg1:T12 Arg2:T13	
+T14	Person 311 325	John Gascoigne
+T15	Person 333 346	Thomas Wright
+T16	Occupation 327 330	esq
+T17	Occupation 348 352	gent
+R13	occupation_is Arg1:T15 Arg2:T17	
+R14	occupation_is Arg1:T14 Arg2:T16	
+T18	Person 387 391	wife
+*	same_as T18 T6
+T19	Person 409 417	Standley
+T20	Person 424 435	Gascoigne's
+T21	Person 478 486	Skeltone
+T22	Occupation 370 378	trustees
+R15	occupation_is Arg1:T15 Arg2:T22	
+R16	occupation_is Arg1:T14 Arg2:T22	
+R17	is_recipient_in Arg1:T18 Arg2:T13	
+*	same_as T19 T3
+*	same_as T21 T11
+R18	is_other_relation_to Arg1:T15 Arg2:T18	
+R19	is_other_relation_to Arg1:T14 Arg2:T18	
+R20	is_participant_in Arg1:T6 Arg2:T2	
+T23	Institution 163 183	Council of the North
+T24	Institution 149 154	Queen
+R21	is_participant_in Arg1:T24 Arg2:T2	
+R22	is_participant_in Arg1:T23 Arg2:T2	

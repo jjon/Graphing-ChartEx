@@ -1,0 +1,155 @@
+T1	Document 0 17	vicars-choral-136
+T2	Person 65 75	John Roman
+T3	Occupation 76 89	canon of York
+T4	Site 219 223	land
+T5	Site 227 239	Gutherumgate
+T6	Institution 198 204	vicars
+T7	Site 323 331	messuage
+T8	Institution 339 361	prebend of Susneubaude
+T9	SiteRef 367 372	that]
+T10	Institution 380 398	prebend of Wistowe
+T11	Institution 445 476	canon of the prebend of Wistowe
+T12	Institution 512 528	canon of Wistowe
+T13	Institution 589 595	vicars
+T14	Site 629 633	door
+T15	Site 691 696	house
+T16	Institution 704 721	canon of Wistowe,
+T17	Person 802 812	John Roman
+T18	Person 865 886	Adam de Sunderlandwic
+T19	Site 901 905	land
+T20	Place 913 917	vill
+T21	Place 921 927	Garton
+T22	Person 1342 1347	John'
+T23	Person 1389 1394	Roger
+T24	Occupation 1399 1403	dean
+T26	Person 1136 1141	John'
+T27	Person 1253 1257	John
+T25	Person 1405 1413	Geoffrey
+T28	Occupation 1418 1427	precentor
+T29	Person 1429 1436	William
+T30	Occupation 1441 1450	treasurer
+T31	Person 1452 1458	Walter
+T32	Occupation 1459 1480	archdeacon of Estrich
+T33	Person 1483 1489	Godard
+T34	Person 1491 1496	Erard
+T35	Person 1498 1515	Robert de Harenis
+T36	Person 1517 1524	Bernard
+T37	Person 1526 1533	Maurice
+T38	Occupation 1535 1541	canons
+T39	Person 1543 1560	mag. John, Walter
+T40	Person 1562 1567	Ralph
+T41	Occupation 1569 1578	chaplains
+T42	Person 1580 1600	Walter of the vestry
+T43	Person 1618 1633	Geoffrey Briton
+T44	Person 1635 1651	John de Norfolch
+T45	Occupation 1654 1674	canons of the chapel
+T46	Person 1676 1689	John de Burgo
+T47	Person 1691 1697	Philip
+T48	Person 1699 1710	Peter Roman
+T49	Person 1712 1720	Geoffrey
+T50	Person 1722 1741	William de Jakellei
+T51	Person 1743 1760	William de Insula
+T52	Person 1762 1770	Nicholas
+T53	Person 1772 1778	Robert
+T54	Person 1780 1786	Thomas
+T55	Person 1788 1794	Thomas
+T56	Occupation 1799 1804	clerk
+R1	occupation_is Arg1:T55 Arg2:T56	
+T57	Person 1806 1811	Henry
+T58	Person 1813 1817	Alan
+T59	Person 1819 1826	William
+T60	Person 1834 1841	William
+T61	Person 1849 1853	Sich
+R2	is_son_of Arg1:T59 Arg2:T60	
+R3	is_son_of Arg1:T60 Arg2:T61	
+T62	Person 1856 1871	John de Warthil
+T63	Person 1873 1890	John of Stayngate
+T64	Person 1892 1898	Walter
+R4	is_brother_of Arg1:T64 Arg2:T63	
+T65	Person 1912 1918	Thomas
+T66	Occupation 1923 1932	goldsmith
+R5	occupation_is Arg1:T65 Arg2:T66	
+T67	Person 1934 1941	William
+T68	Person 1949 1956	Herbert
+R6	is_son_of Arg1:T67 Arg2:T68	
+T69	Person 1958 1962	Hugh
+T70	Person 1970 1976	Arnald
+R7	is_son_of Arg1:T69 Arg2:T70	
+T71	Person 1978 1984	Robert
+T72	Person 1992 1996	Swan
+R8	is_son_of Arg1:T71 Arg2:T72	
+T73	Apparatus 1999 3236	[1220 x 1228] SOURCE: CCA, DCc/Charta Antiqua Y5 (194 mm. x 188 mm.). Indented at top. ENDORSEMENT: Carta Johannis Romeyn, Gutherumgate; iuxta Sowthnewbald' ex parte boriali; de tenemento quod Robertus Underwod inhabitat. SEALS: (left) vesica (25 mm. x 22 mm.), red, impression of a man facing right ? holding a trumpet to his mouth, legend + IOhS E[ST N]OMEN EIUS (text in square brackets supplied from example attached to 137); (right) seal of dean and chapter, white (poor condition). COPY: VC 3/1/1, fo. 21r.—v. PRINTED: Historians of the Church of York, ed. J. Raine (Rolls Series, iii, 1894), 152-3 (from YML, L 2/2a, fo. 82).DATE: When Roger de Insula was dean and before Romeyn became subdean of York; it corrects the date given in the previously printed version. NOTE: This and the next charter both relate to the endowment of an obit for John le Romeyn the elder. A marginal note in the cartulary against the entry for this charter reads: alia fere concordat supra sexto folio ex parte nigra. The note is taken up by another marginal note written against the entry for 137: alia fere concordat infra sexto folio ex parte nigra. The land in Goodramgate from which the 13s. 4d. came was later granted by Romeyn to the vicars: 137
+R9	contains Arg1:T1 Arg2:T73	
+T74	Transaction 188 193	given
+R10	refers_to Arg1:T1 Arg2:T74	
+R11	occupation_is Arg1:T2 Arg2:T3	
+R12	is_grantor_in Arg1:T2 Arg2:T74	
+R13	is_recipient_in Arg1:T6 Arg2:T74	
+R14	is_part_of Arg1:T4 Arg2:T5	
+R15	is_parcel_in Arg1:T4 Arg2:T74	
+R16	is_boundary_to Arg1:T7 Arg2:T4	
+R17	is_a_tenant_of Arg1:T8 Arg2:T7	
+R18	is_boundary_to Arg1:T9 Arg2:T4	
+R19	is_a_tenant_of Arg1:T10 Arg2:T9	
+*	same_as T16 T12 T11 T10
+*	same_as T13 T6 T75
+R20	is_a_landlord_of Arg1:T16 Arg2:T15	
+R21	is_part_of Arg1:T14 Arg2:T15	
+R22	is_boundary_to Arg1:T14 Arg2:T4	
+*	same_as T17 T2 T22 T26 T27
+T75	Institution 837 843	vicars
+R23	is_a_tenant_of Arg1:T18 Arg2:T19	
+R24	is_parcel_in Arg1:T19 Arg2:T74	
+R25	is_located_in Arg1:T19 Arg2:T20	
+R26	is_part_of Arg1:T20 Arg2:T21	
+R27	occupation_is Arg1:T23 Arg2:T24	
+R28	occupation_is Arg1:T25 Arg2:T28	
+R29	occupation_is Arg1:T29 Arg2:T30	
+R30	occupation_is Arg1:T31 Arg2:T32	
+R31	occupation_is Arg1:T33 Arg2:T38	
+R32	occupation_is Arg1:T34 Arg2:T38	
+R33	occupation_is Arg1:T35 Arg2:T38	
+R34	occupation_is Arg1:T36 Arg2:T38	
+R35	occupation_is Arg1:T37 Arg2:T38	
+R36	occupation_is Arg1:T40 Arg2:T41	
+R37	occupation_is Arg1:T44 Arg2:T45	
+R38	occupation_is Arg1:T39 Arg2:T41	
+R39	occupation_is Arg1:T42 Arg2:T45	
+R40	occupation_is Arg1:T43 Arg2:T45	
+R41	is_witness_to Arg1:T23 Arg2:T74	
+R42	is_witness_to Arg1:T25 Arg2:T74	
+R43	is_witness_to Arg1:T29 Arg2:T74	
+R44	is_witness_to Arg1:T31 Arg2:T74	
+R45	is_witness_to Arg1:T33 Arg2:T74	
+R46	is_witness_to Arg1:T34 Arg2:T74	
+R47	is_witness_to Arg1:T35 Arg2:T74	
+R48	is_witness_to Arg1:T36 Arg2:T74	
+R49	is_witness_to Arg1:T37 Arg2:T74	
+R50	is_witness_to Arg1:T39 Arg2:T74	
+R51	is_witness_to Arg1:T40 Arg2:T74	
+R52	is_witness_to Arg1:T42 Arg2:T74	
+R53	is_witness_to Arg1:T43 Arg2:T74	
+R54	is_witness_to Arg1:T44 Arg2:T74	
+R55	is_witness_to Arg1:T46 Arg2:T74	
+R56	is_witness_to Arg1:T47 Arg2:T74	
+R57	is_witness_to Arg1:T48 Arg2:T74	
+R58	is_witness_to Arg1:T49 Arg2:T74	
+R59	is_witness_to Arg1:T50 Arg2:T74	
+R60	is_witness_to Arg1:T51 Arg2:T74	
+R61	is_witness_to Arg1:T52 Arg2:T74	
+R62	is_witness_to Arg1:T53 Arg2:T74	
+R63	is_witness_to Arg1:T54 Arg2:T74	
+R64	is_witness_to Arg1:T55 Arg2:T74	
+R65	is_witness_to Arg1:T57 Arg2:T74	
+R66	is_witness_to Arg1:T58 Arg2:T74	
+R67	is_witness_to Arg1:T59 Arg2:T74	
+R68	is_witness_to Arg1:T62 Arg2:T74	
+R69	is_witness_to Arg1:T63 Arg2:T74	
+R70	is_witness_to Arg1:T65 Arg2:T74	
+R71	is_witness_to Arg1:T67 Arg2:T74	
+R72	is_witness_to Arg1:T69 Arg2:T74	
+R73	is_witness_to Arg1:T71 Arg2:T74	
+T76	Apparatus 275 303	(comparavi ex denariis meis)
+R74	contains Arg1:T1 Arg2:T76	
+T77	Apparatus 634 652	(obstruere ostium)
+R75	contains Arg1:T1 Arg2:T77	

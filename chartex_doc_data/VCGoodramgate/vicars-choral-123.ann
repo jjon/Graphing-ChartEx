@@ -1,0 +1,105 @@
+T1	Document 0 17	vicars-choral-123
+T2	Person 68 81	Hugh de Pusat
+T3	Person 89 108	Gamell de Burgetorp
+T4	Transaction 185 216	given and granted and confirmed
+T5	Person 245 263	Radulf de Bolebech
+T6	Site 285 289	land
+T7	Site 293 304	Goodramgate
+T8	Institution 324 331	prebend
+T9	Person 339 358	Thomas de Reinevile
+T10	Institution 373 400	church of the blessed Peter
+T11	Institution 465 471	church
+T12	Site 623 627	land
+T13	Site 656 660	land
+T14	Site 673 679	street
+T15	Site 692 716	gate of 11 feet in width
+T16	Site 730 741	passage way
+T17	Site 806 815	courtyard
+T18	SiteRef 831 847	in depth 88 feet
+T19	Site 915 919	toft
+T20	Site 923 936	St Andrewgate
+T21	Institution 956 960	king
+T22	Person 1275 1290	Roger de Bavent
+T23	Occupation 1296 1306	vicecompte
+T24	Person 1336 1356	Alexander de Baiocis
+T25	Person 1358 1375	Richard Malabisse
+T26	Person 1377 1403	William de Perci de Kildal
+T27	Person 1405 1434	William de Perci de Kernetebi
+T28	Person 1436 1452	Alan de Wiletona
+T29	Person 1454 1472	Gillebert de Atona
+T30	Person 1474 1494	Baldwin de Alvestain
+T31	Person 1496 1516	Bertram de Stivetona
+T32	Person 1518 1525	William
+T33	Person 1535 1542	William
+T34	Person 1550 1555	Simon
+T35	Person 1557 1574	Roger de Lasceles
+T36	Person 1576 1580	Hugh
+T37	Person 1588 1593	Lewin
+T38	Person 1595 1615	William de Bonavilla
+T39	Person 1617 1625	Philippe
+T40	Person 1633 1640	Baldwin
+T41	Person 1642 1659	David de Popleton
+T42	Person 1661 1666	Jacob
+T43	Person 1674 1679	Ysaac
+T44	Person 1681 1702	Warin de Coney Street
+T45	Person 1704 1711	Richard
+T46	Person 1724 1730	Thomas
+T47	Person 1738 1743	Warin
+T48	Person 1745 1752	Serlone
+T49	Person 1760 1765	Wiffi
+T50	Person 1767 1773	Robert
+T51	Person 1781 1788	Suuniue
+R1	refers_to Arg1:T1 Arg2:T4	
+R2	is_son_of Arg1:T2 Arg2:T3	
+R3	is_grantor_in Arg1:T2 Arg2:T4	
+R4	is_recipient_in Arg1:T5 Arg2:T4	
+R5	is_part_of Arg1:T6 Arg2:T7	
+R6	is_a_previous_grantor_of Arg1:T8 Arg2:T6	
+R8	is_a_landlord_of Arg1:T10 Arg2:T6	
+R9	is_a_previous_tenant_of Arg1:T3 Arg2:T6	
+R7	is_a_previous_tenant_of Arg1:T9 Arg2:T6	
+R10	is_parcel_in Arg1:T6 Arg2:T4	
+*	same_as T11 T10
+R12	is_part_of Arg1:T13 Arg2:T12	
+R13	not_same_as Arg1:T13 Arg2:T12	
+R14	is_boundary_to Arg1:T14 Arg2:T13	
+R15	is_part_of Arg1:T15 Arg2:T12	
+R16	is_part_of Arg1:T16 Arg2:T12	
+*	same_as T12 T6
+R17	is_part_of Arg1:T17 Arg2:T12	
+R18	is_boundary_to Arg1:T17 Arg2:T18	
+R19	is_parcel_in Arg1:T19 Arg2:T4	
+R20	is_part_of Arg1:T19 Arg2:T20	
+R21	is_a_landlord_of Arg1:T21 Arg2:T19	
+R22	is_witness_to Arg1:T22 Arg2:T4	
+R23	occupation_is Arg1:T22 Arg2:T23	
+R24	is_witness_to Arg1:T24 Arg2:T4	
+R25	is_witness_to Arg1:T25 Arg2:T4	
+R26	is_witness_to Arg1:T26 Arg2:T4	
+R27	is_witness_to Arg1:T27 Arg2:T4	
+R28	is_witness_to Arg1:T28 Arg2:T4	
+R29	is_witness_to Arg1:T29 Arg2:T4	
+R30	is_witness_to Arg1:T30 Arg2:T4	
+R31	is_witness_to Arg1:T31 Arg2:T4	
+R32	is_son_of Arg1:T32 Arg2:T31	
+R33	is_witness_to Arg1:T32 Arg2:T4	
+R34	is_son_of Arg1:T33 Arg2:T34	
+R35	is_witness_to Arg1:T33 Arg2:T4	
+R36	is_witness_to Arg1:T35 Arg2:T4	
+R37	is_son_of Arg1:T36 Arg2:T37	
+R38	is_witness_to Arg1:T36 Arg2:T4	
+R39	is_witness_to Arg1:T38 Arg2:T4	
+R40	is_son_of Arg1:T39 Arg2:T40	
+R41	is_witness_to Arg1:T39 Arg2:T4	
+R42	is_witness_to Arg1:T41 Arg2:T4	
+R43	is_son_of Arg1:T42 Arg2:T43	
+R44	is_witness_to Arg1:T42 Arg2:T4	
+R45	is_witness_to Arg1:T44 Arg2:T4	
+R46	is_father_of Arg1:T45 Arg2:T44	
+R47	is_witness_to Arg1:T45 Arg2:T4	
+R48	is_son_of Arg1:T46 Arg2:T47	
+R49	is_witness_to Arg1:T46 Arg2:T4	
+R50	is_son_of Arg1:T48 Arg2:T49	
+R51	is_witness_to Arg1:T48 Arg2:T4	
+R52	is_son_of Arg1:T50 Arg2:T51	
+R53	is_witness_to Arg1:T50 Arg2:T4	

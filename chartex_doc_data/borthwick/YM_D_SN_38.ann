@@ -1,0 +1,42 @@
+T1	Document 0 10	YM/D/SN/38
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "3 July, 1594", "Title": "Feoffment"}
+T3	Person 248 262	George Lambert
+T4	Place 42 48	Barlby
+T5	Occupation 50 56	yeoman
+T6	Person 22 38	Nicholas Porritt
+T7	Person 58 69	Robert Bate
+T8	Place 73 80	Gowdall
+T9	Occupation 82 88	yeoman
+T10	Site 90 107	2 selions of land
+T11	Site 119 125	1 acre
+T12	Site 134 144	west field
+T13	Place 148 154	Snaith
+T14	Place 159 165	Cowick
+T15	Site 169 181	Middle Oxney
+T16	Site 192 197	lands
+T17	Person 201 215	Thomas Dawnaye
+T18	Occupation 217 220	esq
+T19	SiteRef 239 244	those
+T20	Site 289 303	More land stye
+T21	Site 321 333	Nether Oxney
+R1	is_grantor_in Arg1:T6 Arg2:T2	
+R2	is_of Arg1:T6 Arg2:T4	
+R3	occupation_is Arg1:T6 Arg2:T5	
+R4	is_recipient_in Arg1:T7 Arg2:T2	
+R5	is_of Arg1:T7 Arg2:T8	
+R6	occupation_is Arg1:T7 Arg2:T9	
+R7	is_parcel_in Arg1:T10 Arg2:T2	
+*	same_as T10 T11
+R8	is_part_of Arg1:T10 Arg2:T12	
+R9	is_located_in Arg1:T12 Arg2:T13	
+R10	is_located_in Arg1:T12 Arg2:T14	
+R12	is_a_tenant_of Arg1:T17 Arg2:T16	
+R13	is_eastern_directional_marker_to Arg1:T16 Arg2:T10	
+R14	occupation_is Arg1:T17 Arg2:T18	
+R15	is_western_directional_marker_to Arg1:T19 Arg2:T10	
+R16	is_a_tenant_of Arg1:T3 Arg2:T19	
+R17	is_northern_directional_marker_to Arg1:T20 Arg2:T10	
+R18	is_southern_directional_marker_to Arg1:T21 Arg2:T10	
+R19	refers_to Arg1:T1 Arg2:T2	
+R11	is_boundary_to Arg1:T15 Arg2:T10	

@@ -1,0 +1,39 @@
+T1	Document 0 17	vicars-choral-135
+T2	Transaction 18 39	Release and quitclaim
+T3	Person 43 53	Hugh Blund
+T4	Occupation 54 60	tailor
+T5	Place 64 68	York
+T6	Institution 76 82	vicars
+T7	Site 140 146	houses
+T8	Person 155 166	Agnes Wiles
+T9	Site 170 179	Gutherumg
+T10	Person 182 186	Hugh
+T11	Institution 210 216	vicars
+T12	Apparatus 285 300	Seal. Witnesses
+T13	Person 302 316	Roger de Plays
+T14	Person 318 334	Robert de Wyteby
+T15	Person 336 357	mag. William de Hedon
+T16	Person 359 377	Nicholas de London
+T17	Person 379 402	James of the churchyard
+T19	Apparatus 431 692	[later 13th century] SOURCE: VC 3/Vi 114 (214 mm. x 73 mm.) ENDORSEMENT: Gutherumgate; pro dimidia libri piperis. SEAL: vesica (35 mm. x 22 mm.), green, impression of a bird feeding young in nest, legend S. HVGONIS CISORIS COPY: VC 3/1/1, fo. 17v. NOTE: See 129
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T12	
+R4	contains Arg1:T1 Arg2:T19	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_of Arg1:T3 Arg2:T5	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	is_parcel_in Arg1:T7 Arg2:T2	
+R10	is_a_previous_tenant_of Arg1:T8 Arg2:T7	
+R11	is_part_of Arg1:T7 Arg2:T9	
+*	same_as T10 T3
+*	same_as T11 T6
+R12	is_witness_to Arg1:T13 Arg2:T2	
+R13	is_witness_to Arg1:T14 Arg2:T2	
+R14	is_witness_to Arg1:T15 Arg2:T2	
+R15	is_witness_to Arg1:T16 Arg2:T2	
+R16	is_witness_to Arg1:T17 Arg2:T2	
+T20	Apparatus 227 238	(monumenta)
+R17	contains Arg1:T1 Arg2:T20	
+T18	Apparatus 403 417	(de cymiterio)
+R1	contains Arg1:T1 Arg2:T18	

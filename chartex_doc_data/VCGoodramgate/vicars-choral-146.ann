@@ -1,0 +1,81 @@
+T1	Document 0 17	vicars-choral-146
+T2	Person 38 42	John
+T3	Person 50 70	Ysaac de Goodramgate
+T4	Transaction 76 104	given, granted and confirmed
+T5	Person 150 169	Gilbert de Coupland
+T6	Site 267 271	land
+T7	Site 294 305	Goodramgate
+T8	Site 321 325	land
+T9	Person 338 358	Reginald de Warthill
+T10	Site 363 367	land
+T11	Person 371 380	Hugh Brun
+T12	Site 389 393	land
+T13	Site 425 432	brewery
+T14	Site 442 451	malt-kiln
+T15	Person 497 504	Gilbert
+T16	Person 684 699	Nicholas Ramkil
+T17	Person 957 961	John
+T18	Person 1013 1020	Gilbert
+T19	Person 1115 1131	Nicholas Winemer
+T20	Person 1133 1146	Thomas Sperri
+T21	Person 1148 1167	William de Beverley
+T22	Occupation 1173 1189	bailiffs of York
+T23	Person 1191 1206	Nicholas Ramkil
+T24	Person 1208 1215	Stephen
+T25	Person 1223 1232	Alexander
+T26	Person 1234 1253	Walter de vestiario
+T27	Person 1255 1266	John Ascham
+T28	Person 1272 1281	ohn Blund
+T29	Occupation 1283 1292	chaplains
+T30	Person 1294 1312	John de Stainegate
+T31	Person 1314 1326	Walter Cokes
+T32	Person 1328 1343	John de Puteaco
+T33	Person 1345 1356	Ada Brachet
+T34	Person 1358 1373	Nicholas Hermer
+T35	Person 1375 1382	William
+T36	Person 1390 1395	Ernis
+T37	Person 1397 1403	Robert
+T38	Person 1411 1416	Suani
+T39	Person 1418 1432	Radulph Furbur
+T40	Apparatus 1446 1543	SOURCE: VC 3/Vi 121 (140 mm. X 139 mm.) ENDORSEMENT: Charter of John son of Ysaac; in Goodramgate
+R1	refers_to Arg1:T1 Arg2:T4	
+R2	contains Arg1:T1 Arg2:T40	
+R3	is_son_of Arg1:T2 Arg2:T3	
+R4	is_grantor_in Arg1:T2 Arg2:T4	
+R5	is_recipient_in Arg1:T5 Arg2:T4	
+R6	is_part_of Arg1:T6 Arg2:T7	
+R7	is_parcel_in Arg1:T6 Arg2:T4	
+R8	is_a_previous_tenant_of Arg1:T9 Arg2:T8	
+R9	is_a_tenant_of Arg1:T11 Arg2:T10	
+R10	is_boundary_to Arg1:T8 Arg2:T6	
+R11	is_boundary_to Arg1:T10 Arg2:T6	
+R12	is_parcel_in Arg1:T12 Arg2:T4	
+R13	is_part_of Arg1:T13 Arg2:T12	
+R14	is_part_of Arg1:T14 Arg2:T13	
+*	same_as T15 T5 T18
+*	same_as T17 T2
+R15	is_participant_in Arg1:T16 Arg2:T4	
+R16	occupation_is Arg1:T21 Arg2:T22	
+R17	occupation_is Arg1:T20 Arg2:T22	
+R18	occupation_is Arg1:T19 Arg2:T22	
+R19	is_son_of Arg1:T24 Arg2:T25	
+R20	occupation_is Arg1:T27 Arg2:T29	
+R21	occupation_is Arg1:T28 Arg2:T29	
+R22	is_son_of Arg1:T35 Arg2:T36	
+R23	is_son_of Arg1:T37 Arg2:T38	
+R24	is_witness_to Arg1:T19 Arg2:T4	
+R25	is_witness_to Arg1:T20 Arg2:T4	
+R26	is_witness_to Arg1:T21 Arg2:T4	
+R27	is_witness_to Arg1:T23 Arg2:T4	
+R28	is_witness_to Arg1:T24 Arg2:T4	
+R29	is_witness_to Arg1:T26 Arg2:T4	
+R30	is_witness_to Arg1:T27 Arg2:T4	
+R31	is_witness_to Arg1:T28 Arg2:T4	
+R32	is_witness_to Arg1:T30 Arg2:T4	
+R33	is_witness_to Arg1:T31 Arg2:T4	
+R34	is_witness_to Arg1:T32 Arg2:T4	
+R35	is_witness_to Arg1:T33 Arg2:T4	
+R36	is_witness_to Arg1:T34 Arg2:T4	
+R37	is_witness_to Arg1:T35 Arg2:T4	
+R38	is_witness_to Arg1:T37 Arg2:T4	
+R39	is_witness_to Arg1:T39 Arg2:T4	

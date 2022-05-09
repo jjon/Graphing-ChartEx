@@ -1,0 +1,54 @@
+T1	Document 0 15	Ward2_55_188_16
+#1	AnnotatorNotes T1	{"piece_id": "5471239", "date_text": "1457 Feb 17"}
+T2	Transaction 254 273	given to the use of
+T3	Site 112 121	tenements
+R1	is_parcel_in Arg1:T3 Arg2:T2	
+T4	Site 130 139	Fregettis
+T5	Site 146 156	Peitebynes
+R2	is_part_of Arg1:T4 Arg2:T3	
+R3	is_part_of Arg1:T5 Arg2:T3	
+T6	Site 190 194	land
+T7	Site 203 213	Fletesmere
+T8	Site 220 232	Portgorepect
+R4	is_part_of Arg1:T7 Arg2:T6	
+R5	is_part_of Arg1:T8 Arg2:T6	
+R6	is_parcel_in Arg1:T6 Arg2:T2	
+T9	Person 62 72	John Orbey
+T10	Person 74 89	Thomas Laurence
+T11	Person 94 106	John Snowdon
+R7	is_grantor_in Arg1:T9 Arg2:T2	
+R8	is_grantor_in Arg1:T10 Arg2:T2	
+R9	is_grantor_in Arg1:T11 Arg2:T2	
+T12	Person 274 285	Henry Patch
+T13	Person 287 291	Joan
+T14	Person 302 314	Robert Patch
+T15	Person 319 327	Margaret
+R10	is_daughter_of Arg1:T15 Arg2:T12	
+T16	Person 341 346	Henry
+*	same_as T16 T12
+R11	is_wife_of Arg1:T13 Arg2:T12	
+R12	is_recipient_in Arg1:T12 Arg2:T2	
+R13	is_recipient_in Arg1:T13 Arg2:T2	
+R14	is_recipient_in Arg1:T14 Arg2:T2	
+R15	is_recipient_in Arg1:T15 Arg2:T2	
+T17	Place 41 48	Fordham
+T18	Place 50 55	Essex
+R16	is_part_of Arg1:T17 Arg2:T18	
+R17	is_location_of Arg:T17 Arg2:T2	
+R18	is_a_previous_tenant_of Arg1:T9 Arg2:T3	
+R19	is_a_previous_tenant_of Arg1:T10 Arg2:T3	
+R20	is_a_previous_tenant_of Arg1:T11 Arg2:T3	
+T19	Person 176 188	Simon Polley
+R21	is_a_previous_tenant_of Arg1:T19 Arg2:T3	
+R22	is_a_previous_tenant_of Arg1:T11 Arg2:T6	
+R23	is_a_previous_tenant_of Arg1:T10 Arg2:T6	
+R24	is_a_previous_tenant_of Arg1:T9 Arg2:T6	
+R25	is_a_tenant_of Arg1:T12 Arg2:T3	
+R26	is_a_tenant_of Arg1:T13 Arg2:T3	
+R27	is_a_tenant_of Arg1:T14 Arg2:T3	
+R28	is_a_tenant_of Arg1:T15 Arg2:T3	
+R29	is_a_tenant_of Arg1:T12 Arg2:T6	
+R30	is_a_tenant_of Arg1:T13 Arg2:T6	
+R31	is_a_tenant_of Arg1:T14 Arg2:T6	
+R32	is_a_tenant_of Arg1:T15 Arg2:T6	
+R33	refers_to Arg1:T1 Arg2:T2	

@@ -1,0 +1,23 @@
+T1	Document 0 17	vicars-choral-401
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 37	Aubrey
+T4	Person 47 62	Henry le furbur
+T5	Place 66 70	York
+T6	Institution 209 259	vicars ministering in the cathedral church of York
+T7	Site 264 268	land
+T8	Site 272 281	Petergate
+T9	Person 300 305	Henry
+T12	Apparatus 364 439	Warranty• Seal• [mid 13th century] SOURCE: VC 3/1/1, fo• 47v• NOTE: See 399
+R2	refers_to Arg1:T1 Arg2:T2	
+R5	contains Arg1:T1 Arg2:T12	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_widow_of Arg1:T3 Arg2:T4	
+R8	is_participant_in Arg1:T6 Arg2:T2	
+R9	is_parcel_in Arg1:T7 Arg2:T2	
+R10	is_part_of Arg1:T7 Arg2:T8	
+*	same_as T9 T4
+R1	is_of Arg1:T3 Arg2:T5	
+T10	Institution 147 160	blessed Peter
+R3	is_recipient_in Arg1:T10 Arg2:T2	
+T11	Apparatus 178 185	ad opus
+R4	contains Arg1:T1 Arg2:T11	

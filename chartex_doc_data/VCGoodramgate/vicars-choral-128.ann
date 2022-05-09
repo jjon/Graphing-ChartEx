@@ -1,0 +1,61 @@
+T1	Document 0 17	vicars-choral-128
+T2	Transaction 18 39	Release and quitclaim
+T3	Person 43 56	William Eskel
+T4	Person 70 74	Mary
+T5	Person 88 104	Nicholas Ramekel
+T6	Institution 113 153	vicars serving God in the church of York
+T7	Person 210 217	William
+T8	Person 222 226	Mary
+T9	Institution 241 247	vicars
+T10	Site 252 256	land
+T11	Site 260 272	Gutherumgate
+T12	Person 281 297	William de Lanum
+T13	Occupation 298 318	archdeacon of Durham
+T14	Institution 343 349	vicars
+T15	Person 397 404	William
+T16	Person 409 413	Mary
+T17	Person 497 513	Walter le Bretun
+T18	Person 515 519	John
+T19	Person 527 534	William
+T20	Person 542 549	William
+T21	Person 557 564	Sirithe
+T22	Person 566 576	Hugh Playz
+T23	Person 578 593	Thomas de Hoton
+T24	Person 595 609	Alan de Kardel
+T25	Person 611 621	mag. Simon
+T26	Person 633 649	Henry of Aldwerk
+T27	Occupation 626 631	mason
+R1	occupation_is Arg1:T25 Arg2:T27	
+T28	Person 651 669	Peter attegathende
+T29	Person 671 688	John of Uggelford
+T30	Person 690 703	John de Glouc
+T31	Occupation 705 710	clerk
+T32	Apparatus 723 1175	[mid 13th century] SOURCE: VC 3/Vi 112 (174 mm. x 126 mm.) ENDORSEMENT: Carta Willelmi Eschel; relaxatio redditus dim idle marce; Memorandum sub .B. SEALS: (left) round (33 mm. dia.), green, impression of a star of petals, legend *S. WLELME: ESCSIL; (right) vesica (38 mm. x 26 mm.; detached), green, impression of a fleur-de-lys, legend S: MARIOTE RAMKIL COPY: VC 3/1/1, fo. 21. DATE: For the date of William de Laneham's death see 158n. NOTE: See 126
+R2	contains Arg1:T1 Arg2:T32	
+R3	refers_to Arg1:T1 Arg2:T2	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_wife_of Arg1:T4 Arg2:T3	
+R6	is_daughter_of Arg1:T4 Arg2:T5	
+R7	is_grantor_in Arg1:T4 Arg2:T2	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+*	same_as T7 T3 T15
+*	same_as T8 T4 T16
+*	same_as T9 T6 T14
+R9	is_part_of Arg1:T10 Arg2:T11	
+R10	is_parcel_in Arg1:T10 Arg2:T2	
+R11	is_a_previous_tenant_of Arg1:T12 Arg2:T10	
+R12	occupation_is Arg1:T12 Arg2:T13	
+R13	is_witness_to Arg1:T17 Arg2:T2	
+R14	is_son_of Arg1:T18 Arg2:T19	
+R15	is_son_of Arg1:T19 Arg2:T20	
+R16	is_son_of Arg1:T20 Arg2:T21	
+R17	is_witness_to Arg1:T18 Arg2:T2	
+R18	is_witness_to Arg1:T22 Arg2:T2	
+R19	is_witness_to Arg1:T23 Arg2:T2	
+R20	is_witness_to Arg1:T24 Arg2:T2	
+R21	is_witness_to Arg1:T25 Arg2:T2	
+R22	is_witness_to Arg1:T26 Arg2:T2	
+R23	is_witness_to Arg1:T28 Arg2:T2	
+R24	is_witness_to Arg1:T29 Arg2:T2	
+R25	is_witness_to Arg1:T30 Arg2:T2	
+R26	occupation_is Arg1:T30 Arg2:T31	

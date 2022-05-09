@@ -1,0 +1,32 @@
+T1	Document 0 14	Ward2_55_188_6
+#1	AnnotatorNotes T1	{"piece_id": "5471229", "date_text": "1547 June 8"}
+T2	Apparatus 128 146	location specified
+R1	contains Arg1:T1 Arg2:T2	
+T3	Transaction 36 55	view of frankpledge
+R2	refers_to Arg1:T1 Arg2:T3	
+T4	Place 59 66	Fordham
+T5	Apparatus 68 73	Magna
+T6	Place 76 81	Essex
+R3	is_part_of Arg1:T4 Arg2:T6	
+R4	contains Arg1:T1 Arg2:T5	
+T7	Person 88 98	John Gebon
+T8	Site 106 111	croft
+T9	Site 120 125	Modde
+*	same_as T8 T9
+R5	is_parcel_in Arg1:T8 Arg2:T3	
+R6	is_located_in Arg1:T8 Arg2:T4	
+R7	is_a_previous_tenant_of Arg1:T7 Arg2:T8	
+T10	Person 189 197	Rosamund
+T11	Person 207 217	John Small
+R8	is_wife_of Arg1:T10 Arg2:T11	
+T12	Person 231 241	John Gebon
+R10	is_daughter_of Arg1:T10 Arg2:T12	
+T13	Person 247 262	William Loveney
+R11	is_a_tenant_of Arg1:T10 Arg2:T8	
+R12	is_a_tenant_of Arg1:T13 Arg2:T8	
+T14	Person 280 285	Alice
+R9	is_son_of Arg1:T13 Arg2:T14	
+T15	Person 309 319	John Gebon
+R13	is_daughter_of Arg1:T14 Arg2:T15	
+R14	is_sister_of Arg1:T14 Arg2:T10	
+R15	is_location_of Arg:T4 Arg2:T3	

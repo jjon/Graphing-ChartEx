@@ -1,0 +1,94 @@
+T1	Document 0 17	vicars-choral-411
+T2	Person 34 48	John de Seleby
+T3	Occupation 49 54	mayor
+T4	Person 56 72	Geoffrey Agulyun
+T5	Occupation 73 79	knight
+T6	Person 81 86	Serlo
+T7	Person 101 113	Alan Sampson
+T8	Person 115 131	Andrew de Seleby
+T9	Person 133 140	William
+T10	Person 154 166	John Jocelin
+T11	Person 168 172	John
+T12	Person 185 206	William de Clarevall'
+T13	Person 208 212	John
+T14	Person 226 232	Walter
+T15	Person 248 254	Robert
+T16	Person 271 285	Henry le Blund
+T17	Transaction 335 356	release and quitclaim
+T18	Apparatus 370 379	Gerernias
+T19	Person 362 380	Jeremy (Gerernias)
+T20	Person 388 394	Thomas
+T21	Place 412 416	York
+T22	Person 425 446	mag• Simon de Evesham
+T24	Occupation 447 470	archdeacon of Rychemund
+T25	Site 497 501	land
+T26	Site 507 516	buildings
+T27	Site 520 529	Stayngate
+T28	Site 555 564	Petergate
+T29	Site 569 573	land
+T30	Institution 581 601	prebend of Ampelford
+T31	Site 625 634	Stayngate
+T32	Site 639 643	land
+T33	Person 651 661	archdeacon
+T34	Person 696 702	Thomas
+T35	Person 680 686	Jeremy
+T36	Date 742 794	Saturday before the feast of All Saints 51 Henry III
+T37	Apparatus 796 811	3o October 1266
+T38	Person 821 841	Richard de Middelton
+T39	Occupation 842 855	royal justice
+T40	Person 875 881	Jeremy
+T41	Person 925 935	mag• Simon
+T43	Apparatus 966 1271	Seal• [possibly 1269] SOURCE: VC 3/Vi 389 (177 mm• x 93 mm•) ENDORSEMENT: Quietaclamacia inter victim de Petergat' et domos prebende de Ampelford• SEAL: no evidence of sealing; the MS• is serrated at the bottom• COPY: VC 3/1/1, fo• 5ov• DATE: Selby was mayor in 1269: see dating note to 115• NOTE: See 403
+R1	refers_to Arg1:T1 Arg2:T17	
+R2	contains Arg1:T1 Arg2:T18	
+R3	contains Arg1:T1 Arg2:T37	
+R4	contains Arg1:T1 Arg2:T43	
+R5	occupation_is Arg1:T2 Arg2:T3	
+R6	occupation_is Arg1:T4 Arg2:T5	
+R7	is_brother_of Arg1:T9 Arg2:T8	
+R8	is_brother_of Arg1:T13 Arg2:T12	
+R9	is_witness_to Arg1:T2 Arg2:T17	
+R10	is_witness_to Arg1:T4 Arg2:T17	
+R11	is_witness_to Arg1:T6 Arg2:T17	
+R12	is_witness_to Arg1:T7 Arg2:T17	
+R13	is_witness_to Arg1:T8 Arg2:T17	
+R14	is_witness_to Arg1:T9 Arg2:T17	
+R15	is_witness_to Arg1:T10 Arg2:T17	
+R16	is_witness_to Arg1:T11 Arg2:T17	
+R17	is_witness_to Arg1:T12 Arg2:T17	
+R18	is_witness_to Arg1:T13 Arg2:T17	
+R19	is_witness_to Arg1:T14 Arg2:T17	
+R20	is_witness_to Arg1:T15 Arg2:T17	
+R21	is_witness_to Arg1:T16 Arg2:T17	
+R25	is_recipient_in Arg1:T22 Arg2:T17	
+R26	occupation_is Arg1:T22 Arg2:T24	
+R28	is_parcel_in Arg1:T25 Arg2:T17	
+R29	is_part_of Arg1:T26 Arg2:T25	
+R30	is_part_of Arg1:T25 Arg2:T27	
+R31	is_length_marker_to Arg1:T28 Arg2:T25	
+R32	is_length_marker_to Arg1:T29 Arg2:T25	
+R33	is_a_tenant_of Arg1:T30 Arg2:T29	
+R34	is_breadth_marker_to Arg1:T31 Arg2:T25	
+R35	is_breadth_marker_to Arg1:T32 Arg2:T25	
+*	same_as T33 T22 T41
+*	same_as T34 T20
+R38	is_dated Arg1:T1 Arg2:T36	
+R39	is_participant_in Arg1:T38 Arg2:T17	
+R40	occupation_is Arg1:T38 Arg2:T39	
+*	same_as T19 T35 T40
+R22	is_grantor_in Arg1:T19 Arg2:T17	
+R23	is_son_of Arg1:T19 Arg2:T20	
+R24	is_of Arg1:T19 Arg2:T21	
+#1	AnnotatorNotes T1	Stefania, In "Jeremy (Gerernias)" I switched Person and Apparatus as per Robin's QuestionsProposalsClarifications.doc 2. Apparatus C. i.
+T44	Site 90 99	Stayngate
+R41	is_of Arg1:T6 Arg2:T44	
+T45	Occupation 177 183	spicer
+R42	occupation_is Arg1:T11 Arg2:T45	
+T46	Occupation 237 246	goldsmith
+R43	occupation_is Arg1:T14 Arg2:T46	
+T47	Occupation 259 265	spicer
+R44	occupation_is Arg1:T15 Arg2:T47	
+T48	Occupation 399 408	goldsmith
+R45	occupation_is Arg1:T20 Arg2:T48	
+R27	is_a_previous_tenant_of Arg1:T34 Arg2:T32	
+R36	is_a_tenant_of Arg1:T33 Arg2:T32	

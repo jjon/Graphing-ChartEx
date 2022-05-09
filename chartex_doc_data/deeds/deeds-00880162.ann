@@ -1,0 +1,112 @@
+T1	Document 0 14	deeds-00880162
+#1	AnnotatorNotes T1	{'editorial date':'1281', 'transaction type': 'Grant'}
+T2	Person 51 59	Cristina
+T3	Person 66 73	Roberti
+R1	is_daughter_of Arg1:T2 Arg2:T3	
+T4	Person 80 100	Laurencii de Laufare
+R2	is_son_of Arg1:T3 Arg2:T4	
+R3	is_granddaughter_of Arg1:T2 Arg2:T4	
+T5	Transaction 101 151	concessi dedi et hac presenti carta mea confirmavi
+T6	Institution 201 247	fratribus hospitalis sancti Iohannis Ierusalem
+T7	Place 263 276	Mapeltrestede
+R4	is_located_in Arg1:T6 Arg2:T7	
+T8	Person 330 355	fratri Rogero de Leycestr
+T9	Occupation 361 388	preceptori de Mapeltrestede
+R5	occupation_is Arg1:T8 Arg2:T9	
+R6	is_grantor_in Arg1:T2 Arg2:T5	
+R7	is_recipient_in Arg1:T6 Arg2:T5	
+R8	is_recipient_in Arg1:T8 Arg2:T5	
+T10	Site 512 518	terram
+T11	Site 532 540	mesuagio
+R9	is_part_of Arg1:T11 Arg2:T10	
+T12	Place 564 583	Mapeltrestede magna
+T13	Place 587 594	Hausted
+T14	Site 611 617	terram
+T15	Site 630 637	la Dune
+T16	Site 653 659	terram
+T17	Institution 660 687	hospitalis de Mapeltrestede
+T18	Site 704 710	terram
+T19	Person 711 727	Arnoldi Stonhard
+T20	Site 741 769	unam acram terre et dimidiam
+T21	Site 807 813	terram
+T22	Person 814 828	Ricardi Fulson
+T23	Site 832 838	terram
+T24	Person 839 860	Philippi filii Andree
+T25	Place 873 880	Hausted
+T27	Site 911 917	terram
+T28	Person 924 932	Philippi
+T30	Site 954 960	terram
+T31	Person 961 981	Willelmi de la Monde
+T32	Place 1045 1052	Hausted
+T33	Person 1742 1750	Cristina
+T34	Place 1905 1912	Hausted
+T35	Person 2193 2207	domino Iohanne
+T36	Occupation 2208 2226	vicario de Hausted
+T37	Person 2227 2239	domino Maher
+T38	Occupation 2240 2249	capellano
+T39	Person 2259 2274	Rogero Franceys
+T40	Person 2275 2294	Willelmo de Stubleg
+T41	Person 2295 2312	Sewale de Stubleg
+T42	Person 2353 2369	Ricardo Everwyne
+T43	Person 2370 2387	Gilberto de Ponte
+T44	Person 2388 2407	Radulpho le sumenur
+T45	Person 2408 2424	Philippo pistore
+T46	Person 2425 2443	Galfrido marcatore
+T47	Person 2444 2462	Roberto de Herlaue
+T48	Person 2463 2486	Vincentio de Spendelawe
+T49	Person 2487 2504	Ricardo le archer
+T50	Person 2505 2520	Gilberto le Geg
+T51	Person 2521 2540	Willelmo de Panymer
+T52	Place 2562 2569	Hausted
+T53	Date 2570 2642	tercio kalendas iunii anno Domini millesimo ducentesimo octogesimo primo
+T54	Person 2313 2320	Ricardo
+T55	Person 2336 2352	Iohanne de Molio
+R10	is_located_in Arg1:T11 Arg2:T12	
+R12	is_located_in Arg1:T10 Arg2:T12	
+R13	is_located_in Arg1:T10 Arg2:T13	
+R11	is_part_of Arg1:T14 Arg2:T10	
+*	same_as T14 T15
+R14	is_boundary_to Arg1:T16 Arg2:T14	
+R15	is_boundary_to Arg1:T18 Arg2:T14	
+R16	is_a_tenant_of Arg1:T17 Arg2:T16	
+R17	is_a_tenant_of Arg1:T19 Arg2:T18	
+R18	is_parcel_in Arg1:T10 Arg2:T5	
+R19	is_part_of Arg1:T20 Arg2:T10	
+R20	is_boundary_to Arg1:T21 Arg2:T20	
+R21	is_a_tenant_of Arg1:T22 Arg2:T21	
+R22	is_boundary_to Arg1:T23 Arg2:T20	
+R23	is_a_tenant_of Arg1:T24 Arg2:T23	
+R24	is_located_in Arg1:T20 Arg2:T25	
+R27	is_boundary_to Arg1:T27 Arg2:T20	
+R28	is_boundary_to Arg1:T30 Arg2:T20	
+R29	is_a_tenant_of Arg1:T28 Arg2:T27	
+*	same_as T28 T24
+R30	is_a_tenant_of Arg1:T31 Arg2:T30	
+*	same_as T25 T13 T32 T34 T52
+*	same_as T33 T2
+R31	occupation_is Arg1:T35 Arg2:T36	
+R32	occupation_is Arg1:T37 Arg2:T38	
+R33	is_location_of Arg:T52 Arg2:T5	
+R34	refers_to Arg1:T1 Arg2:T5	
+R35	is_dated Arg1:T1 Arg2:T53	
+R36	is_witness_to Arg1:T35 Arg2:T5	
+R37	is_witness_to Arg1:T37 Arg2:T5	
+R38	is_witness_to Arg1:T39 Arg2:T5	
+R39	is_witness_to Arg1:T40 Arg2:T5	
+R40	is_witness_to Arg1:T41 Arg2:T5	
+R41	is_witness_to Arg1:T54 Arg2:T5	
+R42	is_witness_to Arg1:T55 Arg2:T5	
+R43	is_witness_to Arg1:T42 Arg2:T5	
+R44	is_witness_to Arg1:T43 Arg2:T5	
+R45	is_witness_to Arg1:T44 Arg2:T5	
+R46	is_witness_to Arg1:T45 Arg2:T5	
+R47	is_witness_to Arg1:T46 Arg2:T5	
+R48	is_witness_to Arg1:T47 Arg2:T5	
+R49	is_witness_to Arg1:T48 Arg2:T5	
+R50	is_witness_to Arg1:T49 Arg2:T5	
+R51	is_witness_to Arg1:T50 Arg2:T5	
+R52	is_witness_to Arg1:T51 Arg2:T5	
+T56	Place 251 257	Anglia
+R53	is_part_of Arg1:T7 Arg2:T56	
+R54	is_officeholder_in Arg1:T8 Arg2:T6	
+*	same_as T17 T6

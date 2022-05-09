@@ -1,0 +1,66 @@
+T1	Document 0 14	deeds-00880775
+#1	AnnotatorNotes T1	{'editorial date':'1230/35', 'transaction type': 'Grant'}
+T2	Person 51 73	Robertus de Chelmeshoo
+T3	Transaction 74 123	dedi et concessi et presenti carta mea confirmavi
+T4	Person 124 143	Simoni de Oddewelle
+T5	Person 147 155	Margerie
+T6	Site 178 185	cruftam
+T7	Site 220 228	Tennaker
+*	same_as T6 T7
+T8	Site 264 272	cheminum
+T9	Site 279 284	domum
+T10	Site 293 298	domum
+T11	Person 308 315	Simonis
+T12	Person 370 376	Simoni
+T13	Person 380 388	Margerie
+T14	Person 874 879	Simon
+T15	Person 883 891	Margeria
+T16	Person 931 939	Robertus
+T17	Person 979 985	Simoni
+T18	Person 989 997	Margerie
+T19	Person 1204 1221	Hugone de Arderne
+T20	Person 1222 1241	Hugone de Lacendria
+T21	Person 1242 1266	magistro Henrico Lumbard
+T22	Person 1269 1287	Roberto de Resseia
+T23	Person 1288 1305	Waltero de Poleia
+T24	Person 1306 1313	Ricardo
+T25	Person 1324 1345	Galfrido filio Robert
+R1	is_son_of Arg1:T24 Arg2:T23	
+T27	Person 1347 1354	Roberto
+R3	is_son_of Arg1:T27 Arg2:T25	
+T28	Person 1365 1379	Thoma Beupeine
+T29	Person 1380 1401	Rogero filio Galfridi
+T31	Person 1402 1420	Rogero de Besevile
+T32	Person 1421 1444	Willelmo filio Galfridi
+T34	Person 1445 1467	Philippo filio Hugonis
+T36	Person 1468 1482	Waltero Morell
+T37	Person 1485 1502	Willelmo Prudumme
+R7	refers_to Arg1:T1 Arg2:T3	
+R8	is_grantor_in Arg1:T2 Arg2:T3	
+R9	is_recipient_in Arg1:T4 Arg2:T3	
+R10	is_wife_of Arg1:T5 Arg2:T4	
+R11	is_recipient_in Arg1:T5 Arg2:T3	
+R12	is_parcel_in Arg1:T6 Arg2:T3	
+R13	is_eastern_directional_marker_to Arg1:T8 Arg2:T7	
+R14	is_boundary_to Arg1:T9 Arg2:T7	
+R15	is_boundary_to Arg1:T10 Arg2:T7	
+R16	is_a_tenant_of Arg1:T2 Arg2:T9	
+R17	is_a_tenant_of Arg1:T4 Arg2:T10	
+*	same_as T17 T14 T11 T4 T12
+*	same_as T15 T18 T13 T5
+*	same_as T16 T2
+R18	is_witness_to Arg1:T19 Arg2:T3	
+R19	is_witness_to Arg1:T20 Arg2:T3	
+R20	is_witness_to Arg1:T21 Arg2:T3	
+R21	is_witness_to Arg1:T22 Arg2:T3	
+R22	is_witness_to Arg1:T23 Arg2:T3	
+R23	is_witness_to Arg1:T25 Arg2:T3	
+R24	is_witness_to Arg1:T27 Arg2:T3	
+R25	is_witness_to Arg1:T28 Arg2:T3	
+R26	is_witness_to Arg1:T24 Arg2:T3	
+R27	is_witness_to Arg1:T29 Arg2:T3	
+R28	is_witness_to Arg1:T31 Arg2:T3	
+R29	is_witness_to Arg1:T32 Arg2:T3	
+R30	is_witness_to Arg1:T34 Arg2:T3	
+R31	is_witness_to Arg1:T36 Arg2:T3	
+R32	is_witness_to Arg1:T37 Arg2:T3	

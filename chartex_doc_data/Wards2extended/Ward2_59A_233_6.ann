@@ -1,0 +1,45 @@
+T1	Document 0 15	Ward2_59A_233_6
+#1	AnnotatorNotes T1	{"piece_id": "5472150", "date_text": "1597 Feb 16"}
+T2	Transaction 89 95	leased
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 35 48	Thomas Audley
+T4	Apparatus 50 57	Audleye
+T5	Place 62 69	Stanway
+T6	Place 71 76	Essex
+T7	Occupation 78 87	gentleman
+R2	is_of Arg1:T3 Arg2:T5	
+R3	is_part_of Arg1:T5 Arg2:T6	
+R4	occupation_is Arg1:T3 Arg2:T7	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+T8	Person 99 111	Peter Jerame
+T10	Place 124 129	Essex
+T9	Place 115 122	Stanway
+R6	is_recipient_in Arg1:T8 Arg2:T2	
+R7	is_of Arg1:T8 Arg2:T9	
+R8	is_part_of Arg1:T9 Arg2:T10	
+*	same_as T5 T9 T15
+T11	Occupation 131 140	gentleman
+R9	occupation_is Arg1:T8 Arg2:T11	
+T12	Site 142 146	land
+R10	is_parcel_in Arg1:T12 Arg2:T2	
+T13	Place 160 168	Gosbecks
+R11	is_located_in Arg1:T12 Arg2:T13	
+T14	Apparatus 170 188	location specified
+T15	Place 194 201	Stanway
+T16	Place 203 208	Essex
+T17	Date 215 231	16 February 1597
+T18	Date 238 255	29 September 1597
+R12	is_part_of Arg1:T15 Arg2:T16	
+T19	Apparatus 266 306	Dorse: note that the lease was cancelled
+R13	contains Arg1:T1 Arg2:T14	
+R14	contains Arg1:T1 Arg2:T4	
+R15	contains Arg1:T1 Arg2:T19	
+R16	is_dated Arg1:T1 Arg2:T17	
+R17	precedes Arg1:T17 Arg2:T18	
+T20	Person 319 332	John Edmondes
+T21	Person 344 357	William Helme
+R18	is_witness_to Arg1:T20 Arg2:T2	
+R19	is_witness_to Arg1:T21 Arg2:T2	
+T22	Apparatus 359 386	Signet seal of Peter Jerame
+R20	contains Arg1:T1 Arg2:T22	
+R21	is_part_of Arg1:T13 Arg2:T15	

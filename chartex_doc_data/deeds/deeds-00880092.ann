@@ -1,0 +1,44 @@
+T1	Document 0 14	deeds-00880092
+#1	AnnotatorNotes T1	{'editorial date':'1186/87', 'transaction type': 'Notification'}
+T2	Person 15 27	G[ilebertus]
+T4	Occupation 39 63	London[iensis] episcopus
+R1	occupation_is Arg1:T2 Arg2:T4	
+T5	Person 364 379	Ivonem clericum
+T7	Site 384 415	ecclesie de parva Mapeltrestede
+T8	Occupation 416 425	personatu
+T9	Transaction 492 503	renunciasse
+T10	Site 654 663	ecclesiam
+T11	Person 558 583	Willelmi [filii] Aldelini
+T12	Institution 608 652	priori et fratribus hospitalis Ierusalimitan
+T13	Transaction 703 734	concessisse et perpetuo dedisse
+R10	precedes Arg1:T9 Arg2:T13	
+T14	Person 1035 1055	Rogero de Wigorn[ia]
+T15	Place 224 232	e longio
+T16	Person 1070 1088	Radulfo de Chilton
+T17	Occupation 1089 1098	canonicis
+T19	Person 1126 1141	Iohanne Witteng
+T20	Person 1142 1155	Thoma Britton
+T18	Person 1099 1125	magistro Waltero de Wutton
+R12	occupation_is Arg1:T16 Arg2:T17	
+R13	occupation_is Arg1:T15 Arg2:T17	
+R14	occupation_is Arg1:T14 Arg2:T17	
+R16	refers_to Arg1:T1 Arg2:T13	
+R2	occupation_is Arg1:T5 Arg2:T8	
+R4	is_grantor_in Arg1:T5 Arg2:T9	
+T3	Apparatus 568 573	filii
+R5	refers_to Arg1:T1 Arg2:T9	
+R6	is_participant_in Arg1:T2 Arg2:T9	
+R7	is_participant_in Arg1:T2 Arg2:T13	
+R9	is_participant_in Arg1:T11 Arg2:T13	
+R11	is_recipient_in Arg1:T12 Arg2:T13	
+R3	is_parcel_in Arg1:T7 Arg2:T9	
+R15	is_a_previous_tenant_of Arg1:T5 Arg2:T7	
+*	same_as T10 T7
+R17	is_parcel_in Arg1:T10 Arg2:T13	
+R18	is_witness_to Arg1:T14 Arg2:T13	
+R19	is_witness_to Arg1:T15 Arg2:T13	
+R20	is_witness_to Arg1:T16 Arg2:T13	
+R21	is_witness_to Arg1:T18 Arg2:T13	
+R22	is_witness_to Arg1:T19 Arg2:T13	
+R23	is_witness_to Arg1:T20 Arg2:T13	
+R24	contains Arg1:T1 Arg2:T3	

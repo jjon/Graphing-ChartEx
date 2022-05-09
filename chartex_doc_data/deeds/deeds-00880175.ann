@@ -1,0 +1,62 @@
+T1	Document 0 14	deeds-00880175
+#1	AnnotatorNotes T1	{'editorial date':'1269', 'transaction type': 'Grant'}
+T2	Person 54 79	frater Henricus de Kyriel
+T3	Institution 98 131	sancte domus hospitalis Ierusalem
+T4	Occupation 80 97	suppremi magistri
+T5	Transaction 258 269	concessisse
+T7	Place 289 308	parva Mapeltrestede
+T8	Person 312 318	Avicie
+T9	Site 348 367	quinque acras terre
+T10	Place 401 420	parva Mapeltrestede
+T11	Site 436 440	viam
+T12	Site 454 458	domo
+T13	Person 459 474	Willelmi Hakini
+T14	Site 482 495	magnum boscum
+T15	Institution 496 506	hospitalis
+T16	Site 510 519	mesuagium
+T17	Person 520 535	Ricardi de Piro
+T19	Site 566 570	viam
+T20	Site 584 588	domo
+T21	Person 595 604	Laurencii
+T23	Site 626 633	alnetum
+T24	Person 640 655	Ricardi de Piro
+T25	Person 704 713	Laurencio
+T26	Person 717 723	Avicie
+T27	Place 1048 1061	Mapeltrestede
+T28	Place 1194 1204	Melcheburn
+T29	Date 1205 1327	die dominica proxima post festum sancti Luce evangeliste anno incarnacionis Dominice millesimo ducentesimo sexagesimo nono
+R1	is_location_of Arg:T28 Arg2:T5	
+R2	refers_to Arg1:T1 Arg2:T5	
+R3	is_dated Arg1:T1 Arg2:T29	
+*	same_as T27 T10 T7
+R4	occupation_is Arg1:T2 Arg2:T4	
+R5	is_officeholder_in Arg1:T2 Arg2:T3	
+R6	is_grantor_in Arg1:T2 Arg2:T5	
+R10	is_recipient_in Arg1:T8 Arg2:T5	
+R11	is_parcel_in Arg1:T9 Arg2:T5	
+R12	is_boundary_to Arg1:T11 Arg2:T9	
+R13	is_boundary_to Arg1:T16 Arg2:T9	
+*	same_as T25 T21 T32
+*	same_as T26 T8
+R14	is_a_tenant_of Arg1:T13 Arg2:T12	
+R15	is_a_tenant_of Arg1:T15 Arg2:T14	
+R16	is_a_tenant_of Arg1:T17 Arg2:T16	
+R17	is_a_tenant_of Arg1:T21 Arg2:T20	
+R18	is_a_tenant_of Arg1:T24 Arg2:T23	
+R19	is_boundary_to Arg1:T12 Arg2:T11	
+R20	is_boundary_to Arg1:T14 Arg2:T11	
+R24	is_boundary_to Arg1:T20 Arg2:T19	
+T32	Person 270 285	Laurencio fabro
+R26	is_recipient_in Arg1:T32 Arg2:T5	
+R27	is_wife_of Arg1:T8 Arg2:T32	
+R7	is_of Arg1:T32 Arg2:T7	
+R9	is_located_in Arg1:T9 Arg2:T10	
+R21	is_boundary_to Arg1:T19 Arg2:T9	
+R22	is_boundary_to Arg1:T23 Arg2:T9	
+T18	Institution 1032 1044	domui nostre
+*	same_as T3 T15 T18 T6
+T22	Place 147 153	Anglia
+R23	is_located_in Arg1:T3 Arg2:T22	
+T6	Institution 157 164	fratres
+R8	is_grantor_in Arg1:T6 Arg2:T5	
+R25	is_located_in Arg1:T18 Arg2:T27	

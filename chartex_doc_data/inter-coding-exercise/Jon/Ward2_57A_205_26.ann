@@ -1,0 +1,70 @@
+T1	Document 0 10	57A/205/26
+T2	Transaction 11 40	Indenture of bargain and sale
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 44 60	Nicholas Sterley
+T4	Person 62 78	Marmaduke Wyvell
+T5	Occupation 80 87	esquire
+R2	occupation_is Arg1:T4 Arg2:T5	
+T6	Person 89 105	William Woodward
+T7	Occupation 107 116	gentleman
+R3	occupation_is Arg1:T6 Arg2:T7	
+T8	Person 145 161	James Strangweys
+T9	Occupation 163 169	knight
+R4	occupation_is Arg1:T8 Arg2:T9	
+T10	Person 171 188	Peter Doddesworth
+T11	Occupation 190 199	gentleman
+T12	Occupation 201 220	deputy and attorney
+T13	Occupation 118 137	deputy and attorney
+R5	occupation_is Arg1:T6 Arg2:T13	
+R6	occupation_is Arg1:T10 Arg2:T11	
+T14	Person 224 241	Christopher Danby
+T15	Occupation 243 250	esquire
+R8	occupation_is Arg1:T14 Arg2:T15	
+T16	Person 256 269	Anthony Brugh
+T17	Occupation 271 280	gentleman
+R9	occupation_is Arg1:T16 Arg2:T17	
+T18	Occupation 286 292	deputy
+R10	occupation_is Arg1:T16 Arg2:T18	
+T19	Person 296 310	Lancelot Asshe
+T20	Person 315 330	Ralph Dranffeld
+T21	Occupation 332 340	esquires
+R11	occupation_is Arg1:T20 Arg2:T21	
+R12	occupation_is Arg1:T19 Arg2:T21	
+R13	is_grantor_in Arg1:T3 Arg2:T2	
+R14	is_grantor_in Arg1:T4 Arg2:T2	
+R15	is_grantor_in Arg1:T6 Arg2:T2	
+R16	is_other_relation_to Arg1:T6 Arg2:T8	
+R17	is_grantor_in Arg1:T10 Arg2:T2	
+R18	is_other_relation_to Arg1:T10 Arg2:T14	
+R19	is_grantor_in Arg1:T16 Arg2:T2	
+R20	is_other_relation_to Arg1:T16 Arg2:T19	
+R21	is_other_relation_to Arg1:T16 Arg2:T20	
+T22	Person 345 356	Robert Roos
+R22	is_recipient_in Arg1:T22 Arg2:T2	
+T23	Place 360 367	Nayland
+T24	Place 369 376	Suffolk
+R23	is_part_of Arg1:T23 Arg2:T24	
+R24	is_of Arg1:T22 Arg2:T23	
+T25	Occupation 378 388	clothmaker
+R25	occupation_is Arg1:T22 Arg2:T25	
+T26	Site 474 479	grove
+T27	Site 488 498	Kyngeffeld
+*	same_as T27 T26
+R26	is_parcel_in Arg1:T26 Arg2:T2	
+T28	Site 514 523	Levenheth
+T29	Place 526 533	Suffolk
+R27	is_located_in Arg1:T28 Arg2:T29	
+R28	is_boundary_to Arg1:T28 Arg2:T26	
+T30	Site 585 597	Nayland Park
+R29	is_parcel_in Arg1:T30 Arg2:T2	
+T31	Place 601 616	Great Horkesley
+R30	is_located_in Arg1:T30 Arg2:T31	
+T32	Place 618 623	Essex
+R31	is_part_of Arg1:T31 Arg2:T32	
+T33	Apparatus 628 652	Seal of Nicholas Sterley
+R32	contains Arg1:T1 Arg2:T33	
+T34	Date 657 665	1531 Nov
+R33	is_dated Arg1:T1 Arg2:T34	
+T35	Apparatus 666 675	854716506
+R34	contains Arg1:T1 Arg2:T35	
+R7	occupation_is Arg1:T10 Arg2:T12	

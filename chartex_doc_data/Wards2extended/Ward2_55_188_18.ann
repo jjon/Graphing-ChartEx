@@ -1,0 +1,108 @@
+T1	Document 0 15	Ward2_55_188_18
+#1	AnnotatorNotes T1	{"piece_id": "5471241", "date_text": "1453 July 26"}
+T2	Transaction 16 37	Grant and enfeoffment
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 41 62	Richard Whithirmarssh
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Person 64 76	John Bretoun
+R3	is_grantor_in Arg1:T4 Arg2:T2	
+T5	Occupation 78 87	gentleman
+R4	occupation_is Arg1:T4 Arg2:T5	
+T6	Person 89 104	Thomas Braunche
+T7	Occupation 106 114	chaplain
+R5	occupation_is Arg1:T6 Arg2:T7	
+R6	is_grantor_in Arg1:T6 Arg2:T2	
+T8	Apparatus 136 146	Hintlesham
+T9	Person 116 134	Robert Hyntlessham
+R7	is_grantor_in Arg1:T9 Arg2:T2	
+R8	contains Arg1:T1 Arg2:T8	
+T10	Person 153 167	Simon Laughton
+R9	is_grantor_in Arg1:T10 Arg2:T2	
+T11	Person 172 186	Richard Symond
+T12	Place 190 197	Fordham
+T13	Place 199 204	Essex
+R10	is_recipient_in Arg1:T11 Arg2:T2	
+R11	is_of Arg1:T11 Arg2:T12	
+R12	is_part_of Arg1:T12 Arg2:T13	
+T14	Site 279 304	two pieces of arable land
+T15	Site 332 339	Plomers
+T16	Site 346 353	Lynches
+R13	is_part_of Arg1:T15 Arg2:T14	
+R14	is_part_of Arg1:T16 Arg2:T14	
+T17	Person 206 218	William Bury
+R15	is_recipient_in Arg1:T17 Arg2:T2	
+T18	Occupation 220 229	gentleman
+R16	occupation_is Arg1:T17 Arg2:T18	
+T19	Person 231 243	John Snowdon
+T20	Person 245 257	John Laurens
+R17	is_recipient_in Arg1:T19 Arg2:T2	
+R18	is_recipient_in Arg1:T20 Arg2:T2	
+T21	Person 263 274	Robert Sely
+R19	is_recipient_in Arg1:T21 Arg2:T2	
+R20	is_parcel_in Arg1:T14 Arg2:T2	
+T22	Site 367 377	four acres
+R21	is_part_of Arg1:T22 Arg2:T14	
+T24	Place 401 408	Fordham
+R23	is_located_in Arg1:T14 Arg2:T24	
+T26	Person 1167 1182	Robert Cresfeld
+T27	Person 1150 1165	Richard Laurens
+T28	Person 1135 1148	Roger Laurens
+T29	Person 1120 1133	John Cresfeld
+T30	Occupation 1113 1118	clerk
+T31	Person 1096 1111	Thomas Wangford
+R25	occupation_is Arg1:T31 Arg2:T30	
+R26	is_witness_to Arg1:T31 Arg2:T2	
+R27	is_witness_to Arg1:T29 Arg2:T2	
+R28	is_witness_to Arg1:T28 Arg2:T2	
+R29	is_witness_to Arg1:T27 Arg2:T2	
+R30	is_witness_to Arg1:T26 Arg2:T2	
+T32	Place 1076 1083	Fordham
+R31	is_location_of Arg:T32 Arg2:T2	
+T33	Apparatus 1195 1216	Three seals surviving
+R32	contains Arg1:T1 Arg2:T33	
+T23	Apparatus 378 397	(details specified)
+R22	contains Arg1:T1 Arg2:T23	
+T25	Site 432 439	Plomers
+T34	Site 420 424	land
+*	same_as T25 T34 T15
+T35	Site 482 486	land
+R24	is_southern_directional_marker_to Arg1:T35 Arg2:T25	
+T36	Person 490 502	Alice Polley
+R33	is_a_tenant_of Arg1:T36 Arg2:T35	
+R34	not_same_as Arg1:T35 Arg2:T34	
+T37	Site 532 536	land
+R35	not_same_as Arg1:T37 Arg2:T35	
+R36	not_same_as Arg1:T37 Arg2:T34	
+T38	Person 547 560	Matthew Sayer
+R37	is_a_previous_tenant_of Arg1:T38 Arg2:T37	
+T39	Person 572 585	William White
+R38	is_a_tenant_of Arg1:T39 Arg2:T37	
+R39	is_northern_directional_marker_to Arg1:T37 Arg2:T25	
+T40	Site 634 639	green
+T41	Site 647 660	Plomers Green
+*	same_as T41 T40
+R40	is_eastern_directional_marker_to Arg1:T40 Arg2:T25	
+T42	Site 688 692	land
+T43	Site 700 711	Stubbyngges
+*	same_as T43 T42
+R41	not_same_as Arg1:T42 Arg2:T37	
+R42	not_same_as Arg1:T42 Arg2:T35	
+R43	not_same_as Arg1:T42 Arg2:T34	
+R44	is_western_directional_marker_to Arg1:T42 Arg2:T25	
+T44	Site 762 769	Lynches
+*	same_as T44 T16
+T45	Site 812 816	land
+T46	Site 824 835	Ewellisland
+*	same_as T45 T46
+R45	not_same_as Arg1:T45 Arg2:T42	
+R46	not_same_as Arg1:T45 Arg2:T37	
+R47	not_same_as Arg1:T45 Arg2:T35	
+R48	not_same_as Arg1:T45 Arg2:T34	
+R49	is_southern_directional_marker_to Arg1:T45 Arg2:T44	
+R50	is_northern_directional_marker_to Arg1:T45 Arg2:T44	
+T47	Site 899 903	wood
+T48	Site 911 924	Fordham Frith
+*	same_as T48 T47
+R51	is_western_directional_marker_to Arg1:T47 Arg2:T44	
+T49	Site 985 998	king's street
+R52	is_eastern_directional_marker_to Arg1:T49 Arg2:T44	

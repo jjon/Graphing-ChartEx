@@ -1,0 +1,115 @@
+T1	Document 0 10	YM/D/SN/47
+T2	Date 31 41	1 May 1600
+T3	Transaction 12 29	Exchange of lands
+T4	Person 42 57	Edward Stanhope
+T5	Institution 61 71	Gray's Inn
+T6	Place 73 78	Middx
+T7	Occupation 82 85	esq
+T8	Person 89 101	Paul Riccard
+T9	Place 105 111	Cowick
+T10	Occupation 113 119	yeoman
+T11	Person 122 130	Stanhope
+T12	Person 134 141	Riccard
+T13	Site 143 162	8 swathes of meadow
+T14	Person 191 206	Thomas Dilcocke
+T15	Occupation 208 213	gent•
+T16	Place 229 239	Snaithings
+T17	Site 245 250	place
+T18	Site 258 267	the Whate
+T19	Site 278 287	4 swathes
+T20	Site 293 304	crown lands
+T21	Person 321 328	Riccard
+T22	Site 331 337	meadow
+T23	Site 364 369	river
+T24	Site 370 374	Ayre
+T25	Site 393 402	4 swathes
+T26	Site 412 417	lands
+T27	Person 434 447	Thomas Pledow
+T28	Person 425 430	heirs
+T29	SiteRef 464 469	those
+T30	Person 473 485	Brian Elande
+T31	Occupation 487 491	gent
+T32	SiteRef 517 525	as above
+T33	Person 528 535	Riccard
+T34	Person 539 547	Stanhope
+T35	Site 549 563	3 roods meadow
+T36	Site 567 574	pasture
+T37	Site 578 584	Snaith
+T38	Place 595 607	Middle Oxney
+T39	Site 618 626	1/2 acre
+T40	Site 635 640	lands
+T41	Person 647 661	Hilary Bailden
+T42	SiteRef 704 709	those
+T43	Person 713 728	George Lamberte
+T44	Person 750 763	Brian Ealande
+T45	Place 787 799	Nether Oxney
+T46	Place 817 829	Middle Oxney
+T47	Site 830 839	stye gate
+T48	Site 859 865	1 rood
+T49	Site 875 880	lands
+T50	Person 884 899	Thomas Jollande
+T51	Site 907 911	Moor
+T52	Site 912 916	hill
+T53	SiteRef 933 938	those
+T54	Person 945 958	William Haron
+T55	Site 1007 1015	as above
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_dated Arg1:T1 Arg2:T2	
+R3	is_officeholder_in Arg1:T4 Arg2:T5	
+R4	is_located_in Arg1:T5 Arg2:T6	
+R5	occupation_is Arg1:T4 Arg2:T7	
+R6	is_of Arg1:T8 Arg2:T9	
+R7	occupation_is Arg1:T8 Arg2:T10	
+*	same_as T11 T4 T34
+*	same_as T12 T8 T21 T33
+R8	is_a_grantor_of Arg1:T11 Arg2:T13	
+R9	is_a_recipient_of Arg1:T12 Arg2:T13	
+R10	is_parcel_in Arg1:T13 Arg2:T3	
+R11	occupation_is Arg1:T14 Arg2:T15	
+R12	is_a_previous_tenant_of Arg1:T14 Arg2:T13	
+R13	is_part_of Arg1:T13 Arg2:T18	
+*	same_as T17 T18
+R14	is_located_in Arg1:T18 Arg2:T16	
+R15	is_part_of Arg1:T19 Arg2:T13	
+R16	is_western_directional_marker_to Arg1:T20 Arg2:T19	
+R17	is_eastern_directional_marker_to Arg1:T22 Arg2:T19	
+R18	is_a_tenant_of Arg1:T21 Arg2:T22	
+R19	not_same_as Arg1:T22 Arg2:T13	
+*	same_as T23 T24 T32
+R20	is_northern_directional_marker_to Arg1:T23 Arg2:T19	
+R21	is_part_of Arg1:T25 Arg2:T13	
+R22	not_same_as Arg1:T25 Arg2:T19	
+R23	is_western_directional_marker_to Arg1:T25 Arg2:T26	
+R24	is_a_tenant_of Arg1:T28 Arg2:T26	
+R25	is_a_previous_tenant_of Arg1:T27 Arg2:T26	
+R26	is_other_relation_to Arg1:T28 Arg2:T27	
+R27	is_eastern_directional_marker_to Arg1:T29 Arg2:T25	
+R28	is_a_tenant_of Arg1:T30 Arg2:T29	
+R29	occupation_is Arg1:T30 Arg2:T31	
+R30	is_northern_directional_marker_to Arg1:T32 Arg2:T25	
+R33	is_parcel_in Arg1:T35 Arg2:T3	
+*	same_as T35 T36
+R34	is_part_of Arg1:T35 Arg2:T37	
+R35	is_located_in Arg1:T37 Arg2:T38	
+R36	is_part_of Arg1:T39 Arg2:T35	
+R37	is_western_directional_marker_to Arg1:T40 Arg2:T39	
+R38	is_a_tenant_of Arg1:T41 Arg2:T40	
+R40	is_eastern_directional_marker_to Arg1:T42 Arg2:T39	
+R41	is_a_tenant_of Arg1:T43 Arg2:T42	
+R42	is_a_previous_tenant_of Arg1:T44 Arg2:T42	
+R43	is_located_in Arg1:T47 Arg2:T46	
+R44	is_northern_directional_marker_to Arg1:T47 Arg2:T39	
+R45	is_part_of Arg1:T48 Arg2:T35	
+R46	is_eastern_directional_marker_to Arg1:T49 Arg2:T48	
+R47	is_a_tenant_of Arg1:T50 Arg2:T49	
+R48	is_of Arg1:T50 Arg2:T51	
+*	same_as T51 T52
+R49	is_western_directional_marker_to Arg1:T53 Arg2:T48	
+R50	is_a_tenant_of Arg1:T54 Arg2:T53	
+*	same_as T55 T47
+R52	is_southern_directional_marker_to Arg1:T55 Arg2:T48	
+R53	is_northern_directional_marker_to Arg1:T55 Arg2:T48	
+R31	is_a_grantor_of Arg1:T33 Arg2:T35	
+R32	is_a_recipient_of Arg1:T34 Arg2:T35	
+T58	Site 585 590	field
+*	same_as T37 T58

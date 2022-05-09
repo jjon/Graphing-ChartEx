@@ -1,0 +1,81 @@
+T1	Document 0 17	vicars-choral-160
+T2	Person 65 71	Robert
+T3	Occupation 76 81	prior
+T4	Institution 90 120	convent of St. Oswald de Nostl
+T5	Person 152 157	Ellis
+T6	Occupation 162 167	smith
+T7	Place 171 175	York
+T8	Site 176 180	land
+T9	Site 184 196	Gutherumgate
+T10	Site 202 208	houses
+T11	Site 213 222	buildings
+T12	Site 242 246	land
+T13	Institution 269 287	prebend of Neubald
+T14	SiteRef 292 296	that
+T15	Person 310 325	John de Warthil
+T16	Institution 338 355	prior and convent
+T17	Person 482 487	Ellis
+T18	Apparatus 502 515	(subiecit se)
+T19	Person 744 749	Ellis
+T20	Person 761 773	Roger Nayrun
+T21	Site 808 817	Fossegate
+T22	Site 830 838	entrance
+T23	Apparatus 839 850	(introitum)
+T24	Person 854 860	Robert
+T25	Person 868 873	Lewin
+T26	Apparatus 875 889	Seal.Witnesses
+T27	Person 891 901	John Bauer
+T28	Person 903 921	Roger de Esingwald
+T29	Person 923 939	Abraham de Miton
+T30	Person 941 956	Thomas de Tumba
+T31	Occupation 958 967	chaplains
+T32	Person 969 995	Roger de Sexdecim Vallibus
+T33	Person 997 1009	Peter de Ba.
+T34	Person 1015 1019	Hugh
+T35	Occupation 1024 1030	hosier
+T36	Place 1044 1048	York
+T37	Apparatus 1067 1557	[1247 x 1255] SOURCE: VC 3/Vi 110 (267 mm. x 184 mm.). Indented at top. ENDORSEMENT: Robertus prior de terra in Ebor'; xxv. SEAL: two slits. Hole in MS. The text in square brackets is the probable reading. DATE: The prior is almost certainly Robert de Beal; as prior he held ex officio the prebend of Bramham in the church of York. NOTE: There is no certain connection between this charter and the vicars. Possibly it is associated with 161, which refers to what was probably adjoining land
+T38	Transaction 127 148	demised and confirmed
+R1	refers_to Arg1:T1 Arg2:T38	
+R2	contains Arg1:T1 Arg2:T23	
+R3	contains Arg1:T1 Arg2:T37	
+R4	occupation_is Arg1:T2 Arg2:T3	
+R5	is_grantor_in Arg1:T4 Arg2:T38	
+R6	is_grantor_in Arg1:T2 Arg2:T38	
+R7	is_recipient_in Arg1:T5 Arg2:T38	
+R8	occupation_is Arg1:T5 Arg2:T6	
+R9	is_of Arg1:T5 Arg2:T7	
+R10	is_parcel_in Arg1:T8 Arg2:T38	
+R11	is_part_of Arg1:T8 Arg2:T9	
+R12	is_part_of Arg1:T10 Arg2:T8	
+R13	is_part_of Arg1:T11 Arg2:T8	
+R14	is_a_tenant_of Arg1:T13 Arg2:T12	
+R15	is_boundary_to Arg1:T12 Arg2:T8	
+R16	is_boundary_to Arg1:T14 Arg2:T8	
+R17	is_a_previous_tenant_of Arg1:T15 Arg2:T14	
+*	same_as T16 T4
+*	same_as T17 T5 T19
+R18	contains Arg1:T1 Arg2:T18	
+R19	contains Arg1:T1 Arg2:T26	
+R20	is_participant_in Arg1:T20 Arg2:T38	
+T39	SiteRef 800 804	rent
+R21	is_part_of Arg1:T39 Arg2:T21	
+R22	is_boundary_to Arg1:T22 Arg2:T39	
+R23	is_a_tenant_of Arg1:T20 Arg2:T39	
+R24	is_a_tenant_of Arg1:T24 Arg2:T22	
+R25	is_son_of Arg1:T24 Arg2:T25	
+R26	is_witness_to Arg1:T27 Arg2:T38	
+R27	is_witness_to Arg1:T28 Arg2:T38	
+R28	is_witness_to Arg1:T29 Arg2:T38	
+R29	is_witness_to Arg1:T30 Arg2:T38	
+R30	occupation_is Arg1:T30 Arg2:T31	
+R31	occupation_is Arg1:T29 Arg2:T31	
+R32	occupation_is Arg1:T28 Arg2:T31	
+R33	occupation_is Arg1:T27 Arg2:T31	
+R34	is_witness_to Arg1:T32 Arg2:T38	
+R35	is_witness_to Arg1:T33 Arg2:T38	
+R36	occupation_is Arg1:T34 Arg2:T35	
+R37	is_witness_to Arg1:T34 Arg2:T38	
+R38	is_of Arg1:T34 Arg2:T36	
+R39	is_of Arg1:T33 Arg2:T36	
+R40	is_of Arg1:T32 Arg2:T36	

@@ -1,0 +1,86 @@
+T1	Document 0 17	vicars-choral-409
+T2	Transaction 18 23	Grant
+T3	Person 27 33	Mariot
+T4	Person 43 49	Thomas
+T5	Person 56 61	Josce
+T6	Occupation 62 71	goldsmith
+T7	Place 75 79	York
+T8	Person 87 104	Jeremy (Jeremias)
+T9	Apparatus 94 104	(Jeremias)
+T10	Person 112 118	Thomas
+T11	Person 123 129	Mariot
+T12	Person 133 154	mag• Simon de Evesham
+T13	Occupation 155 168	canon of York
+T15	Site 171 175	land
+T16	Site 181 190	buildings
+T17	Site 194 203	Steyngate
+T18	Person 224 230	Thomas
+T19	Site 256 265	Petergate
+T20	Site 270 274	land
+T21	Institution 282 302	prebend of Ampleford
+T22	Site 327 336	Steyngate
+T23	Site 341 345	land
+T24	Person 354 372	Geoffrey de Norwyz
+T25	Occupation 373 390	precentor of York
+T27	Person 401 406	Simon
+T28	Apparatus 479 493	Warranty• Seal
+T29	Person 506 523	mag• John le Myre
+T30	Person 525 541	William le Blund
+T31	Person 543 559	Robert le Spicer
+T32	Person 561 575	Walter de Alna
+T33	Occupation 576 585	goldsmith
+T34	Person 587 604	John le plasterer
+T35	Person 606 620	Richard Crapol
+T36	Person 622 640	Richard le peyntur
+T37	Person 642 651	William F
+T38	Person 655 672	Thomas le cutiler
+T39	Person 674 692	Geoffrey le barbur
+T40	Person 694 708	Henry le Blund
+T41	Site 712 721	Steyngate
+T42	Person 723 739	John de Glovern'
+T43	Occupation 740 745	clerk
+T45	Apparatus 759 1010	[1253 x 30 May 1261]  SOURCE: VC 3/Vi 388 (174 mm• x 191 mm•) ENDORSEMENT: Stayngate a vico de Stayngat' usque ad domos prebende de Ampelfird• SEAL: two tags• Hole in MS• Three or four letters are missing• DATE: After 408 and before 412• NOTE: See 403
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T9	
+R4	contains Arg1:T1 Arg2:T28	
+R5	contains Arg1:T1 Arg2:T45	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_grantor_in Arg1:T8 Arg2:T2	
+R8	is_widow_of Arg1:T3 Arg2:T4	
+R9	is_son_of Arg1:T4 Arg2:T5	
+R10	occupation_is Arg1:T4 Arg2:T6	
+R11	is_of Arg1:T4 Arg2:T7	
+R12	is_son_of Arg1:T8 Arg2:T10	
+*	same_as T10 T4 T18
+R13	is_son_of Arg1:T8 Arg2:T11	
+*	same_as T11 T3
+R14	is_recipient_in Arg1:T12 Arg2:T2	
+R15	occupation_is Arg1:T12 Arg2:T13	
+R17	is_parcel_in Arg1:T15 Arg2:T2	
+R18	is_part_of Arg1:T16 Arg2:T15	
+R19	is_part_of Arg1:T15 Arg2:T17	
+R20	is_a_previous_grantor_of Arg1:T18 Arg2:T15	
+R21	is_length_marker_to Arg1:T19 Arg2:T15	
+R22	is_length_marker_to Arg1:T20 Arg2:T15	
+R23	is_a_tenant_of Arg1:T21 Arg2:T20	
+R24	is_breadth_marker_to Arg1:T22 Arg2:T15	
+R25	is_breadth_marker_to Arg1:T23 Arg2:T15	
+R26	is_a_previous_tenant_of Arg1:T24 Arg2:T23	
+R27	occupation_is Arg1:T24 Arg2:T25	
+*	same_as T27 T12
+R29	is_witness_to Arg1:T29 Arg2:T2	
+R30	is_witness_to Arg1:T30 Arg2:T2	
+R31	is_witness_to Arg1:T31 Arg2:T2	
+R32	is_witness_to Arg1:T32 Arg2:T2	
+R33	occupation_is Arg1:T32 Arg2:T33	
+R34	is_witness_to Arg1:T34 Arg2:T2	
+R35	is_witness_to Arg1:T35 Arg2:T2	
+R36	is_witness_to Arg1:T36 Arg2:T2	
+R37	is_witness_to Arg1:T37 Arg2:T2	
+R38	is_witness_to Arg1:T38 Arg2:T2	
+R39	is_witness_to Arg1:T39 Arg2:T2	
+R40	is_witness_to Arg1:T40 Arg2:T2	
+R41	occupation_is Arg1:T42 Arg2:T43	
+R42	is_witness_to Arg1:T42 Arg2:T2	
+*	same_as T22 T17 T41
+R16	is_of Arg1:T40 Arg2:T41	

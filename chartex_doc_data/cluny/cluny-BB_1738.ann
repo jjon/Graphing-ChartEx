@@ -1,0 +1,29 @@
+T1	Document 0 13	cluny-BB_1738
+#1	AnnotatorNotes T1	{'title summary':'Charta qua Gonfredus et uxor ejus Girbergis et Bertrannus [filius eorum], vendunt Davidi et Dominicæ uxori res suas in villa Varengo.', 'dorsal text':''}
+T2	Person 31 36	David
+T3	Person 49 57	Dominica
+R1	is_wife_of Arg1:T3 Arg2:T2	
+T4	Transaction 100 108	vendimus
+T5	Person 63 72	Gonfredus
+T6	Person 76 84	Girbergi
+T7	Person 88 98	Bertrannus
+R2	is_grantor_in Arg1:T7 Arg2:T4	
+R3	is_grantor_in Arg1:T6 Arg2:T4	
+R4	is_grantor_in Arg1:T5 Arg2:T4	
+R5	is_recipient_in Arg1:T3 Arg2:T4	
+R6	is_recipient_in Arg1:T2 Arg2:T4	
+T8	Site 115 131	curtilo et vinea
+T9	Place 164 171	Varengo
+R7	is_located_in Arg1:T8 Arg2:T9	
+R8	is_parcel_in Arg1:T8 Arg2:T4	
+T10	Date 575 614	december, anno primo tempore Ugono rege
+R9	refers_to Arg1:T1 Arg2:T4	
+R10	is_dated Arg1:T1 Arg2:T10	
+T11	Site 193 204	via publica
+T12	Site 214 220	Winier
+T13	Site 232 246	ipsa ereditate
+T14	Site 257 263	Dotane
+R11	is_boundary_to Arg1:T11 Arg2:T8	
+R12	is_boundary_to Arg1:T12 Arg2:T8	
+R13	is_boundary_to Arg1:T13 Arg2:T8	
+R14	is_boundary_to Arg1:T14 Arg2:T8	

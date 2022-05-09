@@ -1,0 +1,87 @@
+T1	Document 0 14	deeds-00880653
+#1	AnnotatorNotes T1	{'editorial date':'1289', 'transaction type': 'Grant'}
+T2	Person 81 107	frater Willelmus de Haunle
+T3	Institution 121 157	hospitalis sancti Iohannis Ierusalem
+T4	Occupation 166 171	prior
+T5	Place 175 181	Anglia
+T7	Transaction 267 314	concessisse et hoc presenti scripto confirmasse
+T6	Person 315 331	Philippo pistori
+T8	Place 335 343	Halstede
+T9	Site 374 387	cruftam terre
+T10	Site 417 428	Sperkeslond
+T11	Site 447 459	septem acras
+T12	Place 489 497	Halstede
+T14	Person 525 545	Willelmi de Stubleye
+T16	Site 518 524	terram
+T17	Site 549 555	terram
+T18	Person 556 575	Sewalli de Stubleye
+T20	Place 503 511	Stubleye
+T13	Site 604 610	terram
+T21	Person 611 634	Iohannis filii Willelmi
+T23	Site 650 664	regiam stratam
+T24	Place 677 685	Halstede
+T25	Place 693 700	Sudbury
+T26	Site 705 712	sepibus
+T27	Site 716 724	fossatis
+T28	Site 736 742	crufta
+T29	Site 767 775	mesuagio
+T30	Person 786 795	Philippus
+T31	Place 805 813	Halstede
+T32	Site 829 838	mesuagium
+T33	Person 839 858	Willelmi mercatoris
+T34	Site 875 884	mesuagium
+T35	Person 893 909	Walteri Everwine
+T36	Person 982 990	Philippo
+T37	Institution 1079 1108	domui nostre de Mapeltrestede
+T38	Site 1153 1158	terra
+T39	Person 1664 1689	fratre Roberto de Somerby
+T40	Person 1690 1716	fratre Rogero de Sprottole
+T41	Person 1717 1747	fratre Stephano de Gloucestria
+T42	Person 1748 1772	fratre Thoma de Otteford
+T43	Occupation 1778 1805	preceptore de Mapeltrestede
+T44	Place 1856 1866	Melcheburn
+T45	Date 1867 1959	die lune proxima post festum sancte Luce evangeliste anno regni regis Edwardi septimo decimo
+R1	refers_to Arg1:T1 Arg2:T7	
+R2	is_dated Arg1:T1 Arg2:T45	
+R3	is_location_of Arg:T44 Arg2:T7	
+R4	is_grantor_in Arg1:T2 Arg2:T7	
+T46	Institution 243 266	fratrum capituli nostri
+R5	is_grantor_in Arg1:T46 Arg2:T7	
+R6	occupation_is Arg1:T2 Arg2:T4	
+R7	is_officeholder_in Arg1:T2 Arg2:T3	
+R8	is_located_in Arg1:T3 Arg2:T5	
+R9	is_recipient_in Arg1:T6 Arg2:T7	
+R10	is_of Arg1:T6 Arg2:T8	
+R11	is_parcel_in Arg1:T9 Arg2:T7	
+*	same_as T10 T9 T28 T38 T15
+R12	is_boundary_to Arg1:T11 Arg2:T9	
+R13	is_located_in Arg1:T9 Arg2:T20	
+R14	is_part_of Arg1:T20 Arg2:T12	
+R16	is_a_tenant_of Arg1:T14 Arg2:T16	
+R17	is_boundary_to Arg1:T16 Arg2:T9	
+R19	is_a_tenant_of Arg1:T18 Arg2:T17	
+R20	is_boundary_to Arg1:T17 Arg2:T9	
+R22	is_boundary_to Arg1:T13 Arg2:T9	
+R23	is_a_tenant_of Arg1:T21 Arg2:T13	
+R24	is_boundary_to Arg1:T23 Arg2:T9	
+R27	is_boundary_to Arg1:T26 Arg2:T9	
+R28	is_boundary_to Arg1:T27 Arg2:T9	
+*	same_as T30 T6 T36
+R30	is_a_tenant_of Arg1:T30 Arg2:T29	
+R31	is_located_in Arg1:T29 Arg2:T31	
+R32	is_a_tenant_of Arg1:T33 Arg2:T32	
+R33	is_a_previous_tenant_of Arg1:T35 Arg2:T34	
+R34	is_boundary_to Arg1:T32 Arg2:T29	
+R35	is_boundary_to Arg1:T34 Arg2:T29	
+T47	Institution 1420 1459	domui nostre antedicte de Mapeltrestede
+*	same_as T47 T37 T46 T3
+R37	is_witness_to Arg1:T39 Arg2:T7	
+R38	is_witness_to Arg1:T40 Arg2:T7	
+R39	is_witness_to Arg1:T41 Arg2:T7	
+R40	is_witness_to Arg1:T42 Arg2:T7	
+R41	occupation_is Arg1:T42 Arg2:T43	
+R15	is_parcel_in Arg1:T29 Arg2:T7	
+T15	Site 1166 1177	Sperkeslond
+*	same_as T12 T8
+R18	is_boundary_to Arg1:T24 Arg2:T23	
+R21	is_boundary_to Arg1:T25 Arg2:T23	

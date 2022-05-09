@@ -1,0 +1,84 @@
+T1	Document 0 14	deeds-00880770
+#1	AnnotatorNotes T1	{'editorial date':'1242', 'transaction type': 'Grant/Lease'}
+T2	Person 91 115	frater Terricus de Nussa
+T3	Occupation 153 158	prior
+T4	Institution 116 144	fratrum hospitalis Ierusalem
+T5	Place 162 168	Anglia
+T6	Transaction 266 313	dedisse concessisse et carta nostra confirmasse
+T7	Person 314 333	Simoni de Oddewelle
+T8	Person 337 345	Margerie
+T9	Place 396 404	manerium
+T10	Place 416 422	Codham
+*	same_as T9 T10 T15
+T15	Place 562 570	manerium
+T16	Site 589 594	terra
+T17	Site 605 612	Claydun
+*	same_as T16 T17
+T18	Site 1470 1477	capella
+T19	Institution 1520 1525	curia
+T20	Place 1535 1548	Gestingthorpe
+T21	Institution 1645 1655	hospitalis
+T22	Place 1661 1674	Mapeltrestede
+R3	is_located_in Arg1:T21 Arg2:T22	
+T23	Site 1520 1525	curia
+R4	is_part_of Arg1:T18 Arg2:T23	
+T24	Person 963 968	Simon
+T25	Person 972 980	Margeria
+T26	Person 1108 1114	Simoni
+T27	Person 1118 1126	Margerie
+T28	Person 1489 1494	Simon
+T29	Person 1498 1506	Margeria
+T30	Person 1691 1698	Simonis
+T31	Person 1702 1710	Margerie
+T32	Person 1807 1813	Simoni
+T33	Person 1817 1825	Margerie
+T34	Person 2063 2068	Simon
+T35	Person 2072 2080	Margeria
+T36	Person 2140 2155	Gilberto Pecche
+T37	Person 2156 2179	Radulpho filio Willelmi
+T39	Person 2180 2195	Hugone de Boues
+T40	Person 2196 2212	Roberto Curpaill
+T41	Person 2213 2234	Ingelero de Cantilupo
+T42	Person 2235 2252	Petro de Marevile
+T43	Occupation 2253 2262	militibus
+T44	Person 2263 2282	Willelmo de Newetun
+T45	Person 2283 2305	Gilberto filio Henrici
+T47	Person 2306 2325	Petro filio Ricardi
+T49	Person 2326 2347	Andrea filio Willelmi
+T51	Person 2348 2365	Henrico de Wicham
+T52	Person 2366 2384	Rogero de Besevile
+R1	occupation_is Arg1:T2 Arg2:T3	
+R5	is_officeholder_in Arg1:T2 Arg2:T4	
+R6	is_located_in Arg1:T4 Arg2:T5	
+R7	refers_to Arg1:T1 Arg2:T6	
+R8	is_grantor_in Arg1:T2 Arg2:T6	
+R9	is_wife_of Arg1:T8 Arg2:T7	
+R10	is_recipient_in Arg1:T7 Arg2:T6	
+R11	is_parcel_in Arg1:T9 Arg2:T6	
+*	same_as T24 T7 T26 T28 T30 T32 T34
+*	same_as T25 T8 T27 T29 T31 T33 T35
+R17	is_witness_to Arg1:T36 Arg2:T6	
+R19	is_witness_to Arg1:T37 Arg2:T6	
+R20	is_witness_to Arg1:T39 Arg2:T6	
+R21	is_witness_to Arg1:T40 Arg2:T6	
+R22	is_witness_to Arg1:T41 Arg2:T6	
+R23	is_witness_to Arg1:T42 Arg2:T6	
+R24	occupation_is Arg1:T36 Arg2:T43	
+R25	occupation_is Arg1:T37 Arg2:T43	
+R26	occupation_is Arg1:T39 Arg2:T43	
+R27	occupation_is Arg1:T40 Arg2:T43	
+R28	occupation_is Arg1:T41 Arg2:T43	
+R29	occupation_is Arg1:T42 Arg2:T43	
+R30	is_witness_to Arg1:T44 Arg2:T6	
+R31	is_witness_to Arg1:T45 Arg2:T6	
+R34	is_witness_to Arg1:T47 Arg2:T6	
+R36	is_witness_to Arg1:T49 Arg2:T6	
+R37	is_witness_to Arg1:T51 Arg2:T6	
+R38	is_witness_to Arg1:T52 Arg2:T6	
+R16	is_parcel_in Arg1:T16 Arg2:T6	
+R39	is_a_landlord_of Arg1:T28 Arg2:T23	
+R40	is_a_landlord_of Arg1:T29 Arg2:T23	
+R41	is_located_in Arg1:T19 Arg2:T20	
+R2	is_located_in Arg1:T23 Arg2:T20	
+R42	is_participant_in Arg1:T21 Arg2:T6	
+R43	is_recipient_in Arg1:T8 Arg2:T6	

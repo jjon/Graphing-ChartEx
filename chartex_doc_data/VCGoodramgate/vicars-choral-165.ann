@@ -1,0 +1,34 @@
+T1	Document 0 17	vicars-choral-165
+T2	Person 65 84	Agnes de Thormoteby
+T3	Transaction 99 104	grant
+T4	Person 105 117	John Maunsel
+T5	Occupation 118 135	treasurer of York
+T6	Site 140 144	land
+T7	Site 148 159	Goderumgate
+T8	Site 213 217	land
+T9	Person 255 269	Henry de Percy
+T10	Occupation 270 293	steward of John Maunsel
+T11	Person 331 335	John
+T12	Person 429 433	John
+T13	Site 396 400	land
+T14	Person 468 473	Agnes
+T15	Person 512 516	John
+T16	Person 541 546	Agnes
+T17	Person 567 572	John'
+T18	Person 601 610	Adam Cerf
+T19	Person 612 626	John de Seleby
+T20	Apparatus 757 956	[1256 x1263] SOURCE: VC 3/1/1, fo. 16. DATE: See dating note to 164. NOTE: Agnes de Thormanby ('Thormoteby') is presumably to be identified as Agnes daughter of Alfred of Goodramgate, recorded in 164
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	contains Arg1:T1 Arg2:T20	
+R3	is_grantor_in Arg1:T2 Arg2:T3	
+R4	is_recipient_in Arg1:T4 Arg2:T3	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	is_parcel_in Arg1:T6 Arg2:T3	
+R7	is_part_of Arg1:T6 Arg2:T7	
+*	same_as T8 T6 T13
+R8	occupation_is Arg1:T9 Arg2:T10	
+*	same_as T11 T4 T12 T15 T17
+R9	is_previous_participant_in Arg1:T9 Arg2:T3	
+*	same_as T14 T2 T16
+R10	is_witness_to Arg1:T18 Arg2:T3	
+R11	is_witness_to Arg1:T19 Arg2:T3	

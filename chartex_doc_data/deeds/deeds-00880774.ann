@@ -1,0 +1,60 @@
+T1	Document 0 14	deeds-00880774
+#1	AnnotatorNotes T1	{'editorial date':'1285/95', 'transaction type': 'Grant'}
+T2	Person 51 67	Gilbertus Pecche
+T3	Transaction 68 118	dedi concessi et hac presenti carta mea confirmavi
+T4	Person 119 140	domino Hugoni Golston
+T5	Person 179 195	Reginaldi Edrich
+T6	Person 201 217	Asseline de Cure
+T7	Place 221 234	Gestingthorpe
+R1	is_of Arg1:T5 Arg2:T7	
+R2	is_of Arg1:T6 Arg2:T7	
+T8	Site 397 406	tenemento
+T10	Place 463 468	villa
+T11	Place 472 485	Gestingthorpe
+*	same_as T10 T11
+T12	Person 555 564	Reginaldi
+T13	Person 568 576	Asseline
+T14	Person 1079 1095	Gilbertus Pecche
+T15	Person 1174 1183	Reginaldi
+T16	Person 1187 1195	Asseline
+T17	Person 1426 1447	Radulpho de Pebenechs
+T18	Person 1448 1465	Thoma de Bayhouse
+T19	Person 1466 1480	Ada de Nortest
+T20	Person 1481 1498	Iohanne de Lystun
+T21	Occupation 1501 1510	militibus
+T22	Person 1511 1534	Reginaldo de Selverlehe
+T23	Person 1535 1548	Iohanne de Ry
+T24	Person 1549 1569	Willelmo le botiller
+T25	Person 1570 1590	Roberto de Chelmesho
+T26	Person 1591 1616	Nicholao de Gestingthorpe
+T27	Occupation 1617 1624	clerico
+T28	Person 1628 1646	Edmundo de Lydgate
+T29	Occupation 1647 1654	clerico
+R4	refers_to Arg1:T1 Arg2:T3	
+R5	is_grantor_in Arg1:T2 Arg2:T3	
+R6	is_recipient_in Arg1:T4 Arg2:T3	
+R7	is_parcel_in Arg1:T8 Arg2:T3	
+R8	is_a_tenant_of Arg1:T5 Arg2:T8	
+R9	is_a_tenant_of Arg1:T6 Arg2:T8	
+*	same_as T12 T5 T15
+*	same_as T13 T6 T16
+*	same_as T14 T2
+R11	is_witness_to Arg1:T18 Arg2:T3	
+R12	occupation_is Arg1:T28 Arg2:T29	
+R13	occupation_is Arg1:T26 Arg2:T27	
+R14	occupation_is Arg1:T20 Arg2:T21	
+R15	occupation_is Arg1:T19 Arg2:T21	
+R16	occupation_is Arg1:T18 Arg2:T21	
+R17	occupation_is Arg1:T17 Arg2:T21	
+R18	is_witness_to Arg1:T17 Arg2:T3	
+R19	is_witness_to Arg1:T19 Arg2:T3	
+R20	is_witness_to Arg1:T20 Arg2:T3	
+R21	is_witness_to Arg1:T22 Arg2:T3	
+R22	is_witness_to Arg1:T23 Arg2:T3	
+R23	is_witness_to Arg1:T24 Arg2:T3	
+R24	is_witness_to Arg1:T25 Arg2:T3	
+R25	is_witness_to Arg1:T26 Arg2:T3	
+R26	is_witness_to Arg1:T28 Arg2:T3	
+T30	Person 693 699	Hugoni
+*	same_as T30 T4
+R3	is_located_in Arg1:T8 Arg2:T10	

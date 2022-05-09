@@ -1,0 +1,55 @@
+T1	Document 0 14	deeds-00880692
+#1	AnnotatorNotes T1	{'editorial date':'1231', 'transaction type': 'Lease'}
+T2	Person 51 73	Gilbertus de Oddewelle
+T3	Transaction 74 93	dimisi et invadiavi
+T4	Person 94 113	Simoni de Oddewelle
+T5	Person 117 125	Margerie
+T6	Site 136 153	novem acras terre
+T7	Place 182 192	magna Dune
+T8	Site 211 219	cheminum
+T9	Place 239 248	Heingeham
+T10	Person 275 281	Simoni
+T11	Person 285 293	Margerie
+T12	Date 333 392	Pascha anno regni regis Henrici filii Iohannis quintodecimo
+T13	Person 589 595	Simoni
+T14	Person 599 607	Margerie
+T15	Person 701 707	Simoni
+T16	Person 711 719	Margeria
+T17	Person 750 759	Gilbertus
+T18	Person 821 827	Simoni
+T19	Person 831 839	Margerie
+T20	Person 1244 1253	Gilbertus
+T21	Person 1293 1299	Simoni
+T22	Person 1303 1311	Margerie
+T23	Person 1426 1445	Hugone de Lasaundre
+T24	Person 1446 1463	Roberto de Wikham
+T25	Person 1464 1483	Willelmo forestario
+T26	Person 1484 1498	Ricardo Waleys
+T27	Person 1499 1513	Warino pictore
+T28	Person 1514 1532	Alexandro de Waude
+T29	Person 1533 1540	Roberto
+R2	is_son_of Arg1:T29 Arg2:T28	
+T30	Person 1551 1558	Ricardo
+T31	Occupation 1559 1566	clerico
+R3	occupation_is Arg1:T30 Arg2:T31	
+R4	refers_to Arg1:T1 Arg2:T3	
+R5	is_dated Arg1:T1 Arg2:T12	
+R6	is_grantor_in Arg1:T2 Arg2:T3	
+R7	is_recipient_in Arg1:T4 Arg2:T3	
+R8	is_wife_of Arg1:T5 Arg2:T4	
+R9	is_recipient_in Arg1:T5 Arg2:T3	
+R10	is_parcel_in Arg1:T6 Arg2:T3	
+R11	is_located_in Arg1:T6 Arg2:T7	
+R12	is_boundary_to Arg1:T8 Arg2:T6	
+*	same_as T10 T4 T13 T15 T18 T21
+*	same_as T11 T5 T14 T16 T19 T22
+*	same_as T17 T2 T20
+R13	is_witness_to Arg1:T23 Arg2:T3	
+R14	is_witness_to Arg1:T24 Arg2:T3	
+R15	is_witness_to Arg1:T25 Arg2:T3	
+R16	is_witness_to Arg1:T26 Arg2:T3	
+R17	is_witness_to Arg1:T27 Arg2:T3	
+R18	is_witness_to Arg1:T28 Arg2:T3	
+R19	is_witness_to Arg1:T29 Arg2:T3	
+R20	is_witness_to Arg1:T30 Arg2:T3	
+R1	is_boundary_to Arg1:T9 Arg2:T8	

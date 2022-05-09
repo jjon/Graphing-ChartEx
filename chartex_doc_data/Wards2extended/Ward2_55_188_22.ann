@@ -1,0 +1,99 @@
+T1	Document 0 15	Ward2_55_188_22
+#1	AnnotatorNotes T1	{"piece_id": "5471245", "date_text": "1603 June 13"}
+T2	Transaction 16 25	Quitclaim
+T3	Person 31 45	Thomas Whytman
+T4	Place 49 56	Salcott
+T5	Apparatus 57 67	('Sawcot')
+T6	Place 69 74	Essex
+T7	Occupation 76 85	fisherman
+T8	Person 103 115	John Whitman
+T9	Place 125 132	Fordham
+T10	Place 134 139	Essex
+T11	Person 154 167	Robert Jenner
+T12	Place 172 180	Brantham
+T13	Place 183 190	Suffolk
+T14	Occupation 192 198	yeoman
+T15	Site 205 213	messuage
+T16	Site 222 228	Lyarde
+T17	Site 237 242	croft
+T18	Place 272 279	Fordham
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	contains Arg1:T1 Arg2:T5	
+R5	is_part_of Arg1:T4 Arg2:T6	
+R6	occupation_is Arg1:T3 Arg2:T7	
+R7	is_of Arg1:T8 Arg2:T9	
+R8	is_part_of Arg1:T9 Arg2:T10	
+R9	is_son_of Arg1:T3 Arg2:T8	
+R10	is_recipient_in Arg1:T11 Arg2:T2	
+R11	is_of Arg1:T11 Arg2:T12	
+R12	is_part_of Arg1:T12 Arg2:T13	
+R13	occupation_is Arg1:T11 Arg2:T14	
+R14	is_parcel_in Arg1:T15 Arg2:T2	
+T19	Apparatus 1102 1138	Seal and signature of Thomas Whytman
+R15	contains Arg1:T1 Arg2:T19	
+T20	Person 1075 1089	Richard Clover
+T21	Person 1061 1073	Robert Wylys
+R16	is_witness_to Arg1:T20 Arg2:T2	
+R17	is_witness_to Arg1:T21 Arg2:T2	
+*	same_as T16 T15
+R18	is_part_of Arg1:T17 Arg2:T15	
+R19	is_located_in Arg1:T15 Arg2:T18	
+T22	Site 307 313	common
+T23	Site 330 343	Plumers Green
+*	same_as T23 T22
+R20	is_eastern_directional_marker_to Arg1:T22 Arg2:T15	
+T24	Site 372 377	lands
+R21	is_western_directional_marker_to Arg1:T24 Arg2:T15	
+T25	Person 390 403	Robert Jenner
+*	same_as T25 T11 T28
+R22	is_a_landlord_of Arg1:T25 Arg2:T24	
+T26	Person 429 442	Walter Jenner
+R23	is_a_tenant_of Arg1:T26 Arg2:T24	
+T27	Site 480 500	messuage or tenement
+T28	Person 513 526	Robert Jenner
+R24	is_a_landlord_of Arg1:T28 Arg2:T27	
+R25	is_boundary_to Arg1:T27 Arg2:T15	
+T29	Site 535 540	lands
+R26	not_same_as Arg1:T29 Arg2:T24	
+T30	Person 544 557	Robert Potter
+R27	is_a_tenant_of Arg1:T30 Arg2:T29	
+T31	Site 565 574	Stubbinge
+*	same_as T31 T29
+T32	Site 633 638	field
+T33	Site 646 651	Herds
+*	same_as T33 T32
+R28	is_part_of Arg1:T32 Arg2:T15	
+T34	Place 701 708	Fordham
+R29	is_located_in Arg1:T32 Arg2:T34	
+T35	Site 737 742	lands
+R30	not_same_as Arg1:T35 Arg2:T24	
+T36	Site 776 789	Fordham Fryth
+T37	Site 760 768	tenement
+*	same_as T36 T37
+R31	is_part_of Arg1:T35 Arg2:T37	
+R32	is_eastern_directional_marker_to Arg1:T35 Arg2:T32	
+T38	Site 818 826	tenement
+T39	Site 834 840	Howdes
+*	same_as T39 T38
+R33	is_western_directional_marker_to Arg1:T38 Arg2:T32	
+R34	not_same_as Arg1:T38 Arg2:T37	
+T40	Site 877 882	lands
+R35	not_same_as Arg1:T40 Arg2:T35	
+R36	not_same_as Arg1:T40 Arg2:T24	
+T41	Person 886 899	Robert Potter
+R37	is_a_tenant_of Arg1:T41 Arg2:T40	
+T42	Site 907 917	Fanes Land
+*	same_as T42 T40
+R38	is_northern_directional_marker_to Arg1:T40 Arg2:T32	
+T43	Site 947 952	lands
+R39	not_same_as Arg1:T43 Arg2:T40	
+R40	not_same_as Arg1:T43 Arg2:T35	
+R41	not_same_as Arg1:T43 Arg2:T29	
+R42	not_same_as Arg1:T43 Arg2:T24	
+T44	Person 965 978	Robert Potter
+R43	is_a_landlord_of Arg1:T44 Arg2:T43	
+T45	Person 1017 1027	John Spark
+R44	is_a_tenant_of Arg1:T45 Arg2:T43	
+R45	is_southern_directional_marker_to Arg1:T43 Arg2:T32	

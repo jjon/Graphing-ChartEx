@@ -1,0 +1,95 @@
+T1	Document 0 17	vicars-choral-419
+T2	Transaction 18 23	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 27 42	Thomas de Snape
+T4	Person 46 62	Roger de Wyghton
+T5	Person 76 83	Margery
+R2	is_wife_of Arg1:T5 Arg2:T4	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_recipient_in Arg1:T4 Arg2:T2	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+T6	Site 89 97	tenement
+T7	Site 103 109	houses
+R6	is_part_of Arg1:T7 Arg2:T6	
+R7	is_parcel_in Arg1:T6 Arg2:T2	
+T8	Person 130 151	William de Aurelianis
+R8	is_a_previous_tenant_of Arg1:T8 Arg2:T6	
+T9	Site 200 209	messuages
+T10	Person 213 231	Robert de Appelton
+T11	Person 239 244	Roger
+T12	Person 249 256	Margery
+*	same_as T11 T4
+*	same_as T12 T5
+R9	is_breadth_marker_to Arg1:T9 Arg2:T6	
+R10	is_a_tenant_of Arg1:T10 Arg2:T9	
+R11	is_a_tenant_of Arg1:T11 Arg2:T9	
+R12	is_a_tenant_of Arg1:T12 Arg2:T9	
+T13	Site 277 286	messuages
+R13	is_breadth_marker_to Arg1:T13 Arg2:T6	
+T14	Person 290 305	John de Wighale
+T15	Person 310 328	William de capella
+R14	is_a_tenant_of Arg1:T14 Arg2:T13	
+R15	is_a_tenant_of Arg1:T15 Arg2:T13	
+T16	Site 352 361	Petergate
+T17	Site 365 377	Bleikestrete
+R16	is_length_marker_to Arg1:T16 Arg2:T6	
+R17	is_length_marker_to Arg1:T17 Arg2:T6	
+T18	Person 472 498	mag• Robert de Scardeburgh
+T19	Occupation 499 503	dean
+T20	Institution 511 525	church of York
+R18	occupation_is Arg1:T18 Arg2:T19	
+R19	is_officeholder_in Arg1:T18 Arg2:T20	
+R20	is_witness_to Arg1:T18 Arg2:T2	
+T21	Person 527 546	Thomas de Corbrigge
+T22	Person 567 587	mag• Henry de Newerk
+T23	Occupation 588 611	archdeacon of Richemund
+T24	Occupation 547 565	chancellor of York
+R21	is_witness_to Arg1:T21 Arg2:T2	
+R22	occupation_is Arg1:T21 Arg2:T24	
+R23	occupation_is Arg1:T22 Arg2:T23	
+R24	is_witness_to Arg1:T22 Arg2:T2	
+T25	Person 614 635	mag• Thomas de Button
+T26	Occupation 636 655	archdeacon of Wells
+R25	occupation_is Arg1:T25 Arg2:T26	
+R26	is_witness_to Arg1:T25 Arg2:T2	
+T27	Person 657 676	mag• John le Romeyn
+T29	Apparatus 983 1667	[1279/80 x 9 February 128•5/6] SOURCE: VC 6/2/6 [early 14th-century rent roll], dorse• DATE: When John le Romeyn the younger was precentor of Lincoln (see dating note to 271); Thomas de Adderbury (Amberbir') was a canon by 25 June 1280•   NOTE: See 418• Blake Street originally ran north-east from St• Helen's Square, across Loplane (modern Duncombe Place), as far as High Petergate at a point near Bootham Bar (where no• 9 now stands)• The northern stretch (beyond Loplane) was also known by reference to the Bar and St• Leonard's Hospital, which it passed (see 420)• In 1299 the hospital was licensed to enclose the land within its grounds with a wall (Cal• Pat• R,, 1292-1301, 402)
+T31	Person 919 937	Nicholas de Seleby
+T32	Person 939 945	Walter
+T33	Person 904 917	Stephen Wyles
+T34	Person 889 902	Adam Verdenol
+T35	Occupation 677 697	precentor of Lincoln
+R27	occupation_is Arg1:T27 Arg2:T35	
+T36	Person 699 722	mag• Thomas de Amberbir
+T37	Person 728 748	mag• Thomas de Hedon
+T38	Occupation 750 756	canons
+T39	Institution 764 778	church of York
+R28	occupation_is Arg1:T37 Arg2:T38	
+R29	occupation_is Arg1:T36 Arg2:T38	
+R30	is_officeholder_in Arg1:T36 Arg2:T39	
+R31	is_officeholder_in Arg1:T37 Arg2:T39	
+T40	Person 780 798	William de capella
+T41	Person 860 875	John le Especer
+T42	Person 833 848	John le Especer
+R32	is_father_of Arg1:T42 Arg2:T41	
+T43	Person 819 831	John Sampson
+T44	Person 800 817	Robert de Apelton
+R33	is_witness_to Arg1:T27 Arg2:T2	
+R34	is_witness_to Arg1:T36 Arg2:T2	
+R35	is_witness_to Arg1:T37 Arg2:T2	
+R36	is_witness_to Arg1:T40 Arg2:T2	
+R37	is_witness_to Arg1:T44 Arg2:T2	
+R38	is_witness_to Arg1:T32 Arg2:T2	
+R39	is_witness_to Arg1:T43 Arg2:T2	
+R40	is_witness_to Arg1:T42 Arg2:T2	
+R41	is_witness_to Arg1:T41 Arg2:T2	
+R42	is_witness_to Arg1:T31 Arg2:T2	
+R43	is_witness_to Arg1:T34 Arg2:T2	
+R44	is_witness_to Arg1:T33 Arg2:T2	
+R46	contains Arg1:T1 Arg2:T29	
+T45	Person 386 392	Thomas
+*	same_as T45 T3
+T46	Apparatus 447 459	Warranty etc
+R48	contains Arg1:T1 Arg2:T46	
+T47	Occupation 950 959	goldsmith
+R49	occupation_is Arg1:T32 Arg2:T47	

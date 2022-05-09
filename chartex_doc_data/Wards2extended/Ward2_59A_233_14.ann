@@ -1,0 +1,56 @@
+T1	Document 0 16	Ward2_59A_233_14
+#1	AnnotatorNotes T1	{"piece_id": "5472158", "date_text": "1594 Aug 1"}
+T2	Person 39 54	Beatrice Audley
+T3	Apparatus 56 63	Audeley
+T4	Transaction 17 33	Grant of a lease
+R1	refers_to Arg1:T1 Arg2:T4	
+R2	is_grantor_in Arg1:T2 Arg2:T4	
+T5	Place 68 76	Gosbecks
+T6	Place 80 87	Stanway
+R3	is_part_of Arg1:T5 Arg2:T6	
+T7	Place 89 94	Essex
+R4	is_part_of Arg1:T6 Arg2:T7	
+T8	Occupation 96 101	widow
+R5	occupation_is Arg1:T2 Arg2:T8	
+R6	is_of Arg1:T2 Arg2:T5	
+T9	Person 107 120	Thomas Audley
+T10	Apparatus 122 129	Audeley
+R7	contains Arg1:T1 Arg2:T3	
+R8	is_grantor_in Arg1:T9 Arg2:T4	
+R9	contains Arg1:T1 Arg2:T10	
+T11	Occupation 132 141	gentleman
+R10	is_son_of Arg1:T9 Arg2:T2	
+T12	Person 155 170	Edward Wybarowe
+T13	Person 175 190	Stephen Boulton
+R11	is_recipient_in Arg1:T12 Arg2:T4	
+R12	is_recipient_in Arg1:T13 Arg2:T4	
+T14	Place 194 204	Berechurch
+R13	is_of Arg1:T13 Arg2:T14	
+T15	Place 206 211	Essex
+R14	is_part_of Arg1:T14 Arg2:T15	
+T16	Occupation 213 219	yeomen
+R15	occupation_is Arg1:T12 Arg2:T16	
+R16	occupation_is Arg1:T13 Arg2:T16	
+R17	is_of Arg1:T12 Arg2:T14	
+T17	Site 256 277	pasture for 100 sheep
+R18	is_parcel_in Arg1:T17 Arg2:T4	
+T18	Site 285 301	'Stanway Heathe'
+*	same_as T17 T18
+T19	Site 310 315	field
+T20	Site 327 339	'Comon Feld'
+*	same_as T19 T20
+R19	is_parcel_in Arg1:T19 Arg2:T4	
+T21	Place 343 350	Stanway
+T22	Place 352 357	Essex
+R20	is_part_of Arg1:T21 Arg2:T22	
+T23	Apparatus 359 379	[location specified]
+R21	is_located_in Arg1:T19 Arg2:T21	
+R22	is_located_in Arg1:T17 Arg2:T21	
+R23	contains Arg1:T1 Arg2:T23	
+T25	Person 444 459	Peter Whelcombe
+T26	Person 464 476	John Madison
+R25	is_witness_to Arg1:T25 Arg2:T4	
+R26	is_witness_to Arg1:T26 Arg2:T4	
+T27	Apparatus 478 571	Dorse: note that the lease was cancelled• Signet seals of Edward Wybarowe and Stephen Boulton
+R24	contains Arg1:T1 Arg2:T27	
+R27	occupation_is Arg1:T9 Arg2:T11	

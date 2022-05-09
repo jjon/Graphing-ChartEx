@@ -1,0 +1,40 @@
+T1	Document 0 10	YM/D/SN/14
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "2 August, 1548", "Title": "Feoffment"}
+T3	Person 22 33	Edmund Tyas
+T4	Place 37 47	Pontefract
+T5	Occupation 49 55	yeoman
+T6	Person 57 70	John Atkynson
+T7	Person 75 91	Richard Atkynson
+T8	Site 104 116	unbuilt toft
+T9	Place 120 127	Lowgate
+T10	Place 129 134	Balne
+T11	Site 141 152	five closes
+T12	Site 199 204	lands
+T13	Person 208 221	Thomas Rikard
+T14	Place 225 233	Hatfield
+T15	Site 256 268	Lowgate lane
+T16	Site 287 295	Cat lane
+T17	Person 315 329	John Gaytingby
+T18	Person 331 348	John Dykkyllpeney
+T19	Person 350 361	James Pitte
+R1	is_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T5	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_recipient_in Arg1:T6 Arg2:T2	
+R5	is_recipient_in Arg1:T7 Arg2:T2	
+R6	is_son_of Arg1:T7 Arg2:T6	
+R7	is_parcel_in Arg1:T8 Arg2:T2	
+R8	is_located_in Arg1:T8 Arg2:T9	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_part_of Arg1:T11 Arg2:T8	
+R11	is_eastern_directional_marker_to Arg1:T12 Arg2:T8	
+R12	is_western_directional_marker_to Arg1:T12 Arg2:T8	
+R13	is_a_tenant_of Arg1:T13 Arg2:T12	
+R14	is_of Arg1:T13 Arg2:T14	
+R15	is_southern_directional_marker_to Arg1:T15 Arg2:T8	
+R16	is_northern_directional_marker_to Arg1:T16 Arg2:T8	
+R17	is_witness_to Arg1:T17 Arg2:T2	
+R18	is_witness_to Arg1:T18 Arg2:T2	
+R19	is_witness_to Arg1:T19 Arg2:T2	
+R20	refers_to Arg1:T1 Arg2:T2	

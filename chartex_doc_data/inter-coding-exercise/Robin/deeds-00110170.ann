@@ -1,0 +1,58 @@
+T1	Document 0 14	deeds-00110170
+T2	Person 51 56	Agnes
+T3	Person 70 84	Rogeri Correye
+T4	Place 88 91	Bed
+R1	is_of Arg1:T3 Arg2:T4	
+R2	is_widow_of Arg1:T2 Arg2:T3	
+T5	Transaction 138 188	dedi concessi et hac presenti carta mea confirmaui
+T6	Person 189 203	Johanni French
+T7	Place 206 217	ciui Lond[]
+R3	is_of Arg1:T6 Arg2:T7	
+T8	Site 275 289	una acra terre
+T9	Site 335 341	terram
+T10	Person 342 355	Johannis Calt
+T11	Person 361 375	Abel Attewater
+T12	Site 394 408	Trumptonedyche
+T13	Place 471 474	Bed
+T14	Date 477 599	die sabbati proximo post festum purificacionis beate Marie virginis anno regni regis E filii regis Henrici tricesimo primo
+T16	Site 301 322	prebenda sancti Pauli
+T15	Place 323 326	Bed
+R4	is_located_in Arg1:T16 Arg2:T15	
+T17	Person 614 636	Waltero de Molesworthe
+T18	Person 637 652	Johanne Cullebe
+T19	Person 655 667	Johanne Calt
+T20	Person 668 684	Gilberto de Holm
+T21	Person 685 699	Johanne Wymund
+T22	Occupation 707 727	aldermanno ville Bed
+T23	Person 730 748	Nicholao le Feroun
+T24	Person 752 767	Johanne Pictore
+T25	Occupation 773 781	balliuis
+T26	Person 782 789	Johanne
+T27	Person 796 809	Thome Halyday
+T28	Person 810 826	Johanne Chechele
+T29	Occupation 827 834	clerico
+R5	refers_to Arg1:T1 Arg2:T5	
+R6	is_dated Arg1:T1 Arg2:T14	
+R7	is_part_of Arg1:T8 Arg2:T16	
+R8	is_boundary_to Arg1:T9 Arg2:T8	
+R9	is_a_tenant_of Arg1:T10 Arg2:T9	
+R10	is_a_tenant_of Arg1:T11 Arg2:T9	
+R11	is_boundary_to Arg1:T12 Arg2:T8	
+R12	is_location_of Arg:T13 Arg2:T5	
+R13	is_parcel_in Arg1:T8 Arg2:T5	
+R14	is_grantor_in Arg1:T2 Arg2:T5	
+R15	is_recipient_in Arg1:T6 Arg2:T5	
+R16	occupation_is Arg1:T21 Arg2:T22	
+R17	occupation_is Arg1:T23 Arg2:T25	
+R18	occupation_is Arg1:T24 Arg2:T25	
+R19	occupation_is Arg1:T28 Arg2:T29	
+R20	is_witness_to Arg1:T17 Arg2:T5	
+R21	is_witness_to Arg1:T18 Arg2:T5	
+R22	is_witness_to Arg1:T19 Arg2:T5	
+R23	is_son_of Arg1:T26 Arg2:T27	
+R24	is_witness_to Arg1:T20 Arg2:T5	
+R25	is_witness_to Arg1:T21 Arg2:T5	
+R26	is_witness_to Arg1:T23 Arg2:T5	
+R27	is_witness_to Arg1:T24 Arg2:T5	
+R28	is_witness_to Arg1:T26 Arg2:T5	
+R29	is_witness_to Arg1:T28 Arg2:T5	

@@ -1,0 +1,47 @@
+T1	Document 0 17	vicars-choral-164
+T2	Transaction 18 23	Grant
+T3	Person 27 32	Agnes
+T4	Person 45 66	Alfred of Goderumgate
+T5	Person 70 82	John Maunsel
+T6	Occupation 83 100	treasurer of York
+T7	Occupation 105 124	provost of Beverley
+T8	Site 155 163	messuage
+T9	Site 169 175	garden
+T10	Site 180 186	houses
+T11	Site 202 213	Goderumgate
+T12	Person 244 252	Gunnewar
+T13	Person 254 260	Alfred
+T14	Site 288 294	houses
+T15	Institution 305 311	vicars
+T16	Person 322 332	John Roman
+T17	Occupation 342 359	treasurer of York
+T18	Site 368 376	messuage
+T19	Person 380 394	William Hagent
+T20	Occupation 395 401	knight
+T21	Institution 414 436	prebendary of Wetewang
+T22	Person 525 537	John Maunsel
+T23	Person 602 607	Agnes
+T24	Apparatus 775 1402	Warranty. Seal. [1256 x 1263] SOURCE: VC 3/1/1, fo. 15v. DATE: When John Mansel was treasurer; before his flight from England in June 1263 (YMF i. 25). NOTE: This and the next two charters and the following final concord form a group, relating to a messuage held of the fee of the prebendary of Wetwang. It was evidently set back from the street, with access through a passage: 165. It adjoined other land of the Same prebend, held by the vicars with similar means of access: 123-5. The messuage granted here was later assigned to the vicars by John Mansel's executors, on the condition that the vicars maintained his obit: 166
+R1	contains Arg1:T1 Arg2:T24	
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_daughter_of Arg1:T3 Arg2:T4	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+R6	occupation_is Arg1:T5 Arg2:T6	
+R7	occupation_is Arg1:T5 Arg2:T7	
+R8	is_part_of Arg1:T9 Arg2:T8	
+R9	is_part_of Arg1:T10 Arg2:T8	
+R10	is_part_of Arg1:T8 Arg2:T11	
+R11	is_widow_of Arg1:T12 Arg2:T4	
+R12	is_mother_of Arg1:T12 Arg2:T3	
+*	same_as T13 T4
+R13	is_a_tenant_of Arg1:T15 Arg2:T14	
+R14	is_a_previous_grantor_of Arg1:T16 Arg2:T14	
+R15	occupation_is Arg1:T16 Arg2:T17	
+R16	is_boundary_to Arg1:T14 Arg2:T8	
+R17	is_boundary_to Arg1:T18 Arg2:T8	
+R18	is_a_tenant_of Arg1:T19 Arg2:T18	
+R19	occupation_is Arg1:T19 Arg2:T20	
+R20	is_a_landlord_of Arg1:T21 Arg2:T8	
+*	same_as T22 T5
+*	same_as T23 T3

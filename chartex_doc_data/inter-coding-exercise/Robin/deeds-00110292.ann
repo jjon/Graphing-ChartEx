@@ -1,0 +1,108 @@
+T1	Document 0 14	deeds-00110292
+T2	Date 15 65	Anno domini millesimo cc quinquagesimo mense Julii
+T3	Person 81 82	w
+T4	Occupation 85 92	priorem
+T5	Institution 96 110	conuentum de n
+R1	occupation_is Arg1:T3 Arg2:T4	
+R2	is_officeholder_in Arg1:T3 Arg2:T5	
+R3	is_dated Arg1:T1 Arg2:T2	
+T6	Person 116 133	Michaelem Boueton
+T7	Place 137 144	Goldint
+R4	is_of Arg1:T6 Arg2:T7	
+T8	Transaction 188 270	dederunt concesserunt et presenti scripto cirographato confirmauerunt in escambium
+T9	Person 277 278	m
+R7	is_recipient_in Arg1:T9 Arg2:T8	
+T10	Site 281 313	tres rodas terre sue et dimidiam
+T11	Site 317 330	campo de Gold
+R8	is_part_of Arg1:T10 Arg2:T11	
+R9	is_parcel_in Arg1:T10 Arg2:T8	
+T12	Site 338 350	dimidia acra
+R10	is_part_of Arg1:T12 Arg2:T10	
+T13	Site 363 380	Mulnedichefurlong
+T14	Site 387 393	terram
+T15	Person 394 410	Roberti Wanbaken
+T16	Site 414 420	terram
+T17	Person 421 436	Symonis de aula
+T18	Site 440 448	una roda
+T19	Site 461 482	Puttenhostretefurlong
+T20	Site 491 497	terram
+T21	Person 498 519	Roberti filii Symonis
+T22	Site 523 529	terram
+T23	Person 530 549	Roberti de Pulhangr
+T24	Site 555 567	dimidia roda
+T25	Site 577 586	Limbuttes
+T26	Site 593 599	terram
+T27	Person 600 623	domine Matildis de Gold
+T28	Site 629 635	terram
+T29	Person 636 653	Roberti le Bracur
+T30	Transaction 813 818	dedit
+T31	Person 826 833	Michael
+T32	Institution 841 860	priori et conuentui
+R11	is_grantor_in Arg1:T31 Arg2:T30	
+R12	is_recipient_in Arg1:T32 Arg2:T30	
+T33	Site 861 889	tres rodas et dimidiam terre
+T34	Site 899 907	una roda
+T35	Site 920 937	Mulnedichefurlong
+T36	Site 946 952	terram
+T37	Institution 169 187	prior et conuentus
+R13	is_grantor_in Arg1:T37 Arg2:T8	
+*	same_as T5 T37 T32 T38
+T38	Institution 962 982	prioris et conuentus
+T39	Site 986 994	una roda
+T40	Site 1007 1015	culturam
+T41	Site 1028 1039	Offinesbrok
+T42	Institution 1064 1084	prioris et conuentus
+T43	Site 1088 1096	una roda
+T44	Site 1106 1118	Longefurlong
+T45	Site 1127 1133	terram
+T46	Institution 1143 1163	prioris et conuentus
+T47	Site 1167 1173	terram
+T48	Person 1174 1189	Nicholai Wygani
+T49	Site 1193 1205	dimidia roda
+T50	Site 1218 1225	le Lowe
+T51	Site 1232 1238	terram
+T52	Institution 1248 1268	prioris et conuentus
+T53	Person 1323 1331	Michaele
+T54	Person 1455 1463	Michaeli
+T55	Person 1490 1497	Michael
+*	same_as T55 T54 T53 T9 T6 T31
+R5	is_parcel_in Arg1:T33 Arg2:T30	
+R6	is_part_of Arg1:T12 Arg2:T13	
+R14	is_a_tenant_of Arg1:T15 Arg2:T14	
+R15	is_a_tenant_of Arg1:T17 Arg2:T16	
+R16	is_part_of Arg1:T18 Arg2:T19	
+R17	is_a_tenant_of Arg1:T21 Arg2:T20	
+R18	is_a_tenant_of Arg1:T23 Arg2:T22	
+R19	is_part_of Arg1:T24 Arg2:T25	
+R20	is_a_tenant_of Arg1:T27 Arg2:T26	
+R21	is_a_tenant_of Arg1:T29 Arg2:T28	
+R22	is_part_of Arg1:T34 Arg2:T35	
+R23	is_a_tenant_of Arg1:T38 Arg2:T36	
+R24	is_part_of Arg1:T39 Arg2:T40	
+*	same_as T40 T41
+T56	Site 1048 1054	terram
+R25	is_a_tenant_of Arg1:T42 Arg2:T56	
+R26	is_part_of Arg1:T43 Arg2:T44	
+R27	is_a_tenant_of Arg1:T46 Arg2:T45	
+R28	is_a_tenant_of Arg1:T48 Arg2:T47	
+R29	is_part_of Arg1:T49 Arg2:T50	
+R30	is_a_tenant_of Arg1:T52 Arg2:T51	
+R31	is_boundary_to Arg1:T14 Arg2:T12	
+R32	is_boundary_to Arg1:T16 Arg2:T12	
+R33	is_part_of Arg1:T18 Arg2:T10	
+R34	is_part_of Arg1:T24 Arg2:T10	
+R35	is_boundary_to Arg1:T20 Arg2:T18	
+R36	is_boundary_to Arg1:T22 Arg2:T18	
+R37	is_boundary_to Arg1:T26 Arg2:T24	
+R38	is_boundary_to Arg1:T28 Arg2:T24	
+R39	is_part_of Arg1:T34 Arg2:T33	
+R40	is_part_of Arg1:T39 Arg2:T33	
+R41	refers_to Arg1:T1 Arg2:T8	
+R42	refers_to Arg1:T1 Arg2:T30	
+R43	is_part_of Arg1:T43 Arg2:T33	
+R44	is_part_of Arg1:T49 Arg2:T33	
+R45	is_boundary_to Arg1:T36 Arg2:T34	
+R46	is_boundary_to Arg1:T56 Arg2:T39	
+R47	is_boundary_to Arg1:T45 Arg2:T43	
+R48	is_boundary_to Arg1:T47 Arg2:T43	
+R49	is_boundary_to Arg1:T51 Arg2:T49	

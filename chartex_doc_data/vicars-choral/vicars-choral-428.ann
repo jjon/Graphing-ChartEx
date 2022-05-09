@@ -1,0 +1,97 @@
+T1	Document 0 17	vicars-choral-428
+T2	Transaction 18 23	Grant
+T3	Person 27 40	John de Parys
+T4	Occupation 41 47	mercer
+T5	Place 51 55	York
+T6	Person 59 75	Henry de Milford
+T7	Site 79 83	land
+T8	Site 87 96	Petergate
+T9	Site 119 128	Petergate
+T10	Site 148 152	land
+T11	Person 156 175	Simon of Baghergate
+T12	Site 216 220	land
+T13	Person 224 241	Richard de Craven
+T14	Site 270 274	lane
+T15	Person 294 303	Richard's
+T16	Site 304 308	land
+T17	Site 317 321	land
+T18	Person 325 345	Nicholas de Langeton
+T19	Institution 378 412	prior of St• Oswald, canon of York
+T23	Person 516 535	Ellen de Bolingboke
+T24	Person 550 554	John
+T25	Apparatus 577 591	Warranty• Seal
+T26	Person 604 621	mag• Peter de Ros
+T27	Occupation 622 639	precentor of York
+T28	Person 641 660	Thomas de Corbrigg'
+T29	Occupation 661 679	chancellor of York
+T30	Person 681 699	Thomas de Wakefeld
+T31	Occupation 700 707	subdean
+T32	Person 709 729	Thomas de Eadburbiri
+T33	Person 734 749	Thomas de Hedon
+T34	Occupation 751 757	canons
+T35	Person 759 771	Adam Sampson
+T36	Occupation 772 779	steward
+T37	Institution 787 806	church of St• Peter
+T38	Person 808 815	Richard
+T39	Occupation 820 830	apothecary
+T40	Person 832 838	Walter
+T41	Occupation 843 852	goldsmith
+T42	Person 854 861	William
+T43	Person 871 875	Hugh
+T44	Occupation 880 889	goldsmith
+T45	Person 891 908	Richard de Craven
+T46	Place 922 926	York
+T47	Date 928 970	morrow of St• John of Beverley in May 1290
+T48	Apparatus 971 1338	[8 May]• SOURCE: VC 3/Vi 325 (260 mm• x 140 mm•) ENDORSEMENT: Petyrgate; et de jj s• viij d, priori sancti Oswald; Peteg' de Urwell• SEAL: tag• NOTE: The land, together with property in Aldwark, was assigned in 1292 by Milford to the vicars as the endowment of a chantry for Dean William de Langton: 546• The prior of St• Oswald held ex officio the prebend of Bramham
+R1	contains Arg1:T1 Arg2:T25	
+R2	contains Arg1:T1 Arg2:T48	
+R3	is_dated Arg1:T1 Arg2:T47	
+R4	is_location_of Arg:T46 Arg2:T2	
+R5	refers_to Arg1:T1 Arg2:T2	
+R6	occupation_is Arg1:T26 Arg2:T27	
+R7	occupation_is Arg1:T28 Arg2:T29	
+R8	occupation_is Arg1:T30 Arg2:T31	
+R9	occupation_is Arg1:T32 Arg2:T34	
+R10	occupation_is Arg1:T33 Arg2:T34	
+R11	occupation_is Arg1:T35 Arg2:T36	
+R12	is_officeholder_in Arg1:T35 Arg2:T37	
+R13	occupation_is Arg1:T38 Arg2:T39	
+R14	occupation_is Arg1:T40 Arg2:T41	
+R15	is_son_of Arg1:T42 Arg2:T40	
+R16	occupation_is Arg1:T43 Arg2:T44	
+R17	occupation_is Arg1:T3 Arg2:T4	
+R18	is_of Arg1:T3 Arg2:T5	
+R19	is_grantor_in Arg1:T3 Arg2:T2	
+R20	is_recipient_in Arg1:T6 Arg2:T2	
+R21	is_parcel_in Arg1:T7 Arg2:T2	
+R22	is_part_of Arg1:T7 Arg2:T8	
+*	same_as T9 T8
+R23	is_a_tenant_of Arg1:T11 Arg2:T10	
+R24	is_a_tenant_of Arg1:T13 Arg2:T12	
+R25	is_a_tenant_of Arg1:T15 Arg2:T16	
+*	same_as T15 T13
+R26	is_boundary_to Arg1:T16 Arg2:T14	
+R27	is_boundary_to Arg1:T17 Arg2:T14	
+R28	is_a_tenant_of Arg1:T18 Arg2:T17	
+R29	is_a_landlord_of Arg1:T19 Arg2:T7	
+*	same_as T24 T3
+R33	is_eastern_directional_marker_to Arg1:T9 Arg2:T7	
+R34	is_length_marker_to Arg1:T10 Arg2:T7	
+R35	is_northern_directional_marker_to Arg1:T12 Arg2:T7	
+R36	is_southern_directional_marker_to Arg1:T14 Arg2:T7	
+R37	is_witness_to Arg1:T26 Arg2:T2	
+R38	is_witness_to Arg1:T28 Arg2:T2	
+R39	is_witness_to Arg1:T30 Arg2:T2	
+R40	is_witness_to Arg1:T32 Arg2:T2	
+R41	is_witness_to Arg1:T33 Arg2:T2	
+R42	is_witness_to Arg1:T35 Arg2:T2	
+R43	is_witness_to Arg1:T38 Arg2:T2	
+R44	is_witness_to Arg1:T40 Arg2:T2	
+R45	is_witness_to Arg1:T42 Arg2:T2	
+R46	is_witness_to Arg1:T43 Arg2:T2	
+R47	is_witness_to Arg1:T45 Arg2:T2	
+R48	is_length_marker_to Arg1:T9 Arg2:T7	
+R49	is_western_directional_marker_to Arg1:T10 Arg2:T7	
+R50	is_breadth_marker_to Arg1:T12 Arg2:T7	
+R51	is_breadth_marker_to Arg1:T14 Arg2:T7	
+R52	is_a_landlord_of Arg1:T23 Arg2:T7	

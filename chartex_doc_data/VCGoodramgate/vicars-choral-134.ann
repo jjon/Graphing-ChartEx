@@ -1,0 +1,54 @@
+T1	Document 0 17	vicars-choral-134
+T2	Person 34 49	William Scyrloc
+T3	Transaction 58 62	sale
+T4	Person 69 82	William Wyles
+T5	Person 97 104	Richard
+T6	Occupation 109 138	warden of the house of vicars
+T7	Institution 147 153	vicars
+T8	Site 157 161	land
+T9	Site 167 176	buildings
+T10	Site 180 192	Gutherumgat'
+T11	Person 260 267	William
+T12	Occupation 272 277	clerk
+T13	Person 279 286	Richard
+T14	Institution 295 301	vicars
+T15	Site 318 322	land
+T16	Person 326 341	William Scyrloc
+T17	Person 364 371	William
+T18	Apparatus 471 497	Warranty. Seal. Witnesses:
+T19	Apparatus 662 878	[c. 1274 X 1279] SOURCE: VC 3/Vi 115 (195 mm. x 99 mm.) ENDORSEMENT: Wyles. SEAL: vesica (30 mm. x 25 mm.), green, impression of a bird,legend *S. WILLI CHIRLOC COPY: VC 3/1/1, fo. 17v. DATE: After 133. NOTE: See 129
+T20	Occupation 83 88	clerk
+R1	is_grantor_in Arg1:T4 Arg2:T3	
+R2	occupation_is Arg1:T4 Arg2:T20	
+R3	is_recipient_in Arg1:T5 Arg2:T3	
+R4	occupation_is Arg1:T5 Arg2:T6	
+R5	is_recipient_in Arg1:T7 Arg2:T3	
+R6	is_part_of Arg1:T9 Arg2:T8	
+R7	is_part_of Arg1:T8 Arg2:T10	
+R8	is_parcel_in Arg1:T8 Arg2:T3	
+R9	occupation_is Arg1:T11 Arg2:T12	
+*	same_as T13 T5
+*	same_as T14 T7
+*	same_as T15 T8
+R10	is_a_tenant_of Arg1:T16 Arg2:T15	
+*	same_as T16 T2
+T21	Person 498 519	mag. William de Hedon
+R11	is_witness_to Arg1:T21 Arg2:T3	
+T22	Person 521 536	Roger de Playce
+R12	is_witness_to Arg1:T22 Arg2:T3	
+T23	Person 538 554	Robert de Wyteby
+R13	is_witness_to Arg1:T23 Arg2:T3	
+T24	Person 556 579	mag. Nicholas de London
+R14	is_witness_to Arg1:T24 Arg2:T3	
+T25	Person 581 594	Robert Frend,
+R15	is_witness_to Arg1:T25 Arg2:T3	
+T26	Person 595 612	Richard Hornepoth
+R16	is_witness_to Arg1:T26 Arg2:T3	
+T27	Person 614 630	William de Kawod
+R17	is_witness_to Arg1:T27 Arg2:T3	
+T28	Person 632 648	Thomas le Furbor
+R18	is_witness_to Arg1:T28 Arg2:T3	
+R19	refers_to Arg1:T1 Arg2:T3	
+R20	contains Arg1:T1 Arg2:T18	
+R21	contains Arg1:T1 Arg2:T19	
+*	same_as T11 T4

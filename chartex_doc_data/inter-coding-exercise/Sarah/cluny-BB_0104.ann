@@ -1,0 +1,70 @@
+T1	Document 0 13	cluny-BB_0104
+T2	Date 1378 1442	die dominico, in mense aprilo, in annos XII rengnante Karlo rege
+R1	is_dated Arg1:T1 Arg2:T2	
+T3	Transaction 111 123	vendedisimus
+R2	refers_to Arg1:T1 Arg2:T3	
+T4	Place 175 192	pago Matisconense
+T5	Place 197 211	agro Maciacens
+T6	Place 222 232	Besorniago
+T7	Person 31 39	Ricfredo
+T8	Person 52 61	Otelliane
+R3	is_wife_of Arg1:T8 Arg2:T7	
+T9	Person 67 78	Engelfredus
+T10	Person 91 97	Osanna
+R4	is_wife_of Arg1:T10 Arg2:T9	
+R5	is_grantor_in Arg1:T10 Arg2:T3	
+R6	is_grantor_in Arg1:T9 Arg2:T3	
+R7	is_recipient_in Arg1:T8 Arg2:T3	
+R8	is_recipient_in Arg1:T7 Arg2:T3	
+T11	Site 251 257	campus
+T12	Site 268 275	Alpucio
+T13	Site 134 156	aliquid de res nostras
+R9	is_parcel_in Arg1:T13 Arg2:T3	
+R10	is_located_in Arg1:T13 Arg2:T4	
+R11	is_located_in Arg1:T13 Arg2:T5	
+R12	is_located_in Arg1:T13 Arg2:T6	
+R13	is_part_of Arg1:T11 Arg2:T13	
+*	same_as T11 T12
+T16	Person 527 532	Elmon
+T17	Site 519 524	terre
+R14	is_a_tenant_of Arg1:T16 Arg2:T17	
+T18	Site 443 457	prato et campo
+T19	Site 485 491	Avanda
+*	same_as T18 T19
+R15	is_breadth_marker_to Arg1:T17 Arg2:T18	
+T20	Site 548 553	terre
+R16	is_breadth_marker_to Arg1:T20 Arg2:T18	
+T21	Person 554 560	Bernar
+R17	is_a_tenant_of Arg1:T21 Arg2:T20	
+T22	Site 583 588	terre
+R18	is_length_marker_to Arg1:T22 Arg2:T18	
+T23	Person 589 595	Rairan
+R19	is_a_tenant_of Arg1:T23 Arg2:T22	
+T14	Person 1312 1317	Aidus
+T15	Person 1296 1306	S• Anserio
+T24	Person 1286 1293	S• Gota
+T25	Person 1275 1284	S• Garoar
+T26	Site 293 310	tres partes terre
+T27	Site 333 349	quarte par terre
+T28	Person 350 358	Ansierio
+R22	is_a_tenant_of Arg1:T28 Arg2:T27	
+T29	Person 1263 1273	S• Bernoar
+T30	Person 1248 1261	S• Ermengerio
+T31	Person 1236 1246	S• Otberto
+T32	Person 1224 1234	S• Bernono
+*	same_as T15 T28
+R24	is_witness_to Arg1:T32 Arg2:T3	
+R25	is_witness_to Arg1:T31 Arg2:T3	
+R26	is_witness_to Arg1:T30 Arg2:T3	
+R27	is_witness_to Arg1:T29 Arg2:T3	
+R28	is_witness_to Arg1:T25 Arg2:T3	
+R29	is_witness_to Arg1:T24 Arg2:T3	
+R30	is_witness_to Arg1:T15 Arg2:T3	
+R31	is_witness_to Arg1:T14 Arg2:T3	
+R23	is_boundary_to Arg1:T27 Arg2:T11	
+R21	is_boundary_to Arg1:T26 Arg2:T11	
+R20	is_part_of Arg1:T18 Arg2:T13	
+T33	Place 1130 1143	Maciago villa
+R32	is_location_of Arg:T33 Arg2:T3	
+R33	is_part_of Arg1:T6 Arg2:T5	
+R34	is_part_of Arg1:T5 Arg2:T4	

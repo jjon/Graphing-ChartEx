@@ -1,0 +1,75 @@
+T1	Document 0 13	cluny-BB_0104
+T2	Date 1378 1442	die dominico, in mense aprilo, in annos XII rengnante Karlo rege
+T3	Person 1312 1317	Aidus
+T4	Person 1299 1306	Anserio
+T5	Person 1289 1294	Gotal
+T6	Person 1278 1284	Garoar
+T7	Person 1266 1273	Bernoar
+T8	Person 1251 1261	Ermengerio
+T9	Person 1239 1246	Otberto
+T10	Person 1227 1234	Bernono
+T11	Place 1130 1143	Maciago villa
+T12	Person 1148 1158	Engelfredo
+T13	Person 1163 1170	Osenane
+T15	Person 52 61	Otelliane
+T16	Person 67 78	Engelfredus
+T17	Person 91 97	Osanna
+T14	Person 31 39	Ricfredo
+T18	Transaction 111 123	vendedisimus
+T19	Place 175 192	pago Matisconense
+T20	Place 197 211	agro Maciacens
+T21	Place 216 232	villa Besorniago
+T22	Site 134 156	aliquid de res nostras
+T23	Site 251 257	campus
+T24	Site 268 275	Alpucio
+T25	Site 333 349	quarte par terre
+T26	Person 350 358	Ansierio
+T27	Site 293 310	tres partes terre
+*	same_as T23 T24
+R1	is_boundary_to Arg1:T27 Arg2:T24	
+R2	is_boundary_to Arg1:T25 Arg2:T24	
+R3	is_a_tenant_of Arg1:T26 Arg2:T25	
+T28	Site 443 457	prato et campo
+T29	Site 485 491	Avanda
+T30	Site 519 524	terre
+*	same_as T28 T29
+T31	Person 527 532	Elmon
+T32	Site 548 553	terre
+T33	Person 554 560	Bernar
+T34	Site 583 588	terre
+T35	Person 589 595	Rairan
+T36	Site 625 636	unda corent
+R4	is_dated Arg1:T1 Arg2:T2	
+T37	Apparatus 612 625	{corr:fronte}
+R5	contains Arg1:T1 Arg2:T37	
+R6	refers_to Arg1:T1 Arg2:T18	
+R7	is_location_of Arg:T11 Arg2:T18	
+R8	is_wife_of Arg1:T15 Arg2:T14	
+R9	is_wife_of Arg1:T17 Arg2:T16	
+R10	is_recipient_in Arg1:T14 Arg2:T18	
+R11	is_recipient_in Arg1:T15 Arg2:T18	
+R12	is_grantor_in Arg1:T16 Arg2:T18	
+R13	is_grantor_in Arg1:T17 Arg2:T18	
+R14	is_parcel_in Arg1:T22 Arg2:T18	
+R15	is_located_in Arg1:T22 Arg2:T21	
+R16	is_part_of Arg1:T21 Arg2:T20	
+R17	is_part_of Arg1:T20 Arg2:T19	
+R18	is_part_of Arg1:T23 Arg2:T22	
+R19	is_part_of Arg1:T28 Arg2:T22	
+R20	is_breadth_marker_to Arg1:T30 Arg2:T28	
+R21	is_breadth_marker_to Arg1:T32 Arg2:T28	
+R22	is_length_marker_to Arg1:T34 Arg2:T28	
+R23	is_length_marker_to Arg1:T36 Arg2:T28	
+R24	is_a_tenant_of Arg1:T31 Arg2:T30	
+R25	is_a_tenant_of Arg1:T33 Arg2:T32	
+R26	is_a_tenant_of Arg1:T35 Arg2:T34	
+*	same_as T12 T16
+*	same_as T13 T17
+R27	is_witness_to Arg1:T10 Arg2:T18	
+R28	is_witness_to Arg1:T9 Arg2:T18	
+R29	is_witness_to Arg1:T8 Arg2:T18	
+R30	is_witness_to Arg1:T7 Arg2:T18	
+R31	is_witness_to Arg1:T6 Arg2:T18	
+R32	is_witness_to Arg1:T5 Arg2:T18	
+R33	is_witness_to Arg1:T4 Arg2:T18	
+R34	is_witness_to Arg1:T3 Arg2:T18	

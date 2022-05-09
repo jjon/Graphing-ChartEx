@@ -1,0 +1,40 @@
+T1	Document 0 17	vicars-choral-158
+T2	Person 27 44	Alan de Katherton
+T3	Occupation 45 51	knight
+T4	Person 55 76	mag. Robert de Winton
+T5	Occupation 78 95	precentor of York
+T6	Site 232 237	lands
+T7	Site 250 276	churchyard of Holy Trinity
+T8	Site 280 290	Gutherumg'
+T9	Site 323 329	church
+T10	Site 342 346	land
+T11	Person 350 366	Hugh le Romanger
+T12	SiteRef 371 375	that
+T13	Person 379 394	John de Bakenay
+T14	Site 416 422	houses
+T15	Person 429 440	Ralph Saper
+T16	Site 468 473	house
+T17	Person 480 484	Wyth
+T18	Occupation 489 497	chaplain
+T19	Person 509 520	mag. Robert
+T20	Apparatus 623 1675	Warranty. [1235 X 1240] SOURCE: VC 3/1/1, fo. 19. DATE: When Robert de Winchester was precentor (see 532 note). NOTE: This and the next charter relate to rents which the executors of Robert de Winchester assigned, along with other rents, to the vicars as the endowment for an obit: 532. A marginal note written against the cartulary copy of the executors' grant at the point where reference is made to the 7s. 6d. rent reads: M[emorandum?] de Grangia Decani. That is picked up in rent rolls (surviving from the early 14th century) which record under Goodramgate a rent charge of 2s. 6d. a year from the dean's grange. The earliest roll (VC 6/2/5) has an additional note that the rent was by that date assigned to an obit for William de Laneham on 17 April. Laneham, a canon of York and archdeacon of Durham, was alive on 1 August 1244 but dead by 1249 (YMF ii. 9). He died, therefore, on 17 April 1245 x 1249. The 'grange' was presumably a barn belonging to the deanery, which in the Middle Ages stood south-east of the Minster near Holy Trinity church
+T21	Transaction 18 23	Grant
+R1	refers_to Arg1:T1 Arg2:T21	
+R2	is_grantor_in Arg1:T2 Arg2:T21	
+R3	occupation_is Arg1:T2 Arg2:T3	
+R4	is_recipient_in Arg1:T4 Arg2:T21	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	is_parcel_in Arg1:T6 Arg2:T21	
+R7	is_boundary_to Arg1:T7 Arg2:T6	
+R8	is_southern_directional_marker_to Arg1:T9 Arg2:T6	
+R9	is_a_tenant_of Arg1:T11 Arg2:T10	
+R10	is_boundary_to Arg1:T10 Arg2:T6	
+R11	is_boundary_to Arg1:T12 Arg2:T6	
+R12	is_a_tenant_of Arg1:T13 Arg2:T12	
+R13	is_part_of Arg1:T14 Arg2:T6	
+R14	is_a_tenant_of Arg1:T15 Arg2:T14	
+R15	is_part_of Arg1:T16 Arg2:T6	
+R16	is_a_previous_tenant_of Arg1:T17 Arg2:T16	
+R17	occupation_is Arg1:T17 Arg2:T18	
+*	same_as T19 T4
+R18	contains Arg1:T1 Arg2:T20	

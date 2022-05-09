@@ -1,0 +1,66 @@
+T1	Document 0 9	YM/D/SN/7
+T2	Transaction 11 20	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "15 April 1466", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 21 36	Richard Edmunde
+T4	Place 40 46	Snaith
+R2	is_of Arg1:T3 Arg2:T4	
+T5	Person 51 61	John Osset
+T6	Place 65 71	Cowick
+R3	is_of Arg1:T5 Arg2:T6	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_grantor_in Arg1:T5 Arg2:T2	
+T7	Person 529 548	William Lighteshill
+T8	Person 513 527	Thomas Gledowe
+T9	Person 497 511	Thomas Dylcoke
+T10	Person 73 84	John Rayner
+T11	Place 117 123	Snaith
+T12	Person 105 113	John Fox
+R6	is_of Arg1:T12 Arg2:T11	
+T13	Person 86 99	John Dylcocke
+R7	is_recipient_in Arg1:T10 Arg2:T2	
+R8	is_recipient_in Arg1:T13 Arg2:T2	
+R9	is_recipient_in Arg1:T12 Arg2:T2	
+T14	Document 134 143	YM/D/SN/6
+R10	not_same_as Arg1:T14 Arg2:T1	
+T15	Site 125 130	Lands
+R11	is_parcel_in Arg1:T15 Arg2:T2	
+T16	Site 159 168	curtilage
+T17	Site 173 206	selion of land with its buildings
+R12	is_part_of Arg1:T16 Arg2:T15	
+R13	is_part_of Arg1:T17 Arg2:T15	
+T18	Person 213 222	Edmunde's
+*	same_as T18 T3
+T19	Site 223 232	curtilage
+R14	is_a_tenant_of Arg1:T18 Arg2:T19	
+R15	is_eastern_directional_marker_to Arg1:T19 Arg2:T15	
+T20	Person 294 308	William Elande
+T21	Site 271 280	curtilage
+R16	is_western_directional_marker_to Arg1:T21 Arg2:T15	
+R17	is_a_tenant_of Arg1:T20 Arg2:T21	
+T22	Site 331 341	common way
+R18	is_southern_directional_marker_to Arg1:T22 Arg2:T15	
+T23	Place 350 356	Snaith
+T24	Site 357 363	fields
+R19	is_located_in Arg1:T24 Arg2:T23	
+T25	Place 367 371	Dorr
+T26	Site 397 402	marsh
+T27	Place 390 396	Snaith
+R21	is_located_in Arg1:T26 Arg2:T27	
+R22	is_northern_directional_marker_to Arg1:T26 Arg2:T15	
+T28	Person 453 468	Geoffrey Barker
+T29	Person 473 481	Isabella
+R23	is_wife_of Arg1:T29 Arg2:T28	
+T30	Site 421 426	lands
+T31	Transaction 436 441	given
+R24	is_grantor_in Arg1:T28 Arg2:T31	
+R25	is_parcel_in Arg1:T30 Arg2:T31	
+R26	precedes Arg1:T31 Arg2:T2	
+R27	is_witness_to Arg1:T9 Arg2:T2	
+R28	is_witness_to Arg1:T8 Arg2:T2	
+R29	is_witness_to Arg1:T7 Arg2:T2	
+R30	is_part_of Arg1:T22 Arg2:T24	
+*	same_as T30 T15
+R31	is_recipient_in Arg1:T3 Arg2:T31	
+R32	is_recipient_in Arg1:T5 Arg2:T31	
+R20	is_boundary_to Arg1:T25 Arg2:T22	

@@ -1,0 +1,47 @@
+T1	Document 0 17	vicars-choral-457
+T2	Person 86 97	Mary Darell
+T3	Place 101 105	York
+T4	Date 114 126	18 July 1420
+T5	Person 154 168	John Frekylton
+T6	Site 213 221	messuage
+T7	Person 225 236	John Waghen
+T8	Occupation 249 257	merchant
+T9	Place 261 265	York
+T10	Site 269 278	Petergate
+T11	Person 290 301	Robert Ward
+T12	Place 318 322	York
+T13	Site 381 386	lands
+T14	Site 391 400	tenements
+T15	Person 404 420	William. Flemyng
+T16	Place 432 436	York
+T17	Site 440 451	Gyrdlargate
+T18	Institution 41 70	official of the court of York
+T19	Transaction 78 82	will
+T20	Place 453 457	York
+T21	Date 459 474	6 November 1423
+T22	Apparatus 476 704	SOURCE: VC 3/Vi 322i (344 mm. x 256 mm.) ENDORSEMENT: Testamentum Marie Darell. SEAL: sealed on a tongue, no wax remains. Other bequests have not been calendared. NOTE: See 443. Girdlergate is an alternative name for Gloverlane.
+T23	Transaction 19 28	nspeximus
+R1	refers_to Arg1:T1 Arg2:T23	
+R2	precedes Arg1:T19 Arg2:T23	
+R3	is_dated Arg1:T1 Arg2:T21	
+R4	precedes Arg1:T4 Arg2:T23	
+R5	is_location_of Arg:T20 Arg2:T23	
+R6	contains Arg1:T1 Arg2:T22	
+R7	is_grantor_in Arg1:T2 Arg2:T19	
+R8	is_participant_in Arg1:T18 Arg2:T23	
+R9	is_of Arg1:T2 Arg2:T3	
+R10	is_recipient_in Arg1:T5 Arg2:T19	
+R11	is_parcel_in Arg1:T6 Arg2:T19	
+R12	is_a_tenant_of Arg1:T7 Arg2:T6	
+R13	occupation_is Arg1:T7 Arg2:T8	
+R14	is_of Arg1:T7 Arg2:T9	
+R15	is_part_of Arg1:T6 Arg2:T10	
+R16	is_a_previous_tenant_of Arg1:T11 Arg2:T6	
+R17	is_of Arg1:T11 Arg2:T12	
+R18	is_parcel_in Arg1:T13 Arg2:T19	
+R19	is_parcel_in Arg1:T14 Arg2:T19	
+R20	is_a_previous_grantor_of Arg1:T15 Arg2:T13	
+R21	is_a_previous_grantor_of Arg1:T15 Arg2:T14	
+R22	is_of Arg1:T15 Arg2:T16	
+R23	is_part_of Arg1:T13 Arg2:T17	
+R24	is_part_of Arg1:T14 Arg2:T17	

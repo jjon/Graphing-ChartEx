@@ -1,0 +1,91 @@
+T1	Document 0 17	vicars-choral-392
+T2	Transaction 18 23	Grant
+T3	Person 27 32	Ellen
+T4	Person 44 48	Emma
+T5	Person 60 75	Robert Grandeth
+T6	Person 79 88	mag• John
+T7	Occupation 93 102	physician
+T8	Place 106 110	York
+T9	Site 156 160	land
+T10	Site 164 173	Petergate
+T11	Site 193 197	land
+T12	Person 201 210	mag• John
+T13	Person 237 258	William de Aurelianis
+T14	Occupation 259 267	chaplain
+T15	Site 305 309	land
+T16	Site 286 292	moiety
+T17	Site 142 148	moiety
+T18	Person 316 324	Geoffrey
+T19	Occupation 329 334	mason
+T20	Person 349 354	Ellen
+T21	Person 364 369	Agnes
+T22	Person 401 409	Geoffrey
+T23	Site 415 421	moiety
+T24	Person 450 459	mag• John
+T25	Person 528 533	Ellen
+T26	Institution 552 580	vicars of the church of York
+T27	Person 589 594	Ellen
+T28	Person 665 671	Thomas
+T29	Occupation 676 693	chaplain de Tumba
+T31	Person 748 762	Nicholas Orger
+T32	Occupation 763 768	mayor
+T33	Person 770 785	Thomas le Grant
+T34	Person 787 799	Henry Sperry
+T35	Person 801 818	William de Seleby
+T36	Occupation 820 828	bailiffs
+T37	Person 830 848	William de Bouthum
+T38	Occupation 849 854	canon
+T39	Person 870 884	Richard Grusci
+T40	Person 886 899	William Blund
+T41	Person 901 907	Robert
+T43	Apparatus 913 1542	[later 1240s] SOURCE: VC 6/2/6 [early 14th-century rent roll], dorse• DATE: Orger is recorded as mayor in a charter dated between 8 or 10 December 1246 and 7 or 14 July 1247 (YML, L 2/1, pt• iii, fo• 95), and possibly in one dated 22 March 1248/9 (T• Widdrington, Analecta Eboracensia, ed• C• Caine (1897), 82, citing the 'Coucher book of Helagh': no such charter is given in Cartulary of Healaugh Park, ed• J• S• Purvis (YASRS xcii, 1936 for 1935))• NOTE: See 388• The text of two other charters (418-19), taken from the same source as this one, refer to land of William de Orleans (Aurelianis) apparently elsewhere in Petergate
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T43	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_daughter_of Arg1:T3 Arg2:T4	
+R6	is_daughter_of Arg1:T4 Arg2:T5	
+R7	is_granddaughter_of Arg1:T3 Arg2:T5	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	occupation_is Arg1:T6 Arg2:T7	
+R10	is_of Arg1:T6 Arg2:T8	
+R12	is_part_of Arg1:T17 Arg2:T9	
+R14	is_boundary_to Arg1:T11 Arg2:T17	
+R15	is_a_tenant_of Arg1:T12 Arg2:T11	
+*	same_as T12 T6 T24
+T44	SiteRef 229 233	that
+R16	is_boundary_to Arg1:T44 Arg2:T17	
+R17	is_a_tenant_of Arg1:T13 Arg2:T44	
+R19	is_part_of Arg1:T16 Arg2:T15	
+R20	not_same_as Arg1:T16 Arg2:T17	
+R21	is_boundary_to Arg1:T16 Arg2:T17	
+*	same_as T15 T9
+R22	is_a_tenant_of Arg1:T18 Arg2:T16	
+R24	occupation_is Arg1:T18 Arg2:T19	
+R25	is_husband_of Arg1:T18 Arg2:T21	
+*	same_as T20 T3 T25 T27
+R26	is_sister_of Arg1:T20 Arg2:T21	
+*	same_as T22 T18
+*	same_as T23 T16
+R27	is_a_tenant_of Arg1:T26 Arg2:T17	
+R29	occupation_is Arg1:T28 Arg2:T29	
+R32	occupation_is Arg1:T31 Arg2:T32	
+R33	is_witness_to Arg1:T31 Arg2:T2	
+R34	is_witness_to Arg1:T33 Arg2:T2	
+R35	is_witness_to Arg1:T34 Arg2:T2	
+R36	is_witness_to Arg1:T35 Arg2:T2	
+R37	occupation_is Arg1:T34 Arg2:T36	
+R38	occupation_is Arg1:T35 Arg2:T36	
+R39	occupation_is Arg1:T37 Arg2:T38	
+R40	is_witness_to Arg1:T37 Arg2:T2	
+R41	is_witness_to Arg1:T39 Arg2:T2	
+R42	is_witness_to Arg1:T40 Arg2:T2	
+R43	is_witness_to Arg1:T41 Arg2:T2	
+R13	is_part_of Arg1:T9 Arg2:T10	
+R2	occupation_is Arg1:T13 Arg2:T14	
+T30	Apparatus 727 735	Warranty
+R23	contains Arg1:T1 Arg2:T30	
+T42	Institution 862 868	chapel
+R28	is_officeholder_in Arg1:T37 Arg2:T42	
+R11	is_parcel_in Arg1:T9 Arg2:T2	
+R18	is_a_landlord_of Arg1:T28 Arg2:T17	
+R30	occupation_is Arg1:T33 Arg2:T36	

@@ -1,0 +1,15 @@
+T1	Document 0 13	cluny-BB_0069
+#1	AnnotatorNotes T1	{'title summary':'Charta qua Euroldus et Dodada uxor vendunt Hugoni et Lilliæ uxori campos et pratum prope villam de Breya, in Rosiliago et Felgerolas.', 'dorsal text':'(Au dos:) Ugoni in Bierias vendicio.'}
+T2	Person 532 539	Dacbert
+T3	Person 543 550	Alboeno
+R1	is_brother_of Arg1:T2 Arg2:T3	
+T4	Person 32 37	Ugono
+T5	Person 50 56	Lillia
+R2	is_wife_of Arg1:T5 Arg2:T4	
+T6	Person 72 80	Euroldus
+T7	Person 93 99	Dodada
+R3	is_wife_of Arg1:T7 Arg2:T6	
+T8	Transaction 121 134	vindidissimus
+T9	Site 145 181	campus et prato in pago Matisconense
+R5	is_grantor_in Arg1:T6 Arg2:T8	
+R6	is_parcel_in Arg1:T9 Arg2:T8	

@@ -1,0 +1,69 @@
+T1	Document 0 17	vicars-choral-403
+T2	Transaction 18 23	Grant
+T3	Person 27 42	Thomas Sotewain
+T4	Person 46 68	mag• Simon de Hevesham
+T5	Occupation 69 86	precentor of York
+T7	Person 120 125	Simon
+T8	Site 201 205	land
+T9	Site 210 216	houses
+T10	Person 223 244	Anketin de Hesingwald
+T11	Site 268 274	houses
+T12	Person 282 291	precentor
+T13	Institution 309 329	prebendary of Masham
+T14	Person 352 370	Peter de Tatecast'
+T15	Apparatus 331 339	Warranty
+T16	Person 372 379	Stephen
+T17	Person 397 409	Hugh Folioth
+T18	Occupation 411 420	chaplains
+T19	Institution 424 445	blessed Peter of York
+T20	Person 447 451	John
+T21	Person 467 479	William Alba
+T22	Person 481 499	Richard de Moserne
+T23	Person 501 515	Walter de Roma
+T24	Person 517 528	Simon Naman
+T25	Person 530 552	Geoffrey le gordewaner
+T26	Person 554 558	Hugh
+T27	Person 571 589	Thomas de Driffeld
+T28	Person 591 602	William Spu
+T29	Occupation 604 609	clerk
+T31	Apparatus 624 2049	[1241 x 1247] SOURCE: VC 3/Vi 416 (197 ram• x los mm•) ENDORSEMENT: Thome Soitewein de redditu x• solidorum• SEAL: tag• DATE: When Simon de Evesham was precentor• NOTE: This and the next fourteen charters form a group relating to land at the corner of Petergate and Stonegate• The property was acquired by Simon de Evesham, successively precentor, archdeacon of the East Riding, and archdeacon of Richmond, who granted it to the vicars• Charters 403-7 relate to land which Evesham bought from William Raven (406), having previously acquired rents of los, and 20s• charged on it (403-4); the grant of the 2os• rent was promoted by John de Easingwold and his mother, who provided the donors with an alternative rent of the same value (405)• Easingwold's own quitclaim later gave Evesham full possession of the land (407)• Charters 408-11 relate to land which Evesham acquired from Mariot, the widow, and Jeremy, the younger son, of Thomas the goldsmith (409)• His possession was later confirmed by Thomas's elder son William (410) and by Jeremy (411)• Jeremy may have made his quitclaim because of some uncertainty concerning the grant made with his mother• By charters 412,-4 Evesham granted his accumulated property to the vicars as the endowment of an obit for himself and others• The terms of the original grant in 1261 (412) were later altered (413-4), possibly after the conclusion in 1266 of the dispute with Jerenay(411
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T15	
+R4	contains Arg1:T1 Arg2:T31	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_recipient_in Arg1:T4 Arg2:T2	
+R7	occupation_is Arg1:T4 Arg2:T5	
+R9	is_a_previous_tenant_of Arg1:T10 Arg2:T8	
+R10	is_part_of Arg1:T9 Arg2:T8	
+R11	is_boundary_to Arg1:T11 Arg2:T8	
+T32	SiteRef 296 301	those
+R12	is_boundary_to Arg1:T32 Arg2:T8	
+R13	is_a_tenant_of Arg1:T12 Arg2:T11	
+R14	is_a_tenant_of Arg1:T13 Arg2:T32	
+R15	is_officeholder_in Arg1:T14 Arg2:T19	
+R16	is_officeholder_in Arg1:T16 Arg2:T19	
+R17	is_officeholder_in Arg1:T17 Arg2:T19	
+R18	occupation_is Arg1:T14 Arg2:T18	
+R19	occupation_is Arg1:T16 Arg2:T18	
+R20	occupation_is Arg1:T17 Arg2:T18	
+R21	is_witness_to Arg1:T14 Arg2:T2	
+R22	is_witness_to Arg1:T16 Arg2:T2	
+R23	is_witness_to Arg1:T17 Arg2:T2	
+R24	is_witness_to Arg1:T20 Arg2:T2	
+R25	occupation_is Arg1:T28 Arg2:T29	
+R26	is_witness_to Arg1:T21 Arg2:T2	
+R27	is_witness_to Arg1:T22 Arg2:T2	
+R28	is_witness_to Arg1:T23 Arg2:T2	
+R29	is_witness_to Arg1:T24 Arg2:T2	
+R30	is_witness_to Arg1:T25 Arg2:T2	
+R31	is_witness_to Arg1:T26 Arg2:T2	
+R32	is_witness_to Arg1:T27 Arg2:T2	
+R33	is_witness_to Arg1:T28 Arg2:T2	
+*	same_as T7 T4 T12
+R34	is_parcel_in Arg1:T8 Arg2:T2	
+T6	Site 383 395	Gutherumgate
+R8	is_of Arg1:T16 Arg2:T6	
+T33	Occupation 456 465	physician
+R35	occupation_is Arg1:T20 Arg2:T33	
+T34	Occupation 563 569	oxherd
+R36	occupation_is Arg1:T26 Arg2:T34	

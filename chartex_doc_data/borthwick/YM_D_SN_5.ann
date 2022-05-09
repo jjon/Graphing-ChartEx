@@ -1,0 +1,181 @@
+T1	Document 0 9	YM/D/SN/5
+T2	Transaction 11 20	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "15 October 1426", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 21 35	Thomas Dylcock
+T4	Place 39 44	Balne
+T5	Person 58 67	Katherine
+T6	Person 97 116	Aveline de Layburne
+R2	is_of Arg1:T3 Arg2:T4	
+R3	is_wife_of Arg1:T5 Arg2:T3	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_familial_relation_to Arg1:T6 Arg2:T5	
+R6	is_grantor_in Arg1:T5 Arg2:T2	
+T7	Person 142 149	William
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+R8	is_son_of Arg1:T7 Arg2:T3	
+T8	Site 161 169	Messuage
+T9	Place 191 197	Snaith
+R9	is_located_in Arg1:T8 Arg2:T9	
+R10	is_parcel_in Arg1:T8 Arg2:T2	
+T10	Person 219 235	William Moldeson
+R11	is_a_previous_tenant_of Arg1:T10 Arg2:T8	
+T11	Site 246 254	tenement
+R12	is_western_directional_marker_to Arg1:T11 Arg2:T8	
+T12	Person 258 263	Henry
+T13	Person 271 277	Robert
+R13	is_son_of Arg1:T12 Arg2:T13	
+R14	is_a_tenant_of Arg1:T12 Arg2:T11	
+T14	Person 302 313	John Lynlay
+T15	SiteRef 294 298	that
+R15	is_eastern_directional_marker_to Arg1:T15 Arg2:T8	
+R16	is_a_tenant_of Arg1:T14 Arg2:T15	
+T16	Site 337 342	lands
+T17	Site 350 360	west field
+T18	Place 364 370	Snaith
+R17	is_parcel_in Arg1:T16 Arg2:T2	
+R18	is_part_of Arg1:T16 Arg2:T17	
+R19	is_located_in Arg1:T17 Arg2:T18	
+T19	Site 372 383	1 acre land
+R20	is_parcel_in Arg1:T19 Arg2:T2	
+T20	Site 391 401	east field
+T21	Place 405 411	Snaith
+R21	is_part_of Arg1:T19 Arg2:T20	
+R22	is_located_in Arg1:T20 Arg2:T21	
+T22	Site 413 426	1 acre meadow
+R23	is_parcel_in Arg1:T22 Arg2:T2	
+T23	Site 434 444	north ings
+T24	Place 448 454	Snaith
+R24	is_located_in Arg1:T23 Arg2:T24	
+R25	is_part_of Arg1:T22 Arg2:T23	
+T25	Site 475 481	Stathe
+R26	is_western_directional_marker_to Arg1:T22 Arg2:T25	
+T26	Site 485 501	swathe of meadow
+T27	Site 511 518	meadows
+R27	is_parcel_in Arg1:T26 Arg2:T2	
+R28	is_part_of Arg1:T26 Arg2:T27	
+T28	Site 534 550	1 dole of meadow
+R29	is_parcel_in Arg1:T28 Arg2:T2	
+T29	Site 595 603	tenement
+T30	Site 674 682	tenement
+T31	Site 751 759	tenement
+T32	Person 1782 1799	Richard Burgoigne
+T33	Place 1803 1808	Balne
+T34	Person 1810 1822	John Puknall
+T35	Person 1836 1850	John Thornhill
+T36	Place 1854 1860	Snaith
+T37	Person 1862 1876	Simon Thornton
+T38	Person 1890 1906	Richard Taverner
+R30	is_of Arg1:T35 Arg2:T36	
+R31	is_of Arg1:T37 Arg2:T36	
+R32	is_of Arg1:T38 Arg2:T36	
+R33	is_of Arg1:T32 Arg2:T33	
+R34	is_of Arg1:T34 Arg2:T33	
+R35	is_witness_to Arg1:T32 Arg2:T2	
+R36	is_witness_to Arg1:T34 Arg2:T2	
+R37	is_witness_to Arg1:T35 Arg2:T2	
+R38	is_witness_to Arg1:T37 Arg2:T2	
+R39	is_witness_to Arg1:T38 Arg2:T2	
+T39	Person 607 611	John
+T40	Person 619 633	Robert de Heck
+R40	is_son_of Arg1:T39 Arg2:T40	
+R41	is_a_tenant_of Arg1:T39 Arg2:T29	
+T41	Place 637 643	Cowick
+R42	is_of Arg1:T40 Arg2:T41	
+R43	is_parcel_in Arg1:T29 Arg2:T2	
+T42	Place 558 565	Thwaite
+R44	is_located_in Arg1:T28 Arg2:T42	
+T43	Place 528 532	Yole
+R45	is_located_in Arg1:T27 Arg2:T43	
+T44	Place 714 720	Cowick
+R46	is_located_in Arg1:T30 Arg2:T44	
+T45	Place 703 709	Cowick
+R47	is_parcel_in Arg1:T30 Arg2:T2	
+T46	Person 686 699	William Skott
+R48	is_a_tenant_of Arg1:T46 Arg2:T30	
+R49	is_of Arg1:T46 Arg2:T45	
+T47	Person 763 769	Isolde
+T48	Person 787 797	John Skott
+R50	is_a_tenant_of Arg1:T47 Arg2:T31	
+R51	is_widow_of Arg1:T47 Arg2:T48	
+T49	Place 802 808	Cowick
+R52	is_located_in Arg1:T31 Arg2:T49	
+R53	is_parcel_in Arg1:T31 Arg2:T2	
+T50	Person 810 824	John Marsshall
+T51	Place 828 837	Rawcliffe
+R54	is_of Arg1:T50 Arg2:T51	
+T52	Transaction 880 898	gift and feoffment
+R55	precedes Arg1:T52 Arg2:T2	
+T53	Site 853 872	lands and tenements
+R56	is_parcel_in Arg1:T53 Arg2:T52	
+R57	is_recipient_in Arg1:T50 Arg2:T52	
+T54	Person 902 916	William Ketill
+R58	is_grantor_in Arg1:T54 Arg2:T52	
+T55	Place 920 929	Rawcliffe
+R59	is_of Arg1:T54 Arg2:T55	
+T56	Person 934 943	Katherine
+R60	is_wife_of Arg1:T56 Arg2:T54	
+T57	Site 1030 1038	tenement
+T58	Site 1043 1057	bovate of land
+T59	Place 1061 1067	Snaith
+T60	Place 1072 1078	Cowick
+R61	is_located_in Arg1:T57 Arg2:T59	
+R62	is_located_in Arg1:T58 Arg2:T60	
+T61	Person 1102 1119	John de Bonncroft
+T62	Person 1139 1150	William Dey
+T63	Person 1155 1163	Isabella
+R63	is_wife_of Arg1:T63 Arg2:T62	
+R64	is_a_previous_tenant_of Arg1:T61 Arg2:T57	
+R65	is_a_previous_tenant_of Arg1:T61 Arg2:T58	
+R66	is_a_tenant_of Arg1:T63 Arg2:T57	
+R67	is_a_tenant_of Arg1:T63 Arg2:T58	
+R68	is_parcel_in Arg1:T57 Arg2:T2	
+T64	Site 1309 1317	messuage
+T65	Place 1339 1345	Snaith
+R69	is_located_in Arg1:T64 Arg2:T65	
+T66	Person 1364 1378	William Wright
+T67	Person 1383 1391	Isabella
+R70	is_wife_of Arg1:T67 Arg2:T66	
+T68	Person 1416 1427	John Kydder
+R71	is_a_previous_tenant_of Arg1:T66 Arg2:T64	
+R72	is_a_previous_tenant_of Arg1:T68 Arg2:T64	
+T69	Person 1429 1443	John Marsshall
+R73	is_a_previous_tenant_of Arg1:T69 Arg2:T64	
+R74	is_a_previous_tenant_of Arg1:T69 Arg2:T57	
+R75	is_a_previous_tenant_of Arg1:T69 Arg2:T58	
+T70	Transaction 1478 1496	deed and feoffment
+T71	Person 1500 1514	William Ketill
+T72	Person 1519 1528	Katherine
+R76	is_wife_of Arg1:T72 Arg2:T71	
+R77	is_grantor_in Arg1:T71 Arg2:T70	
+R78	is_recipient_in Arg1:T69 Arg2:T70	
+R79	is_parcel_in Arg1:T64 Arg2:T70	
+R80	is_parcel_in Arg1:T58 Arg2:T70	
+R81	is_parcel_in Arg1:T57 Arg2:T70	
+R82	precedes Arg1:T70 Arg2:T2	
+T73	Person 1580 1596	William Moldeson
+T74	Place 1600 1606	Snaith
+R83	is_of Arg1:T73 Arg2:T74	
+R84	is_sister_of Arg1:T72 Arg2:T73	
+R85	is_participant_in Arg1:T6 Arg2:T2	
+R86	is_son_of Arg1:T7 Arg2:T5	
+R87	is_part_of Arg1:T31 Arg2:T53	
+R88	is_part_of Arg1:T30 Arg2:T53	
+R89	is_part_of Arg1:T29 Arg2:T53	
+R90	is_part_of Arg1:T28 Arg2:T53	
+R91	is_part_of Arg1:T26 Arg2:T53	
+R92	is_part_of Arg1:T22 Arg2:T53	
+R93	is_part_of Arg1:T19 Arg2:T53	
+R94	is_part_of Arg1:T16 Arg2:T53	
+R95	is_part_of Arg1:T8 Arg2:T53	
+R96	is_parcel_in Arg1:T58 Arg2:T2	
+T75	Person 1189 1197	Isabella
+*	same_as T75 T63
+R97	is_parcel_in Arg1:T64 Arg2:T2	
+*	same_as T10 T73 T76
+T76	Person 1611 1618	William
+T77	Person 1666 1673	Richard
+T78	Person 1729 1737	Nicholas
+R98	is_brother_of Arg1:T77 Arg2:T76	
+R99	is_brother_of Arg1:T78 Arg2:T76	
+R100	is_familial_relation_to Arg1:T6 Arg2:T3	

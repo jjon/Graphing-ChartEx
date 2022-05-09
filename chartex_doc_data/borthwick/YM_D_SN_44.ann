@@ -1,0 +1,110 @@
+T1	Document 0 10	YM/D/SN/44
+T2	Transaction 12 21	Quitclaim
+#1	AnnotatorNotes T1	{"Creation Dates": "24 February 1597/8", "Title": "Quitclaim"}
+T3	Person 22 39	Edward Skowthropp
+T4	Place 43 48	Balne
+T5	Occupation 50 56	yeoman
+T6	Person 58 73	Edward Stanhope
+R1	is_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T5	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_recipient_in Arg1:T6 Arg2:T2	
+T7	Site 80 94	2 acres arable
+R5	is_parcel_in Arg1:T7 Arg2:T2	
+T8	Site 102 112	west field
+R6	is_part_of Arg1:T7 Arg2:T8	
+T9	Site 135 144	4 selions
+T10	SiteRef 155 156	3
+R8	is_part_of Arg1:T10 Arg2:T9	
+T11	Site 378 386	1 selion
+R9	is_part_of Arg1:T11 Arg2:T9	
+T12	Site 173 178	lands
+R10	is_western_directional_marker_to Arg1:T12 Arg2:T10	
+T13	Person 195 208	Thomas Ricard
+R11	is_a_previous_tenant_of Arg1:T13 Arg2:T12	
+T14	SiteRef 236 241	those
+R12	is_eastern_directional_marker_to Arg1:T14 Arg2:T10	
+T15	Person 259 272	Thomas Ricard
+R13	is_a_previous_tenant_of Arg1:T15 Arg2:T14	
+T16	Place 276 282	Cowick
+R14	is_of Arg1:T15 Arg2:T16	
+T17	Site 305 317	Snaith Marsh
+R15	is_northern_directional_marker_to Arg1:T17 Arg2:T10	
+T18	Site 340 344	road
+R16	is_southern_directional_marker_to Arg1:T18 Arg2:T10	
+R7	is_part_of Arg1:T9 Arg2:T7	
+T19	Person 421 434	Thomas Ricard
+T20	Place 438 444	Cowick
+R17	is_of Arg1:T19 Arg2:T20	
+R18	is_a_previous_tenant_of Arg1:T19 Arg2:T21	
+T21	Site 398 403	lands
+R19	is_western_directional_marker_to Arg1:T21 Arg2:T11	
+R20	not_same_as Arg1:T19 Arg2:T13	
+T22	Place 212 218	Snaith
+R21	is_of Arg1:T13 Arg2:T22	
+T23	Person 467 483	Dorothy Skargill
+T24	SiteRef 458 463	those
+R22	is_eastern_directional_marker_to Arg1:T24 Arg2:T11	
+R23	is_a_previous_tenant_of Arg1:T23 Arg2:T24	
+R24	is_northern_directional_marker_to Arg1:T17 Arg2:T11	
+R25	is_southern_directional_marker_to Arg1:T18 Arg2:T11	
+T25	Person 542 546	Bate
+T26	Person 595 612	Edward Slingesbie
+T27	Person 674 687	Thomas Smithe
+T28	Person 689 699	Skowthropp
+T29	Person 740 753	William Adams
+T30	Place 757 764	Crowell
+T31	Place 766 771	Lincs
+T32	Person 845 862	Richard Radcliffe
+T33	Person 891 906	Thomas Dilcocke
+T34	Place 916 922	Snaith
+T35	Occupation 924 928	gent
+T36	Person 1006 1014	Stanhope
+T37	Person 1104 1114	Skowthropp
+T38	Occupation 75 78	esq
+R26	occupation_is Arg1:T6 Arg2:T38	
+T39	Place 116 122	Snaith
+R27	is_located_in Arg1:T8 Arg2:T39	
+T40	Site 352 359	Dorgate
+*	same_as T18 T40
+*	same_as T19 T15
+T41	Site 569 574	lands
+*	same_as T41 T7 T43 T48 T51
+R30	is_a_previous_tenant_of Arg1:T27 Arg2:T41	
+*	same_as T28 T3 T37
+T42	Transaction 582 591	feoffment
+R31	is_grantor_in Arg1:T26 Arg2:T42	
+R28	is_recipient_in Arg1:T25 Arg2:T42	
+R29	is_parcel_in Arg1:T41 Arg2:T42	
+R33	refers_to Arg1:T1 Arg2:T2	
+T43	Site 708 713	lands
+T44	Transaction 724 734	conveyance
+R34	is_recipient_in Arg1:T28 Arg2:T44	
+R35	is_grantor_in Arg1:T29 Arg2:T44	
+R36	is_of Arg1:T29 Arg2:T30	
+R37	is_part_of Arg1:T30 Arg2:T31	
+*	same_as T36 T6
+R38	is_of Arg1:T33 Arg2:T34	
+R39	occupation_is Arg1:T33 Arg2:T35	
+T45	Person 803 812	daughters
+T46	Person 837 841	wife
+R40	is_daughter_of Arg1:T45 Arg2:T46	
+R41	is_wife_of Arg1:T46 Arg2:T32	
+R42	is_daughter_of Arg1:T46 Arg2:T33	
+T47	Transaction 953 959	entail
+T48	Site 944 949	lands
+R43	is_recipient_in Arg1:T33 Arg2:T47	
+T49	Transaction 1019 1028	purchased
+T50	Person 1046 1058	co-heiresses
+*	same_as T50 T45
+R44	is_grantor_in Arg1:T50 Arg2:T49	
+R45	is_recipient_in Arg1:T36 Arg2:T49	
+T51	Site 1033 1038	lands
+R46	is_parcel_in Arg1:T51 Arg2:T49	
+R47	is_parcel_in Arg1:T48 Arg2:T47	
+R32	precedes Arg1:T42 Arg2:T2	
+R48	precedes Arg1:T44 Arg2:T2	
+R49	precedes Arg1:T47 Arg2:T2	
+R50	precedes Arg1:T49 Arg2:T2	
+T52	Occupation 485 490	widow
+R51	occupation_is Arg1:T23 Arg2:T52	

@@ -1,0 +1,47 @@
+T1	Document 0 17	vicars-choral-461
+T2	Transaction 18 23	Grant
+T3	Person 27 44	Barthamus Daweson
+T4	Occupation 45 53	alderman
+T5	Place 57 61	York
+R1	occupation_is Arg1:T3 Arg2:T4	
+R2	is_of Arg1:T3 Arg2:T5	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 65 78	Thomas Marser
+T7	Occupation 79 87	chaplain
+T8	Institution 95 165	chantry of St•  John of Beverley behind the statue of St•  Christopher
+R4	occupation_is Arg1:T6 Arg2:T7	
+R5	is_officeholder_in Arg1:T6 Arg2:T8	
+T9	Institution 173 197	cathedral church of York
+R6	is_officeholder_in Arg1:T6 Arg2:T9	
+R7	is_recipient_in Arg1:T6 Arg2:T2	
+T10	Site 297 305	tenement
+R8	is_parcel_in Arg1:T10 Arg2:T2	
+T11	Site 333 368	corner ofPetergate and Girdelergate
+R9	is_boundary_to Arg1:T11 Arg2:T10	
+T12	Place 372 376	York
+R10	is_located_in Arg1:T11 Arg2:T12	
+T13	Site 397 409	Girdelergate
+R11	is_southern_directional_marker_to Arg1:T13 Arg2:T10	
+T14	Site 431 435	land
+R12	is_northern_directional_marker_to Arg1:T14 Arg2:T10	
+T15	Institution 470 494	hospital of St•  Leonard
+R13	is_a_tenant_of Arg1:T15 Arg2:T14	
+R14	is_breadth_marker_to Arg1:T13 Arg2:T10	
+R15	is_breadth_marker_to Arg1:T14 Arg2:T10	
+T16	Site 527 536	Petergate
+R16	is_eastern_directional_marker_to Arg1:T16 Arg2:T10	
+R17	is_length_marker_to Arg1:T16 Arg2:T10	
+T17	Institution 443 462	master and brothers
+*	same_as T17 T15 T18
+T18	Institution 568 587	master and brothers
+T19	Site 556 560	land
+R18	is_a_tenant_of Arg1:T18 Arg2:T19	
+R19	is_western_directional_marker_to Arg1:T19 Arg2:T10	
+R20	is_length_marker_to Arg1:T19 Arg2:T10	
+T20	Place 726 730	York
+R21	is_location_of Arg:T20 Arg2:T2	
+T21	Date 732 754	5 October 5 Henry VIII
+R22	is_dated Arg1:T1 Arg2:T21	
+T22	Apparatus 755 1094	[1513]•  SOURCE: VC 3/Vi 351 (333 mm•  x 136 rnm• ) ENDORSEMENT: this evidence is for vii d•  •  •  from a •  •  in stainegate yearly•  SEAL: round (26 mm•  dia• ), red, impression•  NOTE: Thomas Marser was a vicar who later became the vicars' warden (VC 6/4/43 and 75)•  Girdlergate is an alternative name for Gloverlane•  St•  Andrewgate
+R23	contains Arg1:T1 Arg2:T22	
+R24	refers_to Arg1:T1 Arg2:T2	

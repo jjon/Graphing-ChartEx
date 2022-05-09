@@ -1,0 +1,125 @@
+T1	Transaction 188 270	dederunt concesserunt et presenti scripto cirographato confirmauerunt in escambium
+T2	Document 0 14	deeds-00110292
+T3	Date 15 65	Anno domini millesimo cc quinquagesimo mense Julii
+R1	is_dated Arg1:T2 Arg2:T3	
+T4	Institution 96 110	conuentum de n
+T5	Person 81 92	w[] priorem
+R2	is_officeholder_in Arg1:T5 Arg2:T4	
+R3	is_grantor_in Arg1:T5 Arg2:T1	
+T6	Person 116 133	Michaelem Boueton
+T7	Place 137 144	Goldint
+R4	is_of Arg1:T6 Arg2:T7	
+R5	is_recipient_in Arg1:T6 Arg2:T1	
+T8	Person 277 278	m
+*	same_as T8 T6 T31
+R6	refers_to Arg1:T2 Arg2:T1	
+T9	Site 281 313	tres rodas terre sue et dimidiam
+R7	is_parcel_in Arg1:T9 Arg2:T1	
+T10	Place 317 330	campo de Gold
+R8	is_located_in Arg1:T9 Arg2:T10	
+T11	Site 338 350	dimidia acra
+R9	is_part_of Arg1:T11 Arg2:T9	
+T12	Place 363 380	Mulnedichefurlong
+R10	is_located_in Arg1:T11 Arg2:T12	
+T13	Site 387 393	terram
+T14	Person 394 410	Roberti Wanbaken
+R11	is_a_tenant_of Arg1:T14 Arg2:T13	
+T15	Site 414 420	terram
+T16	Person 421 436	Symonis de aula
+R12	is_a_tenant_of Arg1:T16 Arg2:T15	
+R13	not_same_as Arg1:T13 Arg2:T15	
+R14	is_boundary_to Arg1:T15 Arg2:T11	
+R15	is_boundary_to Arg1:T13 Arg2:T11	
+T17	Site 440 448	una roda
+R16	is_part_of Arg1:T17 Arg2:T9	
+T18	Place 461 482	Puttenhostretefurlong
+R17	is_located_in Arg1:T17 Arg2:T18	
+T19	Site 491 497	terram
+T20	Person 498 505	Roberti
+R18	is_a_tenant_of Arg1:T20 Arg2:T19	
+T21	Person 512 519	Symonis
+R19	is_son_of Arg1:T20 Arg2:T21	
+R20	is_boundary_to Arg1:T19 Arg2:T17	
+T22	Site 523 529	terram
+T23	Person 530 549	Roberti de Pulhangr
+R21	is_a_tenant_of Arg1:T23 Arg2:T22	
+R22	not_same_as Arg1:T13 Arg2:T19	
+R23	not_same_as Arg1:T15 Arg2:T19	
+R24	not_same_as Arg1:T22 Arg2:T19	
+R25	not_same_as Arg1:T22 Arg2:T15	
+R26	not_same_as Arg1:T22 Arg2:T13	
+T24	Site 555 567	dimidia roda
+R27	is_part_of Arg1:T24 Arg2:T9	
+T25	Place 577 586	Limbuttes
+R28	is_located_in Arg1:T24 Arg2:T25	
+T26	Site 593 599	terram
+T27	Site 629 635	terram
+R29	not_same_as Arg1:T26 Arg2:T27	
+R30	not_same_as Arg1:T26 Arg2:T13	
+R31	not_same_as Arg1:T26 Arg2:T15	
+R32	not_same_as Arg1:T26 Arg2:T19	
+R33	not_same_as Arg1:T26 Arg2:T22	
+R34	not_same_as Arg1:T27 Arg2:T13	
+R35	not_same_as Arg1:T27 Arg2:T15	
+R36	not_same_as Arg1:T27 Arg2:T19	
+R37	not_same_as Arg1:T27 Arg2:T22	
+T28	Person 636 653	Roberti le Bracur
+R38	is_a_tenant_of Arg1:T28 Arg2:T27	
+T29	Person 607 623	Matildis de Gold
+R39	is_a_tenant_of Arg1:T29 Arg2:T26	
+R40	is_boundary_to Arg1:T26 Arg2:T24	
+R41	is_boundary_to Arg1:T27 Arg2:T24	
+T30	Transaction 813 818	dedit
+T31	Person 826 833	Michael
+R42	is_grantor_in Arg1:T31 Arg2:T30	
+T32	Person 841 847	priori
+R43	is_recipient_in Arg1:T32 Arg2:T30	
+T33	Institution 851 860	conuentui
+R44	is_recipient_in Arg1:T33 Arg2:T30	
+T34	Site 861 889	tres rodas et dimidiam terre
+R45	is_parcel_in Arg1:T34 Arg2:T30	
+T35	Site 899 907	una roda
+R46	is_part_of Arg1:T35 Arg2:T34	
+T36	Place 920 937	Mulnedichefurlong
+R47	is_located_in Arg1:T35 Arg2:T36	
+T37	Site 946 952	terram
+R48	is_boundary_to Arg1:T37 Arg2:T34	
+T38	Person 962 969	prioris
+T39	Institution 973 982	conuentus
+R49	is_a_tenant_of Arg1:T38 Arg2:T37	
+T40	Site 986 994	una roda
+R50	not_same_as Arg1:T40 Arg2:T35	
+T41	Site 1007 1015	culturam
+T42	Place 1028 1039	Offinesbrok
+R51	is_part_of Arg1:T40 Arg2:T41	
+R52	is_located_in Arg1:T41 Arg2:T42	
+R53	is_part_of Arg1:T40 Arg2:T34	
+T43	Site 1048 1054	terram
+*	same_as T43 T37 T46 T51
+T44	Site 1088 1096	una roda
+R54	not_same_as Arg1:T44 Arg2:T35	
+R55	not_same_as Arg1:T44 Arg2:T40	
+T45	Place 1106 1118	Longefurlong
+R56	is_located_in Arg1:T44 Arg2:T45	
+R57	is_part_of Arg1:T44 Arg2:T34	
+T46	Site 1127 1133	terram
+R58	is_boundary_to Arg1:T46 Arg2:T44	
+T47	Site 1167 1173	terram
+R59	not_same_as Arg1:T47 Arg2:T46	
+R60	is_boundary_to Arg1:T47 Arg2:T44	
+T48	Person 1174 1189	Nicholai Wygani
+R61	is_a_tenant_of Arg1:T48 Arg2:T47	
+T49	Site 1193 1205	dimidia roda
+T50	Place 1218 1225	le Lowe
+R62	is_located_in Arg1:T49 Arg2:T50	
+T51	Site 1232 1238	terram
+R63	is_boundary_to Arg1:T51 Arg2:T49	
+R64	refers_to Arg1:T2 Arg2:T30	
+*	same_as T32 T5 T38 T52 T54
+*	same_as T33 T4 T39 T53 T55
+T52	Person 1064 1071	prioris
+T53	Institution 1075 1084	conuentus
+R65	is_a_tenant_of Arg1:T39 Arg2:T37	
+T54	Person 1143 1150	prioris
+T55	Institution 1154 1163	conuentus
+#1	AnnotatorNotes T2	same_as, and especially, not_same_as continue to present problems of complexity and useability in situations like this where 'terram' refers to multiple different sites. Also, can I say that 'iacet super' is synonymous with is_located_in?

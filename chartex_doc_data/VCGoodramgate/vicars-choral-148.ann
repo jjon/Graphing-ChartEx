@@ -1,0 +1,91 @@
+T1	Document 0 17	vicars-choral-148
+T2	Person 34 40	Robert
+T3	Occupation 45 49	cook
+T4	Person 63 66	Eve
+T5	Apparatus 67 72	(Eda)
+T6	Person 211 234	mag. Robert de Wynchon'
+T7	Occupation 235 252	precentor of York
+T8	Person 341 356	Nicholas Ramkel
+T9	Site 391 395	land
+T10	Site 401 410	buildings
+T11	Site 414 427	Gutherhumgate
+T12	Person 434 440	mag. R
+T13	Apparatus 440 447	[obert]
+T14	Person 460 479	Gilbert de Coupland
+T15	Person 522 528	Robert
+T16	Person 533 536	Eve
+T17	Person 742 748	Robert
+T18	Person 753 756	Eve
+T19	Person 870 876	Robert
+T20	Person 881 884	Eve
+T21	Person 977 981	mag.
+T22	Apparatus 982 990	[Robert]
+T23	Person 1025 1031	Robert
+T24	Person 1036 1039	Eve
+T25	Institution 1133 1161	fabric of the church of York
+T26	Person 1212 1218	Robert
+T27	Person 1223 1226	Eve
+T28	Institution 1280 1304	dean and chapter of York
+T29	Apparatus 1344 1360	Seal. Witnesses:
+T30	Person 1361 1366	Serlo
+T31	Person 1368 1374	Jeremy
+T32	Person 1376 1382	Hervey
+T33	Person 1384 1391	Abraham
+T34	Person 1397 1416	Richard de Stanford
+T35	Occupation 1418 1427	chaplains
+T36	Person 1429 1445	John of Staingat
+T37	Person 1447 1453	Walter
+T38	Person 1467 1485	Geoffrey le Graunt
+T39	Person 1487 1507	Robert of the bailey
+T40	Apparatus 1508 1519	(de ballio)
+T41	Person 1521 1535	Walter de Rome
+T42	Person 1537 1551	Henry de Kawde
+T43	Person 1553 1557	John
+T44	Occupation 1562 1567	clerk
+T45	Apparatus 1581 1936	[1235 x 1240] SOURCE: VC 3/Vi 122 (153 mm. x 143 mm.) ENDORSEMENT: Karla Roberti le cu de dolma in Gutherhumgat'; [bundle mark].m. SEALS: (left) tag; (right) vesica (45 mm. x 33 mm.), green, impression of a fleur-de-lys, legend SIGILL EDE FEME ROB COV COPY: VC 3/1/1, fo. 18r.—v. DATE: When Robert de Winchester was precentor (see 532 note). NOTE: See 146
+T46	Transaction 140 168	annual and perpetual payment
+R1	refers_to Arg1:T1 Arg2:T46	
+R2	contains Arg1:T1 Arg2:T5	
+R3	contains Arg1:T1 Arg2:T13	
+R4	contains Arg1:T1 Arg2:T22	
+R5	contains Arg1:T1 Arg2:T29	
+R6	contains Arg1:T1 Arg2:T40	
+R7	contains Arg1:T1 Arg2:T45	
+R8	occupation_is Arg1:T2 Arg2:T3	
+R9	is_grantor_in Arg1:T2 Arg2:T46	
+R10	is_wife_of Arg1:T4 Arg2:T2	
+R11	is_grantor_in Arg1:T4 Arg2:T46	
+R12	is_recipient_in Arg1:T6 Arg2:T46	
+R13	occupation_is Arg1:T6 Arg2:T7	
+R14	is_recipient_in Arg1:T8 Arg2:T46	
+R15	is_a_tenant_of Arg1:T2 Arg2:T9	
+R16	is_a_tenant_of Arg1:T4 Arg2:T9	
+R17	is_a_previous_grantor_of Arg1:T14 Arg2:T9	
+*	same_as T15 T2 T17
+*	same_as T16 T4 T18
+*	same_as T23 T19 T26
+*	same_as T24 T20 T27
+*	same_as T21 T12
+R18	is_a_previous_grantor_of Arg1:T6 Arg2:T9	
+R19	is_part_of Arg1:T10 Arg2:T9	
+R20	is_part_of Arg1:T9 Arg2:T11	
+R21	is_participant_in Arg1:T25 Arg2:T46	
+R22	is_participant_in Arg1:T28 Arg2:T46	
+R23	occupation_is Arg1:T30 Arg2:T35	
+R24	occupation_is Arg1:T31 Arg2:T35	
+R25	occupation_is Arg1:T32 Arg2:T35	
+R26	occupation_is Arg1:T33 Arg2:T35	
+R27	occupation_is Arg1:T34 Arg2:T35	
+R28	is_brother_of Arg1:T37 Arg2:T36	
+R29	occupation_is Arg1:T43 Arg2:T44	
+R30	is_witness_to Arg1:T30 Arg2:T46	
+R31	is_witness_to Arg1:T31 Arg2:T46	
+R32	is_witness_to Arg1:T32 Arg2:T46	
+R33	is_witness_to Arg1:T33 Arg2:T46	
+R34	is_witness_to Arg1:T34 Arg2:T46	
+R35	is_witness_to Arg1:T36 Arg2:T46	
+R36	is_witness_to Arg1:T38 Arg2:T46	
+R37	is_witness_to Arg1:T39 Arg2:T46	
+R38	is_witness_to Arg1:T41 Arg2:T46	
+R39	is_witness_to Arg1:T42 Arg2:T46	
+R40	is_witness_to Arg1:T43 Arg2:T46	

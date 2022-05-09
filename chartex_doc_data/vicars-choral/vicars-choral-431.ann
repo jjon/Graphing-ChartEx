@@ -1,0 +1,107 @@
+T1	Document 0 17	vicars-choral-431
+T2	Transaction 18 23	Grant
+T3	Person 56 62	Thomas
+T4	Person 70 84	Nicholas Broun
+T5	Place 88 92	York
+R1	is_of Arg1:T4 Arg2:T5	
+T6	Occupation 93 98	clerk
+T7	Person 102 117	Robert del Wald
+T8	Occupation 130 136	potter
+R3	occupation_is Arg1:T7 Arg2:T8	
+T9	Place 140 144	York
+R4	is_of Arg1:T7 Arg2:T9	
+T10	Site 148 152	land
+T11	Site 158 167	buildings
+T12	Site 171 179	Petergat
+T14	Site 191 222	shop with a chamber built on it
+T15	Person 229 235	Thomas
+T16	Person 245 259	John de Eskrik
+T17	Occupation 263 269	nayler
+R8	occupation_is Arg1:T16 Arg2:T17	
+T18	Site 304 312	Petergat
+T19	Site 321 325	land
+T20	Person 329 344	Robert del Wald
+R9	is_a_tenant_of Arg1:T20 Arg2:T19	
+R10	is_length_marker_to Arg1:T18 Arg2:T10	
+R11	is_length_marker_to Arg1:T19 Arg2:T10	
+T21	Site 379 383	land
+T22	Person 387 402	Robert del Wald
+R12	is_a_tenant_of Arg1:T22 Arg2:T21	
+R13	is_breadth_marker_to Arg1:T21 Arg2:T10	
+T23	SiteRef 407 411	that
+T24	Person 420 427	William
+T25	Person 435 451	Walter de Scorby
+R14	is_son_of Arg1:T24 Arg2:T25	
+R15	is_a_previous_tenant_of Arg1:T24 Arg2:T23	
+T26	Site 457 464	chamber
+*	same_as T26 T14
+T27	Site 480 484	land
+T28	Person 488 504	Peter de Langton
+R16	is_a_tenant_of Arg1:T28 Arg2:T27	
+T29	SiteRef 509 513	that
+T30	Person 517 532	Henry de Scorby
+R17	is_a_tenant_of Arg1:T30 Arg2:T29	
+T31	Site 542 550	Petergat
+*	same_as T31 T12 T18
+R18	is_boundary_to Arg1:T27 Arg2:T26	
+R19	is_boundary_to Arg1:T29 Arg2:T26	
+R20	is_boundary_to Arg1:T31 Arg2:T26	
+T32	Site 559 563	land
+T33	Person 567 582	Robert del Wald
+R21	is_a_tenant_of Arg1:T33 Arg2:T32	
+R22	is_boundary_to Arg1:T32 Arg2:T26	
+T34	Person 591 597	Thomas
+*	same_as T34 T3 T15
+T35	Place 1015 1019	York
+T36	Date 1021 1061	Monday after St• Mark 1342,16 Edward III
+R23	is_grantor_in Arg1:T3 Arg2:T2	
+R24	is_recipient_in Arg1:T7 Arg2:T2	
+R27	is_a_previous_grantor_of Arg1:T16 Arg2:T10	
+T37	Apparatus 771 786	Warranty• Seal•
+T38	Person 798 811	Nicholas Fouk
+T39	Occupation 812 817	mayor
+R28	occupation_is Arg1:T38 Arg2:T39	
+T40	Person 819 836	William de Sutton
+T41	Person 838 858	Thomas de Estryngton
+T42	Person 860 876	John de Essheton
+T43	Occupation 878 886	bailiffs
+R29	occupation_is Arg1:T42 Arg2:T43	
+R30	occupation_is Arg1:T41 Arg2:T43	
+R31	occupation_is Arg1:T40 Arg2:T43	
+T44	Person 888 907	Niel de Menyngthorp
+T45	Person 909 930	Henry de Coupmanthorp
+T46	Person 932 943	William Paa
+T47	Person 945 957	John Caperon
+T48	Person 959 975	Walter de Bulmer
+T49	Person 977 995	William de Appelby
+T50	Occupation 996 1001	clerk
+R32	occupation_is Arg1:T49 Arg2:T50	
+R33	refers_to Arg1:T1 Arg2:T2	
+R34	is_dated Arg1:T1 Arg2:T36	
+T51	Apparatus 1062 1301	[29 April]• SOURCE: VC 3/Vi 318 (257 mm• x 172 mm•)• Indented at top, CIROGRAPH: ENDORSEMENT: De schoppa et camera edificatis in Petergate• SEAL: remains of red wax• NOTE: See 43o• Quitclaim by Thomas son of Nicholas Broun of York clerk to
+R6	is_part_of Arg1:T11 Arg2:T10	
+R35	is_breadth_marker_to Arg1:T23 Arg2:T10	
+*	same_as T33 T7 T20 T22
+R36	contains Arg1:T1 Arg2:T51	
+R37	contains Arg1:T1 Arg2:T37	
+T52	Apparatus 1243 1301	Quitclaim by Thomas son of Nicholas Broun of York clerk to
+#1	AnnotatorNotes T52	OCR error. this is the beginning of the next charter #432
+R38	is_son_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T6	
+R39	is_parcel_in Arg1:T10 Arg2:T2	
+R40	is_part_of Arg1:T10 Arg2:T12	
+R41	is_witness_to Arg1:T38 Arg2:T2	
+R42	is_witness_to Arg1:T40 Arg2:T2	
+R43	is_witness_to Arg1:T41 Arg2:T2	
+R44	is_witness_to Arg1:T42 Arg2:T2	
+R45	is_witness_to Arg1:T44 Arg2:T2	
+R46	is_witness_to Arg1:T45 Arg2:T2	
+R47	is_witness_to Arg1:T46 Arg2:T2	
+R48	is_witness_to Arg1:T47 Arg2:T2	
+R49	is_witness_to Arg1:T48 Arg2:T2	
+R50	is_witness_to Arg1:T49 Arg2:T2	
+R5	is_part_of Arg1:T14 Arg2:T11	
+T13	Site 349 355	5 feet
+R7	is_breadth_marker_to Arg1:T13 Arg2:T10	
+R25	is_location_of Arg:T35 Arg2:T2	
+R26	contains Arg1:T1 Arg2:T52	

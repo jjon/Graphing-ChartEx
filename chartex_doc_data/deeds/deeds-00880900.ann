@@ -1,0 +1,61 @@
+T1	Document 0 14	deeds-00880900
+#1	AnnotatorNotes T1	{'editorial date':'1286', 'transaction type': 'Quitclaim'}
+T2	Person 84 92	Isabella
+T3	Person 99 119	Gilberti de Oddewell
+R1	is_daughter_of Arg1:T2 Arg2:T3	
+T4	Transaction 151 187	relaxasse et omnino quietum clamasse
+R2	refers_to Arg1:T1 Arg2:T4	
+T5	Institution 234 290	priori et fratribus hospitalis sancti Iohannis Ierusalem
+T6	Place 294 300	Anglia
+R3	is_located_in Arg1:T5 Arg2:T6	
+T7	Site 417 488	terris tenementis redditibus homagiis pratis pasturis boscis molendinis
+T13	Place 568 573	villa
+T14	Place 577 590	Gestingthorpe
+*	same_as T13 T14
+T15	Person 608 628	Simonis de Oddewelle
+T16	Person 1553 1583	domino Radulpho filio Willelmi
+T18	Person 1584 1610	domino Hugone de Creppinge
+T19	Occupation 1611 1620	militibus
+R4	occupation_is Arg1:T16 Arg2:T19	
+R5	occupation_is Arg1:T18 Arg2:T19	
+T20	Person 1621 1644	Reginaldo de Silverleye
+T21	Person 1645 1659	Elia de Poleye
+T22	Person 1660 1677	Roberto de Poleye
+T23	Person 1678 1692	Willelmo Borre
+T24	Person 1693 1709	Rogero Fraunceys
+T25	Person 1710 1718	Nicholao
+T26	Occupation 1719 1726	clerico
+T27	Place 1730 1743	Gestingthorpe
+T28	Person 1744 1756	Ada Goldston
+T29	Person 1759 1779	Roberto de Chelmesho
+T30	Person 1780 1801	Willelmo palm[er]i[o]
+T31	Person 1802 1819	Ricardo le archer
+T32	Person 1820 1842	Laurencio palm[er]i[o]
+T33	Place 1870 1883	Gestingthorpe
+T34	Date 1884 1968	die sabbati in festo beate Margarete virginis anno regni regis Edwardi quarto decimo
+R6	is_location_of Arg:T33 Arg2:T4	
+R7	is_dated Arg1:T1 Arg2:T34	
+T35	Apparatus 1834 1842	[er]i[o]
+T36	Apparatus 1793 1801	[er]i[o]
+R8	contains Arg1:T1 Arg2:T36	
+R9	contains Arg1:T1 Arg2:T35	
+R10	is_grantor_in Arg1:T2 Arg2:T4	
+R11	is_recipient_in Arg1:T5 Arg2:T4	
+R12	is_parcel_in Arg1:T7 Arg2:T4	
+R18	is_located_in Arg1:T7 Arg2:T13	
+R20	is_a_previous_grantor_of Arg1:T15 Arg2:T7	
+R21	is_witness_to Arg1:T16 Arg2:T4	
+R23	is_witness_to Arg1:T18 Arg2:T4	
+R24	is_witness_to Arg1:T20 Arg2:T4	
+R25	is_witness_to Arg1:T21 Arg2:T4	
+R26	is_witness_to Arg1:T22 Arg2:T4	
+R27	is_witness_to Arg1:T23 Arg2:T4	
+R28	is_witness_to Arg1:T24 Arg2:T4	
+R29	occupation_is Arg1:T25 Arg2:T26	
+R30	is_witness_to Arg1:T25 Arg2:T4	
+R31	is_of Arg1:T25 Arg2:T27	
+R32	is_witness_to Arg1:T28 Arg2:T4	
+R33	is_witness_to Arg1:T29 Arg2:T4	
+R34	is_witness_to Arg1:T30 Arg2:T4	
+R35	is_witness_to Arg1:T31 Arg2:T4	
+R36	is_witness_to Arg1:T32 Arg2:T4	

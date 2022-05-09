@@ -1,0 +1,67 @@
+T1	Document 0 14	deeds-00880661
+#1	AnnotatorNotes T1	{'editorial date':'1274', 'transaction type': 'Grant'}
+T2	Person 51 75	Laurencius de [bumstede]
+T3	Apparatus 65 75	[bumstede]
+T4	Person 83 103	Willelmi de Bumstede
+T5	Institution 214 250	hospitalis sancti Iohannis Ierusalem
+T6	Place 256 269	Mapeltrestede
+T7	Place 438 443	villa
+T8	Person 461 477	Galfridus Gurray
+T9	Person 481 487	Alicia
+T10	Site 535 543	mesuagio
+T11	Site 548 557	edificiis
+T12	Place 589 594	villa
+T13	Site 613 622	mesuagium
+T14	Person 623 638	Henrici Muryell
+T15	Site 642 651	mesuagium
+T16	Person 652 659	Ricardi
+T17	Person 705 713	Galfridi
+T18	Person 717 723	Alicie
+T19	Person 1512 1522	Laurencius
+T20	Person 1919 1942	Radulpho filio Willelmi
+T21	Transaction 104 154	concessi dedi et hac presenti carta mea confirmavi
+T23	Person 1943 1960	Petro filio Aubri
+T25	Person 1961 1978	Rogero de Snaudon
+T26	Person 1979 2000	Hugone filio Iohannis
+T28	Person 2001 2019	Iohanne le ferurur
+T29	Person 2020 2037	Martino allutario
+T30	Person 2038 2049	Hugone Ioye
+T31	Person 2050 2070	Willelmo de Panimere
+T32	Person 2071 2090	Ricardo le warn[er]
+T33	Person 2091 2111	Ricardo de Tillebery
+T34	Person 2112 2118	Hugone
+T35	Occupation 2119 2126	clerico
+R1	contains Arg1:T1 Arg2:T3	
+R2	refers_to Arg1:T1 Arg2:T21	
+R3	is_son_of Arg1:T2 Arg2:T4	
+R4	is_grantor_in Arg1:T2 Arg2:T21	
+R5	is_recipient_in Arg1:T5 Arg2:T21	
+R6	is_located_in Arg1:T5 Arg2:T6	
+R7	is_wife_of Arg1:T9 Arg2:T8	
+R8	is_parcel_in Arg1:T10 Arg2:T21	
+R9	is_part_of Arg1:T11 Arg2:T10	
+R10	is_located_in Arg1:T10 Arg2:T12	
+*	same_as T12 T7 T36 T37
+R12	is_a_tenant_of Arg1:T9 Arg2:T10	
+R13	is_a_tenant_of Arg1:T14 Arg2:T13	
+R14	is_a_tenant_of Arg1:T16 Arg2:T15	
+R15	is_boundary_to Arg1:T13 Arg2:T10	
+R16	is_boundary_to Arg1:T15 Arg2:T10	
+*	same_as T17 T8
+*	same_as T18 T9
+*	same_as T19 T2
+R17	is_witness_to Arg1:T20 Arg2:T21	
+R19	is_witness_to Arg1:T23 Arg2:T21	
+R20	is_witness_to Arg1:T25 Arg2:T21	
+R22	is_witness_to Arg1:T26 Arg2:T21	
+R23	is_witness_to Arg1:T28 Arg2:T21	
+R24	is_witness_to Arg1:T29 Arg2:T21	
+R25	is_witness_to Arg1:T30 Arg2:T21	
+R26	is_witness_to Arg1:T31 Arg2:T21	
+R27	is_witness_to Arg1:T32 Arg2:T21	
+R28	is_witness_to Arg1:T33 Arg2:T21	
+R29	occupation_is Arg1:T34 Arg2:T35	
+R30	is_witness_to Arg1:T34 Arg2:T21	
+T36	Place 447 455	Halstede
+T37	Place 598 606	Halstede
+R31	is_a_tenant_of Arg1:T8 Arg2:T10	

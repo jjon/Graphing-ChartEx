@@ -1,0 +1,35 @@
+T1	Document 0 16	Ward2_59A_233_12
+#1	AnnotatorNotes T1	{"piece_id": "5472156", "date_text": "8 January [c. 1564-1600]"}
+T2	Transaction 17 22	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 28 43	Beatrice Audley
+T4	Occupation 45 50	widow
+T5	Person 65 78	Thomas Audley
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	occupation_is Arg1:T3 Arg2:T4	
+R4	is_widow_of Arg1:T3 Arg2:T5	
+T6	Place 82 90	Gosbecks
+T7	Place 94 101	Stanway
+T8	Place 103 108	Essex
+T9	Occupation 110 119	gentleman
+R5	is_of Arg1:T5 Arg2:T6	
+R6	is_part_of Arg1:T6 Arg2:T7	
+R7	is_part_of Arg1:T7 Arg2:T8	
+R8	occupation_is Arg1:T5 Arg2:T9	
+T10	Person 134 147	Thomas Audley
+T11	Apparatus 150 157	her son
+R9	is_recipient_in Arg1:T10 Arg2:T2	
+R10	contains Arg1:T1 Arg2:T11	
+T12	Place 187 195	Gosbecks
+T13	Place 199 206	Stanway
+R11	is_parcel_in Arg1:T12 Arg2:T2	
+R12	is_part_of Arg1:T12 Arg2:T13	
+T14	Place 208 213	Essex
+R13	is_part_of Arg1:T13 Arg2:T14	
+T15	Person 233 246	William Helme
+T16	Person 248 263	Thomas [•••]rey
+T17	Person 268 282	John Barkr[•••
+R14	is_witness_to Arg1:T15 Arg2:T2	
+R15	is_witness_to Arg1:T16 Arg2:T2	
+R16	is_witness_to Arg1:T17 Arg2:T2	
+R17	not_same_as Arg1:T10 Arg2:T5	

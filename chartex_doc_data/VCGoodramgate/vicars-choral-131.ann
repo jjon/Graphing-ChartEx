@@ -1,0 +1,13 @@
+T1	Document 0 17	vicars-choral-131
+T2	Person 57 72	Hugo Rumangerus
+T3	Transaction 18 30	Counter-part
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_grantor_in Arg1:T2 Arg2:T3	
+T4	Occupation 73 83	capellanus
+R3	occupation_is Arg1:T2 Arg2:T4	
+T5	Person 91 109	Johannis Rumangeri
+R4	is_son_of Arg1:T2 Arg2:T5	
+T6	Apparatus 112 249	SOURCE: VC 3/Vi 103 (232 mm. x 195 mm.). Indented at top.  ENDORSEMENT: Gotherumgate; s. vicariis ecciesie beati Petri Ebor'. SEAL: slit.
+R5	contains Arg1:T1 Arg2:T6	
+T7	Apparatus 31 56	of 130 (naming grantor as
+R6	contains Arg1:T1 Arg2:T7	

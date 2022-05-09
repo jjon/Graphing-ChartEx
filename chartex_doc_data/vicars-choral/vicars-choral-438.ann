@@ -1,0 +1,136 @@
+T1	Document 0 17	vicars-choral-438
+T2	Person 27 41	Hamo de Hessay
+T3	Person 61 77	Roger de Everton
+T4	Person 79 96	John de Alkbarowe
+T5	Person 98 113	William Wygiard
+T6	Person 119 133	Thomas Besynby
+T7	Person 210 231	William de Huntyngton
+T8	Person 252 270	Richard de Aslakby
+T9	Actor 389 410	Henry de Coupmanthorp
+T10	Person 464 468	Hamo
+T11	Person 486 490	John
+T12	Person 498 513	Thomas de Cotes
+T13	Person 567 572	Ellen
+T14	Person 582 598	Peter de Appelby
+T15	Person 652 656	John
+T16	Person 664 670	Thomas
+T17	Person 676 684	Margaret
+T18	Person 694 714	Nicholas de Langeton
+T19	Person 749 754	Ellen
+T20	Person 859 875	John de Langeton
+T21	Person 883 900	William de Burton
+T22	Person 902 918	Richard Candeler
+T23	Person 924 940	Robert de Feryby
+T24	Person 952 973	William de Huntyngton
+T25	Person 975 990	Robert de Crayk
+T26	Person 992 1011	William de Grantham
+T27	Person 1020 1039	Thomas de Siggeston
+T28	Person 1041 1059	William de Appelby
+T29	Person 1068 1088	William de Belyngham
+T30	Person 1098 1115	John of Stayngate
+T31	Person 1125 1139	John de Arnale
+T32	Person 1141 1158	Robert de Cleburn
+T33	Date 1184 1263	Friday the eve of the assumption of the blessed Virgin Mary 1355, 29 Edward III
+T34	Transaction 18 23	Grant
+R1	is_grantor_in Arg1:T2 Arg2:T34	
+R2	is_recipient_in Arg1:T3 Arg2:T34	
+R3	is_recipient_in Arg1:T4 Arg2:T34	
+R4	is_recipient_in Arg1:T5 Arg2:T34	
+R5	is_recipient_in Arg1:T6 Arg2:T34	
+T35	Site 149 158	six shops
+T36	Site 162 171	Petergate
+R6	is_part_of Arg1:T35 Arg2:T36	
+T37	Site 202 206	land
+T38	SiteRef 244 248	that
+T39	Site 364 373	Petergate
+T40	Site 381 385	land
+R7	is_breadth_marker_to Arg1:T37 Arg2:T35	
+R8	is_breadth_marker_to Arg1:T38 Arg2:T35	
+R9	is_length_marker_to Arg1:T39 Arg2:T35	
+R10	is_length_marker_to Arg1:T40 Arg2:T35	
+T41	Occupation 135 144	chaplains
+R11	occupation_is Arg1:T6 Arg2:T41	
+R12	occupation_is Arg1:T5 Arg2:T41	
+R13	occupation_is Arg1:T4 Arg2:T41	
+R14	occupation_is Arg1:T3 Arg2:T41	
+T42	Place 53 57	York
+R15	is_of Arg1:T2 Arg2:T42	
+R16	is_a_tenant_of Arg1:T7 Arg2:T37	
+T43	Place 235 239	York
+R17	is_of Arg1:T7 Arg2:T43	
+T44	Occupation 271 279	chaplain
+T45	Occupation 284 290	warden
+T46	Institution 298 343	chantry of St• Nicholas in the church of York
+R18	occupation_is Arg1:T8 Arg2:T44	
+R19	occupation_is Arg1:T8 Arg2:T45	
+R20	is_officeholder_in Arg1:T8 Arg2:T46	
+R21	is_a_tenant_of Arg1:T9 Arg2:T40	
+T48	Apparatus 1264 1392	[14 August SOURCE: VC 3/Vi 328 (314 mm• x 162 mm•) ENDORSEMENT: none• SEAL: slit• COPY: VC 3/1/I, fos• 143 v•-144• NOTE: See 433
+T54	Transaction 426 435	reversion
+*	same_as T10 T2
+R22	precedes Arg1:T54 Arg2:T34	
+R23	is_recipient_in Arg1:T10 Arg2:T54	
+R24	is_son_of Arg1:T11 Arg2:T12	
+R25	is_grantor_in Arg1:T11 Arg2:T54	
+T55	Place 517 529	Ravenserodde
+R26	is_of Arg1:T12 Arg2:T55	
+T56	Transaction 553 566	present grant
+*	same_as T56 T34
+R27	is_widow_of Arg1:T13 Arg2:T14	
+R28	is_participant_in Arg1:T15 Arg2:T56	
+*	same_as T15 T11
+*	same_as T16 T12
+R31	is_widow_of Arg1:T17 Arg2:T18	
+*	same_as T19 T13
+R32	is_participant_in Arg1:T13 Arg2:T56	
+R30	is_participant_in Arg1:T17 Arg2:T56	
+T58	Occupation 876 881	mayor
+R33	occupation_is Arg1:T20 Arg2:T58	
+T59	Occupation 942 950	bailiffs
+R34	occupation_is Arg1:T21 Arg2:T59	
+R35	occupation_is Arg1:T22 Arg2:T59	
+R36	occupation_is Arg1:T23 Arg2:T59	
+T60	Occupation 1012 1018	mercer
+R37	occupation_is Arg1:T26 Arg2:T60	
+T61	Occupation 1060 1066	mercer
+R38	occupation_is Arg1:T28 Arg2:T61	
+T62	Occupation 1089 1096	coteler
+R39	occupation_is Arg1:T29 Arg2:T62	
+T63	Occupation 1116 1123	saddler
+R40	occupation_is Arg1:T30 Arg2:T63	
+T64	Occupation 1159 1164	clerk
+R41	occupation_is Arg1:T32 Arg2:T64	
+T65	Place 1178 1182	York
+R42	is_location_of Arg:T65 Arg2:T56	
+R43	is_dated Arg1:T1 Arg2:T33	
+R44	refers_to Arg1:T1 Arg2:T34	
+R45	refers_to Arg1:T1 Arg2:T54	
+R46	is_witness_to Arg1:T20 Arg2:T56	
+R47	is_witness_to Arg1:T21 Arg2:T56	
+R48	is_witness_to Arg1:T22 Arg2:T56	
+R49	is_witness_to Arg1:T23 Arg2:T56	
+R50	is_witness_to Arg1:T24 Arg2:T56	
+R51	is_witness_to Arg1:T25 Arg2:T56	
+R52	is_witness_to Arg1:T26 Arg2:T56	
+R53	is_witness_to Arg1:T27 Arg2:T56	
+R54	is_witness_to Arg1:T28 Arg2:T56	
+R55	is_witness_to Arg1:T29 Arg2:T56	
+R56	is_witness_to Arg1:T30 Arg2:T56	
+R57	is_witness_to Arg1:T31 Arg2:T56	
+R58	is_witness_to Arg1:T32 Arg2:T56	
+R59	contains Arg1:T1 Arg2:T48	
+T66	Site 443 448	shops
+T67	Site 613 618	shops
+T68	Site 738 743	shops
+*	same_as T68 T67 T66 T35
+#1	AnnotatorNotes T46	do we need is_part_of for institutions?
+#2	AnnotatorNotes T2	Notes on hamo: foobar foobaz fezbam
+R29	is_parcel_in Arg1:T35 Arg2:T34	
+T49	Apparatus 832 847	Warranty• Seal•
+*	same_as T39 T36
+R60	is_parcel_in Arg1:T66 Arg2:T54	
+R61	is_a_previous_tenant_of Arg1:T13 Arg2:T67	
+R62	is_a_previous_tenant_of Arg1:T17 Arg2:T67	
+R63	is_a_previous_landlord_of Arg1:T11 Arg2:T66	
+R65	contains Arg1:T1 Arg2:T49	
+R64	is_a_tenant_of Arg1:T8 Arg2:T38	

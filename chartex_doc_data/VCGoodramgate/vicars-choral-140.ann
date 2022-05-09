@@ -1,0 +1,78 @@
+T1	Document 0 17	vicars-choral-140
+T2	Person 36 52	Helen de Puteaco
+T3	Person 70 73	Ade
+T4	Person 81 85	Alan
+T5	Person 93 99	Romund
+T6	Transaction 147 175	given, granted and confirmed
+T7	Institution 228 277	friars of the order of preachers resident in York
+T8	Site 363 367	land
+T9	Site 390 397	Aldwark
+T10	Site 431 435	land
+T11	Person 441 447	Robert
+T12	Person 455 461	Ingolf
+T13	Site 471 475	land
+T14	Person 481 486	Roger
+T15	Site 521 525	land
+T16	Site 545 562	63 feet in length
+T17	Site 594 607	King's Street
+T18	Site 611 618	Aldwark
+T19	Site 623 627	land
+T20	Person 631 638	William
+T21	Person 646 653	William
+T22	Site 666 673	49 feet
+T23	Site 707 714	44 feet
+T24	Site 741 745	land
+T25	Institution 814 820	friars
+T26	Person 1372 1396	magister Roger de Insula
+T27	Occupation 1397 1421	dean of St Peter of York
+T28	Person 1423 1438	magister Godard
+T29	Occupation 1439 1456	confessor of York
+T30	Person 1458 1471	Hugh de Selby
+T31	Occupation 1472 1485	mayor of York
+T33	Person 1487 1505	Alexander de Monte
+T34	Person 1507 1523	John de Warthill
+T35	Person 1525 1539	William Turkil
+T36	Person 1541 1548	Randulf
+T37	Occupation 1549 1558	goldsmith
+T38	Person 1560 1566	Thomas
+T39	Person 1574 1580	Robert
+T40	Apparatus 1598 1692	ENDORSEMENT: Aldwark; charter of the archbishop that he had from a widow who sold him her land
+R1	refers_to Arg1:T1 Arg2:T6	
+R2	contains Arg1:T1 Arg2:T40	
+R3	is_widow_of Arg1:T2 Arg2:T3	
+R4	is_son_of Arg1:T3 Arg2:T4	
+R5	is_son_of Arg1:T4 Arg2:T5	
+R6	is_grantor_in Arg1:T2 Arg2:T6	
+R7	is_recipient_in Arg1:T7 Arg2:T6	
+R8	is_parcel_in Arg1:T8 Arg2:T6	
+R9	is_part_of Arg1:T8 Arg2:T9	
+R10	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R11	is_son_of Arg1:T11 Arg2:T12	
+R12	is_length_marker_to Arg1:T10 Arg2:T8	
+R13	is_length_marker_to Arg1:T13 Arg2:T8	
+R14	is_a_previous_tenant_of Arg1:T14 Arg2:T13	
+*	same_as T15 T8 T24
+R15	is_part_of Arg1:T16 Arg2:T15	
+R17	is_breadth_marker_to Arg1:T17 Arg2:T8	
+R18	is_son_of Arg1:T21 Arg2:T20	
+R19	is_a_tenant_of Arg1:T20 Arg2:T19	
+R20	is_breadth_marker_to Arg1:T19 Arg2:T8	
+R21	is_northern_directional_marker_to Arg1:T22 Arg2:T8	
+R22	is_southern_directional_marker_to Arg1:T23 Arg2:T8	
+*	same_as T25 T7
+R23	occupation_is Arg1:T30 Arg2:T31	
+R25	occupation_is Arg1:T26 Arg2:T27	
+R26	occupation_is Arg1:T28 Arg2:T29	
+R27	occupation_is Arg1:T36 Arg2:T37	
+R28	is_son_of Arg1:T38 Arg2:T39	
+R29	is_witness_to Arg1:T26 Arg2:T6	
+R30	is_witness_to Arg1:T28 Arg2:T6	
+R31	is_witness_to Arg1:T30 Arg2:T6	
+R32	is_witness_to Arg1:T33 Arg2:T6	
+R33	is_witness_to Arg1:T34 Arg2:T6	
+R34	is_witness_to Arg1:T35 Arg2:T6	
+R35	is_witness_to Arg1:T36 Arg2:T6	
+R36	is_witness_to Arg1:T38 Arg2:T6	
+T41	Occupation 487 494	saddler
+R37	occupation_is Arg1:T14 Arg2:T41	
+*	same_as T17 T18

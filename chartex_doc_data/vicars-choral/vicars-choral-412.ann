@@ -1,0 +1,89 @@
+T1	Document 0 17	vicars-choral-412
+T3	Apparatus 2033 2281	[30 May]• SOURCE: VC 3/Vi 377 (154 mm• x 142 mm•) ENDORSEMENT: De domibus a cornerio de Stayngat' usque ad domos prebende de Massam sub anno domini rn• Ix'• prima; et de  s• de prebendario de Massam• SEAL: remains of plain wax on tag• NOTE: See 403
+T4	Date 2013 2032	3 Kalends June 1261
+R1	is_dated Arg1:T1 Arg2:T4	
+T7	Transaction 81 98	gives and assigns
+R2	refers_to Arg1:T1 Arg2:T7	
+T8	Person 34 44	mag• Simon
+T9	Occupation 45 72	archdeacon of the Estriding
+R3	occupation_is Arg1:T8 Arg2:T9	
+R4	is_grantor_in Arg1:T8 Arg2:T7	
+T10	Institution 106 148	vicars of the minster of St• Peter of York
+R5	is_recipient_in Arg1:T10 Arg2:T7	
+T11	Site 157 161	land
+R6	is_parcel_in Arg1:T11 Arg2:T7	
+T12	Place 165 169	York
+R7	is_located_in Arg1:T11 Arg2:T12	
+T13	Site 175 181	houses
+T14	Site 186 193	virgate
+R8	is_part_of Arg1:T13 Arg2:T11	
+R9	is_part_of Arg1:T14 Arg2:T11	
+T15	Site 219 228	Stayngate
+T16	Site 233 239	houses
+R10	is_length_marker_to Arg1:T15 Arg2:T11	
+R11	is_length_marker_to Arg1:T16 Arg2:T11	
+T17	Institution 247 264	prebend of Massam
+R12	is_a_tenant_of Arg1:T17 Arg2:T16	
+T18	Site 288 297	Petregate
+T19	Site 302 306	land
+T20	Institution 314 334	prebend of Ampelford
+R15	is_a_tenant_of Arg1:T20 Arg2:T19	
+R16	is_eastern_directional_marker_to Arg1:T19 Arg2:T11	
+T21	Site 359 368	Petregate
+T22	Site 373 377	land
+R17	is_western_directional_marker_to Arg1:T22 Arg2:T11	
+T23	Institution 385 403	prebend of Barneby
+R18	is_a_tenant_of Arg1:T23 Arg2:T22	
+T24	Site 428 432	hall
+R19	is_part_of Arg1:T24 Arg2:T11	
+R13	is_breadth_marker_to Arg1:T18 Arg2:T11	
+R14	is_breadth_marker_to Arg1:T21 Arg2:T11	
+T28	Person 529 535	Mariot
+T29	Person 545 551	Thomas
+T30	Occupation 556 565	goldsmith
+R22	is_widow_of Arg1:T28 Arg2:T29	
+R23	occupation_is Arg1:T29 Arg2:T30	
+T31	Site 735 751	rest of the land
+T32	Institution 712 718	vicars
+T33	Site 762 773	great solar
+R25	is_part_of Arg1:T33 Arg2:T31	
+R26	is_part_of Arg1:T31 Arg2:T11	
+T34	Site 781 785	land
+T35	Institution 793 810	prebend of Massam
+R27	is_a_tenant_of Arg1:T35 Arg2:T34	
+R28	is_boundary_to Arg1:T34 Arg2:T31	
+*	same_as T35 T17
+*	same_as T34 T16
+T36	Site 821 827	houses
+T37	Site 832 839	virgate
+*	same_as T36 T13
+*	same_as T14 T37
+T25	Person 509 519	mag• Simon
+T26	Site 478 493	solar and shops
+R21	is_a_previous_grantor_of Arg1:T28 Arg2:T26	
+R29	is_part_of Arg1:T26 Arg2:T11	
+T38	Place 2004 2011	Bubwyth
+R30	is_location_of Arg:T38 Arg2:T7	
+R32	contains Arg1:T1 Arg2:T3	
+*	same_as T21 T18
+*	same_as T10 T32
+T2	Person 569 577	Thomas's
+*	same_as T29 T2
+T5	Person 657 665	Geoffrey
+T6	Occupation 671 683	dean of York
+R20	occupation_is Arg1:T5 Arg2:T6	
+R24	is_a_previous_recipient_of Arg1:T25 Arg2:T26	
+R31	is_participant_in Arg1:T5 Arg2:T7	
+T27	Transaction 725 730	lease
+R33	is_grantor_in Arg1:T32 Arg2:T27	
+T39	Institution 851 879	archdeacons of the Estriding
+R34	is_recipient_in Arg1:T39 Arg2:T27	
+R35	is_parcel_in Arg1:T31 Arg2:T27	
+T40	Apparatus 985 996	in gezurnma
+T41	Apparatus 1034 1039	Carta
+T42	Person 1105 1117	mag• Simon's
+T43	Person 1217 1229	Mag• Simon's
+T44	Person 1904 1914	Mag• Simon
+*	same_as T44 T43 T42 T25 T8
+R36	contains Arg1:T1 Arg2:T40	
+R37	contains Arg1:T1 Arg2:T41	

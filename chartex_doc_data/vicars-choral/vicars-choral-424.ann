@@ -1,0 +1,135 @@
+T1	Document 0 17	vicars-choral-424
+T2	Apparatus 669 684	Warranty• Seal•
+T3	Apparatus 1025 2249	[1280 or 128_1] SOURCE: VC 3/Vi 315 (201 mm• x 122 ram•)• CIROGRAPHATA at top; not indented• ENDORSEMENT: Hornpotlane; redditus ii de mediis tenementis in hornpotlane alias trinitelane• SEAL: tag• DATE: Sampson was mayor with the bailiffs named here on 13 May 1280 (Yorkshire Deeds, vii, ed• C• T• Clay (YASRS liii, 1932), p• 184), and on 25 April 1281 (Smith, Merchant Adventurers of York, p• 91)• NOTE: This and the next three charters form a group, The land apparently lay at the corner of Petergate and Hornpotlane, and the charters are probably connected with 243-51, which describe land in Hornpotlane• Holy Trinity Lane, recorded in this cirograph (424) is identified in the endorsement as Hornpotlane and should be distinguished from Trinity Lane off Micklegate• The land in Petergate granted by Richard Gower and his wife Margaret is presumably that which Margaret, as a widow, granted to Nicholas de Ellerker: 425 (both record Eve Trunket's land as a boundary)• Margaret's grant was probably a confirmation of a grant made to Nicholas by Robert le Botoner; Robert had been granted the land by Margaret and her husband: 425• In 130o Robert le Botoner granted land in both Petergate and Hornpotlane to William Beleby
+T4	Transaction 18 23	Grant
+T5	Person 56 68	Richard Guer
+T6	Person 82 90	Margaret
+T7	Person 94 100	Thomas
+T9	Person 145 150	Ellen
+T10	Person 177 183	Thomas
+T11	Person 188 193	Ellen
+T12	Site 208 212	land
+T13	Site 231 240	Petergate
+T14	Person 267 276	Richard's
+T15	Person 282 292	Margaret's
+T16	Site 293 297	land
+T17	SiteRef 302 306	that
+T18	Person 310 326	Simon le coteler
+T19	Site 346 355	Petergate
+T20	Site 363 371	tenement
+T21	Person 378 389	Eve Trunket
+T22	Person 410 427	John le caldroner
+T23	Transaction 439 444	grant
+T24	Site 445 460	three messuages
+T25	Site 464 509	Holy Trinity lane (venella sancte Trinitatis)
+T8	Occupation 105 130	crossbow-maker (balistar'
+T26	Site 529 533	land
+T27	Person 537 544	Richard
+T28	Person 549 557	Margaret
+T29	Site 566 574	tenement
+T30	Person 578 589	Eve Trunket
+T31	Person 598 605	Richard
+T32	Person 610 618	Margaret
+T33	Person 696 708	John Sampson
+T34	Occupation 709 714	mayor
+T35	Person 716 734	Nicholas de Seleby
+T36	Person 736 752	Peter de Saunton
+T37	Person 754 767	William Sleth
+T38	Occupation 769 777	bailiffs
+T39	Person 779 785	Robert
+T40	Person 793 809	Thomas le corner
+T41	Person 811 821	Hugh Brune
+T42	Person 823 841	Nicholas le furbur
+T43	Person 843 860	Richard de Craven
+T44	Person 862 878	Richard Hornepot
+T45	Person 880 897	Robert le Botoner
+T46	Person 899 915	Simon le coteler
+T47	Person 917 933	Robert le turnur
+T48	Person 935 944	John Brun
+T49	Person 946 966	Robert de Thormoteby
+T50	Person 968 988	Stephen le caldroner
+T51	Person 990 1010	Nicholas de Lethelay
+R1	is_wife_of Arg1:T6 Arg2:T5	
+R2	occupation_is Arg1:T7 Arg2:T8	
+R3	is_wife_of Arg1:T9 Arg2:T7	
+*	same_as T10 T7
+*	same_as T11 T9
+R4	is_recipient_in Arg1:T7 Arg2:T4	
+R5	is_recipient_in Arg1:T9 Arg2:T4	
+R6	is_grantor_in Arg1:T5 Arg2:T4	
+R7	is_grantor_in Arg1:T6 Arg2:T4	
+R8	is_parcel_in Arg1:T12 Arg2:T4	
+R9	is_part_of Arg1:T12 Arg2:T13	
+*	same_as T13 T19
+*	same_as T14 T5 T27 T31
+*	same_as T15 T6 T28 T32
+*	same_as T29 T20
+*	same_as T30 T21
+*	same_as T18 T46
+R10	is_grantor_in Arg1:T5 Arg2:T23	
+R11	is_grantor_in Arg1:T6 Arg2:T23	
+R12	is_recipient_in Arg1:T7 Arg2:T23	
+R13	is_recipient_in Arg1:T9 Arg2:T23	
+R14	is_parcel_in Arg1:T24 Arg2:T23	
+R15	is_part_of Arg1:T24 Arg2:T25	
+R16	is_boundary_to Arg1:T26 Arg2:T24	
+R17	is_boundary_to Arg1:T29 Arg2:T24	
+R18	is_a_tenant_of Arg1:T14 Arg2:T16	
+R19	is_a_tenant_of Arg1:T15 Arg2:T16	
+R20	is_breadth_marker_to Arg1:T16 Arg2:T12	
+R21	is_breadth_marker_to Arg1:T17 Arg2:T12	
+R22	is_a_tenant_of Arg1:T18 Arg2:T17	
+R23	is_length_marker_to Arg1:T19 Arg2:T12	
+R24	is_length_marker_to Arg1:T20 Arg2:T12	
+R25	is_a_tenant_of Arg1:T21 Arg2:T20	
+R26	is_a_landlord_of Arg1:T22 Arg2:T20	
+R27	is_a_tenant_of Arg1:T30 Arg2:T29	
+R28	occupation_is Arg1:T33 Arg2:T34	
+R29	occupation_is Arg1:T35 Arg2:T38	
+R30	occupation_is Arg1:T36 Arg2:T38	
+R31	occupation_is Arg1:T37 Arg2:T38	
+R32	is_son_of Arg1:T39 Arg2:T40	
+R33	is_witness_to Arg1:T33 Arg2:T23	
+R34	is_witness_to Arg1:T35 Arg2:T23	
+R35	is_witness_to Arg1:T36 Arg2:T23	
+R36	is_witness_to Arg1:T37 Arg2:T23	
+R37	is_witness_to Arg1:T39 Arg2:T23	
+R38	is_witness_to Arg1:T41 Arg2:T23	
+R39	is_witness_to Arg1:T42 Arg2:T23	
+R40	is_witness_to Arg1:T43 Arg2:T23	
+R41	is_witness_to Arg1:T44 Arg2:T23	
+R42	is_witness_to Arg1:T45 Arg2:T23	
+R43	is_witness_to Arg1:T46 Arg2:T23	
+R44	is_witness_to Arg1:T47 Arg2:T23	
+R45	is_witness_to Arg1:T48 Arg2:T23	
+R46	is_witness_to Arg1:T49 Arg2:T23	
+R47	is_witness_to Arg1:T50 Arg2:T23	
+R48	is_witness_to Arg1:T51 Arg2:T23	
+R49	is_witness_to Arg1:T33 Arg2:T4	
+R50	is_witness_to Arg1:T35 Arg2:T4	
+R51	is_witness_to Arg1:T36 Arg2:T4	
+R52	is_witness_to Arg1:T37 Arg2:T4	
+R53	is_witness_to Arg1:T39 Arg2:T4	
+R54	is_witness_to Arg1:T41 Arg2:T4	
+R55	is_witness_to Arg1:T42 Arg2:T4	
+R56	is_witness_to Arg1:T43 Arg2:T4	
+R57	is_witness_to Arg1:T44 Arg2:T4	
+R58	is_witness_to Arg1:T45 Arg2:T4	
+R59	is_witness_to Arg1:T46 Arg2:T4	
+R60	is_witness_to Arg1:T47 Arg2:T4	
+R61	is_witness_to Arg1:T48 Arg2:T4	
+R62	is_witness_to Arg1:T49 Arg2:T4	
+R63	is_witness_to Arg1:T50 Arg2:T4	
+R64	is_witness_to Arg1:T51 Arg2:T4	
+R65	refers_to Arg1:T1 Arg2:T4	
+R66	refers_to Arg1:T1 Arg2:T23	
+R67	contains Arg1:T1 Arg2:T2	
+R68	contains Arg1:T1 Arg2:T3	
+T52	Site 218 227	buildings
+R69	is_part_of Arg1:T52 Arg2:T12	
+R70	is_a_tenant_of Arg1:T27 Arg2:T26	
+R71	is_a_tenant_of Arg1:T28 Arg2:T26	
+T53	Apparatus 483 508	venella sancte Trinitatis
+R72	contains Arg1:T1 Arg2:T53	
+T54	Apparatus 121 129	balistar
+R73	contains Arg1:T1 Arg2:T54	

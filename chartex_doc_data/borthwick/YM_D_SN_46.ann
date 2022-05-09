@@ -1,0 +1,41 @@
+T1	Document 0 10	YM/D/SN/46
+T2	Transaction 12 51	Feoffment, pursuant to bargain and sale
+#1	AnnotatorNotes T1	{"Creation Dates": "31 January 1598/9", "Title": "Feoffment, pursuant to bargain and sale"}
+T3	Person 52 64	Thomas Fange
+T5	Place 81 97	parish of Snaith
+T6	Occupation 99 105	yeoman
+R3	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 107 121	Robert Mydlton
+T8	Place 125 132	Fenwick
+T9	Place 134 152	parish of Campsall
+R4	is_of Arg1:T7 Arg2:T8	
+T10	Occupation 154 160	yeoman
+R5	occupation_is Arg1:T7 Arg2:T10	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+T11	Site 162 212	Messuage and appurtenances with 5 closes adjoining
+R8	is_parcel_in Arg1:T11 Arg2:T2	
+T12	Site 223 228	lands
+T13	Person 232 246	Thomas Rickard
+T14	Occupation 248 252	gent
+R9	occupation_is Arg1:T13 Arg2:T14	
+R10	is_a_tenant_of Arg1:T13 Arg2:T12	
+R11	is_eastern_directional_marker_to Arg1:T12 Arg2:T11	
+R12	is_western_directional_marker_to Arg1:T12 Arg2:T11	
+T15	Site 285 295	Gayte lane
+R13	is_southern_directional_marker_to Arg1:T15 Arg2:T11	
+T16	Site 313 321	Cat lane
+R14	is_northern_directional_marker_to Arg1:T16 Arg2:T11	
+T17	Site 353 366	appurtenances
+R15	is_part_of Arg1:T17 Arg2:T11	
+T18	Site 370 377	Lowgate
+R16	is_part_of Arg1:T17 Arg2:T18	
+T19	Place 381 386	Balne
+R17	is_located_in Arg1:T18 Arg2:T19	
+T20	Person 429 441	John Francke
+R18	is_a_previous_tenant_of Arg1:T20 Arg2:T17	
+R19	refers_to Arg1:T1 Arg2:T2	
+R20	is_part_of Arg1:T8 Arg2:T9	
+T4	Site 68 79	Balne croft
+R1	is_located_in Arg1:T4 Arg2:T5	
+R2	is_a_tenant_of Arg1:T3 Arg2:T4	

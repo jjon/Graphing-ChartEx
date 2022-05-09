@@ -1,0 +1,41 @@
+T1	Document 0 17	vicars-choral-454
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 43	John Waughen
+T4	Occupation 56 64	merchant
+T5	Place 68 72	York
+T6	Person 76 91	Thomas Swanland
+T7	Person 93 105	Robert Semer
+T8	Person 107 122	George Whytteby
+T9	Person 128 151	William Lillyng de York
+T11	Occupation 153 162	chaplains
+T12	Site 169 177	messuage
+T13	Site 183 192	buildings
+T14	Site 196 205	Petergate
+T15	Person 227 238	John Watton
+T16	Occupation 239 247	chaplain
+T17	Person 252 263	John Malton
+T18	Occupation 264 269	clerk
+T19	Place 273 277	York
+T20	Apparatus 279 552	Seal. Witnesses: as 452 (reading Davy for Davi). York, 7 July 8 Henry V [1420]. SOURCE: VC 3/Vi 348 (270 mm. x 117 mm.) ENDORSEMENT: Relaxacio johannis Waughen facta quatuor capellanis et c' vicariis de ten' quondam J. Watton et Johannis Malton. SEAL: as 447. NOTE: See 443
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T20	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	occupation_is Arg1:T3 Arg2:T4	
+R5	is_of Arg1:T3 Arg2:T5	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+R7	is_recipient_in Arg1:T7 Arg2:T2	
+R8	is_recipient_in Arg1:T8 Arg2:T2	
+R9	is_recipient_in Arg1:T9 Arg2:T2	
+R11	occupation_is Arg1:T6 Arg2:T11	
+R12	occupation_is Arg1:T7 Arg2:T11	
+R13	occupation_is Arg1:T8 Arg2:T11	
+R14	occupation_is Arg1:T9 Arg2:T11	
+R15	is_part_of Arg1:T13 Arg2:T12	
+R16	is_part_of Arg1:T12 Arg2:T14	
+R17	is_parcel_in Arg1:T12 Arg2:T2	
+R18	is_a_previous_grantor_of Arg1:T15 Arg2:T12	
+R19	occupation_is Arg1:T15 Arg2:T16	
+R20	occupation_is Arg1:T17 Arg2:T18	
+R21	is_of Arg1:T17 Arg2:T19	
+R22	is_of Arg1:T15 Arg2:T19	
+R23	is_a_previous_grantor_of Arg1:T17 Arg2:T12	

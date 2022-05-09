@@ -1,0 +1,58 @@
+T1	Document 0 17	vicars-choral-461
+T2	Person 27 44	Barthamus Daweson
+T3	Occupation 45 53	alderman
+T4	Place 57 61	York
+T5	Person 65 78	Thomas Marser
+T6	Occupation 79 87	chaplain
+T7	Institution 95 197	chantry of St•  John of Beverley behind the statue of St•  Christopher in the cathedral church of York
+T11	Site 297 305	tenement
+T12	Site 310 315	waste
+T13	Site 342 351	Petergate
+T14	Site 356 368	Girdelergate
+T15	Place 372 376	York
+T16	Site 397 409	Girdelergate
+T17	Site 431 435	land
+T18	Person 443 462	master and brothers
+T19	Institution 470 494	hospital of St•  Leonard
+T20	Site 527 536	Petergate
+T21	Site 556 560	land
+T22	Person 568 587	master and brothers
+*	same_as T22 T18
+T23	Person 656 662	Thomas
+T24	Apparatus 719 723	Seal
+T26	Date 732 754	5 October 5 Henry VIII
+T27	Apparatus 755 1094	[1513]•  SOURCE: VC 3/Vi 351 (333 mm•  x 136 rnm• ) ENDORSEMENT: this evidence is for vii d•  •  •  from a •  •  in stainegate yearly•  SEAL: round (26 mm•  dia• ), red, impression•  NOTE: Thomas Marser was a vicar who later became the vicars' warden (VC 6/4/43 and 75)•  Girdlergate is an alternative name for Gloverlane•  St•  Andrewgate
+R1	occupation_is Arg1:T2 Arg2:T3	
+R2	is_of Arg1:T2 Arg2:T4	
+R3	occupation_is Arg1:T5 Arg2:T6	
+R4	is_officeholder_in Arg1:T5 Arg2:T7	
+R5	contains Arg1:T1 Arg2:T27	
+R7	is_dated Arg1:T1 Arg2:T26	
+R6	contains Arg1:T1 Arg2:T24	
+T8	Transaction 18 23	Grant
+R8	refers_to Arg1:T1 Arg2:T8	
+R9	is_grantor_in Arg1:T2 Arg2:T8	
+R10	is_recipient_in Arg1:T5 Arg2:T8	
+*	same_as T12 T11
+R11	is_parcel_in Arg1:T11 Arg2:T8	
+T9	Site 333 339	corner
+R12	is_part_of Arg1:T9 Arg2:T13	
+R13	is_part_of Arg1:T9 Arg2:T14	
+R14	is_boundary_to Arg1:T9 Arg2:T11	
+R15	is_located_in Arg1:T11 Arg2:T15	
+*	same_as T16 T14
+R16	is_southern_directional_marker_to Arg1:T16 Arg2:T11	
+R17	is_breadth_marker_to Arg1:T16 Arg2:T11	
+R18	is_officeholder_in Arg1:T18 Arg2:T19	
+R19	is_a_tenant_of Arg1:T18 Arg2:T17	
+R20	is_breadth_marker_to Arg1:T17 Arg2:T11	
+R21	is_northern_directional_marker_to Arg1:T17 Arg2:T11	
+R22	is_length_marker_to Arg1:T20 Arg2:T11	
+R23	is_eastern_directional_marker_to Arg1:T20 Arg2:T11	
+*	same_as T20 T13
+R24	is_length_marker_to Arg1:T21 Arg2:T11	
+R26	is_a_tenant_of Arg1:T22 Arg2:T21	
+R25	is_western_directional_marker_to Arg1:T21 Arg2:T11	
+*	same_as T23 T5
+T10	Place 726 730	York
+*	same_as T10 T15

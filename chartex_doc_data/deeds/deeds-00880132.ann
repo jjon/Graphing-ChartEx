@@ -1,0 +1,63 @@
+T1	Document 0 14	deeds-00880132
+#1	AnnotatorNotes T1	{'editorial date':'1285', 'transaction type': 'Agreement/Quitclaim'}
+T2	Date 15 100	Anno regni regis Edwardi terciodecimo die veneris proxima post festum sancti Dionisii
+T3	Person 1580 1599	Iohanne de Olmested
+T4	Person 1600 1613	Thoma de Piro
+T5	Person 1657 1676	Willelmo de Langham
+T6	Person 1614 1638	Iohanne filio Launcelini
+T8	Person 1559 1579	Willelmo de Olmested
+T9	Person 1639 1656	Willelmo Langhals
+T10	Person 1677 1689	Galfrido Sag
+T11	Person 120 124	Idam
+T12	Person 255 258	Ida
+*	same_as T11 T12 T15 T16 T26 T27
+T14	Site 441 451	Bradecroft
+T15	Person 761 764	Ida
+T16	Person 1163 1166	Ide
+T17	Person 176 192	fratrem Ricardum
+T18	Occupation 193 204	preceptorem
+T20	Institution 205 233	domus de Mapeltrestede parva
+T21	Institution 328 350	domui de Mapeltrestede
+T22	Person 1545 1558	Andrea Helyun
+T23	Person 140 154	Ricardi Utlawe
+R3	is_daughter_of Arg1:T11 Arg2:T23	
+T25	Place 1236 1249	Fifacrestrate
+T24	Place 158 172	Bumsted Helyun
+T19	Transaction 259 293	remisit et omnino quietum clamavit
+T13	Site 364 383	quinque acras terre
+T28	Site 387 407	dimidiam acram prati
+T29	Site 428 433	campo
+*	same_as T29 T14
+T27	Person 1042 1045	Ide
+T31	Transaction 1137 1153	quietum clamavit
+T32	Transaction 1088 1097	concessit
+T34	Place 1219 1223	vici
+*	same_as T34 T25
+T26	Person 630 633	Ida
+R2	is_dated Arg1:T1 Arg2:T2	
+R4	refers_to Arg1:T1 Arg2:T19	
+R5	is_witness_to Arg1:T22 Arg2:T19	
+R6	is_witness_to Arg1:T8 Arg2:T19	
+R7	is_witness_to Arg1:T3 Arg2:T19	
+R8	is_witness_to Arg1:T4 Arg2:T19	
+R9	is_witness_to Arg1:T6 Arg2:T19	
+R10	is_witness_to Arg1:T9 Arg2:T19	
+R11	is_witness_to Arg1:T5 Arg2:T19	
+R12	is_witness_to Arg1:T10 Arg2:T19	
+R13	is_witness_to Arg1:T22 Arg2:T31	
+R14	is_of Arg1:T23 Arg2:T24	
+R15	occupation_is Arg1:T17 Arg2:T18	
+R16	is_officeholder_in Arg1:T17 Arg2:T20	
+R17	is_grantor_in Arg1:T11 Arg2:T19	
+R18	is_recipient_in Arg1:T21 Arg2:T19	
+*	same_as T20 T21
+R19	is_parcel_in Arg1:T13 Arg2:T19	
+R20	is_parcel_in Arg1:T28 Arg2:T19	
+T30	Person 1078 1087	preceptor
+*	same_as T30 T17
+*	same_as T32 T31
+R21	is_grantor_in Arg1:T30 Arg2:T32	
+R22	is_recipient_in Arg1:T16 Arg2:T31	
+R23	is_parcel_in Arg1:T34 Arg2:T31	
+R24	refers_to Arg1:T1 Arg2:T32	
+R25	is_part_of Arg1:T28 Arg2:T29	

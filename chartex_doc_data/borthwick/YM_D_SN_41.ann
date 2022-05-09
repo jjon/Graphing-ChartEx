@@ -1,0 +1,71 @@
+T1	Document 0 10	YM/D/SN/41
+T2	Transaction 12 28	Bargain and sale
+#1	AnnotatorNotes T1	{"Creation Dates": "5 April 1596", "Title": "Bargain and sale"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 29 44	Stephen Boynton
+T4	Place 48 57	Rawcliffe
+T5	Occupation 59 65	yeoman
+R2	is_of Arg1:T3 Arg2:T4	
+R3	occupation_is Arg1:T3 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 67 82	Edward Stanhope
+T7	Institution 86 95	Grays Inn
+T8	Place 97 102	Middx
+R5	is_officeholder_in Arg1:T6 Arg2:T7	
+R6	is_located_in Arg1:T7 Arg2:T8	
+T9	Occupation 105 108	esq
+R7	occupation_is Arg1:T6 Arg2:T9	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+T10	Site 110 120	2½a meadow
+T11	Site 131 135	ings
+T12	Place 124 130	Snaith
+R9	is_located_in Arg1:T11 Arg2:T12	
+T13	Place 144 149	Yoles
+R10	is_located_in Arg1:T11 Arg2:T13	
+R11	is_part_of Arg1:T10 Arg2:T11	
+R12	is_parcel_in Arg1:T10 Arg2:T2	
+T14	Person 452 464	George Booke
+T15	Person 308 322	Robert Lambart
+T16	Person 349 357	Scargill
+T17	Site 160 169	4 swathes
+R13	is_part_of Arg1:T17 Arg2:T10	
+T18	Site 183 187	gate
+R14	is_boundary_to Arg1:T18 Arg2:T17	
+T19	Site 202 211	Head acre
+R15	is_western_directional_marker_to Arg1:T19 Arg2:T17	
+T20	Site 228 244	Turn Bridge dyke
+R16	is_eastern_directional_marker_to Arg1:T20 Arg2:T17	
+T21	Site 263 272	5 swathes
+T22	Site 286 291	lands
+R17	is_part_of Arg1:T21 Arg2:T10	
+R18	is_northern_directional_marker_to Arg1:T22 Arg2:T21	
+R19	is_a_previous_tenant_of Arg1:T15 Arg2:T22	
+R20	is_a_previous_tenant_of Arg1:T16 Arg2:T22	
+T23	Site 376 385	2 swathes
+R21	is_part_of Arg1:T23 Arg2:T10	
+T24	Place 393 398	Yoles
+R22	is_located_in Arg1:T23 Arg2:T24	
+T25	Site 410 415	lands
+T26	Institution 404 409	crown
+R23	is_a_landlord_of Arg1:T26 Arg2:T25	
+R24	is_southern_directional_marker_to Arg1:T25 Arg2:T23	
+T27	SiteRef 430 435	those
+R25	is_a_previous_tenant_of Arg1:T14 Arg2:T27	
+R26	is_northern_directional_marker_to Arg1:T27 Arg2:T23	
+T28	Site 496 505	Head acre
+R27	is_western_directional_marker_to Arg1:T28 Arg2:T23	
+T29	Site 522 538	Turn Bridge dyke
+R28	is_eastern_directional_marker_to Arg1:T29 Arg2:T23	
+T30	Person 552 559	Boynton
+T31	Person 691 699	Stanhope
+T32	Person 759 766	Boynton
+T33	Person 859 867	Stanhope
+T34	Occupation 884 893	attorneys
+T35	Person 894 913	Christopher Jarthen
+T36	Person 918 933	William Headley
+*	same_as T31 T6 T33
+*	same_as T30 T3 T32
+R29	is_other_relation_to Arg1:T35 Arg2:T33	
+R30	is_other_relation_to Arg1:T36 Arg2:T33	
+R31	occupation_is Arg1:T35 Arg2:T34	
+R32	occupation_is Arg1:T36 Arg2:T34	

@@ -1,0 +1,97 @@
+T2	Document 0 10	YM/D/SN/47
+T3	Date 31 41	1 May 1600
+R2	is_dated Arg1:T2 Arg2:T3	
+T4	Person 42 57	Edward Stanhope
+T5	Place 61 71	Gray's Inn
+R3	is_of Arg1:T4 Arg2:T5	
+T6	Place 73 78	Middx
+R4	is_part_of Arg1:T5 Arg2:T6	
+T7	Occupation 82 85	esq
+R5	occupation_is Arg1:T4 Arg2:T7	
+T1	Person 89 101	Paul Riccard
+T8	Place 105 111	Cowick
+T9	Occupation 113 119	yeoman
+R1	is_of Arg1:T1 Arg2:T8	
+R6	occupation_is Arg1:T1 Arg2:T9	
+T12	Transaction 122 141	Stanhope to Riccard
+T13	Site 143 162	8 swathes of meadow
+R9	is_parcel_in Arg1:T13 Arg2:T12	
+T14	Person 191 206	Thomas Dilcocke
+T15	Occupation 208 212	gent
+R10	occupation_is Arg1:T14 Arg2:T15	
+R11	is_a_tenant_of Arg1:T14 Arg2:T13	
+T16	Place 258 267	the Whate
+R12	is_located_in Arg1:T13 Arg2:T16	
+T17	Place 229 239	Snaithings
+R13	is_part_of Arg1:T16 Arg2:T17	
+T18	Site 278 287	4 swathes
+R14	is_part_of Arg1:T18 Arg2:T13	
+T19	Site 293 304	crown lands
+R15	is_western_directional_marker_to Arg1:T19 Arg2:T18	
+T20	Site 321 337	Riccard's meadow
+R16	is_eastern_directional_marker_to Arg1:T20 Arg2:T18	
+T21	Site 364 374	river Ayre
+R17	is_northern_directional_marker_to Arg1:T21 Arg2:T18	
+T22	Site 393 402	4 swathes
+R18	not_same_as Arg1:T22 Arg2:T18	
+R19	is_part_of Arg1:T22 Arg2:T13	
+T23	Site 412 417	lands
+T24	Person 434 447	Thomas Pledow
+R20	is_a_previous_tenant_of Arg1:T24 Arg2:T23	
+R21	is_western_directional_marker_to Arg1:T23 Arg2:T22	
+T25	SiteRef 464 469	those
+T26	Person 473 485	Brian Elande
+T27	Occupation 487 491	gent
+R22	occupation_is Arg1:T26 Arg2:T27	
+R23	is_a_tenant_of Arg1:T26 Arg2:T25	
+R24	is_eastern_directional_marker_to Arg1:T25 Arg2:T22	
+R25	is_northern_directional_marker_to Arg1:T21 Arg2:T22	
+R7	is_grantor_in Arg1:T4 Arg2:T12	
+R8	is_recipient_in Arg1:T1 Arg2:T12	
+T10	Transaction 528 547	Riccard to Stanhope
+R26	is_grantor_in Arg1:T1 Arg2:T10	
+R27	is_recipient_in Arg1:T4 Arg2:T10	
+T11	Site 549 574	3 roods meadow or pasture
+R28	is_parcel_in Arg1:T11 Arg2:T10	
+T28	Site 578 590	Snaith field
+T29	Place 595 607	Middle Oxney
+R29	is_part_of Arg1:T11 Arg2:T28	
+R30	is_located_in Arg1:T28 Arg2:T29	
+T30	Site 618 626	1/2 acre
+R31	is_part_of Arg1:T30 Arg2:T11	
+T31	Site 635 640	lands
+R32	is_western_directional_marker_to Arg1:T31 Arg2:T30	
+T32	Person 647 661	Hilary Bailden
+R33	is_a_tenant_of Arg1:T32 Arg2:T31	
+T33	SiteRef 704 709	those
+R34	not_same_as Arg1:T31 Arg2:T23	
+R35	not_same_as Arg1:T33 Arg2:T25	
+R36	is_eastern_directional_marker_to Arg1:T33 Arg2:T30	
+T34	Person 713 728	George Lamberte
+R37	is_a_tenant_of Arg1:T34 Arg2:T33	
+T35	Person 750 763	Brian Ealande
+R38	is_a_previous_tenant_of Arg1:T35 Arg2:T33	
+T36	Site 787 799	Nether Oxney
+R39	is_southern_directional_marker_to Arg1:T36 Arg2:T30	
+T37	Site 817 839	Middle Oxney stye gate
+R40	is_northern_directional_marker_to Arg1:T37 Arg2:T30	
+T38	Site 859 865	1 rood
+R41	is_part_of Arg1:T38 Arg2:T11	
+T39	Site 875 880	lands
+R42	not_same_as Arg1:T39 Arg2:T31	
+R43	not_same_as Arg1:T39 Arg2:T23	
+R44	is_eastern_directional_marker_to Arg1:T39 Arg2:T38	
+T40	Person 884 899	Thomas Jollande
+R45	is_a_tenant_of Arg1:T40 Arg2:T39	
+T41	Place 907 916	Moor hill
+R46	is_of Arg1:T40 Arg2:T41	
+T42	SiteRef 933 938	those
+R47	not_same_as Arg1:T42 Arg2:T33	
+R48	not_same_as Arg1:T42 Arg2:T25	
+R49	is_western_directional_marker_to Arg1:T42 Arg2:T38	
+T43	Person 945 958	William Haron
+R50	is_a_tenant_of Arg1:T43 Arg2:T42	
+R51	is_southern_directional_marker_to Arg1:T36 Arg2:T42	
+R52	is_northern_directional_marker_to Arg1:T37 Arg2:T42	
+R53	refers_to Arg1:T2 Arg2:T12	
+R54	refers_to Arg1:T2 Arg2:T10	

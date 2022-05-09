@@ -1,0 +1,32 @@
+T1	Document 0 17	vicars-choral-399
+T2	Transaction 18 23	Grant
+T4	Site 46 55	Petergate
+T5	Institution 63 91	vicars of the church of York
+T6	Site 213 218	lands
+T7	Site 222 231	Petergat'
+T8	Place 239 261	parish of Holy Trinity
+T9	Site 281 285	land
+T3	Person 27 42	Henry le furbur
+T10	Person 289 314	Hervey (Hervy) le cureyer
+T11	Person 327 344	Hugh de le Dunnes
+T13	Person 468 473	Henry
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T14	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+R6	is_parcel_in Arg1:T6 Arg2:T2	
+R7	is_part_of Arg1:T6 Arg2:T7	
+R8	is_located_in Arg1:T7 Arg2:T8	
+R9	is_a_tenant_of Arg1:T10 Arg2:T9	
+R10	is_boundary_to Arg1:T9 Arg2:T6	
+T17	SiteRef 319 323	that
+R11	is_boundary_to Arg1:T17 Arg2:T6	
+R12	is_a_tenant_of Arg1:T11 Arg2:T17	
+*	same_as T13 T3
+T14	Apparatus 630 1133	Seal•• [probably mid 13th century] SOURCE: VC 3/1/1 fo• 47• NOTE: This and the next two charters form a group• The land from which the 3s• 6d• rent came was presumably that which Henry and his wife Aubrey later granted to the vicars: 400• After Henry's death Aubrey quitclaimed the land to the vicars: 401• Henry also granted adjoining property to the dean and chapter of York for the support of the vicars: 402• Hervey the currier is most probably identifiable as the Hervey the girdler recorded in 400
+R2	is_of Arg1:T3 Arg2:T4	
+*	same_as T7 T4
+T15	Apparatus 455 463	Warranty
+R13	contains Arg1:T1 Arg2:T15	
+T12	Apparatus 296 303	(Hervy)
+R14	contains Arg1:T1 Arg2:T12	

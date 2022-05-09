@@ -1,0 +1,60 @@
+T1	Document 0 14	deeds-00880674
+#1	AnnotatorNotes T1	{'editorial date':'1295', 'transaction type': 'Grant'}
+T2	Person 51 73	Reginaldus carectarius
+T3	Place 77 85	Halstede
+T4	Transaction 86 136	dedi concessi et hac presenti carta mea confirmavi
+T5	Person 137 152	Gilberto Panell
+R1	is_of Arg1:T5 Arg2:T3	
+R2	is_of Arg1:T2 Arg2:T3	
+T6	Person 165 173	Radulpho
+T7	Site 240 256	unam acram terre
+T8	Place 273 281	Halstede
+T9	Site 288 294	terram
+T10	Person 301 309	Gilberti
+T11	Site 326 332	terram
+T12	Person 333 346	Willelmi Brun
+T13	Site 384 390	terram
+T14	Person 399 415	Simonis de Ponte
+T15	Site 428 434	pratum
+T16	Person 441 449	Gilberti
+T21	Person 625 633	Gilberto
+T22	Person 637 645	Radulpho
+T23	Person 675 683	Radulphi
+T24	Person 1274 1284	Reginaldus
+T25	Person 1436 1444	Gilberto
+T26	Person 1448 1456	Radulpho
+T27	Person 1486 1494	Radulphi
+T28	Date 1586 1686	die martis proxima ante purificationem beate Marie virginis anno regni regis Edwardi vicesimo tercio
+T29	Person 1723 1738	Iohanne Huraunt
+T30	Person 1739 1751	Willelmo Dyn
+T31	Person 1752 1772	Iohanne filio Andree
+T33	Person 1773 1793	Iohanne de Nunnethey
+T34	Person 1794 1812	Petro filio Ricard
+T36	Person 1814 1830	Philippo pistore
+T37	Person 1831 1848	Gilberto de Hamme
+R3	refers_to Arg1:T1 Arg2:T4	
+R4	is_dated Arg1:T1 Arg2:T28	
+R5	is_grantor_in Arg1:T2 Arg2:T4	
+R6	is_recipient_in Arg1:T5 Arg2:T4	
+R7	is_recipient_in Arg1:T6 Arg2:T4	
+R8	is_son_of Arg1:T6 Arg2:T5	
+R9	is_parcel_in Arg1:T7 Arg2:T4	
+R10	is_located_in Arg1:T7 Arg2:T8	
+R11	is_boundary_to Arg1:T9 Arg2:T7	
+R12	is_a_tenant_of Arg1:T10 Arg2:T9	
+R13	is_boundary_to Arg1:T11 Arg2:T7	
+R14	is_a_tenant_of Arg1:T12 Arg2:T11	
+R15	is_boundary_to Arg1:T13 Arg2:T7	
+R16	is_a_previous_tenant_of Arg1:T14 Arg2:T13	
+R17	is_boundary_to Arg1:T15 Arg2:T7	
+R18	is_a_tenant_of Arg1:T16 Arg2:T15	
+*	same_as T16 T10 T5 T21 T25
+*	same_as T27 T26 T22 T23 T6
+*	same_as T24 T2
+R19	is_witness_to Arg1:T29 Arg2:T4	
+R20	is_witness_to Arg1:T30 Arg2:T4	
+R22	is_witness_to Arg1:T31 Arg2:T4	
+R23	is_witness_to Arg1:T33 Arg2:T4	
+R25	is_witness_to Arg1:T34 Arg2:T4	
+R26	is_witness_to Arg1:T36 Arg2:T4	
+R27	is_witness_to Arg1:T37 Arg2:T4	

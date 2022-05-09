@@ -1,0 +1,18 @@
+T1	Document 0 10	YM/D/WOM/5
+#1	AnnotatorNotes T1	{"Creation Dates": "18 December 1583", "Title": ""}
+T2	Person 26 40	Pearce Stanley
+T3	Occupation 42 45	esq
+T4	Person 79 96	George Myddletone
+T5	Transaction 122 135	rival grounds
+R1	refers_to Arg1:T1 Arg2:T5	
+R2	occupation_is Arg1:T2 Arg2:T3	
+R3	is_participant_in Arg1:T2 Arg2:T5	
+R4	is_participant_in Arg1:T4 Arg2:T5	
+T6	Site 153 158	close
+R5	is_parcel_in Arg1:T6 Arg2:T5	
+T7	Person 202 223	Sir William Gascoigne
+T8	Person 225 235	Myddletone
+R7	is_a_previous_grantor_of Arg1:T7 Arg2:T6	
+T9	Person 160 167	Stanley
+*	same_as T9 T2
+*	same_as T8 T4

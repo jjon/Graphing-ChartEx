@@ -1,0 +1,31 @@
+T1	Document 0 17	vicars-choral-422
+T2	Apparatus 397 547	Warranty• Seal• [later 13th century] SOURCE: VC 3/I/I, fo• 20• DATE: Before 423• NOTE: The land was later granted by the vicars for a rent of 8s•: 423
+T3	Transaction 18 23	Grant
+T4	Person 42 47	Helen
+T5	Person 59 71	John de Luda
+T6	Person 101 114	Alan de Cotum
+T7	Institution 189 203	church of York
+T8	Institution 213 219	vicars
+T9	Site 241 245	land
+T10	Site 249 258	Petergate
+T11	Person 265 277	John Bokenay
+T12	Site 309 313	land
+T13	Person 317 331	Adam le hatter
+T14	SiteRef 336 340	that
+T15	Person 344 353	Anastasia
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_grantor_in Arg1:T4 Arg2:T3	
+T16	Place 83 87	York
+R4	is_of Arg1:T5 Arg2:T16	
+R5	is_widow_of Arg1:T4 Arg2:T6	
+R3	is_daughter_of Arg1:T4 Arg2:T5	
+R6	is_recipient_in Arg1:T7 Arg2:T3	
+R7	is_recipient_in Arg1:T8 Arg2:T3	
+R8	is_parcel_in Arg1:T9 Arg2:T3	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_a_previous_tenant_of Arg1:T11 Arg2:T9	
+R11	is_a_tenant_of Arg1:T13 Arg2:T12	
+R12	is_a_tenant_of Arg1:T15 Arg2:T14	
+R13	is_boundary_to Arg1:T12 Arg2:T9	
+R14	is_boundary_to Arg1:T14 Arg2:T9	
+R15	contains Arg1:T1 Arg2:T2	

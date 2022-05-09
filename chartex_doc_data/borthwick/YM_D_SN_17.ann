@@ -1,0 +1,24 @@
+T1	Document 0 10	YM/D/SN/17
+T2	Transaction 12 48	Copy of court roll (manor of Snaith)
+#1	AnnotatorNotes T1	{"Creation Dates": "29 August, 1555", "Title": "Copy of court roll (manor of Snaith)"}
+T3	Person 62 76	John Bawmbrugh
+R1	is_recipient_in Arg1:T3 Arg2:T2	
+T4	Person 105 118	George Watson
+R2	is_grantor_in Arg1:T4 Arg2:T2	
+T5	Site 120 124	Toft
+R3	is_parcel_in Arg1:T5 Arg2:T2	
+T6	Place 150 191	east part of Snaith, near the tithe barn•
+R4	is_located_in Arg1:T5 Arg2:T6	
+T7	Person 192 198	Watson
+*	same_as T7 T4
+R5	is_a_previous_tenant_of Arg1:T7 Arg2:T5	
+T8	Date 268 289	26 April, 2 Edward VI
+T9	Apparatus 290 296	[1548]
+R7	is_a_tenant_of Arg1:T3 Arg2:T5	
+R8	refers_to Arg1:T1 Arg2:T2	
+T10	Transaction 250 259	the court
+R9	precedes Arg1:T10 Arg2:T2	
+R10	is_recipient_in Arg1:T7 Arg2:T10	
+R6	precedes Arg1:T8 Arg2:T2	
+T11	Person 477 486	Bawmbrugh
+*	same_as T11 T3

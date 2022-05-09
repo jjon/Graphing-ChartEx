@@ -1,0 +1,61 @@
+T1	Document 0 14	deeds-00110170
+T2	Transaction 138 188	dedi concessi et hac presenti carta mea confirmaui
+T3	Person 51 56	Agnes
+T4	Person 70 84	Rogeri Correye
+R1	is_widow_of Arg1:T3 Arg2:T4	
+T5	Place 88 91	Bed
+R2	is_of Arg1:T4 Arg2:T5	
+R3	refers_to Arg1:T1 Arg2:T2	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 189 203	Johanni French
+R5	is_recipient_in Arg1:T6 Arg2:T2	
+T7	Occupation 206 210	ciui
+T8	Place 211 215	Lond
+R6	occupation_is Arg1:T6 Arg2:T7	
+R7	is_of Arg1:T6 Arg2:T8	
+T9	Site 275 289	una acra terre
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T10	Site 301 322	prebenda sancti Pauli
+T11	Place 323 326	Bed
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_located_in Arg1:T10 Arg2:T11	
+T12	Site 335 341	terram
+T13	Person 342 355	Johannis Calt
+T14	Person 361 375	Abel Attewater
+R11	is_boundary_to Arg1:T12 Arg2:T9	
+R12	is_a_tenant_of Arg1:T13 Arg2:T12	
+R13	is_a_tenant_of Arg1:T14 Arg2:T12	
+T15	Site 394 408	Trumptonedyche
+R14	is_boundary_to Arg1:T15 Arg2:T9	
+T16	Date 477 599	die sabbati proximo post festum purificacionis beate Marie virginis anno regni regis E filii regis Henrici tricesimo primo
+R15	is_dated Arg1:T1 Arg2:T16	
+T18	Person 614 636	Waltero de Molesworthe
+T19	Person 637 652	Johanne Cullebe
+T20	Person 655 667	Johanne Calt
+T21	Person 668 684	Gilberto de Holm
+T22	Person 685 699	Johanne Wymund
+T23	Person 730 748	Nicholao le Feroun
+T24	Person 752 767	Johanne Pictore
+T25	Person 782 789	Johanne
+T26	Person 796 809	Thome Halyday
+T27	Person 810 826	Johanne Chechele
+T28	Occupation 827 834	clerico
+R16	occupation_is Arg1:T27 Arg2:T28	
+T29	Occupation 773 781	balliuis
+R17	occupation_is Arg1:T24 Arg2:T29	
+T30	Occupation 707 717	aldermanno
+T31	Place 724 727	Bed
+R18	occupation_is Arg1:T22 Arg2:T30	
+R19	is_of Arg1:T22 Arg2:T31	
+R20	is_witness_to Arg1:T18 Arg2:T2	
+R21	is_witness_to Arg1:T19 Arg2:T2	
+R22	is_witness_to Arg1:T20 Arg2:T2	
+R23	is_witness_to Arg1:T21 Arg2:T2	
+R24	is_witness_to Arg1:T22 Arg2:T2	
+R25	is_witness_to Arg1:T23 Arg2:T2	
+R26	is_witness_to Arg1:T27 Arg2:T2	
+R27	is_witness_to Arg1:T26 Arg2:T2	
+R28	is_witness_to Arg1:T24 Arg2:T2	
+R29	is_witness_to Arg1:T25 Arg2:T2	
+T17	Place 471 474	Bed
+R30	is_location_of Arg:T17 Arg2:T2	

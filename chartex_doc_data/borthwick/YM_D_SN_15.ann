@@ -1,0 +1,54 @@
+T1	Document 0 10	YM/D/SN/15
+T2	Transaction 12 21	Covenants
+#1	AnnotatorNotes T1	{"Creation Dates": "6 January 1549", "Title": "Covenants"}
+T3	Person 22 37	Richard Doghtie
+R1	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Place 41 45	Moss
+T5	Place 47 52	Balne
+R2	is_of Arg1:T3 Arg2:T4	
+R3	is_part_of Arg1:T4 Arg2:T5	
+T6	Occupation 54 60	tanner
+R4	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 62 76	Roger Phylipes
+R5	is_recipient_in Arg1:T7 Arg2:T2	
+T8	Place 80 85	Blyth
+T9	Place 87 92	Notts
+R6	is_of Arg1:T7 Arg2:T8	
+R7	is_part_of Arg1:T8 Arg2:T9	
+T10	Date 105 125	13 June, 2 Edward VI
+T11	Apparatus 126 132	[1548]
+T12	Transaction 97 101	bond
+T13	Site 232 236	mese
+R8	is_parcel_in Arg1:T13 Arg2:T12	
+T14	Place 240 246	Snaith
+R9	is_located_in Arg1:T13 Arg2:T14	
+R10	precedes Arg1:T12 Arg2:T2	
+T15	Person 265 273	Phylipes
+*	same_as T15 T7 T24 T28
+R12	is_a_tenant_of Arg1:T15 Arg2:T13	
+T16	Person 134 148	Edmund Seynter
+T17	Place 152 161	Haddlesey
+T18	Person 175 182	Doghtie
+*	same_as T18 T3 T26 T27
+R13	is_of Arg1:T16 Arg2:T17	
+R14	is_participant_in Arg1:T16 Arg2:T12	
+R15	is_participant_in Arg1:T18 Arg2:T12	
+T19	Person 297 311	John Mawdesley
+T20	Person 313 318	Agnes
+T21	Person 333 345	John Saynter
+T22	Place 349 363	Hirst Courtney
+R16	is_of Arg1:T21 Arg2:T22	
+R17	is_participant_in Arg1:T19 Arg2:T12	
+R18	is_participant_in Arg1:T20 Arg2:T12	
+R19	is_participant_in Arg1:T21 Arg2:T12	
+R20	refers_to Arg1:T1 Arg2:T2	
+R21	refers_to Arg1:T1 Arg2:T12	
+T23	Document 97 101	bond
+R22	is_dated Arg1:T23 Arg2:T10	
+R23	contains Arg1:T1 Arg2:T11	
+T24	Person 385 393	Phylipes
+T25	Person 433 440	Seynter
+T26	Person 444 453	Doghtie's
+T27	Person 503 510	Doghtie
+T28	Person 558 566	Phylipes
+*	same_as T25 T21

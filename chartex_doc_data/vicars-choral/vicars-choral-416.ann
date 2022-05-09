@@ -1,0 +1,54 @@
+T1	Document 0 17	vicars-choral-416
+T2	Apparatus 487 543	SOURCE: VC 8/Metcalfe notebks• V, no• 52• NOTE: See 403•
+T4	Transaction 18 39	Release and quitclaim
+R1	refers_to Arg1:T1 Arg2:T4	
+T5	Person 43 63	John Raven de Fenton
+R3	is_grantor_in Arg1:T5 Arg2:T4	
+T7	Person 67 86	Simon de Botelsford
+R4	is_recipient_in Arg1:T7 Arg2:T4	
+T8	Institution 101 138	house of vicars of the church of York
+T9	Occupation 87 93	warden
+R5	occupation_is Arg1:T7 Arg2:T9	
+R6	is_officeholder_in Arg1:T7 Arg2:T8	
+T10	Site 157 161	land
+R8	is_parcel_in Arg1:T10 Arg2:T4	
+T11	Person 174 180	father
+T12	Person 185 191	mother
+R9	is_father_of Arg1:T11 Arg2:T5	
+R10	is_mother_of Arg1:T12 Arg2:T5	
+R11	is_husband_of Arg1:T11 Arg2:T12	
+T13	Site 195 204	Petergate
+R12	is_part_of Arg1:T10 Arg2:T13	
+T14	Site 224 229	house
+T15	Institution 237 254	prebend of Massam
+R13	is_a_tenant_of Arg1:T15 Arg2:T14	
+T17	Person 272 288	Simon de Evesham
+R14	is_boundary_to Arg1:T14 Arg2:T10	
+T18	Place 296 300	York
+R15	is_location_of Arg:T18 Arg2:T4	
+T19	Date 302 359	day after feast of exaltation of the Holy Cross 28 Edward
+R16	is_dated Arg1:T1 Arg2:T19	
+T20	Apparatus 360 380	[15 September 1300]•
+T22	Person 392 404	John Sampson
+T23	Person 406 423	Thomas de Stodley
+T24	Person 425 430	Roger
+T25	Person 438 448	Roger Basy
+R17	is_son_of Arg1:T24 Arg2:T25	
+T26	Person 450 468	Nicholas le Spicur
+T27	Site 472 481	Petergate
+R18	is_witness_to Arg1:T26 Arg2:T4	
+R19	is_witness_to Arg1:T24 Arg2:T4	
+R20	is_witness_to Arg1:T23 Arg2:T4	
+R21	is_witness_to Arg1:T22 Arg2:T4	
+T16	SiteRef 259 263	that
+R22	is_a_previous_tenant_of Arg1:T17 Arg2:T16	
+R23	is_boundary_to Arg1:T16 Arg2:T10	
+R24	is_of Arg1:T26 Arg2:T27	
+R25	contains Arg1:T1 Arg2:T20	
+R26	contains Arg1:T1 Arg2:T2	
+R27	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R28	is_a_previous_tenant_of Arg1:T12 Arg2:T10	
+T3	Apparatus 290 294	Seal
+R7	contains Arg1:T1 Arg2:T3	
+T6	Institution 147 153	vicars
+R2	is_recipient_in Arg1:T6 Arg2:T4	

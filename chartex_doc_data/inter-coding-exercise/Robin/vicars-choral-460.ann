@@ -1,0 +1,59 @@
+T1	Document 0 17	vicars-choral-460
+T2	Person 44 62	Richard Ullesskelf
+T3	Occupation 63 69	warden
+T4	Institution 101 107	vicars
+T5	Person 132 149	William Esyngwald
+T6	Person 154 168	John Esyngwald
+T7	Occupation 183 190	mercers
+T8	Place 194 198	York
+T9	Site 233 242	two shops
+T10	Site 248 260	two chambers
+T11	Site 276 285	Petergate
+T12	Site 305 313	tenement
+T13	Person 317 331	William Kenlay
+T14	SiteRef 336 340	that
+T15	Person 344 359	Geoffrey Forest
+T16	Apparatus 556 571	Warranty•  Seal
+T17	Apparatus 723 879	[3o January 1419/20]•  SOURCE: VC r/r, p•  51 (ink pagination)•  NOTE: It has not been possible to identify the original grant of the property to the vicars
+T18	Person 585 596	John Bedale
+T19	Occupation 597 602	mayor
+T20	Person 604 615	John Bolton
+T21	Person 617 628	Thomas Davy
+T22	Occupation 630 638	sheriffs
+T23	Person 640 655	Robert Midilton
+T24	Person 657 671	Robert de Yar'
+T25	Place 686 690	York
+T26	Date 692 722	penultimate day ofJanuary 1419
+T27	Transaction 113 128	demised at farm
+R1	refers_to Arg1:T1 Arg2:T27	
+R2	is_dated Arg1:T1 Arg2:T26	
+R3	is_location_of Arg:T25 Arg2:T27	
+R4	contains Arg1:T1 Arg2:T16	
+R5	contains Arg1:T1 Arg2:T17	
+T28	Institution 77 92	house of vicars
+*	same_as T28 T4
+R6	is_officeholder_in Arg1:T2 Arg2:T28	
+R7	occupation_is Arg1:T2 Arg2:T3	
+R8	is_grantor_in Arg1:T2 Arg2:T27	
+R9	is_grantor_in Arg1:T4 Arg2:T27	
+R10	is_recipient_in Arg1:T5 Arg2:T27	
+R11	is_recipient_in Arg1:T6 Arg2:T27	
+R12	occupation_is Arg1:T5 Arg2:T7	
+R13	occupation_is Arg1:T6 Arg2:T7	
+R14	is_of Arg1:T5 Arg2:T8	
+R15	is_of Arg1:T6 Arg2:T8	
+R16	is_part_of Arg1:T10 Arg2:T9	
+R17	is_parcel_in Arg1:T9 Arg2:T27	
+R18	is_part_of Arg1:T9 Arg2:T11	
+R19	is_boundary_to Arg1:T12 Arg2:T9	
+R20	is_boundary_to Arg1:T14 Arg2:T9	
+R21	is_a_tenant_of Arg1:T13 Arg2:T12	
+R22	is_a_tenant_of Arg1:T15 Arg2:T14	
+R23	occupation_is Arg1:T18 Arg2:T19	
+R24	occupation_is Arg1:T20 Arg2:T22	
+R25	occupation_is Arg1:T21 Arg2:T22	
+R26	is_witness_to Arg1:T18 Arg2:T27	
+R27	is_witness_to Arg1:T20 Arg2:T27	
+R28	is_witness_to Arg1:T21 Arg2:T27	
+R29	is_witness_to Arg1:T23 Arg2:T27	
+R30	is_witness_to Arg1:T24 Arg2:T27	

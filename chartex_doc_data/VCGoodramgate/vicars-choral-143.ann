@@ -1,0 +1,116 @@
+T1	Document 0 17	vicars-choral-143
+T2	Transaction 18 23	Grant
+T3	Person 27 33	Walter
+T4	Apparatus 34 43	[de Gray]
+T5	Occupation 44 62	archbishop of York
+T6	Person 66 81	John de Bulmere
+T7	Person 89 104	John de Bulmere
+T8	Site 108 112	land
+T9	Site 129 140	Guthrumgate
+T10	Institution 148 164	preaching friars
+T11	Apparatus 165 177	[Dominicans]
+T12	Place 181 185	York
+R1	is_located_in Arg1:T10 Arg2:T12	
+T13	Institution 191 197	friars
+T14	Site 206 210	land
+T15	Person 226 231	Alice
+T16	Person 241 263	Nicholas de Buggethorp
+T17	Person 265 281	Ellen de Puteaco
+T18	Person 291 295	Adam
+T19	Person 303 307	Alan
+T20	Person 315 321	Romund
+T21	Person 327 334	William
+T22	Person 342 359	William Sigherith
+T23	Institution 372 382	archbishop
+T24	Institution 441 458	treasurer of York
+T25	Person 483 493	archbishop
+T26	Apparatus 518 533	Seal.Witnesses:
+T27	Person 534 541	William
+T28	Occupation 542 563	archdeacon of Richem'
+T29	Person 565 570	Peter
+T30	Occupation 571 588	succentor of York
+T31	Person 590 600	mag. Roger
+T32	Occupation 601 614	canon of York
+T33	Person 616 632	Reynold de Stowe
+T34	Person 637 662	mag. William de Scheuedon
+T35	Occupation 664 680	canons of Suwell
+T36	Person 682 695	William Luuel
+T37	Occupation 696 710	canon of Ripon
+T38	Person 712 729	William de Calv'l
+T39	Person 731 750	Robert de Brunerton
+T40	Person 755 773	Richard de Swinton
+T41	Occupation 779 798	archbishop's clerks
+T42	Apparatus 799 817	(clericis nostris)
+T43	Apparatus 889 910	(senescallis nostris)
+T44	Apparatus 1012 1034	(servientibus nostris)
+T45	Date 1055 1120	17 Kalends April in the 39th year of the archbishop's pontificate
+T46	Place 1047 1053	Cawode
+T47	Apparatus 1121 1448	[16 March 1254].SOURCE: VC 3/1/1, fos. 11v.-12.PRINTED: Register, or Rolls, of Walter Gray, ed. J. Raine (Surtees Society lvi, 1872 for 1870), 272 (from YML, L 2/1, part ii, fos. 89v.-9o).The names of the witnesses and the dating clause are not entered into the cartulary and are taken from the text in YML, L 211.NOTE: See 138
+T48	Person 819 837	Robert de Ripariis
+T49	Person 842 861	Richard de Boyville
+T50	Occupation 867 888	archbishop's stewards
+T51	Person 912 930	Fawkes de Wakefeld
+T52	Person 932 946	Michael de Hek
+T53	Person 948 962	John Flandrens
+T54	Person 965 984	Geoffrey de Bassing
+T55	Occupation 990 1011	archbishop's servants
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T4	
+R4	contains Arg1:T1 Arg2:T11	
+R5	contains Arg1:T1 Arg2:T26	
+R6	contains Arg1:T1 Arg2:T42	
+R7	contains Arg1:T1 Arg2:T43	
+R8	contains Arg1:T1 Arg2:T44	
+R9	is_dated Arg1:T1 Arg2:T45	
+R10	contains Arg1:T1 Arg2:T47	
+R11	is_location_of Arg:T46 Arg2:T2	
+R12	occupation_is Arg1:T3 Arg2:T5	
+R13	is_grantor_in Arg1:T3 Arg2:T2	
+R14	is_recipient_in Arg1:T6 Arg2:T2	
+R15	is_son_of Arg1:T6 Arg2:T7	
+R16	is_parcel_in Arg1:T8 Arg2:T2	
+R17	is_part_of Arg1:T8 Arg2:T9	
+R18	is_a_previous_recipient_of Arg1:T10 Arg2:T8	
+*	same_as T13 T10
+*	same_as T14 T8
+R19	is_a_previous_grantor_of Arg1:T15 Arg2:T8	
+R20	is_widow_of Arg1:T15 Arg2:T16	
+R21	is_a_previous_grantor_of Arg1:T17 Arg2:T8	
+R22	is_widow_of Arg1:T17 Arg2:T18	
+R23	is_son_of Arg1:T18 Arg2:T19	
+R24	is_son_of Arg1:T19 Arg2:T20	
+R25	is_son_of Arg1:T21 Arg2:T22	
+R26	is_a_previous_grantor_of Arg1:T21 Arg2:T8	
+R27	is_participant_in Arg1:T24 Arg2:T2	
+R28	is_participant_in Arg1:T23 Arg2:T2	
+*	same_as T25 T3
+R29	occupation_is Arg1:T27 Arg2:T28	
+R30	occupation_is Arg1:T29 Arg2:T30	
+R31	occupation_is Arg1:T31 Arg2:T32	
+R32	occupation_is Arg1:T33 Arg2:T35	
+R33	occupation_is Arg1:T34 Arg2:T35	
+R34	occupation_is Arg1:T36 Arg2:T37	
+R35	occupation_is Arg1:T38 Arg2:T41	
+R36	occupation_is Arg1:T39 Arg2:T41	
+R37	occupation_is Arg1:T40 Arg2:T41	
+R38	occupation_is Arg1:T48 Arg2:T50	
+R39	occupation_is Arg1:T49 Arg2:T50	
+R40	occupation_is Arg1:T51 Arg2:T55	
+R41	occupation_is Arg1:T52 Arg2:T55	
+R42	occupation_is Arg1:T53 Arg2:T55	
+R43	occupation_is Arg1:T54 Arg2:T55	
+R44	is_witness_to Arg1:T27 Arg2:T2	
+R45	is_witness_to Arg1:T29 Arg2:T2	
+R46	is_witness_to Arg1:T31 Arg2:T2	
+R47	is_witness_to Arg1:T33 Arg2:T2	
+R48	is_witness_to Arg1:T34 Arg2:T2	
+R49	is_witness_to Arg1:T36 Arg2:T2	
+R50	is_witness_to Arg1:T38 Arg2:T2	
+R51	is_witness_to Arg1:T39 Arg2:T2	
+R52	is_witness_to Arg1:T40 Arg2:T2	
+R53	is_witness_to Arg1:T48 Arg2:T2	
+R54	is_witness_to Arg1:T49 Arg2:T2	
+R55	is_witness_to Arg1:T51 Arg2:T2	
+R56	is_witness_to Arg1:T52 Arg2:T2	
+R57	is_witness_to Arg1:T53 Arg2:T2	
+R58	is_witness_to Arg1:T54 Arg2:T2	

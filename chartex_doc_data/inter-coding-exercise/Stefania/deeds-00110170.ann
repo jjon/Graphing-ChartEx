@@ -1,0 +1,62 @@
+T1	Document 0 14	deeds-00110170
+T2	Person 51 56	Agnes
+T3	Person 70 84	Rogeri Correye
+R1	is_widow_of Arg1:T2 Arg2:T3	
+T4	Transaction 138 188	dedi concessi et hac presenti carta mea confirmaui
+T5	Person 342 357	Johannis Calt[]
+T6	Person 361 375	Abel Attewater
+T7	Site 394 403	Trumptone
+T8	Place 471 476	Bed[]
+T9	Place 88 93	Bed[]
+T10	Person 190 205	ohanni French[]
+T11	Occupation 206 210	ciui
+T12	Place 211 217	Lond[]
+T13	Site 275 289	una acra terre
+T14	Institution 301 322	prebenda sancti Pauli
+T15	Site 335 341	terram
+T16	Date 477 599	die sabbati proximo post festum purificacionis beate Marie virginis anno regni regis E filii regis Henrici tricesimo primo
+T17	Person 614 636	Waltero de Molesworthe
+T18	Person 637 654	Johanne Cullebe[]
+T19	Person 655 667	Johanne Calt
+T20	Person 668 684	Gilberto de Holm
+T21	Person 685 701	Johanne Wymund[]
+T22	Occupation 707 717	aldermanno
+T23	Place 718 723	ville
+T24	Place 724 729	Bed[]
+T25	Person 730 748	Nicholao le Feroun
+T26	Person 752 767	Johanne Pictore
+T27	Occupation 773 781	balliuis
+T28	Person 782 809	Johanne filio Thome Halyday
+T29	Person 810 826	Johanne Chechele
+T30	Occupation 827 834	clerico
+R2	is_of Arg1:T2 Arg2:T9	
+R3	refers_to Arg1:T1 Arg2:T4	
+R4	is_grantor_in Arg1:T2 Arg2:T4	
+R5	is_recipient_in Arg1:T10 Arg2:T4	
+R6	occupation_is Arg1:T10 Arg2:T11	
+R7	is_of Arg1:T10 Arg2:T12	
+R8	is_parcel_in Arg1:T13 Arg2:T4	
+T31	Place 323 328	Bed[]
+R10	is_located_in Arg1:T14 Arg2:T31	
+R11	is_a_tenant_of Arg1:T5 Arg2:T15	
+R12	is_a_tenant_of Arg1:T6 Arg2:T15	
+R13	is_boundary_to Arg1:T15 Arg2:T13	
+R14	is_boundary_to Arg1:T7 Arg2:T13	
+R15	is_dated Arg1:T1 Arg2:T16	
+R16	is_witness_to Arg1:T17 Arg2:T4	
+R17	is_witness_to Arg1:T18 Arg2:T4	
+R18	is_witness_to Arg1:T19 Arg2:T4	
+R19	is_witness_to Arg1:T20 Arg2:T4	
+R20	is_witness_to Arg1:T21 Arg2:T4	
+R21	is_witness_to Arg1:T25 Arg2:T4	
+R22	is_witness_to Arg1:T26 Arg2:T4	
+R23	is_witness_to Arg1:T28 Arg2:T4	
+R24	is_witness_to Arg1:T29 Arg2:T4	
+R25	occupation_is Arg1:T29 Arg2:T30	
+R26	occupation_is Arg1:T26 Arg2:T27	
+R27	occupation_is Arg1:T21 Arg2:T22	
+R28	is_of Arg1:T21 Arg2:T24	
+*	same_as T8 T31 T23 T24
+R9	is_a_landlord_of Arg1:T14 Arg2:T13	
+T32	Site 403 408	dyche
+*	same_as T32 T7

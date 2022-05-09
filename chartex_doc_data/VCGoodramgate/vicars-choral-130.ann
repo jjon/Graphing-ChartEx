@@ -1,0 +1,84 @@
+T1	Document 0 17	vicars-choral-130
+T2	Person 38 51	Hugh Rumanger
+T3	Occupation 52 60	chaplain
+T4	Person 76 96	ohn Francis Rumanger
+T5	Transaction 102 130	given, granted and confirmed
+T6	Person 165 178	William Wyles
+T7	Site 269 273	land
+T8	Site 277 288	Goodramgate
+T9	Institution 311 324	blessed Peter
+T10	Site 359 363	land
+T11	Person 379 397	Andrew de Helperby
+T12	Site 414 418	land
+T13	Person 422 429	Matilde
+T14	Person 440 449	Steven Pe
+T15	Person 899 908	Alexander
+T16	Person 916 921	Pagan
+T17	Person 1229 1233	Hugh
+T18	Person 1308 1314	Willam
+T19	Person 1430 1434	Hugh
+T20	Person 1487 1494	William
+T21	Person 1599 1603	Hugh
+T22	Person 1635 1642	William
+T23	Person 1658 1667	Alexander
+T24	Person 1675 1680	Pagan
+T25	Person 1723 1735	John Francis
+T26	Person 1748 1758	Stephen Pe
+T27	Person 1760 1780	Roger de St Margaret
+T28	Person 1785 1791	Edward
+T29	Occupation 1793 1802	chaplains
+T30	Person 1804 1807	Ada
+T31	Occupation 1812 1818	miller
+T32	Person 1820 1827	Rodulph
+T33	Occupation 1828 1833	clerk
+T34	Person 1835 1848	Robert Hernis
+T35	Person 1850 1861	Simon Blome
+T36	Person 1863 1869	Robert
+T37	Occupation 1870 1877	cuteler
+T38	Person 1879 1892	Hogone Playce
+T39	Person 1894 1900	Thomas
+T40	Occupation 1901 1908	cuteler
+T41	Person 1910 1923	William smith
+T42	Person 1925 1936	John Spulet
+R1	refers_to Arg1:T1 Arg2:T5	
+R2	occupation_is Arg1:T2 Arg2:T3	
+R3	is_son_of Arg1:T2 Arg2:T4	
+R4	is_grantor_in Arg1:T2 Arg2:T5	
+R5	is_recipient_in Arg1:T6 Arg2:T5	
+R6	is_parcel_in Arg1:T7 Arg2:T5	
+R7	is_part_of Arg1:T7 Arg2:T8	
+R8	is_a_landlord_of Arg1:T9 Arg2:T7	
+R9	is_a_tenant_of Arg1:T2 Arg2:T10	
+R10	is_a_previous_grantor_of Arg1:T11 Arg2:T10	
+R11	is_boundary_to Arg1:T10 Arg2:T7	
+R12	is_a_tenant_of Arg1:T13 Arg2:T12	
+R13	is_mother_of Arg1:T13 Arg2:T14	
+R14	is_boundary_to Arg1:T12 Arg2:T7	
+R15	is_son_of Arg1:T15 Arg2:T16	
+R16	is_a_previous_tenant_of Arg1:T15 Arg2:T7	
+*	same_as T17 T2 T19 T21
+*	same_as T18 T6 T22
+R17	is_son_of Arg1:T23 Arg2:T24	
+*	same_as T23 T15
+*	same_as T25 T4
+*	same_as T26 T14
+R18	is_witness_to Arg1:T26 Arg2:T5	
+R19	is_witness_to Arg1:T27 Arg2:T5	
+R20	occupation_is Arg1:T27 Arg2:T29	
+R21	occupation_is Arg1:T28 Arg2:T29	
+R22	is_witness_to Arg1:T28 Arg2:T5	
+R23	occupation_is Arg1:T30 Arg2:T31	
+R24	is_witness_to Arg1:T30 Arg2:T5	
+R25	occupation_is Arg1:T32 Arg2:T33	
+R26	is_witness_to Arg1:T32 Arg2:T5	
+R27	is_witness_to Arg1:T34 Arg2:T5	
+R28	is_witness_to Arg1:T35 Arg2:T5	
+R29	is_witness_to Arg1:T36 Arg2:T5	
+R30	occupation_is Arg1:T36 Arg2:T37	
+R31	is_witness_to Arg1:T38 Arg2:T5	
+R32	is_witness_to Arg1:T39 Arg2:T5	
+R33	occupation_is Arg1:T39 Arg2:T40	
+R34	is_witness_to Arg1:T41 Arg2:T5	
+R35	is_witness_to Arg1:T42 Arg2:T5	
+T43	Institution 1014 1065	Vicars of the major church of blessed Peter in York
+R36	is_participant_in Arg1:T43 Arg2:T5	

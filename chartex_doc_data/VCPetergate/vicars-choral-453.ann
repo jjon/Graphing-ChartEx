@@ -1,0 +1,7 @@
+T1	Document 0 17	vicars-choral-453
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 45	Beatrice Warde
+T4	Apparatus 47 329	addressees and property as 450. Witnesses: as 450 (reading Davy for Davi). York, 5 July 8 Henry V [1420]. SOURCE: VC 3/Vi 346 (300 mm. x 126 mm.) ENDORSEMENT: Relaxacio Beatricis Warde J. Watton et J. Mahon de domo in qua J. King manet cum pertin'; nota. SEAL: as 448. NOTE: See 443
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T4	
+R3	is_grantor_in Arg1:T3 Arg2:T2	

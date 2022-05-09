@@ -1,0 +1,86 @@
+T1	Person 44 60	Nicholas Sterley
+T2	Person 62 78	Marmaduke Wyvell
+T3	Occupation 80 87	esquire
+T4	Person 89 105	William Woodward
+T5	Occupation 107 116	gentleman
+T6	Occupation 118 137	deputy and attorney
+T7	Person 141 161	Sir James Strangweys
+T8	Occupation 163 169	knight
+T9	Person 171 188	Peter Doddesworth
+T10	Occupation 190 199	gentleman
+T11	Occupation 201 220	deputy and attorney
+T12	Person 224 241	Christopher Danby
+T13	Occupation 243 250	esquire
+T14	Person 256 269	Anthony Brugh
+T15	Occupation 271 280	gentleman
+T16	Occupation 286 292	deputy
+T17	Person 296 310	Lancelot Asshe
+T18	Person 315 330	Ralph Dranffeld
+T19	Occupation 332 340	esquires
+T20	Person 345 356	Robert Roos
+T21	Place 360 367	Nayland
+T22	Place 369 376	Suffolk
+T23	Occupation 378 388	clothmaker
+T24	Site 474 479	grove
+T25	Site 487 499	'Kyngeffeld'
+T26	Site 513 524	'Levenheth'
+T27	Place 526 533	Suffolk
+T28	Site 585 597	Nayland Park
+T29	Place 601 616	Great Horkesley
+T30	Place 618 623	Essex
+T31	Person 636 652	Nicholas Sterley
+T32	Date 657 665	1531 Nov
+T34	Transaction 24 40	bargain and sale
+T35	Document 0 10	57A/205/26
+R1	refers_to Arg1:T35 Arg2:T34	
+R2	is_dated Arg1:T35 Arg2:T32	
+R3	contains Arg1:T35 Arg2:T42	
+R4	occupation_is Arg1:T2 Arg2:T3	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	occupation_is Arg1:T4 Arg2:T6	
+R7	occupation_is Arg1:T7 Arg2:T8	
+R8	occupation_is Arg1:T9 Arg2:T10	
+R9	occupation_is Arg1:T9 Arg2:T11	
+R10	occupation_is Arg1:T12 Arg2:T13	
+R11	occupation_is Arg1:T14 Arg2:T15	
+R12	occupation_is Arg1:T14 Arg2:T16	
+R13	occupation_is Arg1:T17 Arg2:T19	
+R14	occupation_is Arg1:T18 Arg2:T19	
+R15	is_of Arg1:T20 Arg2:T21	
+R16	is_part_of Arg1:T21 Arg2:T22	
+R17	occupation_is Arg1:T20 Arg2:T23	
+T36	Site 421 425	wood
+T37	Site 427 436	underwood
+T38	Site 441 447	timber
+R18	is_part_of Arg1:T38 Arg2:T24	
+R19	is_part_of Arg1:T37 Arg2:T24	
+R20	is_part_of Arg1:T36 Arg2:T24	
+*	same_as T25 T24
+T39	Site 543 552	underwood
+T40	Site 557 560	ash
+R22	is_part_of Arg1:T39 Arg2:T28	
+R23	is_part_of Arg1:T40 Arg2:T28	
+R24	is_located_in Arg1:T28 Arg2:T29	
+R25	is_part_of Arg1:T29 Arg2:T30	
+T41	Apparatus 628 635	Seal of
+*	same_as T31 T1
+T42	Apparatus 666 675	854716506
+R26	is_parcel_in Arg1:T24 Arg2:T34	
+R27	is_parcel_in Arg1:T28 Arg2:T34	
+R28	is_recipient_in Arg1:T20 Arg2:T34	
+R29	is_grantor_in Arg1:T1 Arg2:T34	
+R30	is_grantor_in Arg1:T2 Arg2:T34	
+R31	is_participant_in Arg1:T4 Arg2:T34	
+R32	is_grantor_in Arg1:T7 Arg2:T34	
+R33	is_participant_in Arg1:T9 Arg2:T34	
+R34	is_grantor_in Arg1:T12 Arg2:T34	
+R35	is_participant_in Arg1:T14 Arg2:T34	
+R36	is_grantor_in Arg1:T17 Arg2:T34	
+R37	is_grantor_in Arg1:T18 Arg2:T34	
+R21	is_located_in Arg1:T26 Arg2:T27	
+R38	is_boundary_to Arg1:T26 Arg2:T25	
+R39	contains Arg1:T35 Arg2:T41	
+R40	is_other_relation_to Arg1:T4 Arg2:T7	
+R41	is_other_relation_to Arg1:T9 Arg2:T12	
+R42	is_other_relation_to Arg1:T14 Arg2:T17	
+R43	is_other_relation_to Arg1:T14 Arg2:T18	

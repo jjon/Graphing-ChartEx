@@ -1,0 +1,66 @@
+T1	Document 0 17	vicars-choral-142
+T2	Person 40 52	Ellen Romund
+T3	Person 62 68	Walter
+T4	Transaction 18 36	Sale and quitclaim
+T5	Apparatus 69 78	[de Gray]
+T6	Occupation 79 97	archbishop of York
+T7	Site 156 160	land
+T8	Person 132 142	archbishop
+*	same_as T8 T3 T14
+T9	Site 194 199	house
+T10	Person 203 220	Roger the saddler
+R1	is_a_tenant_of Arg1:T10 Arg2:T9	
+T11	Site 253 258	house
+T12	Person 262 284	mag. Henry de Wiketoff
+T13	Site 289 298	Aldewerke
+T14	Person 313 323	archbishop
+T15	Apparatus 365 380	Seal. Witnesses
+T16	Person 382 393	W. de Widd'
+T17	Occupation 394 434	steward of the lord [archbishop] of York
+T18	Person 436 449	G. de Bocland
+T19	Occupation 450 467	canon of Beverley
+T20	Person 469 492	mag. Henry de Wyketofft
+T21	Person 494 500	Robert
+T22	Occupation 505 546	chaplain of the lord [archbishop] of York
+T23	Person 548 555	William
+T24	Occupation 556 596	succentor of the church of blessed Peter
+T25	Person 598 603	Roger
+T26	Person 617 633	Nicholas Mansell
+T27	Person 635 652	Gilbert de Fonton
+T28	Occupation 658 685	servant of W. the treasurer
+T29	Person 687 700	W. de Bocland
+T30	Person 705 719	Ralph de Wadd'
+T31	Occupation 721 727	clerks
+T32	Apparatus 745 1685	[1242 x 1248] SOURCE: VC 3/Vi 4 (205 mm. x 128 mm.) ENDORSEMENT: Carta archiepiscopi quam habuit ab Helena de quietaclamacione quatuor solidorum redditus; Aldewerk: [bundle-mark] .e. SEAL: one tag. COPY: VC 3/1/1, fo. 11v. DATE: The assigned date depends on the identification of W. the treasurer as William de Rotherfield who was dead by April 1242 and on the supposition that Gilbert de Fonton had outlived him rather than left his service while William was still alive, and on the identification of William the succentor as William de Langton alias de Rotherfield, NOTE: See 138. The land from which the rent came is more fully described in 140. The archbishop's steward who heads the witness-list is identifiable as the lawyer William Waddington: J. Hughes, 'The Administration of Confession in the Diocese of York in the Fourteenth Century', Studies in Clergy and Ministry in Medieval England (Borthwick Studies in History I, 1991), 91
+R2	refers_to Arg1:T1 Arg2:T4	
+R3	contains Arg1:T1 Arg2:T5	
+R4	contains Arg1:T1 Arg2:T15	
+R5	contains Arg1:T1 Arg2:T32	
+R6	is_grantor_in Arg1:T2 Arg2:T4	
+T33	Occupation 53 58	widow
+R7	occupation_is Arg1:T2 Arg2:T33	
+R8	occupation_is Arg1:T3 Arg2:T6	
+R9	is_parcel_in Arg1:T7 Arg2:T4	
+R10	is_eastern_directional_marker_to Arg1:T9 Arg2:T7	
+R11	is_southern_directional_marker_to Arg1:T11 Arg2:T7	
+R12	is_a_tenant_of Arg1:T12 Arg2:T11	
+R13	is_part_of Arg1:T11 Arg2:T13	
+R14	is_witness_to Arg1:T16 Arg2:T4	
+R15	occupation_is Arg1:T16 Arg2:T17	
+R16	is_witness_to Arg1:T18 Arg2:T4	
+R17	occupation_is Arg1:T18 Arg2:T19	
+R18	is_witness_to Arg1:T20 Arg2:T4	
+R19	is_witness_to Arg1:T21 Arg2:T4	
+R20	occupation_is Arg1:T21 Arg2:T22	
+R21	is_witness_to Arg1:T23 Arg2:T4	
+R22	occupation_is Arg1:T23 Arg2:T24	
+R23	is_witness_to Arg1:T25 Arg2:T4	
+R24	is_witness_to Arg1:T26 Arg2:T4	
+R25	is_witness_to Arg1:T27 Arg2:T4	
+R26	occupation_is Arg1:T27 Arg2:T28	
+R27	is_witness_to Arg1:T29 Arg2:T4	
+R28	is_witness_to Arg1:T30 Arg2:T4	
+R29	occupation_is Arg1:T29 Arg2:T31	
+R30	occupation_is Arg1:T30 Arg2:T31	
+T34	Occupation 608 615	saddler
+R31	occupation_is Arg1:T25 Arg2:T34	

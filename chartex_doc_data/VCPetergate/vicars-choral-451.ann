@@ -1,0 +1,36 @@
+T1	Document 0 17	vicars-choral-451
+T2	Person 28 42	Beatrice Warde
+T3	Person 52 64	Robert Warde
+T4	Occupation 77 85	merchant
+T5	Place 89 93	York
+T6	Person 113 125	Thomas Warde
+T7	Person 150 161	John Watton
+T8	Occupation 162 170	chaplain
+T9	Person 175 186	John Malton
+T10	Occupation 187 192	clerk
+T11	Site 205 213	messuage
+T12	Site 222 228	moiety
+T13	Site 234 241	chamber
+T14	Place 260 265	York,
+T15	Apparatus 243 259	as in 450. Seal.
+T16	Date 266 282	3 July 8 Henry V
+T17	Apparatus 283 400	[1420]. SOURCE: VC 3/Vi 344 (267 mm. x 91 mm.) ENDORSEMENT: none. SEAL: remains of red wax on a tongue. NOTE: See 443
+T18	Transaction 133 141	attorney
+R1	refers_to Arg1:T1 Arg2:T18	
+R2	is_grantor_in Arg1:T2 Arg2:T18	
+R3	is_widow_of Arg1:T2 Arg2:T3	
+R4	occupation_is Arg1:T3 Arg2:T4	
+R5	is_of Arg1:T3 Arg2:T5	
+R6	is_son_of Arg1:T6 Arg2:T2	
+R7	is_participant_in Arg1:T6 Arg2:T18	
+R8	is_recipient_in Arg1:T7 Arg2:T18	
+R9	occupation_is Arg1:T7 Arg2:T8	
+R10	is_recipient_in Arg1:T9 Arg2:T18	
+R11	occupation_is Arg1:T9 Arg2:T10	
+R12	is_parcel_in Arg1:T11 Arg2:T18	
+R13	is_parcel_in Arg1:T12 Arg2:T18	
+R14	is_part_of Arg1:T12 Arg2:T13	
+R15	contains Arg1:T1 Arg2:T15	
+R16	is_location_of Arg:T14 Arg2:T18	
+R17	is_dated Arg1:T1 Arg2:T16	
+R18	contains Arg1:T1 Arg2:T17	

@@ -1,0 +1,79 @@
+T1	Document 0 14	Ward2_55_188_3
+#1	AnnotatorNotes T1	{"piece_id": "5471226", "date_text": "1578 Aug 6"}
+T2	Transaction 15 29	Grant and sale
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 33 47	Anthony Fuller
+T4	Place 51 67	Stoke by Nayland
+T5	Place 69 76	Suffolk
+R2	is_part_of Arg1:T4 Arg2:T5	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Occupation 78 84	yeoman
+R5	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 89 100	Robert Kyng
+T8	Place 104 117	West Bergholt
+T9	Place 119 124	Essex
+T10	Occupation 126 132	yeoman
+R6	is_recipient_in Arg1:T7 Arg2:T2	
+R7	is_of Arg1:T7 Arg2:T8	
+R8	is_part_of Arg1:T8 Arg2:T9	
+R9	occupation_is Arg1:T7 Arg2:T10	
+T11	Site 141 149	messuage
+R10	is_parcel_in Arg1:T11 Arg2:T2	
+T13	Site 173 179	garden
+T14	Site 186 191	croft
+R11	is_part_of Arg1:T13 Arg2:T11	
+R12	is_part_of Arg1:T14 Arg2:T11	
+T16	Place 696 703	Fordham
+T17	Place 705 710	Essex
+R14	is_part_of Arg1:T16 Arg2:T17	
+R15	is_located_in Arg1:T11 Arg2:T16	
+T18	Person 803 817	Robert Durrant
+R16	is_witness_to Arg1:T18 Arg2:T2	
+T19	Person 819 831	John Dyffytt
+R17	is_witness_to Arg1:T19 Arg2:T2	
+T20	Apparatus 881 917	Seal and signature of Anthony Fuller
+R18	contains Arg1:T1 Arg2:T20	
+T21	Person 833 846	Thomas Freman
+T22	Person 848 861	George Armond
+R19	is_witness_to Arg1:T21 Arg2:T2	
+R20	is_witness_to Arg1:T22 Arg2:T2	
+T23	Person 866 879	Edmund Potter
+R21	is_witness_to Arg1:T23 Arg2:T2	
+*	same_as T9 T17
+T12	Site 158 164	Lyarde
+*	same_as T12 T11
+T24	Apparatus 745 755	[Endorsed]
+R22	contains Arg1:T1 Arg2:T24	
+T15	Place 240 247	Fordham
+R13	is_located_in Arg1:T11 Arg2:T15	
+T25	Site 271 277	common
+T26	Site 291 305	Plummers Green
+*	same_as T25 T26
+R23	is_eastern_directional_marker_to Arg1:T26 Arg2:T11	
+T27	Site 331 349	messuage and lands
+R24	is_southern_directional_marker_to Arg1:T27 Arg2:T11	
+R25	is_western_directional_marker_to Arg1:T27 Arg2:T11	
+T28	Person 374 387	Robert Jenner
+R26	is_a_tenant_of Arg1:T28 Arg2:T27	
+T29	Site 430 435	lands
+T30	Site 443 452	Stubbings
+*	same_as T29 T30
+R27	is_northern_directional_marker_to Arg1:T30 Arg2:T11	
+T31	Site 483 488	field
+T32	Site 496 502	Hearde
+*	same_as T31 T32
+R28	is_parcel_in Arg1:T32 Arg2:T2	
+T33	Place 544 551	Fordham
+R29	is_located_in Arg1:T32 Arg2:T33	
+T34	Site 580 585	lands
+R30	not_same_as Arg1:T34 Arg2:T29	
+T35	Person 602 612	John Abell
+T36	Occupation 614 620	knight
+R31	occupation_is Arg1:T35 Arg2:T36	
+R32	is_a_tenant_of Arg1:T35 Arg2:T34	
+R33	is_eastern_directional_marker_to Arg1:T34 Arg2:T32	
+T37	Site 650 658	tenement
+T38	Site 666 671	Howde
+*	same_as T37 T38
+R34	is_western_directional_marker_to Arg1:T38 Arg2:T32	

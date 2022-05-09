@@ -1,0 +1,61 @@
+T1	Document 0 10	YM/D/SN/33
+T2	Transaction 12 33	Mortgage by feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "16 March 1585/6", "Title": "Mortgage by feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 34 50	Richard Radcliff
+T4	Place 54 63	Rawcliffe
+R2	is_of Arg1:T3 Arg2:T4	
+T5	Occupation 65 69	gent
+R3	occupation_is Arg1:T3 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 72 85	Walter Jobson
+T7	Place 89 100	Brantingham
+T8	Occupation 102 105	esq
+R5	occupation_is Arg1:T6 Arg2:T8	
+R6	is_of Arg1:T6 Arg2:T7	
+T9	Site 107 131	2½ acres land or pasture
+T10	Place 135 141	Snaith
+R7	is_located_in Arg1:T9 Arg2:T10	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T11	Site 148 153	close
+R9	is_part_of Arg1:T9 Arg2:T11	
+T12	Person 167 176	Radcliffe
+R10	is_a_landlord_of Arg1:T12 Arg2:T11	
+T13	Site 193 206	capital house
+R11	is_a_landlord_of Arg1:T12 Arg2:T13	
+R12	is_part_of Arg1:T11 Arg2:T13	
+*	same_as T12 T3 T23
+T14	Person 215 223	Jobson's
+*	same_as T14 T6
+R13	is_a_tenant_of Arg1:T14 Arg2:T9	
+T15	Site 255 261	½ acre
+R14	is_part_of Arg1:T15 Arg2:T9	
+T16	Site 276 282	garden
+R15	is_part_of Arg1:T15 Arg2:T16	
+T17	Person 286 298	Robert Bawne
+R16	is_a_landlord_of Arg1:T17 Arg2:T16	
+T18	Person 341 354	James Asshton
+T19	Occupation 356 361	clerk
+R17	occupation_is Arg1:T18 Arg2:T19	
+R18	is_a_tenant_of Arg1:T18 Arg2:T16	
+T20	Site 367 374	2 acres
+R19	is_part_of Arg1:T20 Arg2:T9	
+T21	Person 398 413	Brian Stapilton
+T22	Occupation 415 418	esq
+R20	occupation_is Arg1:T21 Arg2:T22	
+R21	is_a_previous_tenant_of Arg1:T21 Arg2:T20	
+R22	is_recipient_in Arg1:T6 Arg2:T2	
+T24	Place 478 484	Snaith
+*	same_as T24 T10
+T23	Person 515 523	Radcliff
+T25	Person 550 563	James Asshton
+T26	Occupation 540 549	attorneys
+T27	Occupation 565 570	clerk
+T28	Person 576 590	William Watkyn
+T29	Occupation 592 598	yeoman
+R23	is_other_relation_to Arg1:T25 Arg2:T23	
+R24	is_other_relation_to Arg1:T28 Arg2:T23	
+R25	occupation_is Arg1:T25 Arg2:T26	
+R26	occupation_is Arg1:T25 Arg2:T27	
+R27	occupation_is Arg1:T28 Arg2:T29	
+R28	occupation_is Arg1:T28 Arg2:T26	

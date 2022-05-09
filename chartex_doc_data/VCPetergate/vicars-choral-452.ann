@@ -1,0 +1,56 @@
+T1	Document 0 17	vicars-choral-452
+T2	Transaction 18 23	Grant
+T3	Person 27 38	John Watton
+T4	Occupation 39 47	chaplain
+T5	Person 52 63	John Malton
+T6	Occupation 64 69	clerk
+T7	Place 73 77	York
+T8	Person 81 96	Thomas Swanland
+T9	Person 98 109	Robert Seme
+T10	Person 112 127	George Whitteby
+T11	Person 133 156	William Lillyng de York
+T13	Occupation 158 167	chaplains
+T14	Site 172 180	property
+T15	Apparatus 182 209	as in 450. Seal. Witnesses:
+T16	Person 210 225	Thomas del Gare
+T17	Occupation 226 231	mayor
+T18	Person 233 247	John de Bolton
+T19	Person 249 261	Thomas Davi,
+T20	Occupation 262 270	sheriffs
+T21	Person 272 288	Henry de Preston
+T22	Person 290 306	Thomas Esyngwald
+T23	Person 308 323	Thomas Snawedon
+T24	Person 325 338	Simon Waughen
+T25	Place 352 356	York
+T26	Date 358 374	4 July 8 Henry V
+T27	Apparatus 375 574	[1420]. SOURCE: VC 3/Vi 347 (310 mm. x 126 mm.) ENDORSEMENT: Carta J. Watton et Johannis Mahon vicariis de tenementis in Petergat et Hornpotlane. SEALS: remains of two seals of red wax. NOTE: See 443
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T15	
+R3	contains Arg1:T1 Arg2:T27	
+R4	is_dated Arg1:T1 Arg2:T26	
+R5	is_location_of Arg:T25 Arg2:T2	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	occupation_is Arg1:T3 Arg2:T4	
+R8	is_grantor_in Arg1:T5 Arg2:T2	
+R9	occupation_is Arg1:T5 Arg2:T6	
+R10	is_of Arg1:T5 Arg2:T7	
+R11	is_of Arg1:T3 Arg2:T7	
+R12	is_recipient_in Arg1:T8 Arg2:T2	
+R13	is_recipient_in Arg1:T9 Arg2:T2	
+R14	is_recipient_in Arg1:T10 Arg2:T2	
+R15	is_recipient_in Arg1:T11 Arg2:T2	
+R17	occupation_is Arg1:T11 Arg2:T13	
+R18	occupation_is Arg1:T10 Arg2:T13	
+R19	occupation_is Arg1:T9 Arg2:T13	
+R20	occupation_is Arg1:T8 Arg2:T13	
+R21	is_parcel_in Arg1:T14 Arg2:T2	
+R22	occupation_is Arg1:T16 Arg2:T17	
+R23	is_witness_to Arg1:T16 Arg2:T2	
+R24	is_witness_to Arg1:T18 Arg2:T2	
+R25	is_witness_to Arg1:T19 Arg2:T2	
+R26	occupation_is Arg1:T19 Arg2:T20	
+R27	occupation_is Arg1:T18 Arg2:T20	
+R28	is_witness_to Arg1:T21 Arg2:T2	
+R29	is_witness_to Arg1:T22 Arg2:T2	
+R30	is_witness_to Arg1:T23 Arg2:T2	
+R31	is_witness_to Arg1:T24 Arg2:T2	

@@ -1,0 +1,100 @@
+T1	Document 0 17	vicars-choral-387
+T4	Institution 73 90	prebend of Masham
+T2	Transaction 18 23	Grant
+T3	Person 27 34	William
+T5	Person 42 49	Richard
+T6	Occupation 51 64	canon of York
+T8	Site 214 218	land
+T9	Site 222 231	Petergate
+T10	Site 237 246	buildings
+T11	Institution 252 272	prebendary of Masham
+T12	Institution 336 369	vicars of the church of St• Peter
+T15	Person 977 993	tnagistri Godard
+T16	Person 1012 1020	J• Roman
+T17	Person 1022 1037	T• de Lichefeld
+T18	Person 1039 1044	Erard
+T19	Person 1046 1053	Maurice
+T20	Person 1055 1071	Robert de Winton
+T21	Person 1082 1089	mag• H•
+T22	Person 1135 1148	mag• Nicholas
+T23	Person 1150 1168	mag• R• de Holbec'
+T25	Person 1188 1208	William de Bugethorp
+T26	Person 1210 1228	Serlo of Staingate
+T27	Person 1230 1236	Thomas
+T28	Person 1266 1280	Reynold Morgan
+T29	Person 1282 1299	Roger de Driffeld
+T30	Person 1301 1321	Henry de St• Michael
+T31	Person 1332 1350	Hugh of Cunigstret
+T32	Person 1352 1359	J• Bou'
+T33	Apparatus 1391 1588	[121g x 1228] SOURCE: VC 3/1/1, fos• PRINTED: YMF i• 83-4 (from British Library MS•, Claudius B• iii, new fo• o3v•(b))• DATE: When Roger de Insula was dean and before John le Romeyn became subdean•
+R1	contains Arg1:T1 Arg2:T33	
+R3	is_son_of Arg1:T3 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	occupation_is Arg1:T3 Arg2:T6	
+R7	is_recipient_in Arg1:T4 Arg2:T2	
+R8	is_parcel_in Arg1:T8 Arg2:T2	
+R9	is_part_of Arg1:T10 Arg2:T8	
+*	same_as T11 T4
+R11	is_participant_in Arg1:T12 Arg2:T2	
+T13	Person 938 940	R•
+T14	Person 959 960	W
+T35	Occupation 941 957	the dean of York
+T37	Occupation 966 975	treasurer
+T38	Occupation 998 1010	penitentiary
+T39	Occupation 1074 1080	canons
+T40	Occupation 1090 1096	rector
+T41	Institution 1104 1133	hospital of St• Peter of York
+T24	Person 1170 1172	P•
+T42	Occupation 1177 1186	succentor
+T43	Occupation 1255 1264	chaplains
+T44	Occupation 1323 1330	deacons
+T45	Occupation 1361 1371	subdeacons
+R12	occupation_is Arg1:T13 Arg2:T35	
+R14	occupation_is Arg1:T14 Arg2:T37	
+R16	occupation_is Arg1:T15 Arg2:T38	
+R18	occupation_is Arg1:T20 Arg2:T39	
+R19	occupation_is Arg1:T19 Arg2:T39	
+R20	occupation_is Arg1:T18 Arg2:T39	
+R21	occupation_is Arg1:T17 Arg2:T39	
+R22	occupation_is Arg1:T16 Arg2:T39	
+R23	occupation_is Arg1:T21 Arg2:T40	
+R24	is_officeholder_in Arg1:T21 Arg2:T41	
+R25	occupation_is Arg1:T24 Arg2:T42	
+R15	occupation_is Arg1:T25 Arg2:T43	
+R17	occupation_is Arg1:T26 Arg2:T43	
+R26	occupation_is Arg1:T27 Arg2:T43	
+R27	occupation_is Arg1:T28 Arg2:T44	
+R28	occupation_is Arg1:T29 Arg2:T44	
+R29	occupation_is Arg1:T30 Arg2:T44	
+R30	occupation_is Arg1:T31 Arg2:T45	
+R31	occupation_is Arg1:T32 Arg2:T45	
+R32	is_witness_to Arg1:T13 Arg2:T2	
+R33	is_witness_to Arg1:T14 Arg2:T2	
+R34	is_witness_to Arg1:T15 Arg2:T2	
+R35	is_witness_to Arg1:T16 Arg2:T2	
+R36	is_witness_to Arg1:T17 Arg2:T2	
+R37	is_witness_to Arg1:T18 Arg2:T2	
+R38	is_witness_to Arg1:T19 Arg2:T2	
+R39	is_witness_to Arg1:T20 Arg2:T2	
+R40	is_witness_to Arg1:T21 Arg2:T2	
+R41	is_witness_to Arg1:T22 Arg2:T2	
+R42	is_witness_to Arg1:T31 Arg2:T2	
+R43	is_witness_to Arg1:T32 Arg2:T2	
+R44	refers_to Arg1:T1 Arg2:T2	
+R10	is_part_of Arg1:T8 Arg2:T9	
+T46	Institution 534 558	dean and chapter of York
+R6	is_participant_in Arg1:T46 Arg2:T2	
+T47	Institution 616 630	church of York
+R45	is_participant_in Arg1:T47 Arg2:T2	
+T7	Apparatus 894 937	Seal• Witnesses: [from text printed in YMF]
+T34	Person 1244 1253	Alexander
+R2	is_son_of Arg1:T27 Arg2:T34	
+T36	Person 308 315	William
+*	same_as T36 T3
+R13	is_witness_to Arg1:T23 Arg2:T2	
+R46	is_witness_to Arg1:T24 Arg2:T2	
+R47	is_witness_to Arg1:T25 Arg2:T2	
+R48	is_witness_to Arg1:T28 Arg2:T2	
+R49	is_witness_to Arg1:T29 Arg2:T2	
+R50	is_witness_to Arg1:T30 Arg2:T2	
+R51	contains Arg1:T1 Arg2:T7	

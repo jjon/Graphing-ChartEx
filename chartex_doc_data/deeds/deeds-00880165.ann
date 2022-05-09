@@ -1,0 +1,85 @@
+T1	Document 0 14	deeds-00880165
+#1	AnnotatorNotes T1	{'editorial date':'1256', 'transaction type': 'Final Concord'}
+T2	Place 74 89	Westmonasterium
+T3	Date 93 185	quindena sancti Iohannis Baptiste anno regni regis Henrici filii regis Iohannis quadragesimo
+T8	Person 325 342	Warinum le pestur
+T9	Person 346 367	Margeriam de Lamburne
+T10	Person 380 406	fratrem Elyam de Smetheton
+T11	Occupation 407 414	priorem
+T12	Institution 415 461	hospitalis sancti Iohannis Ierusalem in Anglia
+T13	Person 475 485	Adam Mabun
+T14	Site 533 558	decem et octo acris terre
+T15	Place 579 598	parva Mapeltrestede
+T16	Person 2043 2050	Warinus
+T17	Person 2054 2062	Margeria
+T18	Transaction 2063 2096	remiserunt et quietum clamaverunt
+T19	Institution 2162 2191	fratribus predicti hospitalis
+T20	Site 2240 2249	tenemento
+T21	Person 2312 2319	Warinum
+T22	Person 2323 2332	Margeriam
+T23	Person 2130 2136	priori
+T24	Person 615 622	Warinum
+T25	Person 626 635	Margeriam
+T26	Person 671 688	Basilia de Begham
+T27	Site 735 760	una acra terre et dimidia
+T28	Site 764 778	una acra prati
+T30	Person 827 834	Warinum
+T31	Person 838 847	Margeriam
+T32	Person 883 892	Cristiana
+T33	Person 899 913	Walteri Morell
+T34	Site 960 974	una acra terre
+T29	Person 1023 1030	Warinum
+T35	Person 1034 1043	Margeriam
+T36	Person 1079 1098	Roesia la lavendere
+T37	Site 1145 1170	una acra terre et dimidia
+T38	Person 1219 1226	Warinum
+T39	Person 1230 1239	Margeriam
+T40	Person 1275 1292	Roesia a la Broke
+T41	Site 1339 1353	una acra bosci
+T42	Person 1402 1409	Warinum
+T43	Person 1413 1422	Margeriam
+T44	Person 1458 1465	Alureda
+T45	Person 1480 1495	Walteri Loveday
+T46	Site 1542 1560	tribus acris terre
+T47	Person 1609 1616	Warinum
+T48	Person 1620 1629	Margeriam
+T49	Person 1665 1678	Simon Loveday
+T50	Site 1725 1743	dimidio acre terre
+T51	Person 1792 1799	Warinum
+T52	Person 1803 1812	Margeriam
+T53	Person 1848 1856	Iohannes
+T54	Person 1864 1875	Thome Supud
+*	same_as T20 T14
+*	same_as T21 T16 T51 T47 T42 T38 T29 T30 T24 T8
+*	same_as T22 T17 T52 T48 T43 T39 T35 T31 T25 T9
+*	same_as T10 T23
+*	same_as T12 T19
+R1	refers_to Arg1:T1 Arg2:T18	
+R2	is_parcel_in Arg1:T14 Arg2:T18	
+R3	is_grantor_in Arg1:T17 Arg2:T18	
+R4	is_grantor_in Arg1:T16 Arg2:T18	
+R5	is_recipient_in Arg1:T23 Arg2:T18	
+R6	is_recipient_in Arg1:T19 Arg2:T18	
+R7	is_son_of Arg1:T53 Arg2:T54	
+R8	is_participant_in Arg1:T53 Arg2:T18	
+R9	is_participant_in Arg1:T49 Arg2:T18	
+R10	is_widow_of Arg1:T44 Arg2:T45	
+R11	is_participant_in Arg1:T44 Arg2:T18	
+R12	is_participant_in Arg1:T40 Arg2:T18	
+R13	is_participant_in Arg1:T36 Arg2:T18	
+R14	is_daughter_of Arg1:T32 Arg2:T33	
+R15	is_participant_in Arg1:T32 Arg2:T18	
+R16	is_participant_in Arg1:T26 Arg2:T18	
+R17	is_located_in Arg1:T14 Arg2:T15	
+R18	is_other_relation_to Arg1:T13 Arg2:T10	
+R19	occupation_is Arg1:T10 Arg2:T11	
+R20	is_officeholder_in Arg1:T10 Arg2:T12	
+R27	is_location_of Arg:T2 Arg2:T18	
+R28	is_dated Arg1:T1 Arg2:T3	
+R29	is_part_of Arg1:T27 Arg2:T14	
+R30	is_part_of Arg1:T28 Arg2:T14	
+R31	is_part_of Arg1:T34 Arg2:T14	
+R32	is_part_of Arg1:T37 Arg2:T14	
+R33	is_part_of Arg1:T41 Arg2:T14	
+R34	is_part_of Arg1:T46 Arg2:T14	
+R35	is_part_of Arg1:T50 Arg2:T14	

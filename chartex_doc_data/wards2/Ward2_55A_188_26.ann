@@ -1,0 +1,86 @@
+T1	Document 0 16	Ward2_55A_188_26
+#1	AnnotatorNotes T1	{"piece_id": "5471249", "date_text": "1528 Jan 21"}
+T2	Transaction 17 28	Enfeoffment
+T3	Person 32 45	Thomas Betyll
+T4	Person 85 97	John Simonde
+R1	is_grantor_in Arg1:T3 Arg2:T2	
+R2	is_recipient_in Arg1:T4 Arg2:T2	
+T5	Person 131 150	John Marston junior
+T6	Person 169 179	John Brett
+T7	Person 181 193	William Kyng
+T8	Person 213 226	William Warde
+T9	Person 231 242	John Martin
+R3	is_recipient_in Arg1:T5 Arg2:T2	
+R4	is_recipient_in Arg1:T6 Arg2:T2	
+R5	is_recipient_in Arg1:T7 Arg2:T2	
+R6	is_recipient_in Arg1:T8 Arg2:T2	
+R7	is_recipient_in Arg1:T9 Arg2:T2	
+T10	Site 274 278	land
+T11	Place 303 310	Fordham
+R8	is_located_in Arg1:T10 Arg2:T11	
+T12	Apparatus 279 299	(location specified)
+T14	Transaction 330 340	enfeofment
+R9	is_parcel_in Arg1:T10 Arg2:T2	
+T16	Date 344 359	18 October 1500
+R10	is_dated Arg1:T14 Arg2:T16	
+T17	Person 115 129	Walter Simonde
+R11	is_son_of Arg1:T4 Arg2:T17	
+T18	Person 383 397	Walter Simonde
+T19	Person 516 529	Thomas Betyll
+T21	Place 264 269	Essex
+T22	Place 206 211	Essex
+T23	Occupation 74 80	yeoman
+R17	occupation_is Arg1:T3 Arg2:T23	
+T24	Apparatus 531 552	[Endorsed] Witnesses:
+T13	Place 49 55	Aldham
+T25	Place 67 72	Essex
+T26	Place 154 160	Boxted
+T27	Place 162 168	Essex,
+T28	Place 197 204	Fordham
+T29	Place 256 262	Leyham
+T30	Person 368 381	Thomas Betyll
+*	same_as T3 T30 T19
+T15	Person 553 563	John Gebon
+T31	Person 565 579	Geoffrey Baker
+T32	Person 581 594	Andrew Pykkat
+T33	Person 599 611	George Cuspe
+R18	is_grantor_in Arg1:T30 Arg2:T14	
+R19	is_recipient_in Arg1:T18 Arg2:T14	
+T34	Person 399 411	John Foreway
+R20	is_recipient_in Arg1:T34 Arg2:T14	
+T35	Person 413 426	Thomas Nicoll
+R21	is_recipient_in Arg1:T35 Arg2:T14	
+T36	Person 428 441	Robert Upcher
+R22	is_recipient_in Arg1:T36 Arg2:T14	
+T37	Person 447 459	John Snowden
+R23	is_recipient_in Arg1:T37 Arg2:T14	
+T38	Place 463 476	West Bergholt
+T39	Place 478 484	Essex•
+R24	precedes Arg1:T14 Arg2:T2	
+R25	is_of Arg1:T9 Arg2:T29	
+R26	is_of Arg1:T37 Arg2:T38	
+R27	refers_to Arg1:T1 Arg2:T2	
+R28	contains Arg1:T1 Arg2:T12	
+R29	contains Arg1:T1 Arg2:T24	
+T40	Apparatus 244 251	Marteyn
+R30	contains Arg1:T1 Arg2:T40	
+T41	Apparatus 57 64	Alldham
+R31	contains Arg1:T1 Arg2:T41	
+R12	is_part_of Arg1:T26 Arg2:T27	
+R13	is_part_of Arg1:T29 Arg2:T21	
+R14	is_part_of Arg1:T28 Arg2:T22	
+R15	is_part_of Arg1:T38 Arg2:T39	
+R16	is_witness_to Arg1:T15 Arg2:T2	
+R32	is_witness_to Arg1:T31 Arg2:T2	
+R33	is_witness_to Arg1:T32 Arg2:T2	
+R34	is_witness_to Arg1:T33 Arg2:T2	
+R35	is_part_of Arg1:T13 Arg2:T25	
+R36	refers_to Arg1:T1 Arg2:T14	
+R37	is_of Arg1:T5 Arg2:T26	
+R38	is_of Arg1:T7 Arg2:T28	
+*	same_as T18 T17
+R39	is_location_of Arg:T28 Arg2:T2	
+R40	is_of Arg1:T3 Arg2:T13	
+R41	is_of Arg1:T8 Arg2:T29	
+T20	Place 494 501	Fordham
+R42	is_location_of Arg:T20 Arg2:T2	

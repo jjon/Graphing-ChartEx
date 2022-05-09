@@ -1,0 +1,64 @@
+T1	Document 0 10	YM/D/WOM/7
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "31 March 1598", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 34 47	Pears Stanley
+T4	Person 22 27	Peter
+*	same_as T4 T3 T23 T26 T31
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T5	Place 51 60	Womersley
+R3	is_of Arg1:T3 Arg2:T5	
+T6	Occupation 62 65	esq
+R4	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 72 88	Hastings Stanley
+T8	Place 92 101	Womersley
+T9	Occupation 103 107	gent
+R5	is_of Arg1:T7 Arg2:T8	
+R6	occupation_is Arg1:T7 Arg2:T9	
+R7	is_grantor_in Arg1:T7 Arg2:T2	
+T10	Person 110 120	Jane Yonge
+T12	Place 124 128	York
+R8	is_recipient_in Arg1:T10 Arg2:T2	
+R9	is_of Arg1:T10 Arg2:T12	
+T13	Site 249 262	Massett lands
+R11	is_parcel_in Arg1:T13 Arg2:T2	
+T14	Site 137 145	Messuage
+T15	Site 147 153	garden
+T16	Site 155 162	orchard
+T17	Site 164 177	20 acres land
+T18	Site 179 194	10 acres meadow
+T19	Site 196 212	10 acres pasture
+R12	is_part_of Arg1:T14 Arg2:T13	
+R13	is_part_of Arg1:T15 Arg2:T13	
+R14	is_part_of Arg1:T16 Arg2:T13	
+R15	is_part_of Arg1:T17 Arg2:T13	
+R16	is_part_of Arg1:T18 Arg2:T13	
+R17	is_part_of Arg1:T19 Arg2:T13	
+T20	Person 286 302	Thomas Thorneton
+R18	is_a_previous_tenant_of Arg1:T20 Arg2:T13	
+T21	Place 306 315	Womersley
+R19	is_of Arg1:T20 Arg2:T21	
+T22	Person 356 371	Hastings Rasbye
+R20	is_a_tenant_of Arg1:T22 Arg2:T13	
+T24	Place 438 447	Womersley
+T25	Site 476 480	Gale
+*	same_as T24 T21
+T11	Site 422 434	common lands
+R10	is_located_in Arg1:T11 Arg2:T24	
+R21	is_located_in Arg1:T25 Arg2:T24	
+T23	Person 563 576	Peter Stanley
+R22	is_a_landlord_of Arg1:T23 Arg2:T13	
+T26	Person 779 787	Stanleys
+T27	Person 792 804	James Wryght
+T28	Place 808 823	Bury St Edmunds
+T29	Place 825 829	Suff
+T30	Occupation 832 836	gent
+T31	Person 874 882	Stanleys
+T32	Place 912 921	Yorkshire
+T33	Place 948 952	York
+R23	is_part_of Arg1:T33 Arg2:T32	
+R24	is_part_of Arg1:T24 Arg2:T32	
+R25	is_participant_in Arg1:T27 Arg2:T2	
+R26	is_of Arg1:T27 Arg2:T28	
+R27	is_part_of Arg1:T28 Arg2:T29	
+R28	occupation_is Arg1:T27 Arg2:T30	

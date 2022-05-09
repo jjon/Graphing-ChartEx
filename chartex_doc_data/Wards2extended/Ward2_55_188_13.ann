@@ -1,0 +1,102 @@
+T1	Document 0 15	Ward2_55_188_13
+T2	Transaction 16 21	Grant
+T3	Person 27 40	John Whiteman
+T4	Place 44 51	Fordham
+T5	Place 53 58	Essex
+T6	Occupation 60 70	husbandman
+T7	Person 99 110	John Bridge
+T8	Place 122 129	Fordham
+T9	Place 131 136	Essex
+T10	Person 172 187	Thomas Whiteman
+T11	Person 192 197	Agnes
+T12	Person 244 255	John Bridge
+T13	Person 274 284	John Waspe
+T14	Place 288 299	Wakes Colne
+T15	Place 301 306	Essex
+T16	Occupation 308 318	husbandman
+T17	Person 324 334	John Sidey
+T18	Place 338 349	Mount Bures
+T19	Place 351 356	Essex
+T20	Site 363 371	tenement
+T21	Site 379 385	garden
+T22	Site 392 397	croft
+R1	is_part_of Arg1:T21 Arg2:T20	
+R2	is_part_of Arg1:T22 Arg2:T20	
+T23	Site 471 476	croft
+T24	Site 484 490	Herdes
+*	same_as T24 T23
+T25	Person 545 556	John Bridge
+T26	Place 561 568	Fordham
+T27	Place 570 575	Essex
+T28	Event 1144 1152	marriage
+T29	Person 1156 1169	John Whiteman
+T30	Person 1173 1186	Cecilia Waspe
+T31	Person 1209 1221	George Waspe
+T32	Person 1281 1294	Robert Jenner
+T33	Person 1296 1309	Robert Jenner
+T34	Person 1311 1324	Robert Farser
+T35	Person 1326 1338	Walter Jolly
+T36	Person 1340 1354	Robert Fissher
+T37	Person 1356 1367	John Jenner
+T38	Person 1369 1385	William Pagevars
+T39	Apparatus 1398 1419	Seal of John Whiteman
+R3	contains Arg1:T1 Arg2:T39	
+R4	refers_to Arg1:T1 Arg2:T2	
+R5	is_witness_to Arg1:T38 Arg2:T2	
+R6	is_witness_to Arg1:T37 Arg2:T2	
+R7	is_witness_to Arg1:T36 Arg2:T2	
+R8	is_witness_to Arg1:T35 Arg2:T2	
+R9	is_witness_to Arg1:T34 Arg2:T2	
+R10	is_witness_to Arg1:T32 Arg2:T2	
+R11	is_grantor_in Arg1:T3 Arg2:T2	
+R12	is_recipient_in Arg1:T13 Arg2:T2	
+R13	is_recipient_in Arg1:T17 Arg2:T2	
+R14	is_familial_relation_to Arg1:T7 Arg2:T3	
+R15	is_of Arg1:T3 Arg2:T4	
+R16	occupation_is Arg1:T3 Arg2:T6	
+R17	is_part_of Arg1:T4 Arg2:T5	
+R18	is_of Arg1:T7 Arg2:T8	
+R19	is_part_of Arg1:T8 Arg2:T9	
+R20	is_father_of Arg1:T3 Arg2:T10	
+R21	is_wife_of Arg1:T11 Arg2:T10	
+*	same_as T12 T7
+R22	is_daughter_of Arg1:T11 Arg2:T12	
+R23	is_of Arg1:T13 Arg2:T14	
+R24	is_part_of Arg1:T14 Arg2:T15	
+R25	occupation_is Arg1:T13 Arg2:T16	
+R26	is_of Arg1:T17 Arg2:T18	
+R27	is_part_of Arg1:T18 Arg2:T19	
+R28	is_parcel_in Arg1:T20 Arg2:T2	
+R29	is_parcel_in Arg1:T23 Arg2:T2	
+R30	is_located_in Arg1:T20 Arg2:T26	
+R31	is_located_in Arg1:T23 Arg2:T26	
+R32	is_a_previous_tenant_of Arg1:T25 Arg2:T23	
+R33	is_a_previous_tenant_of Arg1:T25 Arg2:T20	
+R34	precedes Arg1:T28 Arg2:T2	
+*	same_as T29 T3
+R35	is_wife_of Arg1:T30 Arg2:T29	
+R36	is_daughter_of Arg1:T30 Arg2:T31	
+T40	Apparatus 1223 1233	[Endorsed]
+R37	contains Arg1:T1 Arg2:T40	
+R38	is_part_of Arg1:T26 Arg2:T27	
+T41	Site 617 624	Howldes
+T42	Site 670 683	Plomers Grene
+T43	Site 730 738	tenement
+T44	Person 742 755	Robert Jenner
+T45	Site 802 821	tenement and garden
+T46	Person 825 837	John Rudland
+R39	is_a_tenant_of Arg1:T46 Arg2:T45	
+R40	is_a_tenant_of Arg1:T44 Arg2:T43	
+R41	is_breadth_marker_to Arg1:T41 Arg2:T20	
+R42	is_breadth_marker_to Arg1:T42 Arg2:T20	
+R43	is_southern_directional_marker_to Arg1:T43 Arg2:T20	
+R44	is_northern_directional_marker_to Arg1:T45 Arg2:T20	
+T47	Site 936 943	Howldes
+R45	is_breadth_marker_to Arg1:T47 Arg2:T23	
+T48	Site 1021 1027	Howlds
+*	same_as T48 T47
+R46	is_western_directional_marker_to Arg1:T48 Arg2:T23	
+T49	Site 1076 1081	lands
+T50	Site 1102 1110	le Fryth
+*	same_as T50 T49
+R47	is_eastern_directional_marker_to Arg1:T49 Arg2:T23	

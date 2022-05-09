@@ -1,0 +1,49 @@
+T1	Document 0 10	YM/D/WOM/8
+T2	Transaction 12 25	Final concord
+#1	AnnotatorNotes T1	{"Creation Dates": "Easter Term, 1598", "Title": "Final concord"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 26 36	Jane Yonge
+T4	Person 52 65	Peter Stanley
+T5	Person 73 89	Hastings Stanley
+T6	Person 101 108	Eleanor
+T7	Site 126 134	messuage
+T8	Site 138 144	garden
+T9	Site 149 156	orchard
+R3	is_wife_of Arg1:T6 Arg2:T5	
+T11	Occupation 91 94	esq
+R4	occupation_is Arg1:T5 Arg2:T11	
+T12	Occupation 67 70	esq
+R5	occupation_is Arg1:T4 Arg2:T12	
+R2	is_recipient_in Arg1:T3 Arg2:T2	
+R7	is_grantor_in Arg1:T4 Arg2:T2	
+R8	is_grantor_in Arg1:T5 Arg2:T2	
+R9	is_grantor_in Arg1:T6 Arg2:T2	
+R10	is_parcel_in Arg1:T7 Arg2:T2	
+R11	is_parcel_in Arg1:T8 Arg2:T2	
+R12	is_parcel_in Arg1:T9 Arg2:T2	
+T14	Place 249 258	Womersley
+R13	is_located_in Arg1:T7 Arg2:T14	
+T16	Site 208 221	10 acres wood
+T17	Site 190 206	40 acres pasture
+T18	Site 173 188	15 acres meadow
+T10	Site 158 171	30 acres land
+R16	is_parcel_in Arg1:T16 Arg2:T2	
+R17	is_parcel_in Arg1:T17 Arg2:T2	
+R18	is_parcel_in Arg1:T18 Arg2:T2	
+R19	is_parcel_in Arg1:T10 Arg2:T2	
+R20	is_located_in Arg1:T8 Arg2:T14	
+R21	is_located_in Arg1:T9 Arg2:T14	
+R22	is_located_in Arg1:T10 Arg2:T14	
+R23	is_located_in Arg1:T16 Arg2:T14	
+R24	is_located_in Arg1:T17 Arg2:T14	
+R25	is_located_in Arg1:T18 Arg2:T14	
+T13	Person 295 300	Peter
+T15	Person 302 310	Hastings
+T19	Person 316 331	Eleanor Stanley
+T20	Person 344 357	James Wrighte
+*	same_as T13 T4
+*	same_as T15 T5
+*	same_as T19 T6
+R6	is_participant_in Arg1:T20 Arg2:T2	
+T21	Occupation 38 43	widow
+R14	occupation_is Arg1:T3 Arg2:T21	

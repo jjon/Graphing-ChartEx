@@ -1,0 +1,39 @@
+T1	Document 0 14	Ward2_55_188_9
+#1	AnnotatorNotes T1	{"piece_id": "5471232", "date_text": "1540 Sept 29"}
+T2	Apparatus 53 58	Gebon
+T3	Transaction 15 36	Grant and enfeoffment
+R1	refers_to Arg1:T1 Arg2:T3	
+T4	Person 40 51	John Gybbun
+T5	Place 63 70	Fordham
+T6	Place 72 77	Essex
+T7	Occupation 79 85	yeoman
+T8	Person 90 103	Robert Jynnar
+R2	is_grantor_in Arg1:T4 Arg2:T3	
+R3	is_of Arg1:T4 Arg2:T5	
+R4	is_part_of Arg1:T5 Arg2:T6	
+R5	occupation_is Arg1:T4 Arg2:T7	
+R6	is_recipient_in Arg1:T8 Arg2:T3	
+T9	Apparatus 105 111	Jenner
+R7	contains Arg1:T1 Arg2:T2	
+R8	contains Arg1:T1 Arg2:T9	
+T10	Place 116 123	Fordham
+R9	is_of Arg1:T8 Arg2:T10	
+T11	Occupation 125 131	yeoman
+R10	occupation_is Arg1:T8 Arg2:T11	
+T12	Site 138 143	croft
+R11	is_parcel_in Arg1:T12 Arg2:T3	
+T13	Site 156 173	six acres of land
+T14	Site 182 190	Ballande
+*	same_as T12 T14 T13
+T15	Place 199 206	Fordham
+*	same_as T15 T10 T5
+T16	Person 288 300	Robert Swann
+T17	Person 302 314	Robert Brett
+T18	Person 316 326	John Brett
+R13	is_witness_to Arg1:T16 Arg2:T3	
+R14	is_witness_to Arg1:T17 Arg2:T3	
+R15	is_witness_to Arg1:T18 Arg2:T3	
+T19	Apparatus 208 227	seal of John Gybbun
+R16	contains Arg1:T1 Arg2:T19	
+T20	Apparatus 229 239	[Endorsed]
+R17	is_location_of Arg:T15 Arg2:T3	

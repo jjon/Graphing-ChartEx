@@ -1,0 +1,87 @@
+T1	Document 0 17	vicars-choral-161
+T2	Transaction 18 23	Grant
+T3	Person 27 48	Ralph of Guthrumegate
+T4	Occupation 49 54	clerk
+T5	Place 70 74	York
+T6	Person 104 112	Laurence
+T7	Occupation 117 172	chaplain, once clerk of mag. John de Tywe canon of York
+T8	Person 193 201	Laurence
+T9	Site 240 246	moiety
+T10	Site 252 260	messuage
+T11	Site 261 279	30 feet in breadth
+T12	Site 283 295	Guthrumegate
+T13	Person 304 310	Ralph'
+T14	Site 312 316	land
+T15	SiteRef 321 325	that
+T16	Institution 333 352	prior of St. Oswald
+T17	Person 361 366	Ralph
+T18	Institution 456 466	archbishop
+T19	Person 490 495	Ralph
+T20	Apparatus 477 485	Warranty
+T21	Person 587 595	Laurence
+T22	Person 665 671	Hervey
+T23	Person 673 694	William de St. Martin
+T24	Person 696 703	Clement
+T25	Person 705 719	Roger cuntesse
+T26	Person 721 736	Roger de Bouwes
+T27	Person 738 749	Stephen Pee
+T28	Person 751 770	Clement de Grendall
+T29	Occupation 773 802	vicars of the church of York,
+T30	Person 803 820	William de Seleby
+T31	Person 822 839	Stephen parmadame
+T32	Occupation 841 850	chaplains
+T33	Person 852 870	William de Rupella
+T34	Person 872 892	William de Stithlorn
+T35	Person 894 913	Robert son of Ernis
+T36	Person 915 931	John de Uulfatte
+T37	Person 933 953	Robert le cuiteyller
+T38	Person 955 961	Thomas
+T39	Occupation 966 971	clerk
+T40	Person 973 986	Hugh de Plaiz
+T41	Person 988 1004	Alan de Carleolo
+T42	Apparatus 1019 1460	[mid 13th century] SOURCE: VC 3/Vi 120 (194 mm. X 155 mm.) ENDORSEMENT: Carta Radulfi de Guth' facto Laurencio capellano; continet in latitudinem xxx pedes; buttat super terram sancti Oswaldi. SEAL: tag. DATE: Apparently after the death of mag. John de Tew who was still alive in 1246-7. NOTE: There is no certain connection between this charter and the vicars. It may be associated with 160, which refers to what was probably adjoining land
+R1	contains Arg1:T1 Arg2:T42	
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T20	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	occupation_is Arg1:T3 Arg2:T4	
+R6	is_of Arg1:T3 Arg2:T5	
+R7	is_recipient_in Arg1:T6 Arg2:T2	
+R8	occupation_is Arg1:T6 Arg2:T7	
+*	same_as T8 T6 T21
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_part_of Arg1:T11 Arg2:T9	
+R11	is_part_of Arg1:T10 Arg2:T12	
+R12	is_a_tenant_of Arg1:T13 Arg2:T14	
+R13	is_a_tenant_of Arg1:T16 Arg2:T15	
+R14	is_boundary_to Arg1:T14 Arg2:T9	
+R15	is_boundary_to Arg1:T15 Arg2:T9	
+*	same_as T17 T13 T19
+R16	is_a_landlord_of Arg1:T18 Arg2:T10	
+R17	occupation_is Arg1:T38 Arg2:T39	
+R18	occupation_is Arg1:T31 Arg2:T32	
+R19	is_witness_to Arg1:T22 Arg2:T2	
+R20	is_witness_to Arg1:T23 Arg2:T2	
+R21	is_witness_to Arg1:T24 Arg2:T2	
+R22	is_witness_to Arg1:T25 Arg2:T2	
+R23	is_witness_to Arg1:T26 Arg2:T2	
+R24	is_witness_to Arg1:T27 Arg2:T2	
+R25	is_witness_to Arg1:T28 Arg2:T2	
+R26	is_witness_to Arg1:T30 Arg2:T2	
+R27	is_witness_to Arg1:T31 Arg2:T2	
+R28	is_witness_to Arg1:T33 Arg2:T2	
+R29	is_witness_to Arg1:T34 Arg2:T2	
+R30	is_witness_to Arg1:T35 Arg2:T2	
+R31	is_witness_to Arg1:T36 Arg2:T2	
+R32	is_witness_to Arg1:T37 Arg2:T2	
+R33	is_witness_to Arg1:T38 Arg2:T2	
+R34	is_witness_to Arg1:T40 Arg2:T2	
+R35	is_witness_to Arg1:T41 Arg2:T2	
+R36	occupation_is Arg1:T30 Arg2:T32	
+R37	occupation_is Arg1:T28 Arg2:T29	
+R38	occupation_is Arg1:T27 Arg2:T29	
+R39	occupation_is Arg1:T26 Arg2:T29	
+R40	occupation_is Arg1:T25 Arg2:T29	
+R41	occupation_is Arg1:T24 Arg2:T29	
+R42	occupation_is Arg1:T23 Arg2:T29	
+R43	occupation_is Arg1:T22 Arg2:T29	

@@ -1,0 +1,77 @@
+T1	Document 0 17	vicars-choral-406
+T2	Transaction 18 23	Grant
+T3	Person 27 50	William Raven de Fenton
+T4	Person 54 75	mag• Simon de Evesham
+T6	Occupation 76 103	archdeacon of the Estriding
+T7	Site 107 111	land
+T8	Place 128 132	York
+T9	Person 138 160	mag• John de Esingwald
+T10	Site 176 182	houses
+T11	Person 197 231	mag• Geoffrey de Norwich (Norwyco)
+T12	Apparatus 222 231	(Norwyco)
+T13	Occupation 237 254	precentor of York
+T15	Site 259 263	land
+T16	Institution 271 288	prebend of Masham
+T17	Site 308 317	Petergate
+T18	Site 321 325	land
+T19	Institution 333 351	prebend of Barneby
+T20	Person 455 462	William
+T22	Institution 642 670	chapter of St• Peter of York
+T23	Person 725 735	mag• Simon
+T24	Apparatus 778 782	Seal
+T25	Person 795 807	Alan Sampson
+T26	Person 809 826	Gilbert de Fenton
+T27	Person 828 841	William Blund
+T28	Person 843 855	Ralph Furbur
+T29	Person 857 863	Walter
+T30	Person 879 894	Richard Moserne
+T31	Person 896 907	Henry Blund
+T32	Person 909 913	John
+T33	Person 929 941	Simon Surlaf
+T34	Person 943 960	Richard Hornpotte
+T35	Person 962 976	Robert Espicer
+T36	Person 978 985	Stephen
+T38	Apparatus 1010 1142	[1247 x 1262] SOURCE: VC 3/I/I, fo• I (struck through)• DATE: When Simon de Evesham was archdeacon of the East Riding• NOTE: See 403
+R1	is_grantor_in Arg1:T3 Arg2:T2	
+R2	is_recipient_in Arg1:T4 Arg2:T2	
+R3	occupation_is Arg1:T4 Arg2:T6	
+R5	refers_to Arg1:T1 Arg2:T2	
+R6	contains Arg1:T1 Arg2:T12	
+R7	contains Arg1:T1 Arg2:T24	
+R9	contains Arg1:T1 Arg2:T38	
+R10	is_parcel_in Arg1:T7 Arg2:T2	
+R11	is_located_in Arg1:T7 Arg2:T8	
+R13	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R14	is_boundary_to Arg1:T10 Arg2:T7	
+R15	occupation_is Arg1:T11 Arg2:T13	
+R17	is_boundary_to Arg1:T15 Arg2:T7	
+R18	is_a_tenant_of Arg1:T16 Arg2:T15	
+R19	is_boundary_to Arg1:T17 Arg2:T7	
+R20	is_boundary_to Arg1:T18 Arg2:T7	
+*	same_as T23 T4
+R21	is_participant_in Arg1:T22 Arg2:T2	
+*	same_as T20 T3
+R22	is_a_tenant_of Arg1:T19 Arg2:T18	
+R23	is_witness_to Arg1:T25 Arg2:T2	
+R24	is_witness_to Arg1:T26 Arg2:T2	
+R25	is_witness_to Arg1:T27 Arg2:T2	
+R26	is_witness_to Arg1:T28 Arg2:T2	
+R27	is_witness_to Arg1:T29 Arg2:T2	
+R28	is_witness_to Arg1:T30 Arg2:T2	
+R29	is_witness_to Arg1:T31 Arg2:T2	
+R30	is_witness_to Arg1:T32 Arg2:T2	
+R31	is_witness_to Arg1:T33 Arg2:T2	
+R32	is_witness_to Arg1:T34 Arg2:T2	
+R33	is_witness_to Arg1:T35 Arg2:T2	
+R34	is_witness_to Arg1:T36 Arg2:T2	
+T5	Apparatus 428 436	Warranty
+R4	contains Arg1:T1 Arg2:T5	
+T14	Occupation 868 877	goldsmith
+R16	occupation_is Arg1:T29 Arg2:T14	
+T21	Occupation 918 927	physician
+R35	occupation_is Arg1:T32 Arg2:T21	
+T39	Occupation 990 995	clerk
+R8	is_previous_grantor_in Arg1:T9 Arg2:T2	
+T37	Place 485 491	Fenton
+R12	is_of Arg1:T3 Arg2:T37	
+R36	occupation_is Arg1:T36 Arg2:T39	

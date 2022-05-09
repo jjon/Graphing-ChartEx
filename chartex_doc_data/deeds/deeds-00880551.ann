@@ -1,0 +1,74 @@
+T1	Document 0 14	deeds-00880551
+#1	AnnotatorNotes T1	{'editorial date':'1275', 'transaction type': 'Grant'}
+T2	Person 51 69	Ricardus Warlemund
+T3	Transaction 82 132	concessi dedi et hac presenti carta mea confirmavi
+T4	Institution 182 228	fratribus hospitalis sancti Iohannis Ierusalem
+T5	Place 234 254	parvam Mapeltrestede
+T6	Place 475 483	Felstede
+T7	Person 489 503	Walterus Taimd
+T8	Site 531 550	quinque acris terre
+T9	Person 624 638	Walterus Taimd
+T11	Place 760 770	Braunketre
+T12	Site 734 738	viam
+T15	Site 838 844	terram
+T16	Person 851 863	Roberti Kere
+R1	is_a_tenant_of Arg1:T16 Arg2:T15	
+T14	Site 792 798	terram
+T17	Person 799 811	Roberti Kere
+R2	is_a_tenant_of Arg1:T9 Arg2:T8	
+T18	Site 867 873	terram
+*	same_as T7 T9 T19 T23
+T19	Person 883 896	Walteri Taimd
+*	same_as T17 T16
+R5	is_located_in Arg1:T8 Arg2:T6	
+R6	refers_to Arg1:T1 Arg2:T3	
+T20	Date 2056 2211	die invencionis sancte crucis tempore fratris Willelmi de Chelesham tunc preceptoris de Mapeltrestede anno domini millesimo ducentesimo septuagesimo quinto
+T21	Place 2042 2055	Mapeltrestede
+R7	is_dated Arg1:T1 Arg2:T20	
+T22	Place 918 926	Felstede
+*	same_as T22 T6 T24 T26
+T23	Person 959 972	Walteri Taimd
+T25	Person 1433 1451	Ricardus Warlemund
+T27	Person 1851 1865	Galfrido Hervy
+T28	Person 1866 1885	Iohanne de Horstede
+T29	Person 1886 1900	Galfrido Taimd
+T30	Person 1901 1915	Willelmo fabro
+T31	Person 1916 1934	Iohanne le botiler
+T32	Person 1935 1946	Hugone Ioye
+T33	Person 1947 1964	Ricardo le archer
+T34	Person 1965 1981	Rogero Fraunceys
+T35	Person 1982 2000	Sewallo de Stubleg
+T36	Person 2001 2021	Willelmo de Panymere
+R11	is_witness_to Arg1:T27 Arg2:T3	
+R12	is_witness_to Arg1:T28 Arg2:T3	
+R13	is_witness_to Arg1:T29 Arg2:T3	
+R14	is_witness_to Arg1:T30 Arg2:T3	
+*	same_as T25 T2
+R15	is_grantor_in Arg1:T2 Arg2:T3	
+R16	is_recipient_in Arg1:T4 Arg2:T3	
+R17	is_a_tenant_in Arg1:T7 Arg2:T3	
+R20	is_located_in Arg1:T4 Arg2:T5	
+R21	is_boundary_to Arg1:T12 Arg2:T10	
+R22	is_boundary_to Arg1:T14 Arg2:T10	
+R24	is_a_tenant_of Arg1:T7 Arg2:T8	
+T10	Site 648 674	quinque quibus acris terre
+R3	is_boundary_to Arg1:T15 Arg2:T10	
+R4	is_a_tenant_of Arg1:T19 Arg2:T18	
+R25	is_boundary_to Arg1:T18 Arg2:T10	
+R26	is_located_in Arg1:T18 Arg2:T22	
+R27	is_location_of Arg:T21 Arg2:T3	
+T13	Person 2094 2123	fratris Willelmi de Chelesham
+T40	Occupation 2129 2157	preceptoris de Mapeltrestede
+R28	occupation_is Arg1:T13 Arg2:T40	
+T43	Place 73 81	Felstede
+R30	is_of Arg1:T2 Arg2:T43	
+R18	is_parcel_in Arg1:T8 Arg2:T3	
+*	same_as T10 T8
+R19	is_boundary_to Arg1:T11 Arg2:T12	
+R23	is_a_tenant_of Arg1:T17 Arg2:T14	
+T44	Site 690 699	edificiis
+T45	Site 703 711	gardinis
+R31	is_part_of Arg1:T44 Arg2:T10	
+R32	is_part_of Arg1:T45 Arg2:T10	
+T24	Place 466 471	villa
+T26	Place 909 914	villa

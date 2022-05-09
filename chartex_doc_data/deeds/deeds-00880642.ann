@@ -1,0 +1,72 @@
+T1	Document 0 14	deeds-00880642
+#1	AnnotatorNotes T1	{'editorial date':'1291', 'transaction type': 'Quitclaim'}
+T2	Person 77 94	Mauricius Huraunt
+T3	Person 98 106	Iohannes
+R1	is_son_of Arg1:T3 Arg2:T2	
+T5	Institution 304 363	fratribus sancte domus hospitalis sancti Iohannis Ierusalem
+T6	Place 369 382	Mapeltrestede
+R2	is_located_in Arg1:T5 Arg2:T6	
+T7	Site 468 498	terris tenementis et edificiis
+T10	Person 503 520	Rogerus Fraunceys
+T11	Institution 539 579	dictis fratribus sancte domus hospitalis
+T12	Place 583 588	villa
+T13	Place 592 600	Halstede
+T14	Site 613 619	terras
+T16	Site 640 655	magna Stenlegge
+T17	Site 659 674	parva Stenlegge
+T18	Person 746 761	Ricardi Huraunt
+T20	Person 812 821	Mauricius
+T21	Person 825 833	Iohannes
+T22	Place 1096 1109	Mapeltrestede
+T23	Date 1110 1167	in festo Natalis Domini anno regni regis Edwardi vicesimo
+T24	Person 1182 1204	domino roberto de Veer
+T25	Occupation 1205 1218	comite Oxonie
+R3	occupation_is Arg1:T24 Arg2:T25	
+T26	Person 1219 1248	dominis Iohanne de Bellocampo
+T27	Person 1249 1271	Willelmo de Hanyngfeld
+T28	Person 1275 1294	Willelmo de Wautone
+T29	Occupation 1295 1304	militibus
+R4	occupation_is Arg1:T28 Arg2:T29	
+R5	occupation_is Arg1:T27 Arg2:T29	
+R6	occupation_is Arg1:T26 Arg2:T29	
+T30	Person 1305 1327	domino Hugone Goldston
+T31	Occupation 1328 1335	rectore
+T32	Institution 1336 1362	ecclesie de Gestingethorpe
+T33	Person 1363 1374	Luca Morell
+T34	Person 1375 1387	Willelmo Dyn
+T35	Person 1388 1408	Nicholao le harpeour
+T36	Person 1409 1426	Willelmo Panimere
+T37	Person 1427 1442	Iohanne hanaper
+R9	is_dated Arg1:T1 Arg2:T23	
+R16	is_a_previous_tenant_of Arg1:T10 Arg2:T7	
+R19	is_a_previous_grantor_of Arg1:T11 Arg2:T7	
+R22	is_located_in Arg1:T7 Arg2:T12	
+*	same_as T12 T13
+R25	not_same_as Arg1:T16 Arg2:T17	
+T15	Site 623 632	tenementa
+R17	is_part_of Arg1:T15 Arg2:T14	
+*	same_as T14 T16
+*	same_as T15 T17
+R18	is_a_previous_landlord_of Arg1:T18 Arg2:T7	
+*	same_as T20 T2
+*	same_as T21 T3
+R27	occupation_is Arg1:T30 Arg2:T31	
+R28	is_officeholder_in Arg1:T30 Arg2:T32	
+T4	Transaction 163 254	remisisse et communi assensu nostro pro nobis et heredibus nostris penitus quietum clamasse
+R7	refers_to Arg1:T1 Arg2:T4	
+R8	is_parcel_in Arg1:T7 Arg2:T4	
+R10	is_recipient_in Arg1:T5 Arg2:T4	
+R11	is_grantor_in Arg1:T2 Arg2:T4	
+R12	is_grantor_in Arg1:T3 Arg2:T4	
+R13	is_location_of Arg:T22 Arg2:T4	
+R14	is_witness_to Arg1:T24 Arg2:T4	
+R15	is_witness_to Arg1:T26 Arg2:T4	
+R20	is_witness_to Arg1:T27 Arg2:T4	
+R21	is_witness_to Arg1:T28 Arg2:T4	
+R23	is_witness_to Arg1:T30 Arg2:T4	
+R24	is_witness_to Arg1:T33 Arg2:T4	
+R26	is_witness_to Arg1:T34 Arg2:T4	
+R29	is_witness_to Arg1:T35 Arg2:T4	
+R30	is_witness_to Arg1:T36 Arg2:T4	
+R31	is_witness_to Arg1:T37 Arg2:T4	
+*	same_as T11 T5

@@ -1,0 +1,53 @@
+T1	Document 0 10	YM/D/SN/23
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "28 March 1581", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 37	Brian Stapilton
+T4	Place 41 48	Carlton
+T5	Occupation 50 53	esq
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	occupation_is Arg1:T3 Arg2:T5	
+T6	Person 56 68	John Topclif
+R5	is_recipient_in Arg1:T6 Arg2:T2	
+T7	Place 72 82	Pollington
+T8	Occupation 84 92	bachelor
+R6	is_of Arg1:T6 Arg2:T7	
+R7	occupation_is Arg1:T6 Arg2:T8	
+T9	Site 96 106	built toft
+T10	Site 115 121	garden
+R8	is_part_of Arg1:T10 Arg2:T9	
+R9	is_parcel_in Arg1:T9 Arg2:T2	
+T11	Site 223 232	2 selions
+R10	is_parcel_in Arg1:T11 Arg2:T2	
+T12	Site 149 154	lands
+T13	SiteRef 187 192	those
+R11	is_eastern_directional_marker_to Arg1:T12 Arg2:T9	
+R12	is_northern_directional_marker_to Arg1:T13 Arg2:T9	
+T14	Person 158 170	John Topclif
+T15	Person 196 208	George Bawne
+R13	is_a_tenant_of Arg1:T14 Arg2:T12	
+R14	is_a_tenant_of Arg1:T15 Arg2:T13	
+T16	Site 236 248	Cowick field
+R15	is_part_of Arg1:T11 Arg2:T16	
+T17	Person 268 281	George Smithe
+T18	Site 259 264	lands
+R16	is_eastern_directional_marker_to Arg1:T18 Arg2:T11	
+R17	is_a_tenant_of Arg1:T17 Arg2:T18	
+T19	SiteRef 298 303	those
+T20	Person 307 320	Peter Alcocke
+R18	is_western_directional_marker_to Arg1:T19 Arg2:T11	
+R19	is_a_tenant_of Arg1:T20 Arg2:T19	
+T21	Site 351 356	lands
+R20	is_southern_directional_marker_to Arg1:T21 Arg2:T11	
+T22	Person 360 374	Thomas Jowland
+R21	is_a_tenant_of Arg1:T22 Arg2:T21	
+*	same_as T14 T6
+T23	Person 461 470	Stapilton
+T24	Person 480 496	Richard Radcliff
+T25	Place 500 506	Snaith
+R22	is_of Arg1:T24 Arg2:T25	
+*	same_as T23 T3
+R23	is_other_relation_to Arg1:T24 Arg2:T23	
+T26	Occupation 517 525	attorney
+R24	occupation_is Arg1:T24 Arg2:T26	

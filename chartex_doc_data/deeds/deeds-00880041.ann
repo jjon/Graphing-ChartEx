@@ -1,0 +1,51 @@
+T1	Document 0 14	deeds-00880041
+#1	AnnotatorNotes T1	{'editorial date':'1283', 'transaction type': 'Grant'}
+T2	Person 51 68	Willelmus Philipe
+T3	Place 72 87	Hatfeld Peverel
+T4	Institution 203 252	sancte domus hospitalis sancti Iohannis Ierusalem
+T5	Place 258 271	Mapeltrestede
+T6	Institution 308 334	prioris de Hatfeld Peverel
+T8	Person 395 410	Thome de Gatele
+T7	Person 357 372	Germani clerici
+T10	Person 433 453	Roberti molendinarii
+T12	Person 476 489	Henrici Tyrny
+T13	Person 512 530	Willelmi de Hogace
+T14	Person 553 568	Henrici Curteys
+T15	Person 591 606	Briani textoris
+T17	Person 629 643	Alicie Randulf
+T18	Transaction 88 129	dedi et hac presenti carta mea confirmavi
+R5	is_recipient_in Arg1:T4 Arg2:T18	
+R6	is_participant_in Arg1:T6 Arg2:T18	
+R7	is_participant_in Arg1:T7 Arg2:T18	
+R8	is_participant_in Arg1:T8 Arg2:T18	
+R9	is_participant_in Arg1:T10 Arg2:T18	
+R10	is_participant_in Arg1:T12 Arg2:T18	
+R11	is_participant_in Arg1:T13 Arg2:T18	
+R12	is_participant_in Arg1:T14 Arg2:T18	
+R13	is_participant_in Arg1:T15 Arg2:T18	
+R14	is_participant_in Arg1:T17 Arg2:T18	
+T19	Person 1046 1070	fratre Willelmo de Yleye
+T20	Person 1071 1098	fratre Reginaldo de Cornhel
+T21	Person 1100 1119	Reginaldo capellano
+T22	Person 1120 1138	Iohanne Gravashall
+T23	Person 1139 1155	Ricardo de Bures
+T24	Person 1156 1173	Roberto de Tewyng
+T25	Person 1174 1187	Ricardo fabro
+T26	Person 1188 1208	Willelmo de Panimere
+T29	Date 1243 1307	animarum die anno gratie millesimo ducentesimo octogesimo tertio
+R17	is_located_in Arg1:T4 Arg2:T5	
+R18	is_dated Arg1:T18 Arg2:T29	
+R4	is_of Arg1:T2 Arg2:T3	
+T11	Place 1229 1242	Mapeltrestede
+R2	is_grantor_in Arg1:T2 Arg2:T18	
+*	same_as T5 T11
+R3	refers_to Arg1:T1 Arg2:T18	
+R15	is_location_of Arg:T11 Arg2:T18	
+R16	is_witness_to Arg1:T19 Arg2:T18	
+R19	is_witness_to Arg1:T20 Arg2:T18	
+R1	is_witness_to Arg1:T21 Arg2:T18	
+R20	is_witness_to Arg1:T22 Arg2:T18	
+R21	is_witness_to Arg1:T23 Arg2:T18	
+R22	is_witness_to Arg1:T24 Arg2:T18	
+R23	is_witness_to Arg1:T25 Arg2:T18	
+R24	is_witness_to Arg1:T26 Arg2:T18	

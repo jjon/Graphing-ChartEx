@@ -1,0 +1,70 @@
+T1	Document 0 17	vicars-choral-425
+T2	Apparatus 543 557	Warranty• Seal
+T3	Apparatus 784 1032	[23 September]• SOURCE: VC 3/Vi 316 (253 mm• x 132 mm•) ENDORSEMENT: De iiii solidis in Petegat• SEAL: vesica (34 mm• x 25 mm•), green, impression of a bird, legend• Hole in MS• For the probable identification see witness-list of 184• NOTE: See 424
+T4	Date 748 783	9 Kalends October 1295, 23 Edward I
+T5	Place 742 746	York
+T6	Transaction 18 23	Grant
+T7	Person 27 35	Margaret
+T8	Person 45 58	Richard Gouer
+T9	Person 62 82	Nicholas de Ellerker
+T10	Occupation 83 88	clerk
+T11	Site 153 157	land
+T12	Site 161 170	Petergate
+T13	Person 177 194	Robert le Botoner
+T14	Person 204 212	Margaret
+T15	Person 217 224	Richard
+T16	Site 240 244	land
+T17	Person 253 271	Nicholas le furbur
+T18	SiteRef 276 280	that
+T19	Person 287 300	Hugh le Brune
+T20	Site 334 340	street
+T21	Site 348 352	land
+T22	Person 359 370	Eve Trunket
+T23	Person 411 428	Robert le Botoner
+T24	Person 434 442	Margaret
+T25	Person 450 458	Nicholas
+T26	Person 495 501	Robert
+T27	Person 570 586	Richard Lespicer
+T28	Person 588 604	William Paytefyn
+T29	Person 606 612	Robert
+T30	Occupation 617 626	goldsmith
+T31	Person 628 647	Walter de Geveldall
+T32	Person 650 671	Thomas de Benyngbrugh
+T33	Person 673 696	[David]' le irenmangger
+T34	Person 698 709	Peter Skayl
+T35	Person 711 728	Robert le Botoner
+R1	is_widow_of Arg1:T7 Arg2:T8	
+R2	occupation_is Arg1:T9 Arg2:T10	
+R3	is_part_of Arg1:T11 Arg2:T12	
+R4	is_a_tenant_of Arg1:T13 Arg2:T11	
+R5	is_a_landlord_of Arg1:T14 Arg2:T11	
+R6	is_a_landlord_of Arg1:T15 Arg2:T11	
+*	same_as T14 T7 T24
+*	same_as T15 T8
+R7	is_grantor_in Arg1:T7 Arg2:T6	
+R8	is_recipient_in Arg1:T9 Arg2:T6	
+R9	is_a_previous_tenant_of Arg1:T17 Arg2:T16	
+R10	is_a_previous_tenant_of Arg1:T19 Arg2:T18	
+R11	is_breadth_marker_to Arg1:T16 Arg2:T11	
+R12	is_breadth_marker_to Arg1:T18 Arg2:T11	
+*	same_as T20 T12
+R13	is_length_marker_to Arg1:T20 Arg2:T11	
+R14	is_length_marker_to Arg1:T21 Arg2:T11	
+R15	is_a_previous_tenant_of Arg1:T22 Arg2:T21	
+*	same_as T23 T13 T26 T35
+*	same_as T25 T9
+R16	is_location_of Arg:T5 Arg2:T6	
+R17	is_dated Arg1:T1 Arg2:T4	
+R18	refers_to Arg1:T1 Arg2:T6	
+R19	is_witness_to Arg1:T27 Arg2:T6	
+R20	is_witness_to Arg1:T28 Arg2:T6	
+R21	is_witness_to Arg1:T29 Arg2:T6	
+R22	is_witness_to Arg1:T31 Arg2:T6	
+R23	is_witness_to Arg1:T32 Arg2:T6	
+R24	is_witness_to Arg1:T33 Arg2:T6	
+R25	is_witness_to Arg1:T34 Arg2:T6	
+R26	is_witness_to Arg1:T35 Arg2:T6	
+R27	contains Arg1:T1 Arg2:T2	
+R28	contains Arg1:T1 Arg2:T3	
+R29	is_parcel_in Arg1:T11 Arg2:T6	
+R30	occupation_is Arg1:T29 Arg2:T30	

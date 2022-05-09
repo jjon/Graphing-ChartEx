@@ -1,0 +1,67 @@
+T1	Document 0 15	Ward2_55_188_24
+#1	AnnotatorNotes T1	{"piece_id": "5471247", "date_text": "1575 Apr 21"}
+T2	Transaction 16 21	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 27 39	John Whytman
+T4	Place 43 50	Fordham
+T5	Place 52 57	Essex
+T6	Occupation 59 69	husbandman
+R2	is_of Arg1:T3 Arg2:T4	
+R3	is_part_of Arg1:T4 Arg2:T5	
+R4	occupation_is Arg1:T3 Arg2:T6	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+T7	Person 74 87	Robert Jenner
+T8	Place 91 107	Stoke by Nayland
+T9	Place 109 116	Suffolk
+R6	is_of Arg1:T7 Arg2:T8	
+R7	is_part_of Arg1:T8 Arg2:T9	
+T10	Occupation 118 124	yeoman
+R8	occupation_is Arg1:T7 Arg2:T10	
+R9	is_recipient_in Arg1:T7 Arg2:T2	
+T11	Site 131 139	messuage
+T12	Site 148 153	Lyard
+R10	is_parcel_in Arg1:T11 Arg2:T2	
+*	same_as T11 T12
+T13	Site 162 167	croft
+T15	Place 240 247	Fordham
+R11	is_part_of Arg1:T13 Arg2:T11	
+R12	is_located_in Arg1:T11 Arg2:T15	
+T18	Person 807 816	John Rose
+T19	Person 818 832	Richard Newton
+T20	Person 837 847	John Fludd
+R16	is_witness_to Arg1:T18 Arg2:T2	
+R17	is_witness_to Arg1:T19 Arg2:T2	
+R18	is_witness_to Arg1:T20 Arg2:T2	
+T17	Apparatus 848 870	(signatures and marks)
+R15	contains Arg1:T1 Arg2:T17	
+T14	Site 275 281	common
+T16	Site 298 312	Plummers Green
+*	same_as T16 T14
+R13	is_eastern_directional_marker_to Arg1:T14 Arg2:T11	
+T21	Site 341 346	lands
+T22	Person 359 372	Robert Jenner
+R14	is_a_landlord_of Arg1:T22 Arg2:T21	
+T23	Person 395 408	Walter Jenner
+R19	is_a_tenant_of Arg1:T23 Arg2:T21	
+R20	is_western_directional_marker_to Arg1:T21 Arg2:T11	
+T24	Site 446 454	messuage
+T25	Site 458 466	tenement
+*	same_as T25 T24
+T26	Person 479 492	Robert Jenner
+R21	is_a_landlord_of Arg1:T26 Arg2:T24	
+T27	Person 524 537	Walter Jenner
+R22	is_a_tenant_of Arg1:T27 Arg2:T24	
+R23	is_southern_directional_marker_to Arg1:T24 Arg2:T11	
+T28	Site 568 573	lands
+R24	not_same_as Arg1:T28 Arg2:T21	
+T29	Site 581 590	Stubbings
+*	same_as T29 T28
+T30	Person 594 607	Robert Potter
+R25	is_a_landlord_of Arg1:T30 Arg2:T29	
+T31	Place 611 625	Wethermontford
+R26	is_of Arg1:T30 Arg2:T31	
+T32	Person 647 657	John Spark
+R27	is_a_tenant_of Arg1:T32 Arg2:T29	
+R28	is_northern_directional_marker_to Arg1:T28 Arg2:T11	
+T33	Apparatus 738 770	Seal of John Whytman• [Endorsed]
+R29	contains Arg1:T1 Arg2:T33	

@@ -1,0 +1,57 @@
+T1	Document 0 17	vicars-choral-460
+T2	Transaction 113 128	demised at farm
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 132 149	William Esyngwald
+T4	Person 154 168	John Esyngwald
+T5	Place 194 198	York
+T6	Person 44 62	Richard Ullesskelf
+T7	Institution 77 92	house of vicars
+T8	Occupation 63 69	warden
+R2	occupation_is Arg1:T6 Arg2:T8	
+R3	is_officeholder_in Arg1:T6 Arg2:T7	
+R4	is_grantor_in Arg1:T6 Arg2:T2	
+R5	is_recipient_in Arg1:T3 Arg2:T2	
+R6	is_recipient_in Arg1:T4 Arg2:T2	
+R7	is_of Arg1:T4 Arg2:T5	
+R8	is_of Arg1:T3 Arg2:T5	
+T9	Occupation 170 178	citizens
+T10	Occupation 183 190	mercers
+R9	occupation_is Arg1:T4 Arg2:T9	
+R10	occupation_is Arg1:T4 Arg2:T10	
+R11	occupation_is Arg1:T3 Arg2:T10	
+R12	occupation_is Arg1:T3 Arg2:T9	
+T11	Site 233 242	two shops
+T12	Site 248 260	two chambers
+R13	is_part_of Arg1:T12 Arg2:T11	
+R14	is_parcel_in Arg1:T11 Arg2:T2	
+T13	Site 276 285	Petergate
+R15	is_part_of Arg1:T11 Arg2:T13	
+T14	Site 305 313	tenement
+T15	SiteRef 336 340	that
+T16	Person 317 331	William Kenlay
+T17	Person 344 359	Geoffrey Forest
+R16	is_a_tenant_of Arg1:T17 Arg2:T15	
+R17	is_a_tenant_of Arg1:T16 Arg2:T14	
+R18	is_boundary_to Arg1:T14 Arg2:T11	
+R19	is_boundary_to Arg1:T15 Arg2:T11	
+T21	Date 692 722	penultimate day ofJanuary 1419
+R20	is_dated Arg1:T1 Arg2:T21	
+T22	Person 585 596	John Bedale
+R24	is_witness_to Arg1:T22 Arg2:T2	
+T23	Occupation 597 602	mayor
+R25	occupation_is Arg1:T22 Arg2:T23	
+T24	Person 604 615	John Bolton
+R26	is_witness_to Arg1:T24 Arg2:T2	
+T25	Person 617 628	Thomas Davy
+R27	is_witness_to Arg1:T25 Arg2:T2	
+T26	Occupation 630 638	sheriffs
+R28	occupation_is Arg1:T25 Arg2:T26	
+R29	occupation_is Arg1:T24 Arg2:T26	
+T27	Person 640 655	Robert Midilton
+T28	Person 657 670	Robert de Yar
+R30	is_witness_to Arg1:T28 Arg2:T2	
+R31	is_witness_to Arg1:T27 Arg2:T2	
+T18	Apparatus 724 879	3o January 1419/20]•  SOURCE: VC r/r, p•  51 (ink pagination)•  NOTE: It has not been possible to identify the original grant of the property to the vicars
+R21	contains Arg1:T1 Arg2:T18	
+T19	Institution 101 107	vicars
+R22	is_grantor_in Arg1:T19 Arg2:T2	

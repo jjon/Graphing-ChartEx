@@ -1,0 +1,44 @@
+T1	Document 0 15	Ward2_59A_233_2
+#1	AnnotatorNotes T1	{"piece_id": "5472146", "date_text": "1585-1586"}
+T2	Transaction 16 21	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 27 44	Sir William Cecil
+T4	Occupation 46 52	knight
+T5	Person 54 67	lord Burghley
+T6	Occupation 69 83	lord treasurer
+T7	Institution 102 129	court of wards and liveries
+T8	Occupation 88 94	master
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	occupation_is Arg1:T3 Arg2:T4	
+*	same_as T3 T5
+R4	occupation_is Arg1:T3 Arg2:T6	
+R5	occupation_is Arg1:T3 Arg2:T8	
+R6	is_officeholder_in Arg1:T3 Arg2:T7	
+T9	Person 135 150	Thomas Seckford
+T10	Apparatus 152 160	Sekforde
+R7	contains Arg1:T1 Arg2:T10	
+R8	is_grantor_in Arg1:T9 Arg2:T2	
+T11	Occupation 163 170	esquire
+R9	occupation_is Arg1:T9 Arg2:T11	
+T12	Occupation 172 196	surveyor of the liveries
+R10	occupation_is Arg1:T9 Arg2:T12	
+T13	Person 219 230	Elizabeth I
+R11	is_grantor_in Arg1:T13 Arg2:T2	
+T14	Person 235 248	Thomas Audley
+T15	Occupation 250 259	gentleman
+R12	is_recipient_in Arg1:T14 Arg2:T2	
+R13	occupation_is Arg1:T14 Arg2:T15	
+T16	Person 282 295	Thomas Audley
+T17	Occupation 297 306	gentleman
+R14	occupation_is Arg1:T16 Arg2:T17	
+R15	is_son_of Arg1:T14 Arg2:T16	
+T18	Place 355 372	manor of Gosbecks
+R16	is_parcel_in Arg1:T18 Arg2:T2	
+T19	Place 374 379	Essex
+R17	is_part_of Arg1:T18 Arg2:T19	
+T20	Date 469 485	14 February 1586
+R18	is_dated Arg1:T1 Arg2:T20	
+T22	Apparatus 490 622	Survey of the manor of Gosbecks, Essex, belonging to Thomas Audley, deceased, to be inherited by his son Thomas Audley• 2 April 1585
+R19	contains Arg1:T1 Arg2:T22	
+T21	Apparatus 458 466	attached
+R20	contains Arg1:T1 Arg2:T21	

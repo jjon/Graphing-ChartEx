@@ -1,0 +1,63 @@
+T1	Document 0 17	vicars-choral-429
+T2	Transaction 18 23	Grant
+T3	Person 27 47	Simon de Botelesford
+T4	Occupation 48 54	warden
+T5	Institution 108 114	vicars
+T6	Institution 62 99	house of vicars of the church of York
+T7	Person 118 137	William de Spofford
+T8	Occupation 146 151	vicar
+T9	Site 238 244	houses
+T10	Site 248 257	Petergate
+T11	Site 277 281	land
+T12	Person 285 302	Gillian de Craven
+T13	SiteRef 307 311	that
+T14	Person 315 332	Thomas de Flaxton
+T15	Person 372 381	William's
+T16	Person 404 421	Stephen de Sutton
+T17	Occupation 422 427	canon
+T18	Person 458 467	William's
+T19	Person 491 498	Stephen
+T20	Person 503 510	William
+T21	Apparatus 1049 1053	Seal
+T22	Person 1066 1083	William de Craven
+T23	Occupation 1084 1096	subtreasurer
+T24	Person 1098 1111	Adam de Hedon
+T25	Person 1113 1132	Thomas de Beverlac'
+T26	Person 1134 1154	Henry de Botelesford
+T27	Person 1156 1167	Peter Roman
+T28	Person 1169 1188	Geoffrey de Thyrnum
+T29	Person 1190 1208	Henry de Shireburn
+T30	Person 1210 1224	Henry de Derby
+T31	Place 1238 1242	York
+T32	Date 1244 1307	Wednesday after the assumption of the blessed Virgin Mary, 1307
+T33	Apparatus 1308 1487	[i6 August]• SOURCE: VC 3/3/47 (276 mm• x 176 MM•) ENDORSEMENT: Carta dominorum Stephani de Sutton et Wilieinii de Spofford de obitu eorum amia• SEAL: tag• COPY: VC 3/1/1, fo• 32v
+R1	contains Arg1:T1 Arg2:T21	
+R2	contains Arg1:T1 Arg2:T33	
+R3	is_dated Arg1:T1 Arg2:T32	
+R4	refers_to Arg1:T1 Arg2:T2	
+R5	is_location_of Arg:T31 Arg2:T2	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_officeholder_in Arg1:T3 Arg2:T6	
+R8	occupation_is Arg1:T7 Arg2:T8	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_parcel_in Arg1:T9 Arg2:T2	
+R11	is_grantor_in Arg1:T3 Arg2:T2	
+R12	is_grantor_in Arg1:T5 Arg2:T2	
+R13	is_recipient_in Arg1:T7 Arg2:T2	
+*	same_as T15 T7 T18 T20
+R14	occupation_is Arg1:T16 Arg2:T17	
+R15	is_participant_in Arg1:T16 Arg2:T2	
+*	same_as T19 T16
+R16	is_a_tenant_of Arg1:T12 Arg2:T11	
+R17	is_a_tenant_of Arg1:T14 Arg2:T13	
+R18	is_boundary_to Arg1:T11 Arg2:T9	
+R19	is_boundary_to Arg1:T13 Arg2:T9	
+R20	occupation_is Arg1:T22 Arg2:T23	
+R21	is_witness_to Arg1:T22 Arg2:T2	
+R22	is_witness_to Arg1:T24 Arg2:T2	
+R23	is_witness_to Arg1:T25 Arg2:T2	
+R24	is_witness_to Arg1:T26 Arg2:T2	
+R25	is_witness_to Arg1:T27 Arg2:T2	
+R26	is_witness_to Arg1:T28 Arg2:T2	
+R27	is_witness_to Arg1:T29 Arg2:T2	
+R28	is_witness_to Arg1:T30 Arg2:T2	

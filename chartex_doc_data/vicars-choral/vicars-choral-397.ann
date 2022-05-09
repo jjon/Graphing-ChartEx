@@ -1,0 +1,40 @@
+T1	Document 0 17	vicars-choral-397
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 38	Richard
+T4	Person 46 60	Robert de Esex
+T5	Person 115 135	mag• Alan de Quixlay
+T6	Institution 161 189	vicars of the church of York
+T7	Site 225 231	houses
+T8	Person 267 273	Robert
+T9	Person 289 294	Agnes
+T10	Site 298 307	Petergate
+T11	Person 319 323	Alan
+T12	Institution 332 338	vicars
+T13	Person 389 393	Alan
+T14	Institution 418 424	vicars
+T15	Person 430 437	Richard
+T16	Person 539 554	John the spicer
+T17	Place 572 576	York
+T18	Date 578 601	15 Kalends January 1283
+T20	Apparatus 603 667	18 December 1283]• SOURCE: VC 3/1/I, fos• 47v•-48• NOTE: See 395
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T20	
+R4	is_dated Arg1:T1 Arg2:T18	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_son_of Arg1:T3 Arg2:T4	
+R7	is_recipient_in Arg1:T5 Arg2:T2	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	is_parcel_in Arg1:T7 Arg2:T2	
+R10	is_a_previous_tenant_of Arg1:T8 Arg2:T7	
+*	same_as T8 T4 T15
+R11	is_a_previous_tenant_of Arg1:T9 Arg2:T7	
+R12	is_mother_of Arg1:T9 Arg2:T3	
+R13	is_part_of Arg1:T7 Arg2:T10	
+R14	is_a_tenant_of Arg1:T11 Arg2:T7	
+R15	is_a_tenant_of Arg1:T12 Arg2:T7	
+*	same_as T13 T11 T5
+*	same_as T14 T12 T6
+T21	Apparatus 471 538	Seal• Witnesses and date: [from VC 8/Metcalfe notebks• VIa, no• 87]
+R16	contains Arg1:T1 Arg2:T21	
+R17	is_witness_to Arg1:T16 Arg2:T2	
+R18	is_location_of Arg:T17 Arg2:T2	

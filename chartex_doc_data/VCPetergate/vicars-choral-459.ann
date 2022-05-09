@@ -1,0 +1,53 @@
+T1	Document 0 17	vicars-choral-459
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 45	William Navton
+T4	Occupation 46 55	gentilman
+T5	Person 69 78	Katherine
+T6	Person 95 108	Thomas Hesyll
+T7	Person 126 137	Mary Darell
+T8	Person 142 155	John Hykelyng
+T9	Occupation 156 186	warden of the college of vicar
+T10	Institution 196 202	vicars
+T11	Site 234 242	messuage
+T12	Institution 250 256	vicars
+T13	Site 260 269	Petergate
+T14	Apparatus 271 297	as in 458. Seal. Witnesses
+T15	Place 431 435	York
+T16	Date 437 456	26 March 9 Henry VI
+T17	Apparatus 457 607	[1431]• SOURCE: VC 3/Vi 323 (289 mm. X 147 mm.) ENDORSEMENT: iij s. in Petergat quondam Maryone Darell. SEALS: (left) tag; (right) slit. NOTE: See 443
+T18	Person 299 310	John Bolton
+T19	Occupation 311 316	mayor
+T20	Person 318 332	Thomas Cateryk
+T21	Person 334 347	John Radclyff
+T22	Occupation 349 357	sheriffs
+T23	Person 359 372	Richard Louth
+T24	Person 374 388	Robert Vaveson
+T25	Person 390 402	John Preston
+T26	Person 404 417	Richard Clynt
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_dated Arg1:T1 Arg2:T16	
+R3	contains Arg1:T1 Arg2:T14	
+R4	contains Arg1:T1 Arg2:T17	
+R5	is_location_of Arg:T15 Arg2:T2	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	occupation_is Arg1:T3 Arg2:T4	
+R8	is_wife_of Arg1:T5 Arg2:T3	
+R9	is_widow_of Arg1:T5 Arg2:T6	
+R10	is_other_relation_to Arg1:T5 Arg2:T7	
+R11	is_recipient_in Arg1:T8 Arg2:T2	
+R12	occupation_is Arg1:T8 Arg2:T9	
+R13	is_recipient_in Arg1:T10 Arg2:T2	
+R14	is_parcel_in Arg1:T11 Arg2:T2	
+R15	is_a_tenant_of Arg1:T12 Arg2:T11	
+R16	is_part_of Arg1:T11 Arg2:T13	
+R17	occupation_is Arg1:T18 Arg2:T19	
+R18	occupation_is Arg1:T20 Arg2:T22	
+R19	occupation_is Arg1:T21 Arg2:T22	
+R20	is_witness_to Arg1:T18 Arg2:T2	
+R21	is_witness_to Arg1:T20 Arg2:T2	
+R22	is_witness_to Arg1:T21 Arg2:T2	
+R23	is_witness_to Arg1:T23 Arg2:T2	
+R24	is_witness_to Arg1:T24 Arg2:T2	
+R25	is_witness_to Arg1:T25 Arg2:T2	
+R26	is_witness_to Arg1:T26 Arg2:T2	
+R27	is_grantor_in Arg1:T5 Arg2:T2	

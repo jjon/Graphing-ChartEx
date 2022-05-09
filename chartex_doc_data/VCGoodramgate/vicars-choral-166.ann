@@ -1,0 +1,42 @@
+T1	Document 0 17	vicars-choral-166
+T2	Transaction 18 23	Grant
+T3	Person 42 56	John de Octona
+T4	Occupation 57 63	knight
+T5	Person 65 78	John de Hesil
+T6	Person 84 105	Simon de Stehynbridge
+T7	Person 120 132	John Maunsel
+T8	Occupation 142 159	treasurer of York
+T9	Institution 207 213	vicars
+T10	Site 221 226	house
+T11	Site 230 241	Goderumgate
+T12	Site 247 253	garden
+T13	Site 258 265	orchard
+T14	Person 294 298	John
+T15	Person 308 328	Agnes of Goderumgate
+T16	Person 333 338	Agnes
+T17	Institution 384 390	vicars
+T18	Institution 416 422	vicars
+T19	Institution 480 499	prebend of Wetewang
+T20	Person 521 526	John'
+T21	Apparatus 1009 1399	Seal.                   [1265 or soon afterwards; before 1274] SOURCE: VC 3/1/1, fo. 16.DATE: Mansel died in France in 1265; his precise date of death is given here as 14 January [1264/5]. Before 1274, when the vicars already held the property (see note to 167).NOTE: See 164. The property may have been later employed by the vicars to provide income for the obit of a fellow vicar: see 175
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T21	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	occupation_is Arg1:T3 Arg2:T4	
+R5	is_grantor_in Arg1:T5 Arg2:T2	
+R6	is_grantor_in Arg1:T6 Arg2:T2	
+R7	is_other_relation_to Arg1:T3 Arg2:T7	
+R8	is_other_relation_to Arg1:T5 Arg2:T7	
+R9	is_other_relation_to Arg1:T6 Arg2:T7	
+R10	occupation_is Arg1:T7 Arg2:T8	
+R11	is_recipient_in Arg1:T9 Arg2:T2	
+R12	is_parcel_in Arg1:T10 Arg2:T2	
+R13	is_part_of Arg1:T10 Arg2:T11	
+R14	is_part_of Arg1:T12 Arg2:T10	
+R15	is_part_of Arg1:T13 Arg2:T10	
+*	same_as T14 T7 T20
+R16	is_a_previous_grantor_of Arg1:T15 Arg2:T10	
+R17	is_a_previous_tenant_of Arg1:T7 Arg2:T10	
+*	same_as T16 T15
+*	same_as T17 T9 T18
+R18	is_a_landlord_of Arg1:T19 Arg2:T10	

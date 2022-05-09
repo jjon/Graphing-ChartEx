@@ -1,0 +1,10 @@
+T1	Person 8 21	Bilbo Baggins
+T2	Transaction 22 27	dedit
+T3	Site 28 35	Bag End
+T4	Person 39 52	Frodo Baggins
+R1	is_grantor_in Arg1:T1 Arg2:T2	
+R2	is_recipient_in Arg1:T4 Arg2:T2	
+R3	is_parcel_in Arg1:T3 Arg2:T2	
+R4	is_familial_relation_to Arg1:T4 Arg2:T1	
+T5	Document 0 7	lortext
+R5	refers_to Arg1:T5 Arg2:T2	

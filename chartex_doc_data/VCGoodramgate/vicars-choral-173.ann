@@ -1,0 +1,76 @@
+T1	Document 0 17	vicars-choral-173
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 47	Ellen of Aldverk
+T4	Person 58 74	Henry of Aldverk
+T5	Person 97 119	mag. William de Pothow
+T6	Site 137 143	houses
+T7	Site 150 154	toft
+T8	Site 158 169	Guzerumgate
+T9	Person 178 194	William de Croft
+T10	Site 207 216	two parts
+T11	Site 226 231	house
+T12	Person 232 237	Ellen
+T13	Person 242 249	Richard
+T14	Occupation 254 264	apothecary
+T15	Person 278 283	Alice
+T16	Person 346 358	mag. William
+T17	Person 439 446	William
+T18	Institution 474 492	archbishop of York
+T19	Person 525 530	Ellen
+T20	Person 639 646	William
+T21	Person 786 793	William
+T22	Person 1037 1053	Walter de Stokes
+T23	Occupation 1054 1059	mayor
+T24	Person 1061 1065	John
+T25	Occupation 1070 1080	apothecary
+T26	Apparatus 1081 1095	(ypothecarius)
+T27	Person 1096 1105	the elder
+T28	Person 1107 1111	John
+T29	Person 1121 1127	Walter
+T30	Occupation 1132 1142	apothecary
+T31	Apparatus 1143 1157	(ypothecarius)
+T32	Place 1171 1175	York
+T33	Person 1177 1199	mag. Robert de Muskham
+T34	Person 1201 1219	Robert de Appelton
+T35	Occupation 1220 1265	rector of the church of Sutton super Derewent
+T36	Place 1279 1283	York
+T37	Date 1285 1308	16 Kalends October 1278
+T38	Apparatus 1310 1423	16 September]. SOURCE: VC 3/Vi. 128 (244 ann. X 97 mm.) ENDORSEMENT: Gutherumgate. SEALS: two tags. NOTE: See 172
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T26	
+R3	contains Arg1:T1 Arg2:T31	
+R4	contains Arg1:T1 Arg2:T38	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_sister_of Arg1:T3 Arg2:T4	
+R7	is_recipient_in Arg1:T5 Arg2:T2	
+R8	is_part_of Arg1:T6 Arg2:T7	
+R9	is_part_of Arg1:T7 Arg2:T8	
+R11	is_a_previous_tenant_of Arg1:T9 Arg2:T7	
+R12	is_part_of Arg1:T10 Arg2:T11	
+R13	is_part_of Arg1:T11 Arg2:T7	
+R10	is_parcel_in Arg1:T10 Arg2:T2	
+*	same_as T12 T3 T19
+*	same_as T16 T5 T17 T20 T21
+R14	is_a_landlord_of Arg1:T18 Arg2:T7	
+R15	occupation_is Arg1:T13 Arg2:T14	
+R16	is_wife_of Arg1:T15 Arg2:T13	
+R17	is_participant_in Arg1:T13 Arg2:T2	
+R18	is_participant_in Arg1:T15 Arg2:T2	
+R19	occupation_is Arg1:T22 Arg2:T23	
+R20	occupation_is Arg1:T24 Arg2:T25	
+*	same_as T24 T27
+R21	is_son_of Arg1:T28 Arg2:T24	
+R22	occupation_is Arg1:T29 Arg2:T30	
+R23	is_of Arg1:T29 Arg2:T32	
+R24	is_of Arg1:T28 Arg2:T32	
+R25	is_of Arg1:T24 Arg2:T32	
+R26	is_of Arg1:T22 Arg2:T32	
+R27	occupation_is Arg1:T34 Arg2:T35	
+R28	is_location_of Arg:T36 Arg2:T2	
+R29	is_dated Arg1:T1 Arg2:T37	
+R30	is_witness_to Arg1:T34 Arg2:T2	
+R31	is_witness_to Arg1:T33 Arg2:T2	
+R32	is_witness_to Arg1:T29 Arg2:T2	
+R33	is_witness_to Arg1:T28 Arg2:T2	
+R34	is_witness_to Arg1:T24 Arg2:T2	
+R35	is_witness_to Arg1:T22 Arg2:T2	

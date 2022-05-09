@@ -1,0 +1,52 @@
+T1	Document 0 16	Ward2_55A_188_28
+#1	AnnotatorNotes T1	{"piece_id": "5471251", "date_text": "1567 Aug 21"}
+T2	Transaction 17 42	Indenture and enfeoffment
+T3	Person 46 59	John Whiteman
+T4	Person 94 104	John Waspe
+T5	Person 157 167	John Sidei
+T7	Person 300 312	Robert James
+T8	Person 314 327	Robert Farser
+T9	Person 329 341	Walter Jolie
+T10	Person 343 356	Robert Fisher
+T11	Person 358 369	John Jenner
+T12	Person 374 389	William?Vagorne
+T13	Apparatus 278 288	[Endorsed]
+T14	Apparatus 218 236	location specified
+T15	Apparatus 184 199	Bures ad Montem
+T16	Place 63 70	Fordham
+T17	Place 72 77	Essex
+T18	Place 108 119	Wakes Colne
+T19	Apparatus 121 131	Colne Wake
+T20	Place 134 139	Essex
+T21	Place 171 182	Mount Bures
+T22	Site 212 216	land
+R1	is_parcel_in Arg1:T22 Arg2:T2	
+T23	Place 241 248	Fordham
+R2	is_located_in Arg1:T22 Arg2:T23	
+T24	Place 202 207	Essex
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_recipient_in Arg1:T4 Arg2:T2	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+R6	is_of Arg1:T3 Arg2:T16	
+R7	is_part_of Arg1:T16 Arg2:T17	
+R8	is_of Arg1:T4 Arg2:T18	
+R9	is_part_of Arg1:T18 Arg2:T20	
+R10	is_of Arg1:T5 Arg2:T21	
+R11	is_part_of Arg1:T21 Arg2:T24	
+T25	Occupation 79 89	husbandman
+R12	occupation_is Arg1:T3 Arg2:T25	
+T26	Occupation 141 151	husbandman
+R13	occupation_is Arg1:T4 Arg2:T26	
+R14	contains Arg1:T1 Arg2:T19	
+R15	contains Arg1:T1 Arg2:T15	
+R16	contains Arg1:T1 Arg2:T14	
+R17	contains Arg1:T1 Arg2:T13	
+R18	is_witness_to Arg1:T7 Arg2:T2	
+R19	is_witness_to Arg1:T8 Arg2:T2	
+R20	is_witness_to Arg1:T9 Arg2:T2	
+R21	is_witness_to Arg1:T10 Arg2:T2	
+R22	is_witness_to Arg1:T11 Arg2:T2	
+R23	is_witness_to Arg1:T12 Arg2:T2	
+R24	refers_to Arg1:T1 Arg2:T2	
+T6	Person 263 276	John Whiteman
+*	same_as T3 T6

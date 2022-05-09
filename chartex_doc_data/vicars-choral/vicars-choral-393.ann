@@ -1,0 +1,56 @@
+T1	Document 0 17	vicars-choral-393
+T2	Transaction 18 23	Grant
+T3	Person 27 33	Cecily
+T4	Person 46 55	mag• John
+T5	Occupation 60 69	physician
+T6	Person 73 90	Henry de Bryeland
+T7	Occupation 91 99	merchant
+T8	Place 103 107	York
+T9	Site 111 115	land
+T10	Site 121 130	buildings
+T11	Site 134 143	Petergate
+T12	Place 147 151	York
+T13	Site 182 186	land
+T14	Person 190 211	W[illiam]; de capella
+T15	SiteRef 216 220	that
+T16	Person 224 237	Roger Wichton
+T17	Site 267 274	Peterg'
+T18	Site 282 287	lands
+T19	Person 300 309	W[illiam]
+T20	Person 314 321	R[oger]
+T21	Person 330 336	Cecily
+T22	Institution 384 430	vicars of the minster of blessed Peter of York
+T23	Person 550 561	Peter Stoyl
+T25	Apparatus 721 829	Warranty•  [later 13th century] SOURCE: VC 3/1/1, fo• 39• The identification is made from 394• NOTE: See 388
+R1	refers_to Arg1:T1 Arg2:T2	
+R3	contains Arg1:T1 Arg2:T25	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_daughter_of Arg1:T3 Arg2:T4	
+R6	occupation_is Arg1:T4 Arg2:T5	
+R7	is_recipient_in Arg1:T6 Arg2:T2	
+R8	occupation_is Arg1:T6 Arg2:T7	
+R9	is_of Arg1:T6 Arg2:T8	
+R11	is_part_of Arg1:T10 Arg2:T9	
+R13	is_located_in Arg1:T9 Arg2:T12	
+R14	is_breadth_marker_to Arg1:T13 Arg2:T9	
+R15	is_a_tenant_of Arg1:T14 Arg2:T13	
+R16	is_breadth_marker_to Arg1:T15 Arg2:T9	
+R17	is_a_tenant_of Arg1:T16 Arg2:T15	
+R18	is_length_marker_to Arg1:T17 Arg2:T9	
+R19	is_length_marker_to Arg1:T18 Arg2:T9	
+R20	is_a_tenant_of Arg1:T19 Arg2:T18	
+*	same_as T19 T14
+*	same_as T20 T16
+*	same_as T21 T3
+R22	is_a_landlord_of Arg1:T23 Arg2:T9	
+R24	is_parcel_in Arg1:T9 Arg2:T2	
+R10	is_part_of Arg1:T9 Arg2:T11	
+T24	Apparatus 302 308	illiam
+T28	Apparatus 316 320	oger
+T29	Apparatus 192 198	illiam
+*	same_as T17 T11
+R2	is_a_tenant_of Arg1:T20 Arg2:T18	
+R12	is_a_landlord_of Arg1:T22 Arg2:T9	
+R21	contains Arg1:T1 Arg2:T24	
+R23	contains Arg1:T1 Arg2:T28	
+R25	contains Arg1:T1 Arg2:T29	

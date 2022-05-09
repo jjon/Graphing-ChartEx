@@ -1,0 +1,47 @@
+T1	Document 0 17	vicars-choral-461
+T2	Person 27 44	Barthamus Daweson
+T3	Transaction 18 23	Grant
+R1	refers_to Arg1:T1 Arg2:T3	
+T4	Date 732 754	5 October 5 Henry VIII
+R2	is_grantor_in Arg1:T2 Arg2:T3	
+T5	Occupation 45 53	alderman
+T6	Place 57 61	York
+R3	occupation_is Arg1:T2 Arg2:T5	
+R4	is_of Arg1:T2 Arg2:T6	
+T7	Person 65 78	Thomas Marser
+T8	Occupation 79 87	chaplain
+R5	occupation_is Arg1:T7 Arg2:T8	
+R6	is_recipient_in Arg1:T7 Arg2:T3	
+T9	Institution 173 197	cathedral church of York
+T10	Institution 95 127	chantry of St•  John of Beverley
+R7	is_officeholder_in Arg1:T7 Arg2:T10	
+T11	Site 297 305	tenement
+R8	is_parcel_in Arg1:T11 Arg2:T3	
+R9	is_officeholder_in Arg1:T7 Arg2:T9	
+T12	Site 342 351	Petergate
+T13	Site 356 368	Girdelergate
+T14	Place 372 376	York
+R10	is_located_in Arg1:T13 Arg2:T14	
+R11	is_located_in Arg1:T12 Arg2:T14	
+R12	is_boundary_to Arg1:T12 Arg2:T11	
+R13	is_boundary_to Arg1:T13 Arg2:T11	
+T15	Site 397 409	Girdelergate
+R14	is_southern_directional_marker_to Arg1:T15 Arg2:T11	
+T16	Site 431 435	land
+R15	is_northern_directional_marker_to Arg1:T16 Arg2:T11	
+T17	Institution 470 494	hospital of St•  Leonard
+R16	is_a_tenant_of Arg1:T17 Arg2:T16	
+T18	Site 527 536	Petergate
+R17	is_eastern_directional_marker_to Arg1:T18 Arg2:T11	
+T19	Site 556 560	land
+R18	is_western_directional_marker_to Arg1:T19 Arg2:T11	
+T20	Institution 568 587	master and brothers
+R19	is_a_tenant_of Arg1:T20 Arg2:T19	
+*	same_as T17 T20
+R20	is_dated Arg1:T1 Arg2:T4	
+R25	is_breadth_marker_to Arg1:T15 Arg2:T11	
+R26	is_length_marker_to Arg1:T18 Arg2:T11	
+R27	is_length_marker_to Arg1:T19 Arg2:T11	
+R28	is_breadth_marker_to Arg1:T16 Arg2:T11	
+T21	Apparatus 756 1094	1513]•  SOURCE: VC 3/Vi 351 (333 mm•  x 136 rnm• ) ENDORSEMENT: this evidence is for vii d•  •  •  from a •  •  in stainegate yearly•  SEAL: round (26 mm•  dia• ), red, impression•  NOTE: Thomas Marser was a vicar who later became the vicars' warden (VC 6/4/43 and 75)•  Girdlergate is an alternative name for Gloverlane•  St•  Andrewgate
+R21	contains Arg1:T1 Arg2:T21	

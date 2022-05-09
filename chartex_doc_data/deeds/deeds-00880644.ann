@@ -1,0 +1,101 @@
+T1	Document 0 14	deeds-00880644
+#1	AnnotatorNotes T1	{'editorial date':'1291', 'transaction type': 'Agreement/Grant'}
+T2	Date 39 109	ad festum sancti Barnabe apostoli anno regni regis Edwardi decimo nono
+T3	Person 116 145	fratrem Alexandrum de Metcham
+T4	Occupation 146 174	preceptorem de Mapeltrestede
+T5	Person 191 222	dominum Willelmum de Haningfeld
+T6	Person 226 234	Iohannam
+T7	Person 279 295	frater Alexander
+T8	Transaction 296 316	concessit ac dimisit
+T9	Person 323 338	domino Willelmo
+T10	Person 342 349	Iohanne
+T11	Person 399 407	Willelmi
+T12	Site 437 461	terrarum et tenementorum
+T13	Person 540 559	Rogeri le Fraunceys
+T14	Site 466 471	bosco
+R1	is_part_of Arg1:T14 Arg2:T12	
+T15	Place 572 577	villa
+T16	Person 623 640	fratris Alexandri
+T17	Person 658 664	Rogeri
+T18	Person 688 695	Ricardi
+T19	Person 702 710	Willelmi
+T20	Person 730 736	Rogeri
+T21	Person 788 795	Ricardi
+T22	Person 921 937	fratri Alexandro
+T23	Person 1012 1027	domino Willelmo
+T24	Person 1031 1038	Iohanne
+T25	Person 1082 1097	domini Willelmi
+T26	Person 1175 1182	Ricardi
+T27	Person 1251 1260	Willelmus
+T28	Person 1264 1271	Iohanna
+T29	Person 1308 1316	Willelmi
+T30	Person 1340 1347	Iohanne
+T31	Person 1362 1370	Willelmi
+T32	Person 1377 1393	Rogeri Fraunceys
+T33	Person 1534 1550	fratri Alexandro
+T34	Person 1812 1828	frater Alexander
+T35	Person 1865 1872	Ricardo
+T36	Person 1920 1937	dominus Willelmus
+T37	Person 1941 1948	Iohanna
+T38	Person 1978 1993	domini Willelmi
+T39	Person 2196 2212	frater Alexander
+T40	Person 2374 2389	domino Willelmo
+T41	Person 2402 2409	Iohanne
+T42	Person 2456 2470	domini Willelm
+T43	Person 2632 2639	Ricardi
+T44	Person 2715 2724	Willelmus
+T45	Person 2728 2735	Iohanna
+T46	Person 2742 2758	fratri Alexandro
+T47	Person 2843 2860	dominum Willelmum
+T48	Person 2864 2872	Iohannam
+T49	Person 2920 2936	frater Alexander
+T50	Person 2970 2987	dominus Willelmus
+T51	Person 3017 3035	fratrem Alexandrem
+T52	Person 3073 3096	Willelmo filio Radulphi
+T54	Person 3109 3127	Iohanne de Wastall
+T55	Person 3128 3141	Iohanne de Ry
+T56	Person 3142 3160	Thoma de Tuinstede
+T57	Person 3161 3174	Willelmo Burr
+T58	Person 3175 3192	Willelmo Panimere
+T59	Person 3193 3211	Philippo de Wendon
+T60	Person 3212 3229	Roberto de Polhey
+R2	refers_to Arg1:T1 Arg2:T8	
+R3	is_dated Arg1:T1 Arg2:T2	
+R4	occupation_is Arg1:T3 Arg2:T4	
+R5	is_grantor_in Arg1:T3 Arg2:T8	
+R6	is_wife_of Arg1:T6 Arg2:T5	
+R7	is_recipient_in Arg1:T5 Arg2:T8	
+R8	is_recipient_in Arg1:T6 Arg2:T8	
+R9	is_parcel_in Arg1:T12 Arg2:T8	
+R10	is_a_previous_tenant_of Arg1:T13 Arg2:T12	
+R11	is_located_in Arg1:T12 Arg2:T15	
+*	same_as T17 T13 T20 T32
+R12	is_son_of Arg1:T18 Arg2:T19	
+*	same_as T21 T18 T26 T35 T43
+*	same_as T23 T9 T25 T27 T29 T36 T38 T40 T42 T44 T47 T50 T11 T5
+*	same_as T24 T6 T10
+R13	is_son_of Arg1:T19 Arg2:T17	
+R14	is_widow_of Arg1:T30 Arg2:T31	
+R15	is_son_of Arg1:T31 Arg2:T32	
+*	same_as T31 T19
+*	same_as T37 T28 T41 T45 T48
+*	same_as T39 T34 T7 T3 T16 T22 T33 T46 T49 T51
+T61	Person 2612 2619	Iohanna
+R16	is_mother_of Arg1:T61 Arg2:T43	
+*	same_as T61 T30
+R18	is_witness_to Arg1:T52 Arg2:T8	
+R19	is_witness_to Arg1:T54 Arg2:T8	
+R20	is_witness_to Arg1:T55 Arg2:T8	
+R21	is_witness_to Arg1:T56 Arg2:T8	
+R22	is_witness_to Arg1:T57 Arg2:T8	
+R23	is_witness_to Arg1:T58 Arg2:T8	
+R24	is_witness_to Arg1:T59 Arg2:T8	
+R25	is_witness_to Arg1:T60 Arg2:T8	
+T63	Site 479 492	Prutfoteswode
+*	same_as T14 T63
+T64	Place 581 589	Halstede
+*	same_as T15 T64
+R26	not_same_as Arg1:T19 Arg2:T11	
+R27	not_same_as Arg1:T30 Arg2:T28	
+T53	Place 3100 3108	Pebeners
+R17	is_of Arg1:T52 Arg2:T53	

@@ -1,0 +1,41 @@
+T1	Document 0 17	vicars-choral-172
+T2	Person 36 54	Robert de Tackelay
+T3	Occupation 55 95	auditor of causes of the chapter of York
+T4	Person 97 114	Robert de Apelton
+T5	Occupation 115 160	rector of the church of Suton super Derewenta
+T6	Person 166 179	John de Croft
+T7	Occupation 180 186	priest
+T8	Person 201 217	William de Croft
+T9	Occupation 227 252	rector of the said church
+T10	Person 267 289	mag. William de Pothow
+T11	Site 307 311	toft
+T12	Site 317 326	buildings
+T13	Site 358 369	Guzerumgate
+T14	Site 378 388	the Bedern
+T15	Site 497 501	toft
+T16	Site 613 617	toft
+T17	Person 644 651	William
+T18	Place 856 860	York
+T19	Date 862 888	xvj. Kalends December 1276
+T20	Apparatus 890 1162	16 November]. SOURCE: VC 3/Vi 127 (183 mm. x 164 mm.) ENDORSEMENT: Gutheringate; iuxta bedernam. SEALS: tags for the first three, slit for the fourth. NOTE: William de Croft is possibly identifiable as the William recorded in 171. The toft lay in the archbishop's fee: 173
+R1	contains Arg1:T1 Arg2:T20	
+R2	is_dated Arg1:T1 Arg2:T19	
+T21	Transaction 254 263	have sold
+R3	refers_to Arg1:T1 Arg2:T21	
+R4	occupation_is Arg1:T2 Arg2:T3	
+R5	occupation_is Arg1:T4 Arg2:T5	
+R6	occupation_is Arg1:T6 Arg2:T7	
+R7	is_other_relation_to Arg1:T2 Arg2:T8	
+R8	is_other_relation_to Arg1:T4 Arg2:T8	
+R9	is_other_relation_to Arg1:T6 Arg2:T8	
+R10	occupation_is Arg1:T8 Arg2:T9	
+R11	is_grantor_in Arg1:T2 Arg2:T21	
+R12	is_grantor_in Arg1:T4 Arg2:T21	
+R13	is_grantor_in Arg1:T6 Arg2:T21	
+R14	is_recipient_in Arg1:T10 Arg2:T21	
+R15	is_part_of Arg1:T12 Arg2:T11	
+R16	is_part_of Arg1:T11 Arg2:T13	
+R17	is_boundary_to Arg1:T14 Arg2:T11	
+*	same_as T15 T11 T16
+*	same_as T17 T10
+R18	is_location_of Arg:T18 Arg2:T21	

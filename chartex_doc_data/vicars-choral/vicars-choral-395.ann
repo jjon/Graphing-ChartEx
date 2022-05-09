@@ -1,0 +1,63 @@
+T1	Document 0 17	vicars-choral-395
+T2	Apparatus 1668 3004	SOURCE: VC 3/Vi 324 (189 mm• x 118 mm•) ENDORSEMENT: Carta Roberti de Esex• SEALS: (left) vesica (34 mm• x 24 mm•), green, impression of a fleurde-lys, legend SIGILL' ROBERTI DOEXS; (right) round (30 mm• dia•), green, impression of a lion, legend *SIGILL' AGNETIS DE E• VICE COPY: VC 3/I/I, fn• 47v• Followed in MS• by scripto• DATE: Hugh de Selby was mayor several times between 1220 and 1235 (dating note to 21); his mayoralty in 1217 is unlikely in view of the grantors and other witnesses• NOTE: This and the next two charters form a group• The land sold by Robert de Essex and his wife Agnes evidently comprised two • adjoining properties, each burdened with the standard id• husgable payable to the king• One of the properties was granted to the vicars by the predecessors of John Bonde, who quitclaimed it to them with an explicit renunciation of action at law• The renunciation evidently followed an action which had in fact taken place in 1281 when mag• Alan de Whixley had his right in a messuage in Petergate confirmed against a plea of John de Morton and others (Feet of Fines for the County of York, 1272-130o, ed• F• H• Slingsby (YASRS ci, 1956), p• 62)• Alan de Whixley held the property adjoining that granted to the vicars: 397• The vicars' possession was confirmed by a quitclaim by Richard son of Robert de Essex: 397
+T4	Apparatus 18 279	Sale and quitclaim by Robert de Essex and his wife Agnes to Nicholas son of Hugh Palmer and William son of Walter spicer, for money which they gave them, of land in Petergate, lying near land once of William Tropynel; paying the king 2d• husgable• [1226 x 1235]
+T5	Person 323 339	Robertus de Esex
+T6	Person 343 348	Agnes
+T7	Transaction 430 460	vendidisse et quietum clamasse
+T8	Person 503 509	Nicola
+T9	Person 518 532	Hugonis Palmer
+T10	Person 536 544	Willelmo
+T11	Person 551 568	Walteri speciario
+T13	Place 569 574	Ebor'
+T14	Site 657 662	terra
+T17	Site 717 726	edificiis
+T18	Site 759 764	terra
+T19	Site 783 788	terre
+T20	Person 798 815	Willelmi Tropynel
+T21	Person 892 899	Nicolao
+T22	Person 903 911	Winch-no
+T23	Person 1253 1261	Nicolaum
+T24	Person 1265 1274	Willelmum
+T26	Person 1474 1490	Hugone de Seleby
+T28	Person 1510 1537	Henrico de Sexdecimvallibus
+T29	Person 1539 1554	Nicolao Rarnkil
+T30	Person 1556 1570	Galfrido magno
+T31	Person 1572 1588	Roberto Verdenel
+T32	Person 1590 1605	Johanne Salmar'
+T33	Person 1607 1622	Serlone bukeler
+T34	Person 1624 1639	Johanne Bokenay
+T35	Person 1641 1648	Johanne
+T36	Occupation 1649 1656	clerico
+R1	refers_to Arg1:T1 Arg2:T7	
+R2	contains Arg1:T1 Arg2:T4	
+R4	contains Arg1:T1 Arg2:T2	
+R6	is_grantor_in Arg1:T5 Arg2:T7	
+R7	is_grantor_in Arg1:T6 Arg2:T7	
+R8	is_parcel_in Arg1:T14 Arg2:T7	
+R9	is_recipient_in Arg1:T8 Arg2:T7	
+R10	is_recipient_in Arg1:T10 Arg2:T7	
+R11	is_son_of Arg1:T8 Arg2:T9	
+R12	is_son_of Arg1:T10 Arg2:T11	
+R14	is_of Arg1:T8 Arg2:T13	
+R15	is_of Arg1:T10 Arg2:T13	
+T15	Site 671 688	vico sancti Petri
+R16	is_part_of Arg1:T14 Arg2:T15	
+R17	is_part_of Arg1:T17 Arg2:T14	
+R18	is_boundary_to Arg1:T19 Arg2:T14	
+R19	is_a_previous_tenant_of Arg1:T20 Arg2:T19	
+*	same_as T21 T8 T23
+*	same_as T22 T10 T24
+T16	Occupation 1496 1508	maiore Ebor'
+R20	occupation_is Arg1:T26 Arg2:T16	
+R22	is_witness_to Arg1:T26 Arg2:T7	
+R23	is_witness_to Arg1:T28 Arg2:T7	
+R25	is_witness_to Arg1:T29 Arg2:T7	
+R24	is_witness_to Arg1:T30 Arg2:T7	
+R26	is_witness_to Arg1:T31 Arg2:T7	
+R27	is_witness_to Arg1:T32 Arg2:T7	
+R28	is_witness_to Arg1:T33 Arg2:T7	
+R29	is_witness_to Arg1:T34 Arg2:T7	
+R30	is_witness_to Arg1:T35 Arg2:T7	
+R31	occupation_is Arg1:T35 Arg2:T36	
+R3	is_wife_of Arg1:T6 Arg2:T5	
+*	same_as T18 T14

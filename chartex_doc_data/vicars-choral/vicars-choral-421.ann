@@ -1,0 +1,29 @@
+T1	Document 0 17	vicars-choral-421
+T2	Transaction 18 23	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 27 42	Ellis de Sutton
+T4	Occupation 43 48	clerk
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	occupation_is Arg1:T3 Arg2:T4	
+T5	Person 52 68	Roger de Wyghton
+R4	is_recipient_in Arg1:T5 Arg2:T2	
+T6	Person 82 89	Margery
+R5	is_wife_of Arg1:T6 Arg2:T5	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+T7	Site 93 97	land
+R7	is_parcel_in Arg1:T7 Arg2:T2	
+T8	Apparatus 248 377	[possibly 12805] SOURCE: VC 6/2/6 [early 14th-century rent roll], dorse• DATE: Possibly about the same time as 419• NOTE: See 418
+T9	Site 101 112	Blaikstrete
+R8	is_part_of Arg1:T7 Arg2:T9	
+T10	Site 118 127	buildings
+R9	is_part_of Arg1:T10 Arg2:T7	
+T11	Person 146 164	Robert de Appelton
+T12	Occupation 165 170	clerk
+R10	occupation_is Arg1:T11 Arg2:T12	
+R11	is_a_previous_grantor_of Arg1:T11 Arg2:T7	
+T13	Institution 200 237	master of the hospital of St• Leonard
+T14	Person 179 184	Ellis
+R14	contains Arg1:T1 Arg2:T8	
+R12	is_a_tenant_of Arg1:T14 Arg2:T7	
+*	same_as T14 T3
+R15	is_a_landlord_of Arg1:T13 Arg2:T7	

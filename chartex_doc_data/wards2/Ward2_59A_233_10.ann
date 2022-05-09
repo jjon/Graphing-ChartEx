@@ -1,0 +1,35 @@
+T1	Document 0 16	Ward2_59A_233_10
+#1	AnnotatorNotes T1	{"piece_id": "5472154", "date_text": "1564 Apr 7"}
+T2	Transaction 105 111	leased
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 115 129	William Watson
+R2	is_recipient_in Arg1:T3 Arg2:T2	
+T4	Place 133 139	London
+R3	is_of Arg1:T3 Arg2:T4	
+T5	Apparatus 51 58	Audeley
+R4	contains Arg1:T1 Arg2:T5	
+T6	Person 36 49	Thomas Audley
+T7	Place 63 68	Essex
+R5	is_of Arg1:T6 Arg2:T7	
+R6	is_grantor_in Arg1:T6 Arg2:T2	
+T8	Occupation 70 79	gentleman
+T9	Person 85 93	Beatrice
+R7	is_grantor_in Arg1:T9 Arg2:T2	
+R8	occupation_is Arg1:T6 Arg2:T8	
+R9	is_wife_of Arg1:T9 Arg2:T6	
+T10	Occupation 141 150	gentleman
+R10	occupation_is Arg1:T3 Arg2:T10	
+T11	Site 154 162	messuage
+R11	is_parcel_in Arg1:T11 Arg2:T2	
+T12	Site 174 189	Crutched Friars
+*	same_as T11 T12
+T13	Site 196 230	barns, stables, houses and pasture
+R12	is_part_of Arg1:T13 Arg2:T11	
+T14	Site 267 277	brick wall
+R13	is_boundary_to Arg1:T14 Arg2:T11	
+T15	Place 282 292	Colchester
+T16	Place 294 299	Essex
+R14	is_part_of Arg1:T15 Arg2:T16	
+R15	is_located_in Arg1:T11 Arg2:T15	
+T17	Apparatus 389 477	An additional lease is attached relating to the mansion house called the Crutched Friars
+R16	contains Arg1:T1 Arg2:T17	

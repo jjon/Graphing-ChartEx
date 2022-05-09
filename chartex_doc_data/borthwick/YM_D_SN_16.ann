@@ -1,0 +1,87 @@
+T1	Document 0 10	YM/D/SN/16
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "8 February, 1550", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 30	John Lee
+T4	Place 34 40	Fulham
+T5	Place 42 61	parish of Womersley
+T6	Occupation 63 69	yeoman
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	is_part_of Arg1:T4 Arg2:T5	
+R5	occupation_is Arg1:T3 Arg2:T6	
+T7	Person 71 86	Robert Midleton
+T8	Place 90 100	Pollington
+T9	Occupation 110 116	yeoman
+R6	is_of Arg1:T7 Arg2:T8	
+R7	occupation_is Arg1:T7 Arg2:T9	
+R8	is_recipient_in Arg1:T7 Arg2:T2	
+T10	Site 118 132	3 roods arable
+T11	Place 136 153	Pollington fields
+R9	is_located_in Arg1:T10 Arg2:T11	
+R10	is_parcel_in Arg1:T10 Arg2:T2	
+T12	Site 155 161	1 rood
+R11	is_part_of Arg1:T12 Arg2:T10	
+T13	Site 196 201	lands
+T14	Person 205 216	John Dawney
+R12	is_a_tenant_of Arg1:T14 Arg2:T13	
+T15	Occupation 218 220	kt
+R13	occupation_is Arg1:T14 Arg2:T15	
+R14	is_western_directional_marker_to Arg1:T13 Arg2:T12	
+T16	SiteRef 240 245	those
+T17	Person 249 260	John Cusson
+R15	is_a_tenant_of Arg1:T17 Arg2:T16	
+R16	is_eastern_directional_marker_to Arg1:T16 Arg2:T12	
+T18	Site 283 300	Pollington Intake
+R17	is_southern_directional_marker_to Arg1:T18 Arg2:T12	
+T19	Site 320 330	common way
+R18	is_northern_directional_marker_to Arg1:T19 Arg2:T12	
+T20	Site 345 351	1 rood
+R20	not_same_as Arg1:T20 Arg2:T12	
+T21	Site 365 375	Mill field
+R21	is_part_of Arg1:T20 Arg2:T10	
+T22	Site 386 402	Mill field hedge
+T23	Site 413 426	Gowdall brook
+R22	is_boundary_to Arg1:T22 Arg2:T20	
+R23	is_northern_directional_marker_to Arg1:T23 Arg2:T20	
+T24	Site 453 458	lands
+R24	not_same_as Arg1:T24 Arg2:T13	
+T25	Person 462 476	Charles Nowell
+T26	Occupation 478 482	gent
+R25	occupation_is Arg1:T25 Arg2:T26	
+R26	is_a_tenant_of Arg1:T25 Arg2:T24	
+R27	is_western_directional_marker_to Arg1:T24 Arg2:T20	
+T27	Site 502 508	1 rood
+R28	is_part_of Arg1:T27 Arg2:T10	
+R29	not_same_as Arg1:T27 Arg2:T20	
+R30	not_same_as Arg1:T27 Arg2:T12	
+T28	Site 516 526	same field
+R31	is_part_of Arg1:T27 Arg2:T28	
+*	same_as T28 T21
+T29	Place 531 538	Leehill
+R32	is_located_in Arg1:T28 Arg2:T29	
+T30	Site 549 555	garden
+T31	Person 559 574	Robert Midleton
+R33	is_a_tenant_of Arg1:T31 Arg2:T30	
+R34	is_southern_directional_marker_to Arg1:T30 Arg2:T27	
+T32	Site 596 605	high road
+R35	is_northern_directional_marker_to Arg1:T32 Arg2:T27	
+T33	Site 629 640	crown lands
+R36	is_western_directional_marker_to Arg1:T33 Arg2:T27	
+T34	SiteRef 657 662	those
+R37	is_eastern_directional_marker_to Arg1:T34 Arg2:T27	
+T35	Person 698 712	Thomas Dilcoke
+T36	Person 721 734	Robert Cusson
+T37	Person 736 748	John Topclif
+T38	Person 750 765	Nicholas Barker
+R38	is_witness_to Arg1:T35 Arg2:T2	
+R39	is_witness_to Arg1:T36 Arg2:T2	
+R40	is_witness_to Arg1:T37 Arg2:T2	
+R41	is_witness_to Arg1:T38 Arg2:T2	
+R19	is_part_of Arg1:T20 Arg2:T21	
+T39	Site 175 185	west field
+R42	is_part_of Arg1:T12 Arg2:T39	
+T40	Person 666 679	William Maire
+R43	is_a_tenant_of Arg1:T40 Arg2:T34	
+T41	Occupation 714 718	gent
+R44	occupation_is Arg1:T35 Arg2:T41	

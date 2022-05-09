@@ -1,0 +1,68 @@
+T1	Document 0 17	vicars-choral-410
+T2	Person 34 41	William
+T3	Person 65 71	Thomas
+T4	Site 79 89	churchyard
+T5	Occupation 90 99	goldsmith
+T6	Place 103 107	York
+T7	Person 241 262	mag• Simon de Evesham
+T8	Occupation 263 290	archdeacon of the Estriding
+T10	Site 317 325	messuage
+T11	Place 329 333	York
+T12	Site 344 354	Staynegat'
+T13	Site 367 372	house
+T14	Institution 380 400	prebend of Ampelford
+T15	Site 409 415	street
+T16	Site 435 444	Petergat'
+T17	Site 457 467	churchyard
+T18	Site 514 528	gate (portarn)
+T19	Site 546 554	messuage
+T20	Person 574 580	Mariot
+T21	Person 605 622	Jeremy (Jeremias)
+T22	Apparatus 519 528	(portarn)
+T23	Apparatus 612 622	(Jeremias)
+T24	Person 646 656	mag• Simon
+T25	Person 663 670	William
+T26	Person 780 787	William
+T27	Transaction 788 811	releases and quitclaims
+T28	Site 816 824	messuage
+T29	Person 828 838	mag• Simon
+T30	Person 895 905	mag• Simon
+T33	Apparatus 967 1204	Seal•  [1253 x 3o May 1261] SOURCE: VC 3/1/I, fo• 50V• DATE: After 409 and before 412• NOTE: See 403• A marginal note written against the cartulary copy of this charter reads: Carta Ricardi flu Germani• It is evidently a reference to 417
+R1	refers_to Arg1:T1 Arg2:T27	
+R2	contains Arg1:T1 Arg2:T23	
+R3	contains Arg1:T1 Arg2:T22	
+R6	contains Arg1:T1 Arg2:T33	
+R7	is_son_of Arg1:T2 Arg2:T3	
+R8	is_of Arg1:T2 Arg2:T4	
+R9	is_of Arg1:T2 Arg2:T6	
+R10	occupation_is Arg1:T2 Arg2:T5	
+R11	is_grantor_in Arg1:T2 Arg2:T27	
+R12	is_recipient_in Arg1:T7 Arg2:T27	
+R13	occupation_is Arg1:T7 Arg2:T8	
+*	same_as T25 T2 T26
+R16	is_mother_of Arg1:T20 Arg2:T2	
+R17	is_widow_of Arg1:T20 Arg2:T3	
+R18	is_brother_of Arg1:T21 Arg2:T2	
+*	same_as T24 T7 T29 T30
+*	same_as T28 T19 T10
+R20	is_parcel_in Arg1:T10 Arg2:T27	
+R21	is_located_in Arg1:T10 Arg2:T11	
+R22	is_part_of Arg1:T10 Arg2:T12	
+R23	is_a_tenant_of Arg1:T14 Arg2:T13	
+R24	is_boundary_to Arg1:T13 Arg2:T10	
+R25	is_boundary_to Arg1:T15 Arg2:T10	
+R26	is_boundary_to Arg1:T16 Arg2:T10	
+R27	is_boundary_to Arg1:T16 Arg2:T17	
+*	same_as T15 T12
+R28	is_boundary_to Arg1:T18 Arg2:T10	
+#1	AnnotatorNotes T15	   
+T9	Site 532 538	Buthum
+R4	is_part_of Arg1:T18 Arg2:T9	
+T31	Site 483 506	church of blessed Peter
+R5	is_part_of Arg1:T17 Arg2:T31	
+R14	is_a_previous_grantor_of Arg1:T20 Arg2:T19	
+R15	is_a_previous_grantor_of Arg1:T21 Arg2:T19	
+T32	Apparatus 685 717	in partibus transmarinis degente
+R19	contains Arg1:T1 Arg2:T32	
+T34	Apparatus 939 964	ad mea negocia expedienda
+R29	contains Arg1:T1 Arg2:T34	

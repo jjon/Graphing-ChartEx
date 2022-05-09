@@ -1,0 +1,69 @@
+T1	Document 0 17	vicars-choral-151
+T2	Person 38 42	Adam
+T3	Occupation 47 56	fisherman
+T4	Person 69 76	Richard
+T5	Occupation 81 87	palmer
+T6	Transaction 94 122	given, granted and confirmed
+T7	Person 173 176	Ade
+T8	Occupation 177 185	chaplain
+T10	Person 193 209	Robert le hatter
+T11	Site 214 221	mesuage
+T12	Site 225 229	land
+T13	Site 233 244	Goodramgate
+T14	Site 281 289	messuage
+T15	Site 314 319	house
+T16	Person 323 340	Robert de Barneby
+T17	Site 349 360	Goodramlith
+T18	Person 419 422	Ade
+T19	Person 731 735	Adam
+T20	Person 832 835	Ade
+T21	Person 907 920	Hugh de Selby
+T22	Person 922 935	John Warthill
+T23	Person 937 944	Stephen
+T24	Person 948 962	Alan de Mubray
+T25	Person 964 974	Helis Flur
+T26	Person 976 981	Roger
+T27	Person 989 994	Terri
+T28	Person 996 1001	Roger
+T29	Occupation 1002 1009	saddler
+T30	Person 1011 1026	Peter de Insula
+T31	Person 1028 1033	Simon
+T32	Person 1037 1043	Robert
+T33	Person 1051 1055	Swan
+T34	Person 1057 1068	Richars Nis
+T35	Person 1070 1081	Robert Wain
+T36	Person 1083 1089	Thomas
+R1	refers_to Arg1:T1 Arg2:T6	
+R2	occupation_is Arg1:T2 Arg2:T3	
+R3	occupation_is Arg1:T4 Arg2:T5	
+R4	is_brother_of Arg1:T4 Arg2:T2	
+R5	is_grantor_in Arg1:T2 Arg2:T6	
+R6	occupation_is Arg1:T7 Arg2:T8	
+R7	is_recipient_in Arg1:T7 Arg2:T6	
+R8	is_son_of Arg1:T7 Arg2:T10	
+R9	is_part_of Arg1:T11 Arg2:T12	
+R10	is_part_of Arg1:T11 Arg2:T13	
+R11	is_parcel_in Arg1:T11 Arg2:T6	
+*	same_as T14 T11
+R12	is_a_tenant_of Arg1:T16 Arg2:T15	
+R13	is_breadth_marker_to Arg1:T15 Arg2:T11	
+*	same_as T18 T7 T20
+R14	is_length_marker_to Arg1:T17 Arg2:T13	
+R15	is_length_marker_to Arg1:T15 Arg2:T11	
+*	same_as T19 T2
+R16	is_witness_to Arg1:T21 Arg2:T6	
+R17	is_witness_to Arg1:T22 Arg2:T6	
+R18	is_witness_to Arg1:T23 Arg2:T6	
+R19	is_witness_to Arg1:T24 Arg2:T6	
+R20	is_witness_to Arg1:T25 Arg2:T6	
+R21	is_son_of Arg1:T26 Arg2:T27	
+R22	is_witness_to Arg1:T26 Arg2:T6	
+R23	is_witness_to Arg1:T28 Arg2:T6	
+R24	occupation_is Arg1:T28 Arg2:T29	
+R25	is_witness_to Arg1:T30 Arg2:T6	
+R26	is_witness_to Arg1:T31 Arg2:T6	
+R27	is_witness_to Arg1:T32 Arg2:T6	
+R28	is_son_of Arg1:T32 Arg2:T33	
+R29	is_witness_to Arg1:T34 Arg2:T6	
+R30	is_witness_to Arg1:T35 Arg2:T6	
+R31	is_witness_to Arg1:T36 Arg2:T6	

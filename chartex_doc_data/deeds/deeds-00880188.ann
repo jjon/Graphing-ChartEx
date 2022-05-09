@@ -1,0 +1,52 @@
+T1	Document 0 14	deeds-00880188
+#1	AnnotatorNotes T1	{'editorial date':'1276', 'transaction type': 'Grant'}
+T2	Person 51 71	Willelmus de Warewyc
+T3	Person 527 534	Cecilia
+T4	Person 541 558	Stephani le Blunt
+T5	Person 704 719	Nicholi de Ypre
+T8	Person 1156 1165	Willelmus
+T10	Person 1103 1123	Willelmo de Panymere
+T12	Person 1035 1050	Waltero le Hare
+T13	Person 1066 1087	Andreo filio Philippi
+T9	Person 1288 1314	fratris Willelmi Chelesham
+T15	Person 1088 1102	Hugone clerico
+T16	Person 1021 1034	Ricardo David
+T17	Person 1051 1065	Iohanne Stuket
+T11	Person 1005 1020	Radulpho Martin
+T19	Institution 172 218	fratribus hospitalis sancti Iohannis Ierusalem
+T20	Place 224 244	Mapeltrestede parvam
+T21	Transaction 72 122	dedi concessi et hac presenti carta mea confirmavi
+*	same_as T8 T2
+R2	is_located_in Arg1:T19 Arg2:T20	
+R3	is_witness_to Arg1:T11 Arg2:T21	
+R4	is_witness_to Arg1:T16 Arg2:T21	
+R5	is_witness_to Arg1:T12 Arg2:T21	
+R6	is_witness_to Arg1:T17 Arg2:T21	
+R7	is_witness_to Arg1:T13 Arg2:T21	
+R8	is_witness_to Arg1:T10 Arg2:T21	
+R9	is_grantor_in Arg1:T2 Arg2:T21	
+T22	Site 642 651	mesuagium
+T23	Site 692 703	curtilagium
+T24	Site 493 515	mesuagio et curtilagio
+R10	is_parcel_in Arg1:T24 Arg2:T21	
+R11	is_boundary_to Arg1:T23 Arg2:T27	
+R16	is_a_tenant_of Arg1:T5 Arg2:T23	
+T25	Date 1280 1398	tempore fratris Willelmi Chelesham tunc magistri de Mapeltrestede anno gratie millesimo ducentesimo septuagesimo sexto
+R17	refers_to Arg1:T1 Arg2:T21	
+R18	is_dated Arg1:T1 Arg2:T25	
+T18	Occupation 1320 1345	magistri de Mapeltrestede
+R14	occupation_is Arg1:T9 Arg2:T18	
+R20	is_daughter_of Arg1:T3 Arg2:T4	
+R22	is_a_previous_tenant_of Arg1:T3 Arg2:T24	
+T27	Site 572 595	mesuagio cum curtilagio
+*	same_as T27 T24
+R23	is_boundary_to Arg1:T22 Arg2:T27	
+T6	Person 652 680	domini Simonis filii Ricardi
+R13	is_a_tenant_of Arg1:T6 Arg2:T22	
+T28	Occupation 681 688	militis
+R24	occupation_is Arg1:T6 Arg2:T28	
+T29	Institution 614 624	hospitalis
+R25	is_recipient_in Arg1:T19 Arg2:T21	
+R26	is_witness_to Arg1:T15 Arg2:T21	
+R19	is_a_landlord_of Arg1:T29 Arg2:T27	
+*	same_as T29 T19

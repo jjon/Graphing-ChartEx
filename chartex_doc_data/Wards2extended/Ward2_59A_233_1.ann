@@ -1,0 +1,96 @@
+T1	Document 0 15	Ward2_59A_233_1
+#1	AnnotatorNotes T1	{"piece_id": "5472145", "date_text": "1554 Dec 14"}
+T2	Place 94 104	Berechurch
+T3	Place 106 111	Essex
+T4	Person 60 73	Thomas Audley
+T5	Apparatus 75 82	Audeley
+R1	contains Arg1:T1 Arg2:T5	
+T6	Occupation 113 120	esquire
+T7	Person 142 153	lord Audley
+T8	Place 157 163	Walden
+R2	is_of Arg1:T4 Arg2:T2	
+R3	is_part_of Arg1:T2 Arg2:T3	
+R4	occupation_is Arg1:T4 Arg2:T6	
+R5	is_brother_of Arg1:T4 Arg2:T7	
+R6	is_of Arg1:T7 Arg2:T8	
+T9	Occupation 170 196	lord Chancellor of England
+R7	occupation_is Arg1:T7 Arg2:T9	
+T10	Person 212 225	Thomas Audley
+T11	Occupation 234 241	esquire
+T12	Person 260 273	Thomas Audley
+T13	Place 277 287	Berechurch
+R8	is_of Arg1:T12 Arg2:T13	
+*	same_as T4 T12
+T14	Person 299 309	John Lucas
+T15	Transaction 289 295	grants
+R10	refers_to Arg1:T1 Arg2:T15	
+R11	is_grantor_in Arg1:T4 Arg2:T15	
+R12	is_grantor_in Arg1:T12 Arg2:T15	
+R13	is_recipient_in Arg1:T14 Arg2:T15	
+T16	Person 311 324	George Foster
+T17	Person 330 346	George Christmas
+T18	Occupation 348 356	esquires
+R14	occupation_is Arg1:T17 Arg2:T18	
+R15	occupation_is Arg1:T16 Arg2:T18	
+R16	occupation_is Arg1:T14 Arg2:T18	
+R17	is_recipient_in Arg1:T17 Arg2:T15	
+R18	is_recipient_in Arg1:T16 Arg2:T15	
+T19	Place 362 381	manor of Berechurch
+R19	is_parcel_in Arg1:T19 Arg2:T15	
+T20	Place 404 409	Essex
+R20	is_part_of Arg1:T19 Arg2:T20	
+T21	Site 411 426	Berechurch park
+R21	is_parcel_in Arg1:T21 Arg2:T15	
+T23	Site 472 476	mill
+T24	Site 484 498	'Layere Mylle'
+T25	Site 506 512	meadow
+R23	is_parcel_in Arg1:T23 Arg2:T15	
+*	same_as T23 T24
+R24	is_part_of Arg1:T25 Arg2:T23	
+T26	Site 548 608	lands, tenements, rents, reversions, woods and hereditaments
+T27	Place 612 622	Colchester
+R25	is_parcel_in Arg1:T26 Arg2:T15	
+R26	is_located_in Arg1:T26 Arg2:T27	
+T28	Place 624 634	Berechurch
+T29	Place 636 651	West 'Donyland'
+T30	Place 653 668	East 'Donyland'
+T31	Place 673 684	Fingringhoe
+T32	Place 686 691	Essex
+R27	is_located_in Arg1:T26 Arg2:T28	
+R28	is_located_in Arg1:T26 Arg2:T29	
+R29	is_located_in Arg1:T26 Arg2:T30	
+R30	is_located_in Arg1:T26 Arg2:T31	
+R31	is_part_of Arg1:T27 Arg2:T32	
+*	same_as T2 T13 T33
+T33	Place 458 468	Berechurch
+T22	Site 448 454	church
+R22	is_located_in Arg1:T22 Arg2:T33	
+R32	is_parcel_in Arg1:T22 Arg2:T15	
+R33	is_part_of Arg1:T28 Arg2:T32	
+R34	is_part_of Arg1:T31 Arg2:T32	
+R35	is_part_of Arg1:T30 Arg2:T32	
+R36	is_part_of Arg1:T29 Arg2:T32	
+T34	Person 715 726	lord Audley
+*	same_as T7 T34
+T35	Site 732 739	meadows
+T36	Site 747 758	Colles land
+T37	Site 763 776	Colles meadow
+*	same_as T35 T36 T37
+T38	Place 780 788	Abberton
+R37	is_located_in Arg1:T35 Arg2:T38	
+T39	Place 790 795	Essex
+R38	is_part_of Arg1:T38 Arg2:T39	
+T40	Place 825 846	manor of Horsted Hall
+T41	Place 848 853	Essex
+T42	Apparatus 864 1106	Preamble of the indenture made on 28 November 1547, between Richard Sowthwell, knight, on the one part, and Thomas Audeley senior and Thomas Audeley junior, on the other part, by which they were able to grant the land in the current indenture
+R39	contains Arg1:T1 Arg2:T42	
+R40	is_part_of Arg1:T40 Arg2:T41	
+R42	is_a_previous_tenant_of Arg1:T34 Arg2:T21	
+R43	is_a_previous_tenant_of Arg1:T34 Arg2:T22	
+R44	is_a_previous_tenant_of Arg1:T34 Arg2:T24	
+R45	is_a_previous_tenant_of Arg1:T34 Arg2:T26	
+R46	is_parcel_in Arg1:T40 Arg2:T15	
+R41	is_parcel_in Arg1:T35 Arg2:T15	
+R9	occupation_is Arg1:T10 Arg2:T11	
+R47	is_son_of Arg1:T10 Arg2:T12	
+R48	is_grantor_in Arg1:T10 Arg2:T15	

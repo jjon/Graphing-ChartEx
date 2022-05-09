@@ -1,0 +1,34 @@
+T1	Document 0 15	Ward2_55_188_12
+#1	AnnotatorNotes T1	{"piece_id": "5471235", "date_text": "1530 June 6"}
+T2	Transaction 16 21	Grant
+T3	Person 27 38	John Symond
+T4	Person 56 69	Walter Symond
+R1	is_son_of Arg1:T3 Arg2:T4	
+T5	Person 84 96	Richard Duke
+T6	Person 101 114	Thomas Upcher
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_recipient_in Arg1:T5 Arg2:T2	
+R4	is_recipient_in Arg1:T6 Arg2:T2	
+T7	Site 127 174	messuages, lands, tenements, rents and services
+R5	is_parcel_in Arg1:T7 Arg2:T2	
+R6	refers_to Arg1:T1 Arg2:T2	
+T8	Place 197 204	Fordham
+T9	Place 206 211	Essex
+R7	is_part_of Arg1:T8 Arg2:T9	
+R8	is_located_in Arg1:T7 Arg2:T8	
+T10	Apparatus 213 223	[Endorsed]
+T11	Apparatus 367 386	Seal of John Symond
+T12	Person 260 275	Geoffrey Newton
+T13	Person 277 291	Geoffrey Baker
+T14	Person 293 306	Thomas Jenour
+T15	Person 308 321	Robert Jenour
+T16	Person 330 341	Walter Kyng
+T17	Person 343 354	Thomas Kyng
+R9	is_witness_to Arg1:T12 Arg2:T2	
+R10	is_witness_to Arg1:T13 Arg2:T2	
+R11	is_witness_to Arg1:T14 Arg2:T2	
+R12	is_witness_to Arg1:T15 Arg2:T2	
+R13	is_witness_to Arg1:T16 Arg2:T2	
+R14	is_witness_to Arg1:T17 Arg2:T2	
+R15	contains Arg1:T1 Arg2:T10	
+R16	contains Arg1:T1 Arg2:T11	

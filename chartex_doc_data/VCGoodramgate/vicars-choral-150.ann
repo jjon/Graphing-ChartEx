@@ -1,0 +1,51 @@
+T1	Document 0 17	vicars-choral-150
+T2	Transaction 18 41	Surrender and quitclaim
+T3	Person 45 54	Constance
+T4	Person 64 83	Gilbert de Coupland
+T5	Person 87 94	Richard
+T6	Occupation 95 115	warden of the vicars
+T7	Institution 124 130	vicars
+T8	Institution 208 214	vicars
+T9	Site 227 235	messuage
+T10	Site 239 250	Gutherumgat
+T11	Person 287 294	Gilbert
+T12	Apparatus 296 311	Seal. Witnesses
+T13	Apparatus 516 764	[1274] SOURCE: VC 3/Vi 123 (168 mm. x 79 mm.) ENDORSEMENT: none. SEAL: Slit. COPY: VC 3/1/1, fo. 18v. DATE: Spicer was mayor with the bailiffs named here in June 1274 (Yorkshire Deeds vii, ed. C.T. Clay (YASRS lxxxiii, 1932), p. 183). NOTE: See 146
+T14	Person 313 325	John Spicar'
+T15	Occupation 326 331	mayor
+T16	Person 333 354	Clement de Pontefract
+T17	Person 356 370	John de Sutton
+T18	Person 372 383	John Spicar
+T19	Occupation 385 393	bailiffs
+T20	Person 395 409	Ives of Usgat'
+T21	Person 411 425	Hamo le Graunt
+T22	Person 427 453	Roger de Sexdecim Vallibus
+T23	Person 455 471	Thomas le Furbur
+T24	Person 473 496	James of the churchyard
+T25	Occupation 497 502	clerk
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T12	
+R3	contains Arg1:T1 Arg2:T13	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_widow_of Arg1:T3 Arg2:T4	
+R6	occupation_is Arg1:T5 Arg2:T6	
+R7	is_recipient_in Arg1:T5 Arg2:T2	
+R8	is_recipient_in Arg1:T7 Arg2:T2	
+*	same_as T8 T7
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_parcel_in Arg1:T9 Arg2:T2	
+*	same_as T11 T4
+R11	occupation_is Arg1:T14 Arg2:T15	
+R12	is_witness_to Arg1:T14 Arg2:T2	
+R13	is_witness_to Arg1:T16 Arg2:T2	
+R14	is_witness_to Arg1:T17 Arg2:T2	
+R15	occupation_is Arg1:T18 Arg2:T19	
+R16	occupation_is Arg1:T17 Arg2:T19	
+R17	occupation_is Arg1:T16 Arg2:T19	
+R18	occupation_is Arg1:T24 Arg2:T25	
+R19	is_witness_to Arg1:T18 Arg2:T2	
+R20	is_witness_to Arg1:T20 Arg2:T2	
+R21	is_witness_to Arg1:T21 Arg2:T2	
+R22	is_witness_to Arg1:T22 Arg2:T2	
+R23	is_witness_to Arg1:T23 Arg2:T2	
+R24	is_witness_to Arg1:T24 Arg2:T2	

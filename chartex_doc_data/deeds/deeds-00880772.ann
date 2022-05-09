@@ -1,0 +1,73 @@
+T1	Document 0 14	deeds-00880772
+#1	AnnotatorNotes T1	{'editorial date':'1220/30', 'transaction type': 'Grant'}
+T2	Person 56 67	Hamo Pecche
+T3	Transaction 87 138	concessisse et dedisse et hac mea carta confirmasse
+T4	Person 139 158	Simoni de Oddewelle
+T5	Person 162 170	Margerie
+T6	Site 221 226	terra
+T7	Place 236 246	[Bridebrok
+T8	Site 262 268	Wytele
+R1	is_located_in Arg1:T6 Arg2:T7	
+T9	Apparatus 236 249	[Bridebrok[]]
+R2	contains Arg1:T1 Arg2:T9	
+R3	refers_to Arg1:T1 Arg2:T3	
+T10	Site 353 359	terram
+T11	Person 365 377	Paganus Brag
+T12	Place 396 401	villa
+T13	Place 405 418	Gestingthorpe
+T14	Person 480 486	Pagano
+T15	Person 513 519	Simoni
+T16	Person 523 531	Margerie
+T17	Person 1048 1052	Hamo
+T18	Person 1281 1302	Radulpho de Myn[er]es
+T19	Apparatus 1296 1300	[er]
+R4	contains Arg1:T1 Arg2:T19	
+T20	Person 1303 1329	Willelmo de sancto Georgeo
+T21	Person 1330 1348	Ricardo de Glemham
+T22	Person 1349 1370	Ricardo de Crawendene
+T23	Person 1371 1387	Thoma marescallo
+T24	Person 1388 1407	Willelmo de Gosfeld
+T25	Person 1410 1432	Willelmo de Toppesfeld
+T26	Person 1435 1450	Radulpho parker
+T27	Person 1451 1467	Radulpho Curpail
+T28	Person 1468 1487	Rogero de Heingeham
+T29	Person 1488 1509	Gilberto de Myn[er]es
+T30	Apparatus 1503 1507	[er]
+R5	contains Arg1:T1 Arg2:T30	
+T31	Person 1510 1526	Martello Ordmero
+T32	Occupation 1527 1533	parker
+T33	Person 1534 1556	Ricardo filio Iohannis
+R6	is_grantor_in Arg1:T2 Arg2:T3	
+R7	is_wife_of Arg1:T5 Arg2:T4	
+R8	is_recipient_in Arg1:T4 Arg2:T3	
+R9	is_recipient_in Arg1:T5 Arg2:T3	
+R10	is_parcel_in Arg1:T6 Arg2:T3	
+R11	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R12	is_parcel_in Arg1:T10 Arg2:T3	
+R13	is_located_in Arg1:T10 Arg2:T12	
+*	same_as T12 T13
+*	same_as T14 T11
+*	same_as T15 T4
+*	same_as T16 T5
+R14	is_a_grantor_of Arg1:T4 Arg2:T6	
+R15	is_a_grantor_of Arg1:T5 Arg2:T6	
+R16	is_a_recipient_of Arg1:T2 Arg2:T6	
+R17	is_a_grantor_of Arg1:T2 Arg2:T10	
+R18	is_a_recipient_of Arg1:T4 Arg2:T10	
+R19	is_a_recipient_of Arg1:T5 Arg2:T10	
+*	same_as T17 T2
+R20	is_witness_to Arg1:T18 Arg2:T3	
+R21	is_witness_to Arg1:T20 Arg2:T3	
+R22	is_witness_to Arg1:T21 Arg2:T3	
+R23	is_witness_to Arg1:T22 Arg2:T3	
+R24	is_witness_to Arg1:T23 Arg2:T3	
+R25	is_witness_to Arg1:T24 Arg2:T3	
+R26	is_witness_to Arg1:T25 Arg2:T3	
+R27	is_witness_to Arg1:T26 Arg2:T3	
+R28	is_witness_to Arg1:T27 Arg2:T3	
+R29	is_witness_to Arg1:T28 Arg2:T3	
+R30	is_witness_to Arg1:T29 Arg2:T3	
+R31	is_witness_to Arg1:T31 Arg2:T3	
+R33	is_witness_to Arg1:T33 Arg2:T3	
+R34	occupation_is Arg1:T31 Arg2:T32	
+*	same_as T6 T8

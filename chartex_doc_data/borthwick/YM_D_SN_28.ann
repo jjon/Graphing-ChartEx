@@ -1,0 +1,49 @@
+T1	Document 0 10	YM/D/SN/28
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "3 August 1583", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 38	Richard Radcliff
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Place 42 48	Snaith
+T5	Occupation 50 54	gent
+R3	is_of Arg1:T3 Arg2:T4	
+R4	occupation_is Arg1:T3 Arg2:T5	
+T6	Person 57 70	Walter Jobson
+T7	Place 74 85	Brantingham
+T8	Occupation 87 90	esq
+R5	is_recipient_in Arg1:T6 Arg2:T2	
+R6	is_of Arg1:T6 Arg2:T7	
+R7	occupation_is Arg1:T6 Arg2:T8	
+T9	Site 92 117	½ acre arable and pasture
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T10	Place 121 127	Snaith
+R9	is_located_in Arg1:T9 Arg2:T10	
+T11	Site 134 149	croft or garden
+R10	is_part_of Arg1:T9 Arg2:T11	
+T12	Person 170 185	Roger Phillippe
+R11	is_a_previous_tenant_of Arg1:T12 Arg2:T11	
+T13	Person 225 238	Edmund Leighe
+R12	is_a_tenant_of Arg1:T13 Arg2:T11	
+T14	Site 249 254	lands
+R13	is_western_directional_marker_to Arg1:T14 Arg2:T9	
+T15	Person 271 286	Thomas Dilcocke
+T16	Occupation 288 292	gent
+R14	occupation_is Arg1:T15 Arg2:T16	
+R15	is_a_previous_tenant_of Arg1:T15 Arg2:T14	
+T17	SiteRef 312 317	those
+R16	is_eastern_directional_marker_to Arg1:T17 Arg2:T9	
+T18	Person 334 343	Phillippe
+R17	is_a_previous_tenant_of Arg1:T18 Arg2:T17	
+*	same_as T18 T12
+T19	Site 370 377	Dorgate
+R18	is_southern_directional_marker_to Arg1:T19 Arg2:T9	
+T20	Site 395 407	Snaith marsh
+R20	is_northern_directional_marker_to Arg1:T20 Arg2:T9	
+T22	Document 492 502	YM/D/SN/27
+T23	Person 461 469	Radcliff
+*	same_as T23 T3
+T24	Transaction 477 488	transaction
+R21	refers_to Arg1:T22 Arg2:T24	
+R22	is_recipient_in Arg1:T23 Arg2:T24	
+R23	precedes Arg1:T24 Arg2:T2	
+R24	not_same_as Arg1:T22 Arg2:T1	

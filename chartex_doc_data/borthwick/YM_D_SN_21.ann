@@ -1,0 +1,48 @@
+T1	Document 0 10	YM/D/SN/21
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "18 January, 1575", "Title": "Feoffment"}
+T3	Person 22 36	Thomas Rickard
+T4	Place 40 46	Snaith
+T5	Occupation 48 52	gent
+T6	Person 55 67	John Slaydon
+T7	Place 71 81	Pollington
+T8	Occupation 83 89	yeoman
+T9	Site 91 96	Close
+T10	Place 130 140	Pollington
+T11	Site 151 156	lands
+T12	Person 160 173	Thomas Metham
+T13	Site 210 215	close
+T14	Site 266 282	Wheat croft lane
+T15	Person 308 317	Slaydon's
+*	same_as T15 T6
+R1	is_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T5	
+R3	is_of Arg1:T6 Arg2:T7	
+R4	occupation_is Arg1:T6 Arg2:T8	
+R5	is_parcel_in Arg1:T9 Arg2:T2	
+R6	is_a_tenant_of Arg1:T12 Arg2:T11	
+R7	is_eastern_directional_marker_to Arg1:T11 Arg2:T9	
+R8	is_western_directional_marker_to Arg1:T11 Arg2:T9	
+R9	is_located_in Arg1:T9 Arg2:T10	
+R10	is_northern_directional_marker_to Arg1:T13 Arg2:T9	
+R11	is_southern_directional_marker_to Arg1:T14 Arg2:T9	
+R12	is_a_tenant_of Arg1:T15 Arg2:T9	
+R13	is_a_landlord_of Arg1:T3 Arg2:T9	
+R14	refers_to Arg1:T1 Arg2:T2	
+R15	is_grantor_in Arg1:T3 Arg2:T2	
+R16	is_recipient_in Arg1:T6 Arg2:T2	
+T16	Site 108 125	Great short croft
+*	same_as T9 T16
+T17	Occupation 175 178	esq
+R17	occupation_is Arg1:T12 Arg2:T17	
+T18	Site 223 232	Brodcroft
+*	same_as T13 T18
+T19	Site 254 258	lane
+*	same_as T19 T14
+T20	Person 366 373	Rickard
+T21	Person 375 389	Stephen Lutton
+T22	Person 395 400	Alice
+R18	is_wife_of Arg1:T22 Arg2:T21	
+*	same_as T20 T3
+R19	is_participant_in Arg1:T21 Arg2:T2	
+R20	is_participant_in Arg1:T22 Arg2:T2	

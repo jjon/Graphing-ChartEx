@@ -1,0 +1,73 @@
+T1	Document 0 17	vicars-choral-434
+T2	Person 34 38	John
+T3	Person 46 61	Thomas de Cotes
+T4	Place 65 77	Ravenserodde
+T5	Person 89 94	Ellen
+T6	Person 104 120	Peter de Appilby
+T7	Person 138 144	John's
+T8	Site 157 166	six shops
+T9	Site 170 179	Petergate
+R1	is_part_of Arg1:T8 Arg2:T9	
+T10	Transaction 194 201	granted
+T12	Person 205 213	Margaret
+T13	Person 223 242	Nicholas de Langton
+R2	is_widow_of Arg1:T12 Arg2:T13	
+T14	Person 254 258	John
+T15	Site 271 280	the shops
+T16	Person 294 301	Ellen's
+T17	Person 362 376	Hamo de Hessay
+T18	Place 388 392	York
+R3	is_of Arg1:T17 Arg2:T18	
+R4	is_parcel_in Arg1:T8 Arg2:T10	
+R5	is_a_tenant_of Arg1:T5 Arg2:T8	
+R7	is_grantor_in Arg1:T5 Arg2:T10	
+R8	is_recipient_in Arg1:T12 Arg2:T10	
+T19	Transaction 259 265	grants
+*	same_as T15 T8
+*	same_as T16 T5
+R10	is_recipient_in Arg1:T17 Arg2:T19	
+T20	Person 447 463	John de Shirburn
+T21	Person 471 482	William Gra
+T22	Person 484 500	William de Percy
+T23	Person 502 516	Thomas de York
+T24	Occupation 518 526	bailiffs
+T25	Person 528 540	John de Wome
+T26	Person 542 557	John de Langton
+T27	Person 559 574	Robert de Selby
+T28	Person 576 592	Richard de Selby
+T29	Person 594 615	William de Huntington
+T30	Person 617 634	Richard de Hessay
+T31	Person 636 657	Thomas de Meningthorp
+T32	Place 671 675	York
+T33	Date 677 726	Tuesday the feast of St• Luke 1345, i8 Edward III
+T34	Occupation 464 469	mayor
+R13	occupation_is Arg1:T20 Arg2:T34	
+R14	occupation_is Arg1:T21 Arg2:T24	
+R15	occupation_is Arg1:T22 Arg2:T24	
+R16	occupation_is Arg1:T23 Arg2:T24	
+R17	is_witness_to Arg1:T20 Arg2:T19	
+R18	is_witness_to Arg1:T21 Arg2:T19	
+R19	is_witness_to Arg1:T22 Arg2:T19	
+R20	is_witness_to Arg1:T23 Arg2:T19	
+R21	is_witness_to Arg1:T25 Arg2:T19	
+R22	is_witness_to Arg1:T26 Arg2:T19	
+R23	is_witness_to Arg1:T27 Arg2:T19	
+R24	is_witness_to Arg1:T28 Arg2:T19	
+R25	is_witness_to Arg1:T29 Arg2:T19	
+R26	is_witness_to Arg1:T30 Arg2:T19	
+R27	is_witness_to Arg1:T31 Arg2:T19	
+R28	is_dated Arg1:T1 Arg2:T33	
+T35	Apparatus 420 435	Warranty• Seal•
+T36	Apparatus 727 788	[18 October]• SOURCE: VC 3/I/I, fOS• 127V•-128• NOTE: See 433
+R29	contains Arg1:T1 Arg2:T35	
+R30	contains Arg1:T1 Arg2:T36	
+R31	is_location_of Arg:T32 Arg2:T19	
+*	same_as T14 T2 T7
+R11	is_grantor_in Arg1:T14 Arg2:T19	
+R12	is_son_of Arg1:T2 Arg2:T3	
+R33	precedes Arg1:T10 Arg2:T19	
+R6	is_widow_of Arg1:T5 Arg2:T6	
+R35	refers_to Arg1:T1 Arg2:T19	
+R36	is_parcel_in Arg1:T15 Arg2:T19	
+R37	refers_to Arg1:T1 Arg2:T10	
+R9	is_of Arg1:T3 Arg2:T4	

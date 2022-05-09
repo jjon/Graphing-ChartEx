@@ -1,0 +1,67 @@
+T1	Document 0 17	vicars-choral-169
+T2	Person 34 38	John
+T3	Person 56 61	Ralph
+T4	Occupation 66 71	clerk
+T5	Site 75 87	Gutherumgate
+T6	Person 104 109	Agnes
+T7	Person 111 115	John
+T8	Person 129 147	Peter called Roman
+T9	Occupation 148 191	rector of the church of St. Sampson in York
+T10	Site 227 231	land
+T11	Site 235 247	Gutherumgate
+T12	Apparatus 292 307	Seal. Witnesses
+T13	Person 309 322	John de Hesel
+T14	Occupation 323 328	clerk
+T15	Person 330 346	Simon de Lilling
+T16	Occupation 347 353	knight
+T17	Person 355 369	John de Bogwes
+T18	Occupation 370 378	chaplain
+T19	Person 380 397	Richard de Gruscy
+T20	Person 399 416	Thomas de Overton
+T21	Person 418 446	Robert Verdonel of the marsh
+T22	Apparatus 447 459	(de marisco)
+T23	Person 461 465	Adam
+T24	Transaction 199 204	grant
+R1	refers_to Arg1:T1 Arg2:T24	
+T25	Person 475 487	Alan de Karl
+T26	Person 490 503	Hugh de Playz
+T27	Person 505 523	Nicholas de London
+T28	Person 525 543	Thomas de Tolreton
+T29	Person 545 557	Robert Frend
+T30	Person 559 573	John de Glouc'
+T31	Occupation 574 579	clerk
+T32	Date 593 605	January 1259
+T33	Apparatus 606 918	[1259/60]. SOURCE: VC 3/Vi 138 (166 mm. x 124 mm.) ENDORSEMENT: Ratificatio carte Agnetis quondam uxoris Radulfi clerici de Gother'gat per Johannem filium sum facia Petro Romano; Gutherumgate. SEAL: round (35 mm. dia.), green, impression of a star, legend S: IONIS: FIL: RADVLFI: CLE NOTE: Agnes's charter is 168
+R2	contains Arg1:T1 Arg2:T12	
+R3	contains Arg1:T1 Arg2:T22	
+R4	contains Arg1:T1 Arg2:T33	
+R5	is_son_of Arg1:T2 Arg2:T3	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_of Arg1:T2 Arg2:T5	
+R8	is_wife_of Arg1:T6 Arg2:T3	
+R9	is_mother_of Arg1:T6 Arg2:T2	
+*	same_as T7 T2
+R10	is_grantor_in Arg1:T2 Arg2:T24	
+R11	occupation_is Arg1:T8 Arg2:T9	
+R12	is_recipient_in Arg1:T8 Arg2:T24	
+R13	is_parcel_in Arg1:T10 Arg2:T24	
+R14	is_part_of Arg1:T10 Arg2:T11	
+R15	occupation_is Arg1:T13 Arg2:T14	
+R16	is_witness_to Arg1:T13 Arg2:T24	
+R17	occupation_is Arg1:T15 Arg2:T16	
+R18	is_witness_to Arg1:T15 Arg2:T24	
+R19	occupation_is Arg1:T17 Arg2:T18	
+R20	is_witness_to Arg1:T17 Arg2:T24	
+R21	is_witness_to Arg1:T19 Arg2:T24	
+R22	is_witness_to Arg1:T20 Arg2:T24	
+R23	is_witness_to Arg1:T21 Arg2:T24	
+R24	is_son_of Arg1:T23 Arg2:T21	
+R25	is_witness_to Arg1:T23 Arg2:T24	
+R26	is_witness_to Arg1:T25 Arg2:T24	
+R27	is_witness_to Arg1:T26 Arg2:T24	
+R28	is_witness_to Arg1:T27 Arg2:T24	
+R29	is_witness_to Arg1:T28 Arg2:T24	
+R30	is_witness_to Arg1:T29 Arg2:T24	
+R31	occupation_is Arg1:T30 Arg2:T31	
+R32	is_witness_to Arg1:T30 Arg2:T24	
+R33	is_dated Arg1:T1 Arg2:T32	

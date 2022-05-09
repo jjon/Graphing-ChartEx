@@ -1,0 +1,35 @@
+T1	Document 0 17	vicars-choral-389
+T2	Apparatus 18 419	Grant, in free alms, by Richard son of Roger de Ouseburn chaplain, succentor of York, for the salvation of his soul and the souls of his parents and benefactors and all the faithful, to God, blessed Peter of York, and the vicars of land held of Peter Stoil son of John Stoil in Petergate, lying between the land which William Fairfax then held and that which John Blinsleg held• [later 1220s or 1230S]
+T4	Person 498 506	Ricardus
+T5	Person 514 532	Rogeri de Useborne
+T6	Occupation 533 543	capellanus
+T7	Occupation 558 567	succentor
+T8	Institution 568 582	Ebor' ecclesie
+T9	Transaction 766 842	dedisse, concessisse, et hac presenti carta sigillo meo impressa confirmasse
+T10	Site 910 916	terram
+T11	Site 925 934	Petergat'
+T12	Person 974 985	Petro Stoll
+T13	Person 992 1006	Johannis Stoil
+T14	Site 1038 1044	terram
+T15	Person 1050 1067	Willelmus Fairfax
+T16	Site 1083 1089	terram
+T17	Person 1095 1112	Johannes Blinsleg
+T18	Institution 850 879	beato Petri Ebor' et vicariis
+T19	Apparatus 1280 1398	SOURCE: VC 3/1/1, fa• 46v• Initial U omitted as later illumination in MS• was intended• DATE: After 388• NOTE: See 388
+R1	is_son_of Arg1:T4 Arg2:T5	
+R4	refers_to Arg1:T1 Arg2:T9	
+R5	occupation_is Arg1:T4 Arg2:T6	
+R6	is_officeholder_in Arg1:T4 Arg2:T8	
+R7	is_grantor_in Arg1:T4 Arg2:T9	
+R9	is_parcel_in Arg1:T10 Arg2:T9	
+R11	is_son_of Arg1:T12 Arg2:T13	
+R12	is_a_landlord_of Arg1:T12 Arg2:T10	
+R13	is_a_previous_tenant_of Arg1:T15 Arg2:T14	
+R14	is_a_previous_tenant_of Arg1:T17 Arg2:T16	
+R15	is_boundary_to Arg1:T14 Arg2:T10	
+R16	is_boundary_to Arg1:T16 Arg2:T10	
+R17	is_recipient_in Arg1:T18 Arg2:T9	
+R10	is_part_of Arg1:T10 Arg2:T11	
+R3	occupation_is Arg1:T4 Arg2:T7	
+R18	contains Arg1:T1 Arg2:T2	
+R19	contains Arg1:T1 Arg2:T19	

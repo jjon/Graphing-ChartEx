@@ -1,0 +1,57 @@
+T1	Document 0 17	vicars-choral-433
+T2	Transaction 18 23	Grant
+T3	Person 27 31	John
+T4	Person 39 54	Robert de Cotes
+T5	Place 58 70	Ravenserodde
+R1	is_of Arg1:T4 Arg2:T5	
+R2	is_son_of Arg1:T3 Arg2:T4	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 87 91	John
+T7	Person 99 114	Thomas de Cotes
+T8	Place 118 130	Ravenserodde
+R4	is_of Arg1:T7 Arg2:T8	
+R5	is_son_of Arg1:T6 Arg2:T7	
+T9	Site 189 208	lands and tenements
+T10	Place 212 216	York
+T11	Place 221 241	Kyngeston super Hull
+R6	is_located_in Arg1:T9 Arg2:T10	
+R7	is_located_in Arg1:T9 Arg2:T11	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T12	Person 243 247	John
+*	same_as T12 T3
+T13	Apparatus 325 330	Seal•
+R9	contains Arg1:T1 Arg2:T13	
+T14	Person 342 357	Harno de Hessay
+T15	Place 361 365	York
+R10	is_of Arg1:T14 Arg2:T15	
+T16	Person 367 386	William de Skypwith
+T17	Place 390 394	York
+R11	is_of Arg1:T16 Arg2:T17	
+T18	Occupation 395 400	clerk
+R12	occupation_is Arg1:T16 Arg2:T18	
+T19	Person 402 420	Thomas de Grantham
+T20	Place 424 428	York
+R13	is_of Arg1:T19 Arg2:T20	
+T21	Person 430 446	Walter de Askham
+T22	Place 450 454	York
+R14	is_of Arg1:T21 Arg2:T22	
+T23	Person 456 461	Simon
+T24	Person 469 486	Roger de Munketon
+T25	Place 490 494	York
+R15	is_of Arg1:T24 Arg2:T25	
+R16	is_son_of Arg1:T23 Arg2:T24	
+T26	Place 508 514	London
+T27	Date 516 558	Monday the feast of St• Mark 19 Edward III
+R17	is_location_of Arg:T26 Arg2:T2	
+R18	is_dated Arg1:T1 Arg2:T27	
+T28	Apparatus 559 1166	[25 April 13451• SOURCE: VC 3/r/i, fo• I27V• NOTE: This and the next seven charters form a group• The property in York from which John son of Robert received a rent was presumably the six shops which his relative John son of Thomas had in Petergate: 434- In 1345 John son of Thomas, with his relative's consent, granted the reversion of the shops to Hamo de Hessay: 434-7• In 1355 Hamo granted the reversion to four vicars: 438-40• In 136o the shops, together with other property in York, were transferred by a group of vicars to two of their fellows, who in 1363 assigned them to the vicars' college: 575-6
+R19	contains Arg1:T1 Arg2:T28	
+R20	not_same_as Arg1:T6 Arg2:T3	
+R21	refers_to Arg1:T1 Arg2:T2	
+R22	is_recipient_in Arg1:T6 Arg2:T2	
+R23	is_witness_to Arg1:T14 Arg2:T2	
+R24	is_witness_to Arg1:T16 Arg2:T2	
+R25	is_witness_to Arg1:T19 Arg2:T2	
+R26	is_witness_to Arg1:T21 Arg2:T2	
+R27	is_witness_to Arg1:T23 Arg2:T2	
+R28	is_location_of Arg:T26 Arg2:T2	

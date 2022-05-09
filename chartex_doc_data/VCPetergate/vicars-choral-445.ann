@@ -1,0 +1,43 @@
+T1	Document 0 17	vicars-choral-445
+T2	Date 526 542	16 May 5 Henry V
+R1	is_dated Arg1:T1 Arg2:T2	
+T3	Apparatus 544 790	1417]. SOURCE: VC 3/Vi 340 (312 mm.x 127 mm.) ENDORSEMENT: De omnibus tenementis factis j Watton etJohanni Mahon. SEAL: round (24 mm. dia.), red, impression of a shield with a design incorporating 'B' and 'W', surmounted by a cross. NOTE: See 443
+R2	contains Arg1:T1 Arg2:T3	
+T4	Place 520 525	York,
+T6	Person 34 42	Beatrice
+T7	Person 52 64	Robert Warde
+R5	is_widow_of Arg1:T6 Arg2:T7	
+T8	Occupation 77 85	merchant
+R7	occupation_is Arg1:T7 Arg2:T8	
+T9	Place 89 93	York
+R8	is_of Arg1:T7 Arg2:T9	
+T10	Site 118 128	a messuage
+T11	Site 132 141	Petergate
+T13	Apparatus 143 241	as in 444 (except that the chamber is described as set crosswise (extransverso) against the lane),
+R9	contains Arg1:T1 Arg2:T13	
+R6	is_a_tenant_of Arg1:T6 Arg2:T10	
+R11	is_part_of Arg1:T10 Arg2:T11	
+T12	Person 297 307	John Warde
+R12	is_son_of Arg1:T12 Arg2:T6	
+T14	Person 314 318	John
+*	same_as T14 T12
+T15	Person 348 359	John Watton
+T16	Occupation 360 368	chaplain
+R15	occupation_is Arg1:T15 Arg2:T16	
+T17	Person 373 384	John Malton
+T18	Occupation 385 390	clerk
+T19	Person 427 437	ohn Watton
+T20	Person 442 453	John Malton
+*	same_as T19 T15
+T21	Transaction 323 344	granted the reversion
+T22	Transaction 251 260	reversion
+R14	is_grantor_in Arg1:T6 Arg2:T22	
+R18	precedes Arg1:T22 Arg2:T21	
+R19	is_grantor_in Arg1:T12 Arg2:T21	
+R20	is_recipient_in Arg1:T15 Arg2:T21	
+R21	is_recipient_in Arg1:T17 Arg2:T21	
+R3	is_recipient_in Arg1:T12 Arg2:T22	
+R4	occupation_is Arg1:T17 Arg2:T18	
+*	same_as T20 T17
+R10	is_location_of Arg:T4 Arg2:T22	
+R13	is_dated Arg1:T1 Arg2:T2	

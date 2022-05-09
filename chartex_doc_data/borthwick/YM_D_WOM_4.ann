@@ -1,0 +1,28 @@
+T1	Document 0 10	YM/D/WOM/4
+#1	AnnotatorNotes T1	{"Creation Dates": "9 September 1583", "Title": ""}
+T2	Transaction 11 19	Petition
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 23 37	Peter Standley
+T4	Place 41 50	Womersley
+T5	Occupation 52 55	esq
+R2	is_of Arg1:T3 Arg2:T4	
+R3	occupation_is Arg1:T3 Arg2:T5	
+R4	is_participant_in Arg1:T3 Arg2:T2	
+T6	Site 152 157	close
+R5	is_parcel_in Arg1:T6 Arg2:T2	
+T7	Place 161 170	Womersley
+R6	is_located_in Arg1:T6 Arg2:T7	
+T8	Site 178 186	Pitcroft
+T9	Site 190 205	Sherewood close
+*	same_as T9 T6 T8
+T10	Person 219 234	George Mydleton
+T11	Place 238 244	Whitby
+R7	is_of Arg1:T10 Arg2:T11	
+R8	is_a_tenant_of Arg1:T10 Arg2:T6	
+T12	Person 115 123	Standley
+*	same_as T12 T3 T13
+T13	Person 306 316	Standley's
+T14	Institution 65 70	Queen
+T15	Institution 79 99	Council of the North
+R9	is_participant_in Arg1:T14 Arg2:T2	
+R10	is_participant_in Arg1:T15 Arg2:T2	

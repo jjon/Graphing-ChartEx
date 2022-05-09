@@ -1,0 +1,64 @@
+T1	Document 0 17	vicars-choral-162
+T2	Person 63 67	John
+T3	Person 75 82	William
+T4	Person 90 97	William
+T5	Person 105 112	Sirithe
+T7	Person 174 206	mag. John de Morton called Roman
+T6	Transaction 133 149	mutual agreement
+R1	is_son_of Arg1:T2 Arg2:T3	
+R2	is_son_of Arg1:T3 Arg2:T4	
+R3	is_son_of Arg1:T4 Arg2:T5	
+R4	refers_to Arg1:T1 Arg2:T6	
+R5	is_grantor_in Arg1:T2 Arg2:T6	
+R6	is_recipient_in Arg1:T7 Arg2:T6	
+T8	Date 228 243	Michaelmas 1257
+T9	Person 275 279	John
+*	same_as T16 T17
+T10	Site 292 321	stone messuage with buildings
+T11	Apparatus 150 166	(ex causa mutui)
+R7	precedes Arg1:T6 Arg2:T8	
+R8	is_parcel_in Arg1:T10 Arg2:T6	
+T12	Site 325 336	Guthrumgate
+R9	is_part_of Arg1:T10 Arg2:T12	
+T13	Person 398 413	J[ohn] de Hesel
+R10	is_previous_participant_in Arg1:T13 Arg2:T15	
+T14	Person 418 436	W[illiam] de Croft
+R11	is_previous_participant_in Arg1:T14 Arg2:T15	
+T15	Transaction 380 391	enfeoffment
+R12	precedes Arg1:T15 Arg2:T6	
+T16	Person 451 460	mag. John
+T17	Person 526 535	mag. John
+T18	Person 577 581	John
+*	same_as T18 T2 T9 T19
+R13	is_a_tenant_of Arg1:T2 Arg2:T10	
+T19	Person 643 647	John
+T20	Person 718 722	John
+*	same_as T20 T13
+T21	Person 727 735	William.
+*	same_as T21 T14
+T22	Apparatus 736 751	Seal. Witnesses
+R14	contains Arg1:T1 Arg2:T11	
+R15	contains Arg1:T1 Arg2:T22	
+T23	Person 753 769	Gace de Chaumund
+T24	Person 771 784	John Goscelin
+T25	Person 786 801	Robert le Blund
+T26	Person 803 817	Stephen Sperri
+T27	Occupation 819 835	bailiffs of York
+T28	Person 837 851	Richard Gruscy
+T29	Person 853 863	Peter Noel
+T30	Person 865 884	Geoffrey de Stokton
+T31	Apparatus 897 2367	[mid 1250s] SOURCE: VC 3/Vi 104 (185 mm. x 93 mm.). Indented at top. ENDORSEMENT: Invadiacio facia johanni Romano de dorno lapidea; in Godrevngat. SEAL: slit. DATE: Although Gace de Chaumund is not described here as mayor, his precedence before three bailiffs suggests that he was in fact witnessing as that office-holder. See dating note to 61. NOTE: John de Morton called Roman is identifiable as John le Romeyn the younger, who died in 1296 as archbishop of York. He bequeathed the stone house recorded here, as well as land in Layerthorpe, to the vicars. A marginal note against the cartulary copy of the vicars' licence to acquire the property in mortmain, dated 1298, refers to the Goodramgate property as 'great stone houses opposite the Bedern' (note to 268). In 1298 the houses were let to a canon of York, John de Caen, for life (163). The property is identifiable as Camhall or Cambhall, so called by 1332 (VC 3/1/1, fos. 62v. [date], 66v., 67v.) and presumably derived from Caen's name. It occupied a site in Goodramgate adjoining the north side of the Minster Gate, later removed to make room for modern College Street (BIHR, CC. VC. 10, York/CHG 1-8 and York/Goo 62, 66). According to a plan of 1833 the site comprised nos. 24-32 Gobdramgate and nos. 8-12 College Street (BIHR, CC. VC. I I, no. 1). Romeyn's stone house, which stood behind the street frontage, was redeveloped as a courtyard of timber-framed houses in the early 1360s (VC 3/3/29; VC 6/9/1)
+R16	contains Arg1:T1 Arg2:T31	
+R17	refers_to Arg1:T1 Arg2:T6	
+R18	contains Arg1:T1 Arg2:T11	
+R19	is_witness_to Arg1:T23 Arg2:T6	
+R20	is_witness_to Arg1:T24 Arg2:T6	
+R21	is_witness_to Arg1:T25 Arg2:T6	
+R22	is_witness_to Arg1:T26 Arg2:T6	
+R23	is_witness_to Arg1:T28 Arg2:T6	
+R24	is_witness_to Arg1:T29 Arg2:T6	
+R25	is_witness_to Arg1:T30 Arg2:T6	
+R26	occupation_is Arg1:T26 Arg2:T27	
+R27	occupation_is Arg1:T25 Arg2:T27	
+R28	occupation_is Arg1:T24 Arg2:T27	
+R29	occupation_is Arg1:T23 Arg2:T27	

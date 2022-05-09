@@ -1,0 +1,68 @@
+T1	Document 0 14	deeds-00880074
+#1	AnnotatorNotes T1	{'editorial date':'1301', 'transaction type': 'Confirmation'}
+T2	Person 77 104	frater Willelmus de Tothale
+T3	Occupation 158 163	prior
+T4	Place 167 173	Anglia
+T5	Institution 177 184	fratres
+T6	Transaction 258 310	concessisse et hac presenti carta nostra confirmasse
+T7	Person 311 327	Iohanni le Frere
+T8	Site 345 374	unum mesuagium cum curtilagio
+T9	Place 405 410	villa
+T10	Site 423 447	mesuagium cum curtilagio
+T11	Person 469 484	Beatrix Schryve
+T12	Place 518 523	villa
+T13	Site 557 562	terra
+T14	Site 585 597	regalem viam
+T15	Place 611 624	Fynchyngefeld
+T16	Site 665 671	terram
+T17	Site 707 713	terram
+T18	Person 563 575	Roberti Pace
+T19	Person 678 690	Roberti Pace
+T20	Person 714 729	Ricardi Hornwod
+T21	Person 797 813	Iohanni le Frere
+T23	Person 1261 1268	Iohanni
+T26	Person 1858 1882	fratre Nicholao Daccombe
+T27	Person 1883 1909	fratre Rogero de Somerdeby
+T28	Person 1910 1932	fratre Rogero Maulovel
+T29	Person 1933 1954	fratre Adam de Witham
+T30	Person 1955 1980	fratre Humfrido de Witham
+T31	Person 1981 2007	fratre Alexandro de Mycham
+T32	Occupation 2013 2038	magistro de Mapeltrestede
+T33	Person 2039 2054	Iohanne Huraunt
+T34	Date 2121 2227	die dominica in festo apostolorum Simonis et Iude anno incarnacionis Dominice millesimo trecentesimo primo
+R2	is_grantor_in Arg1:T5 Arg2:T6	
+R3	is_recipient_in Arg1:T7 Arg2:T6	
+R4	is_parcel_in Arg1:T8 Arg2:T6	
+R5	is_part_of Arg1:T8 Arg2:T9	
+*	same_as T12 T9 T35
+R6	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+R8	is_length_marker_to Arg1:T13 Arg2:T10	
+R9	is_length_marker_to Arg1:T14 Arg2:T10	
+R10	is_a_tenant_of Arg1:T18 Arg2:T13	
+R11	is_breadth_marker_to Arg1:T16 Arg2:T10	
+R12	is_a_tenant_of Arg1:T19 Arg2:T16	
+*	same_as T19 T18
+R13	is_breadth_marker_to Arg1:T17 Arg2:T10	
+R14	is_a_tenant_of Arg1:T20 Arg2:T17	
+R15	occupation_is Arg1:T31 Arg2:T32	
+T35	Place 331 344	Fynchyngefeld
+R17	refers_to Arg1:T1 Arg2:T6	
+R18	is_dated Arg1:T1 Arg2:T34	
+R7	is_of Arg1:T7 Arg2:T35	
+T36	Place 632 641	Berdefeld
+T24	Person 1413 1421	Iohannes
+R20	occupation_is Arg1:T2 Arg2:T3	
+T25	Institution 105 149	fratrum hospitalis sancti Iohannis Ierusalem
+R19	is_officeholder_in Arg1:T2 Arg2:T25	
+R21	is_located_in Arg1:T25 Arg2:T4	
+*	same_as T5 T25
+T37	Place 1560 1573	Mapeltrestede
+T38	Person 1698 1706	Iohannem
+T39	Person 1812 1820	Iohannes
+*	same_as T39 T38 T24 T23 T21 T7
+R22	is_located_in Arg1:T25 Arg2:T37	
+R23	is_boundary_to Arg1:T15 Arg2:T14	
+R24	is_boundary_to Arg1:T36 Arg2:T14	
+T40	Place 2107 2120	Melcheb[ur]ne
+R25	is_location_of Arg:T40 Arg2:T6	
+R1	is_grantor_in Arg1:T2 Arg2:T6	

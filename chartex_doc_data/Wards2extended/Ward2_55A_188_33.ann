@@ -1,0 +1,36 @@
+T1	Document 0 16	Ward2_55A_188_33
+#1	AnnotatorNotes T1	{"piece_id": "5471256", "date_text": "1610 May 27"}
+T2	Transaction 17 30	Final concord
+#2	AnnotatorNotes T2	Summary identical to 32, though originals are not identical
+T3	Person 179 192	Thomas Wither
+T4	Occupation 194 212	doctor of theology
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	occupation_is Arg1:T3 Arg2:T4	
+R3	is_participant_in Arg1:T3 Arg2:T2	
+T5	Person 229 242	Edward Jenner
+T6	Person 247 253	Martha
+R4	is_wife_of Arg1:T6 Arg2:T5	
+T7	Person 264 274	Henry Laye
+T8	Person 279 282	Ann
+R5	is_wife_of Arg1:T8 Arg2:T7	
+R6	is_participant_in Arg1:T5 Arg2:T2	
+R7	is_participant_in Arg1:T7 Arg2:T2	
+T9	Site 310 315	lands
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T10	Apparatus 317 326	specified
+R9	contains Arg1:T1 Arg2:T10	
+T11	Place 331 338	Fordham
+T12	Place 343 354	Wormingford
+T13	Apparatus 355 372	(Wethermondeford)
+T14	Place 374 379	Essex
+R10	is_part_of Arg1:T12 Arg2:T14	
+R11	is_part_of Arg1:T11 Arg2:T14	
+R12	contains Arg1:T1 Arg2:T13	
+R13	is_located_in Arg1:T9 Arg2:T11	
+R14	is_located_in Arg1:T9 Arg2:T12	
+R15	is_participant_in Arg1:T6 Arg2:T2	
+R16	is_participant_in Arg1:T8 Arg2:T2	
+T15	Institution 43 64	Court of Common Pleas
+T16	Place 68 79	Westminster
+R17	is_located_in Arg1:T15 Arg2:T16	
+R18	is_location_of Arg:T16 Arg2:T2	

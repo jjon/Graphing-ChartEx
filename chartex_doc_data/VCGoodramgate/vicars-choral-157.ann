@@ -1,0 +1,50 @@
+T1	Document 0 17	vicars-choral-157
+T2	Person 84 101	Hugh the Merchant
+T3	Person 174 185	Lady Alicia
+T4	Person 206 221	Henry de Nevill
+T5	Person 291 308	Robert de Barneby
+T6	Transaction 152 173	appointed as attorney
+T7	Person 428 434	Robert
+T8	Site 399 403	land
+T9	Site 442 448	corner
+T10	Site 452 459	Aldwark
+T11	Person 546 552	Robert
+T12	Person 627 651	lord Robert de Skegnesse
+T13	Person 653 669	Peter de Barneby
+T14	Person 671 690	Galfrid de Queldric
+T15	Person 692 709	William Malesaver
+T16	Person 711 716	Roger
+T17	Occupation 717 745	clerk of the lord archbishop
+T18	Person 747 760	Adam Punchard
+T19	Person 762 779	John de Ogleforth
+T20	Person 781 788	William
+T21	Occupation 793 800	vintner
+T22	Person 802 820	Robert de Monkgate
+T23	Person 822 836	Adam de Winton
+T24	Person 838 842	John
+T25	Occupation 843 848	clerk
+T26	Apparatus 862 1028	SOURCE: VC 3/Vi 113ii (194 mm. x 86 mm.) ENDORSEMENT: about the land of Alice Nevill on the corner of Aldwark that now is held by the altar of St Edward in the Minste
+R1	refers_to Arg1:T1 Arg2:T6	
+R2	contains Arg1:T1 Arg2:T26	
+R3	is_grantor_in Arg1:T2 Arg2:T6	
+R4	is_widow_of Arg1:T3 Arg2:T4	
+R5	is_participant_in Arg1:T3 Arg2:T6	
+R6	is_recipient_in Arg1:T5 Arg2:T6	
+*	same_as T7 T5 T11
+R7	is_a_previous_grantor_of Arg1:T5 Arg2:T8	
+R8	is_part_of Arg1:T8 Arg2:T9	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_witness_to Arg1:T12 Arg2:T6	
+R11	is_witness_to Arg1:T13 Arg2:T6	
+R12	is_witness_to Arg1:T14 Arg2:T6	
+R13	is_witness_to Arg1:T15 Arg2:T6	
+R14	occupation_is Arg1:T16 Arg2:T17	
+R15	is_witness_to Arg1:T16 Arg2:T6	
+R16	is_witness_to Arg1:T18 Arg2:T6	
+R17	is_witness_to Arg1:T19 Arg2:T6	
+R18	occupation_is Arg1:T20 Arg2:T21	
+R19	is_witness_to Arg1:T20 Arg2:T6	
+R20	is_witness_to Arg1:T22 Arg2:T6	
+R21	is_witness_to Arg1:T23 Arg2:T6	
+R22	occupation_is Arg1:T24 Arg2:T25	
+R23	is_witness_to Arg1:T24 Arg2:T6	

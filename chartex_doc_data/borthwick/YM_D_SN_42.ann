@@ -1,0 +1,73 @@
+T1	Document 0 10	YM/D/SN/42
+T2	Transaction 12 25	Final concord
+#1	AnnotatorNotes T1	{"Creation Dates": "Easter Term, 1596", "Title": "Final concord"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 26 41	Edward Stanhope
+T4	Person 50 69	Elizabeth Radcliffe
+T5	Person 71 85	John Topcliffe
+T6	Person 90 95	Edith
+T7	Person 106 124	Christopher Jorden
+T8	Person 131 138	Jarthen
+T9	Occupation 140 144	gent
+T10	Person 151 158	Susanna
+T11	Person 169 180	Brian Deane
+T12	Occupation 182 187	clerk
+T13	Person 193 202	Thomasina
+T14	Person 217 232	William Headley
+T15	Person 237 243	Martha
+T16	Site 261 269	messuage
+T17	Site 273 280	cottage
+T18	Site 282 289	3 tofts
+T19	Site 291 300	3 gardens
+T20	Site 302 315	50 acres land
+T21	Site 261 351	messuage, a cottage, 3 tofts, 3 gardens, 50 acres land, 40 acres meadow, 30 acres pasture,
+T22	Site 334 350	30 acres pasture
+R6	is_wife_of Arg1:T6 Arg2:T5	
+*	same_as T8 T7
+R9	occupation_is Arg1:T7 Arg2:T9	
+R10	is_wife_of Arg1:T10 Arg2:T7	
+R12	occupation_is Arg1:T11 Arg2:T12	
+R13	is_wife_of Arg1:T13 Arg2:T11	
+R18	is_wife_of Arg1:T15 Arg2:T14	
+R19	is_parcel_in Arg1:T16 Arg2:T2	
+R20	is_parcel_in Arg1:T17 Arg2:T2	
+R21	is_parcel_in Arg1:T18 Arg2:T2	
+R22	is_parcel_in Arg1:T19 Arg2:T2	
+R23	is_parcel_in Arg1:T20 Arg2:T2	
+R24	is_parcel_in Arg1:T21 Arg2:T2	
+R25	is_parcel_in Arg1:T22 Arg2:T2	
+T25	Place 396 402	Snaith
+T26	Place 404 410	Cowick
+T27	Place 415 424	Dykemarsh
+T23	Site 317 332	40 acres meadow
+R26	is_part_of Arg1:T16 Arg2:T21	
+R27	is_part_of Arg1:T17 Arg2:T21	
+R28	is_part_of Arg1:T18 Arg2:T21	
+R29	is_part_of Arg1:T19 Arg2:T21	
+R30	is_part_of Arg1:T23 Arg2:T21	
+R31	is_part_of Arg1:T22 Arg2:T21	
+R32	is_located_in Arg1:T21 Arg2:T25	
+R33	is_located_in Arg1:T21 Arg2:T26	
+R34	is_located_in Arg1:T21 Arg2:T27	
+T24	Person 484 493	Elizabeth
+T28	Person 495 500	Edith
+T29	Person 502 509	Susanna
+T30	Person 511 520	Thomasina
+T31	Person 526 532	Martha
+*	same_as T24 T4
+*	same_as T28 T6
+*	same_as T29 T10
+*	same_as T30 T13
+*	same_as T31 T15
+R2	is_recipient_in Arg1:T3 Arg2:T2	
+R3	is_grantor_in Arg1:T4 Arg2:T2	
+R4	is_grantor_in Arg1:T5 Arg2:T2	
+R5	is_grantor_in Arg1:T6 Arg2:T2	
+R7	is_grantor_in Arg1:T7 Arg2:T2	
+R8	is_grantor_in Arg1:T10 Arg2:T2	
+R11	is_grantor_in Arg1:T11 Arg2:T2	
+R14	is_grantor_in Arg1:T13 Arg2:T2	
+R15	is_grantor_in Arg1:T14 Arg2:T2	
+R16	is_grantor_in Arg1:T15 Arg2:T2	
+T32	Site 374 380	common
+T33	Institution 374 391	common of pasture

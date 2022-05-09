@@ -1,0 +1,49 @@
+T1	Document 0 15	Ward2_55_188_14
+#1	AnnotatorNotes T1	{"piece_id": "5471237", "date_text": "1609 July 7"}
+T2	Transaction 16 45	Indenture of bargain and sale
+T3	Person 49 62	Edward Jenner
+T4	Person 96 109	Thomas Wither
+T5	Site 160 168	messuage
+T6	Site 174 179	yards
+T7	Site 181 188	gardens
+T8	Site 190 198	orchards
+R1	is_part_of Arg1:T6 Arg2:T5	
+R2	is_part_of Arg1:T7 Arg2:T5	
+R3	is_part_of Arg1:T8 Arg2:T5	
+T9	Site 200 210	two crofts
+T10	Site 219 226	Plumers
+T11	Site 232 241	Free Mudd
+R4	is_part_of Arg1:T10 Arg2:T9	
+R5	is_part_of Arg1:T11 Arg2:T9	
+R6	is_parcel_in Arg1:T5 Arg2:T2	
+T12	Place 267 274	Fordham
+R8	is_located_in Arg1:T5 Arg2:T12	
+T13	Apparatus 275 293	location specified
+T14	Apparatus 244 261	details specified
+T15	Person 317 330	John Stephens
+T16	Person 332 345	Martin Basell
+T17	Person 350 363	John Jacksonn
+T18	Apparatus 365 400	Seal and signature of Edward Jenner
+R10	is_grantor_in Arg1:T3 Arg2:T2	
+R11	is_recipient_in Arg1:T4 Arg2:T2	
+T19	Place 66 74	Brantham
+T20	Place 76 83	Suffolk
+T21	Occupation 85 91	yeoman
+T22	Place 113 126	Great Fordham
+T23	Place 128 133	Essex
+T24	Occupation 135 153	doctor of divinity
+R12	is_of Arg1:T3 Arg2:T19	
+R13	is_part_of Arg1:T19 Arg2:T20	
+R14	occupation_is Arg1:T3 Arg2:T21	
+R15	is_of Arg1:T4 Arg2:T22	
+R16	occupation_is Arg1:T4 Arg2:T24	
+R17	is_part_of Arg1:T22 Arg2:T23	
+R18	refers_to Arg1:T1 Arg2:T2	
+R19	contains Arg1:T1 Arg2:T14	
+R20	contains Arg1:T1 Arg2:T13	
+R21	contains Arg1:T1 Arg2:T18	
+R22	is_witness_to Arg1:T15 Arg2:T2	
+R23	is_witness_to Arg1:T15 Arg2:T2	
+R24	is_witness_to Arg1:T16 Arg2:T2	
+R25	is_witness_to Arg1:T17 Arg2:T2	
+R7	is_part_of Arg1:T9 Arg2:T5	

@@ -1,0 +1,45 @@
+T1	Document 0 14	deeds-00880888
+#1	AnnotatorNotes T1	{'editorial date':'1272', 'transaction type': 'Final Concord'}
+T2	Place 74 85	Chelmesford
+T3	Institution 50 68	curia domini regis
+R2	is_located_in Arg1:T3 Arg2:T2	
+T5	Date 86 180	in crastino sancti Martini anno regni regis Henrici filii regis Iohannis quinquagesimo septimo
+R3	is_dated Arg1:T1 Arg2:T5	
+T14	Person 407 430	fratrem Rogerum de Veyr
+T15	Occupation 431 438	priorem
+T16	Institution 439 475	hospitalis sancti Iohannis Ierusalem
+T17	Place 479 485	Anglia
+R4	occupation_is Arg1:T14 Arg2:T15	
+R5	is_officeholder_in Arg1:T14 Arg2:T16	
+R6	is_located_in Arg1:T16 Arg2:T17	
+T18	Person 500 528	fratrem Iohannem de Capenore
+T19	Person 576 597	Thomam filium Othonis
+T21	Person 652 658	Thomas
+T22	Site 684 693	tenemento
+T23	Place 718 727	Oddewelle
+T24	Place 731 744	Gestingthorpe
+T25	Person 758 764	Thomas
+T26	Person 893 898	Thome
+T27	Person 1775 1780	Thome
+T28	Institution 1169 1218	prioris et ecclesie sue sancti Iohannis Ierusalem
+T30	Institution 879 885	curiam
+R25	is_located_in Arg1:T22 Arg2:T23	
+R26	is_located_in Arg1:T22 Arg2:T24	
+R27	is_officeholder_in Arg1:T26 Arg2:T30	
+T32	Place 904 917	Gestingthorpe
+T29	Person 1097 1103	Thomas
+T33	Person 1308 1313	Thoma
+T34	Person 1398 1404	Thomas
+*	same_as T27 T34 T33 T29 T26 T21 T19 T25
+*	same_as T28 T16
+T4	Site 879 885	curiam
+R28	is_located_in Arg1:T4 Arg2:T32	
+R29	is_other_relation_to Arg1:T18 Arg2:T14	
+T20	Transaction 1104 1114	recognovit
+T35	Site 1125 1135	tenementum
+*	same_as T22 T35
+R1	is_grantor_in Arg1:T29 Arg2:T20	
+R7	is_parcel_in Arg1:T35 Arg2:T20	
+R8	is_recipient_in Arg1:T28 Arg2:T20	
+R9	refers_to Arg1:T1 Arg2:T20	
+R10	is_location_of Arg:T2 Arg2:T20	

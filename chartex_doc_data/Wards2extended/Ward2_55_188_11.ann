@@ -1,0 +1,58 @@
+T1	Document 0 15	Ward2_55_188_11
+#1	AnnotatorNotes T1	{"piece_id": "5471234", "date_text": "1575 Apr 20"}
+T2	Transaction 16 35	Grant and quitclaim
+T3	Person 39 51	John Whytman
+T4	Person 86 99	Robert Jenner
+T5	Person 524 536	John Whytman
+T6	Person 549 559	John Fludd
+T7	Person 561 570	John Rose
+T8	Person 575 589	Richard Newton
+T9	Site 145 150	field
+T10	Place 203 210	Fordham
+R1	is_located_in Arg1:T9 Arg2:T10	
+T11	Place 55 62	Fordham
+T12	Place 64 69	Essex
+T13	Place 103 119	Stoke by Nayland
+T14	Place 121 128	Suffolk
+R2	is_of Arg1:T3 Arg2:T11	
+R3	is_part_of Arg1:T11 Arg2:T12	
+R4	is_of Arg1:T4 Arg2:T13	
+R5	is_part_of Arg1:T13 Arg2:T14	
+T16	Occupation 71 81	husbandman
+T17	Occupation 130 136	yeoman
+R6	occupation_is Arg1:T3 Arg2:T16	
+R7	occupation_is Arg1:T4 Arg2:T17	
+R8	is_grantor_in Arg1:T3 Arg2:T2	
+R9	is_recipient_in Arg1:T4 Arg2:T2	
+R10	is_parcel_in Arg1:T9 Arg2:T2	
+*	same_as T5 T3
+R11	is_witness_to Arg1:T6 Arg2:T2	
+R12	is_witness_to Arg1:T7 Arg2:T2	
+R13	is_witness_to Arg1:T8 Arg2:T2	
+R14	refers_to Arg1:T1 Arg2:T2	
+T18	Site 177 199	three and a half acres
+*	same_as T11 T10
+T19	Site 159 164	Heard
+*	same_as T19 T9 T18
+T15	Site 236 244	tenement
+T20	Site 252 265	Fordham Fryth
+*	same_as T15 T20
+R15	is_eastern_directional_marker_to Arg1:T20 Arg2:T9	
+T21	Site 289 297	tenement
+T22	Site 305 311	Howdes
+*	same_as T21 T22
+R16	is_western_directional_marker_to Arg1:T22 Arg2:T9	
+T23	Site 345 350	lands
+T24	Person 354 367	Robert Potter
+R17	is_a_tenant_of Arg1:T24 Arg2:T23	
+T25	Site 375 385	Fanes Land
+*	same_as T23 T25
+R18	is_northern_directional_marker_to Arg1:T25 Arg2:T9	
+T26	Site 415 420	lands
+R19	not_same_as Arg1:T26 Arg2:T23	
+T27	Person 433 446	Robers Potter
+*	same_as T27 T24
+R20	is_a_landlord_of Arg1:T27 Arg2:T26	
+T28	Person 483 493	John Spark
+R21	is_a_tenant_of Arg1:T28 Arg2:T26	
+R22	is_southern_directional_marker_to Arg1:T26 Arg2:T9	

@@ -1,0 +1,27 @@
+T1	Document 0 17	vicars-choral-159
+T2	Transaction 18 23	Grant
+T3	Person 27 40	Hugh Rumanger
+T4	Occupation 41 49	chaplain
+T5	Person 53 76	mag. Robert de Wintonia
+T6	Occupation 77 94	precentor of York
+T7	Site 164 168	land
+T8	Site 172 184	Gutherumgate
+T9	Institution 208 217	St. Peter
+T10	Person 238 242	Hugh
+T11	Person 417 428	mag. Robert
+T12	Institution 483 502	church of St. Peter
+T13	Person 513 524	Mag. Robert
+T14	Person 678 682	Hugh
+T15	Apparatus 731 860	Warranty. [1235 x 1240] SOURCE: VC 3/1/1, fo. 19r.—v. DATE: When Robert de Winchester was precentor (see 532 note). NOTE: See 158
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T15	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	occupation_is Arg1:T3 Arg2:T4	
+R5	is_recipient_in Arg1:T5 Arg2:T2	
+R6	occupation_is Arg1:T5 Arg2:T6	
+R7	is_parcel_in Arg1:T7 Arg2:T2	
+R8	is_part_of Arg1:T7 Arg2:T8	
+R9	is_a_landlord_of Arg1:T9 Arg2:T7	
+*	same_as T10 T3 T14
+*	same_as T11 T5 T13
+*	same_as T12 T9

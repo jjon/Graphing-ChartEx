@@ -1,0 +1,59 @@
+T1	Document 0 14	deeds-00880894
+#1	AnnotatorNotes T1	{'editorial date':'1240', 'transaction type': 'Final Concord'}
+T2	Place 74 85	Chelmesford
+T3	Institution 50 68	curia domini regis
+T5	Date 86 184	in crastino sancti Iohannis Baptiste anno regni regis Henrici filii regis Iohannis vicesimo quarto
+R2	is_dated Arg1:T1 Arg2:T5	
+T15	Person 384 404	Isabellam de Odewell
+T16	Person 417 435	Simonem de Odewell
+T17	Person 439 448	Margeriam
+T18	Site 473 497	quinquaginta acris terre
+T19	Site 501 513	uno mesuagio
+T20	Place 534 547	Gestingthorpe
+T21	Person 615 620	Simon
+T22	Person 624 632	Margeria
+T25	Site 878 886	mesuagio
+T26	Site 890 908	tribus acris terre
+T27	Site 953 962	mesuagium
+T28	Person 991 999	Isabelle
+T29	Person 1070 1076	Simoni
+T30	Person 1080 1088	Margerie
+T31	Person 802 808	Simoni
+T32	Person 812 820	Margerie
+T33	Person 1432 1437	Simon
+T34	Person 1458 1466	Margeria
+T35	Person 1490 1498	Margeria
+T36	Person 1650 1656	Simoni
+T37	Person 1660 1668	Margerie
+T38	Person 1827 1832	Simon
+T39	Person 1836 1844	Margeria
+R17	is_wife_of Arg1:T17 Arg2:T16	
+R20	is_located_in Arg1:T18 Arg2:T20	
+R21	is_located_in Arg1:T19 Arg2:T20	
+*	same_as T25 T27 T19
+R19	is_part_of Arg1:T26 Arg2:T18	
+R22	is_western_directional_marker_to Arg1:T27 Arg2:T26	
+*	same_as T28 T15 T7 T11 T8
+*	same_as T38 T36 T31 T21 T16 T29 T33
+*	same_as T39 T37 T32 T22 T17 T30 T34 T35
+R31	is_located_in Arg1:T3 Arg2:T2	
+T4	Transaction 633 646	recognoverunt
+R1	is_grantor_in Arg1:T21 Arg2:T4	
+R3	is_grantor_in Arg1:T22 Arg2:T4	
+T6	Site 663 682	terram et mesuagium
+R4	is_part_of Arg1:T18 Arg2:T6	
+R5	is_part_of Arg1:T19 Arg2:T6	
+R6	is_parcel_in Arg1:T6 Arg2:T4	
+T7	Person 716 724	Isabelle
+R7	is_recipient_in Arg1:T7 Arg2:T4	
+T8	Person 773 781	Isabella
+T9	Transaction 782 791	concessit
+T10	Site 837 843	terram
+*	same_as T10 T18
+R8	is_parcel_in Arg1:T10 Arg2:T9	
+R9	is_grantor_in Arg1:T8 Arg2:T9	
+R10	is_recipient_in Arg1:T31 Arg2:T9	
+R11	is_recipient_in Arg1:T32 Arg2:T9	
+R12	is_a_tenant_of Arg1:T8 Arg2:T25	
+R13	is_a_tenant_of Arg1:T8 Arg2:T26	
+T11	Person 1863 1871	Isabelle

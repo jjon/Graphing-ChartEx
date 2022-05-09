@@ -1,0 +1,80 @@
+T1	Document 0 17	vicars-choral-444
+T2	Date 722 743	4 May 5 Henry V [1417
+R1	is_dated Arg1:T1 Arg2:T2	
+T3	Apparatus 746 1018	SOURCE: VC 3/Vi 341 (313 mm. x 157 mm.) ENDORSEMENT: Carta Johannis Ward Johanni Watton et Johanni Mahon de tenementis omnibus in Petirgat et Hornpotlane; horpottlayn. SEAL: round (25 mm. dia.), red, impression of a shield with design, surmounted by a cross. NOTE: See 443
+R2	contains Arg1:T1 Arg2:T3	
+T4	Transaction 144 153	reversion
+R3	refers_to Arg1:T1 Arg2:T4	
+T5	Person 34 44	John Warde
+T6	Occupation 57 65	merchant
+T7	Place 69 73	York
+T8	Person 97 108	John Watton
+T9	Occupation 109 117	chaplain
+T10	Person 122 133	John Malton
+T11	Occupation 134 139	clerk
+T12	Site 157 167	a messuage
+T13	Site 171 180	Petergate
+T14	Site 201 207	corner
+T15	Site 211 222	Hornpotlane
+T16	Site 246 250	lane
+T17	Site 259 267	tenement
+T18	Person 271 299	Nicholas Blackburn the elder
+T19	Occupation 312 320	merchant
+T20	Place 324 328	York
+T21	Site 336 343	tenemen
+T22	Person 357 365	Nicholas
+T23	Site 373 378	lane,
+T24	Site 390 396	moiety
+T25	Site 400 409	a chamber
+T26	Site 417 425	messuage
+T27	Site 430 436	moiety
+T28	Person 448 456	Beatrice
+T29	Person 576 589	William Bowes
+T30	Occupation 590 595	mayor
+T31	Person 597 609	John Waughen
+T32	Person 611 626	Thomas Snawedon
+T33	Occupation 628 636	sheriffs
+T34	Person 638 655	Nicholas Blakburn
+T35	Person 657 669	Robert Howom
+T36	Person 671 687	Henry de Preston
+T37	Person 689 702	Simon Waughen
+T38	Place 716 720	York
+R4	is_location_of Arg:T38 Arg2:T4	
+R5	occupation_is Arg1:T5 Arg2:T6	
+R6	is_of Arg1:T5 Arg2:T7	
+R7	is_grantor_in Arg1:T5 Arg2:T4	
+R8	occupation_is Arg1:T8 Arg2:T9	
+R9	is_recipient_in Arg1:T8 Arg2:T4	
+R10	occupation_is Arg1:T10 Arg2:T11	
+R11	is_recipient_in Arg1:T10 Arg2:T4	
+R12	is_parcel_in Arg1:T12 Arg2:T4	
+R13	is_part_of Arg1:T12 Arg2:T13	
+R14	is_boundary_to Arg1:T14 Arg2:T12	
+R15	is_part_of Arg1:T14 Arg2:T15	
+*	same_as T16 T15 T23
+R16	is_boundary_to Arg1:T15 Arg2:T12	
+R17	is_boundary_to Arg1:T17 Arg2:T12	
+R18	is_a_tenant_of Arg1:T18 Arg2:T17	
+R19	occupation_is Arg1:T18 Arg2:T19	
+R20	is_of Arg1:T18 Arg2:T20	
+R21	is_boundary_to Arg1:T21 Arg2:T12	
+R22	is_a_tenant_of Arg1:T22 Arg2:T21	
+*	same_as T21 T17
+*	same_as T22 T18
+R23	is_part_of Arg1:T17 Arg2:T23	
+R24	is_part_of Arg1:T24 Arg2:T25	
+R25	is_parcel_in Arg1:T25 Arg2:T4	
+*	same_as T26 T12
+*	same_as T27 T24
+R26	is_mother_of Arg1:T28 Arg2:T5	
+R27	is_a_tenant_in Arg1:T28 Arg2:T4	
+R28	occupation_is Arg1:T29 Arg2:T30	
+R29	occupation_is Arg1:T31 Arg2:T33	
+R30	occupation_is Arg1:T32 Arg2:T33	
+R31	is_witness_to Arg1:T29 Arg2:T4	
+R32	is_witness_to Arg1:T31 Arg2:T4	
+R33	is_witness_to Arg1:T32 Arg2:T4	
+R34	is_witness_to Arg1:T34 Arg2:T4	
+R35	is_witness_to Arg1:T35 Arg2:T4	
+R36	is_witness_to Arg1:T36 Arg2:T4	
+R37	is_witness_to Arg1:T37 Arg2:T4	

@@ -1,0 +1,22 @@
+T1	Document 0 16	Ward2_55A_188_30
+#1	AnnotatorNotes T1	{"piece_id": "5471253", "date_text": "1581 Apr 9"}
+T2	Transaction 17 30	Final concord
+T7	Person 174 187	Richard Broke
+T8	Person 192 205	George Armond
+T9	Person 223 236	Robert Jenner
+T10	Site 254 259	lands
+T11	Place 275 282	Fordham
+T12	Place 284 289	Essex
+R1	is_part_of Arg1:T11 Arg2:T12	
+R2	is_parcel_in Arg1:T10 Arg2:T2	
+R3	refers_to Arg1:T1 Arg2:T2	
+T13	Apparatus 261 270	specified
+T15	Place 68 79	Westminster
+R4	is_location_of Arg:T15 Arg2:T2	
+R10	is_participant_in Arg1:T7 Arg2:T2	
+R11	is_participant_in Arg1:T8 Arg2:T2	
+R12	is_participant_in Arg1:T9 Arg2:T2	
+R13	is_located_in Arg1:T10 Arg2:T11	
+T3	Institution 43 64	Court of Common Pleas
+R5	is_located_in Arg1:T3 Arg2:T15	
+R6	contains Arg1:T1 Arg2:T13	

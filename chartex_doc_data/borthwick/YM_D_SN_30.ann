@@ -1,0 +1,71 @@
+T1	Document 0 10	YM/D/SN/30
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "6 July 1585", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 34	Richard Bate
+T4	Place 38 45	Gowdall
+T5	Occupation 47 53	yeoman
+T6	Person 55 70	Michael Pearson
+T7	Place 74 83	Wakefield
+T8	Occupation 85 93	merchant
+T9	Site 95 109	2 acres arable
+T10	Site 117 127	west field
+T11	Place 131 137	Snaith
+T12	Site 150 159	4 selions
+T13	SiteRef 170 171	3
+T14	Site 188 193	lands
+T15	Person 210 223	Thomas Ricard
+T16	Place 227 233	Snaith
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	occupation_is Arg1:T3 Arg2:T5	
+R5	is_recipient_in Arg1:T6 Arg2:T2	
+R6	is_of Arg1:T6 Arg2:T7	
+R7	occupation_is Arg1:T6 Arg2:T8	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+R9	is_part_of Arg1:T9 Arg2:T10	
+R10	is_located_in Arg1:T10 Arg2:T11	
+*	same_as T12 T9 T32
+R11	is_part_of Arg1:T13 Arg2:T12	
+R12	is_western_directional_marker_to Arg1:T14 Arg2:T13	
+R13	is_of Arg1:T15 Arg2:T16	
+R14	is_a_previous_tenant_of Arg1:T15 Arg2:T14	
+T17	SiteRef 251 256	those
+T18	Person 274 287	Thomas Ricard
+T19	Place 291 297	Cowick
+R15	is_of Arg1:T18 Arg2:T19	
+R16	is_a_previous_tenant_of Arg1:T18 Arg2:T17	
+R17	is_eastern_directional_marker_to Arg1:T17 Arg2:T13	
+T20	Person 482 498	Dorothy Skargill
+T21	Site 320 332	Snaith Marsh
+R19	is_northern_directional_marker_to Arg1:T21 Arg2:T13	
+T23	Site 355 359	road
+T24	Site 367 374	Dorgate
+*	same_as T23 T24
+R20	is_southern_directional_marker_to Arg1:T23 Arg2:T13	
+T25	Site 393 401	1 selion
+R21	is_part_of Arg1:T25 Arg2:T12	
+T26	Person 436 449	Thomas Ricard
+T27	Place 453 459	Cowick
+R22	is_of Arg1:T26 Arg2:T27	
+T28	Site 413 418	lands
+R23	is_a_previous_tenant_of Arg1:T26 Arg2:T28	
+R24	is_western_directional_marker_to Arg1:T28 Arg2:T25	
+T29	SiteRef 473 478	those
+R25	is_eastern_directional_marker_to Arg1:T29 Arg2:T25	
+R26	is_a_previous_tenant_of Arg1:T20 Arg2:T29	
+R28	is_southern_directional_marker_to Arg1:T23 Arg2:T25	
+R29	is_northern_directional_marker_to Arg1:T21 Arg2:T25	
+T31	Person 557 561	Bate
+T32	Site 584 589	lands
+T33	Transaction 597 606	feoffment
+T34	Person 610 627	Edward Slingesbie
+T35	Person 689 702	Thomas Smithe
+R30	is_a_tenant_of Arg1:T35 Arg2:T32	
+R31	precedes Arg1:T33 Arg2:T2	
+R32	is_recipient_in Arg1:T31 Arg2:T33	
+R33	is_parcel_in Arg1:T32 Arg2:T33	
+R34	is_grantor_in Arg1:T34 Arg2:T33	
+*	same_as T31 T3
+T22	Occupation 500 505	widow
+R18	occupation_is Arg1:T20 Arg2:T22	

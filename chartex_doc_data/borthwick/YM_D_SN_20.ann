@@ -1,0 +1,54 @@
+T1	Document 0 10	YM/D/SN/20
+T2	Transaction 12 50	Bond, to accept partition of an estate
+#1	AnnotatorNotes T1	{"Creation Dates": "3 November, 1574", "Title": "Bond, to accept partition of an estate"}
+T3	Person 51 64	Henry Skelton
+R1	refers_to Arg1:T1 Arg2:T2	
+T4	Place 68 75	Whitley
+T5	Occupation 77 81	gent
+T6	Person 88 104	Margaret Rycarde
+T7	Place 108 114	Snaith
+T8	Person 130 143	Edward Hirdde
+T9	Place 147 153	Snaith
+T10	Occupation 155 159	gent
+T11	Person 161 168	Skelton
+*	same_as T11 T3
+T12	Person 173 182	Elizabeth
+R2	is_wife_of Arg1:T12 Arg2:T11	
+T13	Person 193 200	Rycarde
+*	same_as T13 T6
+T14	Person 206 212	Hirdde
+*	same_as T14 T8
+T15	Person 217 222	Edith
+R3	is_wife_of Arg1:T15 Arg2:T14	
+T16	Person 247 261	Thomas Jowland
+T17	Place 265 271	Snaith
+R4	is_of Arg1:T6 Arg2:T7	
+R5	is_of Arg1:T16 Arg2:T17	
+T18	Person 273 289	Edward Slingesby
+R6	is_of Arg1:T18 Arg2:T17	
+T19	Person 307 321	Henry Motherby
+T20	Place 325 331	Cowick
+T21	Occupation 333 339	yeomen
+R7	occupation_is Arg1:T19 Arg2:T21	
+R8	is_of Arg1:T19 Arg2:T20	
+T22	Person 410 423	Thomas Rycard
+T23	Place 427 433	Snaith
+R9	is_of Arg1:T22 Arg2:T23	
+T24	Site 367 375	property
+T25	Place 392 406	soke of Snaith
+R10	is_located_in Arg1:T24 Arg2:T25	
+R11	is_parcel_in Arg1:T24 Arg2:T2	
+R12	is_a_previous_tenant_of Arg1:T22 Arg2:T24	
+R13	is_of Arg1:T3 Arg2:T4	
+R14	occupation_is Arg1:T3 Arg2:T5	
+R15	is_of Arg1:T8 Arg2:T9	
+R16	occupation_is Arg1:T8 Arg2:T10	
+R17	is_recipient_in Arg1:T3 Arg2:T2	
+R18	is_recipient_in Arg1:T6 Arg2:T2	
+R19	is_recipient_in Arg1:T8 Arg2:T2	
+R20	is_recipient_in Arg1:T12 Arg2:T2	
+R21	is_recipient_in Arg1:T15 Arg2:T2	
+R22	is_participant_in Arg1:T16 Arg2:T2	
+R23	is_participant_in Arg1:T18 Arg2:T2	
+R24	is_participant_in Arg1:T19 Arg2:T2	
+R25	is_located_in Arg1:T25 Arg2:T9	

@@ -1,0 +1,68 @@
+T1	Document 0 17	vicars-choral-408
+T2	Transaction 18 23	Grant
+T3	Person 27 33	Thomas
+T4	Person 40 45	Josce
+T5	Occupation 46 55	goldsmith
+T6	Place 71 75	York
+T7	Person 95 101	Jeremy
+T8	Site 114 118	land
+T9	Site 105 109	half
+T10	Site 140 149	Petergate
+T11	Site 157 180	churchyard of St• Peter
+T12	Site 184 190	houses
+T13	Institution 198 218	prebend of Ampleford
+T14	Site 239 248	Steyngate
+T15	Site 252 256	land
+T16	Person 263 284	mag• Simon de Evesham
+T17	Person 303 309	Thomas
+T18	Apparatus 380 395	Warranty• Seal•
+T19	Person 407 422	Geoffrey Gunwar
+T20	Person 424 446	William de Gerford[b]y
+T21	Occupation 449 458	chaplains
+T22	Person 460 477	Robert de Farnham
+T23	Person 479 495	Robert le Spicer
+T24	Person 497 513	John le plastrer
+T25	Person 515 529	Walter de Alna
+T26	Occupation 530 539	goldsmith
+T27	Person 541 554	Nicholas Page
+T28	Person 556 572	Thomas talliator
+T29	Person 574 587	Hugh le bedel
+T30	Person 589 603	John de Glouc'
+T31	Occupation 605 611	clerks
+T32	Date 625 637	January 1252
+T34	Apparatus 638 825	[1252/3]• SOURCE: VC 3/Vi 326 (161 mm• x 137 mm•) ENDORSEMENT: Petergat', Donacio facta vicariis de domo que fait Thome aurifabri; Simonis Evesham• SEAL: Slit• ' Hole in MS• NOTE: See 403
+R1	is_dated Arg1:T1 Arg2:T32	
+R2	contains Arg1:T1 Arg2:T18	
+R4	contains Arg1:T1 Arg2:T34	
+R5	refers_to Arg1:T1 Arg2:T2	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_son_of Arg1:T3 Arg2:T4	
+R8	occupation_is Arg1:T3 Arg2:T5	
+R9	is_of Arg1:T3 Arg2:T6	
+R10	is_recipient_in Arg1:T7 Arg2:T2	
+R11	is_son_of Arg1:T7 Arg2:T3	
+R12	is_part_of Arg1:T9 Arg2:T8	
+R13	is_parcel_in Arg1:T8 Arg2:T2	
+R14	is_length_marker_to Arg1:T10 Arg2:T8	
+R15	is_part_of Arg1:T11 Arg2:T10	
+R16	is_length_marker_to Arg1:T12 Arg2:T8	
+R17	is_a_tenant_of Arg1:T13 Arg2:T12	
+R18	is_breadth_marker_to Arg1:T14 Arg2:T8	
+R19	is_breadth_marker_to Arg1:T15 Arg2:T8	
+R20	is_a_previous_occupant_of_a Arg1:T16 Arg2:T15	
+*	same_as T17 T3
+R21	is_witness_to Arg1:T19 Arg2:T2	
+R22	is_witness_to Arg1:T20 Arg2:T2	
+R23	occupation_is Arg1:T19 Arg2:T21	
+R24	occupation_is Arg1:T20 Arg2:T21	
+R25	is_witness_to Arg1:T22 Arg2:T2	
+R26	is_witness_to Arg1:T23 Arg2:T2	
+R27	is_witness_to Arg1:T24 Arg2:T2	
+R28	is_witness_to Arg1:T25 Arg2:T2	
+R29	occupation_is Arg1:T25 Arg2:T26	
+R30	is_witness_to Arg1:T27 Arg2:T2	
+R31	is_witness_to Arg1:T28 Arg2:T2	
+R32	is_witness_to Arg1:T29 Arg2:T2	
+R33	is_witness_to Arg1:T30 Arg2:T2	
+R34	occupation_is Arg1:T30 Arg2:T31	
+R35	occupation_is Arg1:T29 Arg2:T31	

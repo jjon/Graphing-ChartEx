@@ -1,0 +1,75 @@
+T1	Document 0 15	Ward2_55_188_21
+#1	AnnotatorNotes T1	{"piece_id": "5471244", "date_text": "1578 Aug 20"}
+T2	Transaction 16 21	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 921 934	Edmund Potter
+T4	Person 902 915	George Armond
+R2	is_witness_to Arg1:T3 Arg2:T2	
+R3	is_witness_to Arg1:T4 Arg2:T2	
+T5	Person 887 900	Thomas Freman
+T6	Person 873 885	John Dyffett
+T7	Person 857 871	Robert Durrant
+R4	is_witness_to Arg1:T7 Arg2:T2	
+R5	is_witness_to Arg1:T6 Arg2:T2	
+R6	is_witness_to Arg1:T5 Arg2:T2	
+T8	Person 27 39	Robert Kynge
+T9	Place 43 56	West Bergholt
+T10	Place 58 63	Essex
+T11	Occupation 65 71	yeoman
+R7	is_of Arg1:T8 Arg2:T9	
+R8	is_part_of Arg1:T9 Arg2:T10	
+R9	occupation_is Arg1:T8 Arg2:T11	
+R10	is_grantor_in Arg1:T8 Arg2:T2	
+T12	Person 76 90	Richard Newton
+R11	is_recipient_in Arg1:T12 Arg2:T2	
+T13	Place 94 100	Boxted
+T14	Place 102 107	Essex
+T15	Occupation 109 119	husbandman
+R12	is_part_of Arg1:T13 Arg2:T14	
+R13	is_of Arg1:T12 Arg2:T13	
+R14	occupation_is Arg1:T12 Arg2:T15	
+T16	Site 126 134	messuage
+T18	Site 158 164	garden
+T19	Site 171 176	croft
+R15	is_parcel_in Arg1:T16 Arg2:T2	
+R16	is_part_of Arg1:T18 Arg2:T16	
+R17	is_part_of Arg1:T19 Arg2:T16	
+T21	Place 227 234	Fordham
+T22	Place 236 241	Essex
+R20	is_part_of Arg1:T21 Arg2:T22	
+R21	is_located_in Arg1:T16 Arg2:T21	
+T24	Site 713 718	field
+R22	is_parcel_in Arg1:T24 Arg2:T2	
+T25	Site 727 733	Heards
+*	same_as T24 T25
+T26	Apparatus 768 809	Seal and mark of Robert Kynge• [Endorsed]
+R23	contains Arg1:T1 Arg2:T26	
+T17	Site 143 148	Lyard
+*	same_as T17 T16
+T20	Site 264 270	common
+T23	Site 284 298	Plummers Green
+*	same_as T23 T20
+R18	is_eastern_directional_marker_to Arg1:T20 Arg2:T16	
+T27	Site 324 342	messuage and lands
+T28	Person 361 374	Robert Jenner
+R19	is_a_tenant_of Arg1:T28 Arg2:T27	
+R24	is_southern_directional_marker_to Arg1:T27 Arg2:T16	
+R25	is_western_directional_marker_to Arg1:T27 Arg2:T16	
+T29	Site 413 418	lands
+T30	Site 426 435	Stubbings
+*	same_as T30 T29
+R26	is_northern_directional_marker_to Arg1:T29 Arg2:T16	
+T31	Site 468 473	field
+T32	Site 481 487	Heards
+*	same_as T32 T31
+T33	Site 578 583	lands
+R27	not_same_as Arg1:T33 Arg2:T29	
+T34	Person 609 619	John Abell
+T35	Occupation 621 627	knight
+R28	occupation_is Arg1:T34 Arg2:T35	
+R29	is_a_previous_tenant_of Arg1:T34 Arg2:T33	
+R30	is_eastern_directional_marker_to Arg1:T33 Arg2:T31	
+T36	Site 657 665	tenement
+T37	Site 673 678	Howds
+*	same_as T37 T36
+R31	is_western_directional_marker_to Arg1:T36 Arg2:T31	

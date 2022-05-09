@@ -1,0 +1,84 @@
+T1	Document 0 14	deeds-00880641
+#1	AnnotatorNotes T1	{'editorial date':'1291', 'transaction type': 'Agreement/Lease'}
+T2	Transaction 325 346	concessit et tradidit
+T3	Person 100 129	fratrem Alexandrum de Mitcham
+T4	Person 198 206	Iohannam
+T5	Person 216 224	Willelmi
+T6	Person 231 247	Rogeri Fraunceys
+T7	Person 273 289	frater Alexander
+T8	Person 416 432	Rogeri Fraunceys
+T9	Person 496 502	Rogeri
+T10	Person 672 679	Iohanna
+T11	Person 707 723	fratri Alexandro
+T12	Person 816 833	Rogerus Fraunceys
+T13	Person 956 963	Iohanne
+T14	Person 1138 1145	Ricardi
+T15	Person 1158 1165	Iohanne
+T16	Person 1218 1225	Iohanna
+T17	Person 1565 1572	Iohanna
+T18	Person 1714 1743	domino Willelmo de Hanyngfeld
+T19	Person 1751 1773	domino Hugone Goldston
+T20	Person 1809 1821	Ada Goldston
+T21	Person 1822 1839	Willelmo Panymere
+T22	Person 1840 1858	Laurencio Panymere
+T23	Person 1859 1877	Gilberto le Geligg
+T24	Person 1878 1892	Stephano fabro
+T25	Person 1893 1905	Iohanne Ioye
+T27	Date 15 84	Anno regni regis Edwardi nonodecimo in festo sancti Marci evangeliste
+T28	Place 168 181	Mapeltrestede
+T30	Transaction 680 700	concessit et dimisit
+T31	Person 353 360	Iohanne
+T32	Occupation 130 138	custodem
+T33	Institution 139 162	sancte domus hospitalis
+T37	Site 535 544	mesuagium
+T38	Site 374 407	mesuagii cum domibus et edificiis
+T39	Site 755 774	terras et tenementa
+R4	is_dated Arg1:T1 Arg2:T27	
+R5	occupation_is Arg1:T3 Arg2:T32	
+R6	is_officeholder_in Arg1:T3 Arg2:T33	
+R7	is_located_in Arg1:T33 Arg2:T28	
+*	same_as T3 T7 T11
+R8	is_widow_of Arg1:T4 Arg2:T5	
+R9	is_son_of Arg1:T5 Arg2:T6	
+*	same_as T6 T8 T9 T12
+*	same_as T4 T31 T10 T15 T13 T16 T17
+R10	is_son_of Arg1:T14 Arg2:T15	
+T48	Occupation 1744 1750	milite
+T49	Occupation 1774 1781	rectore
+T50	Institution 1782 1808	ecclesie de Gestingethorpe
+R19	occupation_is Arg1:T18 Arg2:T48	
+R20	occupation_is Arg1:T19 Arg2:T49	
+R21	is_officeholder_in Arg1:T19 Arg2:T50	
+T26	Person 1906 1924	Iohanne le hanaper
+R28	is_a_previous_tenant_of Arg1:T8 Arg2:T38	
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_grantor_in Arg1:T7 Arg2:T2	
+R3	is_recipient_in Arg1:T31 Arg2:T2	
+R12	is_parcel_in Arg1:T38 Arg2:T2	
+R14	is_grantor_in Arg1:T10 Arg2:T30	
+R15	refers_to Arg1:T1 Arg2:T30	
+R16	is_recipient_in Arg1:T11 Arg2:T30	
+T29	Site 806 815	tenementa
+R17	is_a_previous_tenant_of Arg1:T12 Arg2:T29	
+R18	is_a_previous_landlord_of Arg1:T33 Arg2:T29	
+*	same_as T37 T38
+*	same_as T29 T39
+R11	is_witness_to Arg1:T18 Arg2:T2	
+R13	is_witness_to Arg1:T19 Arg2:T2	
+R22	is_witness_to Arg1:T20 Arg2:T2	
+R23	is_witness_to Arg1:T21 Arg2:T2	
+R24	is_witness_to Arg1:T22 Arg2:T2	
+R25	is_witness_to Arg1:T23 Arg2:T2	
+R26	is_witness_to Arg1:T24 Arg2:T2	
+R27	is_witness_to Arg1:T25 Arg2:T2	
+R29	is_witness_to Arg1:T26 Arg2:T2	
+R30	is_witness_to Arg1:T18 Arg2:T30	
+R31	is_witness_to Arg1:T19 Arg2:T30	
+R32	is_grantor_in Arg1:T50 Arg2:T30	
+R33	is_witness_to Arg1:T20 Arg2:T30	
+R34	is_witness_to Arg1:T21 Arg2:T30	
+R35	is_witness_to Arg1:T22 Arg2:T30	
+R36	is_witness_to Arg1:T23 Arg2:T30	
+R37	is_witness_to Arg1:T24 Arg2:T30	
+R38	is_witness_to Arg1:T25 Arg2:T30	
+R39	is_witness_to Arg1:T26 Arg2:T30	

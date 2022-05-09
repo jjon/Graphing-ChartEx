@@ -1,0 +1,42 @@
+T1	Document 0 17	vicars-choral-414
+T2	Apparatus 1151 1459	[1262 x 1269-71] SOURCE: VC 3/Vi 378 (189 mm• * 87 mm•) ENDORSEMENT: Carta magistri Simonis de Evesham• SEAL: tag• DATE: When Simon de Evesham was archdeacon of Richmond• Probably after 411• NOTE: See 403• Of the witnesses the dean is identifiable as William de Langton and the chancellor as William Wickwane
+T4	Transaction 88 95	assigns
+R2	refers_to Arg1:T1 Arg2:T4	
+T5	Person 34 55	mag• Simon de Evesham
+T6	Occupation 56 79	archdeacon of Rychemund
+R3	occupation_is Arg1:T5 Arg2:T6	
+R4	is_grantor_in Arg1:T5 Arg2:T4	
+T7	Institution 103 141	vicars of the cathedral church of York
+R5	is_recipient_in Arg1:T7 Arg2:T4	
+T8	Site 146 151	house
+R6	is_parcel_in Arg1:T8 Arg2:T4	
+T9	Site 155 164	Stayngate
+R7	is_part_of Arg1:T8 Arg2:T9	
+T10	Person 178 198	Thomas the goldsmith
+R8	is_a_previous_tenant_of Arg1:T10 Arg2:T8	
+T11	Site 219 223	land
+T12	Institution 231 251	prebend of Ampelford
+R9	is_a_tenant_of Arg1:T12 Arg2:T11	
+R10	is_boundary_to Arg1:T11 Arg2:T8	
+T13	Site 255 264	Petergate
+R11	is_boundary_to Arg1:T13 Arg2:T8	
+T14	Person 993 1000	William
+T15	Occupation 1005 1009	dean
+R12	occupation_is Arg1:T14 Arg2:T15	
+R13	is_witness_to Arg1:T14 Arg2:T4	
+T16	Person 1011 1027	magistri William
+T17	Occupation 1032 1042	chancellor
+R14	occupation_is Arg1:T16 Arg2:T17	
+R15	is_witness_to Arg1:T16 Arg2:T4	
+T18	Person 1044 1064	Robert de Scardeburg
+T19	Occupation 1066 1093	archdeacon of the Estriding
+R16	occupation_is Arg1:T18 Arg2:T19	
+R17	is_witness_to Arg1:T18 Arg2:T4	
+T20	Person 1095 1112	William de Waleby
+R18	is_witness_to Arg1:T20 Arg2:T4	
+R1	contains Arg1:T1 Arg2:T2	
+T3	Apparatus 976 980	Seal
+R19	contains Arg1:T1 Arg2:T3	
+T21	Person 617 627	mag• Simon
+*	same_as T21 T5 T22
+T22	Person 900 910	mag• Simon

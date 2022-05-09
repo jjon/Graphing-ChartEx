@@ -1,0 +1,58 @@
+T1	Document 0 15	Ward2_55_188_17
+#1	AnnotatorNotes T1	{"piece_id": "5471240", "date_text": "1500 Oct 18"}
+T2	Transaction 16 21	Grant
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 25 37	John Snowdon
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+T4	Place 50 63	West Bergholt
+R3	is_of Arg1:T3 Arg2:T4	
+T5	Place 65 70	Essex
+R4	is_part_of Arg1:T4 Arg2:T5	
+T6	Person 75 88	Walter Symond
+T7	Place 92 105	Great Fordham
+R5	is_of Arg1:T6 Arg2:T7	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+T8	Place 107 112	Essex
+R7	is_part_of Arg1:T7 Arg2:T8	
+T9	Person 114 126	John Forewey
+R8	is_recipient_in Arg1:T9 Arg2:T2	
+T10	Person 128 141	Thomas Nicoll
+T11	Place 145 158	Great Fordham
+R9	is_of Arg1:T10 Arg2:T11	
+R10	is_recipient_in Arg1:T10 Arg2:T2	
+T12	Person 160 173	Robert Upchar
+T13	Place 177 188	Wormingford
+R11	is_of Arg1:T12 Arg2:T13	
+R12	is_recipient_in Arg1:T12 Arg2:T2	
+T14	Apparatus 191 204	Wytirmondford
+R13	contains Arg1:T1 Arg2:T14	
+T15	Place 208 213	Essex
+R14	is_part_of Arg1:T13 Arg2:T15	
+T16	Person 219 232	Thomas Betill
+R15	is_recipient_in Arg1:T16 Arg2:T2	
+T17	Place 236 242	Aldham
+R16	is_of Arg1:T16 Arg2:T17	
+T18	Place 244 249	Essex
+R17	is_part_of Arg1:T17 Arg2:T18	
+T19	Site 254 279	two pieces of arable land
+R18	is_parcel_in Arg1:T19 Arg2:T2	
+T20	Site 307 314	Plomers
+T21	Site 321 328	Lynchis
+R19	is_part_of Arg1:T20 Arg2:T19	
+R20	is_part_of Arg1:T21 Arg2:T19	
+T22	Place 333 340	Fordham
+R21	is_located_in Arg1:T19 Arg2:T22	
+T23	Apparatus 342 359	details specified
+R22	contains Arg1:T1 Arg2:T23	
+T24	Person 446 459	John Poverett
+R23	is_witness_to Arg1:T24 Arg2:T2	
+T25	Person 431 444	William Osbas
+R24	is_witness_to Arg1:T25 Arg2:T2	
+T26	Person 415 429	William Ropkyn
+R25	is_witness_to Arg1:T26 Arg2:T2	
+T27	Person 402 413	Thomas Pach
+R26	is_witness_to Arg1:T27 Arg2:T2	
+T28	Person 388 400	Thomas Cerle
+R27	is_witness_to Arg1:T28 Arg2:T2	
+T29	Place 368 375	Fordham
+R28	is_location_of Arg:T29 Arg2:T2	

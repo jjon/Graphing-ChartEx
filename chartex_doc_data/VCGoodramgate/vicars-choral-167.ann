@@ -1,0 +1,47 @@
+T1	Document 0 17	vicars-choral-167
+T2	Institution 44 56	king's court
+T3	Place 60 64	York
+R1	is_located_in Arg1:T2 Arg2:T3	
+T4	Date 65 132	3 weeks from the day of the purification of blessed Mary 9 Edward I
+T5	Apparatus 133 153	[23 February 1280/1]
+T6	Person 161 177	John de Wallibus
+T7	Person 179 195	William de Saham
+T8	Person 197 214	John de Metingham
+T9	Person 220 244	mag. Thomas de Sudington
+T10	Occupation 246 264	itinerant justices
+T11	Person 274 280	Thomas
+T12	Person 288 302	Thomas de York
+T13	Person 319 326	Richard
+T14	Occupation 331 337	warden
+T15	Site 387 395	messuage
+T16	Place 399 403	York
+T17	Person 528 534	Thomas
+T18	Institution 567 587	warden and his house
+T19	Site 625 633	messuage
+T20	Person 744 750	Thomas
+T21	Apparatus 760 1196	SOURCE: VC 3/1/1, fos. 15v.-16. NOTE: See 164. The concord is apparently the consequence of a royal mandate of 13 May 1274 to Ellis de Bekingham and John le Spicer mayor of York to inquire into a complaint made by the vicars that whereas the executors of John Mansel had granted them a messuage in York, they had been ejected by John de Oucer and James of the churchyard (de Cimiterio), who retained the land (Cal. Pat. R., 1272-81, 67)
+R2	contains Arg1:T1 Arg2:T21	
+R3	contains Arg1:T1 Arg2:T5	
+T22	Transaction 539 559	recognised the right
+R4	is_location_of Arg:T3 Arg2:T22	
+R5	is_dated Arg1:T1 Arg2:T4	
+R6	is_son_of Arg1:T11 Arg2:T12	
+R7	is_grantor_in Arg1:T11 Arg2:T22	
+R8	occupation_is Arg1:T13 Arg2:T14	
+R9	is_recipient_in Arg1:T13 Arg2:T22	
+R10	is_parcel_in Arg1:T15 Arg2:T22	
+R11	is_located_in Arg1:T15 Arg2:T16	
+*	same_as T17 T11 T20
+*	same_as T19 T15
+T23	Institution 341 360	the house of vicars
+R12	is_officeholder_in Arg1:T13 Arg2:T23	
+*	same_as T18 T23
+R13	refers_to Arg1:T1 Arg2:T22	
+R14	occupation_is Arg1:T6 Arg2:T10	
+R15	occupation_is Arg1:T7 Arg2:T10	
+R16	occupation_is Arg1:T8 Arg2:T10	
+R17	occupation_is Arg1:T9 Arg2:T10	
+R18	is_participant_in Arg1:T6 Arg2:T22	
+R19	is_participant_in Arg1:T7 Arg2:T22	
+R20	is_participant_in Arg1:T8 Arg2:T22	
+R21	is_participant_in Arg1:T9 Arg2:T22	

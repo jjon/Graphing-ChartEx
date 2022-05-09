@@ -1,0 +1,86 @@
+T1	Document 0 10	YM/D/SN/18
+T2	Transaction 12 17	Lease
+#1	AnnotatorNotes T1	{"Creation Dates": "14 July, 1562", "Title": "Lease"}
+T3	Person 18 32	Thomas Dilcock
+T4	Place 36 42	Snaith
+T5	Occupation 44 48	gent
+T6	Person 51 68	Charles Mexbrough
+T7	Place 72 78	Cowick
+T8	Person 83 88	Alice
+T9	Site 101 157	messuage or cottage and 8 acres land, meadow, or pasture
+T11	Site 186 217	town fields, meadows, and moors
+R2	is_part_of Arg1:T9 Arg2:T11	
+T12	Site 251 265	3 acres 1 rood
+T13	Site 273 283	west field
+T14	Place 287 293	Snaith
+T15	Site 304 309	lands
+T16	Person 313 323	John Cappe
+T17	Site 344 355	common rawe
+T18	Place 359 370	the Armstik
+R3	is_located_in Arg1:T17 Arg2:T18	
+T19	Site 384 391	5 acres
+T20	Site 399 410	south field
+R4	is_part_of Arg1:T19 Arg2:T20	
+T21	Site 421 428	2 acres
+R5	is_part_of Arg1:T21 Arg2:T19	
+T22	Site 542 548	1 acre
+R6	is_part_of Arg1:T22 Arg2:T19	
+T23	Site 556 568	Spring stile
+R7	is_part_of Arg1:T22 Arg2:T23	
+T24	Site 655 672	quarter of a moor
+T25	Place 680 693	English moors
+R8	is_located_in Arg1:T24 Arg2:T25	
+T26	Site 704 721	moor lately Rous'
+R9	is_northern_directional_marker_to Arg1:T26 Arg2:T24	
+T27	Site 744 748	moor
+T28	Person 752 781	John Ricard (late Everingham)
+R10	is_a_previous_tenant_of Arg1:T28 Arg2:T27	
+R11	is_southern_directional_marker_to Arg1:T27 Arg2:T24	
+R14	is_located_in Arg1:T12 Arg2:T13	
+R15	is_western_directional_marker_to Arg1:T15 Arg2:T12	
+R16	is_a_tenant_of Arg1:T16 Arg2:T15	
+R17	is_eastern_directional_marker_to Arg1:T17 Arg2:T12	
+R1	is_parcel_in Arg1:T24 Arg2:T2	
+R19	is_parcel_in Arg1:T9 Arg2:T2	
+T29	Site 438 443	lands
+R21	is_western_directional_marker_to Arg1:T29 Arg2:T21	
+T30	Person 447 462	Sir John Dawney
+R22	is_a_tenant_of Arg1:T30 Arg2:T29	
+T31	Person 467 483	Richard Gleadawe
+R23	is_a_tenant_of Arg1:T31 Arg2:T29	
+T32	SiteRef 500 505	those
+R24	is_eastern_directional_marker_to Arg1:T32 Arg2:T21	
+T33	Site 577 582	lands
+R25	is_western_directional_marker_to Arg1:T33 Arg2:T22	
+T34	Person 586 596	John Cappe
+R26	is_a_tenant_of Arg1:T34 Arg2:T33	
+T35	SiteRef 613 618	those
+R27	is_eastern_directional_marker_to Arg1:T35 Arg2:T22	
+T36	Person 622 634	Robert Osset
+R28	is_a_tenant_of Arg1:T36 Arg2:T35	
+R33	is_grantor_in Arg1:T3 Arg2:T2	
+R34	is_of Arg1:T3 Arg2:T4	
+R35	occupation_is Arg1:T3 Arg2:T5	
+R36	is_recipient_in Arg1:T6 Arg2:T2	
+R37	is_of Arg1:T6 Arg2:T7	
+R38	is_wife_of Arg1:T8 Arg2:T6	
+T37	Place 221 227	Snaith
+T38	Place 232 238	Cowick
+R39	is_located_in Arg1:T11 Arg2:T37	
+R40	is_located_in Arg1:T11 Arg2:T38	
+R41	refers_to Arg1:T1 Arg2:T2	
+R13	is_located_in Arg1:T13 Arg2:T14	
+R12	is_part_of Arg1:T12 Arg2:T9	
+R18	is_part_of Arg1:T19 Arg2:T9	
+T10	Person 509 524	Sir John Dawney
+R20	is_a_tenant_of Arg1:T10 Arg2:T32	
+*	same_as T30 T10
+T39	Person 952 959	Charles
+T40	Person 964 969	Alice
+T41	Person 1001 1015	John Mexbrough
+T42	Person 1020 1025	Janet
+*	same_as T39 T6
+*	same_as T40 T8
+R29	is_wife_of Arg1:T42 Arg2:T41	
+R30	is_participant_in Arg1:T41 Arg2:T2	
+R31	is_participant_in Arg1:T42 Arg2:T2	

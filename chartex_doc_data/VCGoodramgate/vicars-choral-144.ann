@@ -1,0 +1,73 @@
+T1	Document 0 17	vicars-choral-144
+T2	Transaction 18 23	Grant
+T3	Person 42 56	John de Bulmer
+T4	Institution 237 251	church of York
+T5	Institution 260 266	vicars
+T6	Site 288 292	land
+T7	Site 296 307	Guthrungat'
+T8	Place 311 315	York
+T9	Site 335 339	land
+T10	Person 343 359	William de Croft
+T11	Site 368 374	street
+T12	Apparatus 375 382	(vicum)
+T13	Site 399 406	Aldwerk
+T14	Site 437 441	land
+T15	Person 450 464	Walter de Aula
+T16	Site 468 478	Guthrungat
+T17	Institution 499 505	vicars
+T18	Institution 513 529	preaching friars
+T19	Apparatus 530 542	[Dominicans]
+T20	Place 546 550	York
+T21	Institution 623 629	vicars
+T23	Apparatus 669 678	(ad opus)
+T24	Institution 686 704	archbishop of York
+T25	Apparatus 806 820	Seal.Witnesses
+T26	Person 822 834	John Speciar
+T27	Occupation 836 841	mayor
+T28	Person 843 861	Nicholas de Seleby
+T29	Person 866 882	Henry de Holteby
+T30	Occupation 884 892	bailiffs
+T31	Person 894 906	Robert Frend
+T32	Person 908 926	Hugh le cordevaner
+T33	Person 928 933	Simon
+T34	Occupation 938 943	mason
+T35	Person 945 951	Robert
+T36	Occupation 956 960	cook
+T37	Person 962 981	Thomas of Munkegate
+T38	Apparatus 995 1882	[1272-3] SOURCE: VC 3/3/88 (167 mm. x 153 mm.) ENDORSEMENT: Carta vicariorum quam habent de dono J. de Bulmer; de tenemento in quo Avic' de Gaithill habitat et de tenemento in quo Thomas de Killum habitat; super cornerium in Aldwark et Godrumgate; reddendo archiepiscopo 2s. SEAL: tag. COPY: VC 3/1/1, fo.12. DATE: When Spicer was mayor with the bailiffs named here: see 9. NOTE: See 138. Thomas de Kilham, recorded in the endorsement, was alive in 1352, when he was one of the witnesses who answered articles of inquiry relating to the appropriation of the church of Huntington (NR) to the vicars' college. The vicars claimed that the appropriation was necessary because of their poverty, caused by the reduction of rents after the Black Death. Kilham deposed that before the pestilence he used to pay 46s. 8d, for his 'manse', but after it only 26s. 8d. p.a. (VC 3/1/1, fos. 123v.-124)
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T19	
+R3	contains Arg1:T1 Arg2:T12	
+R5	contains Arg1:T1 Arg2:T23	
+R6	contains Arg1:T1 Arg2:T25	
+R7	is_grantor_in Arg1:T3 Arg2:T2	
+R8	is_recipient_in Arg1:T4 Arg2:T2	
+R9	is_recipient_in Arg1:T5 Arg2:T2	
+R10	is_parcel_in Arg1:T6 Arg2:T2	
+R11	is_part_of Arg1:T6 Arg2:T7	
+R12	is_located_in Arg1:T7 Arg2:T8	
+R13	is_a_tenant_of Arg1:T10 Arg2:T9	
+R14	is_boundary_to Arg1:T9 Arg2:T6	
+*	same_as T13 T11
+R4	is_boundary_to Arg1:T11 Arg2:T6	
+R15	is_a_tenant_of Arg1:T15 Arg2:T14	
+R16	is_length_marker_to Arg1:T14 Arg2:T6	
+R17	is_length_marker_to Arg1:T16 Arg2:T6	
+*	same_as T17 T5 T21
+R18	is_located_in Arg1:T18 Arg2:T20	
+R19	is_a_previous_tenant_of Arg1:T18 Arg2:T6	
+R20	is_a_landlord_of Arg1:T24 Arg2:T6	
+R21	occupation_is Arg1:T26 Arg2:T27	
+R22	occupation_is Arg1:T28 Arg2:T30	
+R23	occupation_is Arg1:T29 Arg2:T30	
+R24	occupation_is Arg1:T33 Arg2:T34	
+R25	occupation_is Arg1:T35 Arg2:T36	
+R26	contains Arg1:T1 Arg2:T38	
+R27	is_witness_to Arg1:T26 Arg2:T2	
+R28	is_witness_to Arg1:T28 Arg2:T2	
+R29	is_witness_to Arg1:T29 Arg2:T2	
+R30	is_witness_to Arg1:T31 Arg2:T2	
+R31	is_witness_to Arg1:T32 Arg2:T2	
+R32	is_witness_to Arg1:T33 Arg2:T2	
+R33	is_witness_to Arg1:T35 Arg2:T2	
+R34	is_witness_to Arg1:T37 Arg2:T2	

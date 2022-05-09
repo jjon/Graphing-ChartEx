@@ -1,0 +1,121 @@
+T1	Document 0 10	YM/D/SN/32
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "28 January 1585/6", "Title": "Feoffment"}
+T3	Person 22 35	Robert Bawlne
+T4	Place 39 45	Askern
+T5	Occupation 47 51	gent
+R1	is_of Arg1:T3 Arg2:T4	
+R2	occupation_is Arg1:T3 Arg2:T5	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 54 67	Robert Bawlne
+T7	Place 71 76	Balen
+R4	is_of Arg1:T6 Arg2:T7	
+T8	Person 81 85	John
+R5	is_son_of Arg1:T8 Arg2:T6	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+T9	Site 95 120	A built toft and 2 crofts
+T10	Place 124 134	Pollington
+R7	is_located_in Arg1:T9 Arg2:T10	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T11	Site 145 169	common way to Balne moor
+R9	is_northern_directional_marker_to Arg1:T11 Arg2:T9	
+T12	Site 187 197	Balne moor
+R10	is_southern_directional_marker_to Arg1:T12 Arg2:T9	
+R11	is_eastern_directional_marker_to Arg1:T12 Arg2:T9	
+R12	is_western_directional_marker_to Arg1:T12 Arg2:T9	
+T13	Site 230 237	cottage
+R13	is_parcel_in Arg1:T13 Arg2:T2	
+R14	refers_to Arg1:T1 Arg2:T2	
+T14	Person 259 268	John Pitt
+R15	is_a_tenant_of Arg1:T14 Arg2:T13	
+T15	Place 272 282	Pollington
+R16	is_located_in Arg1:T13 Arg2:T15	
+T16	Site 297 303	common
+T17	Site 342 347	lands
+R17	is_northern_directional_marker_to Arg1:T16 Arg2:T13	
+R18	is_northern_directional_marker_to Arg1:T17 Arg2:T13	
+T18	Person 351 360	Mr Metham
+R19	is_a_tenant_of Arg1:T18 Arg2:T17	
+T19	Site 419 424	close
+R22	is_parcel_in Arg1:T19 Arg2:T2	
+T20	Site 466 476	common way
+R23	is_southern_directional_marker_to Arg1:T20 Arg2:T19	
+T21	Site 514 519	lands
+R25	is_western_directional_marker_to Arg1:T21 Arg2:T19	
+R26	is_northern_directional_marker_to Arg1:T21 Arg2:T19	
+T22	Site 549 559	common way
+R27	is_eastern_directional_marker_to Arg1:T22 Arg2:T19	
+T23	Site 573 586	½ acre meadow
+R28	is_parcel_in Arg1:T23 Arg2:T2	
+T24	Site 594 601	meadows
+R29	is_part_of Arg1:T23 Arg2:T24	
+T25	Site 622 627	lands
+T26	Institution 635 657	earl of Northumberland
+R31	is_a_tenant_of Arg1:T26 Arg2:T25	
+R32	is_western_directional_marker_to Arg1:T25 Arg2:T23	
+T27	SiteRef 671 676	those
+R33	is_eastern_directional_marker_to Arg1:T27 Arg2:T23	
+T28	Person 680 686	Metham
+*	same_as T28 T18 T45 T48
+R34	is_a_tenant_of Arg1:T28 Arg2:T27	
+T29	SiteRef 700 705	those
+T30	Person 709 721	John Dawneye
+T31	Occupation 723 726	knt
+R35	occupation_is Arg1:T30 Arg2:T31	
+R36	is_a_tenant_of Arg1:T30 Arg2:T29	
+R37	not_same_as Arg1:T29 Arg2:T27	
+R38	is_southern_directional_marker_to Arg1:T29 Arg2:T23	
+T32	SiteRef 747 752	those
+R39	not_same_as Arg1:T32 Arg2:T29	
+R40	not_same_as Arg1:T32 Arg2:T27	
+T33	Person 756 769	George Boothe
+R41	is_a_tenant_of Arg1:T33 Arg2:T32	
+R42	is_northern_directional_marker_to Arg1:T32 Arg2:T23	
+T34	Site 784 799	9½ acres arable
+T35	Site 807 813	fields
+R43	is_part_of Arg1:T34 Arg2:T35	
+R44	is_parcel_in Arg1:T34 Arg2:T2	
+T36	Site 840 847	3 acres
+T37	Site 855 865	West field
+R45	is_part_of Arg1:T36 Arg2:T37	
+R46	is_part_of Arg1:T37 Arg2:T35	
+R47	is_part_of Arg1:T36 Arg2:T34	
+T38	Site 867 874	4 acres
+T39	Site 882 892	Mill field
+R48	is_part_of Arg1:T38 Arg2:T39	
+R49	is_part_of Arg1:T39 Arg2:T35	
+R50	is_part_of Arg1:T38 Arg2:T34	
+T40	Site 898 906	2½ acres
+T41	Site 914 924	East field
+R51	is_part_of Arg1:T40 Arg2:T41	
+R52	is_part_of Arg1:T41 Arg2:T35	
+R53	is_part_of Arg1:T40 Arg2:T34	
+T42	Date 1088 1120	dated 20 January, 28 Elizabeth I
+R54	is_dated Arg1:T1 Arg2:T42	
+R55	not_same_as Arg1:T3 Arg2:T6	
+T43	Place 307 312	Balne
+R56	is_located_in Arg1:T16 Arg2:T43	
+T44	Site 320 333	Grimyll grene
+*	same_as T16 T44
+T45	Person 380 388	Metham's
+T46	Site 389 394	lands
+R20	is_a_tenant_of Arg1:T45 Arg2:T46	
+R21	is_eastern_directional_marker_to Arg1:T46 Arg2:T13	
+R57	is_western_directional_marker_to Arg1:T46 Arg2:T13	
+T47	Site 451 455	toft
+*	same_as T47 T13
+R58	is_northern_directional_marker_to Arg1:T47 Arg2:T19	
+T48	Person 505 513	Metham's
+R59	is_a_tenant_of Arg1:T48 Arg2:T21	
+T49	Place 605 611	Snaith
+R24	is_located_in Arg1:T24 Arg2:T49	
+T50	Place 817 827	Pollington
+R30	is_located_in Arg1:T35 Arg2:T50	
+T51	Person 971 985	John Eastwoode
+T52	Person 990 999	John Pitt
+R60	is_participant_in Arg1:T51 Arg2:T2	
+*	same_as T52 T14
+T53	Apparatus 1122 1128	1585/6
+R61	contains Arg1:T1 Arg2:T53	
+T54	Site 480 490	Balne moor
+R62	is_boundary_to Arg1:T54 Arg2:T20	

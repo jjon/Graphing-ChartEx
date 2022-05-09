@@ -1,0 +1,61 @@
+T1	Document 0 14	deeds-00880819
+#1	AnnotatorNotes T1	{'editorial date':'1297', 'transaction type': 'Grant'}
+T2	Person 51 58	Felicia
+T3	Person 65 73	Nicholai
+T4	Occupation 82 106	vicarii de Gestingthorpe
+T6	Transaction 107 157	dedi concessi et hac presenti carta mea confirmavi
+R1	refers_to Arg1:T1 Arg2:T6	
+R2	is_daughter_of Arg1:T2 Arg2:T3	
+R3	occupation_is Arg1:T3 Arg2:T4	
+T5	Person 158 170	Ade Goldston
+T7	Site 274 291	unam peciam prati
+T8	Site 304 310	pratum
+T9	Person 356 378	Reginaldo de Silverley
+R5	is_parcel_in Arg1:T7 Arg2:T6	
+R7	is_a_previous_landlord_of Arg1:T9 Arg2:T7	
+*	same_as T7 T8
+T10	Site 393 400	le Lowe
+T11	Site 407 413	pratum
+T12	Person 414 432	Ricardi Vys de leu
+T13	Person 443 465	Willelmi de Goldyngham
+T14	Site 483 490	stagnum
+T15	Site 491 500	molendini
+T16	Place 504 514	Bellocampo
+T17	Person 959 966	Felicia
+T18	Person 1106 1109	Ade
+T19	Person 1314 1333	Alano de Goldyngham
+T20	Person 1334 1353	Iohanne de Wastohll
+T21	Occupation 1354 1363	militibus
+T22	Person 1364 1372	Nicholao
+T23	Occupation 1373 1380	clerico
+T24	Person 1381 1395	Galfrido warde
+T25	Person 1396 1407	Thoma warde
+T26	Person 1408 1422	Waltero Morell
+T27	Person 1423 1448	Willelmo de Leffeldewelle
+T28	Date 1483 1580	die veneris proxima post festum sancti Petri in Cathedra anno regni regis Edwardi vicesimo quinto
+T29	Place 1469 1482	Gestingthorpe
+R8	is_location_of Arg:T29 Arg2:T6	
+R9	is_dated Arg1:T1 Arg2:T28	
+R10	is_grantor_in Arg1:T2 Arg2:T6	
+R11	is_recipient_in Arg1:T5 Arg2:T6	
+R12	is_part_of Arg1:T7 Arg2:T10	
+R13	is_boundary_to Arg1:T11 Arg2:T7	
+R14	is_a_tenant_of Arg1:T12 Arg2:T11	
+T31	Site 436 442	feodum
+R18	is_boundary_to Arg1:T14 Arg2:T7	
+R19	is_part_of Arg1:T14 Arg2:T15	
+*	same_as T17 T2
+*	same_as T18 T5
+R20	is_witness_to Arg1:T19 Arg2:T6	
+R21	is_witness_to Arg1:T20 Arg2:T6	
+R22	occupation_is Arg1:T20 Arg2:T21	
+R23	occupation_is Arg1:T19 Arg2:T21	
+R24	occupation_is Arg1:T22 Arg2:T23	
+R25	is_witness_to Arg1:T22 Arg2:T6	
+R26	is_witness_to Arg1:T24 Arg2:T6	
+R27	is_witness_to Arg1:T25 Arg2:T6	
+R28	is_witness_to Arg1:T26 Arg2:T6	
+R29	is_witness_to Arg1:T27 Arg2:T6	
+R4	is_boundary_to Arg1:T31 Arg2:T7	
+R6	is_a_tenant_of Arg1:T13 Arg2:T31	
+R15	is_located_in Arg1:T15 Arg2:T16	

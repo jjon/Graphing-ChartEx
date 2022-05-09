@@ -1,0 +1,52 @@
+T1	Document 0 14	deeds-00880820
+#1	AnnotatorNotes T1	{'editorial date':'1286', 'transaction type': 'Quitclaim'}
+T2	Person 84 105	Robertus de Chelmesho
+T3	Transaction 151 190	me relaxasse et omnino quietum clamasse
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_grantor_in Arg1:T2 Arg2:T3	
+T4	Person 191 203	Ade Goldston
+R3	is_recipient_in Arg1:T4 Arg2:T3	
+T5	Site 248 254	pratum
+R4	is_parcel_in Arg1:T5 Arg2:T3	
+T6	Site 283 289	pratum
+T7	Institution 290 322	hospitalariorum de Mapeltrestede
+R5	is_a_tenant_of Arg1:T7 Arg2:T6	
+T8	Site 326 332	pratum
+T9	Person 333 347	Martini Ernold
+R6	is_a_tenant_of Arg1:T9 Arg2:T8	
+R7	is_boundary_to Arg1:T6 Arg2:T5	
+R8	is_boundary_to Arg1:T8 Arg2:T5	
+T10	Transaction 357 391	relaxavi et omnino quietum clamavi
+R9	refers_to Arg1:T1 Arg2:T10	
+T11	Site 463 468	fossa
+R10	is_parcel_in Arg1:T11 Arg2:T10	
+T12	Site 493 500	gardini
+T13	Site 485 492	angulum
+R11	is_part_of Arg1:T13 Arg2:T12	
+T14	Person 507 519	Ade Goldston
+R12	is_boundary_to Arg1:T13 Arg2:T11	
+T15	Person 535 538	Ade
+T16	Person 940 956	Roberto Packeles
+T17	Person 957 978	Radulpho de Wetherden
+T18	Person 979 987	Nicholao
+T19	Occupation 988 995	clerico
+T20	Person 996 1016	Thoma filio Willelmi
+T22	Person 1017 1039	Galfrido filio Hugonis
+T24	Person 1040 1065	Willelmo de Leffeldewelle
+T25	Person 1066 1082	Iohanne Burdeles
+T26	Occupation 1083 1090	clerico
+T27	Date 1100 1193	Datum die dominica proxima post festum sancte Margarete anno regni regis Edwardi quartodecimo
+R13	is_dated Arg1:T1 Arg2:T27	
+R14	is_grantor_in Arg1:T2 Arg2:T10	
+R15	is_recipient_in Arg1:T4 Arg2:T10	
+R16	is_a_tenant_of Arg1:T14 Arg2:T12	
+*	same_as T15 T14 T4
+R17	occupation_is Arg1:T18 Arg2:T19	
+R18	occupation_is Arg1:T25 Arg2:T26	
+R19	is_witness_to Arg1:T16 Arg2:T3	
+R20	is_witness_to Arg1:T17 Arg2:T3	
+R21	is_witness_to Arg1:T18 Arg2:T3	
+R22	is_witness_to Arg1:T20 Arg2:T3	
+R23	is_witness_to Arg1:T22 Arg2:T3	
+R24	is_witness_to Arg1:T24 Arg2:T3	
+R25	is_witness_to Arg1:T25 Arg2:T3	

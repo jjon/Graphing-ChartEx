@@ -1,0 +1,45 @@
+T1	Document 0 14	Ward2_55_188_1
+#1	AnnotatorNotes T1	{"piece_id": "5471224", "date_text": "1505 Nov 24"}
+T2	Transaction 15 43	Enfeoffment and confirmation
+T3	Person 47 60	Thomas Nicoll
+T4	Place 64 71	Fordham
+T5	Apparatus 73 78	Essex
+T6	Person 84 97	Thomas Betill
+T7	Place 101 107	Aldham
+T8	Apparatus 109 114	Essex
+T9	Person 132 145	Walter Symond
+T10	Person 161 171	John Gebon
+T11	Person 184 199	Walter Greffeld
+T12	Person 216 226	Roger Lane
+T14	Place 274 281	Fordham
+T15	Apparatus 283 301	location specified
+T16	Place 310 317	Fordham
+T17	Apparatus 319 363	Two seals of Thomas Nicoll and Thomas Betill
+R1	is_location_of Arg:T16 Arg2:T2	
+R2	is_of Arg1:T3 Arg2:T4	
+R4	is_of Arg1:T6 Arg2:T7	
+T18	Place 149 156	Fordham
+R6	is_of Arg1:T9 Arg2:T18	
+T19	Place 175 182	Fordham
+R7	is_of Arg1:T10 Arg2:T19	
+T20	Place 203 210	Fordham
+R8	is_of Arg1:T11 Arg2:T20	
+T21	Place 230 236	Aldham
+R9	is_of Arg1:T12 Arg2:T21	
+*	same_as T4 T20 T18 T19
+R12	is_participant_in Arg1:T9 Arg2:T2	
+R13	is_grantor_in Arg1:T3 Arg2:T2	
+R14	is_recipient_in Arg1:T10 Arg2:T2	
+R15	is_recipient_in Arg1:T11 Arg2:T2	
+R16	is_recipient_in Arg1:T12 Arg2:T2	
+R17	contains Arg1:T1 Arg2:T17	
+R18	contains Arg1:T1 Arg2:T15	
+R19	refers_to Arg1:T1 Arg2:T2	
+R20	is_grantor_in Arg1:T6 Arg2:T2	
+T22	Site 262 269	Balland
+T13	Site 249 253	land
+*	same_as T13 T22
+R3	is_parcel_in Arg1:T13 Arg2:T2	
+R5	is_located_in Arg1:T13 Arg2:T14	
+R10	contains Arg1:T1 Arg2:T5	
+R11	contains Arg1:T1 Arg2:T8	

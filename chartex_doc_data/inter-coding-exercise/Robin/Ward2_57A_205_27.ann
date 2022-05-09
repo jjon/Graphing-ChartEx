@@ -1,0 +1,40 @@
+T1	Document 0 10	57A/205/27
+T2	Transaction 11 16	Lease
+T3	Person 20 35	Elizabeth Grene
+T4	Occupation 37 43	abbess
+T5	Institution 51 71	monastery of Barking
+T6	Place 73 78	Essex
+T7	Person 83 94	Robert Roos
+T8	Place 98 114	Stoke by Nayland
+T9	Place 116 123	Suffolk
+T10	Occupation 125 135	clothmaker
+T11	Site 159 163	mill
+T12	Place 186 196	Tollesbury
+T13	Place 198 203	Essex
+T14	Transaction 244 249	lease
+T15	Date 270 285	10 January 1515
+T16	Person 293 299	abbess
+T17	Person 303 314	John Growse
+T18	Person 395 412	abbess of Barking
+T19	Date 417 425	1520 Nov
+T20	Apparatus 426 436	2654716516
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	is_dated Arg1:T1 Arg2:T19	
+R3	contains Arg1:T1 Arg2:T20	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_recipient_in Arg1:T7 Arg2:T2	
+R6	occupation_is Arg1:T3 Arg2:T4	
+R7	is_officeholder_in Arg1:T3 Arg2:T5	
+R8	is_of Arg1:T7 Arg2:T8	
+R9	is_part_of Arg1:T8 Arg2:T9	
+R10	occupation_is Arg1:T7 Arg2:T10	
+R11	is_parcel_in Arg1:T11 Arg2:T2	
+R12	is_located_in Arg1:T11 Arg2:T12	
+R13	is_part_of Arg1:T12 Arg2:T13	
+R14	precedes Arg1:T14 Arg2:T2	
+R15	precedes Arg1:T15 Arg2:T2	
+R16	refers_to Arg1:T1 Arg2:T14	
+R17	is_grantor_in Arg1:T16 Arg2:T14	
+R18	is_recipient_in Arg1:T17 Arg2:T14	
+R19	is_parcel_in Arg1:T11 Arg2:T14	
+*	same_as T18 T16 T3

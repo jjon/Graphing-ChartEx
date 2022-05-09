@@ -1,0 +1,97 @@
+T1	Document 0 17	vicars-choral-132
+T2	Transaction 18 23	Grant
+T3	Person 56 71	William Scyrloc
+T4	Person 75 83	Nicholas
+T5	Person 91 104	William Wiles
+T6	Site 116 120	land
+T7	Site 124 136	Gutherumgate
+T8	Site 159 171	Gutherumgate
+T9	Site 179 183	land
+T10	Person 202 219	mag. John de Tywe
+T11	Occupation 229 242	canon of York
+T12	Site 267 271	land
+T13	Person 297 307	Stephen Pe
+T14	Occupation 308 316	chaplain
+T16	Person 337 353	Hugh le Rumanger
+T17	Institution 385 403	archbishop of York
+T18	Person 426 447	Roger of St. Margaret
+T19	Person 452 460	Nicholas
+T20	Person 530 537	William
+T21	Person 577 585	Nicholas
+T22	Person 590 597	William
+T23	Person 646 651	Agnes
+T24	Person 693 700	William
+T25	Person 771 787	Hugh le Rumanger
+T26	Person 833 840	William
+T27	Person 896 905	Alexander
+T28	Person 913 917	Pain
+T29	Person 1067 1075	Nicholas
+T30	Person 1080 1087	William
+T31	Person 1143 1158	William Scyrloc
+T32	Person 1213 1218	Agnes
+T33	Apparatus 1220 1235	Seal. Witnesses
+T34	Apparatus 1446 1928	.[mid 13th century] SOURCE: VC 3/Vi 105 (265 mm. x 134 mm.). Indented at top. ENDORSEMENT: [in a 15th-cent. hand] Evidentia ex dono Wilelmi Scerlay; [in a 16th-cent. hand] Robert Tayler Stymud' novo . . . in the same hand . . . in the other before it Anno 1556. SEAL: half of a round seal, green, impression of a bearded face, legend WILELMI: S . . . COPY: VC 3/1/1, fos. 16v.-17. DATE: Evidently some time after the death of Canon John de Tew, still alive in 1246-7. NOTE: See 129.
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T33	
+R3	contains Arg1:T1 Arg2:T34	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+R5	is_recipient_in Arg1:T4 Arg2:T2	
+R6	is_son_of Arg1:T4 Arg2:T5	
+R7	is_part_of Arg1:T6 Arg2:T7	
+R8	is_parcel_in Arg1:T6 Arg2:T2	
+R9	is_length_marker_to Arg1:T8 Arg2:T6	
+R10	is_length_marker_to Arg1:T9 Arg2:T6	
+R11	is_a_previous_tenant_of Arg1:T10 Arg2:T9	
+R12	occupation_is Arg1:T10 Arg2:T11	
+R13	is_breadth_marker_to Arg1:T12 Arg2:T6	
+R14	occupation_is Arg1:T13 Arg2:T14	
+T15	SiteRef 328 333	other
+R16	is_a_tenant_of Arg1:T16 Arg2:T15	
+T35	Site 285 293	one side
+R15	is_part_of Arg1:T35 Arg2:T12	
+R17	is_a_previous_tenant_of Arg1:T13 Arg2:T35	
+R18	is_part_of Arg1:T15 Arg2:T12	
+R19	is_a_landlord_of Arg1:T17 Arg2:T12	
+T36	SiteRef 408 412	that
+R20	is_a_previous_tenant_of Arg1:T18 Arg2:T36	
+R21	is_breadth_marker_to Arg1:T36 Arg2:T6	
+*	same_as T19 T4 T21 T29
+R22	is_brother_of Arg1:T20 Arg2:T19	
+*	same_as T22 T20 T24 T26 T30
+R23	is_mother_of Arg1:T23 Arg2:T19	
+R24	is_mother_of Arg1:T23 Arg2:T20	
+R25	is_son_of Arg1:T27 Arg2:T28	
+R26	is_participant_in Arg1:T25 Arg2:T2	
+R27	is_participant_in Arg1:T27 Arg2:T2	
+*	same_as T25 T16
+*	same_as T32 T23
+*	same_as T31 T3
+T37	Person 1237 1252	Thomas de Hoton
+T38	Person 1254 1269	Alan de Carleol
+T39	Person 1272 1277	Ralph
+T40	Occupation 1282 1287	clerk
+T41	Person 1289 1303	Hugh de Playce
+T42	Person 1305 1320	Ralph le Furbur
+T43	Person 1322 1337	Richard Hornpot
+T44	Person 1339 1352	Henry Clutpot
+T45	Person 1354 1371	Richard de Haxeby
+T46	Person 1373 1382	Alexander
+T47	Occupation 1387 1392	glove
+T48	Person 1395 1402	Ranulph
+T49	Occupation 1407 1412	smith
+T50	Person 1414 1433	Bartholomew Neyrun,
+T51	Person 1434 1446	Robert Ernis
+R28	is_witness_to Arg1:T37 Arg2:T2	
+R29	is_witness_to Arg1:T38 Arg2:T2	
+R30	occupation_is Arg1:T39 Arg2:T40	
+R31	is_witness_to Arg1:T39 Arg2:T2	
+R32	is_witness_to Arg1:T41 Arg2:T2	
+R33	is_witness_to Arg1:T42 Arg2:T2	
+R34	is_witness_to Arg1:T43 Arg2:T2	
+R35	is_witness_to Arg1:T44 Arg2:T2	
+R36	is_witness_to Arg1:T45 Arg2:T2	
+R37	occupation_is Arg1:T46 Arg2:T47	
+R38	is_witness_to Arg1:T46 Arg2:T2	
+R39	occupation_is Arg1:T48 Arg2:T49	
+R40	is_witness_to Arg1:T48 Arg2:T2	
+R41	is_witness_to Arg1:T50 Arg2:T2	

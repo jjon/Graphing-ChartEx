@@ -1,0 +1,10 @@
+T1	Document 0 16	Ward2_59A_233_11
+#1	AnnotatorNotes T1	{"piece_id": "5472155", "date_text": "[16th Century]"}
+T2	Person 51 62	lord Audley
+T3	Transaction 78 96	indenture and fine
+R1	refers_to Arg1:T1 Arg2:T3	
+R2	is_participant_in Arg1:T2 Arg2:T3	
+T4	Person 100 111	John Ferror
+R3	is_participant_in Arg1:T4 Arg2:T3	
+T5	Place 157 162	manor
+R4	is_parcel_in Arg1:T5 Arg2:T3	

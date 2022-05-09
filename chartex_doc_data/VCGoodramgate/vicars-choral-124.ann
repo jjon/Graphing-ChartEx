@@ -1,0 +1,64 @@
+T1	Document 0 17	vicars-choral-124
+T2	Person 51 67	Radulf de Bolbec
+T3	Person 75 88	Radulf Bolbes
+T4	Transaction 127 147	sold and quitclaimed
+T5	Site 148 152	land
+T6	Site 156 167	Goodramgate
+T7	Person 195 206	Hugh Pusat,
+T8	Person 222 224	H.
+T9	Institution 251 268	prebed of Wetwang
+T10	Person 272 293	William de Malapalude
+R1	is_officeholder_in Arg1:T10 Arg2:T9	
+T11	Person 298 311	William Roman
+T12	Person 323 338	magister J. Rom
+T13	Occupation 339 352	canon of York
+T15	Person 402 406	Hugh
+T16	Person 533 544	William Rom
+T17	Person 738 749	William Rom
+T19	Person 897 899	H.
+T20	Occupation 900 917	treasurer of York
+T22	Person 922 946	magister Roger de Insula
+T23	Person 948 966	Peter de Schirburn
+T24	Person 968 975	Richard
+T25	Occupation 976 985	confessor
+T26	Person 987 995	John Rom
+T27	Occupation 996 1009	canon of York
+T29	Person 1011 1017	Thomas
+T30	Person 1025 1034	Alexander
+T31	Person 1039 1046	Gilbert
+T32	Occupation 1047 1056	chaplains
+T33	Person 1058 1078	Alexander de Baiocis
+T34	Person 1080 1085	Geffr
+T35	Person 1093 1099	Elstan
+T36	Person 1101 1109	Chinchio
+T37	Occupation 1110 1115	clerk
+R2	refers_to Arg1:T1 Arg2:T4	
+R3	is_son_of Arg1:T2 Arg2:T3	
+R4	is_grantor_in Arg1:T2 Arg2:T4	
+R5	is_parcel_in Arg1:T5 Arg2:T4	
+R6	is_part_of Arg1:T5 Arg2:T6	
+R7	is_a_previous_tenant_of Arg1:T7 Arg2:T5	
+*	same_as T8 T7 T15
+R8	is_a_landlord_of Arg1:T9 Arg2:T5	
+R9	is_recipient_in Arg1:T11 Arg2:T4	
+R10	is_familial_relation_to Arg1:T11 Arg2:T12	
+R11	occupation_is Arg1:T12 Arg2:T13	
+*	same_as T16 T11 T17
+R13	occupation_is Arg1:T19 Arg2:T20	
+R15	is_witness_to Arg1:T19 Arg2:T4	
+R16	is_witness_to Arg1:T22 Arg2:T4	
+R17	is_witness_to Arg1:T23 Arg2:T4	
+R18	occupation_is Arg1:T24 Arg2:T25	
+R19	is_witness_to Arg1:T24 Arg2:T4	
+R20	occupation_is Arg1:T26 Arg2:T27	
+R21	is_witness_to Arg1:T26 Arg2:T4	
+R23	is_witness_to Arg1:T29 Arg2:T4	
+R24	is_son_of Arg1:T29 Arg2:T30	
+R25	is_witness_to Arg1:T31 Arg2:T4	
+R26	occupation_is Arg1:T29 Arg2:T32	
+R27	occupation_is Arg1:T31 Arg2:T32	
+R28	is_witness_to Arg1:T33 Arg2:T4	
+R29	is_son_of Arg1:T34 Arg2:T35	
+R30	is_witness_to Arg1:T34 Arg2:T4	
+R31	occupation_is Arg1:T36 Arg2:T37	
+R32	is_witness_to Arg1:T36 Arg2:T4	

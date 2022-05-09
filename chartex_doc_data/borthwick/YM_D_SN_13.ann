@@ -1,0 +1,54 @@
+T1	Document 0 10	YM/D/SN/13
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "30 April, 1548", "Title": "Feoffment"}
+T3	Person 22 36	John Mawdisley
+T4	Place 40 54	Hirst Courtney
+T5	Occupation 56 62	yeoman
+T6	Person 64 79	Richard Doghtie
+T7	Site 93 103	built toft
+T8	Place 107 113	Snaith
+T9	Site 120 131	1 rood land
+R1	is_part_of Arg1:T9 Arg2:T7	
+R2	refers_to Arg1:T1 Arg2:T2	
+R3	is_grantor_in Arg1:T3 Arg2:T2	
+R4	is_of Arg1:T3 Arg2:T4	
+R5	occupation_is Arg1:T3 Arg2:T5	
+R6	is_recipient_in Arg1:T6 Arg2:T2	
+R7	is_parcel_in Arg1:T7 Arg2:T2	
+R8	is_located_in Arg1:T7 Arg2:T8	
+T10	Site 157 161	toft
+R9	is_eastern_directional_marker_to Arg1:T10 Arg2:T7	
+T11	Person 182 193	Robert Ruys
+R10	is_a_previous_tenant_of Arg1:T11 Arg2:T10	
+T12	SiteRef 210 214	that
+T13	Person 218 229	John Elland
+R11	is_a_tenant_of Arg1:T13 Arg2:T12	
+R12	is_western_directional_marker_to Arg1:T12 Arg2:T7	
+T14	Site 252 264	Snaith marsh
+R13	is_northern_directional_marker_to Arg1:T14 Arg2:T7	
+T15	Site 286 290	road
+R14	is_southern_directional_marker_to Arg1:T15 Arg2:T7	
+T16	Person 452 464	Lionel Evers
+T17	Place 468 474	Snaith
+R15	is_of Arg1:T16 Arg2:T17	
+T18	Person 483 497	John Seriesson
+R16	is_of Arg1:T18 Arg2:T17	
+T19	Person 511 521	John White
+R17	is_of Arg1:T19 Arg2:T17	
+T20	Person 535 548	John Galyngby
+T21	Place 552 558	Cowick
+R18	is_of Arg1:T20 Arg2:T21	
+R19	is_witness_to Arg1:T16 Arg2:T2	
+R20	is_witness_to Arg1:T18 Arg2:T2	
+R21	is_witness_to Arg1:T19 Arg2:T2	
+R22	is_witness_to Arg1:T20 Arg2:T2	
+T22	Occupation 476 480	gent
+R23	occupation_is Arg1:T16 Arg2:T22	
+T23	Site 81 87	Moiety
+R24	is_part_of Arg1:T23 Arg2:T7	
+T24	Person 438 445	Doghtie
+*	same_as T24 T6
+T25	Place 384 390	Snaith
+*	same_as T25 T8
+T26	Place 294 298	Dorr
+R25	is_boundary_to Arg1:T26 Arg2:T15	

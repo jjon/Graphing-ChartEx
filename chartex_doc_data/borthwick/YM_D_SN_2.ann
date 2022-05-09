@@ -1,0 +1,27 @@
+T1	Document 0 9	YM/D/SN/2
+T2	Transaction 11 22	Acquittance
+#1	AnnotatorNotes T1	{"Creation Dates": "1 October, 1396", "Title": "Acquittance"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 23 34	John Daunay
+T4	Person 36 54	William de Burgoyn
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_recipient_in Arg1:T4 Arg2:T2	
+T5	Site 83 88	lands
+R4	is_parcel_in Arg1:T5 Arg2:T2	
+T6	Place 92 98	Cowick
+T7	Place 103 113	Pollington
+R5	is_located_in Arg1:T5 Arg2:T6	
+R6	is_located_in Arg1:T5 Arg2:T7	
+T8	Person 242 256	Thomas Dilcock
+T9	Person 258 273	Richard Litster
+T10	Person 275 292	Alexander Mangolf
+T11	Person 294 309	John de Puknall
+R7	is_witness_to Arg1:T8 Arg2:T2	
+R8	is_witness_to Arg1:T9 Arg2:T2	
+R9	is_witness_to Arg1:T10 Arg2:T2	
+R10	is_witness_to Arg1:T11 Arg2:T2	
+T12	Person 56 62	Daunay
+*	same_as T3 T12
+T13	Person 117 124	Burgoyn
+*	same_as T13 T4 T14
+T14	Person 194 201	Burgoyn

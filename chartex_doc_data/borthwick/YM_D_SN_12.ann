@@ -1,0 +1,19 @@
+T1	Document 0 10	YM/D/SN/12
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "14 June, 1545", "Title": "Feoffment"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 22 37	Richard Dughtie
+T4	Place 41 45	Moss
+R2	is_of Arg1:T3 Arg2:T4	
+T5	Person 47 62	John Mawdyslaye
+T6	Person 64 69	Agnes
+R3	is_wife_of Arg1:T6 Arg2:T5	
+T7	Person 84 96	John Saynter
+T8	Site 102 107	lands
+T9	Place 127 133	Snaith
+R4	is_located_in Arg1:T8 Arg2:T9	
+R5	is_parcel_in Arg1:T8 Arg2:T2	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	is_recipient_in Arg1:T5 Arg2:T2	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+R9	is_recipient_in Arg1:T7 Arg2:T2	

@@ -1,0 +1,30 @@
+T1	Document 0 10	57A/205/27
+T2	Transaction 11 16	Lease
+T3	Person 20 36	Elizabeth Grene,
+T4	Occupation 37 43	abbess
+T5	Institution 51 72	monastery of Barking,
+T6	Place 73 79	Essex,
+T7	Person 83 94	Robert Roos
+T8	Place 98 115	Stoke by Nayland,
+T9	Place 116 124	Suffolk,
+T10	Occupation 125 136	clothmaker,
+T11	Site 159 163	mill
+T12	Place 186 197	Tollesbury,
+T13	Place 198 204	Essex,
+T14	Date 270 285	10 January 1515
+T15	Person 303 316	John Growse),
+R1	occupation_is Arg1:T7 Arg2:T10	
+R2	occupation_is Arg1:T3 Arg2:T4	
+R3	is_located_in Arg1:T5 Arg2:T6	
+R4	is_part_of Arg1:T8 Arg2:T9	
+R5	is_located_in Arg1:T11 Arg2:T12	
+T16	Site 159 182	mill with appurtenances
+R6	is_part_of Arg1:T12 Arg2:T13	
+T17	Actor 293 299	abbess
+*	same_as T17 T3 T18
+T18	Actor 395 413	abbess of Barking•
+T19	Date 417 425	1520 Nov
+R7	is_grantor_in Arg1:T3 Arg2:T2	
+R8	is_recipient_in Arg1:T7 Arg2:T2	
+R9	is_previous_recipient_in Arg1:T15 Arg2:T2	
+R10	refers_to Arg1:T1 Arg2:T2	

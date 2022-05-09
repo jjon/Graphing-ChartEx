@@ -1,0 +1,79 @@
+T1	Document 0 17	vicars-choral-168
+T2	Transaction 18 23	Grant
+T3	Person 27 32	Agnes
+T4	Person 42 47	Ralph
+T5	Occupation 52 57	clerk
+T6	Site 61 73	Gutherumgate
+T7	Person 112 116	John
+T8	Person 121 139	Peter called Roman
+T9	Site 221 225	land
+T10	Site 235 244	buildings
+T11	Site 248 260	Gutherumgate
+T12	Site 280 284	land
+T13	Person 293 312	Laurence de Traneby
+T14	Occupation 313 321	chaplain
+T15	Person 340 356	Simon de Lilling
+T16	Occupation 357 363	knight
+T17	Person 381 398	Stephen called Pe
+T18	Occupation 399 407	chaplain
+T19	Person 416 421	Agnes
+T20	Person 480 496	John de Warthill
+T21	Institution 553 571	archbishop of York
+T22	Apparatus 581 620	(husgablium). Warranty. Seal. Witnesses
+T23	Person 622 636	John de Hesell
+T24	Person 638 652	John de Bogwes
+T25	Occupation 653 661	chaplain
+T26	Person 663 680	Richard de Gruscy
+T27	Person 682 699	Thomas de Overton
+T28	Person 701 730	Robert Verdonel' of the marsh
+T29	Apparatus 731 743	(de marisco)
+T30	Person 745 749	Adam
+T31	Person 759 769	Hugh Playz
+T32	Person 771 783	Alan de Karl
+T33	Person 786 806	William de Brandesby
+T34	Person 808 828	Thomas de Tollertona
+T35	Person 830 842	Robert Frend
+T36	Person 844 858	John de Glouc'
+T37	Occupation 859 864	clerk
+T38	Date 878 890	January 1259
+T39	Apparatus 891 1074	[1259/60]. SOURCE: VC 3/Vi 167 (i8i mm. x 153 mm.) ENDORSEMENT: none. SEAL: tag. NOTE: This grant was confirmed by 169. There is no certain connection between the grant and the vicars
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T22	
+R3	contains Arg1:T1 Arg2:T29	
+R4	contains Arg1:T1 Arg2:T39	
+R5	is_grantor_in Arg1:T3 Arg2:T2	
+R6	is_widow_of Arg1:T3 Arg2:T4	
+R7	occupation_is Arg1:T4 Arg2:T5	
+R8	is_of Arg1:T4 Arg2:T6	
+R9	is_son_of Arg1:T7 Arg2:T3	
+R10	is_recipient_in Arg1:T8 Arg2:T2	
+R11	is_part_of Arg1:T10 Arg2:T9	
+R12	is_part_of Arg1:T9 Arg2:T11	
+R13	is_boundary_to Arg1:T12 Arg2:T9	
+R14	is_a_previous_tenant_of Arg1:T13 Arg2:T12	
+R15	occupation_is Arg1:T13 Arg2:T14	
+R16	is_a_previous_tenant_of Arg1:T15 Arg2:T12	
+R17	occupation_is Arg1:T15 Arg2:T16	
+R18	occupation_is Arg1:T17 Arg2:T18	
+R19	is_a_previous_tenant_of Arg1:T17 Arg2:T12	
+*	same_as T19 T3
+T40	Person 471 476	heirs
+R20	is_other_relation_to Arg1:T40 Arg2:T20	
+R21	is_participant_in Arg1:T40 Arg2:T2	
+R22	is_a_landlord_of Arg1:T21 Arg2:T9	
+R23	is_witness_to Arg1:T23 Arg2:T2	
+R24	occupation_is Arg1:T24 Arg2:T25	
+R25	is_witness_to Arg1:T24 Arg2:T2	
+R26	is_witness_to Arg1:T26 Arg2:T2	
+R27	is_witness_to Arg1:T27 Arg2:T2	
+R28	is_witness_to Arg1:T28 Arg2:T2	
+R29	is_son_of Arg1:T30 Arg2:T28	
+R30	is_witness_to Arg1:T30 Arg2:T2	
+R31	is_witness_to Arg1:T31 Arg2:T2	
+R32	is_witness_to Arg1:T32 Arg2:T2	
+R33	is_witness_to Arg1:T33 Arg2:T2	
+R34	is_witness_to Arg1:T34 Arg2:T2	
+R35	is_witness_to Arg1:T35 Arg2:T2	
+R36	is_witness_to Arg1:T36 Arg2:T2	
+R37	occupation_is Arg1:T36 Arg2:T37	
+R38	is_dated Arg1:T1 Arg2:T38	

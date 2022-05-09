@@ -1,0 +1,68 @@
+T1	Document 0 13	cluny-BB_0104
+T2	Person 31 39	Ricfredo
+T3	Person 52 61	Otelliane
+T4	Person 67 78	Engelfredus
+T5	Person 91 97	Osanna
+T6	Transaction 111 123	vendedisimus
+T7	Site 145 156	res nostras
+R1	is_grantor_in Arg1:T4 Arg2:T6	
+R2	is_grantor_in Arg1:T5 Arg2:T6	
+R3	is_recipient_in Arg1:T3 Arg2:T6	
+R4	is_recipient_in Arg1:T2 Arg2:T6	
+R5	is_parcel_in Arg1:T7 Arg2:T6	
+T8	Place 175 192	pago Matisconense
+R6	is_located_in Arg1:T7 Arg2:T8	
+T9	Place 197 211	agro Maciacens
+R7	is_part_of Arg1:T8 Arg2:T9	
+T10	Place 216 232	villa Besorniago
+R8	is_part_of Arg1:T9 Arg2:T10	
+T11	Site 251 257	campus
+T12	Site 268 275	Alpucio
+*	same_as T12 T11
+R9	is_part_of Arg1:T11 Arg2:T7	
+T13	Site 344 349	terre
+T14	Date 1378 1442	die dominico, in mense aprilo, in annos XII rengnante Karlo rege
+T15	Site 305 325	terre ad ipso emtore
+R10	is_boundary_to Arg1:T15 Arg2:T12	
+R11	is_boundary_to Arg1:T13 Arg2:T12	
+T16	Site 443 457	prato et campo
+T17	Site 485 491	Avanda
+*	same_as T17 T16
+R12	is_part_of Arg1:T16 Arg2:T7	
+T18	Person 350 358	Ansierio
+R13	is_a_tenant_of Arg1:T18 Arg2:T13	
+T19	Site 519 524	terre
+R14	not_same_as Arg1:T19 Arg2:T13	
+T20	Person 527 532	Elmon
+R15	is_a_tenant_of Arg1:T20 Arg2:T19	
+R16	is_breadth_marker_to Arg1:T19 Arg2:T17	
+T21	Site 548 553	terre
+T22	Person 554 560	Bernar
+R17	is_a_tenant_of Arg1:T22 Arg2:T21	
+R18	is_breadth_marker_to Arg1:T21 Arg2:T17	
+T23	Site 583 588	terre
+T24	Person 589 595	Rairan
+R19	is_a_tenant_of Arg1:T24 Arg2:T23	
+R20	is_length_marker_to Arg1:T23 Arg2:T17	
+T25	Site 625 636	unda corent
+R21	is_length_marker_to Arg1:T25 Arg2:T17	
+T26	Place 1130 1143	Maciago villa
+R22	refers_to Arg1:T1 Arg2:T6	
+R23	is_location_of Arg:T26 Arg2:T6	
+T27	Person 1227 1234	Bernono
+T28	Person 1239 1246	Otberto
+T29	Person 1251 1261	Ermengerio
+T30	Person 1266 1273	Bernoar
+T31	Person 1278 1284	Garoar
+T32	Person 1289 1294	Gotal
+T33	Person 1299 1306	Anserio
+R24	is_dated Arg1:T1 Arg2:T14	
+T34	Apparatus 612 625	{corr:fronte}
+R25	contains Arg1:T1 Arg2:T34	
+R26	is_witness_to Arg1:T27 Arg2:T6	
+R27	is_witness_to Arg1:T28 Arg2:T6	
+R28	is_witness_to Arg1:T29 Arg2:T6	
+R29	is_witness_to Arg1:T30 Arg2:T6	
+R30	is_witness_to Arg1:T31 Arg2:T6	
+R31	is_witness_to Arg1:T32 Arg2:T6	
+R32	is_witness_to Arg1:T33 Arg2:T6	

@@ -1,0 +1,143 @@
+T1	Document 0 14	deeds-00880196
+#1	AnnotatorNotes T1	{'editorial date':'1292', 'transaction type': 'Exchange'}
+T2	Date 15 76	Die sancti Kenelmi martiris anno regni regis Edwardi vicesimo
+T3	Person 92 117	Radulphum de Wetheresdene
+T4	Person 121 127	Sarram
+T5	Person 156 168	Robertum wal
+T6	Person 172 180	Ioyousam
+T7	Person 224 233	Radulphus
+T8	Person 237 242	Sarra
+T9	Person 328 340	Roberto wall
+T10	Person 344 351	Ioyouse
+T11	Site 458 467	tenemento
+T12	Place 504 523	magna Mapeltrestede
+T13	Person 560 568	Radulpho
+T14	Person 572 577	Sarre
+T15	Site 587 596	tenemento
+T16	Person 647 654	Roberti
+T17	Person 658 665	Ioyouse
+T18	Person 673 681	Radulpho
+T19	Person 685 690	Sarre
+T20	Site 799 805	terram
+T21	Person 806 822	Roberti Pakkeleg
+T22	Site 839 845	terram
+T23	Person 846 854	Radulphi
+T24	Site 902 917	regale cheminum
+T25	Site 933 939	terram
+T26	Person 948 956	Radulphi
+T27	Site 973 979	terram
+T28	Person 980 996	Roberti Pakkeleg
+T29	Person 1052 1068	Roberti Pakkeleg
+T30	Site 1084 1090	terram
+T31	Person 1097 1108	Roberti wal
+T32	Site 1125 1131	terram
+T33	Person 1138 1146	Radulphi
+T34	Site 1163 1171	cheminum
+T35	Site 1186 1211	ecclesia de Mapeltrestede
+T37	Site 1228 1233	domum
+T38	Person 1234 1247	Walteri Barun
+T39	Site 1276 1284	cheminum
+T40	Site 1325 1331	terram
+T41	Person 1332 1349	Thome de Hodingge
+T42	Site 1411 1416	campo
+T43	Place 1385 1407	villa de Mapeltrestede
+T44	Site 1488 1498	tenementum
+T45	Person 1567 1574	Roberto
+T46	Person 1578 1585	Ioyouse
+T47	Person 1646 1654	Radulpho
+T48	Person 1658 1663	Sarre
+T49	Person 1740 1748	Radulpho
+T50	Person 1752 1757	Sarre
+T51	Site 618 637	tribus peciis terre
+T53	Transaction 243 294	dederunt concesserunt et omnino quietum clamaverunt
+T54	Transaction 704 775	libere datis concessis et totaliter sine ullo servicio quietum clamatis
+R2	is_dated Arg1:T1 Arg2:T2	
+*	same_as T3 T7 T13 T18 T23 T26 T33 T47 T49
+*	same_as T5 T9 T16 T31 T45 T63
+*	same_as T6 T10 T17 T46 T64
+*	same_as T21 T28 T29 T55
+*	same_as T48 T50 T4 T8 T14 T19
+T55	Person 2055 2071	Roberto Pakkeleg
+T56	Person 2072 2089	Rogero de Fenleye
+T57	Person 2139 2154	Sthephano Scott
+T58	Person 2125 2138	Waltero Barun
+T59	Person 2109 2124	Iohanne Aspelun
+T60	Person 2090 2108	Nicholao le harper
+T61	Person 2037 2054	Thoma de Hodingge
+T62	Site 1696 1712	tres pecie terre
+T63	Person 1825 1832	Roberti
+T64	Person 1836 1843	Ioyouse
+R5	is_located_in Arg1:T11 Arg2:T12	
+T65	Site 1039 1045	terram
+T66	Site 1365 1381	tres pecie terre
+*	same_as T62 T66 T51
+*	same_as T11 T15 T44 T52 T72
+R7	is_a_tenant_of Arg1:T41 Arg2:T40	
+R8	is_a_tenant_of Arg1:T38 Arg2:T37	
+R9	is_a_tenant_of Arg1:T21 Arg2:T20	
+R14	is_a_tenant_of Arg1:T23 Arg2:T22	
+R15	is_a_tenant_of Arg1:T28 Arg2:T27	
+R16	is_part_of Arg1:T66 Arg2:T42	
+R17	is_located_in Arg1:T42 Arg2:T43	
+*	same_as T58 T38
+T67	Site 1000 1008	spinetam
+T68	SiteRef 783 786	una
+R29	is_part_of Arg1:T68 Arg2:T51	
+R30	is_boundary_to Arg1:T20 Arg2:T68	
+R31	is_boundary_to Arg1:T22 Arg2:T68	
+T69	SiteRef 960 966	altera
+R32	is_part_of Arg1:T69 Arg2:T51	
+R33	is_boundary_to Arg1:T24 Arg2:T68	
+R34	is_boundary_to Arg1:T25 Arg2:T68	
+T70	SiteRef 1112 1118	altera
+R38	is_part_of Arg1:T70 Arg2:T51	
+R39	is_boundary_to Arg1:T32 Arg2:T70	
+R40	is_boundary_to Arg1:T34 Arg2:T70	
+R41	is_boundary_to Arg1:T39 Arg2:T70	
+R42	is_boundary_to Arg1:T40 Arg2:T70	
+R43	is_a_tenant_of Arg1:T33 Arg2:T32	
+R44	is_a_tenant_of Arg1:T31 Arg2:T30	
+R45	is_a_tenant_of Arg1:T29 Arg2:T65	
+R46	is_a_tenant_of Arg1:T26 Arg2:T25	
+R50	is_length_marker_to Arg1:T37 Arg2:T34	
+R51	is_length_marker_to Arg1:T35 Arg2:T34	
+R1	is_wife_of Arg1:T4 Arg2:T3	
+R3	is_wife_of Arg1:T6 Arg2:T5	
+R4	is_grantor_in Arg1:T7 Arg2:T53	
+R10	is_grantor_in Arg1:T8 Arg2:T53	
+R11	is_recipient_in Arg1:T9 Arg2:T53	
+R18	is_recipient_in Arg1:T10 Arg2:T53	
+T52	Site 481 491	Helmeslond
+R19	is_parcel_in Arg1:T11 Arg2:T53	
+R12	refers_to Arg1:T1 Arg2:T53	
+R13	refers_to Arg1:T1 Arg2:T54	
+R20	is_grantor_in Arg1:T16 Arg2:T54	
+R21	is_grantor_in Arg1:T17 Arg2:T54	
+R22	is_recipient_in Arg1:T18 Arg2:T54	
+R23	is_recipient_in Arg1:T19 Arg2:T54	
+R24	is_parcel_in Arg1:T51 Arg2:T54	
+R25	is_boundary_to Arg1:T27 Arg2:T69	
+R26	is_boundary_to Arg1:T67 Arg2:T69	
+R27	is_boundary_to Arg1:T65 Arg2:T67	
+R28	is_boundary_to Arg1:T30 Arg2:T67	
+T71	Site 1424 1435	Cherchefeld
+*	same_as T42 T71
+T36	Site 1298 1309	Chircheweye
+*	same_as T39 T36
+T72	Site 1512 1522	Helmeslond
+R6	is_witness_to Arg1:T61 Arg2:T54	
+R35	is_witness_to Arg1:T55 Arg2:T54	
+R36	is_witness_to Arg1:T56 Arg2:T54	
+R37	is_witness_to Arg1:T60 Arg2:T54	
+R47	is_witness_to Arg1:T59 Arg2:T54	
+R48	is_witness_to Arg1:T58 Arg2:T54	
+R49	is_witness_to Arg1:T57 Arg2:T54	
+R52	is_witness_to Arg1:T61 Arg2:T53	
+R53	is_witness_to Arg1:T55 Arg2:T53	
+R54	is_witness_to Arg1:T56 Arg2:T53	
+R55	is_witness_to Arg1:T60 Arg2:T53	
+R56	is_witness_to Arg1:T59 Arg2:T53	
+R57	is_witness_to Arg1:T58 Arg2:T53	
+R58	is_witness_to Arg1:T57 Arg2:T53	
+T73	Place 495 500	villa
+*	same_as T73 T12

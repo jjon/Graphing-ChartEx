@@ -1,0 +1,68 @@
+T1	Document 0 14	deeds-00880669
+#1	AnnotatorNotes T1	{'editorial date':'1275', 'transaction type': 'Grant'}
+T2	Person 51 73	Ricardus filius Rogeri
+T4	Place 93 101	Halstede
+T5	Institution 205 251	fratribus hospitalis sancti Iohannis Ierusalem
+T6	Site 602 610	mesuagio
+T7	Person 616 632	Henricus Muriell
+T8	Place 648 653	villa
+T9	Site 679 688	mesuagium
+T10	Person 697 705	Isabelle
+T11	Person 712 727	Rogeri de Solio
+T12	Place 731 739	Halstede
+T13	Site 743 752	mesuagium
+T14	Person 753 776	Gilberti dicti Contesse
+T15	Site 805 820	regale cheminum
+T16	Site 845 851	terram
+R1	is_of Arg1:T10 Arg2:T12	
+T17	Person 858 866	Isabelle
+T18	Person 1524 1539	Ricardo Everwyn
+T19	Person 1540 1555	Simone de Fonte
+T20	Person 1556 1572	Iohanne Walebrun
+T21	Person 1573 1589	Iohanne de Solio
+T22	Person 1590 1607	Willelmo de Solio
+T23	Person 1608 1626	Willelmo aurifabro
+T24	Person 1627 1643	Rogero Fraunceys
+T25	Person 1644 1663	Sewallo de Stubleye
+T26	Person 1664 1677	Petro Goldyng
+T27	Person 1678 1698	Roberto le teynturer
+T28	Person 1699 1714	Willelmo Byddoy
+T29	Person 1715 1730	Thoma capellano
+T30	Date 1775 1901	tempore fratris Willelmi de Chelesham anno suo tercio mense decembris et anno domini millesimo ducentesimo septuagesimo quinto
+R3	is_of Arg1:T2 Arg2:T4	
+T31	Transaction 102 155	concessi et dedi et hac presenti carta mea confirmavi
+R4	is_grantor_in Arg1:T2 Arg2:T31	
+R5	is_recipient_in Arg1:T5 Arg2:T31	
+T32	Place 257 270	Mapeltrestede
+R6	is_located_in Arg1:T5 Arg2:T32	
+R7	is_parcel_in Arg1:T6 Arg2:T31	
+R8	is_a_tenant_of Arg1:T7 Arg2:T6	
+R9	is_located_in Arg1:T6 Arg2:T8	
+R10	is_a_landlord_of Arg1:T2 Arg2:T6	
+R11	is_boundary_to Arg1:T9 Arg2:T6	
+R12	is_a_previous_tenant_of Arg1:T10 Arg2:T9	
+R13	is_daughter_of Arg1:T10 Arg2:T11	
+R14	is_boundary_to Arg1:T13 Arg2:T6	
+R15	is_a_tenant_of Arg1:T14 Arg2:T13	
+R16	is_boundary_to Arg1:T15 Arg2:T6	
+R17	is_boundary_to Arg1:T16 Arg2:T6	
+R18	is_a_previous_tenant_of Arg1:T17 Arg2:T16	
+*	same_as T17 T10
+*	same_as T16 T9
+R19	is_witness_to Arg1:T18 Arg2:T31	
+R20	is_witness_to Arg1:T19 Arg2:T31	
+R21	is_witness_to Arg1:T20 Arg2:T31	
+R22	is_witness_to Arg1:T21 Arg2:T31	
+R23	is_witness_to Arg1:T22 Arg2:T31	
+R24	is_witness_to Arg1:T23 Arg2:T31	
+R25	is_witness_to Arg1:T24 Arg2:T31	
+R26	is_witness_to Arg1:T25 Arg2:T31	
+R27	is_witness_to Arg1:T26 Arg2:T31	
+R28	is_witness_to Arg1:T27 Arg2:T31	
+R29	is_witness_to Arg1:T28 Arg2:T31	
+R30	is_witness_to Arg1:T29 Arg2:T31	
+R31	refers_to Arg1:T1 Arg2:T31	
+R32	is_dated Arg1:T1 Arg2:T30	
+T33	Place 657 665	Halstede
+*	same_as T8 T33
+T3	Person 1783 1812	fratris Willelmi de Chelesham

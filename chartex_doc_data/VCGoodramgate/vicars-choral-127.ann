@@ -1,0 +1,55 @@
+T1	Document 0 17	vicars-choral-127
+T2	Person 38 56	Henry de Wigestoft
+T3	Transaction 62 90	given, granted and confirmed
+T4	Person 132 148	William de Lanum
+T5	Occupation 149 169	archdeacon of Durham
+R1	occupation_is Arg1:T4 Arg2:T5	
+T6	Site 226 230	land
+T7	Site 253 264	Goodramgate
+T8	Site 273 290	20 feet in length
+T9	Site 298 311	King's street
+T10	Site 316 332	20 feet in width
+T11	Site 343 355	northern end
+T12	Person 374 391	Roger the saddler
+T13	Institution 473 483	archdeacon
+T14	Site 486 490	land
+T15	Site 451 455	land
+T16	Site 500 506	land r
+T17	Site 543 558	northern corner
+T18	Site 570 579	brewhouse
+T19	Site 613 617	land
+T20	Person 630 635	Roger
+T21	Institution 661 671	archdeacon
+T22	Site 644 648	land
+T23	Institution 901 919	Archbishop of York
+T24	Person 1089 1094	Henry
+R2	refers_to Arg1:T1 Arg2:T3	
+*	same_as T2 T24
+R3	is_grantor_in Arg1:T2 Arg2:T3	
+R4	is_recipient_in Arg1:T4 Arg2:T3	
+R5	is_parcel_in Arg1:T6 Arg2:T3	
+R6	is_part_of Arg1:T6 Arg2:T7	
+R7	is_part_of Arg1:T8 Arg2:T6	
+R8	is_length_marker_to Arg1:T9 Arg2:T6	
+R9	is_part_of Arg1:T10 Arg2:T6	
+R11	is_breadth_marker_to Arg1:T11 Arg2:T6	
+*	same_as T15 T6
+R12	is_a_tenant_of Arg1:T13 Arg2:T14	
+R13	is_breadth_marker_to Arg1:T14 Arg2:T6	
+R14	is_parcel_in Arg1:T16 Arg2:T3	
+R15	not_same_as Arg1:T16 Arg2:T6	
+R16	is_part_of Arg1:T17 Arg2:T18	
+*	same_as T20 T12
+R19	is_a_tenant_of Arg1:T20 Arg2:T19	
+R20	is_breadth_marker_to Arg1:T19 Arg2:T16	
+R21	is_a_tenant_of Arg1:T21 Arg2:T22	
+R22	is_breadth_marker_to Arg1:T22 Arg2:T16	
+*	same_as T22 T14
+*	same_as T13 T21
+R23	is_a_landlord_of Arg1:T23 Arg2:T6	
+R24	is_a_landlord_of Arg1:T23 Arg2:T16	
+T25	Site 363 370	brewery
+R10	is_part_of Arg1:T11 Arg2:T25	
+R25	is_a_tenant_of Arg1:T12 Arg2:T25	
+R18	is_northern_directional_marker_to Arg1:T17 Arg2:T16	
+R17	is_length_marker_to Arg1:T17 Arg2:T16	

@@ -1,0 +1,48 @@
+T1	Document 0 10	YM/D/WOM/6
+T2	Transaction 12 28	Bargain and sale
+#1	AnnotatorNotes T1	{"Creation Dates": "17 May 1590", "Title": "Bargain and sale"}
+R1	refers_to Arg1:T1 Arg2:T2	
+T3	Person 29 44	Anthony Collins
+T4	Place 48 54	London
+T5	Occupation 56 59	esq
+R2	is_of Arg1:T3 Arg2:T4	
+R3	occupation_is Arg1:T3 Arg2:T5	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T6	Person 62 77	William Stanley
+T7	Person 104 117	Peter Stanley
+T8	Place 121 130	Womersley
+T9	Occupation 132 135	esq
+R6	is_of Arg1:T7 Arg2:T8	
+R7	is_son_of Arg1:T6 Arg2:T7	
+R8	is_recipient_in Arg1:T6 Arg2:T2	
+T10	Site 137 142	Close
+R9	is_parcel_in Arg1:T10 Arg2:T2	
+T11	Site 150 164	Sherewod close
+T12	Site 168 177	Pit croft
+*	same_as T10 T11 T12 T20
+T13	Place 181 190	Womersley
+R10	is_located_in Arg1:T10 Arg2:T13	
+T14	Site 203 210	8 acres
+R11	is_part_of Arg1:T14 Arg2:T10	
+T15	Person 237 250	Peter Stanley
+R12	is_an_occupant_of_a Arg1:T15 Arg2:T10	
+T16	Date 330 343	26 July, 1585
+*	same_as T15 T7
+T17	Person 384 391	Collins
+T18	Person 396 411	Laurence Wodnet
+*	same_as T17 T3
+T19	Transaction 373 380	granted
+R13	precedes Arg1:T19 Arg2:T2	
+R14	is_recipient_in Arg1:T17 Arg2:T19	
+R15	is_recipient_in Arg1:T18 Arg2:T19	
+T20	Site 358 363	lands
+R16	is_parcel_in Arg1:T20 Arg2:T19	
+T21	Document 309 323	Letters Patent
+R17	is_dated Arg1:T21 Arg2:T16	
+R18	refers_to Arg1:T21 Arg2:T19	
+R19	not_same_as Arg1:T1 Arg2:T21	
+T22	Institution 442 447	crown
+R20	is_a_landlord_of Arg1:T22 Arg2:T20	
+T23	Site 475 498	manor of East Greenwich
+R21	is_part_of Arg1:T20 Arg2:T23	
+R5	occupation_is Arg1:T6 Arg2:T9	

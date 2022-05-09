@@ -1,0 +1,57 @@
+T1	Document 0 14	deeds-00880778
+#1	AnnotatorNotes T1	{'editorial date':'1225/30', 'transaction type': 'Grant'}
+T2	Person 51 76	Galfridus filius Willelmi
+T4	Transaction 77 121	concessi et dedi et hac mea carta confirmavi
+R1	refers_to Arg1:T1 Arg2:T4	
+T5	Person 122 137	Willelmo Gaudio
+T6	Person 142 148	Alicia
+T7	Site 181 193	duas croftas
+T8	Site 198 203	prato
+R2	is_parcel_in Arg1:T7 Arg2:T4	
+T9	Site 227 234	croftas
+*	same_as T9 T7
+T10	Site 239 244	exitu
+T11	Person 259 279	Gilberto de Oddewell
+R6	is_a_landlord_of Arg1:T11 Arg2:T10	
+R7	is_a_previous_tenant_of Arg1:T2 Arg2:T10	
+T12	Person 287 297	Britmannus
+R8	is_a_previous_tenant_of Arg1:T12 Arg2:T10	
+T13	Person 407 413	Alicia
+T14	Person 669 694	Galfridus filius Willelmi
+T16	Person 793 801	Willelmo
+R9	is_parcel_in Arg1:T10 Arg2:T4	
+T17	Person 834 840	Alicia
+T18	Person 921 937	Rogero de Gelham
+T19	Person 938 959	Willelmo de Topesfeld
+T20	Person 962 980	Simone de Oddewell
+T21	Person 983 1001	Alexandro de Vaude
+T22	Person 1002 1017	Ricardo Huraunt
+T23	Person 1018 1040	Iohanne filio Willelmi
+T25	Person 1053 1070	Roberto Hildeherd
+T26	Person 1073 1091	Waltero de Gosfeld
+T27	Person 1094 1109	Roberto potserd
+T28	Person 1112 1132	Gilberto filio Thome
+R11	is_grantor_in Arg1:T2 Arg2:T4	
+R12	is_recipient_in Arg1:T5 Arg2:T4	
+R13	is_recipient_in Arg1:T6 Arg2:T4	
+R14	is_daughter_of Arg1:T6 Arg2:T2	
+R15	is_wife_of Arg1:T6 Arg2:T5	
+R5	is_boundary_to Arg1:T9 Arg2:T8	
+*	same_as T13 T6 T17
+*	same_as T14 T2
+*	same_as T16 T5
+R17	is_witness_to Arg1:T18 Arg2:T4	
+R18	is_witness_to Arg1:T19 Arg2:T4	
+R19	is_witness_to Arg1:T20 Arg2:T4	
+R20	is_witness_to Arg1:T21 Arg2:T4	
+R21	is_witness_to Arg1:T22 Arg2:T4	
+R22	is_witness_to Arg1:T23 Arg2:T4	
+R24	is_witness_to Arg1:T25 Arg2:T4	
+R25	is_witness_to Arg1:T26 Arg2:T4	
+R26	is_witness_to Arg1:T27 Arg2:T4	
+R27	is_witness_to Arg1:T28 Arg2:T4	
+R3	is_parcel_in Arg1:T8 Arg2:T4	
+T3	Place 1044 1052	Haustede
+R4	is_of Arg1:T23 Arg2:T3	
+T15	Place 1136 1141	Cruce
+R10	is_of Arg1:T28 Arg2:T15	

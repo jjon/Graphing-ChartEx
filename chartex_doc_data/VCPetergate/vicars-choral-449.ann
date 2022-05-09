@@ -1,0 +1,38 @@
+T1	Document 0 17	vicars-choral-449
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 43	Thomas Warde
+T4	Person 60 72	Robert Warde
+T5	Occupation 90 98	merchant
+T6	Place 102 106	York
+R2	is_grantor_in Arg1:T3 Arg2:T2	
+R3	is_son_of Arg1:T3 Arg2:T4	
+R4	occupation_is Arg1:T4 Arg2:T5	
+R5	is_of Arg1:T4 Arg2:T6	
+R6	is_a_previous_tenant_in Arg1:T4 Arg2:T2	
+T7	Person 110 121	John Watton
+T8	Occupation 122 130	chaplain
+T9	Person 135 146	John Malton
+T10	Occupation 147 152	clerk
+T11	Site 158 166	messuage
+T12	Site 173 179	moiety
+T13	Site 185 192	chamber
+T14	Date 308 324	1 June 5 Henry V
+T15	Place 302 306	York
+T16	Apparatus 325 677	[1417]. SOURCE: VC 3/Vi 343 (316 mm. x 150 mm.) ENDORSEMENT: Carta Thome Ward heredis Roberti Ward facto Johanni Watton et Johanni Malton super universis tenementis in Petirgatt et Hornpotlane iuxta undique ten' Nicholai Blakborn.SEAL: round (23 mm. dia.), red, impression of 'A' encompassing '0' [Alpha and Omega], surmounted by a cross. NOTE: See 443
+R7	contains Arg1:T1 Arg2:T16	
+R1	refers_to Arg1:T1 Arg2:T2	
+R8	is_recipient_in Arg1:T7 Arg2:T2	
+R9	occupation_is Arg1:T7 Arg2:T8	
+R10	is_recipient_in Arg1:T9 Arg2:T2	
+R11	occupation_is Arg1:T9 Arg2:T10	
+R12	is_parcel_in Arg1:T11 Arg2:T2	
+R13	is_parcel_in Arg1:T12 Arg2:T2	
+R14	is_part_of Arg1:T12 Arg2:T13	
+R15	is_location_of Arg:T15 Arg2:T2	
+R16	is_dated Arg1:T1 Arg2:T14	
+T17	Apparatus 194 263	as in 445. Seal Witnesses: as 446 (reading Howm for Howom, and adding
+T18	Apparatus 276 300	before Henry de Preston)
+R17	contains Arg1:T1 Arg2:T17	
+R18	contains Arg1:T1 Arg2:T18	
+T19	Person 264 275	John Bedale
+R19	is_witness_to Arg1:T19 Arg2:T2	

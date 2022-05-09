@@ -1,0 +1,74 @@
+T1	Document 0 10	YM/D/SN/25
+T2	Transaction 12 21	Feoffment
+#1	AnnotatorNotes T1	{"Creation Dates": "23 January 1582/3", "Title": "Feoffment"}
+T3	Person 22 37	John Oldffielde
+T4	Place 41 53	Magson house
+T5	Place 55 72	parish of Halifax
+R1	is_part_of Arg1:T4 Arg2:T5	
+T6	Occupation 74 78	gent
+R2	occupation_is Arg1:T3 Arg2:T6	
+R3	is_of Arg1:T3 Arg2:T4	
+R4	is_grantor_in Arg1:T3 Arg2:T2	
+T7	Person 81 94	Walter Jobson
+T8	Place 98 104	Snaith
+R5	is_of Arg1:T7 Arg2:T8	
+R6	is_grantor_in Arg1:T7 Arg2:T2	
+T9	Site 111 125	Close or croft
+T10	Place 129 135	Snaith
+R7	is_located_in Arg1:T9 Arg2:T10	
+R8	is_parcel_in Arg1:T9 Arg2:T2	
+T11	Site 146 151	lands
+R9	is_western_directional_marker_to Arg1:T11 Arg2:T9	
+T12	SiteRef 213 218	those
+R10	is_eastern_directional_marker_to Arg1:T12 Arg2:T9	
+T13	Site 264 274	common way
+R11	is_southern_directional_marker_to Arg1:T13 Arg2:T9	
+T14	Site 292 304	Snaith marsh
+R12	is_northern_directional_marker_to Arg1:T14 Arg2:T9	
+T15	Site 326 338	Scott garth,
+*	same_as T15 T9
+T16	Person 386 398	widow Blakey
+R13	is_a_tenant_of Arg1:T16 Arg2:T15	
+T17	Site 400 411	1 acre moor
+R14	is_parcel_in Arg1:T17 Arg2:T2	
+T18	Site 419 432	English moors
+R15	is_part_of Arg1:T17 Arg2:T18	
+T19	Site 443 447	moor
+R16	is_northern_directional_marker_to Arg1:T19 Arg2:T17	
+T20	Person 451 467	Richard Radcliff
+T21	Occupation 469 473	gent
+R17	occupation_is Arg1:T20 Arg2:T21	
+R18	is_a_landlord_of Arg1:T20 Arg2:T19	
+T22	Person 493 506	Thomas Smithe
+R19	is_a_tenant_of Arg1:T22 Arg2:T19	
+T23	Site 530 534	moor
+T24	Person 551 563	Peter Jacson
+T25	Person 568 582	John Mexborowe
+R21	is_a_previous_landlord_of Arg1:T24 Arg2:T23	
+R22	is_a_previous_landlord_of Arg1:T25 Arg2:T23	
+T26	Person 635 647	widow Blakey
+R23	is_a_tenant_of Arg1:T26 Arg2:T23	
+R24	refers_to Arg1:T1 Arg2:T2	
+T27	Person 158 169	Robert Ayre
+R20	is_a_previous_tenant_of Arg1:T27 Arg2:T11	
+T28	Person 222 239	Robert Williamson
+R25	is_a_tenant_of Arg1:T28 Arg2:T12	
+*	same_as T16 T26
+T29	Occupation 106 109	esq
+R26	occupation_is Arg1:T7 Arg2:T29	
+T30	Person 668 678	Oldffielde
+T31	Person 688 701	James Asshton
+T32	Place 705 711	Snaith
+T33	Occupation 713 718	clerk
+T34	Person 724 736	Peter Orrell
+T35	Occupation 750 756	yeoman
+T36	Occupation 765 774	attorneys
+*	same_as T30 T3
+R27	is_other_relation_to Arg1:T31 Arg2:T30	
+R28	is_other_relation_to Arg1:T34 Arg2:T30	
+R29	is_of Arg1:T31 Arg2:T32	
+R30	occupation_is Arg1:T31 Arg2:T33	
+R31	occupation_is Arg1:T31 Arg2:T36	
+R32	is_of Arg1:T34 Arg2:T32	
+R33	occupation_is Arg1:T34 Arg2:T35	
+R34	occupation_is Arg1:T34 Arg2:T36	

@@ -1,0 +1,54 @@
+T1	Document 0 17	vicars-choral-458
+T2	Transaction 18 27	Quitclaim
+T3	Person 31 45	John Frekylton
+T4	Occupation 58 66	merchant
+T5	Place 70 74	York
+T6	Person 77 90	John Hykelyng
+T7	Occupation 91 122	warden of the college of vicars
+T8	Institution 131 137	vicars
+T9	Person 208 220	Robert Warde
+T10	Occupation 238 246	merchant
+T11	Place 250 254	York
+T12	Person 262 266	John
+T13	Person 284 295	Mary Darell
+T14	Apparatus 297 322	Warranty. Seal. Witnesses
+T15	Person 324 339	Richard Russell
+T16	Occupation 340 345	mayor
+T17	Person 347 361	Richard Warter
+T18	Person 363 378	William Belford
+T19	Occupation 380 388	sheriffs
+T20	Person 390 402	John Waughen
+T21	Person 404 414	John Warde
+T22	Person 417 432	Thomas Kyrkeham
+T23	Person 434 448	Peter Thoresby
+T24	Place 462 466	York
+T25	Date 468 486	12 June 8 Henry VI
+T26	Apparatus 487 779	[1430]. SOURCE: VC 3/Vi 322ii (311 mm. X 142 mm.) ENDORSEMENT: Relaxacio Johannis Frekylton cum obligacione de quodam annuo redditu trium solidorum exeunt' de j. tenemento in Petergate dictorum vicariorum. SEAL: round (25 mm. dia.), red, impression of 'I' surmounted by a crown. NOTE: See 443
+R1	refers_to Arg1:T1 Arg2:T2	
+R2	contains Arg1:T1 Arg2:T14	
+R3	contains Arg1:T1 Arg2:T26	
+R4	is_dated Arg1:T1 Arg2:T25	
+R5	is_location_of Arg:T24 Arg2:T2	
+R6	is_grantor_in Arg1:T3 Arg2:T2	
+R7	occupation_is Arg1:T3 Arg2:T4	
+R8	is_of Arg1:T3 Arg2:T5	
+R9	is_recipient_in Arg1:T6 Arg2:T2	
+R10	occupation_is Arg1:T6 Arg2:T7	
+R11	is_recipient_in Arg1:T8 Arg2:T2	
+T27	SiteRef 143 147	rent
+R12	is_parcel_in Arg1:T27 Arg2:T2	
+R13	is_a_previous_tenant_of Arg1:T9 Arg2:T27	
+R14	occupation_is Arg1:T9 Arg2:T10	
+R15	is_of Arg1:T9 Arg2:T11	
+*	same_as T12 T3
+R16	is_a_previous_grantor_of Arg1:T13 Arg2:T27	
+R17	occupation_is Arg1:T15 Arg2:T16	
+R18	occupation_is Arg1:T17 Arg2:T19	
+R19	occupation_is Arg1:T18 Arg2:T19	
+R20	is_witness_to Arg1:T15 Arg2:T2	
+R21	is_witness_to Arg1:T17 Arg2:T2	
+R22	is_witness_to Arg1:T18 Arg2:T2	
+R23	is_witness_to Arg1:T20 Arg2:T2	
+R24	is_witness_to Arg1:T21 Arg2:T2	
+R25	is_witness_to Arg1:T22 Arg2:T2	
+R26	is_witness_to Arg1:T23 Arg2:T2	

@@ -1,0 +1,63 @@
+T1	Document 0 17	vicars-choral-153
+T2	Person 84 88	Adam
+T3	Occupation 89 97	chaplain
+T4	Person 105 111	Robert
+T5	Occupation 116 122	hatter
+T6	Person 176 197	Lady Alicia de Nevill
+T7	Transaction 263 272	attorneys
+T8	Person 219 234	Henry de Nevill
+T9	Person 314 327	Hugh de Selby
+T10	Site 427 435	messuage
+T11	Site 466 477	Goodramgate
+T12	Person 493 496	Ada
+T13	Occupation 501 510	fisherman
+T14	Person 523 530	Richard
+T15	Occupation 535 541	palmer
+T16	Person 606 609	Ada
+T17	Site 626 634	messuage
+T18	Person 715 731	John de Warthill
+T19	Person 733 752	Robert de Skegnesse
+T20	Person 754 770	Peter de Barneby
+T21	Person 772 791	Galfrid de Queldric
+T22	Person 793 810	William Malesover
+T23	Person 812 817	Roger
+T24	Occupation 818 854	clerk of the Lord Archbishop of York
+T25	Person 856 870	Adam Punchardu
+T26	Person 872 889	John de Ogleforth
+T27	Person 891 898	William
+T28	Occupation 899 906	vintner
+T29	Person 908 927	Robert de Moonkgate
+T30	Person 929 943	Adam de Wycton
+T31	Person 945 958	John de Leeds
+T32	Occupation 960 965	clerk
+R1	refers_to Arg1:T1 Arg2:T7	
+R2	occupation_is Arg1:T2 Arg2:T3	
+R3	is_son_of Arg1:T2 Arg2:T4	
+R4	occupation_is Arg1:T4 Arg2:T5	
+R5	is_grantor_in Arg1:T2 Arg2:T7	
+R6	is_participant_in Arg1:T6 Arg2:T7	
+R7	is_widow_of Arg1:T6 Arg2:T8	
+R8	is_part_of Arg1:T10 Arg2:T11	
+R9	is_parcel_in Arg1:T10 Arg2:T7	
+R10	is_recipient_in Arg1:T9 Arg2:T7	
+R11	occupation_is Arg1:T12 Arg2:T13	
+R12	is_a_previous_grantor_of Arg1:T12 Arg2:T10	
+R13	is_brother_of Arg1:T12 Arg2:T14	
+R14	occupation_is Arg1:T14 Arg2:T15	
+*	same_as T16 T12
+*	same_as T10 T17
+R15	is_witness_to Arg1:T18 Arg2:T7	
+R16	is_witness_to Arg1:T19 Arg2:T7	
+R17	is_witness_to Arg1:T20 Arg2:T7	
+R18	is_witness_to Arg1:T21 Arg2:T7	
+R19	is_witness_to Arg1:T22 Arg2:T7	
+R20	is_witness_to Arg1:T23 Arg2:T7	
+R21	occupation_is Arg1:T23 Arg2:T24	
+R22	is_witness_to Arg1:T25 Arg2:T7	
+R23	is_witness_to Arg1:T26 Arg2:T7	
+R24	occupation_is Arg1:T27 Arg2:T28	
+R25	is_witness_to Arg1:T27 Arg2:T7	
+R26	is_witness_to Arg1:T29 Arg2:T7	
+R27	is_witness_to Arg1:T30 Arg2:T7	
+R28	is_witness_to Arg1:T31 Arg2:T7	
+R29	occupation_is Arg1:T31 Arg2:T32	

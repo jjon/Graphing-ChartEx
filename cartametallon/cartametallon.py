@@ -15,14 +15,14 @@ sys.path.insert(0, "/Users/jjc/ComputerInfo/RDF/rdflib/")
 import rdflib ## problem n3 parsing problem in visualizeDocumentGraph doesn't go away with import of dev version of rdflib.
 
 from rdflib import ConjunctiveGraph, Graph, Namespace, BNode, URIRef, Literal, RDF, RDFS, OWL, XSD, plugin, query
-from rdflib.tools.rdf2dot import *
+from rdflib.tools.rdf2dot import * # not using it
 
 import requests
 import pygraphviz as pgv
 import textwrap
 
 sys.path.insert(1, "/Users/jjc/Sites/Ann2DotRdf/")
-from localAGconfig import AG_AUTH, AGVM_VC_REPO, DATADIR, deedsN3
+from localAGconfig import AG_AUTH, AGVM_IP, AGVM_VC_REPO, DATADIR, deedsN3
 from brat2rdf import *
 import logging
 
@@ -71,11 +71,20 @@ crm = Namespace("http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label#")
 oa = Namespace("http://www.w3.org/ns/oa#")
 
 def getGraphSize(uri=None):
-    r = requests.get(AGVM_VC_REPO + "/size",
-        auth=AG_AUTH,
-        params={'context': uri})
+    """ including the AG server test here, and return immediately if the
+        server isn't running timeout value of 1 second is fine for the local
+        AG on the VM, likely not enough for a real network environment """
         
-    return r.content
+    try:
+        r = requests.get(AGVM_VC_REPO + "/size",
+            auth=AG_AUTH,
+            params={'context': uri},
+            timeout=1)
+        return r.content
+    
+    except requests.exceptions.Timeout:
+        return "requests.exceptions.Timeout\nYour request to:\n" + AGVM_IP + "\ntimed out\nmake sure that the AllegroGraph server is running and that the IP address in localAGconfig.py is correct."   
+    
 
 def getContexts():
     r = requests.get(AGVM_VC_REPO + "/contexts", 
@@ -233,8 +242,7 @@ def getText(pattern, root=os.curdir):
             yield dtext
             
 def generateDocumentGraph(rdf, fpath, wits):
-### d now has the right string for offsets, no do eval in the js
-    
+
     if len(rdf) == 0:
         return json.dumps({'debugdata': "this graph has no nodes"})
     
@@ -618,11 +626,16 @@ except StandardError as e:
     
     print e.__dict__
 
+except ConnectionError as ce:
+    print "Content-Type: text/html\n"
+    
+    print e.__dict__
+
 
 # if __name__ == "__main__":
-#     print getContexts()
-#     
-#     
+# #    print getContexts()
+#     print getGraphSize()     
+    
     #print rdflib.__version__
 
 #     fpath = DATADIR + "Giovanni_Scriba/GScriba_DCCCLXI.ann"

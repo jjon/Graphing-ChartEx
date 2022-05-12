@@ -1,3 +1,5 @@
+# note to self: the Graphing-ChartEx repo is public-facing at github and is for archival purposes only. Ongoing development of cartametallon or any other ChartEx related stuff is going on locally. eg. ~/Sites/cartametallon
+
 # Ignore Mac system files
 .DS_store
 .stats_cache
